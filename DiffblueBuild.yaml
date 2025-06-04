@@ -124,6 +124,7 @@ global:
   flags:
     - -Dmaven.ext.class.path=${DIFFBLUE_MAVEN_SPY_JAR}
     - -Dcom.diffblue.cover.skipTests=true
+    - -Drat.skip=true
     - -DskipTestOptimizer
     - --batch-mode
     - --projects=${MODULE}
