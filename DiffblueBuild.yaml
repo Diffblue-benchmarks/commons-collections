@@ -278,19 +278,19 @@ phase:
       # Diffblue test file names. This does not execute tests tagged with "MaintainedByDiffblue", so should
       # only be used when running by tag is not possible.
       neverDiffblue:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
       # To execute tests that Diffblue hasn't created (often referred to manual tests in Cover Reports), this is the
       # regular expression to use to match file names. This is the default maven regex with the negation of the
       # Diffblue test file names and excluded Tests tagged with "MaintainedByDiffblue".
       neverDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
         - -DexcludedGroups=MaintainedByDiffblue
       # To execute only the Diffblue created tests, then pass this regular expression to match the file names
       onlyDiffblue:
         - -Dtest=${DIFFBLUE_TEST_FILE_REGEX}
       # To execute Tests tagged with "MaintainedByDiffblue", in classes that do not match the Diffblue test file names
       onlyDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/*Test.java,**/*Tests.java,**/*TestCase.java
         - -Dgroups=MaintainedByDiffblue
       # To run a single test, apply this option
       named:
@@ -329,19 +329,19 @@ phase:
       # Diffblue test file names. This does not execute tests tagged with "MaintainedByDiffblue", so should
       # only be used when running by tag is not possible.
       neverDiffblue:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
       # To execute tests that Diffblue hasn't created (often referred to manual tests in Cover Reports), this is the
       # regular expression to use to match file names. This is the default maven regex with the negation of the
       # Diffblue test file names and excluded Tests tagged with "MaintainedByDiffblue".
       neverDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
         - -DexcludedGroups=MaintainedByDiffblue
       # To execute only the Diffblue created tests, then pass this regular expression to match the file names
       onlyDiffblue:
         - -Dtest=${DIFFBLUE_TEST_FILE_REGEX}
       # To execute Tests tagged with "MaintainedByDiffblue", in classes that do not match the Diffblue test file names
       onlyDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_REGEX},**/*Test.java,**/*Tests.java,**/*TestCase.java
         - -Dgroups=MaintainedByDiffblue
       # To run a single test, apply this option
       named:
