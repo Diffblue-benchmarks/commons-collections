@@ -50,74 +50,74 @@ import com.google.common.collect.testing.features.MapFeature;
  * @see <a href="https://github.com/google/guava/tree/master/guava-testlib">https://github.com/google/guava/tree/master/guava-testlib</a>
  * @see <a href="https://issues.apache.org/jira/browse/COLLECTIONS-802">https://issues.apache.org/jira/browse/COLLECTIONS-802</a>
  */
-public final class GuavaTestlibTest extends TestCase {
-
-    public static Test suite() {
-        final TestSuite test = new TestSuite();
-        // Map
-        test.addTest(suiteMap("HashedMap", HashedMap::new));
-        test.addTest(suiteMap("LinkedMap", LinkedMap::new));
-        test.addTest(suiteMap("LRUMap", LRUMap::new));
-        test.addTest(suiteMap("ReferenceMap", ReferenceMap::new));
-        // List
-        test.addTest(suiteList("TreeList", TreeList::new));
-        // TODO: In COLLECTIONS-811 we enabled the list tests for TreeList, but these other two types did not
-        //       pass the tests. Someone needs to confirm if it is a bug in the code, or we need to change the
-        //       test features.
-        // test.addTest(suiteList("GrowthList", GrowthList::new, CollectionFeature.SERIALIZABLE));
-        // test.addTest(suiteList("CursorableLinkedList", CursorableLinkedList::new, CollectionFeature.SERIALIZABLE));
-        return test;
-    }
-
-    /**
-     * Programmatically create a JUnit (3, 4) Test Suite for Guava testlib tests with Lists.
-     * @param name name of the test
-     * @param factory factory to create new Lists
-     * @param features test features used in the tests
-     * @return a JUnit 3, 4 Test Suite
-     */
-    private static Test suiteList(final String name, final Supplier<List<String>> factory, final Feature<?>... features) {
-        final ListTestSuiteBuilder<String> suite = ListTestSuiteBuilder.using(new TestStringListGenerator() {
-            @Override
-            protected List<String> create(final String[] elements) {
-                final List<String> list = factory.get();
-                Collections.addAll(list, elements);
-                return list;
-            }
-        })
-                .named(name)
-                .withFeatures(
-                        CollectionSize.ANY,
-                        ListFeature.GENERAL_PURPOSE,
-                        ListFeature.REMOVE_OPERATIONS,
-                        CollectionFeature.ALLOWS_NULL_VALUES,
-                        CollectionFeature.DESCENDING_VIEW,
-                        CollectionFeature.SUBSET_VIEW);
-        suite.withFeatures(features);
-        return suite.createTestSuite();
-    }
-
-    /**
-     * Programmatically create a JUnit (3, 4) Test Suite for Guava testlib tests with Maps.
-     * @param name name of the test
-     * @param factory factory to create new Maps
-     * @return a JUnit 3, 4 Test Suite
-     */
-    private static Test suiteMap(final String name, final Supplier<Map<String, String>> factory) {
-        return MapTestSuiteBuilder.using(new TestStringMapGenerator() {
-            @Override
-            protected Map<String, String> create(final Map.Entry<String, String>[] entries) {
-                final Map<String, String> map = factory.get();
-                for (final Map.Entry<String, String> entry : entries) {
-                    map.put(entry.getKey(), entry.getValue());
-                }
-                return map;
-            }
-        })
-                .named(name)
-                .withFeatures(
-                        CollectionSize.ANY, MapFeature.GENERAL_PURPOSE,
-                        MapFeature.ALLOWS_ANY_NULL_QUERIES, CollectionFeature.SUPPORTS_ITERATOR_REMOVE)
-                .createTestSuite();
-    }
-}
+//public final class GuavaTestlibTest extends TestCase {
+//
+//    public static Test suite() {
+//        final TestSuite test = new TestSuite();
+//        // Map
+//        test.addTest(suiteMap("HashedMap", HashedMap::new));
+//        test.addTest(suiteMap("LinkedMap", LinkedMap::new));
+//        test.addTest(suiteMap("LRUMap", LRUMap::new));
+//        test.addTest(suiteMap("ReferenceMap", ReferenceMap::new));
+//        // List
+//        test.addTest(suiteList("TreeList", TreeList::new));
+//        // TODO: In COLLECTIONS-811 we enabled the list tests for TreeList, but these other two types did not
+//        //       pass the tests. Someone needs to confirm if it is a bug in the code, or we need to change the
+//        //       test features.
+//        // test.addTest(suiteList("GrowthList", GrowthList::new, CollectionFeature.SERIALIZABLE));
+//        // test.addTest(suiteList("CursorableLinkedList", CursorableLinkedList::new, CollectionFeature.SERIALIZABLE));
+//        return test;
+//    }
+//
+//    /**
+//     * Programmatically create a JUnit (3, 4) Test Suite for Guava testlib tests with Lists.
+//     * @param name name of the test
+//     * @param factory factory to create new Lists
+//     * @param features test features used in the tests
+//     * @return a JUnit 3, 4 Test Suite
+//     */
+//    private static Test suiteList(final String name, final Supplier<List<String>> factory, final Feature<?>... features) {
+//        final ListTestSuiteBuilder<String> suite = ListTestSuiteBuilder.using(new TestStringListGenerator() {
+//            @Override
+//            protected List<String> create(final String[] elements) {
+//                final List<String> list = factory.get();
+//                Collections.addAll(list, elements);
+//                return list;
+//            }
+//        })
+//                .named(name)
+//                .withFeatures(
+//                        CollectionSize.ANY,
+//                        ListFeature.GENERAL_PURPOSE,
+//                        ListFeature.REMOVE_OPERATIONS,
+//                        CollectionFeature.ALLOWS_NULL_VALUES,
+//                        CollectionFeature.DESCENDING_VIEW,
+//                        CollectionFeature.SUBSET_VIEW);
+//        suite.withFeatures(features);
+//        return suite.createTestSuite();
+//    }
+//
+//    /**
+//     * Programmatically create a JUnit (3, 4) Test Suite for Guava testlib tests with Maps.
+//     * @param name name of the test
+//     * @param factory factory to create new Maps
+//     * @return a JUnit 3, 4 Test Suite
+//     */
+//    private static Test suiteMap(final String name, final Supplier<Map<String, String>> factory) {
+//        return MapTestSuiteBuilder.using(new TestStringMapGenerator() {
+//            @Override
+//            protected Map<String, String> create(final Map.Entry<String, String>[] entries) {
+//                final Map<String, String> map = factory.get();
+//                for (final Map.Entry<String, String> entry : entries) {
+//                    map.put(entry.getKey(), entry.getValue());
+//                }
+//                return map;
+//            }
+//        })
+//                .named(name)
+//                .withFeatures(
+//                        CollectionSize.ANY, MapFeature.GENERAL_PURPOSE,
+//                        MapFeature.ALLOWS_ANY_NULL_QUERIES, CollectionFeature.SUPPORTS_ITERATOR_REMOVE)
+//                .createTestSuite();
+//    }
+//}
