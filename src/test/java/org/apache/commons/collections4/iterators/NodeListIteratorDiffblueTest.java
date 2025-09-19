@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NoSuchElementException;
 import javax.imageio.metadata.IIOMetadataNode;
@@ -16,115 +17,107 @@ import org.w3c.dom.NodeList;
 class NodeListIteratorDiffblueTest {
   /**
    * Test {@link NodeListIterator#NodeListIterator(Node)}.
+   *
    * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode()}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#NodeListIterator(Node)}
+   *
+   * <p>Method under test: {@link NodeListIterator#NodeListIterator(Node)}
    */
   @Test
-  @DisplayName("Test new NodeListIterator(Node); when IIOMetadataNode(String) with 'foo'; then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test new NodeListIterator(Node); when IIOMetadataNode(); then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeListIterator.<init>(Node)"})
-  void testNewNodeListIterator_whenIIOMetadataNodeWithFoo_thenReturnNotHasNext() {
+  void testNewNodeListIterator_whenIIOMetadataNode_thenReturnNotHasNext() {
     // Arrange, Act and Assert
-    assertFalse((new NodeListIterator((Node) new IIOMetadataNode("foo"))).hasNext());
+    assertFalse(new NodeListIterator((Node) new IIOMetadataNode()).hasNext());
   }
 
   /**
    * Test {@link NodeListIterator#NodeListIterator(NodeList)}.
+   *
    * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode()}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#NodeListIterator(NodeList)}
+   *
+   * <p>Method under test: {@link NodeListIterator#NodeListIterator(NodeList)}
    */
   @Test
-  @DisplayName("Test new NodeListIterator(NodeList); when IIOMetadataNode(String) with 'foo'; then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NodeListIterator(NodeList); when IIOMetadataNode(); then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeListIterator.<init>(NodeList)"})
-  void testNewNodeListIterator_whenIIOMetadataNodeWithFoo_thenReturnNotHasNext2() {
+  void testNewNodeListIterator_whenIIOMetadataNode_thenReturnNotHasNext2() {
     // Arrange, Act and Assert
-    assertFalse((new NodeListIterator((NodeList) new IIOMetadataNode("foo"))).hasNext());
+    assertFalse(new NodeListIterator((NodeList) new IIOMetadataNode()).hasNext());
   }
 
   /**
    * Test {@link NodeListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link NodeListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given IIOMetadataNode(String) with 'foo'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test hasNext(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean NodeListIterator.hasNext()"})
-  void testHasNext_givenIIOMetadataNodeWithFoo_thenReturnFalse() {
+  void testHasNext_thenReturnFalse() {
     // Arrange, Act and Assert
-    assertFalse((new NodeListIterator((Node) new IIOMetadataNode("foo"))).hasNext());
+    assertFalse(new NodeListIterator((Node) new IIOMetadataNode()).hasNext());
   }
 
   /**
    * Test {@link NodeListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link NodeListIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean NodeListIterator.hasNext()"})
   void testHasNext_thenReturnTrue() {
     // Arrange
-    IIOMetadataNode node = new IIOMetadataNode("foo");
-    IIOMetadataNode iioMetadataNode = new IIOMetadataNode("foo");
-    node.insertBefore(iioMetadataNode, new IIOMetadataNode("foo"));
+    IIOMetadataNode node = new IIOMetadataNode();
+    IIOMetadataNode iioMetadataNode = new IIOMetadataNode();
+    node.insertBefore(iioMetadataNode, new IIOMetadataNode());
 
     // Act and Assert
-    assertTrue((new NodeListIterator((Node) node)).hasNext());
+    assertTrue(new NodeListIterator((Node) node).hasNext());
   }
 
   /**
    * Test {@link NodeListIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#next()}
-   */
-  @Test
-  @DisplayName("Test next(); given IIOMetadataNode(String) with 'foo'; then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Node NodeListIterator.next()"})
-  void testNext_givenIIOMetadataNodeWithFoo_thenThrowNoSuchElementException() {
-    // Arrange, Act and Assert
-    assertThrows(NoSuchElementException.class, () -> (new NodeListIterator((Node) new IIOMetadataNode("foo"))).next());
-  }
-
-  /**
-   * Test {@link NodeListIterator#next()}.
-   * <ul>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeListIterator#next()}
+   *
+   * <p>Method under test: {@link NodeListIterator#next()}
    */
   @Test
   @DisplayName("Test next(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node NodeListIterator.next()"})
   void testNext_thenReturnNull() {
     // Arrange
-    IIOMetadataNode node = new IIOMetadataNode("foo");
-    IIOMetadataNode iioMetadataNode = new IIOMetadataNode("underlying nodeList has no more elements");
-    node.insertBefore(iioMetadataNode, new IIOMetadataNode("underlying nodeList has no more elements"));
+    IIOMetadataNode node = new IIOMetadataNode();
+    IIOMetadataNode iioMetadataNode = new IIOMetadataNode();
+    node.insertBefore(iioMetadataNode, new IIOMetadataNode());
     NodeListIterator nodeListIterator = new NodeListIterator((Node) node);
 
     // Act and Assert
@@ -133,17 +126,40 @@ class NodeListIteratorDiffblueTest {
   }
 
   /**
+   * Test {@link NodeListIterator#next()}.
+   *
+   * <ul>
+   *   <li>Then throw {@link NoSuchElementException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link NodeListIterator#next()}
+   */
+  @Test
+  @DisplayName("Test next(); then throw NoSuchElementException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node NodeListIterator.next()"})
+  void testNext_thenThrowNoSuchElementException() {
+    // Arrange, Act and Assert
+    assertThrows(
+        NoSuchElementException.class,
+        () -> new NodeListIterator((Node) new IIOMetadataNode()).next());
+  }
+
+  /**
    * Test {@link NodeListIterator#remove()}.
-   * <p>
-   * Method under test: {@link NodeListIterator#remove()}
+   *
+   * <p>Method under test: {@link NodeListIterator#remove()}
    */
   @Test
   @DisplayName("Test remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeListIterator.remove()"})
   void testRemove() {
     // Arrange, Act and Assert
-    assertThrows(UnsupportedOperationException.class,
-        () -> (new NodeListIterator((Node) new IIOMetadataNode("foo"))).remove());
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> new NodeListIterator((Node) new IIOMetadataNode()).remove());
   }
 }

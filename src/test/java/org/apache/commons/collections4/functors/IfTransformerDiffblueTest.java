@@ -1,12 +1,14 @@
 package org.apache.commons.collections4.functors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.collections4.Transformer;
@@ -17,28 +19,168 @@ import org.mockito.Mockito;
 
 class IfTransformerDiffblueTest {
   /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code predicate}, {@code trueTransformer}, {@code falseTransformer}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
    */
   @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; given 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"})
+  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
+  void testIfTransformerWithPredicateTrueTransformer() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    Transformer<Object, Object> trueTransformer = mock(Transformer.class);
+    when(trueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+
+    // Act
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
+    Object actualTransformResult = actualIfTransformerResult.transform("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(trueTransformer).apply(isA(Object.class));
+    assertTrue(actualIfTransformerResult instanceof IfTransformer);
+    assertTrue(
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    assertEquals("Apply", actualTransformResult);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+  }
+
+  /**
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   */
+  @Test
+  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
+  void testIfTransformerWithPredicateTrueTransformer2() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    Transformer<Object, Object> trueTransformer = mock(Transformer.class);
+    when(trueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+
+    IfTransformer<? super Object, ?> trueTransformer2 =
+        new IfTransformer<>(predicate2, trueTransformer, mock(Transformer.class));
+
+    // Act
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer2);
+    Object actualTransformResult = actualIfTransformerResult.transform("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    verify(trueTransformer).apply(isA(Object.class));
+    Transformer<? super Object, ?> trueTransformer3 =
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer();
+    assertTrue(trueTransformer3 instanceof IfTransformer);
+    assertTrue(actualIfTransformerResult instanceof IfTransformer);
+    assertTrue(
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    assertEquals("Apply", actualTransformResult);
+    assertSame(trueTransformer2, trueTransformer3);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   */
+  @Test
+  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
+  void testIfTransformerWithPredicateTrueTransformer3() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+
+    Transformer<Object, Object> falseTransformer = mock(Transformer.class);
+    when(falseTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+
+    IfTransformer<? super Object, ?> trueTransformer =
+        new IfTransformer<>(predicate2, mock(Transformer.class), falseTransformer);
+
+    // Act
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
+    Object actualTransformResult = actualIfTransformerResult.transform("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    verify(falseTransformer).apply(isA(Object.class));
+    Transformer<? super Object, ?> trueTransformer2 =
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer();
+    assertTrue(trueTransformer2 instanceof IfTransformer);
+    assertTrue(actualIfTransformerResult instanceof IfTransformer);
+    assertTrue(
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    assertEquals("Apply", actualTransformResult);
+    assertSame(trueTransformer, trueTransformer2);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code
+   * predicate}, {@code trueTransformer}, {@code falseTransformer}.
+   *
+   * <ul>
+   *   <li>Given {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
+   */
+  @Test
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; given 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"
+  })
   void testIfTransformerWithPredicateTrueTransformerFalseTransformer_givenFalse() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
     Transformer<Object, Object> trueTransformer = mock(Transformer.class);
+
     Transformer<Object, Object> falseTransformer = mock(Transformer.class);
     when(falseTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer,
-        falseTransformer);
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer, falseTransformer);
     Object actualTransformResult = actualIfTransformerResult.transform("42");
 
     // Assert
@@ -46,34 +188,46 @@ class IfTransformerDiffblueTest {
     verify(falseTransformer).apply(isA(Object.class));
     assertTrue(actualIfTransformerResult instanceof IfTransformer);
     assertEquals("Apply", actualTransformResult);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(falseTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        falseTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
   }
 
   /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code predicate}, {@code trueTransformer}, {@code falseTransformer}.
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code
+   * predicate}, {@code trueTransformer}, {@code falseTransformer}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
+   *   <li>Given {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
    */
   @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; given 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"})
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; given 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"
+  })
   void testIfTransformerWithPredicateTrueTransformerFalseTransformer_givenTrue() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Transformer<Object, Object> trueTransformer = mock(Transformer.class);
     when(trueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
     Transformer<Object, Object> falseTransformer = mock(Transformer.class);
 
     // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer,
-        falseTransformer);
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer, falseTransformer);
     Object actualTransformResult = actualIfTransformerResult.transform("42");
 
     // Assert
@@ -81,23 +235,34 @@ class IfTransformerDiffblueTest {
     verify(trueTransformer).apply(isA(Object.class));
     assertTrue(actualIfTransformerResult instanceof IfTransformer);
     assertEquals("Apply", actualTransformResult);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(falseTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        falseTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
   }
 
   /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code predicate}, {@code trueTransformer}, {@code falseTransformer}.
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)} with {@code
+   * predicate}, {@code trueTransformer}, {@code falseTransformer}.
+   *
    * <ul>
-   *   <li>When {@link Predicate}.</li>
+   *   <li>When {@link Predicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer, Transformer)}
    */
   @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; when Predicate")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"})
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer, Transformer) with 'predicate', 'trueTransformer', 'falseTransformer'; when Predicate")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "Transformer IfTransformer.ifTransformer(Predicate, Transformer, Transformer)"
+  })
   void testIfTransformerWithPredicateTrueTransformerFalseTransformer_whenPredicate() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
@@ -105,27 +270,128 @@ class IfTransformerDiffblueTest {
     Transformer<Object, Object> falseTransformer = mock(Transformer.class);
 
     // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer,
-        falseTransformer);
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer, falseTransformer);
 
     // Assert
     assertTrue(actualIfTransformerResult instanceof IfTransformer);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(falseTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        falseTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
   }
 
   /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code trueTransformer}.
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
    * <ul>
-   *   <li>Then return transform {@code 42} is {@code 42}.</li>
+   *   <li>Then return not transform {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
    */
   @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; then return transform '42' is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; then return not transform '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
+  void testIfTransformerWithPredicateTrueTransformer_thenReturnNotTransform42() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+    PredicateTransformer<? super Object> trueTransformer = new PredicateTransformer<>(predicate2);
+
+    // Act
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
+    Object actualTransformResult = actualIfTransformerResult.transform("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertTrue(actualIfTransformerResult instanceof IfTransformer);
+    assertTrue(
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    Transformer<? super Object, ?> trueTransformer2 =
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer();
+    assertTrue(trueTransformer2 instanceof PredicateTransformer);
+    assertFalse((Boolean) actualTransformResult);
+    assertSame(trueTransformer, trueTransformer2);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
+   * <ul>
+   *   <li>Then return transform {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   */
+  @Test
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; then return transform '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
+  void testIfTransformerWithPredicateTrueTransformer_thenReturnTransform42() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+    PredicateTransformer<? super Object> trueTransformer = new PredicateTransformer<>(predicate2);
+
+    // Act
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
+    Object actualTransformResult = actualIfTransformerResult.transform("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertTrue(actualIfTransformerResult instanceof IfTransformer);
+    assertTrue(
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    Transformer<? super Object, ?> trueTransformer2 =
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer();
+    assertTrue(trueTransformer2 instanceof PredicateTransformer);
+    assertTrue((Boolean) actualTransformResult);
+    assertSame(trueTransformer, trueTransformer2);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
+   * <ul>
+   *   <li>Then return transform {@code 42} is {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   */
+  @Test
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; then return transform '42' is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
   void testIfTransformerWithPredicateTrueTransformer_thenReturnTransform42Is42() {
     // Arrange
@@ -134,64 +400,39 @@ class IfTransformerDiffblueTest {
     Transformer<Object, Object> trueTransformer = mock(Transformer.class);
 
     // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer);
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
     Object actualTransformResult = actualIfTransformerResult.transform("42");
 
     // Assert
     verify(predicate).test(isA(Object.class));
     assertTrue(actualIfTransformerResult instanceof IfTransformer);
     assertTrue(
-        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer() instanceof NOPTransformer);
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
     assertEquals("42", actualTransformResult);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
   }
 
   /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code trueTransformer}.
+   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code
+   * trueTransformer}.
+   *
    * <ul>
-   *   <li>Then return transform {@code 42} is {@code Apply}.</li>
+   *   <li>When {@link Predicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
+   *
+   * <p>Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
    */
   @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; then return transform '42' is 'Apply'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
-  void testIfTransformerWithPredicateTrueTransformer_thenReturnTransform42IsApply() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-    Transformer<Object, Object> trueTransformer = mock(Transformer.class);
-    when(trueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer);
-    Object actualTransformResult = actualIfTransformerResult.transform("42");
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    verify(trueTransformer).apply(isA(Object.class));
-    assertTrue(actualIfTransformerResult instanceof IfTransformer);
-    assertTrue(
-        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer() instanceof NOPTransformer);
-    assertEquals("Apply", actualTransformResult);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
-  }
-
-  /**
-   * Test {@link IfTransformer#ifTransformer(Predicate, Transformer)} with {@code predicate}, {@code trueTransformer}.
-   * <ul>
-   *   <li>When {@link Predicate}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#ifTransformer(Predicate, Transformer)}
-   */
-  @Test
-  @DisplayName("Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; when Predicate")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test ifTransformer(Predicate, Transformer) with 'predicate', 'trueTransformer'; when Predicate")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer IfTransformer.ifTransformer(Predicate, Transformer)"})
   void testIfTransformerWithPredicateTrueTransformer_whenPredicate() {
     // Arrange
@@ -199,20 +440,26 @@ class IfTransformerDiffblueTest {
     Transformer<Object, Object> trueTransformer = mock(Transformer.class);
 
     // Act
-    Transformer<Object, Object> actualIfTransformerResult = IfTransformer.ifTransformer(predicate, trueTransformer);
+    Transformer<Object, Object> actualIfTransformerResult =
+        IfTransformer.ifTransformer(predicate, trueTransformer);
 
     // Assert
     assertTrue(actualIfTransformerResult instanceof IfTransformer);
     assertTrue(
-        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer() instanceof NOPTransformer);
-    assertSame(predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
-    assertSame(trueTransformer, ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getFalseTransformer()
+            instanceof NOPTransformer);
+    assertSame(
+        predicate, ((IfTransformer<Object, Object>) actualIfTransformerResult).getPredicate());
+    assertSame(
+        trueTransformer,
+        ((IfTransformer<Object, Object>) actualIfTransformerResult).getTrueTransformer());
   }
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link IfTransformer#IfTransformer(Predicate, Transformer, Transformer)}
    *   <li>{@link IfTransformer#getFalseTransformer()}
@@ -222,10 +469,14 @@ class IfTransformerDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void IfTransformer.<init>(Predicate, Transformer, Transformer)",
-      "Transformer IfTransformer.getFalseTransformer()", "Predicate IfTransformer.getPredicate()",
-      "Transformer IfTransformer.getTrueTransformer()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void IfTransformer.<init>(Predicate, Transformer, Transformer)",
+    "Transformer IfTransformer.getFalseTransformer()",
+    "Predicate IfTransformer.getPredicate()",
+    "Transformer IfTransformer.getTrueTransformer()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
@@ -233,9 +484,10 @@ class IfTransformerDiffblueTest {
     Transformer<Object, Object> falseTransformer = mock(Transformer.class);
 
     // Act
-    IfTransformer<Object, Object> actualIfTransformer = new IfTransformer<>(predicate, trueTransformer,
-        falseTransformer);
-    Transformer<? super Object, ?> actualFalseTransformer = actualIfTransformer.getFalseTransformer();
+    IfTransformer<Object, Object> actualIfTransformer =
+        new IfTransformer<>(predicate, trueTransformer, falseTransformer);
+    Transformer<? super Object, ?> actualFalseTransformer =
+        actualIfTransformer.getFalseTransformer();
     Predicate<? super Object> actualPredicate = actualIfTransformer.getPredicate();
 
     // Assert
@@ -246,24 +498,28 @@ class IfTransformerDiffblueTest {
 
   /**
    * Test {@link IfTransformer#transform(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#transform(Object)}
+   *
+   * <p>Method under test: {@link IfTransformer#transform(Object)}
    */
   @Test
   @DisplayName("Test transform(Object); given Predicate test(Object) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object IfTransformer.transform(Object)"})
   void testTransform_givenPredicateTestReturnFalse() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
     Transformer<Object, Object> falseTransformer = mock(Transformer.class);
     when(falseTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    IfTransformer<Object, Object> ifTransformer = new IfTransformer<>(predicate, mock(Transformer.class),
-        falseTransformer);
+
+    IfTransformer<Object, Object> ifTransformer =
+        new IfTransformer<>(predicate, mock(Transformer.class), falseTransformer);
 
     // Act
     Object actualTransformResult = ifTransformer.transform("Input");
@@ -276,24 +532,28 @@ class IfTransformerDiffblueTest {
 
   /**
    * Test {@link IfTransformer#transform(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link IfTransformer#transform(Object)}
+   *
+   * <p>Method under test: {@link IfTransformer#transform(Object)}
    */
   @Test
   @DisplayName("Test transform(Object); given Predicate test(Object) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object IfTransformer.transform(Object)"})
   void testTransform_givenPredicateTestReturnTrue() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Transformer<Object, Object> trueTransformer = mock(Transformer.class);
     when(trueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    IfTransformer<Object, Object> ifTransformer = new IfTransformer<>(predicate, trueTransformer,
-        mock(Transformer.class));
+
+    IfTransformer<Object, Object> ifTransformer =
+        new IfTransformer<>(predicate, trueTransformer, mock(Transformer.class));
 
     // Act
     Object actualTransformResult = ifTransformer.transform("Input");

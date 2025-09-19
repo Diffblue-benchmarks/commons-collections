@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,12 +17,13 @@ import org.junit.jupiter.api.Test;
 class NodeCachingLinkedListDiffblueTest {
   /**
    * Test {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList()}
    */
   @Test
   @DisplayName("Test new NodeCachingLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.<init>()"})
   void testNewNodeCachingLinkedList() {
     // Arrange and Act
@@ -33,12 +35,13 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}
    */
   @Test
   @DisplayName("Test new NodeCachingLinkedList(int)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.<init>(int)"})
   void testNewNodeCachingLinkedList2() {
     // Arrange and Act
@@ -50,38 +53,45 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
    */
   @Test
   @DisplayName("Test new NodeCachingLinkedList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
   void testNewNodeCachingLinkedList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
 
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
+    // Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
    */
   @Test
   @DisplayName("Test new NodeCachingLinkedList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
   void testNewNodeCachingLinkedList_given42_whenArrayListAdd422() {
     // Arrange
@@ -89,42 +99,52 @@ class NodeCachingLinkedListDiffblueTest {
     coll.add("42");
     coll.add("42");
 
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
+    // Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
    */
   @Test
   @DisplayName("Test new NodeCachingLinkedList(Collection); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
   void testNewNodeCachingLinkedList_whenArrayList() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
 
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
+    // Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link NodeCachingLinkedList#addNodeToCache(Node)}.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} NextNode is {@code null}.</li>
+   *   <li>When {@link Node#Node()}.
+   *   <li>Then {@link Node#Node()} NextNode is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#addNodeToCache(Node)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#addNodeToCache(Node)}
    */
   @Test
   @DisplayName("Test addNodeToCache(Node); when Node(); then Node() NextNode is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.addNodeToCache(Node)"})
   void testAddNodeToCache_whenNode_thenNodeNextNodeIsNull() {
     // Arrange
@@ -141,16 +161,20 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#createNode(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link Node#Node()}.</li>
-   *   <li>Then return {@link Node#Node()}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link
+   *       Node#Node()}.
+   *   <li>Then return {@link Node#Node()}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#createNode(Object)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#createNode(Object)}
    */
   @Test
-  @DisplayName("Test createNode(Object); given NodeCachingLinkedList() addNodeToCache Node(); then return Node()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test createNode(Object); given NodeCachingLinkedList() addNodeToCache Node(); then return Node()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node NodeCachingLinkedList.createNode(Object)"})
   void testCreateNode_givenNodeCachingLinkedListAddNodeToCacheNode_thenReturnNode() {
     // Arrange
@@ -164,16 +188,18 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#createNode(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#createNode(Object)}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#createNode(Object)}
    */
   @Test
   @DisplayName("Test createNode(Object); given NodeCachingLinkedList(); then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node NodeCachingLinkedList.createNode(Object)"})
   void testCreateNode_givenNodeCachingLinkedList_thenReturnValue() {
     // Arrange
@@ -190,12 +216,13 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#getMaximumCacheSize()}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#getMaximumCacheSize()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#getMaximumCacheSize()}
    */
   @Test
   @DisplayName("Test getMaximumCacheSize()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int NodeCachingLinkedList.getMaximumCacheSize()"})
   void testGetMaximumCacheSize() {
     // Arrange
@@ -207,16 +234,20 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#getNodeFromCache()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link Node#Node()}.</li>
-   *   <li>Then return {@link Node#Node()}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link
+   *       Node#Node()}.
+   *   <li>Then return {@link Node#Node()}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
    */
   @Test
-  @DisplayName("Test getNodeFromCache(); given NodeCachingLinkedList() addNodeToCache Node(); then return Node()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getNodeFromCache(); given NodeCachingLinkedList() addNodeToCache Node(); then return Node()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node NodeCachingLinkedList.getNodeFromCache()"})
   void testGetNodeFromCache_givenNodeCachingLinkedListAddNodeToCacheNode_thenReturnNode() {
     // Arrange
@@ -230,16 +261,18 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#getNodeFromCache()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
    */
   @Test
   @DisplayName("Test getNodeFromCache(); given NodeCachingLinkedList(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node NodeCachingLinkedList.getNodeFromCache()"})
   void testGetNodeFromCache_givenNodeCachingLinkedList_thenReturnNull() {
     // Arrange
@@ -251,12 +284,13 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#isCacheFull()}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#isCacheFull()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#isCacheFull()}
    */
   @Test
   @DisplayName("Test isCacheFull()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean NodeCachingLinkedList.isCacheFull()"})
   void testIsCacheFull() {
     // Arrange
@@ -268,15 +302,17 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#removeAllNodes()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
    */
   @Test
   @DisplayName("Test removeAllNodes(); given NodeCachingLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.removeAllNodes()"})
   void testRemoveAllNodes_givenNodeCachingLinkedList() {
     // Arrange
@@ -291,15 +327,17 @@ class NodeCachingLinkedListDiffblueTest {
 
   /**
    * Test {@link NodeCachingLinkedList#removeAllNodes()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
+   *
+   * <p>Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
    */
   @Test
   @DisplayName("Test removeAllNodes(); given NodeCachingLinkedList() add 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NodeCachingLinkedList.removeAllNodes()"})
   void testRemoveAllNodes_givenNodeCachingLinkedListAddValue() {
     // Arrange

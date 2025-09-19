@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -11,179 +12,261 @@ import org.junit.jupiter.api.Test;
 
 class StringKeyAnalyzerDiffblueTest {
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> StringKeyAnalyzer.INSTANCE.bitIndex("Key",
-        StringKeyAnalyzer.LENGTH, 3, "Other", StringKeyAnalyzer.LENGTH, 3));
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            StringKeyAnalyzer.INSTANCE.bitIndex(
+                "Key", StringKeyAnalyzer.LENGTH, 3, "Other", StringKeyAnalyzer.LENGTH, 3));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_thenThrowIllegalArgumentException2() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> StringKeyAnalyzer.INSTANCE.bitIndex("Key",
-        StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH, "Other", StringKeyAnalyzer.LENGTH, 3));
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            StringKeyAnalyzer.INSTANCE.bitIndex(
+                "Key",
+                StringKeyAnalyzer.LENGTH,
+                StringKeyAnalyzer.LENGTH,
+                "Other",
+                StringKeyAnalyzer.LENGTH,
+                3));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return nine.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return nine.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when 'null'; then return nine")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when 'null'; then return nine")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenNull_thenReturnNine() {
     // Arrange, Act and Assert
-    assertEquals(9, StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH, null,
-        StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH));
+    assertEquals(
+        9,
+        StringKeyAnalyzer.INSTANCE.bitIndex(
+            "Key",
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH,
+            null,
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When one.</li>
+   *   <li>When one.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenOne() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class,
-        () -> StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, 3, "Other", 1, 3));
+    assertThrows(
+        IllegalArgumentException.class,
+        () ->
+            StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, 3, "Other", 1, 3));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When {@code Other}.</li>
-   *   <li>Then return eleven.</li>
+   *   <li>When {@code Other}.
+   *   <li>Then return eleven.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when 'Other'; then return eleven")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when 'Other'; then return eleven")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenOther_thenReturnEleven() {
     // Arrange, Act and Assert
-    assertEquals(11, StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH,
-        "Other", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH));
+    assertEquals(
+        11,
+        StringKeyAnalyzer.INSTANCE.bitIndex(
+            "Key",
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH,
+            "Other",
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When two.</li>
+   *   <li>When two.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenTwo() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> StringKeyAnalyzer.INSTANCE.bitIndex("Key", 2, 3, "Other", 1, 3));
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> StringKeyAnalyzer.INSTANCE.bitIndex("Key", 2, 3, "Other", 1, 3));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>When zero.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenZero_thenReturnMinusOne() {
     // Arrange, Act and Assert
-    assertEquals(-1,
-        StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, 0, "Other", StringKeyAnalyzer.LENGTH, 0));
+    assertEquals(
+        -1,
+        StringKeyAnalyzer.INSTANCE.bitIndex(
+            "Key", StringKeyAnalyzer.LENGTH, 0, "Other", StringKeyAnalyzer.LENGTH, 0));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return nine.</li>
+   *   <li>When zero.
+   *   <li>Then return nine.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return nine")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return nine")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenZero_thenReturnNine() {
     // Arrange, Act and Assert
-    assertEquals(9, StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH,
-        "Other", StringKeyAnalyzer.LENGTH, 0));
+    assertEquals(
+        9,
+        StringKeyAnalyzer.INSTANCE.bitIndex(
+            "Key",
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH,
+            "Other",
+            StringKeyAnalyzer.LENGTH,
+            0));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)} with {@code
+   * String}, {@code int}, {@code int}, {@code String}, {@code int}, {@code int}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return nine.</li>
+   *   <li>When zero.
+   *   <li>Then return nine.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitIndex(String, int, int, String, int, int)}
    */
   @Test
-  @DisplayName("Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return nine")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test bitIndex(String, int, int, String, int, int) with 'String', 'int', 'int', 'String', 'int', 'int'; when zero; then return nine")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitIndex(String, int, int, String, int, int)"})
   void testBitIndexWithStringIntIntStringIntInt_whenZero_thenReturnNine2() {
     // Arrange, Act and Assert
-    assertEquals(9, StringKeyAnalyzer.INSTANCE.bitIndex("Key", StringKeyAnalyzer.LENGTH, 0, "Other",
-        StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH));
+    assertEquals(
+        9,
+        StringKeyAnalyzer.INSTANCE.bitIndex(
+            "Key",
+            StringKeyAnalyzer.LENGTH,
+            0,
+            "Other",
+            StringKeyAnalyzer.LENGTH,
+            StringKeyAnalyzer.LENGTH));
   }
 
   /**
    * Test {@link StringKeyAnalyzer#bitsPerElement()}.
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#bitsPerElement()}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#bitsPerElement()}
    */
   @Test
   @DisplayName("Test bitsPerElement()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.bitsPerElement()"})
   void testBitsPerElement() {
     // Arrange, Act and Assert
@@ -191,17 +274,21 @@ class StringKeyAnalyzerDiffblueTest {
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int},
+   * {@code int}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
    */
   @Test
-  @DisplayName("Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'Key'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'Key'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isBitSet(String, int, int)"})
   void testIsBitSetWithStringIntInt_whenKey_thenReturnFalse() {
     // Arrange, Act and Assert
@@ -209,17 +296,21 @@ class StringKeyAnalyzerDiffblueTest {
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int},
+   * {@code int}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
    */
   @Test
-  @DisplayName("Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'Key'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'Key'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isBitSet(String, int, int)"})
   void testIsBitSetWithStringIntInt_whenKey_thenReturnFalse2() {
     // Arrange, Act and Assert
@@ -227,17 +318,21 @@ class StringKeyAnalyzerDiffblueTest {
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int}, {@code int}.
+   * Test {@link StringKeyAnalyzer#isBitSet(String, int, int)} with {@code String}, {@code int},
+   * {@code int}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isBitSet(String, int, int)}
    */
   @Test
-  @DisplayName("Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isBitSet(String, int, int) with 'String', 'int', 'int'; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isBitSet(String, int, int)"})
   void testIsBitSetWithStringIntInt_whenNull_thenReturnFalse() {
     // Arrange, Act and Assert
@@ -245,73 +340,93 @@ class StringKeyAnalyzerDiffblueTest {
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code int}, {@code int}, {@code String}.
+   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code
+   * int}, {@code int}, {@code String}.
+   *
    * <ul>
-   *   <li>When {@link StringKeyAnalyzer#LENGTH}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link StringKeyAnalyzer#LENGTH}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
    */
   @Test
-  @DisplayName("Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when LENGTH; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when LENGTH; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isPrefix(String, int, int, String)"})
   void testIsPrefixWithStringIntIntString_whenLength_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(
-        StringKeyAnalyzer.INSTANCE.isPrefix("Prefix", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH, "Key"));
+        StringKeyAnalyzer.INSTANCE.isPrefix(
+            "Prefix", StringKeyAnalyzer.LENGTH, StringKeyAnalyzer.LENGTH, "Key"));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code int}, {@code int}, {@code String}.
+   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code
+   * int}, {@code int}, {@code String}.
+   *
    * <ul>
-   *   <li>When three.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When three.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
    */
   @Test
-  @DisplayName("Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when three; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when three; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isPrefix(String, int, int, String)"})
   void testIsPrefixWithStringIntIntString_whenThree_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class,
+    assertThrows(
+        IllegalArgumentException.class,
         () -> StringKeyAnalyzer.INSTANCE.isPrefix("Prefix", StringKeyAnalyzer.LENGTH, 3, "Key"));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code int}, {@code int}, {@code String}.
+   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code
+   * int}, {@code int}, {@code String}.
+   *
    * <ul>
-   *   <li>When two.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When two.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
    */
   @Test
-  @DisplayName("Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when two; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when two; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isPrefix(String, int, int, String)"})
   void testIsPrefixWithStringIntIntString_whenTwo_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> StringKeyAnalyzer.INSTANCE.isPrefix("Prefix", 2, 3, "Key"));
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> StringKeyAnalyzer.INSTANCE.isPrefix("Prefix", 2, 3, "Key"));
   }
 
   /**
-   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code int}, {@code int}, {@code String}.
+   * Test {@link StringKeyAnalyzer#isPrefix(String, int, int, String)} with {@code String}, {@code
+   * int}, {@code int}, {@code String}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When zero.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#isPrefix(String, int, int, String)}
    */
   @Test
-  @DisplayName("Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when zero; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isPrefix(String, int, int, String) with 'String', 'int', 'int', 'String'; when zero; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean StringKeyAnalyzer.isPrefix(String, int, int, String)"})
   void testIsPrefixWithStringIntIntString_whenZero_thenReturnFalse() {
     // Arrange, Act and Assert
@@ -320,16 +435,18 @@ class StringKeyAnalyzerDiffblueTest {
 
   /**
    * Test {@link StringKeyAnalyzer#lengthInBits(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return forty-eight.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return forty-eight.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#lengthInBits(String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#lengthInBits(String)}
    */
   @Test
   @DisplayName("Test lengthInBits(String) with 'String'; when 'Key'; then return forty-eight")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.lengthInBits(String)"})
   void testLengthInBitsWithString_whenKey_thenReturnFortyEight() {
     // Arrange, Act and Assert
@@ -338,16 +455,18 @@ class StringKeyAnalyzerDiffblueTest {
 
   /**
    * Test {@link StringKeyAnalyzer#lengthInBits(String)} with {@code String}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link StringKeyAnalyzer#lengthInBits(String)}
+   *
+   * <p>Method under test: {@link StringKeyAnalyzer#lengthInBits(String)}
    */
   @Test
   @DisplayName("Test lengthInBits(String) with 'String'; when 'null'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int StringKeyAnalyzer.lengthInBits(String)"})
   void testLengthInBitsWithString_whenNull_thenReturnZero() {
     // Arrange, Act and Assert

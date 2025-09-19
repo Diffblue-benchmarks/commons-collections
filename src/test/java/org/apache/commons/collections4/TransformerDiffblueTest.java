@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.functors.ClosureTransformer;
 import org.junit.jupiter.api.DisplayName;
@@ -15,12 +16,13 @@ import org.mockito.Mockito;
 class TransformerDiffblueTest {
   /**
    * Test {@link Transformer#apply(Object)}.
-   * <p>
-   * Method under test: {@link Transformer#apply(Object)}
+   *
+   * <p>Method under test: {@link Transformer#apply(Object)}
    */
   @Test
   @DisplayName("Test apply(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Transformer.apply(Object)"})
   void testApply() {
     // Arrange

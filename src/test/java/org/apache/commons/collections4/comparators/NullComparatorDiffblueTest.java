@@ -1,11 +1,13 @@
 package org.apache.commons.collections4.comparators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Comparator;
 import org.junit.jupiter.api.DisplayName;
@@ -16,16 +18,19 @@ import org.mockito.Mockito;
 class NullComparatorDiffblueTest {
   /**
    * Test {@link NullComparator#NullComparator(Comparator)}.
+   *
    * <ul>
-   *   <li>Given one.</li>
-   *   <li>Then return compare {@code O1} and {@code O2} is one.</li>
+   *   <li>Given one.
+   *   <li>Then return compare {@code O1} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator); given one; then return compare 'O1' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator); given one; then return compare 'O1' and 'O2' is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator)"})
   void testNewNullComparator_givenOne_thenReturnCompareO1AndO2IsOne() {
     // Arrange
@@ -43,16 +48,19 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>Given one.</li>
-   *   <li>Then return compare {@code O1} and {@code O2} is one.</li>
+   *   <li>Given one.
+   *   <li>Then return compare {@code O1} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); given one; then return compare 'O1' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); given one; then return compare 'O1' and 'O2' is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_givenOne_thenReturnCompareO1AndO2IsOne2() {
     // Arrange
@@ -70,15 +78,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator()}.
+   *
    * <ul>
-   *   <li>Then return compare {@code null} and {@code O2} is one.</li>
+   *   <li>Then return compare {@code null} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator()}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator()}
    */
   @Test
   @DisplayName("Test new NullComparator(); then return compare 'null' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>()"})
   void testNewNullComparator_thenReturnCompareNullAndO2IsOne() {
     // Arrange and Act
@@ -90,15 +100,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(boolean)}.
+   *
    * <ul>
-   *   <li>Then return compare {@code null} and {@code O2} is one.</li>
+   *   <li>Then return compare {@code null} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(boolean)}
    */
   @Test
   @DisplayName("Test new NullComparator(boolean); then return compare 'null' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(boolean)"})
   void testNewNullComparator_thenReturnCompareNullAndO2IsOne2() {
     // Arrange and Act
@@ -110,15 +122,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator()}.
+   *
    * <ul>
-   *   <li>Then return compare {@code O1} and {@code O2} is minus one.</li>
+   *   <li>Then return compare {@code O1} and {@code O2} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator()}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator()}
    */
   @Test
   @DisplayName("Test new NullComparator(); then return compare 'O1' and 'O2' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>()"})
   void testNewNullComparator_thenReturnCompareO1AndO2IsMinusOne() {
     // Arrange and Act
@@ -130,15 +144,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(boolean)}.
+   *
    * <ul>
-   *   <li>Then return compare {@code O1} and {@code O2} is minus one.</li>
+   *   <li>Then return compare {@code O1} and {@code O2} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(boolean)}
    */
   @Test
   @DisplayName("Test new NullComparator(boolean); then return compare 'O1' and 'O2' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(boolean)"})
   void testNewNullComparator_thenReturnCompareO1AndO2IsMinusOne2() {
     // Arrange and Act
@@ -150,15 +166,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator()}.
+   *
    * <ul>
-   *   <li>Then return compare {@code true} and {@code null} is minus one.</li>
+   *   <li>Then return compare {@code true} and {@code null} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator()}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator()}
    */
   @Test
   @DisplayName("Test new NullComparator(); then return compare 'true' and 'null' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>()"})
   void testNewNullComparator_thenReturnCompareTrueAndNullIsMinusOne() {
     // Arrange and Act
@@ -170,15 +188,18 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(boolean)}.
+   *
    * <ul>
-   *   <li>Then return compare {@code true} and {@code null} is minus one.</li>
+   *   <li>Then return compare {@code true} and {@code null} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(boolean); then return compare 'true' and 'null' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(boolean); then return compare 'true' and 'null' is minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(boolean)"})
   void testNewNullComparator_thenReturnCompareTrueAndNullIsMinusOne2() {
     // Arrange and Act
@@ -190,15 +211,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator()}.
+   *
    * <ul>
-   *   <li>Then return compare {@code true} and {@code true} is zero.</li>
+   *   <li>Then return compare {@code true} and {@code true} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator()}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator()}
    */
   @Test
   @DisplayName("Test new NullComparator(); then return compare 'true' and 'true' is zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>()"})
   void testNewNullComparator_thenReturnCompareTrueAndTrueIsZero() {
     // Arrange and Act
@@ -210,15 +233,17 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(boolean)}.
+   *
    * <ul>
-   *   <li>Then return compare {@code true} and {@code true} is zero.</li>
+   *   <li>Then return compare {@code true} and {@code true} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(boolean)}
    */
   @Test
   @DisplayName("Test new NullComparator(boolean); then return compare 'true' and 'true' is zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(boolean)"})
   void testNewNullComparator_thenReturnCompareTrueAndTrueIsZero2() {
     // Arrange and Act
@@ -230,16 +255,19 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator)}.
+   *
    * <ul>
-   *   <li>When {@link Comparator}.</li>
-   *   <li>Then return compare {@code null} and {@code null} is zero.</li>
+   *   <li>When {@link Comparator}.
+   *   <li>Then return compare {@code null} and {@code null} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator); when Comparator; then return compare 'null' and 'null' is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator); when Comparator; then return compare 'null' and 'null' is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator)"})
   void testNewNullComparator_whenComparator_thenReturnCompareNullAndNullIsZero() {
     // Arrange and Act
@@ -252,16 +280,19 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator)}.
+   *
    * <ul>
-   *   <li>When {@link Comparator}.</li>
-   *   <li>Then return compare {@code null} and {@code O2} is one.</li>
+   *   <li>When {@link Comparator}.
+   *   <li>Then return compare {@code null} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator); when Comparator; then return compare 'null' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator); when Comparator; then return compare 'null' and 'O2' is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator)"})
   void testNewNullComparator_whenComparator_thenReturnCompareNullAndO2IsOne() {
     // Arrange and Act
@@ -274,16 +305,19 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator)}.
+   *
    * <ul>
-   *   <li>When {@link Comparator}.</li>
-   *   <li>Then return compare {@code O1} and {@code null} is minus one.</li>
+   *   <li>When {@link Comparator}.
+   *   <li>Then return compare {@code O1} and {@code null} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator); when Comparator; then return compare 'O1' and 'null' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator); when Comparator; then return compare 'O1' and 'null' is minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator)"})
   void testNewNullComparator_whenComparator_thenReturnCompareO1AndNullIsMinusOne() {
     // Arrange and Act
@@ -296,16 +330,19 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator)}.
+   *
    * <ul>
-   *   <li>When {@link Comparator}.</li>
-   *   <li>Then return compare {@code O1} and {@code O2} is zero.</li>
+   *   <li>When {@link Comparator}.
+   *   <li>Then return compare {@code O1} and {@code O2} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator); when Comparator; then return compare 'O1' and 'O2' is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator); when Comparator; then return compare 'O1' and 'O2' is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator)"})
   void testNewNullComparator_whenComparator_thenReturnCompareO1AndO2IsZero() {
     // Arrange and Act
@@ -317,20 +354,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code false}.</li>
-   *   <li>Then return compare {@code null} and {@code O2} is minus one.</li>
+   *   <li>When {@code false}.
+   *   <li>Then return compare {@code null} and {@code O2} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'false'; then return compare 'null' and 'O2' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'false'; then return compare 'null' and 'O2' is minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenFalse_thenReturnCompareNullAndO2IsMinusOne() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), false);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), false);
 
     // Assert
     assertNull(null);
@@ -339,20 +380,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code false}.</li>
-   *   <li>Then return compare {@code O1} and {@code null} is one.</li>
+   *   <li>When {@code false}.
+   *   <li>Then return compare {@code O1} and {@code null} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'false'; then return compare 'O1' and 'null' is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'false'; then return compare 'O1' and 'null' is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenFalse_thenReturnCompareO1AndNullIsOne() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), false);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), false);
 
     // Assert
     assertNull(null);
@@ -361,20 +406,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
-   *   <li>Then return compare {@code null} and {@code null} is zero.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return compare {@code null} and {@code null} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'null' and 'null' is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'null' and 'null' is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenTrue_thenReturnCompareNullAndNullIsZero() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), true);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), true);
 
     // Assert
     assertNull(null);
@@ -383,20 +432,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
-   *   <li>Then return compare {@code null} and {@code O2} is one.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return compare {@code null} and {@code O2} is one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'null' and 'O2' is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'null' and 'O2' is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenTrue_thenReturnCompareNullAndO2IsOne() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), true);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), true);
 
     // Assert
     assertNull(null);
@@ -405,20 +458,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
-   *   <li>Then return compare {@code O1} and {@code null} is minus one.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return compare {@code O1} and {@code null} is minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'O1' and 'null' is minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'O1' and 'null' is minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenTrue_thenReturnCompareO1AndNullIsMinusOne() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), true);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), true);
 
     // Assert
     assertNull(null);
@@ -427,20 +484,24 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#NullComparator(Comparator, boolean)}.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
-   *   <li>Then return compare {@code O1} and {@code O2} is zero.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return compare {@code O1} and {@code O2} is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
+   *
+   * <p>Method under test: {@link NullComparator#NullComparator(Comparator, boolean)}
    */
   @Test
-  @DisplayName("Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'O1' and 'O2' is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new NullComparator(Comparator, boolean); when 'true'; then return compare 'O1' and 'O2' is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NullComparator.<init>(Comparator, boolean)"})
   void testNewNullComparator_whenTrue_thenReturnCompareO1AndO2IsZero() {
     // Arrange and Act
-    NullComparator<Object> actualNullComparator = new NullComparator<>(mock(Comparator.class), true);
+    NullComparator<Object> actualNullComparator =
+        new NullComparator<>(mock(Comparator.class), true);
 
     // Assert
     assertEquals(0, actualNullComparator.compare("O1", "O2"));
@@ -448,16 +509,18 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link NullComparator#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when 'null'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int NullComparator.compare(Object, Object)"})
   void testCompare_whenNull_thenReturnZero() {
     // Arrange
@@ -469,16 +532,18 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code O1}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>When {@code O1}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link NullComparator#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when 'O1'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int NullComparator.compare(Object, Object)"})
   void testCompare_whenO1_thenReturnMinusOne() {
     // Arrange
@@ -490,16 +555,18 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code O1}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>When {@code O1}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link NullComparator#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when 'O1'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int NullComparator.compare(Object, Object)"})
   void testCompare_whenO1_thenReturnMinusOne2() {
     // Arrange
@@ -511,16 +578,18 @@ class NullComparatorDiffblueTest {
 
   /**
    * Test {@link NullComparator#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code O2}.</li>
-   *   <li>Then return one.</li>
+   *   <li>When {@code O2}.
+   *   <li>Then return one.
    * </ul>
-   * <p>
-   * Method under test: {@link NullComparator#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link NullComparator#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when 'O2'; then return one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int NullComparator.compare(Object, Object)"})
   void testCompare_whenO2_thenReturnOne() {
     // Arrange
@@ -528,5 +597,180 @@ class NullComparatorDiffblueTest {
 
     // Act and Assert
     assertEquals(1, nullComparator.compare(null, "O2"));
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}, and {@link NullComparator#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link NullComparator#equals(Object)}
+   *   <li>{@link NullComparator#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>();
+    NullComparator<Object> nullComparator2 = new NullComparator<>();
+
+    // Act and Assert
+    assertEquals(nullComparator, nullComparator2);
+    assertEquals(nullComparator.hashCode(), nullComparator2.hashCode());
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}, and {@link NullComparator#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is same.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link NullComparator#equals(Object)}
+   *   <li>{@link NullComparator#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>();
+
+    // Act and Assert
+    assertEquals(nullComparator, nullComparator);
+    int expectedHashCodeResult = nullComparator.hashCode();
+    assertEquals(expectedHashCodeResult, nullComparator.hashCode());
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link NullComparator#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>(mock(Comparator.class), true);
+
+    // Act and Assert
+    assertNotEquals(nullComparator, new NullComparator<>());
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link NullComparator#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>(mock(Comparator.class), false);
+
+    // Act and Assert
+    assertNotEquals(nullComparator, new NullComparator<>());
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link NullComparator#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>(new NullComparator<>(), true);
+
+    // Act and Assert
+    assertNotEquals(nullComparator, new NullComparator<>());
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link NullComparator#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>();
+
+    // Act and Assert
+    assertNotEquals(nullComparator, null);
+  }
+
+  /**
+   * Test {@link NullComparator#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link NullComparator#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean NullComparator.equals(Object)", "int NullComparator.hashCode()"})
+  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+    // Arrange
+    NullComparator<Object> nullComparator = new NullComparator<>();
+
+    // Act and Assert
+    assertNotEquals(nullComparator, "Different type to NullComparator");
   }
 }

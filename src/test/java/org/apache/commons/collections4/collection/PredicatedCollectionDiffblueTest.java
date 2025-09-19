@@ -8,6 +8,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,15 +31,17 @@ import org.mockito.Mockito;
 class PredicatedCollectionDiffblueTest {
   /**
    * Test Builder {@link Builder#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#addAll(Collection)}
+   *
+   * <p>Method under test: {@link Builder#addAll(Collection)}
    */
   @Test
   @DisplayName("Test Builder addAll(Collection); given Predicate test(Object) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.addAll(Collection)"})
   void testBuilderAddAll_givenPredicateTestReturnFalse() {
     // Arrange
@@ -62,15 +65,18 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>Then builder {@link Predicate} createPredicatedQueue size is one.</li>
+   *   <li>Then builder {@link Predicate} createPredicatedQueue size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#addAll(Collection)}
+   *
+   * <p>Method under test: {@link Builder#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test Builder addAll(Collection); then builder Predicate createPredicatedQueue size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder addAll(Collection); then builder Predicate createPredicatedQueue size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.addAll(Collection)"})
   void testBuilderAddAll_thenBuilderPredicateCreatePredicatedQueueSizeIsOne() {
     // Arrange
@@ -94,15 +100,18 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>Then builder {@link Predicate} createPredicatedQueue size is two.</li>
+   *   <li>Then builder {@link Predicate} createPredicatedQueue size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#addAll(Collection)}
+   *
+   * <p>Method under test: {@link Builder#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test Builder addAll(Collection); then builder Predicate createPredicatedQueue size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder addAll(Collection); then builder Predicate createPredicatedQueue size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.addAll(Collection)"})
   void testBuilderAddAll_thenBuilderPredicateCreatePredicatedQueueSizeIsTwo() {
     // Arrange
@@ -127,20 +136,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#addAll(Collection)}
+   *
+   * <p>Method under test: {@link Builder#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test Builder addAll(Collection); when ArrayList(); then builder Predicate createPredicatedBag Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder addAll(Collection); when ArrayList(); then builder Predicate createPredicatedBag Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.addAll(Collection)"})
   void testBuilderAddAll_whenArrayList_thenBuilderPredicateCreatePredicatedBagEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act
     builderResult.addAll(new ArrayList<>());
@@ -154,20 +166,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.</li>
+   *   <li>When {@code null}.
+   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#addAll(Collection)}
+   *
+   * <p>Method under test: {@link Builder#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test Builder addAll(Collection); when 'null'; then builder Predicate createPredicatedBag Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder addAll(Collection); when 'null'; then builder Predicate createPredicatedBag Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.addAll(Collection)"})
   void testBuilderAddAll_whenNull_thenBuilderPredicateCreatePredicatedBagEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act
     builderResult.addAll(null);
@@ -181,15 +196,17 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#add(Object)}.
+   *
    * <ul>
-   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.</li>
+   *   <li>Then builder {@link Predicate} createPredicatedBag Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#add(Object)}
+   *
+   * <p>Method under test: {@link Builder#add(Object)}
    */
   @Test
   @DisplayName("Test Builder add(Object); then builder Predicate createPredicatedBag Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.add(Object)"})
   void testBuilderAdd_thenBuilderPredicateCreatePredicatedBagEmpty() {
     // Arrange
@@ -210,15 +227,17 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#add(Object)}.
+   *
    * <ul>
-   *   <li>Then builder {@link Predicate} createPredicatedList size is one.</li>
+   *   <li>Then builder {@link Predicate} createPredicatedList size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#add(Object)}
+   *
+   * <p>Method under test: {@link Builder#add(Object)}
    */
   @Test
   @DisplayName("Test Builder add(Object); then builder Predicate createPredicatedList size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Builder Builder.add(Object)"})
   void testBuilderAdd_thenBuilderPredicateCreatePredicatedListSizeIsOne() {
     // Arrange
@@ -241,17 +260,19 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag(Bag)} with {@code Bag}.
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag(Bag)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag(Bag)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedBag(Bag) with 'Bag'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag(Bag)"})
   void testBuilderCreatePredicatedBagWithBag() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -269,20 +290,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag(Bag)} with {@code Bag}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then {@link HashBag#HashBag()} Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then {@link HashBag#HashBag()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag(Bag)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag(Bag)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedBag(Bag) with 'Bag'; given builder Predicate; then HashBag() Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedBag(Bag) with 'Bag'; given builder Predicate; then HashBag() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag(Bag)"})
   void testBuilderCreatePredicatedBagWithBag_givenBuilderPredicate_thenHashBagEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
     HashBag<Object> bag = new HashBag<>();
 
     // Act
@@ -296,20 +320,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag(Bag)} with {@code Bag}.
+   *
    * <ul>
-   *   <li>Then {@link HashBag#HashBag()} size is one.</li>
+   *   <li>Then {@link HashBag#HashBag()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag(Bag)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag(Bag)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedBag(Bag) with 'Bag'; then HashBag() size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag(Bag)"})
   void testBuilderCreatePredicatedBagWithBag_thenHashBagSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     HashBag<Object> bag = new HashBag<>();
@@ -326,20 +353,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag(Bag)} with {@code Bag}.
+   *
    * <ul>
-   *   <li>Then {@link HashBag#HashBag()} size is two.</li>
+   *   <li>Then {@link HashBag#HashBag()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag(Bag)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag(Bag)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedBag(Bag) with 'Bag'; then HashBag() size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag(Bag)"})
   void testBuilderCreatePredicatedBagWithBag_thenHashBagSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     builderResult.add("Item");
@@ -357,20 +387,22 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag()}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedBag(); given builder Predicate; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag()"})
   void testBuilderCreatePredicatedBag_givenBuilderPredicate_thenReturnEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.createPredicatedBag().isEmpty());
@@ -378,21 +410,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag()}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag()}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedBag(); given Predicate test(Object) return 'true'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedBag(); given Predicate test(Object) return 'true'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag()"})
   void testBuilderCreatePredicatedBag_givenPredicateTestReturnTrue_thenReturnSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -406,21 +442,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedBag()}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedBag()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedBag()}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedBag(); given Predicate test(Object) return 'true'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedBag(); given Predicate test(Object) return 'true'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag Builder.createPredicatedBag()"})
   void testBuilderCreatePredicatedBag_givenPredicateTestReturnTrue_thenReturnSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     builderResult.add("Item");
@@ -435,21 +475,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList(List)} with {@code List}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} first is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} first is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList(List)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList(List)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedList(List) with 'List'; given '42'; then ArrayList() first is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedList(List) with 'List'; given '42'; then ArrayList() first is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList(List)"})
   void testBuilderCreatePredicatedListWithList_given42_thenArrayListFirstIs42() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -469,20 +513,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList(List)} with {@code List}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList(List)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList(List)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedList(List) with 'List'; given builder Predicate; then ArrayList() Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedList(List) with 'List'; given builder Predicate; then ArrayList() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList(List)"})
   void testBuilderCreatePredicatedListWithList_givenBuilderPredicate_thenArrayListEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
     ArrayList<Object> list = new ArrayList<>();
 
     // Act
@@ -496,20 +543,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList(List)} with {@code List}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList(List)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList(List)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedList(List) with 'List'; then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList(List)"})
   void testBuilderCreatePredicatedListWithList_thenArrayListSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     ArrayList<Object> list = new ArrayList<>();
@@ -526,20 +576,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList(List)} with {@code List}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList(List)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList(List)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedList(List) with 'List'; then ArrayList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList(List)"})
   void testBuilderCreatePredicatedListWithList_thenArrayListSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     builderResult.add("Item");
@@ -558,20 +611,22 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList()}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedList(); given builder Predicate; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList()"})
   void testBuilderCreatePredicatedList_givenBuilderPredicate_thenReturnEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.createPredicatedList().isEmpty());
@@ -579,21 +634,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedList()}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedList()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedList()}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedList(); given Predicate test(Object) return 'true'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedList(); given Predicate test(Object) return 'true'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List Builder.createPredicatedList()"})
   void testBuilderCreatePredicatedList_givenPredicateTestReturnTrue_thenReturnSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -608,17 +667,19 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet(MultiSet)} with {@code MultiSet}.
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet(MultiSet)"})
   void testBuilderCreatePredicatedMultiSetWithMultiSet() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -636,23 +697,27 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet(MultiSet)} with {@code MultiSet}.
+   *
    * <ul>
-   *   <li>Then {@link HashMultiSet#HashMultiSet()} Empty.</li>
+   *   <li>Then {@link HashMultiSet#HashMultiSet()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet(MultiSet)"})
   void testBuilderCreatePredicatedMultiSetWithMultiSet_thenHashMultiSetEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualCreatePredicatedMultiSetResult = builderResult.createPredicatedMultiSet(multiset);
+    MultiSet<Object> actualCreatePredicatedMultiSetResult =
+        builderResult.createPredicatedMultiSet(multiset);
 
     // Assert
     assertTrue(multiset.isEmpty());
@@ -662,26 +727,31 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet(MultiSet)} with {@code MultiSet}.
+   *
    * <ul>
-   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is one.</li>
+   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet(MultiSet)"})
   void testBuilderCreatePredicatedMultiSetWithMultiSet_thenHashMultiSetSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualCreatePredicatedMultiSetResult = builderResult.createPredicatedMultiSet(multiset);
+    MultiSet<Object> actualCreatePredicatedMultiSetResult =
+        builderResult.createPredicatedMultiSet(multiset);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -692,27 +762,32 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet(MultiSet)} with {@code MultiSet}.
+   *
    * <ul>
-   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is two.</li>
+   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedMultiSet(MultiSet) with 'MultiSet'; then HashMultiSet() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet(MultiSet)"})
   void testBuilderCreatePredicatedMultiSetWithMultiSet_thenHashMultiSetSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     builderResult.add("Item");
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualCreatePredicatedMultiSetResult = builderResult.createPredicatedMultiSet(multiset);
+    MultiSet<Object> actualCreatePredicatedMultiSetResult =
+        builderResult.createPredicatedMultiSet(multiset);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -723,20 +798,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet()}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet()}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedMultiSet(); given builder Predicate; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedMultiSet(); given builder Predicate; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet()"})
   void testBuilderCreatePredicatedMultiSet_givenBuilderPredicate_thenReturnEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.createPredicatedMultiSet().isEmpty());
@@ -744,25 +822,29 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedMultiSet()}.
+   *
    * <ul>
-   *   <li>Then return size is one.</li>
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedMultiSet()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedMultiSet()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedMultiSet(); then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet Builder.createPredicatedMultiSet()"})
   void testBuilderCreatePredicatedMultiSet_thenReturnSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
     // Act
-    MultiSet<Object> actualCreatePredicatedMultiSetResult = builderResult.createPredicatedMultiSet();
+    MultiSet<Object> actualCreatePredicatedMultiSetResult =
+        builderResult.createPredicatedMultiSet();
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -771,21 +853,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue(Queue)} with {@code Queue}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then {@link LinkedList#LinkedList()} first is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then {@link LinkedList#LinkedList()} first is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue(Queue)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue(Queue)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedQueue(Queue) with 'Queue'; given '42'; then LinkedList() first is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedQueue(Queue) with 'Queue'; given '42'; then LinkedList() first is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue(Queue)"})
   void testBuilderCreatePredicatedQueueWithQueue_given42_thenLinkedListFirstIs42() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -806,19 +892,21 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue(Queue)} with {@code Queue}.
+   *
    * <ul>
-   *   <li>Then {@link LinkedList#LinkedList()} Empty.</li>
+   *   <li>Then {@link LinkedList#LinkedList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue(Queue)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue(Queue)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedQueue(Queue) with 'Queue'; then LinkedList() Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue(Queue)"})
   void testBuilderCreatePredicatedQueueWithQueue_thenLinkedListEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
     LinkedList<Object> queue = new LinkedList<>();
 
     // Act
@@ -832,20 +920,24 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue(Queue)} with {@code Queue}.
+   *
    * <ul>
-   *   <li>Then {@link LinkedList#LinkedList()} size is one.</li>
+   *   <li>Then {@link LinkedList#LinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue(Queue)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue(Queue)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedQueue(Queue) with 'Queue'; then LinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedQueue(Queue) with 'Queue'; then LinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue(Queue)"})
   void testBuilderCreatePredicatedQueueWithQueue_thenLinkedListSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     LinkedList<Object> queue = new LinkedList<>();
@@ -863,20 +955,24 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue(Queue)} with {@code Queue}.
+   *
    * <ul>
-   *   <li>Then {@link LinkedList#LinkedList()} size is two.</li>
+   *   <li>Then {@link LinkedList#LinkedList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue(Queue)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue(Queue)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedQueue(Queue) with 'Queue'; then LinkedList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedQueue(Queue) with 'Queue'; then LinkedList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue(Queue)"})
   void testBuilderCreatePredicatedQueueWithQueue_thenLinkedListSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     builderResult.add("Item");
@@ -896,20 +992,22 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue()}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedQueue(); given builder Predicate; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue()"})
   void testBuilderCreatePredicatedQueue_givenBuilderPredicate_thenReturnEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.createPredicatedQueue().isEmpty());
@@ -917,20 +1015,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedQueue()}.
+   *
    * <ul>
-   *   <li>Then return size is one.</li>
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedQueue()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedQueue()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedQueue(); then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue Builder.createPredicatedQueue()"})
   void testBuilderCreatePredicatedQueue_thenReturnSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -944,20 +1045,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedSet(Set)} with {@code Set}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then {@link HashSet#HashSet()} Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then {@link HashSet#HashSet()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedSet(Set)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedSet(Set)}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedSet(Set) with 'Set'; given builder Predicate; then HashSet() Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedSet(Set) with 'Set'; given builder Predicate; then HashSet() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set Builder.createPredicatedSet(Set)"})
   void testBuilderCreatePredicatedSetWithSet_givenBuilderPredicate_thenHashSetEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
     HashSet<Object> set = new HashSet<>();
 
     // Act
@@ -970,20 +1074,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedSet(Set)} with {@code Set}.
+   *
    * <ul>
-   *   <li>Then {@link HashSet#HashSet()} size is one.</li>
+   *   <li>Then {@link HashSet#HashSet()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedSet(Set)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedSet(Set)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedSet(Set) with 'Set'; then HashSet() size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set Builder.createPredicatedSet(Set)"})
   void testBuilderCreatePredicatedSetWithSet_thenHashSetSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
     HashSet<Object> set = new HashSet<>();
@@ -999,20 +1106,23 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedSet(Set)} with {@code Set}.
+   *
    * <ul>
-   *   <li>Then {@link HashSet#HashSet()} size is two.</li>
+   *   <li>Then {@link HashSet#HashSet()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedSet(Set)}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedSet(Set)}
    */
   @Test
   @DisplayName("Test Builder createPredicatedSet(Set) with 'Set'; then HashSet() size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set Builder.createPredicatedSet(Set)"})
   void testBuilderCreatePredicatedSetWithSet_thenHashSetSizeIsTwo() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -1030,20 +1140,22 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedSet()}.
+   *
    * <ul>
-   *   <li>Given builder {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given builder {@link Predicate}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedSet()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedSet()}
    */
   @Test
   @DisplayName("Test Builder createPredicatedSet(); given builder Predicate; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set Builder.createPredicatedSet()"})
   void testBuilderCreatePredicatedSet_givenBuilderPredicate_thenReturnEmpty() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.createPredicatedSet().isEmpty());
@@ -1051,21 +1163,25 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#createPredicatedSet()}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#createPredicatedSet()}
+   *
+   * <p>Method under test: {@link Builder#createPredicatedSet()}
    */
   @Test
-  @DisplayName("Test Builder createPredicatedSet(); given Predicate test(Object) return 'true'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder createPredicatedSet(); given Predicate test(Object) return 'true'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set Builder.createPredicatedSet()"})
   void testBuilderCreatePredicatedSet_givenPredicateTestReturnTrue_thenReturnSizeIsOne() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Builder<Object> builderResult = PredicatedCollection.builder(predicate);
     builderResult.add("Item");
 
@@ -1079,16 +1195,19 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#Builder(Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return createPredicatedBag Empty.</li>
+   *   <li>When {@link Predicate}.
+   *   <li>Then return createPredicatedBag Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link Builder#Builder(Predicate)}
+   *
+   * <p>Method under test: {@link Builder#Builder(Predicate)}
    */
   @Test
-  @DisplayName("Test Builder new Builder(Predicate); when Predicate; then return createPredicatedBag Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test Builder new Builder(Predicate); when Predicate; then return createPredicatedBag Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Builder.<init>(Predicate)"})
   void testBuilderNewBuilder_whenPredicate_thenReturnCreatePredicatedBagEmpty() {
     // Arrange and Act
@@ -1103,16 +1222,17 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test Builder {@link Builder#rejectedElements()}.
-   * <p>
-   * Method under test: {@link Builder#rejectedElements()}
+   *
+   * <p>Method under test: {@link Builder#rejectedElements()}
    */
   @Test
   @DisplayName("Test Builder rejectedElements()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection Builder.rejectedElements()"})
   void testBuilderRejectedElements() {
     // Arrange
-    Builder<Object> builderResult = PredicatedCollection.<Object>builder(mock(Predicate.class));
+    Builder<Object> builderResult = PredicatedCollection.builder(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(builderResult.rejectedElements().isEmpty());
@@ -1120,76 +1240,97 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedCollection(Collection, Predicate); given 'false'; when Predicate test(Object) return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"})
+  @DisplayName(
+      "Test predicatedCollection(Collection, Predicate); given 'false'; when Predicate test(Object) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"
+  })
   void testPredicatedCollection_givenFalse_whenPredicateTestReturnFalse() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> PredicatedCollection.predicatedCollection(coll, predicate));
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> PredicatedCollection.predicatedCollection(coll, predicate));
     verify(predicate).test(isA(Object.class));
   }
 
   /**
    * Test {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@link IllegalArgumentException#IllegalArgumentException(String)} with {@code collection}.</li>
+   *   <li>Given {@link IllegalArgumentException#IllegalArgumentException()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedCollection(Collection, Predicate); given IllegalArgumentException(String) with 'collection'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"})
-  void testPredicatedCollection_givenIllegalArgumentExceptionWithCollection() {
+  @DisplayName("Test predicatedCollection(Collection, Predicate); given IllegalArgumentException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"
+  })
+  void testPredicatedCollection_givenIllegalArgumentException() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("collection"));
+    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> PredicatedCollection.predicatedCollection(coll, predicate));
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> PredicatedCollection.predicatedCollection(coll, predicate));
     verify(predicate).test(isA(Object.class));
   }
 
   /**
    * Test {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code true}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedCollection(Collection, Predicate); given 'true'; then return size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"})
+  @DisplayName(
+      "Test predicatedCollection(Collection, Predicate); given 'true'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"
+  })
   void testPredicatedCollection_givenTrue_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedCollection<Object> actualPredicatedCollectionResult = PredicatedCollection.predicatedCollection(coll,
-        predicate);
+    PredicatedCollection<Object> actualPredicatedCollectionResult =
+        PredicatedCollection.predicatedCollection(coll, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -1198,28 +1339,34 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code true}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedCollection(Collection, Predicate); given 'true'; then return size is two")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"})
+  @DisplayName(
+      "Test predicatedCollection(Collection, Predicate); given 'true'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"
+  })
   void testPredicatedCollection_givenTrue_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
     coll.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedCollection<Object> actualPredicatedCollectionResult = PredicatedCollection.predicatedCollection(coll,
-        predicate);
+    PredicatedCollection<Object> actualPredicatedCollectionResult =
+        PredicatedCollection.predicatedCollection(coll, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -1228,21 +1375,26 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedCollection(Collection, Predicate); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"})
+  @DisplayName(
+      "Test predicatedCollection(Collection, Predicate); when ArrayList(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedCollection PredicatedCollection.predicatedCollection(Collection, Predicate)"
+  })
   void testPredicatedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    PredicatedCollection<Object> actualPredicatedCollectionResult = PredicatedCollection
-        .predicatedCollection(new ArrayList<>(), mock(Predicate.class));
+    PredicatedCollection<Object> actualPredicatedCollectionResult =
+        PredicatedCollection.predicatedCollection(new ArrayList<>(), mock(Predicate.class));
 
     // Assert
     assertTrue(actualPredicatedCollectionResult.isEmpty());
@@ -1250,77 +1402,90 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedCollection(Collection, Predicate); given 'false'; when Predicate test(Object) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedCollection(Collection, Predicate); given 'false'; when Predicate test(Object) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedCollection.<init>(Collection, Predicate)"})
   void testNewPredicatedCollection_givenFalse_whenPredicateTestReturnFalse() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new PredicatedCollection<>(collection, predicate));
-
+    assertThrows(
+        IllegalArgumentException.class, () -> new PredicatedCollection<>(collection, predicate));
     verify(predicate).test(isA(Object.class));
   }
 
   /**
    * Test {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@link IllegalArgumentException#IllegalArgumentException(String)} with {@code collection}.</li>
+   *   <li>Given {@link IllegalArgumentException#IllegalArgumentException()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedCollection(Collection, Predicate); given IllegalArgumentException(String) with 'collection'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedCollection(Collection, Predicate); given IllegalArgumentException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedCollection.<init>(Collection, Predicate)"})
-  void testNewPredicatedCollection_givenIllegalArgumentExceptionWithCollection() {
+  void testNewPredicatedCollection_givenIllegalArgumentException() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("collection"));
+    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new PredicatedCollection<>(collection, predicate));
-
+    assertThrows(
+        IllegalArgumentException.class, () -> new PredicatedCollection<>(collection, predicate));
     verify(predicate).test(isA(Object.class));
   }
 
   /**
    * Test {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code true}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedCollection(Collection, Predicate); given 'true'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedCollection(Collection, Predicate); given 'true'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedCollection.<init>(Collection, Predicate)"})
   void testNewPredicatedCollection_givenTrue_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedCollection<Object> actualPredicatedCollection = new PredicatedCollection<>(collection, predicate);
+    PredicatedCollection<Object> actualPredicatedCollection =
+        new PredicatedCollection<>(collection, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -1329,27 +1494,32 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code true}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedCollection(Collection, Predicate); given 'true'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedCollection(Collection, Predicate); given 'true'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedCollection.<init>(Collection, Predicate)"})
   void testNewPredicatedCollection_givenTrue_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedCollection<Object> actualPredicatedCollection = new PredicatedCollection<>(collection, predicate);
+    PredicatedCollection<Object> actualPredicatedCollection =
+        new PredicatedCollection<>(collection, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -1358,21 +1528,24 @@ class PredicatedCollectionDiffblueTest {
 
   /**
    * Test {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedCollection#PredicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedCollection(Collection, Predicate); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedCollection(Collection, Predicate); when ArrayList(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedCollection.<init>(Collection, Predicate)"})
   void testNewPredicatedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    PredicatedCollection<Object> actualPredicatedCollection = new PredicatedCollection<>(new ArrayList<>(),
-        mock(Predicate.class));
+    PredicatedCollection<Object> actualPredicatedCollection =
+        new PredicatedCollection<>(new ArrayList<>(), mock(Predicate.class));
 
     // Assert
     assertTrue(actualPredicatedCollection.isEmpty());

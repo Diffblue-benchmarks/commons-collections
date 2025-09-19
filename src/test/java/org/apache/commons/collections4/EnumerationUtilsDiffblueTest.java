@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -18,16 +19,18 @@ import org.junit.jupiter.api.Test;
 class EnumerationUtilsDiffblueTest {
   /**
    * Test {@link EnumerationUtils#asIterable(Enumeration)}.
-   * <p>
-   * Method under test: {@link EnumerationUtils#asIterable(Enumeration)}
+   *
+   * <p>Method under test: {@link EnumerationUtils#asIterable(Enumeration)}
    */
   @Test
   @DisplayName("Test asIterable(Enumeration)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterable EnumerationUtils.asIterable(Enumeration)"})
   void testAsIterable() {
     // Arrange and Act
-    Iterable<Object> actualAsIterableResult = EnumerationUtils.asIterable(new StringTokenizer("foo"));
+    Iterable<Object> actualAsIterableResult =
+        EnumerationUtils.asIterable(new StringTokenizer("foo"));
     Iterator<Object> actualIteratorResult = actualAsIterableResult.iterator();
 
     // Assert
@@ -40,16 +43,19 @@ class EnumerationUtilsDiffblueTest {
 
   /**
    * Test {@link EnumerationUtils#get(Enumeration, int)}.
+   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Entry does not exist:}.</li>
-   *   <li>Then return {@code does}.</li>
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Entry does not exist:}.
+   *   <li>Then return {@code does}.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumerationUtils#get(Enumeration, int)}
+   *
+   * <p>Method under test: {@link EnumerationUtils#get(Enumeration, int)}
    */
   @Test
-  @DisplayName("Test get(Enumeration, int); when StringTokenizer(String) with 'Entry does not exist:'; then return 'does'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(Enumeration, int); when StringTokenizer(String) with 'Entry does not exist:'; then return 'does'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object EnumerationUtils.get(Enumeration, int)"})
   void testGet_whenStringTokenizerWithEntryDoesNotExist_thenReturnDoes() {
     // Arrange
@@ -62,16 +68,18 @@ class EnumerationUtilsDiffblueTest {
 
   /**
    * Test {@link EnumerationUtils#get(Enumeration, int)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code foo}.</li>
+   *   <li>When zero.
+   *   <li>Then return {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumerationUtils#get(Enumeration, int)}
+   *
+   * <p>Method under test: {@link EnumerationUtils#get(Enumeration, int)}
    */
   @Test
   @DisplayName("Test get(Enumeration, int); when zero; then return 'foo'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object EnumerationUtils.get(Enumeration, int)"})
   void testGet_whenZero_thenReturnFoo() {
     // Arrange
@@ -84,16 +92,19 @@ class EnumerationUtilsDiffblueTest {
 
   /**
    * Test {@link EnumerationUtils#toList(StringTokenizer)} with {@code stringTokenizer}.
+   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumerationUtils#toList(StringTokenizer)}
+   *
+   * <p>Method under test: {@link EnumerationUtils#toList(StringTokenizer)}
    */
   @Test
-  @DisplayName("Test toList(StringTokenizer) with 'stringTokenizer'; when StringTokenizer(String) with 'foo'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toList(StringTokenizer) with 'stringTokenizer'; when StringTokenizer(String) with 'foo'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List EnumerationUtils.toList(StringTokenizer)"})
   void testToListWithStringTokenizer_whenStringTokenizerWithFoo_thenReturnSizeIsOne() {
     // Arrange
@@ -110,16 +121,19 @@ class EnumerationUtilsDiffblueTest {
 
   /**
    * Test {@link EnumerationUtils#toSet(Enumeration)}.
+   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link EnumerationUtils#toSet(Enumeration)}
+   *
+   * <p>Method under test: {@link EnumerationUtils#toSet(Enumeration)}
    */
   @Test
-  @DisplayName("Test toSet(Enumeration); when StringTokenizer(String) with 'foo'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toSet(Enumeration); when StringTokenizer(String) with 'foo'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set EnumerationUtils.toSet(Enumeration)"})
   void testToSet_whenStringTokenizerWithFoo_thenReturnSizeIsOne() {
     // Arrange

@@ -2,6 +2,7 @@ package org.apache.commons.collections4.iterators;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +12,13 @@ import org.junit.jupiter.api.Test;
 class AbstractUntypedIteratorDecoratorDiffblueTest {
   /**
    * Test {@link AbstractUntypedIteratorDecorator#getIterator()}.
-   * <p>
-   * Method under test: {@link AbstractUntypedIteratorDecorator#getIterator()}
+   *
+   * <p>Method under test: {@link AbstractUntypedIteratorDecorator#getIterator()}
    */
   @Test
   @DisplayName("Test getIterator()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Iterator AbstractUntypedIteratorDecorator.getIterator()"})
   void testGetIterator() {
     // Arrange
@@ -29,16 +31,18 @@ class AbstractUntypedIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractUntypedIteratorDecorator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractUntypedIteratorDecorator#hasNext()}
+   *
+   * <p>Method under test: {@link AbstractUntypedIteratorDecorator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractUntypedIteratorDecorator.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -53,15 +57,17 @@ class AbstractUntypedIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractUntypedIteratorDecorator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractUntypedIteratorDecorator#hasNext()}
+   *
+   * <p>Method under test: {@link AbstractUntypedIteratorDecorator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractUntypedIteratorDecorator.hasNext()"})
   void testHasNext_thenReturnFalse() {
     // Arrange

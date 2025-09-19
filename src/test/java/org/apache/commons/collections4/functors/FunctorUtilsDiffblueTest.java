@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,16 +22,18 @@ import org.mockito.Mockito;
 class FunctorUtilsDiffblueTest {
   /**
    * Test {@link FunctorUtils#coerce(Predicate)} with {@code predicate}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>Then return not test {@code 42}.</li>
+   *   <li>Given {@code false}.
+   *   <li>Then return not test {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#coerce(Predicate)}
+   *
+   * <p>Method under test: {@link FunctorUtils#coerce(Predicate)}
    */
   @Test
   @DisplayName("Test coerce(Predicate) with 'predicate'; given 'false'; then return not test '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate FunctorUtils.coerce(Predicate)"})
   void testCoerceWithPredicate_givenFalse_thenReturnNotTest42() {
     // Arrange
@@ -48,17 +51,20 @@ class FunctorUtilsDiffblueTest {
 
   /**
    * Test {@link FunctorUtils#coerce(Predicate)} with {@code predicate}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return test {@code 42}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return test {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#coerce(Predicate)}
+   *
+   * <p>Method under test: {@link FunctorUtils#coerce(Predicate)}
    */
   @Test
-  @DisplayName("Test coerce(Predicate) with 'predicate'; given 'true'; when Predicate test(Object) return 'true'; then return test '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test coerce(Predicate) with 'predicate'; given 'true'; when Predicate test(Object) return 'true'; then return test '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate FunctorUtils.coerce(Predicate)"})
   void testCoerceWithPredicate_givenTrue_whenPredicateTestReturnTrue_thenReturnTest42() {
     // Arrange
@@ -76,16 +82,19 @@ class FunctorUtilsDiffblueTest {
 
   /**
    * Test {@link FunctorUtils#copy(Consumer[])} with {@code consumers}.
+   *
    * <ul>
-   *   <li>When {@link Consumer}.</li>
-   *   <li>Then return array length is one.</li>
+   *   <li>When {@link Consumer}.
+   *   <li>Then return array length is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#copy(Consumer[])}
+   *
+   * <p>Method under test: {@link FunctorUtils#copy(Consumer[])}
    */
   @Test
-  @DisplayName("Test copy(Consumer[]) with 'consumers'; when Consumer; then return array length is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test copy(Consumer[]) with 'consumers'; when Consumer; then return array length is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Consumer[] FunctorUtils.copy(Consumer[])"})
   void testCopyWithConsumers_whenConsumer_thenReturnArrayLengthIsOne() {
     // Arrange, Act and Assert
@@ -94,16 +103,19 @@ class FunctorUtilsDiffblueTest {
 
   /**
    * Test {@link FunctorUtils#copy(Predicate[])} with {@code predicates}.
+   *
    * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return array length is one.</li>
+   *   <li>When {@link Predicate}.
+   *   <li>Then return array length is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#copy(Predicate[])}
+   *
+   * <p>Method under test: {@link FunctorUtils#copy(Predicate[])}
    */
   @Test
-  @DisplayName("Test copy(Predicate[]) with 'predicates'; when Predicate; then return array length is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test copy(Predicate[]) with 'predicates'; when Predicate; then return array length is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate[] FunctorUtils.copy(Predicate[])"})
   void testCopyWithPredicates_whenPredicate_thenReturnArrayLengthIsOne() {
     // Arrange, Act and Assert
@@ -112,16 +124,19 @@ class FunctorUtilsDiffblueTest {
 
   /**
    * Test {@link FunctorUtils#copy(Function[])} with {@code transformers}.
+   *
    * <ul>
-   *   <li>When {@link Function}.</li>
-   *   <li>Then return array length is one.</li>
+   *   <li>When {@link Function}.
+   *   <li>Then return array length is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#copy(Function[])}
+   *
+   * <p>Method under test: {@link FunctorUtils#copy(Function[])}
    */
   @Test
-  @DisplayName("Test copy(Function[]) with 'transformers'; when Function; then return array length is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test copy(Function[]) with 'transformers'; when Function; then return array length is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Function[] FunctorUtils.copy(Function[])"})
   void testCopyWithTransformers_whenFunction_thenReturnArrayLengthIsOne() {
     // Arrange, Act and Assert
@@ -130,19 +145,28 @@ class FunctorUtilsDiffblueTest {
 
   /**
    * Test {@link FunctorUtils#validate(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return array length is zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return array length is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link FunctorUtils#validate(Collection)}
+   *
+   * <p>Method under test: {@link FunctorUtils#validate(Collection)}
    */
   @Test
-  @DisplayName("Test validate(Collection) with 'Collection'; when ArrayList(); then return array length is zero")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"org.apache.commons.collections4.Predicate[] FunctorUtils.validate(Collection)"})
+  @DisplayName(
+      "Test validate(Collection) with 'Collection'; when ArrayList(); then return array length is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "org.apache.commons.collections4.Predicate[] FunctorUtils.validate(Collection)"
+  })
   void testValidateWithCollection_whenArrayList_thenReturnArrayLengthIsZero() {
-    // Arrange, Act and Assert
-    assertEquals(0, FunctorUtils.validate(new ArrayList<>()).length);
+    // Arrange and Act
+    org.apache.commons.collections4.Predicate<? super Object>[] actualValidateResult =
+        FunctorUtils.validate(new ArrayList<>());
+
+    // Assert
+    assertEquals(0, actualValidateResult.length);
   }
 }

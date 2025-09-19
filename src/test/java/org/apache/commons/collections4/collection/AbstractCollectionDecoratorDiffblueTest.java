@@ -2,11 +2,14 @@ package org.apache.commons.collections4.collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,12 +23,13 @@ import org.mockito.Mockito;
 class AbstractCollectionDecoratorDiffblueTest {
   /**
    * Test {@link AbstractCollectionDecorator#add(Object)}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#add(Object)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#add(Object)}
    */
   @Test
   @DisplayName("Test add(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.add(Object)"})
   void testAdd() {
     // Arrange
@@ -42,17 +46,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link GrowthList#GrowthList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
   void testAddAll_given42_whenArrayListAdd42_thenGrowthListSizeIsOne() {
     // Arrange
@@ -73,17 +80,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link GrowthList#GrowthList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
   void testAddAll_given42_whenArrayListAdd42_thenGrowthListSizeIsTwo() {
     // Arrange
@@ -106,16 +116,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
    */
   @Test
   @DisplayName("Test addAll(Collection); when ArrayList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
   void testAddAll_whenArrayList_thenReturnFalse() {
     // Arrange
@@ -130,16 +142,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#contains(Object)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given GrowthList() add 'Object'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.contains(Object)"})
   void testContains_givenGrowthListAddObject_thenReturnTrue() {
     // Arrange
@@ -152,16 +166,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#contains(Object)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given GrowthList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.contains(Object)"})
   void testContains_givenGrowthList_thenReturnFalse() {
     // Arrange
@@ -173,17 +189,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
   void testContainsAll_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
@@ -198,17 +217,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
   void testContainsAll_given42_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
@@ -224,16 +246,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
    */
   @Test
   @DisplayName("Test containsAll(Collection); when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
   void testContainsAll_whenArrayList_thenReturnTrue() {
     // Arrange
@@ -245,12 +269,13 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#decorated()}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#decorated()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#decorated()}
    */
   @Test
   @DisplayName("Test decorated()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractCollectionDecorator.decorated()"})
   void testDecorated() {
     // Arrange
@@ -262,16 +287,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given GrowthList() add 'Object'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.isEmpty()"})
   void testIsEmpty_givenGrowthListAddObject_thenReturnFalse() {
     // Arrange
@@ -284,16 +311,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given GrowthList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.isEmpty()"})
   void testIsEmpty_givenGrowthList_thenReturnTrue() {
     // Arrange
@@ -305,12 +334,13 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#iterator()}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#iterator()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#iterator()}
    */
   @Test
   @DisplayName("Test iterator()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Iterator AbstractCollectionDecorator.iterator()"})
   void testIterator() {
     // Arrange
@@ -322,16 +352,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object); given GrowthList() add 'Object'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.remove(Object)"})
   void testRemove_givenGrowthListAddObject_thenReturnTrue() {
     // Arrange
@@ -348,16 +380,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object); given GrowthList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.remove(Object)"})
   void testRemove_givenGrowthList_thenReturnFalse() {
     // Arrange
@@ -370,17 +404,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given GrowthList() add '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given GrowthList() add '42'; when ArrayList() add '42'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
   void testRemoveAll_givenGrowthListAdd42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -400,17 +437,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given GrowthList(); when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given GrowthList(); when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
   void testRemoveAll_givenGrowthList_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
@@ -426,17 +466,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given GrowthList(); when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given GrowthList(); when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
   void testRemoveAll_givenGrowthList_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
@@ -453,17 +496,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given GrowthList(); when ArrayList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given GrowthList(); when ArrayList(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
   void testRemoveAll_givenGrowthList_whenArrayList_thenReturnFalse() {
     // Arrange
@@ -476,22 +522,26 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeIf(Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
    */
   @Test
-  @DisplayName("Test removeIf(Predicate); given GrowthList() add 'Object'; when Predicate test(Object) return 'true'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeIf(Predicate); given GrowthList() add 'Object'; when Predicate test(Object) return 'true'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeIf(Predicate)"})
   void testRemoveIf_givenGrowthListAddObject_whenPredicateTestReturnTrue_thenReturnTrue() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("Object");
+
     Predicate<Object> filter = mock(Predicate.class);
     when(filter.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -506,17 +556,19 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#removeIf(Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>When {@link Predicate}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
    */
   @Test
   @DisplayName("Test removeIf(Predicate); given GrowthList(); when Predicate; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeIf(Predicate)"})
   void testRemoveIf_givenGrowthList_whenPredicate_thenReturnFalse() {
     // Arrange
@@ -529,17 +581,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
   void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
     // Arrange
@@ -559,17 +614,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
   void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
     // Arrange
@@ -590,17 +648,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given GrowthList() add 'Object'; when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given GrowthList() add 'Object'; when ArrayList(); then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
   void testRetainAll_givenGrowthListAddObject_whenArrayList_thenReturnTrue() {
     // Arrange
@@ -619,17 +680,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} is {@link GrowthList#GrowthList()}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link ArrayList#ArrayList()} is {@link GrowthList#GrowthList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given GrowthList(); when ArrayList(); then ArrayList() is GrowthList()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given GrowthList(); when ArrayList(); then ArrayList() is GrowthList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
   void testRetainAll_givenGrowthList_whenArrayList_thenArrayListIsGrowthList() {
     // Arrange
@@ -644,17 +708,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link GrowthList#GrowthList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
-  @DisplayName("Test setCollection(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test setCollection(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
   void testSetCollection_given42_whenArrayListAdd42_thenGrowthListSizeIsOne() {
     // Arrange
@@ -674,17 +741,20 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link GrowthList#GrowthList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
-  @DisplayName("Test setCollection(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test setCollection(Collection); given '42'; when ArrayList() add '42'; then GrowthList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
   void testSetCollection_given42_whenArrayListAdd42_thenGrowthListSizeIsTwo() {
     // Arrange
@@ -706,16 +776,18 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link GrowthList#GrowthList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
   @DisplayName("Test setCollection(Collection); when ArrayList(); then GrowthList() Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
   void testSetCollection_whenArrayList_thenGrowthListEmpty() {
     // Arrange
@@ -732,12 +804,13 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#size()}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#size()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractCollectionDecorator.size()"})
   void testSize() {
     // Arrange
@@ -749,12 +822,13 @@ class AbstractCollectionDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractCollectionDecorator#toArray()}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#toArray()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#toArray()}
    */
   @Test
   @DisplayName("Test toArray()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] AbstractCollectionDecorator.toArray()"})
   void testToArray() {
     // Arrange
@@ -765,13 +839,38 @@ class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
+   * Test {@link AbstractCollectionDecorator#toArray(Object[])} with {@code Object[]}.
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#toArray(Object[])}
+   */
+  @Test
+  @DisplayName("Test toArray(Object[]) with 'Object[]'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object[] AbstractCollectionDecorator.toArray(Object[])"})
+  void testToArrayWithObject() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+    Object[] object = new Object[] {"Object"};
+
+    // Act
+    Object[] actualToArrayResult = objectList.toArray(object);
+
+    // Assert
+    assertNull(object[0]);
+    assertEquals(1, object.length);
+    assertSame(object, actualToArrayResult);
+  }
+
+  /**
    * Test {@link AbstractCollectionDecorator#toString()}.
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#toString()}
+   *
+   * <p>Method under test: {@link AbstractCollectionDecorator#toString()}
    */
   @Test
   @DisplayName("Test toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String AbstractCollectionDecorator.toString()"})
   void testToString() {
     // Arrange

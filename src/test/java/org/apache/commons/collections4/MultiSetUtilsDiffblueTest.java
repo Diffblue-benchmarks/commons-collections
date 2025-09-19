@@ -7,6 +7,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.junit.jupiter.api.DisplayName;
@@ -17,12 +18,13 @@ import org.mockito.Mockito;
 class MultiSetUtilsDiffblueTest {
   /**
    * Test {@link MultiSetUtils#emptyMultiSet()}.
-   * <p>
-   * Method under test: {@link MultiSetUtils#emptyMultiSet()}
+   *
+   * <p>Method under test: {@link MultiSetUtils#emptyMultiSet()}
    */
   @Test
   @DisplayName("Test emptyMultiSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.emptyMultiSet()"})
   void testEmptyMultiSet() {
     // Arrange and Act
@@ -34,27 +36,32 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedMultiSet(MultiSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedMultiSet(MultiSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.predicatedMultiSet(MultiSet, Predicate)"})
   void testPredicatedMultiSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
     multiset.add("Object");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    MultiSet<Object> actualPredicatedMultiSetResult = MultiSetUtils.predicatedMultiSet(multiset, predicate);
+    MultiSet<Object> actualPredicatedMultiSetResult =
+        MultiSetUtils.predicatedMultiSet(multiset, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -63,28 +70,33 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedMultiSet(MultiSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedMultiSet(MultiSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.predicatedMultiSet(MultiSet, Predicate)"})
   void testPredicatedMultiSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest2() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
     multiset.add("Object");
     multiset.add("Object");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    MultiSet<Object> actualPredicatedMultiSetResult = MultiSetUtils.predicatedMultiSet(multiset, predicate);
+    MultiSet<Object> actualPredicatedMultiSetResult =
+        MultiSetUtils.predicatedMultiSet(multiset, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -93,23 +105,27 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link HashMultiSet#HashMultiSet()}.</li>
-   *   <li>Then return {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link HashMultiSet#HashMultiSet()}.
+   *   <li>Then return {@link HashMultiSet#HashMultiSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#predicatedMultiSet(MultiSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedMultiSet(MultiSet, Predicate); when HashMultiSet(); then return HashMultiSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedMultiSet(MultiSet, Predicate); when HashMultiSet(); then return HashMultiSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.predicatedMultiSet(MultiSet, Predicate)"})
   void testPredicatedMultiSet_whenHashMultiSet_thenReturnHashMultiSet() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualPredicatedMultiSetResult = MultiSetUtils.predicatedMultiSet(multiset, mock(Predicate.class));
+    MultiSet<Object> actualPredicatedMultiSetResult =
+        MultiSetUtils.predicatedMultiSet(multiset, mock(Predicate.class));
 
     // Assert
     assertEquals(multiset, actualPredicatedMultiSetResult);
@@ -117,16 +133,19 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test synchronizedMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test synchronizedMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.synchronizedMultiSet(MultiSet)"})
   void testSynchronizedMultiSet_givenObject_whenHashMultiSetAddObject() {
     // Arrange
@@ -134,7 +153,8 @@ class MultiSetUtilsDiffblueTest {
     multiset.add("Object");
 
     // Act
-    MultiSet<Object> actualSynchronizedMultiSetResult = MultiSetUtils.synchronizedMultiSet(multiset);
+    MultiSet<Object> actualSynchronizedMultiSetResult =
+        MultiSetUtils.synchronizedMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualSynchronizedMultiSetResult);
@@ -142,16 +162,19 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test synchronizedMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test synchronizedMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.synchronizedMultiSet(MultiSet)"})
   void testSynchronizedMultiSet_givenObject_whenHashMultiSetAddObject2() {
     // Arrange
@@ -160,7 +183,8 @@ class MultiSetUtilsDiffblueTest {
     multiset.add("Object");
 
     // Act
-    MultiSet<Object> actualSynchronizedMultiSetResult = MultiSetUtils.synchronizedMultiSet(multiset);
+    MultiSet<Object> actualSynchronizedMultiSetResult =
+        MultiSetUtils.synchronizedMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualSynchronizedMultiSetResult);
@@ -168,22 +192,25 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>When {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link HashMultiSet#HashMultiSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#synchronizedMultiSet(MultiSet)}
    */
   @Test
   @DisplayName("Test synchronizedMultiSet(MultiSet); when HashMultiSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.synchronizedMultiSet(MultiSet)"})
   void testSynchronizedMultiSet_whenHashMultiSet() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualSynchronizedMultiSetResult = MultiSetUtils.synchronizedMultiSet(multiset);
+    MultiSet<Object> actualSynchronizedMultiSetResult =
+        MultiSetUtils.synchronizedMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualSynchronizedMultiSetResult);
@@ -191,16 +218,19 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test unmodifiableMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.unmodifiableMultiSet(MultiSet)"})
   void testUnmodifiableMultiSet_givenObject_whenHashMultiSetAddObject() {
     // Arrange
@@ -208,7 +238,8 @@ class MultiSetUtilsDiffblueTest {
     multiset.add("Object");
 
     // Act
-    MultiSet<Object> actualUnmodifiableMultiSetResult = MultiSetUtils.unmodifiableMultiSet(multiset);
+    MultiSet<Object> actualUnmodifiableMultiSetResult =
+        MultiSetUtils.unmodifiableMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualUnmodifiableMultiSetResult);
@@ -216,16 +247,19 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
    */
   @Test
-  @DisplayName("Test unmodifiableMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableMultiSet(MultiSet); given 'Object'; when HashMultiSet() add 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.unmodifiableMultiSet(MultiSet)"})
   void testUnmodifiableMultiSet_givenObject_whenHashMultiSetAddObject2() {
     // Arrange
@@ -234,7 +268,8 @@ class MultiSetUtilsDiffblueTest {
     multiset.add("Object");
 
     // Act
-    MultiSet<Object> actualUnmodifiableMultiSetResult = MultiSetUtils.unmodifiableMultiSet(multiset);
+    MultiSet<Object> actualUnmodifiableMultiSetResult =
+        MultiSetUtils.unmodifiableMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualUnmodifiableMultiSetResult);
@@ -242,22 +277,25 @@ class MultiSetUtilsDiffblueTest {
 
   /**
    * Test {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}.
+   *
    * <ul>
-   *   <li>When {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link HashMultiSet#HashMultiSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
+   *
+   * <p>Method under test: {@link MultiSetUtils#unmodifiableMultiSet(MultiSet)}
    */
   @Test
   @DisplayName("Test unmodifiableMultiSet(MultiSet); when HashMultiSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiSet MultiSetUtils.unmodifiableMultiSet(MultiSet)"})
   void testUnmodifiableMultiSet_whenHashMultiSet() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
-    MultiSet<Object> actualUnmodifiableMultiSetResult = MultiSetUtils.unmodifiableMultiSet(multiset);
+    MultiSet<Object> actualUnmodifiableMultiSetResult =
+        MultiSetUtils.unmodifiableMultiSet(multiset);
 
     // Assert
     assertEquals(multiset, actualUnmodifiableMultiSetResult);

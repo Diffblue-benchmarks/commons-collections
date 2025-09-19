@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,11 +13,13 @@ import org.junit.jupiter.api.Test;
 class SingletonIteratorDiffblueTest {
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
+   *   <li>When {@code Object}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SingletonIterator#SingletonIterator(Object)}
    *   <li>{@link SingletonIterator#reset()}
@@ -24,9 +27,13 @@ class SingletonIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Object'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void SingletonIterator.<init>(Object)", "void SingletonIterator.<init>(Object, boolean)",
-      "void SingletonIterator.reset()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void SingletonIterator.<init>(Object)",
+    "void SingletonIterator.<init>(Object, boolean)",
+    "void SingletonIterator.reset()"
+  })
   void testGettersAndSetters_whenObject() {
     // Arrange and Act
     SingletonIterator<Object> actualSingletonIterator = new SingletonIterator<>("Object");
@@ -39,11 +46,13 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code true}.</li>
+   *   <li>When {@code true}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SingletonIterator#SingletonIterator(Object, boolean)}
    *   <li>{@link SingletonIterator#reset()}
@@ -51,9 +60,13 @@ class SingletonIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void SingletonIterator.<init>(Object)", "void SingletonIterator.<init>(Object, boolean)",
-      "void SingletonIterator.reset()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void SingletonIterator.<init>(Object)",
+    "void SingletonIterator.<init>(Object, boolean)",
+    "void SingletonIterator.reset()"
+  })
   void testGettersAndSetters_whenTrue() {
     // Arrange and Act
     SingletonIterator<Object> actualSingletonIterator = new SingletonIterator<>("Object", true);
@@ -66,12 +79,13 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#hasNext()}.
-   * <p>
-   * Method under test: {@link SingletonIterator#hasNext()}
+   *
+   * <p>Method under test: {@link SingletonIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonIterator.hasNext()"})
   void testHasNext() {
     // Arrange
@@ -83,12 +97,13 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#next()}.
-   * <p>
-   * Method under test: {@link SingletonIterator#next()}
+   *
+   * <p>Method under test: {@link SingletonIterator#next()}
    */
   @Test
   @DisplayName("Test next()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonIterator.next()"})
   void testNext() {
     // Arrange
@@ -101,15 +116,17 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#remove()}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
+   *   <li>Then throw {@link IllegalStateException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonIterator#remove()}
+   *
+   * <p>Method under test: {@link SingletonIterator#remove()}
    */
   @Test
   @DisplayName("Test remove(); then throw IllegalStateException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonIterator.remove()"})
   void testRemove_thenThrowIllegalStateException() {
     // Arrange
@@ -121,15 +138,17 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#remove()}.
+   *
    * <ul>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
+   *   <li>Then throw {@link UnsupportedOperationException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonIterator#remove()}
+   *
+   * <p>Method under test: {@link SingletonIterator#remove()}
    */
   @Test
   @DisplayName("Test remove(); then throw UnsupportedOperationException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonIterator.remove()"})
   void testRemove_thenThrowUnsupportedOperationException() {
     // Arrange

@@ -2,6 +2,7 @@ package org.apache.commons.collections4.multiset;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,12 +13,13 @@ import org.junit.jupiter.api.Test;
 class HashMultiSetDiffblueTest {
   /**
    * Test {@link HashMultiSet#HashMultiSet()}.
-   * <p>
-   * Method under test: {@link HashMultiSet#HashMultiSet()}
+   *
+   * <p>Method under test: {@link HashMultiSet#HashMultiSet()}
    */
   @Test
   @DisplayName("Test new HashMultiSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HashMultiSet.<init>()"})
   void testNewHashMultiSet() {
     // Arrange and Act
@@ -29,17 +31,20 @@ class HashMultiSetDiffblueTest {
 
   /**
    * Test {@link HashMultiSet#HashMultiSet(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
+   *
+   * <p>Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
    */
   @Test
-  @DisplayName("Test new HashMultiSet(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new HashMultiSet(Collection); given '42'; when ArrayList() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HashMultiSet.<init>(Collection)"})
   void testNewHashMultiSet_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -55,17 +60,20 @@ class HashMultiSetDiffblueTest {
 
   /**
    * Test {@link HashMultiSet#HashMultiSet(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
+   *
+   * <p>Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
    */
   @Test
-  @DisplayName("Test new HashMultiSet(Collection); given '42'; when ArrayList() add '42'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new HashMultiSet(Collection); given '42'; when ArrayList() add '42'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HashMultiSet.<init>(Collection)"})
   void testNewHashMultiSet_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
     // Arrange
@@ -82,16 +90,18 @@ class HashMultiSetDiffblueTest {
 
   /**
    * Test {@link HashMultiSet#HashMultiSet(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
+   *
+   * <p>Method under test: {@link HashMultiSet#HashMultiSet(Collection)}
    */
   @Test
   @DisplayName("Test new HashMultiSet(Collection); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void HashMultiSet.<init>(Collection)"})
   void testNewHashMultiSet_whenArrayList_thenReturnEmpty() {
     // Arrange and Act

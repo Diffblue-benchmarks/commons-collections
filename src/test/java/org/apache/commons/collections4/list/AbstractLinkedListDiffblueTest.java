@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,7 +19,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
-import org.apache.commons.collections4.iterators.AbstractListIteratorDecorator;
 import org.apache.commons.collections4.list.AbstractLinkedList.LinkedListIterator;
 import org.apache.commons.collections4.list.AbstractLinkedList.LinkedSubList;
 import org.apache.commons.collections4.list.AbstractLinkedList.Node;
@@ -30,15 +30,18 @@ import org.junit.jupiter.api.Test;
 class AbstractLinkedListDiffblueTest {
   /**
    * Test {@link AbstractLinkedList#add(int, Object)} with {@code index}, {@code value}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#add(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.add(int, Object)"})
   void testAddWithIndexValue_thenCursorableLinkedListSizeIsOne() {
     // Arrange
@@ -54,15 +57,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#add(int, Object)} with {@code index}, {@code value}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is three.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#add(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.add(int, Object)"})
   void testAddWithIndexValue_thenCursorableLinkedListSizeIsThree() {
     // Arrange
@@ -82,15 +88,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#add(int, Object)} with {@code index}, {@code value}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#add(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'index', 'value'; then CursorableLinkedList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.add(int, Object)"})
   void testAddWithIndexValue_thenCursorableLinkedListSizeIsTwo() {
     // Arrange
@@ -108,12 +117,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#add(Object)} with {@code value}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#add(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#add(Object)}
    */
   @Test
   @DisplayName("Test add(Object) with 'value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.add(Object)"})
   void testAddWithValue() {
     // Arrange
@@ -130,17 +140,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addAll(Collection)} with {@code coll}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'coll'; given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'coll'; given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addAll(Collection)"})
   void testAddAllWithColl_given42_whenArrayListAdd42_thenCursorableLinkedListSizeIsOne() {
     // Arrange
@@ -160,17 +173,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addAll(Collection)} with {@code coll}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'coll'; given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'coll'; given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addAll(Collection)"})
   void testAddAllWithColl_given42_whenArrayListAdd42_thenCursorableLinkedListSizeIsTwo() {
     // Arrange
@@ -192,16 +208,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addAll(Collection)} with {@code coll}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(Collection)}
    */
   @Test
   @DisplayName("Test addAll(Collection) with 'coll'; when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addAll(Collection)"})
   void testAddAllWithColl_whenArrayList_thenReturnTrue() {
     // Arrange
@@ -216,70 +234,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} second is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
    */
   @Test
-  @DisplayName("Test addAll(int, Collection) with 'index', 'coll'; given CursorableLinkedList(); when zero; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(int, Collection) with 'index', 'coll'; then CursorableLinkedList() second is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
-  void testAddAllWithIndexColl_givenCursorableLinkedList_whenZero_thenReturnTrue() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    // Act and Assert
-    assertTrue(objectList.addAll(0, new ArrayList<>()));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
-   * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is three.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
-   */
-  @Test
-  @DisplayName("Test addAll(int, Collection) with 'index', 'coll'; then CursorableLinkedList() size is three")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
-  void testAddAllWithIndexColl_thenCursorableLinkedListSizeIsThree() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("Value");
-    objectList.add("Value");
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act
-    objectList.addAll(1, coll);
-
-    // Assert
-    assertEquals(3, objectList.size());
-    assertEquals("42", objectList.get(1));
-    assertEquals("Value", objectList.get(2));
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
-   * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
-   */
-  @Test
-  @DisplayName("Test addAll(int, Collection) with 'index', 'coll'; then CursorableLinkedList() size is two")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
-  void testAddAllWithIndexColl_thenCursorableLinkedListSizeIsTwo() {
+  void testAddAllWithIndexColl_thenCursorableLinkedListSecondIs42() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -293,49 +261,99 @@ class AbstractLinkedListDiffblueTest {
     // Assert
     assertEquals(2, objectList.size());
     assertEquals("42", objectList.get(1));
-    assertEquals("Value", objectList.get(0));
   }
 
   /**
    * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} first is {@code 42}.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} second is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
    */
   @Test
-  @DisplayName("Test addAll(int, Collection) with 'index', 'coll'; when zero; then CursorableLinkedList() first is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(int, Collection) with 'index', 'coll'; then CursorableLinkedList() second is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
-  void testAddAllWithIndexColl_whenZero_thenCursorableLinkedListFirstIs42() {
+  void testAddAllWithIndexColl_thenCursorableLinkedListSecondIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
     objectList.add("Value");
 
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
+    // Act
+    objectList.addAll(0, new ArrayList<>());
+
+    // Assert that nothing has changed
+    assertEquals(2, objectList.size());
+    assertEquals("Value", objectList.get(1));
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
+   *
+   * <ul>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test addAll(int, Collection) with 'index', 'coll'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
+  void testAddAllWithIndexColl_thenCursorableLinkedListSizeIsOne() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
 
     // Act
-    objectList.addAll(0, coll);
+    boolean actualAddAllResult = objectList.addAll(0, new ArrayList<>());
 
     // Assert
-    assertEquals(3, objectList.size());
-    assertEquals("42", objectList.get(0));
-    assertEquals("Value", objectList.get(1));
-    assertEquals("Value", objectList.get(2));
+    assertEquals(1, objectList.size());
+    assertTrue(actualAddAllResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#addAll(int, Collection)} with {@code index}, {@code coll}.
+   *
+   * <ul>
+   *   <li>When zero.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addAll(int, Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test addAll(int, Collection) with 'index', 'coll'; when zero; then CursorableLinkedList() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.addAll(int, Collection)"})
+  void testAddAllWithIndexColl_whenZero_thenCursorableLinkedListEmpty() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+
+    // Act and Assert
+    assertTrue(objectList.addAll(0, new ArrayList<>()));
+    assertTrue(objectList.isEmpty());
   }
 
   /**
    * Test {@link AbstractLinkedList#addFirst(Object)}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addFirst(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addFirst(Object)}
    */
   @Test
   @DisplayName("Test addFirst(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addFirst(Object)"})
   void testAddFirst() {
     // Arrange
@@ -352,12 +370,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addLast(Object)}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addLast(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addLast(Object)}
    */
   @Test
   @DisplayName("Test addLast(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.addLast(Object)"})
   void testAddLast() {
     // Arrange
@@ -374,16 +393,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addNode(Node, Node)}.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} NextNode Value is {@code null}.</li>
+   *   <li>When {@link Node#Node()}.
+   *   <li>Then {@link Node#Node()} NextNode Value is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addNode(Node, Node)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addNode(Node, Node)}
    */
   @Test
   @DisplayName("Test addNode(Node, Node); when Node(); then Node() NextNode Value is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.addNode(Node, Node)"})
   void testAddNode_whenNode_thenNodeNextNodeValueIsNull() {
     // Arrange
@@ -404,16 +425,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addNodeAfter(Node, Object)}.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} NextNode Value is {@code Value}.</li>
+   *   <li>When {@link Node#Node()}.
+   *   <li>Then {@link Node#Node()} NextNode Value is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addNodeAfter(Node, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addNodeAfter(Node, Object)}
    */
   @Test
-  @DisplayName("Test addNodeAfter(Node, Object); when Node(); then Node() NextNode Value is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addNodeAfter(Node, Object); when Node(); then Node() NextNode Value is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.addNodeAfter(Node, Object)"})
   void testAddNodeAfter_whenNode_thenNodeNextNodeValueIsValue() {
     // Arrange
@@ -432,16 +456,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#addNodeBefore(Node, Object)}.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} NextNode Value is {@code Value}.</li>
+   *   <li>When {@link Node#Node()}.
+   *   <li>Then {@link Node#Node()} NextNode Value is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#addNodeBefore(Node, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#addNodeBefore(Node, Object)}
    */
   @Test
-  @DisplayName("Test addNodeBefore(Node, Object); when Node(); then Node() NextNode Value is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addNodeBefore(Node, Object); when Node(); then Node() NextNode Value is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.addNodeBefore(Node, Object)"})
   void testAddNodeBefore_whenNode_thenNodeNextNodeValueIsValue() {
     // Arrange
@@ -460,15 +487,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#clear()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#clear()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#clear()}
    */
   @Test
   @DisplayName("Test clear(); given CursorableLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.clear()"})
   void testClear_givenCursorableLinkedList() {
     // Arrange
@@ -483,15 +512,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#clear()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#clear()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#clear()}
    */
   @Test
   @DisplayName("Test clear(); given CursorableLinkedList() add 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.clear()"})
   void testClear_givenCursorableLinkedListAddValue() {
     // Arrange
@@ -507,15 +538,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#clear()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#clear()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#clear()}
    */
   @Test
   @DisplayName("Test clear(); given CursorableLinkedList() add 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.clear()"})
   void testClear_givenCursorableLinkedListAddValue2() {
     // Arrange
@@ -532,16 +565,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#contains(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given CursorableLinkedList() add forty-two; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Object); given CursorableLinkedList() add forty-two; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.contains(Object)"})
   void testContains_givenCursorableLinkedListAddFortyTwo_thenReturnFalse() {
     // Arrange
@@ -554,16 +590,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#contains(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given CursorableLinkedList() add 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Object); given CursorableLinkedList() add 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.contains(Object)"})
   void testContains_givenCursorableLinkedListAddValue_thenReturnTrue() {
     // Arrange
@@ -576,16 +615,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#contains(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given CursorableLinkedList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.contains(Object)"})
   void testContains_givenCursorableLinkedList_thenReturnFalse() {
     // Arrange
@@ -597,17 +638,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given CursorableLinkedList() add '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given CursorableLinkedList() add '42'; when ArrayList() add '42'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.containsAll(Collection)"})
   void testContainsAll_givenCursorableLinkedListAdd42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -623,16 +667,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given CursorableLinkedList() add 'Value'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given CursorableLinkedList() add 'Value'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.containsAll(Collection)"})
   void testContainsAll_givenCursorableLinkedListAddValue_thenReturnFalse() {
     // Arrange
@@ -648,17 +695,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.containsAll(Collection)"})
   void testContainsAll_givenCursorableLinkedList_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
@@ -673,17 +723,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.containsAll(Collection)"})
   void testContainsAll_givenCursorableLinkedList_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
@@ -699,17 +752,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#containsAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#containsAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#containsAll(Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection); given CursorableLinkedList(); when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsAll(Collection); given CursorableLinkedList(); when ArrayList(); then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.containsAll(Collection)"})
   void testContainsAll_givenCursorableLinkedList_whenArrayList_thenReturnTrue() {
     // Arrange
@@ -721,12 +777,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#createHeaderNode()}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#createHeaderNode()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#createHeaderNode()}
    */
   @Test
   @DisplayName("Test createHeaderNode()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.createHeaderNode()"})
   void testCreateHeaderNode() {
     // Arrange
@@ -737,18 +794,21 @@ class AbstractLinkedListDiffblueTest {
 
     // Assert
     assertNull(actualCreateHeaderNodeResult.getValue());
-    assertSame(actualCreateHeaderNodeResult, actualCreateHeaderNodeResult.getNextNode());
-    assertSame(actualCreateHeaderNodeResult, actualCreateHeaderNodeResult.getPreviousNode());
+    Node<Object> actualNextNode = actualCreateHeaderNodeResult.getNextNode();
+    assertSame(actualCreateHeaderNodeResult, actualNextNode);
+    Node<Object> actualPreviousNode = actualCreateHeaderNodeResult.getPreviousNode();
+    assertSame(actualCreateHeaderNodeResult, actualPreviousNode);
   }
 
   /**
    * Test {@link AbstractLinkedList#createNode(Object)}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#createNode(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#createNode(Object)}
    */
   @Test
   @DisplayName("Test createNode(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.createNode(Object)"})
   void testCreateNode() {
     // Arrange
@@ -765,20 +825,25 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#doReadObject(ObjectInputStream)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Given {@code Object}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
    */
   @Test
-  @DisplayName("Test doReadObject(ObjectInputStream); given 'Object'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); given 'Object'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.doReadObject(ObjectInputStream)"})
-  void testDoReadObject_givenObject_thenCursorableLinkedListSizeIsOne() throws IOException, ClassNotFoundException {
+  void testDoReadObject_givenObject_thenCursorableLinkedListSizeIsOne()
+      throws IOException, ClassNotFoundException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+
     ObjectInputStream inputStream = mock(ObjectInputStream.class);
     when(inputStream.readObject()).thenReturn("Object");
     when(inputStream.readInt()).thenReturn(1);
@@ -795,21 +860,88 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#doReadObject(ObjectInputStream)}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Given zero.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
    */
   @Test
-  @DisplayName("Test doReadObject(ObjectInputStream); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); given zero; then CursorableLinkedList() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.doReadObject(ObjectInputStream)"})
-  void testDoReadObject_thenThrowNoSuchElementException() throws IOException, ClassNotFoundException {
+  void testDoReadObject_givenZero_thenCursorableLinkedListEmpty()
+      throws IOException, ClassNotFoundException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+
     ObjectInputStream inputStream = mock(ObjectInputStream.class);
-    when(inputStream.readObject()).thenThrow(new NoSuchElementException("nodeToInsert"));
+    when(inputStream.readInt()).thenReturn(0);
+
+    // Act
+    objectList.doReadObject(inputStream);
+
+    // Assert that nothing has changed
+    verify(inputStream).readInt();
+    assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#doReadObject(ObjectInputStream)}.
+   *
+   * <ul>
+   *   <li>When {@link ObjectInputStream} {@link ObjectInputStream#readInt()} throw {@link
+   *       NoSuchElementException#NoSuchElementException()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
+   */
+  @Test
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); when ObjectInputStream readInt() throw NoSuchElementException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void AbstractLinkedList.doReadObject(ObjectInputStream)"})
+  void testDoReadObject_whenObjectInputStreamReadIntThrowNoSuchElementException()
+      throws IOException, ClassNotFoundException {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+
+    ObjectInputStream inputStream = mock(ObjectInputStream.class);
+    when(inputStream.readInt()).thenThrow(new NoSuchElementException());
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> objectList.doReadObject(inputStream));
+    verify(inputStream).readInt();
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#doReadObject(ObjectInputStream)}.
+   *
+   * <ul>
+   *   <li>When {@link ObjectInputStream} {@link ObjectInputStream#readObject()} throw {@link
+   *       NoSuchElementException#NoSuchElementException()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#doReadObject(ObjectInputStream)}
+   */
+  @Test
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); when ObjectInputStream readObject() throw NoSuchElementException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void AbstractLinkedList.doReadObject(ObjectInputStream)"})
+  void testDoReadObject_whenObjectInputStreamReadObjectThrowNoSuchElementException()
+      throws IOException, ClassNotFoundException {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+
+    ObjectInputStream inputStream = mock(ObjectInputStream.class);
+    when(inputStream.readObject()).thenThrow(new NoSuchElementException());
     when(inputStream.readInt()).thenReturn(1);
 
     // Act and Assert
@@ -820,12 +952,14 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}, and {@link AbstractLinkedList#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractLinkedList#equals(Object)}
    *   <li>{@link AbstractLinkedList#hashCode()}
@@ -833,8 +967,12 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -842,18 +980,19 @@ class AbstractLinkedListDiffblueTest {
 
     // Act and Assert
     assertEquals(objectList, objectList2);
-    int expectedHashCodeResult = objectList.hashCode();
-    assertEquals(expectedHashCodeResult, objectList2.hashCode());
+    assertEquals(objectList.hashCode(), objectList2.hashCode());
   }
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}, and {@link AbstractLinkedList#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractLinkedList#equals(Object)}
    *   <li>{@link AbstractLinkedList#hashCode()}
@@ -861,8 +1000,12 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -873,18 +1016,19 @@ class AbstractLinkedListDiffblueTest {
 
     // Act and Assert
     assertEquals(objectList, objectList2);
-    int expectedHashCodeResult = objectList.hashCode();
-    assertEquals(expectedHashCodeResult, objectList2.hashCode());
+    assertEquals(objectList.hashCode(), objectList2.hashCode());
   }
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}, and {@link AbstractLinkedList#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractLinkedList#equals(Object)}
    *   <li>{@link AbstractLinkedList#hashCode()}
@@ -892,8 +1036,12 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual3() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -904,18 +1052,57 @@ class AbstractLinkedListDiffblueTest {
 
     // Act and Assert
     assertEquals(objectList, objectList2);
-    int expectedHashCodeResult = objectList.hashCode();
-    assertEquals(expectedHashCodeResult, objectList2.hashCode());
+    assertEquals(objectList.hashCode(), objectList2.hashCode());
   }
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}, and {@link AbstractLinkedList#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link AbstractLinkedList#equals(Object)}
+   *   <li>{@link AbstractLinkedList#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual4() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
+    objectList.add("Value");
+
+    CursorableLinkedList<Object> objectList2 = new CursorableLinkedList<>();
+    objectList2.add("Value");
+    objectList2.add("Value");
+
+    // Act and Assert
+    assertEquals(objectList, objectList2);
+    assertEquals(objectList.hashCode(), objectList2.hashCode());
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#equals(Object)}, and {@link AbstractLinkedList#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is same.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractLinkedList#equals(Object)}
    *   <li>{@link AbstractLinkedList#hashCode()}
@@ -923,8 +1110,12 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -937,17 +1128,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -959,17 +1155,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -984,17 +1185,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -1009,48 +1215,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
-  void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add(new CursorableLinkedList<>());
-    LinkedListIterator<Object> iterator = mock(LinkedListIterator.class);
-    when(iterator.hasNext()).thenReturn(true);
-    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(iterator);
-    LinkedSubList<Object> objectList2 = mock(LinkedSubList.class);
-    when(objectList2.size()).thenReturn(0);
-    when(objectList2.listIterator()).thenReturn(abstractListIteratorDecorator);
-
-    CursorableLinkedList<Object> objectList3 = new CursorableLinkedList<>();
-    objectList3.add(objectList2);
-
-    // Act and Assert
-    assertNotEquals(objectList, objectList3);
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#equals(Object)}.
-   * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -1061,17 +1241,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.equals(Object)", "int AbstractLinkedList.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractLinkedList.equals(Object)",
+    "int AbstractLinkedList.hashCode()"
+  })
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
@@ -1082,17 +1267,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#get(int)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>When zero.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#get(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#get(int)}
    */
   @Test
-  @DisplayName("Test get(int); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(int); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.get(int)"})
   void testGet_givenCursorableLinkedListAddValue_whenZero_thenReturnValue() {
     // Arrange
@@ -1105,17 +1293,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#get(int)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>When zero.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#get(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#get(int)}
    */
   @Test
-  @DisplayName("Test get(int); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(int); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.get(int)"})
   void testGet_givenCursorableLinkedListAddValue_whenZero_thenReturnValue2() {
     // Arrange
@@ -1129,16 +1320,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#getFirst()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getFirst()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getFirst()}
    */
   @Test
   @DisplayName("Test getFirst(); given CursorableLinkedList() add 'Value'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.getFirst()"})
   void testGetFirst_givenCursorableLinkedListAddValue_thenReturnValue() {
     // Arrange
@@ -1151,16 +1344,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#getFirst()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getFirst()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getFirst()}
    */
   @Test
   @DisplayName("Test getFirst(); given CursorableLinkedList(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.getFirst()"})
   void testGetFirst_givenCursorableLinkedList_thenThrowNoSuchElementException() {
     // Arrange
@@ -1172,16 +1367,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#getLast()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getLast()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getLast()}
    */
   @Test
   @DisplayName("Test getLast(); given CursorableLinkedList() add 'Value'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.getLast()"})
   void testGetLast_givenCursorableLinkedListAddValue_thenReturnValue() {
     // Arrange
@@ -1194,16 +1391,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#getLast()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getLast()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getLast()}
    */
   @Test
   @DisplayName("Test getLast(); given CursorableLinkedList(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.getLast()"})
   void testGetLast_givenCursorableLinkedList_thenThrowNoSuchElementException() {
     // Arrange
@@ -1215,65 +1414,51 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#getNode(int, boolean)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When {@code false}.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return {@link CursorableLinkedList#CursorableLinkedList()} {@link
+   *       AbstractLinkedList#header}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
    */
   @Test
-  @DisplayName("Test getNode(int, boolean); given CursorableLinkedList() add 'Value'; when 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test getNode(int, boolean); when 'true'; then return CursorableLinkedList() header")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
-  void testGetNode_givenCursorableLinkedListAddValue_whenFalse() throws IndexOutOfBoundsException {
+  void testGetNode_whenTrue_thenReturnCursorableLinkedListHeader()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("Value");
     objectList.add("Value");
 
     // Act
-    Node<Object> actualNode = objectList.getNode(1, false);
+    Node<Object> actualNode = objectList.getNode(1, true);
 
     // Assert
-    assertSame(actualNode, actualNode.getPreviousNode().getNextNode());
-    assertSame(actualNode, actualNode.getNextNode().getPreviousNode());
+    assertSame(objectList.header, actualNode);
   }
 
   /**
    * Test {@link AbstractLinkedList#getNode(int, boolean)}.
+   *
    * <ul>
-   *   <li>Then return {@link CursorableLinkedList#CursorableLinkedList()} {@link AbstractLinkedList#header}.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return NextNode NextNode Value is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
    */
   @Test
-  @DisplayName("Test getNode(int, boolean); then return CursorableLinkedList() header")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getNode(int, boolean); when 'true'; then return NextNode NextNode Value is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
-  void testGetNode_thenReturnCursorableLinkedListHeader() throws IndexOutOfBoundsException {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("Value");
-
-    // Act and Assert
-    assertSame(objectList.header, objectList.getNode(1, true));
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#getNode(int, boolean)}.
-   * <ul>
-   *   <li>Then return NextNode NextNode Value is {@code Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
-   */
-  @Test
-  @DisplayName("Test getNode(int, boolean); then return NextNode NextNode Value is 'Value'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
-  void testGetNode_thenReturnNextNodeNextNodeValueIsValue() throws IndexOutOfBoundsException {
+  void testGetNode_whenTrue_thenReturnNextNodeNextNodeValueIsValue()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -1288,23 +1473,25 @@ class AbstractLinkedListDiffblueTest {
     Node<Object> nextNode = actualNode.getNextNode().getNextNode();
     assertEquals("Value", nextNode.getValue());
     assertNull(actualNode.getPreviousNode().getPreviousNode().getValue());
-    Node<Object> expectedNextNode = objectList.header;
-    assertSame(expectedNextNode, nextNode.getNextNode());
+    assertSame(objectList.header, nextNode.getNextNode());
   }
 
   /**
    * Test {@link AbstractLinkedList#getNode(int, boolean)}.
+   *
    * <ul>
-   *   <li>Then return PreviousNode PreviousNode is NextNode.</li>
+   *   <li>When {@code true}.
+   *   <li>Then return PreviousNode Value is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
    */
   @Test
-  @DisplayName("Test getNode(int, boolean); then return PreviousNode PreviousNode is NextNode")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test getNode(int, boolean); when 'true'; then return PreviousNode Value is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
-  void testGetNode_thenReturnPreviousNodePreviousNodeIsNextNode() throws IndexOutOfBoundsException {
+  void testGetNode_whenTrue_thenReturnPreviousNodeValueIsValue() throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -1315,54 +1502,89 @@ class AbstractLinkedListDiffblueTest {
 
     // Assert
     Node<Object> previousNode = actualNode.getPreviousNode();
+    assertEquals("Value", previousNode.getValue());
     assertSame(actualNode, previousNode.getNextNode());
-    Node<Object> nextNode = actualNode.getNextNode();
-    assertSame(nextNode, previousNode.getPreviousNode());
-    assertSame(objectList.header, nextNode);
+    assertSame(objectList.header, previousNode.getPreviousNode());
   }
 
   /**
    * Test {@link AbstractLinkedList#getNode(int, boolean)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return NextNode NextNode is PreviousNode.</li>
+   *   <li>When zero.
+   *   <li>Then return PreviousNode is {@link CursorableLinkedList#CursorableLinkedList()} {@link
+   *       AbstractLinkedList#header}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
    */
   @Test
-  @DisplayName("Test getNode(int, boolean); when zero; then return NextNode NextNode is PreviousNode")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getNode(int, boolean); when zero; then return PreviousNode is CursorableLinkedList() header")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
-  void testGetNode_whenZero_thenReturnNextNodeNextNodeIsPreviousNode() throws IndexOutOfBoundsException {
+  void testGetNode_whenZero_thenReturnPreviousNodeIsCursorableLinkedListHeader()
+      throws IndexOutOfBoundsException {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
+
+    // Act
+    Node<Object> actualNode = objectList.getNode(0, false);
+
+    // Assert
+    Node<Object> nextNode = actualNode.getNextNode();
+    assertSame(actualNode, nextNode.getNextNode());
+    assertSame(actualNode, nextNode.getPreviousNode());
+    assertSame(objectList.header, actualNode.getPreviousNode());
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#getNode(int, boolean)}.
+   *
+   * <ul>
+   *   <li>When zero.
+   *   <li>Then return PreviousNode Value is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#getNode(int, boolean)}
+   */
+  @Test
+  @DisplayName("Test getNode(int, boolean); when zero; then return PreviousNode Value is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node AbstractLinkedList.getNode(int, boolean)"})
+  void testGetNode_whenZero_thenReturnPreviousNodeValueIsNull() throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
     objectList.add("Value");
 
     // Act
-    Node<Object> actualNode = objectList.getNode(0, true);
+    Node<Object> actualNode = objectList.getNode(0, false);
 
     // Assert
-    Node<Object> nextNode = actualNode.getNextNode();
-    assertSame(actualNode, nextNode.getPreviousNode());
     Node<Object> previousNode = actualNode.getPreviousNode();
-    assertSame(previousNode, nextNode.getNextNode());
-    assertSame(objectList.header, previousNode);
+    assertNull(previousNode.getValue());
+    assertSame(actualNode, previousNode.getNextNode());
   }
 
   /**
    * Test {@link AbstractLinkedList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#indexOf(Object)}
    */
   @Test
-  @DisplayName("Test indexOf(Object); given CursorableLinkedList() add forty-two; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test indexOf(Object); given CursorableLinkedList() add forty-two; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.indexOf(Object)"})
   void testIndexOf_givenCursorableLinkedListAddFortyTwo_thenReturnMinusOne() {
     // Arrange
@@ -1375,16 +1597,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object); given CursorableLinkedList() add 'Value'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.indexOf(Object)"})
   void testIndexOf_givenCursorableLinkedListAddValue_thenReturnZero() {
     // Arrange
@@ -1397,16 +1621,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object); given CursorableLinkedList(); then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.indexOf(Object)"})
   void testIndexOf_givenCursorableLinkedList_thenReturnMinusOne() {
     // Arrange
@@ -1418,16 +1644,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given CursorableLinkedList() add 'Value'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.isEmpty()"})
   void testIsEmpty_givenCursorableLinkedListAddValue_thenReturnFalse() {
     // Arrange
@@ -1440,16 +1668,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given CursorableLinkedList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.isEmpty()"})
   void testIsEmpty_givenCursorableLinkedList_thenReturnTrue() {
     // Arrange
@@ -1461,16 +1691,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#isEqualValue(Object, Object)}.
+   *
    * <ul>
-   *   <li>When forty-two.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When forty-two.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#isEqualValue(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#isEqualValue(Object, Object)}
    */
   @Test
   @DisplayName("Test isEqualValue(Object, Object); when forty-two; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.isEqualValue(Object, Object)"})
   void testIsEqualValue_whenFortyTwo_thenReturnTrue() {
     // Arrange
@@ -1482,16 +1714,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#isEqualValue(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Value1}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Value1}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#isEqualValue(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#isEqualValue(Object, Object)}
    */
   @Test
   @DisplayName("Test isEqualValue(Object, Object); when 'Value1'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.isEqualValue(Object, Object)"})
   void testIsEqualValue_whenValue1_thenReturnFalse() {
     // Arrange
@@ -1503,15 +1737,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#iterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#iterator()}
    */
   @Test
   @DisplayName("Test iterator(); given CursorableLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator AbstractLinkedList.iterator()"})
   void testIterator_givenCursorableLinkedList() {
     // Arrange
@@ -1527,15 +1763,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#iterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#iterator()}
    */
   @Test
   @DisplayName("Test iterator(); given NodeCachingLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator AbstractLinkedList.iterator()"})
   void testIterator_givenNodeCachingLinkedList() {
     // Arrange
@@ -1551,16 +1789,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#iterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#iterator()}
    */
   @Test
-  @DisplayName("Test iterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test iterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator AbstractLinkedList.iterator()"})
   void testIterator_givenNodeCachingLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
@@ -1578,16 +1819,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#iterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#iterator()}
    */
   @Test
-  @DisplayName("Test iterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test iterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator AbstractLinkedList.iterator()"})
   void testIterator_givenNodeCachingLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
@@ -1607,16 +1851,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#lastIndexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add forty-two.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
    */
   @Test
-  @DisplayName("Test lastIndexOf(Object); given CursorableLinkedList() add forty-two; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test lastIndexOf(Object); given CursorableLinkedList() add forty-two; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.lastIndexOf(Object)"})
   void testLastIndexOf_givenCursorableLinkedListAddFortyTwo_thenReturnMinusOne() {
     // Arrange
@@ -1629,16 +1876,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#lastIndexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
    */
   @Test
-  @DisplayName("Test lastIndexOf(Object); given CursorableLinkedList() add 'Value'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test lastIndexOf(Object); given CursorableLinkedList() add 'Value'; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.lastIndexOf(Object)"})
   void testLastIndexOf_givenCursorableLinkedListAddValue_thenReturnZero() {
     // Arrange
@@ -1651,16 +1901,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#lastIndexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#lastIndexOf(Object)}
    */
   @Test
   @DisplayName("Test lastIndexOf(Object); given CursorableLinkedList(); then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.lastIndexOf(Object)"})
   void testLastIndexOf_givenCursorableLinkedList_thenReturnMinusOne() {
     // Arrange
@@ -1672,15 +1924,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#getLastNodeReturned()}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
+   *   <li>Then throw {@link IllegalStateException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#getLastNodeReturned()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#getLastNodeReturned()}
    */
   @Test
   @DisplayName("Test LinkedListIterator getLastNodeReturned(); then throw IllegalStateException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Node LinkedListIterator.getLastNodeReturned()"})
   void testLinkedListIteratorGetLastNodeReturned_thenThrowIllegalStateException()
       throws IllegalStateException, IndexOutOfBoundsException {
@@ -1695,16 +1949,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test LinkedListIterator hasNext(); given CursorableLinkedList() add 'Value'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator hasNext(); given CursorableLinkedList() add 'Value'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LinkedListIterator.hasNext()"})
   void testLinkedListIteratorHasNext_givenCursorableLinkedListAddValue_thenReturnFalse()
       throws IndexOutOfBoundsException {
@@ -1719,16 +1976,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test LinkedListIterator hasNext(); given CursorableLinkedList() add 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator hasNext(); given CursorableLinkedList() add 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LinkedListIterator.hasNext()"})
   void testLinkedListIteratorHasNext_givenCursorableLinkedListAddValue_thenReturnTrue()
       throws IndexOutOfBoundsException {
@@ -1744,19 +2004,23 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#hasPrevious()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test LinkedListIterator hasPrevious(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LinkedListIterator.hasPrevious()"})
   void testLinkedListIteratorHasPrevious_thenReturnFalse() throws IndexOutOfBoundsException {
     // Arrange
-    LinkedListIterator<Object> linkedListIterator = new LinkedListIterator<>(new CursorableLinkedList<>(), 0);
+    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
+    parent.add("Value");
+    LinkedListIterator<Object> linkedListIterator = new LinkedListIterator<>(parent, 0);
 
     // Act and Assert
     assertFalse(linkedListIterator.hasPrevious());
@@ -1764,15 +2028,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#hasPrevious()}.
+   *
    * <ul>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test LinkedListIterator hasPrevious(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LinkedListIterator.hasPrevious()"})
   void testLinkedListIteratorHasPrevious_thenReturnTrue() throws IndexOutOfBoundsException {
     // Arrange
@@ -1786,15 +2052,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}.
+   *
    * <ul>
-   *   <li>Given {@code Value}.</li>
+   *   <li>Given {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
+   *
+   * <p>Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
    */
   @Test
-  @DisplayName("Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); given 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); given 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.<init>(AbstractLinkedList, int)"})
   void testLinkedListIteratorNewLinkedListIterator_givenValue() throws IndexOutOfBoundsException {
     // Arrange
@@ -1810,18 +2079,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}.
+   *
    * <ul>
-   *   <li>Given {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
+   *
+   * <p>Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
    */
   @Test
-  @DisplayName("Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); given 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); given 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.<init>(AbstractLinkedList, int)"})
-  void testLinkedListIteratorNewLinkedListIterator_givenValue_thenReturnNextIsValue() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorNewLinkedListIterator_givenValue_thenReturnNextIsValue()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -1837,18 +2110,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>When zero.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
+   *
+   * <p>Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
    */
   @Test
-  @DisplayName("Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); when zero; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); when zero; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.<init>(AbstractLinkedList, int)"})
-  void testLinkedListIteratorNewLinkedListIterator_whenZero_thenReturnNextIsValue() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorNewLinkedListIterator_whenZero_thenReturnNextIsValue()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -1865,20 +2142,25 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When zero.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
+   *
+   * <p>Method under test: {@link LinkedListIterator#LinkedListIterator(AbstractLinkedList, int)}
    */
   @Test
-  @DisplayName("Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); when zero; then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator new LinkedListIterator(AbstractLinkedList, int); when zero; then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.<init>(AbstractLinkedList, int)"})
-  void testLinkedListIteratorNewLinkedListIterator_whenZero_thenReturnNotHasNext() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorNewLinkedListIterator_whenZero_thenReturnNotHasNext()
+      throws IndexOutOfBoundsException {
     // Arrange and Act
-    LinkedListIterator<Object> actualLinkedListIterator = new LinkedListIterator<>(new CursorableLinkedList<>(), 0);
+    LinkedListIterator<Object> actualLinkedListIterator =
+        new LinkedListIterator<>(new CursorableLinkedList<>(), 0);
 
     // Assert
     assertFalse(actualLinkedListIterator.hasNext());
@@ -1886,18 +2168,22 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#next()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#next()}
    */
   @Test
-  @DisplayName("Test LinkedListIterator next(); given CursorableLinkedList() add 'Value'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedListIterator next(); given CursorableLinkedList() add 'Value'; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LinkedListIterator.next()"})
-  void testLinkedListIteratorNext_givenCursorableLinkedListAddValue_thenReturnValue() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorNext_givenCursorableLinkedListAddValue_thenReturnValue()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -1911,17 +2197,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#next()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#next()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#next()}
    */
   @Test
   @DisplayName("Test LinkedListIterator next(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LinkedListIterator.next()"})
-  void testLinkedListIteratorNext_thenThrowNoSuchElementException() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorNext_thenThrowNoSuchElementException()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -1933,12 +2222,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#previous()}.
-   * <p>
-   * Method under test: {@link LinkedListIterator#previous()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#previous()}
    */
   @Test
   @DisplayName("Test LinkedListIterator previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LinkedListIterator.previous()"})
   void testLinkedListIteratorPrevious() throws IndexOutOfBoundsException {
     // Arrange
@@ -1957,12 +2247,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#previous()}.
-   * <p>
-   * Method under test: {@link LinkedListIterator#previous()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#previous()}
    */
   @Test
   @DisplayName("Test LinkedListIterator previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LinkedListIterator.previous()"})
   void testLinkedListIteratorPrevious2() {
     // Arrange
@@ -1981,12 +2272,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#previousIndex()}.
-   * <p>
-   * Method under test: {@link LinkedListIterator#previousIndex()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#previousIndex()}
    */
   @Test
   @DisplayName("Test LinkedListIterator previousIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int LinkedListIterator.previousIndex()"})
   void testLinkedListIteratorPreviousIndex() {
     // Arrange
@@ -2000,15 +2292,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#previousIndex()}.
+   *
    * <ul>
-   *   <li>Then return zero.</li>
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#previousIndex()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#previousIndex()}
    */
   @Test
   @DisplayName("Test LinkedListIterator previousIndex(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int LinkedListIterator.previousIndex()"})
   void testLinkedListIteratorPreviousIndex_thenReturnZero() throws IndexOutOfBoundsException {
     // Arrange
@@ -2022,19 +2316,24 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#previous()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#previous()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#previous()}
    */
   @Test
   @DisplayName("Test LinkedListIterator previous(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LinkedListIterator.previous()"})
-  void testLinkedListIteratorPrevious_thenThrowNoSuchElementException() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorPrevious_thenThrowNoSuchElementException()
+      throws IndexOutOfBoundsException {
     // Arrange
-    LinkedListIterator<Object> linkedListIterator = new LinkedListIterator<>(new CursorableLinkedList<>(), 0);
+    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
+    parent.add("Value");
+    LinkedListIterator<Object> linkedListIterator = new LinkedListIterator<>(parent, 0);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> linkedListIterator.previous());
@@ -2042,17 +2341,40 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#remove()}.
+   *
+   * <p>Method under test: {@link LinkedListIterator#remove()}
+   */
+  @Test
+  @DisplayName("Test LinkedListIterator remove()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LinkedListIterator.remove()"})
+  void testLinkedListIteratorRemove() {
+    // Arrange
+    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
+    parent.add("Value");
+    Cursor<Object> cursor = new Cursor<>(parent, 1);
+
+    // Act and Assert
+    assertThrows(IllegalStateException.class, () -> cursor.remove());
+  }
+
+  /**
+   * Test LinkedListIterator {@link LinkedListIterator#remove()}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
+   *   <li>Then throw {@link IllegalStateException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#remove()}
+   *
+   * <p>Method under test: {@link LinkedListIterator#remove()}
    */
   @Test
   @DisplayName("Test LinkedListIterator remove(); then throw IllegalStateException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.remove()"})
-  void testLinkedListIteratorRemove_thenThrowIllegalStateException() throws IndexOutOfBoundsException {
+  void testLinkedListIteratorRemove_thenThrowIllegalStateException()
+      throws IndexOutOfBoundsException {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -2064,15 +2386,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedListIterator {@link LinkedListIterator#set(Object)}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
+   *   <li>Then throw {@link IllegalStateException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedListIterator#set(Object)}
+   *
+   * <p>Method under test: {@link LinkedListIterator#set(Object)}
    */
   @Test
   @DisplayName("Test LinkedListIterator set(Object); then throw IllegalStateException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedListIterator.set(Object)"})
   void testLinkedListIteratorSet_thenThrowIllegalStateException() throws IndexOutOfBoundsException {
     // Arrange
@@ -2086,16 +2410,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedSubList {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}.
+   *
    * <ul>
-   *   <li>Given {@code Value}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@code Value}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
+   *
+   * <p>Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
    */
   @Test
-  @DisplayName("Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); given 'Value'; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); given 'Value'; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedSubList.<init>(AbstractLinkedList, int, int)"})
   void testLinkedSubListNewLinkedSubList_givenValue_thenReturnEmpty() {
     // Arrange
@@ -2111,16 +2438,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedSubList {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}.
+   *
    * <ul>
-   *   <li>Given {@code Value}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@code Value}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
+   *
+   * <p>Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
    */
   @Test
-  @DisplayName("Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); given 'Value'; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); given 'Value'; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedSubList.<init>(AbstractLinkedList, int, int)"})
   void testLinkedSubListNewLinkedSubList_givenValue_thenReturnEmpty2() {
     // Arrange
@@ -2137,36 +2467,43 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test LinkedSubList {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When zero.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
+   *
+   * <p>Method under test: {@link LinkedSubList#LinkedSubList(AbstractLinkedList, int, int)}
    */
   @Test
-  @DisplayName("Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); when zero; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test LinkedSubList new LinkedSubList(AbstractLinkedList, int, int); when zero; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LinkedSubList.<init>(AbstractLinkedList, int, int)"})
   void testLinkedSubListNewLinkedSubList_whenZero_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new LinkedSubList<>(new CursorableLinkedList<>(), 1, 0));
-
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> new LinkedSubList<>(new CursorableLinkedList<>(), 1, 0));
   }
 
   /**
    * Test {@link AbstractLinkedList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@link Cursor}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>When zero.
+   *   <li>Then return {@link Cursor}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given CursorableLinkedList(); when zero; then return Cursor")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given CursorableLinkedList(); when zero; then return Cursor")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator(int)"})
   void testListIteratorWithInt_givenCursorableLinkedList_whenZero_thenReturnCursor() {
     // Arrange
@@ -2182,16 +2519,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator(int)"})
   void testListIteratorWithInt_givenNodeCachingLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
@@ -2210,15 +2550,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Then return {@link LinkedListIterator}.</li>
+   *   <li>Then return {@link LinkedListIterator}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator(int)}
    */
   @Test
   @DisplayName("Test listIterator(int) with 'int'; then return LinkedListIterator")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator(int)"})
   void testListIteratorWithInt_thenReturnLinkedListIterator() {
     // Arrange
@@ -2235,16 +2577,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>When zero.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator(int)}
    */
   @Test
   @DisplayName("Test listIterator(int) with 'int'; when zero; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator(int)"})
   void testListIteratorWithInt_whenZero_thenReturnNextIsValue() {
     // Arrange
@@ -2264,16 +2608,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return {@link Cursor}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return {@link Cursor}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator()}
    */
   @Test
   @DisplayName("Test listIterator(); given CursorableLinkedList(); then return Cursor")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator()"})
   void testListIterator_givenCursorableLinkedList_thenReturnCursor() {
     // Arrange
@@ -2289,16 +2635,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator()}
    */
   @Test
-  @DisplayName("Test listIterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator()"})
   void testListIterator_givenNodeCachingLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
@@ -2316,16 +2665,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   *   <li>Then return next is {@code Value}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.
+   *   <li>Then return next is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator()}
    */
   @Test
-  @DisplayName("Test listIterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(); given NodeCachingLinkedList() add 'Value'; then return next is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator()"})
   void testListIterator_givenNodeCachingLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
@@ -2345,16 +2697,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   *   <li>Then return {@link LinkedListIterator}.</li>
+   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
+   *   <li>Then return {@link LinkedListIterator}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#listIterator()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#listIterator()}
    */
   @Test
   @DisplayName("Test listIterator(); given NodeCachingLinkedList(); then return LinkedListIterator")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator AbstractLinkedList.listIterator()"})
   void testListIterator_givenNodeCachingLinkedList_thenReturnLinkedListIterator() {
     // Arrange
@@ -2370,11 +2724,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test Node getters and setters.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
+   *   <li>When {@link Node#Node()}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Node#Node(Node, Node, Object)}
    *   <li>{@link Node#setNextNode(Node)}
@@ -2387,10 +2743,18 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test Node getters and setters; when Node()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void Node.<init>(Object)", "void Node.<init>(Node, Node, Object)", "Node Node.getNextNode()",
-      "Node Node.getPreviousNode()", "Object Node.getValue()", "void Node.setNextNode(Node)",
-      "void Node.setPreviousNode(Node)", "void Node.setValue(Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Node.<init>(Object)",
+    "void Node.<init>(Node, Node, Object)",
+    "Node Node.getNextNode()",
+    "Node Node.getPreviousNode()",
+    "Object Node.getValue()",
+    "void Node.setNextNode(Node)",
+    "void Node.setPreviousNode(Node)",
+    "void Node.setValue(Object)"
+  })
   void testNodeGettersAndSetters_whenNode() {
     // Arrange
     Node<Object> previous = new Node<>();
@@ -2413,11 +2777,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test Node getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Value}.</li>
+   *   <li>When {@code Value}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Node#Node(Object)}
    *   <li>{@link Node#setNextNode(Node)}
@@ -2430,10 +2796,18 @@ class AbstractLinkedListDiffblueTest {
    */
   @Test
   @DisplayName("Test Node getters and setters; when 'Value'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void Node.<init>(Object)", "void Node.<init>(Node, Node, Object)", "Node Node.getNextNode()",
-      "Node Node.getPreviousNode()", "Object Node.getValue()", "void Node.setNextNode(Node)",
-      "void Node.setPreviousNode(Node)", "void Node.setValue(Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Node.<init>(Object)",
+    "void Node.<init>(Node, Node, Object)",
+    "Node Node.getNextNode()",
+    "Node Node.getPreviousNode()",
+    "Object Node.getValue()",
+    "void Node.setNextNode(Node)",
+    "void Node.setPreviousNode(Node)",
+    "void Node.setValue(Object)"
+  })
   void testNodeGettersAndSetters_whenValue() {
     // Arrange and Act
     Node<Object> actualNode = new Node<>("Value");
@@ -2453,12 +2827,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test Node {@link Node#Node()}.
-   * <p>
-   * Method under test: {@link Node#Node()}
+   *
+   * <p>Method under test: {@link Node#Node()}
    */
   @Test
   @DisplayName("Test Node new Node()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Node.<init>()"})
   void testNodeNewNode() {
     // Arrange and Act
@@ -2466,21 +2841,25 @@ class AbstractLinkedListDiffblueTest {
 
     // Assert
     assertNull(actualNode.getValue());
-    assertSame(actualNode, actualNode.getNextNode());
-    assertSame(actualNode, actualNode.getPreviousNode());
+    Node<Object> actualNextNode = actualNode.getNextNode();
+    assertSame(actualNode, actualNextNode);
+    Node<Object> actualPreviousNode = actualNode.getPreviousNode();
+    assertSame(actualNode, actualPreviousNode);
   }
 
   /**
    * Test {@link AbstractLinkedList#remove(int)} with {@code index}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} Empty.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#remove(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#remove(int)}
    */
   @Test
   @DisplayName("Test remove(int) with 'index'; then CursorableLinkedList() Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.remove(int)"})
   void testRemoveWithIndex_thenCursorableLinkedListEmpty() {
     // Arrange
@@ -2494,15 +2873,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#remove(int)} with {@code index}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#remove(int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#remove(int)}
    */
   @Test
   @DisplayName("Test remove(int) with 'index'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.remove(int)"})
   void testRemoveWithIndex_thenCursorableLinkedListSizeIsOne() {
     // Arrange
@@ -2520,16 +2901,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#remove(Object)} with {@code value}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object) with 'value'; given CursorableLinkedList() add 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object) with 'value'; given CursorableLinkedList() add 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.remove(Object)"})
   void testRemoveWithValue_givenCursorableLinkedListAddValue_thenReturnTrue() {
     // Arrange
@@ -2546,16 +2930,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#remove(Object)} with {@code value}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object) with 'value'; given CursorableLinkedList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object) with 'value'; given CursorableLinkedList(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.remove(Object)"})
   void testRemoveWithValue_givenCursorableLinkedList_thenReturnFalse() {
     // Arrange
@@ -2568,15 +2955,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#remove(Object)} with {@code value}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object) with 'value'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.remove(Object)"})
   void testRemoveWithValue_thenCursorableLinkedListSizeIsOne() {
     // Arrange
@@ -2593,22 +2982,59 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given CursorableLinkedList() add '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_givenCursorableLinkedListAdd42_whenArrayListAdd42_thenReturnTrue() {
+  void testRemoveAll_given42_whenArrayListAdd42_thenCursorableLinkedListSizeIsOne() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("42");
+    objectList.add("Value");
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act
+    boolean actualRemoveAllResult = objectList.removeAll(coll);
+
+    // Assert
+    assertEquals(1, objectList.size());
+    assertEquals("Value", objectList.get(0));
+    assertFalse(actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
+   * <ul>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test removeAll(Collection); given '42'; when ArrayList() add '42'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
+  void testRemoveAll_given42_whenArrayListAdd42_thenCursorableLinkedListSizeIsOne2() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
 
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -2618,24 +3044,64 @@ class AbstractLinkedListDiffblueTest {
     boolean actualRemoveAllResult = objectList.removeAll(coll);
 
     // Assert
-    assertTrue(objectList.isEmpty());
+    assertEquals(1, objectList.size());
+    assertEquals("Value", objectList.get(0));
+    assertFalse(actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
+   * <ul>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test removeAll(Collection); given CursorableLinkedList() add '42'; when ArrayList() add '42'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
+  void testRemoveAll_givenCursorableLinkedListAdd42_whenArrayListAdd42_thenReturnTrue() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("42");
+    objectList.add("Value");
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act
+    boolean actualRemoveAllResult = objectList.removeAll(coll);
+
+    // Assert
+    assertEquals(1, objectList.size());
+    assertEquals("Value", objectList.get(0));
     assertTrue(actualRemoveAllResult);
   }
 
   /**
    * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given CursorableLinkedList(); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); given CursorableLinkedList(); then CursorableLinkedList() Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_givenCursorableLinkedList_whenArrayList() {
+  void testRemoveAll_givenCursorableLinkedList_thenCursorableLinkedListEmpty() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -2646,68 +3112,21 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); when ArrayList(); then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_givenCursorableLinkedList_whenArrayListAdd42() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.removeAll(coll));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
-   */
-  @Test
-  @DisplayName("Test removeAll(Collection); given CursorableLinkedList(); when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_givenCursorableLinkedList_whenArrayListAdd422() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.removeAll(coll));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#removeAll(Collection)}.
-   * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
-   */
-  @Test
-  @DisplayName("Test removeAll(Collection); then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_thenCursorableLinkedListSizeIsOne() {
+  void testRemoveAll_whenArrayList_thenCursorableLinkedListSizeIsOne() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -2717,22 +3136,27 @@ class AbstractLinkedListDiffblueTest {
 
     // Assert
     assertEquals(1, objectList.size());
+    assertEquals("Value", objectList.get(0));
     assertFalse(actualRemoveAllResult);
   }
 
   /**
    * Test {@link AbstractLinkedList#removeAll(Collection)}.
+   *
    * <ul>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAll(Collection)}
    */
   @Test
-  @DisplayName("Test removeAll(Collection); then CursorableLinkedList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeAll(Collection); when ArrayList(); then CursorableLinkedList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.removeAll(Collection)"})
-  void testRemoveAll_thenCursorableLinkedListSizeIsTwo() {
+  void testRemoveAll_whenArrayList_thenCursorableLinkedListSizeIsTwo() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -2743,20 +3167,23 @@ class AbstractLinkedListDiffblueTest {
 
     // Assert
     assertEquals(2, objectList.size());
+    assertEquals("Value", objectList.get(0));
     assertFalse(actualRemoveAllResult);
   }
 
   /**
    * Test {@link AbstractLinkedList#removeAllNodes()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAllNodes()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAllNodes()}
    */
   @Test
   @DisplayName("Test removeAllNodes(); given CursorableLinkedList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.removeAllNodes()"})
   void testRemoveAllNodes_givenCursorableLinkedList() {
     // Arrange
@@ -2771,15 +3198,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeAllNodes()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAllNodes()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAllNodes()}
    */
   @Test
   @DisplayName("Test removeAllNodes(); given CursorableLinkedList() add 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.removeAllNodes()"})
   void testRemoveAllNodes_givenCursorableLinkedListAddValue() {
     // Arrange
@@ -2795,15 +3224,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeAllNodes()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeAllNodes()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeAllNodes()}
    */
   @Test
   @DisplayName("Test removeAllNodes(); given CursorableLinkedList() add 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.removeAllNodes()"})
   void testRemoveAllNodes_givenCursorableLinkedListAddValue2() {
     // Arrange
@@ -2820,16 +3251,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeFirst()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeFirst()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeFirst()}
    */
   @Test
   @DisplayName("Test removeFirst(); given CursorableLinkedList() add 'Value'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.removeFirst()"})
   void testRemoveFirst_givenCursorableLinkedListAddValue_thenReturnValue() {
     // Arrange
@@ -2843,16 +3276,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeFirst()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeFirst()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeFirst()}
    */
   @Test
-  @DisplayName("Test removeFirst(); given CursorableLinkedList(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeFirst(); given CursorableLinkedList(); then throw NoSuchElementException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.removeFirst()"})
   void testRemoveFirst_givenCursorableLinkedList_thenThrowNoSuchElementException() {
     // Arrange
@@ -2864,16 +3300,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeLast()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeLast()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeLast()}
    */
   @Test
   @DisplayName("Test removeLast(); given CursorableLinkedList() add 'Value'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.removeLast()"})
   void testRemoveLast_givenCursorableLinkedListAddValue_thenReturnValue() {
     // Arrange
@@ -2887,16 +3325,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#removeLast()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#removeLast()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#removeLast()}
    */
   @Test
   @DisplayName("Test removeLast(); given CursorableLinkedList(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.removeLast()"})
   void testRemoveLast_givenCursorableLinkedList_thenThrowNoSuchElementException() {
     // Arrange
@@ -2908,21 +3348,94 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.</li>
-   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList() add '42'; then CursorableLinkedList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
+  void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act
+    boolean actualRetainAllResult = objectList.retainAll(coll);
+
+    // Assert
+    assertEquals(1, coll.size());
+    assertTrue(objectList.isEmpty());
+    assertTrue(actualRetainAllResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
+   * <ul>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test retainAll(Collection); given '42'; when ArrayList() add '42'; then ArrayList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
+  void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act
+    boolean actualRetainAllResult = objectList.retainAll(coll);
+
+    // Assert
+    assertEquals(2, coll.size());
+    assertTrue(objectList.isEmpty());
+    assertTrue(actualRetainAllResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
+   * <ul>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code 42}.
+   *   <li>Then {@link CursorableLinkedList#CursorableLinkedList()} size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   */
+  @Test
+  @DisplayName(
+      "Test retainAll(Collection); given CursorableLinkedList() add '42'; then CursorableLinkedList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
   void testRetainAll_givenCursorableLinkedListAdd42_thenCursorableLinkedListSizeIsOne() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("42");
+    objectList.add("Value");
 
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -2934,82 +3447,27 @@ class AbstractLinkedListDiffblueTest {
     // Assert
     assertEquals(1, objectList.size());
     assertEquals(2, coll.size());
-    assertFalse(actualRetainAllResult);
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
-   */
-  @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList() add 'Value'; when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
-  void testRetainAll_givenCursorableLinkedListAddValue_whenArrayList_thenReturnTrue() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("Value");
-    ArrayList<Object> coll = new ArrayList<>();
-
-    // Act
-    boolean actualRetainAllResult = objectList.retainAll(coll);
-
-    // Assert
-    assertTrue(objectList.isEmpty());
     assertTrue(actualRetainAllResult);
-    assertEquals(objectList, coll);
   }
 
   /**
    * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList() add 'Value'; when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); given CursorableLinkedList(); when ArrayList(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
-  void testRetainAll_givenCursorableLinkedListAddValue_whenArrayList_thenReturnTrue2() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-    objectList.add("Value");
-    objectList.add("Value");
-    ArrayList<Object> coll = new ArrayList<>();
-
-    // Act
-    boolean actualRetainAllResult = objectList.retainAll(coll);
-
-    // Assert
-    assertTrue(objectList.isEmpty());
-    assertTrue(actualRetainAllResult);
-    assertEquals(objectList, coll);
-  }
-
-  /**
-   * Test {@link AbstractLinkedList#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} is {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
-   */
-  @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList(); then ArrayList() is CursorableLinkedList()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
-  void testRetainAll_givenCursorableLinkedList_thenArrayListIsCursorableLinkedList() {
+  void testRetainAll_givenCursorableLinkedList_whenArrayList_thenReturnFalse() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     ArrayList<Object> coll = new ArrayList<>();
@@ -3022,76 +3480,85 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link ArrayList#ArrayList()} is {@link
+   *       CursorableLinkedList#CursorableLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList(); then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); when ArrayList(); then ArrayList() is CursorableLinkedList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
-  void testRetainAll_givenCursorableLinkedList_thenArrayListSizeIsOne() {
+  void testRetainAll_whenArrayList_thenArrayListIsCursorableLinkedList() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
+    objectList.add("Value");
     ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
 
     // Act
     boolean actualRetainAllResult = objectList.retainAll(coll);
 
     // Assert
-    assertEquals(1, coll.size());
-    assertFalse(actualRetainAllResult);
     assertTrue(objectList.isEmpty());
+    assertTrue(actualRetainAllResult);
+    assertEquals(objectList, coll);
   }
 
   /**
    * Test {@link AbstractLinkedList#retainAll(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link ArrayList#ArrayList()} is {@link
+   *       CursorableLinkedList#CursorableLinkedList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#retainAll(Collection)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#retainAll(Collection)}
    */
   @Test
-  @DisplayName("Test retainAll(Collection); given CursorableLinkedList(); then ArrayList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test retainAll(Collection); when ArrayList(); then ArrayList() is CursorableLinkedList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractLinkedList.retainAll(Collection)"})
-  void testRetainAll_givenCursorableLinkedList_thenArrayListSizeIsTwo() {
+  void testRetainAll_whenArrayList_thenArrayListIsCursorableLinkedList2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
+    objectList.add("Value");
+    objectList.add("Value");
     ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
 
     // Act
     boolean actualRetainAllResult = objectList.retainAll(coll);
 
     // Assert
-    assertEquals(2, coll.size());
-    assertFalse(actualRetainAllResult);
     assertTrue(objectList.isEmpty());
+    assertTrue(actualRetainAllResult);
+    assertEquals(objectList, coll);
   }
 
   /**
    * Test {@link AbstractLinkedList#set(int, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>When zero.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#set(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#set(int, Object)}
    */
   @Test
-  @DisplayName("Test set(int, Object); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test set(int, Object); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.set(int, Object)"})
   void testSet_givenCursorableLinkedListAddValue_whenZero_thenReturnValue() {
     // Arrange
@@ -3104,17 +3571,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#set(int, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>When zero.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#set(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#set(int, Object)}
    */
   @Test
-  @DisplayName("Test set(int, Object); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test set(int, Object); given CursorableLinkedList() add 'Value'; when zero; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedList.set(int, Object)"})
   void testSet_givenCursorableLinkedListAddValue_whenZero_thenReturnValue2() {
     // Arrange
@@ -3128,12 +3598,13 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#size()}.
-   * <p>
-   * Method under test: {@link AbstractLinkedList#size()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractLinkedList.size()"})
   void testSize() {
     // Arrange
@@ -3145,17 +3616,20 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#subList(int, int)}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>When one.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#subList(int, int)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#subList(int, int)}
    */
   @Test
-  @DisplayName("Test subList(int, int); given CursorableLinkedList() add 'Value'; when one; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test subList(int, int); given CursorableLinkedList() add 'Value'; when one; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.List AbstractLinkedList.subList(int, int)"})
   void testSubList_givenCursorableLinkedListAddValue_whenOne_thenReturnEmpty() {
     // Arrange
@@ -3168,23 +3642,26 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#toArray(Object[])} with {@code Object[]}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then first element is {@code Array}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then first element is {@code Array}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toArray(Object[])}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toArray(Object[])}
    */
   @Test
-  @DisplayName("Test toArray(Object[]) with 'Object[]'; given CursorableLinkedList() add 'Value'; then first element is 'Array'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toArray(Object[]) with 'Object[]'; given CursorableLinkedList() add 'Value'; then first element is 'Array'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] AbstractLinkedList.toArray(Object[])"})
   void testToArrayWithObject_givenCursorableLinkedListAddValue_thenFirstElementIsArray() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
     objectList.add("Value");
-    Object[] array = new Object[]{"Array"};
+    Object[] array = new Object[] {"Array"};
 
     // Act
     Object[] actualToArrayResult = objectList.toArray(array);
@@ -3198,17 +3675,81 @@ class AbstractLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractLinkedList#toArray()}.
+   * Test {@link AbstractLinkedList#toArray(Object[])} with {@code Object[]}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return first element is {@code Value}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then first element is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toArray()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toArray(Object[])}
    */
   @Test
-  @DisplayName("Test toArray(); given CursorableLinkedList() add 'Value'; then return first element is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toArray(Object[]) with 'Object[]'; given CursorableLinkedList() add 'Value'; then first element is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object[] AbstractLinkedList.toArray(Object[])"})
+  void testToArrayWithObject_givenCursorableLinkedListAddValue_thenFirstElementIsValue() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    objectList.add("Value");
+    Object[] array = new Object[] {"Array"};
+
+    // Act
+    Object[] actualToArrayResult = objectList.toArray(array);
+
+    // Assert
+    assertEquals("Value", array[0]);
+    assertEquals(1, array.length);
+    assertSame(array, actualToArrayResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#toArray(Object[])} with {@code Object[]}.
+   *
+   * <ul>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then first element is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toArray(Object[])}
+   */
+  @Test
+  @DisplayName(
+      "Test toArray(Object[]) with 'Object[]'; given CursorableLinkedList(); then first element is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object[] AbstractLinkedList.toArray(Object[])"})
+  void testToArrayWithObject_givenCursorableLinkedList_thenFirstElementIsNull() {
+    // Arrange
+    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
+    Object[] array = new Object[] {"Array"};
+
+    // Act
+    Object[] actualToArrayResult = objectList.toArray(array);
+
+    // Assert
+    assertNull(array[0]);
+    assertEquals(1, array.length);
+    assertSame(array, actualToArrayResult);
+  }
+
+  /**
+   * Test {@link AbstractLinkedList#toArray()}.
+   *
+   * <ul>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return first element is {@code Value}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toArray()}
+   */
+  @Test
+  @DisplayName(
+      "Test toArray(); given CursorableLinkedList() add 'Value'; then return first element is 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] AbstractLinkedList.toArray()"})
   void testToArray_givenCursorableLinkedListAddValue_thenReturnFirstElementIsValue() {
     // Arrange
@@ -3225,16 +3766,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#toArray()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
-   *   <li>Then return array length is zero.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Then return array length is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toArray()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toArray()}
    */
   @Test
   @DisplayName("Test toArray(); given CursorableLinkedList(); then return array length is zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] AbstractLinkedList.toArray()"})
   void testToArray_givenCursorableLinkedList_thenReturnArrayLengthIsZero() {
     // Arrange
@@ -3246,16 +3789,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code [Value]}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code [Value]}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toString()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toString()}
    */
   @Test
   @DisplayName("Test toString(); given CursorableLinkedList() add 'Value'; then return '[Value]'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String AbstractLinkedList.toString()"})
   void testToString_givenCursorableLinkedListAddValue_thenReturnValue() {
     // Arrange
@@ -3268,16 +3813,19 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
-   *   <li>Then return {@code [Value, Value]}.</li>
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Then return {@code [Value, Value]}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toString()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toString()}
    */
   @Test
-  @DisplayName("Test toString(); given CursorableLinkedList() add 'Value'; then return '[Value, Value]'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toString(); given CursorableLinkedList() add 'Value'; then return '[Value, Value]'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String AbstractLinkedList.toString()"})
   void testToString_givenCursorableLinkedListAddValue_thenReturnValueValue() {
     // Arrange
@@ -3291,15 +3839,17 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#toString()}.
+   *
    * <ul>
-   *   <li>Then return {@code []}.</li>
+   *   <li>Then return {@code []}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#toString()}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#toString()}
    */
   @Test
   @DisplayName("Test toString(); then return '[]'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String AbstractLinkedList.toString()"})
   void testToString_thenReturnLeftSquareBracketRightSquareBracket() {
     // Arrange
@@ -3311,16 +3861,18 @@ class AbstractLinkedListDiffblueTest {
 
   /**
    * Test {@link AbstractLinkedList#updateNode(Node, Object)}.
+   *
    * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} Value is {@code Value}.</li>
+   *   <li>When {@link Node#Node()}.
+   *   <li>Then {@link Node#Node()} Value is {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractLinkedList#updateNode(Node, Object)}
+   *
+   * <p>Method under test: {@link AbstractLinkedList#updateNode(Node, Object)}
    */
   @Test
   @DisplayName("Test updateNode(Node, Object); when Node(); then Node() Value is 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractLinkedList.updateNode(Node, Object)"})
   void testUpdateNode_whenNode_thenNodeValueIsValue() {
     // Arrange

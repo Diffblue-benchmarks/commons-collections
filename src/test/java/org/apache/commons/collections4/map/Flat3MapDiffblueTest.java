@@ -7,12 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import org.apache.commons.collections4.MapIterator;
+import org.apache.commons.collections4.iterators.EmptyMapIterator;
 import org.apache.commons.collections4.map.AbstractHashedMap.HashEntry;
 import org.apache.commons.collections4.map.Flat3Map.EntryIterator;
 import org.apache.commons.collections4.map.Flat3Map.EntrySet;
@@ -30,16 +33,19 @@ import org.junit.jupiter.api.Test;
 class Flat3MapDiffblueTest {
   /**
    * Test EntryIterator {@link EntryIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntryIterator#hasNext()}
+   *
+   * <p>Method under test: {@link EntryIterator#hasNext()}
    */
   @Test
   @DisplayName("Test EntryIterator hasNext(); given Flat3Map() NULL is NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean EntryIterator.hasNext()"})
   void testEntryIteratorHasNext_givenFlat3MapNullIsNull_thenReturnTrue() {
     // Arrange
@@ -53,15 +59,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntryIterator {@link EntryIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntryIterator#hasNext()}
+   *
+   * <p>Method under test: {@link EntryIterator#hasNext()}
    */
   @Test
   @DisplayName("Test EntryIterator hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean EntryIterator.hasNext()"})
   void testEntryIteratorHasNext_thenReturnFalse() {
     // Arrange
@@ -73,16 +81,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntryIterator {@link EntryIterator#nextEntry()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link FlatMapEntry}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@link FlatMapEntry}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntryIterator#nextEntry()}
+   *
+   * <p>Method under test: {@link EntryIterator#nextEntry()}
    */
   @Test
-  @DisplayName("Test EntryIterator nextEntry(); given Flat3Map() NULL is NULL; then return FlatMapEntry")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test EntryIterator nextEntry(); given Flat3Map() NULL is NULL; then return FlatMapEntry")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Map.Entry EntryIterator.nextEntry()"})
   void testEntryIteratorNextEntry_givenFlat3MapNullIsNull_thenReturnFlatMapEntry() {
     // Arrange
@@ -97,15 +109,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntryIterator {@link EntryIterator#nextEntry()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntryIterator#nextEntry()}
+   *
+   * <p>Method under test: {@link EntryIterator#nextEntry()}
    */
   @Test
   @DisplayName("Test EntryIterator nextEntry(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Map.Entry EntryIterator.nextEntry()"})
   void testEntryIteratorNextEntry_thenThrowNoSuchElementException() {
     // Arrange
@@ -117,12 +131,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntryIterator {@link EntryIterator#remove()}.
-   * <p>
-   * Method under test: {@link EntryIterator#remove()}
+   *
+   * <p>Method under test: {@link EntryIterator#remove()}
    */
   @Test
   @DisplayName("Test EntryIterator remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void EntryIterator.remove()"})
   void testEntryIteratorRemove() {
     // Arrange
@@ -134,16 +149,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntrySetIterator {@link EntrySetIterator#EntrySetIterator(Flat3Map)}.
-   * <p>
-   * Method under test: {@link EntrySetIterator#EntrySetIterator(Flat3Map)}
+   *
+   * <p>Method under test: {@link EntrySetIterator#EntrySetIterator(Flat3Map)}
    */
   @Test
   @DisplayName("Test EntrySetIterator new EntrySetIterator(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void EntrySetIterator.<init>(Flat3Map)"})
   void testEntrySetIteratorNewEntrySetIterator() {
     // Arrange and Act
-    EntrySetIterator<Object, Object> actualEntrySetIterator = new EntrySetIterator<>(new Flat3Map<>());
+    EntrySetIterator<Object, Object> actualEntrySetIterator =
+        new EntrySetIterator<>(new Flat3Map<>());
 
     // Assert
     assertFalse(actualEntrySetIterator.hasNext());
@@ -151,16 +168,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test EntrySetIterator {@link EntrySetIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link FlatMapEntry}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@link FlatMapEntry}.
    * </ul>
-   * <p>
-   * Method under test: {@link EntrySetIterator#next()}
+   *
+   * <p>Method under test: {@link EntrySetIterator#next()}
    */
   @Test
-  @DisplayName("Test EntrySetIterator next(); given Flat3Map() NULL is NULL; then return FlatMapEntry")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test EntrySetIterator next(); given Flat3Map() NULL is NULL; then return FlatMapEntry")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Map.Entry EntrySetIterator.next()"})
   void testEntrySetIteratorNext_givenFlat3MapNullIsNull_thenReturnFlatMapEntry() {
     // Arrange
@@ -174,13 +195,36 @@ class Flat3MapDiffblueTest {
   }
 
   /**
+   * Test EntrySetIterator {@link EntrySetIterator#next()}.
+   *
+   * <ul>
+   *   <li>Then throw {@link NoSuchElementException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntrySetIterator#next()}
+   */
+  @Test
+  @DisplayName("Test EntrySetIterator next(); then throw NoSuchElementException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Map.Entry EntrySetIterator.next()"})
+  void testEntrySetIteratorNext_thenThrowNoSuchElementException() {
+    // Arrange
+    EntrySetIterator<Object, Object> entrySetIterator = new EntrySetIterator<>(new Flat3Map<>());
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> entrySetIterator.next());
+  }
+
+  /**
    * Test EntrySet {@link EntrySet#EntrySet(Flat3Map)}.
-   * <p>
-   * Method under test: {@link EntrySet#EntrySet(Flat3Map)}
+   *
+   * <p>Method under test: {@link EntrySet#EntrySet(Flat3Map)}
    */
   @Test
   @DisplayName("Test EntrySet new EntrySet(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void EntrySet.<init>(Flat3Map)"})
   void testEntrySetNewEntrySet() {
     // Arrange and Act
@@ -192,20 +236,24 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}, and {@link FlatMapEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link FlatMapEntry#equals(Object)}
    *   <li>{@link FlatMapEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -214,26 +262,29 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(flatMapEntry, flatMapEntry2);
-    int expectedHashCodeResult = flatMapEntry.hashCode();
-    assertEquals(expectedHashCodeResult, flatMapEntry2.hashCode());
+    assertEquals(flatMapEntry.hashCode(), flatMapEntry2.hashCode());
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}, and {@link FlatMapEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link FlatMapEntry#equals(Object)}
    *   <li>{@link FlatMapEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
@@ -242,26 +293,29 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(flatMapEntry, flatMapEntry2);
-    int expectedHashCodeResult = flatMapEntry.hashCode();
-    assertEquals(expectedHashCodeResult, flatMapEntry2.hashCode());
+    assertEquals(flatMapEntry.hashCode(), flatMapEntry2.hashCode());
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}, and {@link FlatMapEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link FlatMapEntry#equals(Object)}
    *   <li>{@link FlatMapEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual3() {
     // Arrange
@@ -270,26 +324,29 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(flatMapEntry, flatMapEntry2);
-    int expectedHashCodeResult = flatMapEntry.hashCode();
-    assertEquals(expectedHashCodeResult, flatMapEntry2.hashCode());
+    assertEquals(flatMapEntry.hashCode(), flatMapEntry2.hashCode());
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}, and {@link FlatMapEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link FlatMapEntry#equals(Object)}
    *   <li>{@link FlatMapEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test FlatMapEntry equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -303,16 +360,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
@@ -326,58 +385,67 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     FlatMapEntry<Object, Object> flatMapEntry = new FlatMapEntry<>(new Flat3Map<>(), 1);
 
     // Act and Assert
-    assertNotEquals(flatMapEntry, new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+    assertNotEquals(
+        flatMapEntry, new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
     FlatMapEntry<Object, Object> flatMapEntry = new FlatMapEntry<>(new Flat3Map<>(), 1);
 
     // Act and Assert
-    assertNotEquals(flatMapEntry, new HashEntry<>(null, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+    assertNotEquals(
+        flatMapEntry,
+        new HashEntry<>(null, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
@@ -390,81 +458,68 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then throw exception.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test FlatMapEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
-  void testFlatMapEntryEquals_whenOtherIsDifferent_thenReturnNotEqual5() {
-    // Arrange
-    Flat3Map<Object, Object> parent = new Flat3Map<>();
-    parent.put(new FlatMapEntry<>(new Flat3Map<>(), 1), AbstractHashedMap.NULL);
-    FlatMapEntry<Object, Object> flatMapEntry = new FlatMapEntry<>(parent, 1);
-
-    // Act and Assert
-    assertNotEquals(flatMapEntry, new FlatMapEntry<>(new Flat3Map<>(), 1));
-  }
-
-  /**
-   * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then throw exception.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then throw exception")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenThrowException() {
     // Arrange
     FlatMapEntry<Object, Object> flatMapEntry = new FlatMapEntry<>(new Flat3Map<>(), 0);
 
     // Act and Assert
-    assertThrows(IllegalStateException.class, () -> flatMapEntry.equals(new FlatMapEntry<>(new Flat3Map<>(), 1)));
+    assertThrows(
+        IllegalStateException.class,
+        () -> flatMapEntry.equals(new FlatMapEntry<>(new Flat3Map<>(), 1)));
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then throw exception.</li>
+   *   <li>When other is different.
+   *   <li>Then throw exception.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then throw exception")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenThrowException2() {
     // Arrange
     FlatMapEntry<Object, Object> flatMapEntry = new FlatMapEntry<>(new Flat3Map<>(), 1);
 
     // Act and Assert
-    assertThrows(IllegalStateException.class, () -> flatMapEntry.equals(new FlatMapEntry<>(new Flat3Map<>(), 0)));
+    assertThrows(
+        IllegalStateException.class,
+        () -> flatMapEntry.equals(new FlatMapEntry<>(new Flat3Map<>(), 0)));
   }
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then throw exception.</li>
+   *   <li>When other is different.
+   *   <li>Then throw exception.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is different; then throw exception")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsDifferent_thenThrowException3() {
     // Arrange
@@ -479,16 +534,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
@@ -500,16 +557,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapEntry.equals(Object)", "int FlatMapEntry.hashCode()"})
   void testFlatMapEntryEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
@@ -521,12 +580,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getKey()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getKey()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getKey()"})
   void testFlatMapEntryGetKey() {
     // Arrange
@@ -539,12 +599,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getKey()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getKey()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getKey()"})
   void testFlatMapEntryGetKey2() {
     // Arrange
@@ -557,12 +618,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getKey()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getKey()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getKey()"})
   void testFlatMapEntryGetKey3() {
     // Arrange
@@ -575,15 +637,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getKey()}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is one.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getKey()}
    */
   @Test
-  @DisplayName("Test FlatMapEntry getKey(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry getKey(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getKey()"})
   void testFlatMapEntryGetKey_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsOne() {
     // Arrange
@@ -595,15 +661,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getKey()}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is zero.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getKey()}
    */
   @Test
-  @DisplayName("Test FlatMapEntry getKey(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry getKey(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getKey()"})
   void testFlatMapEntryGetKey_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsZero() {
     // Arrange
@@ -615,12 +685,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getValue()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getValue()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getValue()"})
   void testFlatMapEntryGetValue() {
     // Arrange
@@ -633,12 +704,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getValue()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getValue()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getValue()"})
   void testFlatMapEntryGetValue2() {
     // Arrange
@@ -651,12 +723,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getValue()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getValue()}
    */
   @Test
   @DisplayName("Test FlatMapEntry getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getValue()"})
   void testFlatMapEntryGetValue3() {
     // Arrange
@@ -669,15 +742,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getValue()}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is one.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getValue()}
    */
   @Test
-  @DisplayName("Test FlatMapEntry getValue(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry getValue(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getValue()"})
   void testFlatMapEntryGetValue_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsOne() {
     // Arrange
@@ -689,15 +766,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#getValue()}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is zero.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#getValue()}
    */
   @Test
-  @DisplayName("Test FlatMapEntry getValue(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry getValue(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.getValue()"})
   void testFlatMapEntryGetValue_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsZero() {
     // Arrange
@@ -709,12 +790,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#setValue(Object)}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#setValue(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.setValue(Object)"})
   void testFlatMapEntrySetValue() {
     // Arrange
@@ -728,12 +810,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#setValue(Object)}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#setValue(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.setValue(Object)"})
   void testFlatMapEntrySetValue2() {
     // Arrange
@@ -748,12 +831,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#setValue(Object)}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#setValue(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.setValue(Object)"})
   void testFlatMapEntrySetValue3() {
     // Arrange
@@ -768,12 +852,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#setValue(Object)}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#setValue(Object)}
    */
   @Test
   @DisplayName("Test FlatMapEntry setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.setValue(Object)"})
   void testFlatMapEntrySetValue4() {
     // Arrange
@@ -786,15 +871,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#setValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is zero.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapEntry#setValue(Object)}
    */
   @Test
-  @DisplayName("Test FlatMapEntry setValue(Object); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry setValue(Object); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapEntry.setValue(Object)"})
   void testFlatMapEntrySetValue_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsZero() {
     // Arrange
@@ -806,12 +895,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#toString()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#toString()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#toString()}
    */
   @Test
   @DisplayName("Test FlatMapEntry toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapEntry.toString()"})
   void testFlatMapEntryToString() {
     // Arrange
@@ -824,12 +914,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#toString()}.
-   * <p>
-   * Method under test: {@link FlatMapEntry#toString()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#toString()}
    */
   @Test
   @DisplayName("Test FlatMapEntry toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapEntry.toString()"})
   void testFlatMapEntryToString2() {
     // Arrange
@@ -842,15 +933,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link Flat3Map#Flat3Map()} and index is one.</li>
+   *   <li>Given {@link FlatMapEntry#FlatMapEntry(Flat3Map, int)} with parent is {@link
+   *       Flat3Map#Flat3Map()} and index is one.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#toString()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#toString()}
    */
   @Test
-  @DisplayName("Test FlatMapEntry toString(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapEntry toString(); given FlatMapEntry(Flat3Map, int) with parent is Flat3Map() and index is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapEntry.toString()"})
   void testFlatMapEntryToString_givenFlatMapEntryWithParentIsFlat3MapAndIndexIsOne() {
     // Arrange
@@ -862,15 +957,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#toString()}.
+   *
    * <ul>
-   *   <li>Then return empty string.</li>
+   *   <li>Then return empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#toString()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#toString()}
    */
   @Test
   @DisplayName("Test FlatMapEntry toString(); then return empty string")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapEntry.toString()"})
   void testFlatMapEntryToString_thenReturnEmptyString() {
     // Arrange
@@ -883,15 +980,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapEntry {@link FlatMapEntry#toString()}.
+   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
+   *   <li>Then throw {@link IllegalStateException}.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapEntry#toString()}
+   *
+   * <p>Method under test: {@link FlatMapEntry#toString()}
    */
   @Test
   @DisplayName("Test FlatMapEntry toString(); then throw IllegalStateException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapEntry.toString()"})
   void testFlatMapEntryToString_thenThrowIllegalStateException() {
     // Arrange
@@ -903,12 +1002,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#getKey()}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#getKey()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#getKey()}
    */
   @Test
   @DisplayName("Test FlatMapIterator getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapIterator.getKey()"})
   void testFlatMapIteratorGetKey() {
     // Arrange
@@ -920,12 +1020,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#getValue()}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#getValue()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#getValue()}
    */
   @Test
   @DisplayName("Test FlatMapIterator getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapIterator.getValue()"})
   void testFlatMapIteratorGetValue() {
     // Arrange
@@ -937,16 +1038,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapIterator#hasNext()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#hasNext()}
    */
   @Test
   @DisplayName("Test FlatMapIterator hasNext(); given Flat3Map() NULL is NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapIterator.hasNext()"})
   void testFlatMapIteratorHasNext_givenFlat3MapNullIsNull_thenReturnTrue() {
     // Arrange
@@ -960,15 +1064,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapIterator#hasNext()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#hasNext()}
    */
   @Test
   @DisplayName("Test FlatMapIterator hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FlatMapIterator.hasNext()"})
   void testFlatMapIteratorHasNext_thenReturnFalse() {
     // Arrange
@@ -980,12 +1086,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#FlatMapIterator(Flat3Map)}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#FlatMapIterator(Flat3Map)}
+   *
+   * <p>Method under test: {@link FlatMapIterator#FlatMapIterator(Flat3Map)}
    */
   @Test
   @DisplayName("Test FlatMapIterator new FlatMapIterator(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void FlatMapIterator.<init>(Flat3Map)"})
   void testFlatMapIteratorNewFlatMapIterator() {
     // Arrange and Act
@@ -997,15 +1104,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#next()}.
+   *
    * <ul>
-   *   <li>Then not {@link FlatMapIterator#FlatMapIterator(Flat3Map)} with parent is {@link Flat3Map#Flat3Map()} hasNext.</li>
+   *   <li>Then not {@link FlatMapIterator#FlatMapIterator(Flat3Map)} with parent is {@link
+   *       Flat3Map#Flat3Map()} hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapIterator#next()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#next()}
    */
   @Test
-  @DisplayName("Test FlatMapIterator next(); then not FlatMapIterator(Flat3Map) with parent is Flat3Map() hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test FlatMapIterator next(); then not FlatMapIterator(Flat3Map) with parent is Flat3Map() hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapIterator.next()"})
   void testFlatMapIteratorNext_thenNotFlatMapIteratorWithParentIsFlat3MapHasNext() {
     // Arrange
@@ -1022,15 +1133,17 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#next()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link FlatMapIterator#next()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#next()}
    */
   @Test
   @DisplayName("Test FlatMapIterator next(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapIterator.next()"})
   void testFlatMapIteratorNext_thenThrowNoSuchElementException() {
     // Arrange
@@ -1042,12 +1155,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#remove()}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#remove()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#remove()}
    */
   @Test
   @DisplayName("Test FlatMapIterator remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void FlatMapIterator.remove()"})
   void testFlatMapIteratorRemove() {
     // Arrange
@@ -1059,29 +1173,32 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#setValue(Object)}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#setValue(Object)}
+   *
+   * <p>Method under test: {@link FlatMapIterator#setValue(Object)}
    */
   @Test
   @DisplayName("Test FlatMapIterator setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object FlatMapIterator.setValue(Object)"})
   void testFlatMapIteratorSetValue() {
     // Arrange
     FlatMapIterator<Object, Object> flatMapIterator = new FlatMapIterator<>(new Flat3Map<>());
 
     // Act and Assert
-    assertThrows(IllegalStateException.class, () -> flatMapIterator.setValue(AbstractHashedMap.NULL));
+    assertThrows(
+        IllegalStateException.class, () -> flatMapIterator.setValue(AbstractHashedMap.NULL));
   }
 
   /**
    * Test FlatMapIterator {@link FlatMapIterator#toString()}.
-   * <p>
-   * Method under test: {@link FlatMapIterator#toString()}
+   *
+   * <p>Method under test: {@link FlatMapIterator#toString()}
    */
   @Test
   @DisplayName("Test FlatMapIterator toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String FlatMapIterator.toString()"})
   void testFlatMapIteratorToString() {
     // Arrange
@@ -1093,12 +1210,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test KeySetIterator {@link KeySetIterator#KeySetIterator(Flat3Map)}.
-   * <p>
-   * Method under test: {@link KeySetIterator#KeySetIterator(Flat3Map)}
+   *
+   * <p>Method under test: {@link KeySetIterator#KeySetIterator(Flat3Map)}
    */
   @Test
   @DisplayName("Test KeySetIterator new KeySetIterator(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void KeySetIterator.<init>(Flat3Map)"})
   void testKeySetIteratorNewKeySetIterator() {
     // Arrange and Act
@@ -1110,15 +1228,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test KeySetIterator {@link KeySetIterator#next()}.
+   *
    * <ul>
-   *   <li>Then not {@link KeySetIterator#KeySetIterator(Flat3Map)} with parent is {@link Flat3Map#Flat3Map()} hasNext.</li>
+   *   <li>Then not {@link KeySetIterator#KeySetIterator(Flat3Map)} with parent is {@link
+   *       Flat3Map#Flat3Map()} hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link KeySetIterator#next()}
+   *
+   * <p>Method under test: {@link KeySetIterator#next()}
    */
   @Test
-  @DisplayName("Test KeySetIterator next(); then not KeySetIterator(Flat3Map) with parent is Flat3Map() hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test KeySetIterator next(); then not KeySetIterator(Flat3Map) with parent is Flat3Map() hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object KeySetIterator.next()"})
   void testKeySetIteratorNext_thenNotKeySetIteratorWithParentIsFlat3MapHasNext() {
     // Arrange
@@ -1134,13 +1256,36 @@ class Flat3MapDiffblueTest {
   }
 
   /**
+   * Test KeySetIterator {@link KeySetIterator#next()}.
+   *
+   * <ul>
+   *   <li>Then throw {@link NoSuchElementException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link KeySetIterator#next()}
+   */
+  @Test
+  @DisplayName("Test KeySetIterator next(); then throw NoSuchElementException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object KeySetIterator.next()"})
+  void testKeySetIteratorNext_thenThrowNoSuchElementException() {
+    // Arrange
+    KeySetIterator<Object> keySetIterator = new KeySetIterator<>(new Flat3Map<>());
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> keySetIterator.next());
+  }
+
+  /**
    * Test KeySet {@link KeySet#KeySet(Flat3Map)}.
-   * <p>
-   * Method under test: {@link KeySet#KeySet(Flat3Map)}
+   *
+   * <p>Method under test: {@link KeySet#KeySet(Flat3Map)}
    */
   @Test
   @DisplayName("Test KeySet new KeySet(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void KeySet.<init>(Flat3Map)"})
   void testKeySetNewKeySet() {
     // Arrange and Act
@@ -1152,12 +1297,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#Flat3Map()}.
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map()}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map()}
    */
   @Test
   @DisplayName("Test new Flat3Map()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>()"})
   void testNewFlat3Map() {
     // Arrange and Act
@@ -1169,87 +1315,110 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code 864659284}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code 864659284} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given {@code 1148503186}.
+   *   <li>When {@link HashMap#HashMap()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given '864659284'; when HashMap() '864659284' is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given '1148503186'; when HashMap() '1148503186' is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
-  void testNewFlat3Map_given864659284_whenHashMap864659284IsNull_thenReturnHashMap() {
+  void testNewFlat3Map_given1148503186_whenHashMap1148503186IsNull_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    map.put(864659284, AbstractHashedMap.NULL);
+    map.put(1148503186, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given NULL; when HashMap() NULL is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given NULL; when HashMap() NULL is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenNull_whenHashMapNullIsNull_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code null} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link HashMap#HashMap()} {@code null} is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given 'null'; when HashMap() 'null' is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given 'null'; when HashMap() 'null' is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenNull_whenHashMapNullIsNull_thenReturnHashMap2() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given 'null'; when HashMap() NULL is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given 'null'; when HashMap() NULL is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenNull_whenHashMapNullIsNull_thenReturnHashMap3() {
     // Arrange
@@ -1257,80 +1426,103 @@ class Flat3MapDiffblueTest {
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link SimpleEntry#SimpleEntry(Object, Object)} and {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Given {@link AbstractMap.SimpleEntry#SimpleEntry(Object, Object)} with {@link
+   *       AbstractMap.SimpleEntry#SimpleEntry(Object, Object)} and {@link AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given SimpleEntry(Object, Object) with SimpleEntry(Object, Object) and NULL")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given SimpleEntry(Object, Object) with SimpleEntry(Object, Object) and NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenSimpleEntryWithSimpleEntryAndNull() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
     map.put(
-        new SimpleEntry<>(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL),
+        new SimpleEntry<>(
+            new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL),
+            AbstractHashedMap.NULL),
         AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given zero.</li>
-   *   <li>When {@link HashMap#HashMap()} zero is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given zero.
+   *   <li>When {@link HashMap#HashMap()} zero is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given zero; when HashMap() zero is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given zero; when HashMap() zero is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenZero_whenHashMapZeroIsNull_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(0, AbstractHashedMap.NULL);
-    map.put(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+    map.put(
+        new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>Given zero.</li>
-   *   <li>When {@link HashMap#HashMap()} zero is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return size is three.</li>
+   *   <li>Given zero.
+   *   <li>When {@link HashMap#HashMap()} zero is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); given zero; when HashMap() zero is NULL; then return size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); given zero; when HashMap() zero is NULL; then return size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_givenZero_whenHashMapZeroIsNull_thenReturnSizeIsThree() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
     map.put(0, AbstractHashedMap.NULL);
-    map.put(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+    map.put(
+        new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
     // Act
@@ -1345,105 +1537,135 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractMap.SimpleEntry#SimpleEntry(Object,
+   *       Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); when HashMap() SimpleEntry(Object, Object) with NULL and NULL is NULL")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); when HashMap() SimpleEntry(Object, Object) with NULL and NULL is NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_whenHashMapSimpleEntryWithNullAndNullIsNull() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
-    map.put(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+    map.put(
+        new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractMap.SimpleEntry#SimpleEntry(Object,
+   *       Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
-  @DisplayName("Test new Flat3Map(Map); when HashMap() SimpleEntry(Object, Object) with NULL and NULL is NULL")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new Flat3Map(Map); when HashMap() SimpleEntry(Object, Object) with NULL and NULL is NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_whenHashMapSimpleEntryWithNullAndNullIsNull2() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    map.put(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+    map.put(
+        new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
     map.put(null, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#Flat3Map(Map)}
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
    */
   @Test
   @DisplayName("Test new Flat3Map(Map); when HashMap(); then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
   void testNewFlat3Map_whenHashMap_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
 
-    // Act and Assert
-    assertEquals(map, new Flat3Map<>(map));
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link Flat3Map#clone()}.
-   * <p>
-   * Method under test: {@link Flat3Map#clone()}
+   *
+   * <p>Method under test: {@link Flat3Map#clone()}
    */
   @Test
   @DisplayName("Test clone()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Flat3Map Flat3Map.clone()"})
   void testClone() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
 
-    // Act and Assert
-    assertEquals(objectObjectMap, objectObjectMap.clone());
+    // Act
+    Flat3Map<Object, Object> actualCloneResult = objectObjectMap.clone();
+
+    // Assert
+    assertEquals(objectObjectMap, actualCloneResult);
   }
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 864659284} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() '864659284' is NULL; when NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
-  void testContainsKey_givenFlat3Map864659284IsNull_whenNull_thenReturnFalse() {
+  void testContainsKey_givenFlat3Map1148503186IsNull_whenNull_thenReturnFalse() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(864659284, AbstractHashedMap.NULL);
+    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL));
@@ -1451,23 +1673,26 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 864659284} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() '864659284' is NULL; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
-  void testContainsKey_givenFlat3Map864659284IsNull_whenNull_thenReturnTrue() {
+  void testContainsKey_givenFlat3Map1148503186IsNull_whenNull_thenReturnTrue() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(864659284, AbstractHashedMap.NULL);
+    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertTrue(objectObjectMap.containsKey(AbstractHashedMap.NULL));
@@ -1475,17 +1700,21 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() NULL is NULL; when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() NULL is NULL; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapNullIsNull_whenNull_thenReturnFalse() {
     // Arrange
@@ -1498,17 +1727,21 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() NULL is NULL; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() NULL is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapNullIsNull_whenNull_thenReturnTrue() {
     // Arrange
@@ -1521,17 +1754,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code null} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code null} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() 'null' is NULL; when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() 'null' is NULL; when 'null'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapNullIsNull_whenNull_thenReturnTrue2() {
     // Arrange
@@ -1544,17 +1780,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code null} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code null} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() 'null' is NULL; when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() 'null' is NULL; when 'null'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapNullIsNull_whenNull_thenReturnTrue3() {
     // Arrange
@@ -1568,17 +1807,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() one is NULL; when NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() one is NULL; when NULL; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapOneIsNull_whenNull_thenReturnFalse() {
     // Arrange
@@ -1591,17 +1833,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() one is NULL; when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() one is NULL; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapOneIsNull_whenNull_thenReturnFalse2() {
     // Arrange
@@ -1615,17 +1860,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() one is NULL; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() one is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapOneIsNull_whenNull_thenReturnTrue() {
     // Arrange
@@ -1639,17 +1887,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When one.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given Flat3Map() one is NULL; when one; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given Flat3Map() one is NULL; when one; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3MapOneIsNull_whenOne_thenReturnTrue() {
     // Arrange
@@ -1663,17 +1914,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
   @DisplayName("Test containsKey(Object); given Flat3Map(); when NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3Map_whenNull_thenReturnFalse() {
     // Arrange
@@ -1685,17 +1938,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsKey(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsKey(Object)}
    */
   @Test
   @DisplayName("Test containsKey(Object); given Flat3Map(); when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
   void testContainsKey_givenFlat3Map_whenNull_thenReturnFalse2() {
     // Arrange
@@ -1707,65 +1962,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code Key} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is forty-two.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() 'Key' is NULL; when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
-  void testContainsValue_givenFlat3MapKeyIsNull_whenNull_thenReturnFalse() {
-    // Arrange
-    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put("Key", AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertFalse(objectObjectMap.containsValue(null));
-  }
-
-  /**
-   * Test {@link Flat3Map#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code Key} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
-   */
-  @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() 'Key' is NULL; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
-  void testContainsValue_givenFlat3MapKeyIsNull_whenNull_thenReturnTrue() {
-    // Arrange
-    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put("Key", AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertTrue(objectObjectMap.containsValue(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link Flat3Map#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is forty-two.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
-   */
-  @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is forty-two; when NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() NULL is forty-two; when NULL; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3MapNullIsFortyTwo_whenNull_thenReturnFalse() {
     // Arrange
@@ -1778,41 +1988,21 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is forty-two.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is forty-two; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
-  void testContainsValue_givenFlat3MapNullIsFortyTwo_whenNull_thenReturnTrue() {
-    // Arrange
-    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put("Key", AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, 42);
-
-    // Act and Assert
-    assertTrue(objectObjectMap.containsValue(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link Flat3Map#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
-   */
-  @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is NULL; when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() NULL is NULL; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3MapNullIsNull_whenNull_thenReturnFalse() {
     // Arrange
@@ -1825,17 +2015,21 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is NULL; when NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() NULL is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3MapNullIsNull_whenNull_thenReturnTrue() {
     // Arrange
@@ -1848,17 +2042,20 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@code null}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@code null}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is 'null'; when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() NULL is 'null'; when 'null'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3MapNullIsNull_whenNull_thenReturnTrue2() {
     // Arrange
@@ -1871,23 +2068,107 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@code null}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is forty-two.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given Flat3Map() NULL is 'null'; when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() one is forty-two; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
-  void testContainsValue_givenFlat3MapNullIsNull_whenNull_thenReturnTrue3() {
+  void testContainsValue_givenFlat3MapOneIsFortyTwo_whenNull_thenReturnTrue() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put("Key", AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, null);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(1, 42);
+
+    // Act and Assert
+    assertTrue(objectObjectMap.containsValue(AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Test {@link Flat3Map#containsValue(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() one is NULL; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
+  void testContainsValue_givenFlat3MapOneIsNull_whenNull_thenReturnFalse() {
+    // Arrange
+    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(1, AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertFalse(objectObjectMap.containsValue(null));
+  }
+
+  /**
+   * Test {@link Flat3Map#containsValue(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() one is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
+  void testContainsValue_givenFlat3MapOneIsNull_whenNull_thenReturnTrue() {
+    // Arrange
+    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(1, AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertTrue(objectObjectMap.containsValue(AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Test {@link Flat3Map#containsValue(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@code null}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test containsValue(Object); given Flat3Map() one is 'null'; when 'null'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
+  void testContainsValue_givenFlat3MapOneIsNull_whenNull_thenReturnTrue2() {
+    // Arrange
+    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(1, null);
 
     // Act and Assert
     assertTrue(objectObjectMap.containsValue(null));
@@ -1895,17 +2176,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); given Flat3Map(); when NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3Map_whenNull_thenReturnFalse() {
     // Arrange
@@ -1917,17 +2200,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#containsValue(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); given Flat3Map(); when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsValue(Object)"})
   void testContainsValue_givenFlat3Map_whenNull_thenReturnFalse2() {
     // Arrange
@@ -1939,29 +2224,35 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#createDelegateMap()}.
-   * <p>
-   * Method under test: {@link Flat3Map#createDelegateMap()}
+   *
+   * <p>Method under test: {@link Flat3Map#createDelegateMap()}
    */
   @Test
   @DisplayName("Test createDelegateMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"AbstractHashedMap Flat3Map.createDelegateMap()"})
   void testCreateDelegateMap() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
 
-    // Act and Assert
-    assertEquals(objectObjectMap, objectObjectMap.createDelegateMap());
+    // Act
+    AbstractHashedMap<Object, Object> actualCreateDelegateMapResult =
+        objectObjectMap.createDelegateMap();
+
+    // Assert
+    assertEquals(objectObjectMap, actualCreateDelegateMapResult);
   }
 
   /**
    * Test {@link Flat3Map#entrySet()}.
-   * <p>
-   * Method under test: {@link Flat3Map#entrySet()}
+   *
+   * <p>Method under test: {@link Flat3Map#entrySet()}
    */
   @Test
   @DisplayName("Test entrySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set Flat3Map.entrySet()"})
   void testEntrySet() {
     // Arrange
@@ -1973,12 +2264,14 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}, and {@link Flat3Map#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Flat3Map#equals(Object)}
    *   <li>{@link Flat3Map#hashCode()}
@@ -1986,7 +2279,8 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -1995,18 +2289,19 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(objectObjectMap, objectObjectMap2);
-    int expectedHashCodeResult = objectObjectMap.hashCode();
-    assertEquals(expectedHashCodeResult, objectObjectMap2.hashCode());
+    assertEquals(objectObjectMap.hashCode(), objectObjectMap2.hashCode());
   }
 
   /**
    * Test {@link Flat3Map#equals(Object)}, and {@link Flat3Map#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Flat3Map#equals(Object)}
    *   <li>{@link Flat3Map#hashCode()}
@@ -2014,7 +2309,8 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
@@ -2026,18 +2322,19 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(objectObjectMap, objectObjectMap2);
-    int expectedHashCodeResult = objectObjectMap.hashCode();
-    assertEquals(expectedHashCodeResult, objectObjectMap2.hashCode());
+    assertEquals(objectObjectMap.hashCode(), objectObjectMap2.hashCode());
   }
 
   /**
    * Test {@link Flat3Map#equals(Object)}, and {@link Flat3Map#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Flat3Map#equals(Object)}
    *   <li>{@link Flat3Map#hashCode()}
@@ -2045,7 +2342,8 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual3() {
     // Arrange
@@ -2057,18 +2355,19 @@ class Flat3MapDiffblueTest {
 
     // Act and Assert
     assertEquals(objectObjectMap, objectObjectMap2);
-    int expectedHashCodeResult = objectObjectMap.hashCode();
-    assertEquals(expectedHashCodeResult, objectObjectMap2.hashCode());
+    assertEquals(objectObjectMap.hashCode(), objectObjectMap2.hashCode());
   }
 
   /**
    * Test {@link Flat3Map#equals(Object)}, and {@link Flat3Map#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Flat3Map#equals(Object)}
    *   <li>{@link Flat3Map#hashCode()}
@@ -2076,7 +2375,8 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -2090,16 +2390,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
@@ -2112,16 +2414,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
@@ -2137,16 +2441,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
@@ -2162,21 +2468,23 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(864659284, AbstractHashedMap.NULL);
+    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
 
     Flat3Map<Object, Object> objectObjectMap2 = new Flat3Map<>();
     objectObjectMap2.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -2187,16 +2495,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual5() {
     // Arrange
@@ -2212,16 +2522,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
@@ -2233,16 +2545,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#equals(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.equals(Object)", "int Flat3Map.hashCode()"})
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
@@ -2254,22 +2568,25 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 864659284} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
-  @DisplayName("Test get(Object); given Flat3Map() '864659284' is NULL; when NULL; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
-  void testGet_givenFlat3Map864659284IsNull_whenNull_thenReturnNull() {
+  void testGet_givenFlat3Map1148503186IsNull_whenNull_thenReturnNull() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(864659284, AbstractHashedMap.NULL);
+    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertNull(objectObjectMap.get(AbstractHashedMap.NULL));
@@ -2277,42 +2594,51 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 864659284} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
-  @DisplayName("Test get(Object); given Flat3Map() '864659284' is NULL; when NULL; then return NULL")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
-  void testGet_givenFlat3Map864659284IsNull_whenNull_thenReturnNull2() {
+  void testGet_givenFlat3Map1148503186IsNull_whenNull_thenReturnNull2() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(864659284, AbstractHashedMap.NULL);
+    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
     Object object = AbstractHashedMap.NULL;
 
-    // Act and Assert
-    assertSame(object, objectObjectMap.get(object));
+    // Act
+    Object actualGetResult = objectObjectMap.get(object);
+
+    // Assert
+    assertSame(object, actualGetResult);
   }
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map() NULL is NULL; when NULL; then return NULL")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3MapNullIsNull_whenNull_thenReturnNull() {
     // Arrange
@@ -2320,23 +2646,29 @@ class Flat3MapDiffblueTest {
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
     Object object = AbstractHashedMap.NULL;
 
-    // Act and Assert
-    assertSame(object, objectObjectMap.get(object));
+    // Act
+    Object actualGetResult = objectObjectMap.get(object);
+
+    // Assert
+    assertSame(object, actualGetResult);
   }
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map() NULL is NULL; when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3MapNullIsNull_whenNull_thenReturnNull2() {
     // Arrange
@@ -2349,17 +2681,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map() one is NULL; when NULL; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3MapOneIsNull_whenNull_thenReturnNull() {
     // Arrange
@@ -2372,17 +2706,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map() one is NULL; when NULL; then return NULL")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3MapOneIsNull_whenNull_thenReturnNull2() {
     // Arrange
@@ -2391,23 +2727,28 @@ class Flat3MapDiffblueTest {
     objectObjectMap.put(1, AbstractHashedMap.NULL);
     Object object = AbstractHashedMap.NULL;
 
-    // Act and Assert
-    assertSame(object, objectObjectMap.get(object));
+    // Act
+    Object actualGetResult = objectObjectMap.get(object);
+
+    // Assert
+    assertSame(object, actualGetResult);
   }
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map() one is NULL; when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3MapOneIsNull_whenNull_thenReturnNull3() {
     // Arrange
@@ -2421,17 +2762,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map(); when NULL; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3Map_whenNull_thenReturnNull() {
     // Arrange
@@ -2443,17 +2786,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#get(Object)}
+   *
+   * <p>Method under test: {@link Flat3Map#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object); given Flat3Map(); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
   void testGet_givenFlat3Map_whenNull_thenReturnNull2() {
     // Arrange
@@ -2465,16 +2810,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#isEmpty()}
+   *
+   * <p>Method under test: {@link Flat3Map#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given Flat3Map() NULL is NULL; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.isEmpty()"})
   void testIsEmpty_givenFlat3MapNullIsNull_thenReturnFalse() {
     // Arrange
@@ -2487,16 +2835,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#isEmpty()}
+   *
+   * <p>Method under test: {@link Flat3Map#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given Flat3Map(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.isEmpty()"})
   void testIsEmpty_givenFlat3Map_thenReturnTrue() {
     // Arrange
@@ -2508,12 +2858,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#keySet()}.
-   * <p>
-   * Method under test: {@link Flat3Map#keySet()}
+   *
+   * <p>Method under test: {@link Flat3Map#keySet()}
    */
   @Test
   @DisplayName("Test keySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set Flat3Map.keySet()"})
   void testKeySet() {
     // Arrange
@@ -2524,13 +2875,42 @@ class Flat3MapDiffblueTest {
   }
 
   /**
+   * Test {@link Flat3Map#mapIterator()}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>Then return {@link EmptyMapIterator}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Flat3Map#mapIterator()}
+   */
+  @Test
+  @DisplayName("Test mapIterator(); given Flat3Map(); then return EmptyMapIterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MapIterator Flat3Map.mapIterator()"})
+  void testMapIterator_givenFlat3Map_thenReturnEmptyMapIterator() {
+    // Arrange
+    Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
+
+    // Act
+    MapIterator<Object, Object> actualMapIteratorResult = objectObjectMap.mapIterator();
+
+    // Assert
+    assertTrue(actualMapIteratorResult instanceof EmptyMapIterator);
+    assertFalse(actualMapIteratorResult.hasNext());
+    assertSame(((EmptyMapIterator) actualMapIteratorResult).INSTANCE, actualMapIteratorResult);
+  }
+
+  /**
    * Test {@link Flat3Map#size()}.
-   * <p>
-   * Method under test: {@link Flat3Map#size()}
+   *
+   * <p>Method under test: {@link Flat3Map#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int Flat3Map.size()"})
   void testSize() {
     // Arrange
@@ -2542,16 +2922,18 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()}.</li>
-   *   <li>Then return {@code {}}.</li>
+   *   <li>Given {@link Flat3Map#Flat3Map()}.
+   *   <li>Then return {@code {}}.
    * </ul>
-   * <p>
-   * Method under test: {@link Flat3Map#toString()}
+   *
+   * <p>Method under test: {@link Flat3Map#toString()}
    */
   @Test
   @DisplayName("Test toString(); given Flat3Map(); then return '{}'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String Flat3Map.toString()"})
   void testToString_givenFlat3Map_thenReturnLeftCurlyBracketRightCurlyBracket() {
     // Arrange
@@ -2563,12 +2945,13 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test {@link Flat3Map#values()}.
-   * <p>
-   * Method under test: {@link Flat3Map#values()}
+   *
+   * <p>Method under test: {@link Flat3Map#values()}
    */
   @Test
   @DisplayName("Test values()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Collection Flat3Map.values()"})
   void testValues() {
     // Arrange
@@ -2579,13 +2962,173 @@ class Flat3MapDiffblueTest {
   }
 
   /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When forty-two.
+   *   <li>Then return {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test Values contains(Object); given Flat3Map() one is NULL; when forty-two; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_givenFlat3MapOneIsNull_whenFortyTwo_thenReturnFalse() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    parent.put(1, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertFalse(values.contains(42));
+  }
+
+  /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test Values contains(Object); given Flat3Map() one is NULL; when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_givenFlat3MapOneIsNull_whenNull_thenReturnFalse() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    parent.put(1, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertFalse(values.contains(null));
+  }
+
+  /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link Flat3Map#Flat3Map()} one is {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test Values contains(Object); given Flat3Map() one is NULL; when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_givenFlat3MapOneIsNull_whenNull_thenReturnTrue() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    parent.put(1, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertTrue(values.contains(AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>When forty-two.
+   *   <li>Then return {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName("Test Values contains(Object); when forty-two; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_whenFortyTwo_thenReturnFalse() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertFalse(values.contains(42));
+  }
+
+  /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName("Test Values contains(Object); when 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_whenNull_thenReturnFalse() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertFalse(values.contains(null));
+  }
+
+  /**
+   * Test Values {@link Values#contains(Object)}.
+   *
+   * <ul>
+   *   <li>When {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Values#contains(Object)}
+   */
+  @Test
+  @DisplayName("Test Values contains(Object); when NULL; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean Values.contains(Object)"})
+  void testValuesContains_whenNull_thenReturnTrue() {
+    // Arrange
+    Flat3Map<Object, Object> parent = new Flat3Map<>();
+    parent.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    Values<Object> values = new Values<>(parent);
+
+    // Act and Assert
+    assertTrue(values.contains(AbstractHashedMap.NULL));
+  }
+
+  /**
    * Test ValuesIterator {@link ValuesIterator#ValuesIterator(Flat3Map)}.
-   * <p>
-   * Method under test: {@link ValuesIterator#ValuesIterator(Flat3Map)}
+   *
+   * <p>Method under test: {@link ValuesIterator#ValuesIterator(Flat3Map)}
    */
   @Test
   @DisplayName("Test ValuesIterator new ValuesIterator(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ValuesIterator.<init>(Flat3Map)"})
   void testValuesIteratorNewValuesIterator() {
     // Arrange and Act
@@ -2597,15 +3140,19 @@ class Flat3MapDiffblueTest {
 
   /**
    * Test ValuesIterator {@link ValuesIterator#next()}.
+   *
    * <ul>
-   *   <li>Then not {@link ValuesIterator#ValuesIterator(Flat3Map)} with parent is {@link Flat3Map#Flat3Map()} hasNext.</li>
+   *   <li>Then not {@link ValuesIterator#ValuesIterator(Flat3Map)} with parent is {@link
+   *       Flat3Map#Flat3Map()} hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link ValuesIterator#next()}
+   *
+   * <p>Method under test: {@link ValuesIterator#next()}
    */
   @Test
-  @DisplayName("Test ValuesIterator next(); then not ValuesIterator(Flat3Map) with parent is Flat3Map() hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test ValuesIterator next(); then not ValuesIterator(Flat3Map) with parent is Flat3Map() hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object ValuesIterator.next()"})
   void testValuesIteratorNext_thenNotValuesIteratorWithParentIsFlat3MapHasNext() {
     // Arrange
@@ -2621,13 +3168,36 @@ class Flat3MapDiffblueTest {
   }
 
   /**
+   * Test ValuesIterator {@link ValuesIterator#next()}.
+   *
+   * <ul>
+   *   <li>Then throw {@link NoSuchElementException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ValuesIterator#next()}
+   */
+  @Test
+  @DisplayName("Test ValuesIterator next(); then throw NoSuchElementException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object ValuesIterator.next()"})
+  void testValuesIteratorNext_thenThrowNoSuchElementException() {
+    // Arrange
+    ValuesIterator<Object> valuesIterator = new ValuesIterator<>(new Flat3Map<>());
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> valuesIterator.next());
+  }
+
+  /**
    * Test Values {@link Values#Values(Flat3Map)}.
-   * <p>
-   * Method under test: {@link Values#Values(Flat3Map)}
+   *
+   * <p>Method under test: {@link Values#Values(Flat3Map)}
    */
   @Test
   @DisplayName("Test Values new Values(Flat3Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void Values.<init>(Flat3Map)"})
   void testValuesNewValues() {
     // Arrange and Act

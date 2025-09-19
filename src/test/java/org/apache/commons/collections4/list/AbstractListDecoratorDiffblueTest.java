@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,12 +16,13 @@ import org.junit.jupiter.api.Test;
 class AbstractListDecoratorDiffblueTest {
   /**
    * Test {@link AbstractListDecorator#add(int, Object)} with {@code index}, {@code object}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#add(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#add(int, Object)}
    */
   @Test
   @DisplayName("Test add(int, Object) with 'index', 'object'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractListDecorator.add(int, Object)"})
   void testAddWithIndexObject() {
     // Arrange
@@ -37,15 +39,18 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#addAll(int, Collection)} with {@code index}, {@code coll}.
+   *
    * <ul>
-   *   <li>Then {@link GrowthList#GrowthList()} first is {@code null}.</li>
+   *   <li>Then {@link GrowthList#GrowthList()} first is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#addAll(int, Collection)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#addAll(int, Collection)}
    */
   @Test
-  @DisplayName("Test addAll(int, Collection) with 'index', 'coll'; then GrowthList() first is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(int, Collection) with 'index', 'coll'; then GrowthList() first is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractListDecorator.addAll(int, Collection)"})
   void testAddAllWithIndexColl_thenGrowthListFirstIsNull() {
     // Arrange
@@ -62,12 +67,13 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#decorated()}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#decorated()}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#decorated()}
    */
   @Test
   @DisplayName("Test decorated()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.List AbstractListDecorator.decorated()"})
   void testDecorated() {
     // Arrange
@@ -78,13 +84,16 @@ class AbstractListDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractListDecorator#equals(Object)}, and {@link AbstractListDecorator#hashCode()}.
+   * Test {@link AbstractListDecorator#equals(Object)}, and {@link
+   * AbstractListDecorator#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractListDecorator#equals(Object)}
    *   <li>{@link AbstractListDecorator#hashCode()}
@@ -92,8 +101,12 @@ class AbstractListDecoratorDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractListDecorator.equals(Object)", "int AbstractListDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractListDecorator.equals(Object)",
+    "int AbstractListDecorator.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -101,18 +114,20 @@ class AbstractListDecoratorDiffblueTest {
 
     // Act and Assert
     assertEquals(objectList, objectList2);
-    int expectedHashCodeResult = objectList.hashCode();
-    assertEquals(expectedHashCodeResult, objectList2.hashCode());
+    assertEquals(objectList.hashCode(), objectList2.hashCode());
   }
 
   /**
-   * Test {@link AbstractListDecorator#equals(Object)}, and {@link AbstractListDecorator#hashCode()}.
+   * Test {@link AbstractListDecorator#equals(Object)}, and {@link
+   * AbstractListDecorator#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractListDecorator#equals(Object)}
    *   <li>{@link AbstractListDecorator#hashCode()}
@@ -120,8 +135,12 @@ class AbstractListDecoratorDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractListDecorator.equals(Object)", "int AbstractListDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractListDecorator.equals(Object)",
+    "int AbstractListDecorator.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -134,17 +153,22 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractListDecorator.equals(Object)", "int AbstractListDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractListDecorator.equals(Object)",
+    "int AbstractListDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -156,17 +180,22 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractListDecorator.equals(Object)", "int AbstractListDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractListDecorator.equals(Object)",
+    "int AbstractListDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -177,17 +206,22 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractListDecorator.equals(Object)", "int AbstractListDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractListDecorator.equals(Object)",
+    "int AbstractListDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -198,16 +232,18 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#get(int)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code Object}.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#get(int)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#get(int)}
    */
   @Test
   @DisplayName("Test get(int); given GrowthList() add 'Object'; then return 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractListDecorator.get(int)"})
   void testGet_givenGrowthListAddObject_thenReturnObject() {
     // Arrange
@@ -221,12 +257,13 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#indexOf(Object)}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#indexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractListDecorator.indexOf(Object)"})
   void testIndexOf() {
     // Arrange
@@ -238,12 +275,13 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#lastIndexOf(Object)}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#lastIndexOf(Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#lastIndexOf(Object)}
    */
   @Test
   @DisplayName("Test lastIndexOf(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractListDecorator.lastIndexOf(Object)"})
   void testLastIndexOf() {
     // Arrange
@@ -255,12 +293,13 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#listIterator()}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#listIterator()}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#listIterator()}
    */
   @Test
   @DisplayName("Test listIterator()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.ListIterator AbstractListDecorator.listIterator()"})
   void testListIterator() {
     // Arrange
@@ -272,16 +311,19 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#listIterator(int)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given GrowthList() add 'Object'; then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given GrowthList() add 'Object'; then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.ListIterator AbstractListDecorator.listIterator(int)"})
   void testListIteratorWithInt_givenGrowthListAddObject_thenReturnNotHasNext() {
     // Arrange
@@ -294,16 +336,19 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#remove(int)} with {@code index}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is one.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then {@link GrowthList#GrowthList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#remove(int)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'index'; given GrowthList() add 'Object'; then GrowthList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'index'; given GrowthList() add 'Object'; then GrowthList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractListDecorator.remove(int)"})
   void testRemoveWithIndex_givenGrowthListAddObject_thenGrowthListSizeIsOne() {
     // Arrange
@@ -321,12 +366,13 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#set(int, Object)}.
-   * <p>
-   * Method under test: {@link AbstractListDecorator#set(int, Object)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#set(int, Object)}
    */
   @Test
   @DisplayName("Test set(int, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractListDecorator.set(int, Object)"})
   void testSet() {
     // Arrange
@@ -344,16 +390,18 @@ class AbstractListDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractListDecorator#subList(int, int)}.
+   *
    * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListDecorator#subList(int, int)}
+   *
+   * <p>Method under test: {@link AbstractListDecorator#subList(int, int)}
    */
   @Test
   @DisplayName("Test subList(int, int); given GrowthList() add 'Object'; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.List AbstractListDecorator.subList(int, int)"})
   void testSubList_givenGrowthListAddObject_thenReturnEmpty() {
     // Arrange

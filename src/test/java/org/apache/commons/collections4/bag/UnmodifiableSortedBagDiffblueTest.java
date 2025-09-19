@@ -1,6 +1,7 @@
 package org.apache.commons.collections4.bag;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.SortedBag;
 import org.junit.jupiter.api.DisplayName;
@@ -10,16 +11,18 @@ import org.junit.jupiter.api.Test;
 class UnmodifiableSortedBagDiffblueTest {
   /**
    * Test {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
+   *
+   * <p>Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedBag(SortedBag); given 'Object'; when TreeBag() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedBag UnmodifiableSortedBag.unmodifiableSortedBag(SortedBag)"})
   void testUnmodifiableSortedBag_givenObject_whenTreeBagAddObject() {
     // Arrange
@@ -27,7 +30,8 @@ class UnmodifiableSortedBagDiffblueTest {
     bag.add("Object");
 
     // Act
-    SortedBag<Object> actualUnmodifiableSortedBagResult = UnmodifiableSortedBag.unmodifiableSortedBag(bag);
+    SortedBag<Object> actualUnmodifiableSortedBagResult =
+        UnmodifiableSortedBag.unmodifiableSortedBag(bag);
 
     // Assert
     assertEquals(bag, actualUnmodifiableSortedBagResult);
@@ -35,16 +39,18 @@ class UnmodifiableSortedBagDiffblueTest {
 
   /**
    * Test {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}.
+   *
    * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
+   *
+   * <p>Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedBag(SortedBag); given 'Object'; when TreeBag() add 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedBag UnmodifiableSortedBag.unmodifiableSortedBag(SortedBag)"})
   void testUnmodifiableSortedBag_givenObject_whenTreeBagAddObject2() {
     // Arrange
@@ -53,7 +59,8 @@ class UnmodifiableSortedBagDiffblueTest {
     bag.add("Object");
 
     // Act
-    SortedBag<Object> actualUnmodifiableSortedBagResult = UnmodifiableSortedBag.unmodifiableSortedBag(bag);
+    SortedBag<Object> actualUnmodifiableSortedBagResult =
+        UnmodifiableSortedBag.unmodifiableSortedBag(bag);
 
     // Assert
     assertEquals(bag, actualUnmodifiableSortedBagResult);
@@ -61,22 +68,25 @@ class UnmodifiableSortedBagDiffblueTest {
 
   /**
    * Test {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}.
+   *
    * <ul>
-   *   <li>When {@link TreeBag#TreeBag()}.</li>
+   *   <li>When {@link TreeBag#TreeBag()}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
+   *
+   * <p>Method under test: {@link UnmodifiableSortedBag#unmodifiableSortedBag(SortedBag)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedBag(SortedBag); when TreeBag()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedBag UnmodifiableSortedBag.unmodifiableSortedBag(SortedBag)"})
   void testUnmodifiableSortedBag_whenTreeBag() {
     // Arrange
     TreeBag<Object> bag = new TreeBag<>();
 
     // Act
-    SortedBag<Object> actualUnmodifiableSortedBagResult = UnmodifiableSortedBag.unmodifiableSortedBag(bag);
+    SortedBag<Object> actualUnmodifiableSortedBagResult =
+        UnmodifiableSortedBag.unmodifiableSortedBag(bag);
 
     // Assert
     assertEquals(bag, actualUnmodifiableSortedBagResult);

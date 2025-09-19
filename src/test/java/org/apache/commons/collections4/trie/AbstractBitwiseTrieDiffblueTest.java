@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -19,20 +20,24 @@ import org.junit.jupiter.api.Test;
 class AbstractBitwiseTrieDiffblueTest {
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}, and {@link BasicEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link BasicEntry#equals(Object)}
    *   <li>{@link BasicEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test BasicEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test BasicEntry equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -41,26 +46,29 @@ class AbstractBitwiseTrieDiffblueTest {
 
     // Act and Assert
     assertEquals(trieEntry, trieEntry2);
-    int expectedHashCodeResult = trieEntry.hashCode();
-    assertEquals(expectedHashCodeResult, trieEntry2.hashCode());
+    assertEquals(trieEntry.hashCode(), trieEntry2.hashCode());
   }
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}, and {@link BasicEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link BasicEntry#equals(Object)}
    *   <li>{@link BasicEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test BasicEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test BasicEntry equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
@@ -69,26 +77,29 @@ class AbstractBitwiseTrieDiffblueTest {
 
     // Act and Assert
     assertEquals(trieEntry, defaultMapEntry);
-    int expectedHashCodeResult = trieEntry.hashCode();
-    assertEquals(expectedHashCodeResult, defaultMapEntry.hashCode());
+    assertEquals(trieEntry.hashCode(), defaultMapEntry.hashCode());
   }
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}, and {@link BasicEntry#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link BasicEntry#equals(Object)}
    *   <li>{@link BasicEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test BasicEntry equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test BasicEntry equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -102,16 +113,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
@@ -123,37 +136,42 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>(new TrieEntry<>("Key", "Value", 1), "Value", 1);
+    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    TrieEntry<Object, Object> trieEntry2 = new TrieEntry<>(trieEntry, "Value", 1);
 
     // Act and Assert
-    assertNotEquals(trieEntry, new TrieEntry<>("Key", "Value", 1));
+    assertNotEquals(trieEntry2, new TrieEntry<>("Key", "Value", 1));
   }
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
@@ -165,37 +183,42 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", new TrieEntry<>("Key", "Value", 1), 1);
+    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    TrieEntry<Object, Object> trieEntry2 = new TrieEntry<>("Key", trieEntry, 1);
 
     // Act and Assert
-    assertNotEquals(trieEntry, new TrieEntry<>("Key", "Value", 1));
+    assertNotEquals(trieEntry2, new TrieEntry<>("Key", "Value", 1));
   }
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsDifferent_thenReturnNotEqual5() {
     // Arrange
@@ -207,16 +230,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
@@ -228,16 +253,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link BasicEntry#equals(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#equals(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BasicEntry.equals(Object)", "int BasicEntry.hashCode()"})
   void testBasicEntryEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
@@ -249,12 +276,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#getKey()}.
-   * <p>
-   * Method under test: {@link BasicEntry#getKey()}
+   *
+   * <p>Method under test: {@link BasicEntry#getKey()}
    */
   @Test
   @DisplayName("Test BasicEntry getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BasicEntry.getKey()"})
   void testBasicEntryGetKey() {
     // Arrange
@@ -270,12 +298,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#getValue()}.
-   * <p>
-   * Method under test: {@link BasicEntry#getValue()}
+   *
+   * <p>Method under test: {@link BasicEntry#getValue()}
    */
   @Test
   @DisplayName("Test BasicEntry getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BasicEntry.getValue()"})
   void testBasicEntryGetValue() {
     // Arrange
@@ -291,12 +320,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#setKeyValue(Object, Object)}.
-   * <p>
-   * Method under test: {@link BasicEntry#setKeyValue(Object, Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#setKeyValue(Object, Object)}
    */
   @Test
   @DisplayName("Test BasicEntry setKeyValue(Object, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BasicEntry.setKeyValue(Object, Object)"})
   void testBasicEntrySetKeyValue() {
     // Arrange
@@ -308,12 +338,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#setValue(Object)}.
-   * <p>
-   * Method under test: {@link BasicEntry#setValue(Object)}
+   *
+   * <p>Method under test: {@link BasicEntry#setValue(Object)}
    */
   @Test
   @DisplayName("Test BasicEntry setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BasicEntry.setValue(Object)"})
   void testBasicEntrySetValue() {
     // Arrange
@@ -325,34 +356,38 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test BasicEntry {@link BasicEntry#toString()}.
-   * <p>
-   * Method under test: {@link BasicEntry#toString()}
+   *
+   * <p>Method under test: {@link BasicEntry#toString()}
    */
   @Test
   @DisplayName("Test BasicEntry toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"String BasicEntry.toString()"})
   void testBasicEntryToString() {
     // Arrange
     TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
-    assertEquals("Entry(key=Key [1], value=Value, parent=null, left=Key [1], right=null, predecessor=Key [1])",
+    assertEquals(
+        "Entry(key=Key [1], value=Value, parent=null, left=Key [1], right=null, predecessor=Key [1])",
         trieEntry.toString());
   }
 
   /**
    * Test {@link AbstractBitwiseTrie#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compare(Object, Object)"})
   void testCompare_when42_thenReturnTrue() {
     // Arrange, Act and Assert
@@ -361,16 +396,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#compare(Object, Object)}.
+   *
    * <ul>
-   *   <li>When four.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When four.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compare(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compare(Object, Object)}
    */
   @Test
   @DisplayName("Test compare(Object, Object); when four; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compare(Object, Object)"})
   void testCompare_whenFour_thenReturnFalse() {
     // Arrange, Act and Assert
@@ -379,16 +416,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#bitIndex(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return twelve.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return twelve.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#bitIndex(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#bitIndex(Object, Object)}
    */
   @Test
   @DisplayName("Test bitIndex(Object, Object); when 'Key'; then return twelve")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractBitwiseTrie.bitIndex(Object, Object)"})
   void testBitIndex_whenKey_thenReturnTwelve() {
     // Arrange
@@ -400,16 +439,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#bitIndex(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link KeyAnalyzer#NULL_BIT_KEY}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link KeyAnalyzer#NULL_BIT_KEY}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#bitIndex(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#bitIndex(Object, Object)}
    */
   @Test
   @DisplayName("Test bitIndex(Object, Object); when 'null'; then return NULL_BIT_KEY")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractBitwiseTrie.bitIndex(Object, Object)"})
   void testBitIndex_whenNull_thenReturnNull_bit_key() {
     // Arrange
@@ -421,12 +462,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#bitsPerElement()}.
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#bitsPerElement()}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#bitsPerElement()}
    */
   @Test
   @DisplayName("Test bitsPerElement()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractBitwiseTrie.bitsPerElement()"})
   void testBitsPerElement() {
     // Arrange
@@ -438,12 +480,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#castKey(Object)}.
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#castKey(Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#castKey(Object)}
    */
   @Test
   @DisplayName("Test castKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractBitwiseTrie.castKey(Object)"})
   void testCastKey() {
     // Arrange
@@ -455,16 +498,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#compareKeys(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
    */
   @Test
   @DisplayName("Test compareKeys(Object, Object); when 'Key'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compareKeys(Object, Object)"})
   void testCompareKeys_whenKey_thenReturnFalse() {
     // Arrange
@@ -476,16 +521,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#compareKeys(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
    */
   @Test
   @DisplayName("Test compareKeys(Object, Object); when 'Key'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compareKeys(Object, Object)"})
   void testCompareKeys_whenKey_thenReturnFalse2() {
     // Arrange
@@ -497,16 +544,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#compareKeys(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
    */
   @Test
   @DisplayName("Test compareKeys(Object, Object); when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compareKeys(Object, Object)"})
   void testCompareKeys_whenNull_thenReturnTrue() {
     // Arrange
@@ -518,16 +567,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#compareKeys(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Other}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Other}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#compareKeys(Object, Object)}
    */
   @Test
   @DisplayName("Test compareKeys(Object, Object); when 'Other'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.compareKeys(Object, Object)"})
   void testCompareKeys_whenOther_thenReturnFalse() {
     // Arrange
@@ -539,12 +590,13 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#getKeyAnalyzer()}.
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#getKeyAnalyzer()}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#getKeyAnalyzer()}
    */
   @Test
   @DisplayName("Test getKeyAnalyzer()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"KeyAnalyzer AbstractBitwiseTrie.getKeyAnalyzer()"})
   void testGetKeyAnalyzer() {
     // Arrange
@@ -561,16 +613,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}
    */
   @Test
   @DisplayName("Test isBitSet(Object, int, int); when 'Key'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.isBitSet(Object, int, int)"})
   void testIsBitSet_whenKey_thenReturnFalse() {
     // Arrange
@@ -582,16 +636,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#isBitSet(Object, int, int)}
    */
   @Test
   @DisplayName("Test isBitSet(Object, int, int); when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractBitwiseTrie.isBitSet(Object, int, int)"})
   void testIsBitSet_whenNull_thenReturnFalse() {
     // Arrange
@@ -603,16 +659,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#lengthInBits(Object)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return forty-eight.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return forty-eight.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#lengthInBits(Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#lengthInBits(Object)}
    */
   @Test
   @DisplayName("Test lengthInBits(Object); when 'Key'; then return forty-eight")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractBitwiseTrie.lengthInBits(Object)"})
   void testLengthInBits_whenKey_thenReturnFortyEight() {
     // Arrange
@@ -624,16 +682,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#lengthInBits(Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#lengthInBits(Object)}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#lengthInBits(Object)}
    */
   @Test
   @DisplayName("Test lengthInBits(Object); when 'null'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractBitwiseTrie.lengthInBits(Object)"})
   void testLengthInBits_whenNull_thenReturnZero() {
     // Arrange
@@ -645,16 +705,18 @@ class AbstractBitwiseTrieDiffblueTest {
 
   /**
    * Test {@link AbstractBitwiseTrie#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Trie[} is {@code Value}.</li>
-   *   <li>Then return a string.</li>
+   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Trie[} is {@code Value}.
+   *   <li>Then return a string.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#toString()}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#toString()}
    */
   @Test
   @DisplayName("Test toString(); given PatriciaTrie() 'Trie[' is 'Value'; then return a string")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"String AbstractBitwiseTrie.toString()"})
   void testToString_givenPatriciaTrieTrieIsValue_thenReturnAString() {
     // Arrange
@@ -663,23 +725,27 @@ class AbstractBitwiseTrieDiffblueTest {
 
     // Act and Assert
     assertEquals(
-        "Trie[1]={\n" + "  Entry(key=Trie[ [9], value=Value, parent=ROOT, left=ROOT, right=Trie[ [9], predecessor=Trie["
-            + " [9])\n" + "}\n",
+        "Trie[1]={\n"
+            + "  Entry(key=Trie[ [9], value=Value, parent=ROOT, left=ROOT, right=Trie[ [9], predecessor=Trie["
+            + " [9])\n"
+            + "}\n",
         objectMap.toString());
   }
 
   /**
    * Test {@link AbstractBitwiseTrie#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then return {@code Trie[0]={ }}.</li>
+   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.
+   *   <li>Then return {@code Trie[0]={ }}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractBitwiseTrie#toString()}
+   *
+   * <p>Method under test: {@link AbstractBitwiseTrie#toString()}
    */
   @Test
   @DisplayName("Test toString(); given PatriciaTrie(); then return 'Trie[0]={ }'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"String AbstractBitwiseTrie.toString()"})
   void testToString_givenPatriciaTrie_thenReturnTrie0() {
     // Arrange

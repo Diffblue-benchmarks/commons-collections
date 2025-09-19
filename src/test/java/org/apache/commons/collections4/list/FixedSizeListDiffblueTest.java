@@ -2,6 +2,7 @@ package org.apache.commons.collections4.list;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,18 @@ import org.junit.jupiter.api.Test;
 class FixedSizeListDiffblueTest {
   /**
    * Test {@link FixedSizeList#fixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#fixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#fixedSizeList(List)}
    */
   @Test
   @DisplayName("Test fixedSizeList(List); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"FixedSizeList FixedSizeList.fixedSizeList(List)"})
   void testFixedSizeList_given42_whenArrayListAdd42() {
     // Arrange
@@ -37,16 +40,18 @@ class FixedSizeListDiffblueTest {
 
   /**
    * Test {@link FixedSizeList#fixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#fixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#fixedSizeList(List)}
    */
   @Test
   @DisplayName("Test fixedSizeList(List); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"FixedSizeList FixedSizeList.fixedSizeList(List)"})
   void testFixedSizeList_given42_whenArrayListAdd422() {
     // Arrange
@@ -63,15 +68,17 @@ class FixedSizeListDiffblueTest {
 
   /**
    * Test {@link FixedSizeList#fixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#fixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#fixedSizeList(List)}
    */
   @Test
   @DisplayName("Test fixedSizeList(List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"FixedSizeList FixedSizeList.fixedSizeList(List)"})
   void testFixedSizeList_whenArrayList() {
     // Arrange
@@ -86,38 +93,45 @@ class FixedSizeListDiffblueTest {
 
   /**
    * Test {@link FixedSizeList#FixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#FixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#FixedSizeList(List)}
    */
   @Test
   @DisplayName("Test new FixedSizeList(List); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void FixedSizeList.<init>(List)"})
   void testNewFixedSizeList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
 
-    // Act and Assert
-    assertEquals(list, new FixedSizeList<>(list));
+    // Act
+    FixedSizeList<Object> actualObjectList = new FixedSizeList<>(list);
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link FixedSizeList#FixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#FixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#FixedSizeList(List)}
    */
   @Test
   @DisplayName("Test new FixedSizeList(List); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void FixedSizeList.<init>(List)"})
   void testNewFixedSizeList_given42_whenArrayListAdd422() {
     // Arrange
@@ -125,38 +139,47 @@ class FixedSizeListDiffblueTest {
     list.add("42");
     list.add("42");
 
-    // Act and Assert
-    assertEquals(list, new FixedSizeList<>(list));
+    // Act
+    FixedSizeList<Object> actualObjectList = new FixedSizeList<>(list);
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link FixedSizeList#FixedSizeList(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link FixedSizeList#FixedSizeList(List)}
+   *
+   * <p>Method under test: {@link FixedSizeList#FixedSizeList(List)}
    */
   @Test
   @DisplayName("Test new FixedSizeList(List); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void FixedSizeList.<init>(List)"})
   void testNewFixedSizeList_whenArrayList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
 
-    // Act and Assert
-    assertEquals(list, new FixedSizeList<>(list));
+    // Act
+    FixedSizeList<Object> actualObjectList = new FixedSizeList<>(list);
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link FixedSizeList#isFull()}.
-   * <p>
-   * Method under test: {@link FixedSizeList#isFull()}
+   *
+   * <p>Method under test: {@link FixedSizeList#isFull()}
    */
   @Test
   @DisplayName("Test isFull()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean FixedSizeList.isFull()"})
   void testIsFull() {
     // Arrange

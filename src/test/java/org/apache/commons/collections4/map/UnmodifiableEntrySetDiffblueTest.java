@@ -2,6 +2,7 @@ package org.apache.commons.collections4.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -16,15 +17,19 @@ import org.junit.jupiter.api.Test;
 class UnmodifiableEntrySetDiffblueTest {
   /**
    * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
+   *
    * <ul>
-   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@code 42} and {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@code 42} and {@link
+   *       AbstractHashedMap#NULL}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableEntrySet(Set); given SimpleEntry(Object, Object) with '42' and NULL")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableEntrySet(Set); given SimpleEntry(Object, Object) with '42' and NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
   void testUnmodifiableEntrySet_givenSimpleEntryWith42AndNull() {
     // Arrange
@@ -33,7 +38,8 @@ class UnmodifiableEntrySetDiffblueTest {
     set.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
 
     // Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
+    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult =
+        UnmodifiableEntrySet.unmodifiableEntrySet(set);
 
     // Assert
     assertEquals(set, actualUnmodifiableEntrySetResult);
@@ -41,16 +47,20 @@ class UnmodifiableEntrySetDiffblueTest {
 
   /**
    * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
+   *
    * <ul>
-   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL}
+   *       and {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableEntrySet(Set); given SimpleEntry(Object, Object) with NULL and NULL; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableEntrySet(Set); given SimpleEntry(Object, Object) with NULL and NULL; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
   void testUnmodifiableEntrySet_givenSimpleEntryWithNullAndNull_thenReturnHashSet() {
     // Arrange
@@ -58,7 +68,8 @@ class UnmodifiableEntrySetDiffblueTest {
     set.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
 
     // Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
+    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult =
+        UnmodifiableEntrySet.unmodifiableEntrySet(set);
 
     // Assert
     assertEquals(set, actualUnmodifiableEntrySetResult);
@@ -66,21 +77,23 @@ class UnmodifiableEntrySetDiffblueTest {
 
   /**
    * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
    */
   @Test
   @DisplayName("Test unmodifiableEntrySet(Set); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
   void testUnmodifiableEntrySet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet
-        .unmodifiableEntrySet(new HashSet<>());
+    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult =
+        UnmodifiableEntrySet.unmodifiableEntrySet(new HashSet<>());
 
     // Assert
     assertTrue(actualUnmodifiableEntrySetResult.isEmpty());

@@ -1,6 +1,7 @@
 package org.apache.commons.collections4.iterators;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,12 +10,13 @@ import org.junit.jupiter.api.Test;
 class AbstractEmptyMapIteratorDiffblueTest {
   /**
    * Test {@link AbstractEmptyMapIterator#getKey()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyMapIterator#getKey()}
+   *
+   * <p>Method under test: {@link AbstractEmptyMapIterator#getKey()}
    */
   @Test
   @DisplayName("Test getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.getKey()"})
   void testGetKey() {
     // Arrange
@@ -26,12 +28,13 @@ class AbstractEmptyMapIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyMapIterator#getValue()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyMapIterator#getValue()}
+   *
+   * <p>Method under test: {@link AbstractEmptyMapIterator#getValue()}
    */
   @Test
   @DisplayName("Test getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.getValue()"})
   void testGetValue() {
     // Arrange
@@ -43,12 +46,13 @@ class AbstractEmptyMapIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyMapIterator#setValue(Object)}.
-   * <p>
-   * Method under test: {@link AbstractEmptyMapIterator#setValue(Object)}
+   *
+   * <p>Method under test: {@link AbstractEmptyMapIterator#setValue(Object)}
    */
   @Test
   @DisplayName("Test setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.setValue(Object)"})
   void testSetValue() {
     // Arrange

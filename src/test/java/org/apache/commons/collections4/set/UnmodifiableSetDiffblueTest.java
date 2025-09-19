@@ -2,6 +2,7 @@ package org.apache.commons.collections4.set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,17 +13,20 @@ import org.junit.jupiter.api.Test;
 class UnmodifiableSetDiffblueTest {
   /**
    * Test {@link UnmodifiableSet#unmodifiableSet(Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableSet(Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableSet(Set); given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableSet.unmodifiableSet(Set)"})
   void testUnmodifiableSet_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -38,17 +42,20 @@ class UnmodifiableSetDiffblueTest {
 
   /**
    * Test {@link UnmodifiableSet#unmodifiableSet(Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableSet(Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableSet(Set); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableSet.unmodifiableSet(Set)"})
   void testUnmodifiableSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -65,16 +72,18 @@ class UnmodifiableSetDiffblueTest {
 
   /**
    * Test {@link UnmodifiableSet#unmodifiableSet(Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link UnmodifiableSet#unmodifiableSet(Set)}
    */
   @Test
   @DisplayName("Test unmodifiableSet(Set); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set UnmodifiableSet.unmodifiableSet(Set)"})
   void testUnmodifiableSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act

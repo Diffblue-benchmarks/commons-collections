@@ -3,6 +3,7 @@ package org.apache.commons.collections4.multimap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.List;
@@ -15,16 +16,18 @@ import org.junit.jupiter.api.Test;
 class ArrayListValuedLinkedHashMapDiffblueTest {
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap()}.
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap()}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap()}
    */
   @Test
   @DisplayName("Test new ArrayListValuedLinkedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>()"})
   void testNewArrayListValuedLinkedHashMap() {
     // Arrange and Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>();
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>();
 
     // Assert
     assertEquals(0, actualArrayListValuedLinkedHashMap.size());
@@ -34,17 +37,18 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int)}.
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int)}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int)}
    */
   @Test
   @DisplayName("Test new ArrayListValuedLinkedHashMap(int)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(int)"})
   void testNewArrayListValuedLinkedHashMap2() {
     // Arrange and Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>(
-        1);
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(1);
 
     // Assert
     assertEquals(0, actualArrayListValuedLinkedHashMap.size());
@@ -54,17 +58,19 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int, int)}.
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int, int)}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(int,
+   * int)}
    */
   @Test
   @DisplayName("Test new ArrayListValuedLinkedHashMap(int, int)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(int, int)"})
   void testNewArrayListValuedLinkedHashMap3() {
     // Arrange and Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>(
-        1, 1);
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(1, 1);
 
     // Assert
     assertEquals(0, actualArrayListValuedLinkedHashMap.size());
@@ -74,16 +80,19 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Map size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>Then return Map size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedLinkedHashMap(Map); given '42'; then return Map size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new ArrayListValuedLinkedHashMap(Map); given '42'; then return Map size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(Map)"})
   void testNewArrayListValuedLinkedHashMap_given42_thenReturnMapSizeIsOne() {
     // Arrange
@@ -91,8 +100,8 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
     map.put("42", "42");
 
     // Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>(
-        map);
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(map);
 
     // Assert
     Map<Object, List<Object>> map2 = actualArrayListValuedLinkedHashMap.getMap();
@@ -106,35 +115,46 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>Then return {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
+   *   <li>Then return {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link
+   * ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedLinkedHashMap(MultiValuedMap); then return HashSetValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new ArrayListValuedLinkedHashMap(MultiValuedMap); then return HashSetValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(MultiValuedMap)"})
   void testNewArrayListValuedLinkedHashMap_thenReturnHashSetValuedHashMap() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
 
-    // Act and Assert
-    assertEquals(map, new ArrayListValuedLinkedHashMap<>(map));
+    // Act
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(map);
+
+    // Assert
+    assertEquals(map, actualArrayListValuedLinkedHashMap);
   }
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>Then return Map size is one.</li>
+   *   <li>Then return Map size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link
+   * ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test new ArrayListValuedLinkedHashMap(MultiValuedMap); then return Map size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(MultiValuedMap)"})
   void testNewArrayListValuedLinkedHashMap_thenReturnMapSizeIsOne() {
     // Arrange
@@ -142,8 +162,8 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
     map.put("Key", "Value");
 
     // Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>(
-        map);
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(map);
 
     // Assert
     Map<Object, List<Object>> map2 = actualArrayListValuedLinkedHashMap.getMap();
@@ -157,41 +177,52 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link
+   * ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedLinkedHashMap(MultiValuedMap); when ArrayListValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new ArrayListValuedLinkedHashMap(MultiValuedMap); when ArrayListValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(MultiValuedMap)"})
   void testNewArrayListValuedLinkedHashMap_whenArrayListValuedHashMap() {
     // Arrange
     ArrayListValuedHashMap<?, ?> map = new ArrayListValuedHashMap<>();
 
-    // Act and Assert
-    assertEquals(map, new ArrayListValuedLinkedHashMap<>(map));
+    // Act
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(map);
+
+    // Assert
+    assertEquals(map, actualArrayListValuedLinkedHashMap);
   }
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then return size is zero.</li>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then return size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap(Map)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedLinkedHashMap(Map); when HashMap(); then return size is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new ArrayListValuedLinkedHashMap(Map); when HashMap(); then return size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ArrayListValuedLinkedHashMap.<init>(Map)"})
   void testNewArrayListValuedLinkedHashMap_whenHashMap_thenReturnSizeIsZero() {
     // Arrange and Act
-    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>(
-        new HashMap<>());
+    ArrayListValuedLinkedHashMap<Object, Object> actualArrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>(new HashMap<>());
 
     // Assert
     assertEquals(0, actualArrayListValuedLinkedHashMap.size());
@@ -201,20 +232,23 @@ class ArrayListValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedLinkedHashMap#createCollection()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link ArrayListValuedLinkedHashMap#ArrayListValuedLinkedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link ArrayListValuedLinkedHashMap#createCollection()}
+   *
+   * <p>Method under test: {@link ArrayListValuedLinkedHashMap#createCollection()}
    */
   @Test
   @DisplayName("Test createCollection(); given ArrayListValuedLinkedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.ArrayList ArrayListValuedLinkedHashMap.createCollection()"})
   void testCreateCollection_givenArrayListValuedLinkedHashMap_thenReturnEmpty() {
     // Arrange
-    ArrayListValuedLinkedHashMap<Object, Object> arrayListValuedLinkedHashMap = new ArrayListValuedLinkedHashMap<>();
+    ArrayListValuedLinkedHashMap<Object, Object> arrayListValuedLinkedHashMap =
+        new ArrayListValuedLinkedHashMap<>();
 
     // Act and Assert
     assertTrue(arrayListValuedLinkedHashMap.createCollection().isEmpty());

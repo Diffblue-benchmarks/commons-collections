@@ -11,6 +11,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -23,35 +24,40 @@ import org.mockito.Mockito;
 class OrderedPropertiesDiffblueTest {
   /**
    * Test new {@link OrderedProperties} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link OrderedProperties}
+   *
+   * <p>Method under test: default or parameterless constructor of {@link OrderedProperties}
    */
   @Test
   @DisplayName("Test new OrderedProperties (default constructor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void OrderedProperties.<init>()"})
   void testNewOrderedProperties() {
     // Arrange, Act and Assert
-    assertTrue((new OrderedProperties()).isEmpty());
+    assertTrue(new OrderedProperties().isEmpty());
   }
 
   /**
    * Test {@link OrderedProperties#compute(Object, BiFunction)}.
+   *
    * <ul>
-   *   <li>Given {@code Apply}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then {@link OrderedProperties} (default constructor) size is one.</li>
+   *   <li>Given {@code Apply}.
+   *   <li>When {@code Key}.
+   *   <li>Then {@link OrderedProperties} (default constructor) size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
+   *
+   * <p>Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
    */
   @Test
-  @DisplayName("Test compute(Object, BiFunction); given 'Apply'; when 'Key'; then OrderedProperties (default constructor) size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test compute(Object, BiFunction); given 'Apply'; when 'Key'; then OrderedProperties (default constructor) size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.compute(Object, BiFunction)"})
   void testCompute_givenApply_whenKey_thenOrderedPropertiesSizeIsOne() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
+
     BiFunction<Object, Object, Object> remappingFunction = mock(BiFunction.class);
     when(remappingFunction.apply(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn("Apply");
 
@@ -67,21 +73,25 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#compute(Object, BiFunction)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link BiFunction} {@link BiFunction#apply(Object, Object)} return {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link BiFunction} {@link BiFunction#apply(Object, Object)} return {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
+   *
+   * <p>Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
    */
   @Test
-  @DisplayName("Test compute(Object, BiFunction); given 'null'; when BiFunction apply(Object, Object) return 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test compute(Object, BiFunction); given 'null'; when BiFunction apply(Object, Object) return 'null'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.compute(Object, BiFunction)"})
   void testCompute_givenNull_whenBiFunctionApplyReturnNull_thenReturnNull() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
+
     BiFunction<Object, Object, Object> remappingFunction = mock(BiFunction.class);
     when(remappingFunction.apply(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(null);
 
@@ -96,21 +106,25 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#computeIfAbsent(Object, Function)}.
+   *
    * <ul>
-   *   <li>Given {@code Apply}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then {@link OrderedProperties} (default constructor) size is one.</li>
+   *   <li>Given {@code Apply}.
+   *   <li>When {@code Key}.
+   *   <li>Then {@link OrderedProperties} (default constructor) size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
+   *
+   * <p>Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
    */
   @Test
-  @DisplayName("Test computeIfAbsent(Object, Function); given 'Apply'; when 'Key'; then OrderedProperties (default constructor) size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test computeIfAbsent(Object, Function); given 'Apply'; when 'Key'; then OrderedProperties (default constructor) size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.computeIfAbsent(Object, Function)"})
   void testComputeIfAbsent_givenApply_whenKey_thenOrderedPropertiesSizeIsOne() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
+
     Function<Object, Object> mappingFunction = mock(Function.class);
     when(mappingFunction.apply(Mockito.<Object>any())).thenReturn("Apply");
 
@@ -126,21 +140,25 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#computeIfAbsent(Object, Function)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link Function} {@link Function#apply(Object)} return {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link Function} {@link Function#apply(Object)} return {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
+   *
+   * <p>Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
    */
   @Test
-  @DisplayName("Test computeIfAbsent(Object, Function); given 'null'; when Function apply(Object) return 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test computeIfAbsent(Object, Function); given 'null'; when Function apply(Object) return 'null'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.computeIfAbsent(Object, Function)"})
   void testComputeIfAbsent_givenNull_whenFunctionApplyReturnNull_thenReturnNull() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
+
     Function<Object, Object> mappingFunction = mock(Function.class);
     when(mappingFunction.apply(Mockito.<Object>any())).thenReturn(null);
 
@@ -155,16 +173,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#entrySet()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#entrySet()}
+   *
+   * <p>Method under test: {@link OrderedProperties#entrySet()}
    */
   @Test
-  @DisplayName("Test entrySet(); given OrderedProperties (default constructor) forty-two is 'Value'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test entrySet(); given OrderedProperties (default constructor) forty-two is 'Value'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
   void testEntrySet_givenOrderedPropertiesFortyTwoIsValue_thenReturnSizeIsTwo() {
     // Arrange
@@ -178,16 +199,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#entrySet()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#entrySet()}
+   *
+   * <p>Method under test: {@link OrderedProperties#entrySet()}
    */
   @Test
-  @DisplayName("Test entrySet(); given OrderedProperties (default constructor) 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test entrySet(); given OrderedProperties (default constructor) 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
   void testEntrySet_givenOrderedPropertiesKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -200,40 +224,46 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#entrySet()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#entrySet()}
+   *
+   * <p>Method under test: {@link OrderedProperties#entrySet()}
    */
   @Test
   @DisplayName("Test entrySet(); given OrderedProperties (default constructor); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
   void testEntrySet_givenOrderedProperties_thenReturnEmpty() {
     // Arrange, Act and Assert
-    assertTrue((new OrderedProperties()).entrySet().isEmpty());
+    assertTrue(new OrderedProperties().entrySet().isEmpty());
   }
 
   /**
    * Test {@link OrderedProperties#forEach(BiConsumer)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.
+   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#forEach(BiConsumer)}
+   *
+   * <p>Method under test: {@link OrderedProperties#forEach(BiConsumer)}
    */
   @Test
-  @DisplayName("Test forEach(BiConsumer); given OrderedProperties (default constructor) forty-two is 'Value'; then calls accept(Object, Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test forEach(BiConsumer); given OrderedProperties (default constructor) forty-two is 'Value'; then calls accept(Object, Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void OrderedProperties.forEach(BiConsumer)"})
   void testForEach_givenOrderedPropertiesFortyTwoIsValue_thenCallsAccept() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put("Key", "Value");
     orderedProperties.put(42, "Value");
+
     BiConsumer<Object, Object> action = mock(BiConsumer.class);
     doNothing().when(action).accept(Mockito.<Object>any(), Mockito.<Object>any());
 
@@ -246,21 +276,25 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#forEach(BiConsumer)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#forEach(BiConsumer)}
+   *
+   * <p>Method under test: {@link OrderedProperties#forEach(BiConsumer)}
    */
   @Test
-  @DisplayName("Test forEach(BiConsumer); given OrderedProperties (default constructor) 'Key' is 'Value'; then calls accept(Object, Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test forEach(BiConsumer); given OrderedProperties (default constructor) 'Key' is 'Value'; then calls accept(Object, Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void OrderedProperties.forEach(BiConsumer)"})
   void testForEach_givenOrderedPropertiesKeyIsValue_thenCallsAccept() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put("Key", "Value");
+
     BiConsumer<Object, Object> action = mock(BiConsumer.class);
     doNothing().when(action).accept(Mockito.<Object>any(), Mockito.<Object>any());
 
@@ -273,26 +307,28 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#keySet()}.
-   * <p>
-   * Method under test: {@link OrderedProperties#keySet()}
+   *
+   * <p>Method under test: {@link OrderedProperties#keySet()}
    */
   @Test
   @DisplayName("Test keySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set OrderedProperties.keySet()"})
   void testKeySet() {
     // Arrange, Act and Assert
-    assertTrue((new OrderedProperties()).keySet().isEmpty());
+    assertTrue(new OrderedProperties().keySet().isEmpty());
   }
 
   /**
    * Test {@link OrderedProperties#merge(Object, Object, BiFunction)}.
-   * <p>
-   * Method under test: {@link OrderedProperties#merge(Object, Object, BiFunction)}
+   *
+   * <p>Method under test: {@link OrderedProperties#merge(Object, Object, BiFunction)}
    */
   @Test
   @DisplayName("Test merge(Object, Object, BiFunction)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.merge(Object, Object, BiFunction)"})
   void testMerge() {
     // Arrange
@@ -309,17 +345,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#put(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#put(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#put(Object, Object)}
    */
   @Test
-  @DisplayName("Test put(Object, Object); given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test put(Object, Object); given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.put(Object, Object)"})
   void testPut_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
     // Arrange
@@ -337,17 +376,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#put(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#put(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#put(Object, Object)}
    */
   @Test
-  @DisplayName("Test put(Object, Object); given OrderedProperties (default constructor); when 'Key'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test put(Object, Object); given OrderedProperties (default constructor); when 'Key'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.put(Object, Object)"})
   void testPut_givenOrderedProperties_whenKey_thenReturnNull() {
     // Arrange
@@ -364,17 +406,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#putIfAbsent(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
    */
   @Test
-  @DisplayName("Test putIfAbsent(Object, Object); given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putIfAbsent(Object, Object); given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.putIfAbsent(Object, Object)"})
   void testPutIfAbsent_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
     // Arrange
@@ -392,17 +437,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#putIfAbsent(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
    */
   @Test
-  @DisplayName("Test putIfAbsent(Object, Object); given OrderedProperties (default constructor); when 'Key'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putIfAbsent(Object, Object); given OrderedProperties (default constructor); when 'Key'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.putIfAbsent(Object, Object)"})
   void testPutIfAbsent_givenOrderedProperties_whenKey_thenReturnNull() {
     // Arrange
@@ -419,16 +467,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#remove(Object, Object)} with {@code key}, {@code value}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#remove(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#remove(Object, Object)}
    */
   @Test
-  @DisplayName("Test remove(Object, Object) with 'key', 'value'; given OrderedProperties (default constructor) 'Key' is 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object, Object) with 'key', 'value'; given OrderedProperties (default constructor) 'Key' is 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean OrderedProperties.remove(Object, Object)"})
   void testRemoveWithKeyValue_givenOrderedPropertiesKeyIsValue_thenReturnTrue() {
     // Arrange
@@ -445,16 +496,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#remove(Object, Object)} with {@code key}, {@code value}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#remove(Object, Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#remove(Object, Object)}
    */
   @Test
-  @DisplayName("Test remove(Object, Object) with 'key', 'value'; given OrderedProperties (default constructor); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object, Object) with 'key', 'value'; given OrderedProperties (default constructor); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean OrderedProperties.remove(Object, Object)"})
   void testRemoveWithKeyValue_givenOrderedProperties_thenReturnFalse() {
     // Arrange
@@ -467,17 +521,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#remove(Object)} with {@code key}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#remove(Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object) with 'key'; given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object) with 'key'; given OrderedProperties (default constructor) 'Key' is 'Value'; when 'Key'; then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.remove(Object)"})
   void testRemoveWithKey_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
     // Arrange
@@ -491,17 +548,20 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#remove(Object)} with {@code key}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#remove(Object)}
+   *
+   * <p>Method under test: {@link OrderedProperties#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object) with 'key'; given OrderedProperties (default constructor); when 'Key'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object) with 'key'; given OrderedProperties (default constructor); when 'Key'; then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object OrderedProperties.remove(Object)"})
   void testRemoveWithKey_givenOrderedProperties_whenKey_thenReturnNull() {
     // Arrange
@@ -514,16 +574,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then return {@code {42=Value, Key=Value}}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.
+   *   <li>Then return {@code {42=Value, Key=Value}}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#toString()}
+   *
+   * <p>Method under test: {@link OrderedProperties#toString()}
    */
   @Test
-  @DisplayName("Test toString(); given OrderedProperties (default constructor) forty-two is 'Value'; then return '{42=Value, Key=Value}'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toString(); given OrderedProperties (default constructor) forty-two is 'Value'; then return '{42=Value, Key=Value}'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
   void testToString_givenOrderedPropertiesFortyTwoIsValue_thenReturn42ValueKeyValue() {
     // Arrange
@@ -537,16 +600,19 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code {Key=Value}}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.
+   *   <li>Then return {@code {Key=Value}}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#toString()}
+   *
+   * <p>Method under test: {@link OrderedProperties#toString()}
    */
   @Test
-  @DisplayName("Test toString(); given OrderedProperties (default constructor) 'Key' is 'Value'; then return '{Key=Value}'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test toString(); given OrderedProperties (default constructor) 'Key' is 'Value'; then return '{Key=Value}'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
   void testToString_givenOrderedPropertiesKeyIsValue_thenReturnKeyValue() {
     // Arrange
@@ -559,19 +625,21 @@ class OrderedPropertiesDiffblueTest {
 
   /**
    * Test {@link OrderedProperties#toString()}.
+   *
    * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>Then return {@code {}}.</li>
+   *   <li>Given {@link OrderedProperties} (default constructor).
+   *   <li>Then return {@code {}}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#toString()}
+   *
+   * <p>Method under test: {@link OrderedProperties#toString()}
    */
   @Test
   @DisplayName("Test toString(); given OrderedProperties (default constructor); then return '{}'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
   void testToString_givenOrderedProperties_thenReturnLeftCurlyBracketRightCurlyBracket() {
     // Arrange, Act and Assert
-    assertEquals("{}", (new OrderedProperties()).toString());
+    assertEquals("{}", new OrderedProperties().toString());
   }
 }

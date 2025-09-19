@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,22 +15,25 @@ import org.junit.jupiter.api.Test;
 class PushbackIteratorDiffblueTest {
   /**
    * Test {@link PushbackIterator#pushbackIterator(Iterator)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>When {@link ArrayList#ArrayList()} iterator.
    * </ul>
-   * <p>
-   * Method under test: {@link PushbackIterator#pushbackIterator(Iterator)}
+   *
+   * <p>Method under test: {@link PushbackIterator#pushbackIterator(Iterator)}
    */
   @Test
   @DisplayName("Test pushbackIterator(Iterator); when ArrayList() iterator")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"PushbackIterator PushbackIterator.pushbackIterator(Iterator)"})
   void testPushbackIterator_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    PushbackIterator<Object> actualPushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> actualPushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Assert
     assertFalse(actualPushbackIteratorResult.hasNext());
@@ -37,11 +41,13 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#pushbackIterator(Iterator)}.
+   *
    * <ul>
-   *   <li>When pushbackIterator {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>When pushbackIterator {@link ArrayList#ArrayList()} iterator.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link PushbackIterator#pushbackIterator(Iterator)}
    *   <li>{@link PushbackIterator#pushbackIterator(Iterator)}
@@ -49,7 +55,8 @@ class PushbackIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test pushbackIterator(Iterator); when pushbackIterator ArrayList() iterator")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"PushbackIterator PushbackIterator.pushbackIterator(Iterator)"})
   void testPushbackIterator_whenPushbackIteratorArrayListIterator() {
     // Arrange
@@ -57,7 +64,8 @@ class PushbackIteratorDiffblueTest {
     PushbackIterator<?> iterator = PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act
-    PushbackIterator<Object> actualPushbackIteratorResult = PushbackIterator.pushbackIterator(iterator);
+    PushbackIterator<Object> actualPushbackIteratorResult =
+        PushbackIterator.pushbackIterator(iterator);
 
     // Assert
     assertFalse(actualPushbackIteratorResult.hasNext());
@@ -65,12 +73,13 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#PushbackIterator(Iterator)}.
-   * <p>
-   * Method under test: {@link PushbackIterator#PushbackIterator(Iterator)}
+   *
+   * <p>Method under test: {@link PushbackIterator#PushbackIterator(Iterator)}
    */
   @Test
   @DisplayName("Test new PushbackIterator(Iterator)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PushbackIterator.<init>(Iterator)"})
   void testNewPushbackIterator() {
     // Arrange
@@ -85,22 +94,25 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link PushbackIterator#hasNext()}
+   *
+   * <p>Method under test: {@link PushbackIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean PushbackIterator.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PushbackIterator<Object> pushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> pushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act and Assert
     assertTrue(pushbackIteratorResult.hasNext());
@@ -108,20 +120,23 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link PushbackIterator#hasNext()}
+   *
+   * <p>Method under test: {@link PushbackIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean PushbackIterator.hasNext()"})
   void testHasNext_thenReturnFalse() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PushbackIterator<Object> pushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> pushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act and Assert
     assertFalse(pushbackIteratorResult.hasNext());
@@ -129,22 +144,25 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link PushbackIterator#next()}
+   *
+   * <p>Method under test: {@link PushbackIterator#next()}
    */
   @Test
   @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object PushbackIterator.next()"})
   void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PushbackIterator<Object> pushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> pushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act and Assert
     assertEquals("42", pushbackIteratorResult.next());
@@ -153,17 +171,19 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#pushback(Object)}.
-   * <p>
-   * Method under test: {@link PushbackIterator#pushback(Object)}
+   *
+   * <p>Method under test: {@link PushbackIterator#pushback(Object)}
    */
   @Test
   @DisplayName("Test pushback(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PushbackIterator.pushback(Object)"})
   void testPushback() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PushbackIterator<Object> pushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> pushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act
     pushbackIteratorResult.pushback("Item");
@@ -175,17 +195,19 @@ class PushbackIteratorDiffblueTest {
 
   /**
    * Test {@link PushbackIterator#remove()}.
-   * <p>
-   * Method under test: {@link PushbackIterator#remove()}
+   *
+   * <p>Method under test: {@link PushbackIterator#remove()}
    */
   @Test
   @DisplayName("Test remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PushbackIterator.remove()"})
   void testRemove() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PushbackIterator<Object> pushbackIteratorResult = PushbackIterator.pushbackIterator(objectList.iterator());
+    PushbackIterator<Object> pushbackIteratorResult =
+        PushbackIterator.pushbackIterator(objectList.iterator());
 
     // Act and Assert
     assertThrows(UnsupportedOperationException.class, () -> pushbackIteratorResult.remove());

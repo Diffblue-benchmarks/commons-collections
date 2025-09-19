@@ -2,17 +2,14 @@ package org.apache.commons.collections4.list;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.anyBoolean;
-import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,8 +19,7 @@ import java.util.ListIterator;
 import java.util.Set;
 import org.apache.commons.collections4.iterators.AbstractListIteratorDecorator;
 import org.apache.commons.collections4.iterators.FilterListIterator;
-import org.apache.commons.collections4.list.AbstractLinkedListJava21.LinkedListIterator;
-import org.apache.commons.collections4.list.AbstractLinkedListJava21.Node;
+import org.apache.commons.collections4.list.AbstractLinkedList.LinkedListIterator;
 import org.apache.commons.collections4.list.SetUniqueList.SetListIterator;
 import org.apache.commons.collections4.list.SetUniqueList.SetListListIterator;
 import org.junit.jupiter.api.DisplayName;
@@ -34,16 +30,19 @@ import org.mockito.Mockito;
 class SetUniqueListDiffblueTest {
   /**
    * Test SetListIterator {@link SetListIterator#SetListIterator(Iterator, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
+   *
+   * <p>Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
    */
   @Test
-  @DisplayName("Test SetListIterator new SetListIterator(Iterator, Set); given '42'; when HashSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListIterator new SetListIterator(Iterator, Set); given '42'; when HashSet() add '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListIterator.<init>(Iterator, Set)"})
   void testSetListIteratorNewSetListIterator_given42_whenHashSetAdd42() {
     // Arrange
@@ -62,16 +61,19 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListIterator {@link SetListIterator#SetListIterator(Iterator, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
+   *
+   * <p>Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
    */
   @Test
-  @DisplayName("Test SetListIterator new SetListIterator(Iterator, Set); given two; when HashSet() add two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListIterator new SetListIterator(Iterator, Set); given two; when HashSet() add two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListIterator.<init>(Iterator, Set)"})
   void testSetListIteratorNewSetListIterator_givenTwo_whenHashSetAddTwo() {
     // Arrange
@@ -91,15 +93,17 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListIterator {@link SetListIterator#SetListIterator(Iterator, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
+   *   <li>When {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
+   *
+   * <p>Method under test: {@link SetListIterator#SetListIterator(Iterator, Set)}
    */
   @Test
   @DisplayName("Test SetListIterator new SetListIterator(Iterator, Set); when HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListIterator.<init>(Iterator, Set)"})
   void testSetListIteratorNewSetListIterator_whenHashSet() {
     // Arrange
@@ -115,16 +119,18 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListIterator {@link SetListIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListIterator#next()}
+   *
+   * <p>Method under test: {@link SetListIterator#next()}
    */
   @Test
   @DisplayName("Test SetListIterator next(); given ArrayList() add '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SetListIterator.next()"})
   void testSetListIteratorNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
@@ -139,125 +145,82 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListListIterator {@link SetListListIterator#add(Object)}.
-   * <p>
-   * Method under test: {@link SetListListIterator#add(Object)}
+   *
+   * <p>Method under test: {@link SetListListIterator#add(Object)}
    */
   @Test
   @DisplayName("Test SetListListIterator add(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.add(Object)"})
-  void testSetListListIteratorAdd() throws IndexOutOfBoundsException {
+  void testSetListListIteratorAdd() {
     // Arrange
-    AbstractLinkedListJava21<Object> parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node<>());
-    doNothing().when(parent).addNodeBefore(Mockito.<Node<Object>>any(), Mockito.<Object>any());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new LinkedListIterator<>(parent, 1));
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    LinkedListIterator<Object> iterator = mock(LinkedListIterator.class);
+    doNothing().when(iterator).add(Mockito.<Object>any());
+    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(iterator);
+
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
+    setListListIterator.add("Object");
 
     // Act
     setListListIterator.add("Object");
 
     // Assert
-    verify(parent).addNodeBefore(isA(Node.class), isA(Object.class));
-    verify(parent).getNode(eq(1), eq(true));
+    verify(iterator).add(isA(Object.class));
   }
 
   /**
    * Test SetListListIterator {@link SetListListIterator#add(Object)}.
-   * <p>
-   * Method under test: {@link SetListListIterator#add(Object)}
+   *
+   * <ul>
+   *   <li>Given {@link LinkedListIterator} {@link LinkedListIterator#add(Object)} does nothing.
+   *   <li>Then calls {@link LinkedListIterator#add(Object)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SetListListIterator#add(Object)}
    */
   @Test
-  @DisplayName("Test SetListListIterator add(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListListIterator add(Object); given LinkedListIterator add(Object) does nothing; then calls add(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.add(Object)"})
-  void testSetListListIteratorAdd2() throws IndexOutOfBoundsException {
+  void testSetListListIteratorAdd_givenLinkedListIteratorAddDoesNothing_thenCallsAdd() {
     // Arrange
-    AbstractLinkedListJava21<Object> parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node<>());
-    doNothing().when(parent).addNodeBefore(Mockito.<Node<Object>>any(), Mockito.<Object>any());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new LinkedListIterator<>(parent, 1));
-
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
-    setListListIterator.add("Object");
+    LinkedListIterator<Object> iterator = mock(LinkedListIterator.class);
+    doNothing().when(iterator).add(Mockito.<Object>any());
+    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(iterator);
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
     // Act
     setListListIterator.add("Object");
 
     // Assert
-    verify(parent).addNodeBefore(isA(Node.class), isA(Object.class));
-    verify(parent).getNode(eq(1), eq(true));
-  }
-
-  /**
-   * Test SetListListIterator {@link SetListListIterator#add(Object)}.
-   * <p>
-   * Method under test: {@link SetListListIterator#add(Object)}
-   */
-  @Test
-  @DisplayName("Test SetListListIterator add(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void SetListListIterator.add(Object)"})
-  void testSetListListIteratorAdd3() throws IndexOutOfBoundsException {
-    // Arrange
-    AbstractLinkedListJava21 parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node());
-    doNothing().when(parent).addNodeBefore(Mockito.<Node<Object>>any(), Mockito.<Object>any());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(
-        mock(PredicatedList.class).new PredicatedListIterator(new LinkedListIterator(parent, 1)));
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
-
-    // Act
-    setListListIterator.add("Object");
-
-    // Assert
-    verify(parent).addNodeBefore(isA(Node.class), isA(Object.class));
-    verify(parent).getNode(eq(1), eq(true));
-  }
-
-  /**
-   * Test SetListListIterator {@link SetListListIterator#add(Object)}.
-   * <p>
-   * Method under test: {@link SetListListIterator#add(Object)}
-   */
-  @Test
-  @DisplayName("Test SetListListIterator add(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void SetListListIterator.add(Object)"})
-  void testSetListListIteratorAdd4() throws IndexOutOfBoundsException {
-    // Arrange
-    AbstractLinkedListJava21 parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node());
-    doNothing().when(parent).addNodeBefore(Mockito.<Node<Object>>any(), Mockito.<Object>any());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(
-        mock(PredicatedList.class).new PredicatedListIterator(
-            mock(PredicatedList.class).new PredicatedListIterator(new LinkedListIterator(parent, 1))));
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
-
-    // Act
-    setListListIterator.add("Object");
-
-    // Assert
-    verify(parent).addNodeBefore(isA(Node.class), isA(Object.class));
-    verify(parent).getNode(eq(1), eq(true));
+    verify(iterator).add(isA(Object.class));
   }
 
   /**
    * Test SetListListIterator {@link SetListListIterator#SetListListIterator(ListIterator, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
+   *
+   * <p>Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
    */
   @Test
-  @DisplayName("Test SetListListIterator new SetListListIterator(ListIterator, Set); given '42'; when HashSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListListIterator new SetListListIterator(ListIterator, Set); given '42'; when HashSet() add '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.<init>(ListIterator, Set)"})
   void testSetListListIteratorNewSetListListIterator_given42_whenHashSetAdd42() {
     // Arrange
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new FilterListIterator<>());
+    AbstractListIteratorDecorator<Object> it =
+        new AbstractListIteratorDecorator<>(new FilterListIterator<>());
 
     HashSet<Object> set = new HashSet<>();
     set.add("42");
@@ -271,20 +234,24 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListListIterator {@link SetListListIterator#SetListListIterator(ListIterator, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
+   *
+   * <p>Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
    */
   @Test
-  @DisplayName("Test SetListListIterator new SetListListIterator(ListIterator, Set); given two; when HashSet() add two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListListIterator new SetListListIterator(ListIterator, Set); given two; when HashSet() add two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.<init>(ListIterator, Set)"})
   void testSetListListIteratorNewSetListListIterator_givenTwo_whenHashSetAddTwo() {
     // Arrange
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new FilterListIterator<>());
+    AbstractListIteratorDecorator<Object> it =
+        new AbstractListIteratorDecorator<>(new FilterListIterator<>());
 
     HashSet<Object> set = new HashSet<>();
     set.add(2);
@@ -299,23 +266,28 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListListIterator {@link SetListListIterator#SetListListIterator(ListIterator, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
+   *
+   * <p>Method under test: {@link SetListListIterator#SetListListIterator(ListIterator, Set)}
    */
   @Test
-  @DisplayName("Test SetListListIterator new SetListListIterator(ListIterator, Set); when HashSet(); then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListListIterator new SetListListIterator(ListIterator, Set); when HashSet(); then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.<init>(ListIterator, Set)"})
   void testSetListListIteratorNewSetListListIterator_whenHashSet_thenReturnNotHasNext() {
     // Arrange
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new FilterListIterator<>());
+    AbstractListIteratorDecorator<Object> it =
+        new AbstractListIteratorDecorator<>(new FilterListIterator<>());
 
     // Act
-    SetListListIterator<Object> actualSetListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    SetListListIterator<Object> actualSetListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
     // Assert
     assertFalse(actualSetListListIterator.hasNext());
@@ -323,76 +295,80 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test SetListListIterator {@link SetListListIterator#next()}.
+   *
    * <ul>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link LinkedListIterator} {@link LinkedListIterator#next()} return {@code Next}.
+   *   <li>Then return {@code Next}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#next()}
+   *
+   * <p>Method under test: {@link SetListListIterator#next()}
    */
   @Test
-  @DisplayName("Test SetListListIterator next(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test SetListListIterator next(); given LinkedListIterator next() return 'Next'; then return 'Next'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SetListListIterator.next()"})
-  void testSetListListIteratorNext_thenReturnNull() throws IndexOutOfBoundsException {
+  void testSetListListIteratorNext_givenLinkedListIteratorNextReturnNext_thenReturnNext() {
     // Arrange
-    AbstractLinkedListJava21<Object> parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node<>());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new LinkedListIterator<>(parent, 1));
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    LinkedListIterator<Object> iterator = mock(LinkedListIterator.class);
+    when(iterator.next()).thenReturn("Next");
+    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(iterator);
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
     // Act
     Object actualNextResult = setListListIterator.next();
 
     // Assert
-    verify(parent).getNode(eq(1), eq(true));
-    assertNull(actualNextResult);
+    verify(iterator).next();
+    assertEquals("Next", actualNextResult);
   }
 
   /**
    * Test SetListListIterator {@link SetListListIterator#previous()}.
+   *
    * <ul>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Then return {@code Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#previous()}
+   *
+   * <p>Method under test: {@link SetListListIterator#previous()}
    */
   @Test
-  @DisplayName("Test SetListListIterator previous(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test SetListListIterator previous(); then return 'Value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SetListListIterator.previous()"})
-  void testSetListListIteratorPrevious_thenReturnNull() throws IndexOutOfBoundsException {
+  void testSetListListIteratorPrevious_thenReturnValue() throws IndexOutOfBoundsException {
     // Arrange
-    AbstractLinkedListJava21<Object> parent = mock(AbstractLinkedListJava21.class);
-    when(parent.getNode(anyInt(), anyBoolean())).thenReturn(new Node<>());
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new LinkedListIterator<>(parent, 1));
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
+    parent.add("Value");
+    AbstractListIteratorDecorator<Object> it =
+        new AbstractListIteratorDecorator<>(new LinkedListIterator<>(parent, 1));
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
-    // Act
-    Object actualPreviousResult = setListListIterator.previous();
-
-    // Assert
-    verify(parent).getNode(eq(1), eq(true));
-    assertNull(actualPreviousResult);
+    // Act and Assert
+    assertEquals("Value", setListListIterator.previous());
   }
 
   /**
    * Test SetListListIterator {@link SetListListIterator#remove()}.
-   * <ul>
-   *   <li>Then calls {@link AbstractLinkedList.LinkedListIterator#remove()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#remove()}
+   *
+   * <p>Method under test: {@link SetListListIterator#remove()}
    */
   @Test
-  @DisplayName("Test SetListListIterator remove(); then calls remove()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test SetListListIterator remove()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.remove()"})
-  void testSetListListIteratorRemove_thenCallsRemove() {
+  void testSetListListIteratorRemove() {
     // Arrange
-    AbstractLinkedList.LinkedListIterator<Object> iterator = mock(AbstractLinkedList.LinkedListIterator.class);
+    LinkedListIterator<Object> iterator = mock(LinkedListIterator.class);
     doNothing().when(iterator).remove();
     AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(iterator);
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
     // Act
     setListListIterator.remove();
@@ -402,21 +378,50 @@ class SetUniqueListDiffblueTest {
   }
 
   /**
+   * Test SetListListIterator {@link SetListListIterator#remove()}.
+   *
+   * <p>Method under test: {@link SetListListIterator#remove()}
+   */
+  @Test
+  @DisplayName("Test SetListListIterator remove()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SetListListIterator.remove()"})
+  void testSetListListIteratorRemove2() {
+    // Arrange
+    LinkedListIterator<Object> it = mock(LinkedListIterator.class);
+    doNothing().when(it).remove();
+    SetListListIterator<Object> it2 = new SetListListIterator<>(it, new HashSet<>());
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it2, new HashSet<>());
+
+    // Act
+    setListListIterator.remove();
+
+    // Assert
+    verify(it).remove();
+  }
+
+  /**
    * Test SetListListIterator {@link SetListListIterator#set(Object)}.
+   *
    * <ul>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
+   *   <li>Then throw {@link UnsupportedOperationException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetListListIterator#set(Object)}
+   *
+   * <p>Method under test: {@link SetListListIterator#set(Object)}
    */
   @Test
   @DisplayName("Test SetListListIterator set(Object); then throw UnsupportedOperationException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetListListIterator.set(Object)"})
   void testSetListListIteratorSet_thenThrowUnsupportedOperationException() {
     // Arrange
-    AbstractListIteratorDecorator<Object> it = new AbstractListIteratorDecorator<>(new FilterListIterator<>());
-    SetListListIterator<Object> setListListIterator = new SetListListIterator<>(it, new HashSet<>());
+    AbstractListIteratorDecorator<Object> it =
+        new AbstractListIteratorDecorator<>(new FilterListIterator<>());
+    SetListListIterator<Object> setListListIterator =
+        new SetListListIterator<>(it, new HashSet<>());
 
     // Act and Assert
     assertThrows(UnsupportedOperationException.class, () -> setListListIterator.set("Object"));
@@ -424,17 +429,20 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test {@link SetUniqueList#setUniqueList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#setUniqueList(List)}
+   *
+   * <p>Method under test: {@link SetUniqueList#setUniqueList(List)}
    */
   @Test
-  @DisplayName("Test setUniqueList(List); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test setUniqueList(List); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetUniqueList SetUniqueList.setUniqueList(List)"})
   void testSetUniqueList_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
     // Arrange
@@ -451,17 +459,20 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test {@link SetUniqueList#setUniqueList(List)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#setUniqueList(List)}
+   *
+   * <p>Method under test: {@link SetUniqueList#setUniqueList(List)}
    */
   @Test
-  @DisplayName("Test setUniqueList(List); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test setUniqueList(List); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetUniqueList SetUniqueList.setUniqueList(List)"})
   void testSetUniqueList_given42_whenArrayListAdd42_thenArrayListSizeIsOne2() {
     // Arrange
@@ -479,17 +490,20 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test {@link SetUniqueList#setUniqueList(List)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   *   <li>Given two.
+   *   <li>When {@link ArrayList#ArrayList()} add two.
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#setUniqueList(List)}
+   *
+   * <p>Method under test: {@link SetUniqueList#setUniqueList(List)}
    */
   @Test
-  @DisplayName("Test setUniqueList(List); given two; when ArrayList() add two; then ArrayList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test setUniqueList(List); given two; when ArrayList() add two; then ArrayList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetUniqueList SetUniqueList.setUniqueList(List)"})
   void testSetUniqueList_givenTwo_whenArrayListAddTwo_thenArrayListSizeIsTwo() {
     // Arrange
@@ -507,16 +521,18 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test {@link SetUniqueList#setUniqueList(List)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#setUniqueList(List)}
+   *
+   * <p>Method under test: {@link SetUniqueList#setUniqueList(List)}
    */
   @Test
   @DisplayName("Test setUniqueList(List); when ArrayList(); then ArrayList() Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetUniqueList SetUniqueList.setUniqueList(List)"})
   void testSetUniqueList_whenArrayList_thenArrayListEmpty() {
     // Arrange
@@ -532,38 +548,45 @@ class SetUniqueListDiffblueTest {
 
   /**
    * Test {@link SetUniqueList#SetUniqueList(List, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
+   *
+   * <p>Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
    */
   @Test
   @DisplayName("Test new SetUniqueList(List, Set); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetUniqueList.<init>(List, Set)"})
   void testNewSetUniqueList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
 
-    // Act and Assert
-    assertEquals(list, new SetUniqueList<>(list, new HashSet<>()));
+    // Act
+    SetUniqueList<Object> actualObjectList = new SetUniqueList<>(list, new HashSet<>());
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link SetUniqueList#SetUniqueList(List, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
+   *
+   * <p>Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
    */
   @Test
   @DisplayName("Test new SetUniqueList(List, Set); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetUniqueList.<init>(List, Set)"})
   void testNewSetUniqueList_given42_whenArrayListAdd422() {
     // Arrange
@@ -571,22 +594,27 @@ class SetUniqueListDiffblueTest {
     list.add("42");
     list.add("42");
 
-    // Act and Assert
-    assertEquals(list, new SetUniqueList<>(list, new HashSet<>()));
+    // Act
+    SetUniqueList<Object> actualObjectList = new SetUniqueList<>(list, new HashSet<>());
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link SetUniqueList#SetUniqueList(List, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
+   *
+   * <p>Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
    */
   @Test
   @DisplayName("Test new SetUniqueList(List, Set); given '42'; when HashSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetUniqueList.<init>(List, Set)"})
   void testNewSetUniqueList_given42_whenHashSetAdd42() {
     // Arrange
@@ -595,22 +623,27 @@ class SetUniqueListDiffblueTest {
     HashSet<Object> set = new HashSet<>();
     set.add("42");
 
-    // Act and Assert
-    assertEquals(list, new SetUniqueList<>(list, set));
+    // Act
+    SetUniqueList<Object> actualObjectList = new SetUniqueList<>(list, set);
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link SetUniqueList#SetUniqueList(List, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
+   *
+   * <p>Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
    */
   @Test
   @DisplayName("Test new SetUniqueList(List, Set); given two; when HashSet() add two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetUniqueList.<init>(List, Set)"})
   void testNewSetUniqueList_givenTwo_whenHashSetAddTwo() {
     // Arrange
@@ -620,27 +653,35 @@ class SetUniqueListDiffblueTest {
     set.add(2);
     set.add("42");
 
-    // Act and Assert
-    assertEquals(list, new SetUniqueList<>(list, set));
+    // Act
+    SetUniqueList<Object> actualObjectList = new SetUniqueList<>(list, set);
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 
   /**
    * Test {@link SetUniqueList#SetUniqueList(List, Set)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
+   *
+   * <p>Method under test: {@link SetUniqueList#SetUniqueList(List, Set)}
    */
   @Test
   @DisplayName("Test new SetUniqueList(List, Set); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SetUniqueList.<init>(List, Set)"})
   void testNewSetUniqueList_whenArrayList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
 
-    // Act and Assert
-    assertEquals(list, new SetUniqueList<>(list, new HashSet<>()));
+    // Act
+    SetUniqueList<Object> actualObjectList = new SetUniqueList<>(list, new HashSet<>());
+
+    // Assert
+    assertEquals(list, actualObjectList);
   }
 }

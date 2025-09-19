@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,19 +20,21 @@ import org.mockito.Mockito;
 class ChainedClosureDiffblueTest {
   /**
    * Test {@link ChainedClosure#chainedClosure(Closure[])} with {@code Closure[]}.
+   *
    * <ul>
-   *   <li>Then return {@link NOPClosure}.</li>
+   *   <li>Then return {@link NOPClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
+   *
+   * <p>Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
    */
   @Test
   @DisplayName("Test chainedClosure(Closure[]) with 'Closure[]'; then return NOPClosure")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ChainedClosure.chainedClosure(Closure[])"})
   void testChainedClosureWithClosure_thenReturnNOPClosure() {
     // Arrange
-    Closure<? super Object>[] closures = new Closure[]{};
+    Closure<? super Object>[] closures = new Closure[] {};
 
     // Act
     Closure<Object> actualChainedClosureResult = ChainedClosure.chainedClosure(closures);
@@ -44,22 +47,25 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#chainedClosure(Closure[])} with {@code Closure[]}.
+   *
    * <ul>
-   *   <li>When {@link Closure} {@link Closure#accept(Object)} does nothing.</li>
-   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   *   <li>When {@link Closure} {@link Closure#accept(Object)} does nothing.
+   *   <li>Then calls {@link Closure#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
+   *
+   * <p>Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
    */
   @Test
-  @DisplayName("Test chainedClosure(Closure[]) with 'Closure[]'; when Closure accept(Object) does nothing; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test chainedClosure(Closure[]) with 'Closure[]'; when Closure accept(Object) does nothing; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ChainedClosure.chainedClosure(Closure[])"})
   void testChainedClosureWithClosure_whenClosureAcceptDoesNothing_thenCallsAccept() {
     // Arrange
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
-    Closure<? super Object>[] closures = new Closure[]{closure};
+    Closure<? super Object>[] closures = new Closure[] {closure};
 
     // Act
     Closure<Object> actualChainedClosureResult = ChainedClosure.chainedClosure(closures);
@@ -74,20 +80,23 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#chainedClosure(Closure[])} with {@code Closure[]}.
+   *
    * <ul>
-   *   <li>When {@link Closure}.</li>
-   *   <li>Then return {@link ChainedClosure}.</li>
+   *   <li>When {@link Closure}.
+   *   <li>Then return {@link ChainedClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
+   *
+   * <p>Method under test: {@link ChainedClosure#chainedClosure(Closure[])}
    */
   @Test
-  @DisplayName("Test chainedClosure(Closure[]) with 'Closure[]'; when Closure; then return ChainedClosure")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test chainedClosure(Closure[]) with 'Closure[]'; when Closure; then return ChainedClosure")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ChainedClosure.chainedClosure(Closure[])"})
   void testChainedClosureWithClosure_whenClosure_thenReturnChainedClosure() {
     // Arrange
-    Closure<? super Object>[] closures = new Closure[]{mock(Closure.class)};
+    Closure<? super Object>[] closures = new Closure[] {mock(Closure.class)};
 
     // Act
     Closure<Object> actualChainedClosureResult = ChainedClosure.chainedClosure(closures);
@@ -100,16 +109,19 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#chainedClosure(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link NOPClosure}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link NOPClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#chainedClosure(Collection)}
+   *
+   * <p>Method under test: {@link ChainedClosure#chainedClosure(Collection)}
    */
   @Test
-  @DisplayName("Test chainedClosure(Collection) with 'Collection'; when ArrayList(); then return NOPClosure")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test chainedClosure(Collection) with 'Collection'; when ArrayList(); then return NOPClosure")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ChainedClosure.chainedClosure(Collection)"})
   void testChainedClosureWithCollection_whenArrayList_thenReturnNOPClosure() {
     // Arrange
@@ -126,16 +138,18 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#ChainedClosure(Closure[])}.
+   *
    * <ul>
-   *   <li>When {@link Closure}.</li>
-   *   <li>Then return array length is one.</li>
+   *   <li>When {@link Closure}.
+   *   <li>Then return array length is one.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#ChainedClosure(Closure[])}
+   *
+   * <p>Method under test: {@link ChainedClosure#ChainedClosure(Closure[])}
    */
   @Test
   @DisplayName("Test new ChainedClosure(Closure[]); when Closure; then return array length is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ChainedClosure.<init>(Closure[])"})
   void testNewChainedClosure_whenClosure_thenReturnArrayLengthIsOne() {
     // Arrange and Act
@@ -147,16 +161,18 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#ChainedClosure(Closure[])}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Closures is {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return Closures is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link ChainedClosure#ChainedClosure(Closure[])}
+   *
+   * <p>Method under test: {@link ChainedClosure#ChainedClosure(Closure[])}
    */
   @Test
   @DisplayName("Test new ChainedClosure(Closure[]); when 'null'; then return Closures is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ChainedClosure.<init>(Closure[])"})
   void testNewChainedClosure_whenNull_thenReturnClosuresIsNull() {
     // Arrange and Act
@@ -168,12 +184,13 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#execute(Object)}.
-   * <p>
-   * Method under test: {@link ChainedClosure#execute(Object)}
+   *
+   * <p>Method under test: {@link ChainedClosure#execute(Object)}
    */
   @Test
   @DisplayName("Test execute(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ChainedClosure.execute(Object)"})
   void testExecute() {
     // Arrange
@@ -190,12 +207,13 @@ class ChainedClosureDiffblueTest {
 
   /**
    * Test {@link ChainedClosure#getClosures()}.
-   * <p>
-   * Method under test: {@link ChainedClosure#getClosures()}
+   *
+   * <p>Method under test: {@link ChainedClosure#getClosures()}
    */
   @Test
   @DisplayName("Test getClosures()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure[] ChainedClosure.getClosures()"})
   void testGetClosures() {
     // Arrange

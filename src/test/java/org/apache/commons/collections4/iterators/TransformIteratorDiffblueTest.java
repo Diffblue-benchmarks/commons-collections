@@ -8,6 +8,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,8 +21,9 @@ import org.mockito.Mockito;
 class TransformIteratorDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TransformIterator#TransformIterator()}
    *   <li>{@link TransformIterator#setIterator(Iterator)}
@@ -32,11 +34,17 @@ class TransformIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TransformIterator.<init>()", "void TransformIterator.<init>(Iterator)",
-      "void TransformIterator.<init>(Iterator, Transformer)", "Iterator TransformIterator.getIterator()",
-      "Transformer TransformIterator.getTransformer()", "void TransformIterator.setIterator(Iterator)",
-      "void TransformIterator.setTransformer(Transformer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TransformIterator.<init>()",
+    "void TransformIterator.<init>(Iterator)",
+    "void TransformIterator.<init>(Iterator, Transformer)",
+    "Iterator TransformIterator.getIterator()",
+    "Transformer TransformIterator.getTransformer()",
+    "void TransformIterator.setIterator(Iterator)",
+    "void TransformIterator.setTransformer(Transformer)"
+  })
   void testGettersAndSetters() {
     // Arrange and Act
     TransformIterator<Object, Object> actualTransformIterator = new TransformIterator<>();
@@ -56,11 +64,13 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>When {@link ArrayList#ArrayList()} iterator.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TransformIterator#TransformIterator(Iterator)}
    *   <li>{@link TransformIterator#setIterator(Iterator)}
@@ -71,17 +81,24 @@ class TransformIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when ArrayList() iterator")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TransformIterator.<init>()", "void TransformIterator.<init>(Iterator)",
-      "void TransformIterator.<init>(Iterator, Transformer)", "Iterator TransformIterator.getIterator()",
-      "Transformer TransformIterator.getTransformer()", "void TransformIterator.setIterator(Iterator)",
-      "void TransformIterator.setTransformer(Transformer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TransformIterator.<init>()",
+    "void TransformIterator.<init>(Iterator)",
+    "void TransformIterator.<init>(Iterator, Transformer)",
+    "Iterator TransformIterator.getIterator()",
+    "Transformer TransformIterator.getTransformer()",
+    "void TransformIterator.setIterator(Iterator)",
+    "void TransformIterator.setTransformer(Transformer)"
+  })
   void testGettersAndSetters_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    TransformIterator<Object, Object> actualTransformIterator = new TransformIterator<>(objectList.iterator());
+    TransformIterator<Object, Object> actualTransformIterator =
+        new TransformIterator<>(objectList.iterator());
     ArrayList<Object> objectList2 = new ArrayList<>();
     Iterator<Object> iterator = objectList2.iterator();
     actualTransformIterator.setIterator(iterator);
@@ -98,11 +115,13 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@link Transformer}.</li>
+   *   <li>When {@link Transformer}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TransformIterator#TransformIterator(Iterator, Transformer)}
    *   <li>{@link TransformIterator#setIterator(Iterator)}
@@ -113,18 +132,24 @@ class TransformIteratorDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when Transformer")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void TransformIterator.<init>()", "void TransformIterator.<init>(Iterator)",
-      "void TransformIterator.<init>(Iterator, Transformer)", "Iterator TransformIterator.getIterator()",
-      "Transformer TransformIterator.getTransformer()", "void TransformIterator.setIterator(Iterator)",
-      "void TransformIterator.setTransformer(Transformer)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TransformIterator.<init>()",
+    "void TransformIterator.<init>(Iterator)",
+    "void TransformIterator.<init>(Iterator, Transformer)",
+    "Iterator TransformIterator.getIterator()",
+    "Transformer TransformIterator.getTransformer()",
+    "void TransformIterator.setIterator(Iterator)",
+    "void TransformIterator.setTransformer(Transformer)"
+  })
   void testGettersAndSetters_whenTransformer() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    TransformIterator<Object, Object> actualTransformIterator = new TransformIterator<>(objectList.iterator(),
-        mock(Transformer.class));
+    TransformIterator<Object, Object> actualTransformIterator =
+        new TransformIterator<>(objectList.iterator(), mock(Transformer.class));
     ArrayList<Object> objectList2 = new ArrayList<>();
     Iterator<Object> iterator = objectList2.iterator();
     actualTransformIterator.setIterator(iterator);
@@ -141,16 +166,18 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test {@link TransformIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformIterator#hasNext()}
+   *
+   * <p>Method under test: {@link TransformIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TransformIterator.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -167,16 +194,20 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test {@link TransformIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link TransformIterator#TransformIterator()} Iterator is {@link ArrayList#ArrayList()} iterator.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TransformIterator#TransformIterator()} Iterator is {@link
+   *       ArrayList#ArrayList()} iterator.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformIterator#hasNext()}
+   *
+   * <p>Method under test: {@link TransformIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given TransformIterator() Iterator is ArrayList() iterator; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test hasNext(); given TransformIterator() Iterator is ArrayList() iterator; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TransformIterator.hasNext()"})
   void testHasNext_givenTransformIteratorIteratorIsArrayListIterator_thenReturnFalse() {
     // Arrange
@@ -191,28 +222,32 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test {@link TransformIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.</li>
-   *   <li>Then return {@code Apply}.</li>
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
+   *   <li>Then return {@code Apply}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformIterator#next()}
+   *
+   * <p>Method under test: {@link TransformIterator#next()}
    */
   @Test
   @DisplayName("Test next(); given Transformer apply(Object) return 'Apply'; then return 'Apply'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TransformIterator.next()"})
   void testNext_givenTransformerApplyReturnApply_thenReturnApply() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
     Iterator<Object> iterator = objectList.iterator();
+
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     ArrayList<Object> objectList2 = new ArrayList<>();
 
-    TransformIterator<Object, Object> transformIterator = new TransformIterator<>(objectList2.iterator(), transformer);
+    TransformIterator<Object, Object> transformIterator =
+        new TransformIterator<>(objectList2.iterator(), transformer);
     transformIterator.setIterator(iterator);
 
     // Act
@@ -226,16 +261,19 @@ class TransformIteratorDiffblueTest {
 
   /**
    * Test {@link TransformIterator#transform(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.</li>
-   *   <li>Then return {@code Apply}.</li>
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
+   *   <li>Then return {@code Apply}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformIterator#transform(Object)}
+   *
+   * <p>Method under test: {@link TransformIterator#transform(Object)}
    */
   @Test
-  @DisplayName("Test transform(Object); given Transformer apply(Object) return 'Apply'; then return 'Apply'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transform(Object); given Transformer apply(Object) return 'Apply'; then return 'Apply'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TransformIterator.transform(Object)"})
   void testTransform_givenTransformerApplyReturnApply_thenReturnApply() {
     // Arrange
@@ -243,7 +281,8 @@ class TransformIteratorDiffblueTest {
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     ArrayList<Object> objectList = new ArrayList<>();
-    TransformIterator<Object, Object> transformIterator = new TransformIterator<>(objectList.iterator(), transformer);
+    TransformIterator<Object, Object> transformIterator =
+        new TransformIterator<>(objectList.iterator(), transformer);
 
     // Act
     Object actualTransformResult = transformIterator.transform("Source");

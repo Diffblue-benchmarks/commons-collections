@@ -2,6 +2,7 @@ package org.apache.commons.collections4.queue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,17 +13,20 @@ import org.junit.jupiter.api.Test;
 class UnmodifiableQueueDiffblueTest {
   /**
    * Test {@link UnmodifiableQueue#unmodifiableQueue(Queue)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link LinkedList#LinkedList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link LinkedList#LinkedList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
+   *
+   * <p>Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
    */
   @Test
-  @DisplayName("Test unmodifiableQueue(Queue); given '42'; when LinkedList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableQueue(Queue); given '42'; when LinkedList() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue UnmodifiableQueue.unmodifiableQueue(Queue)"})
   void testUnmodifiableQueue_given42_whenLinkedListAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -38,17 +42,20 @@ class UnmodifiableQueueDiffblueTest {
 
   /**
    * Test {@link UnmodifiableQueue#unmodifiableQueue(Queue)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link LinkedList#LinkedList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link LinkedList#LinkedList()} add {@code 42}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
+   *
+   * <p>Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
    */
   @Test
-  @DisplayName("Test unmodifiableQueue(Queue); given '42'; when LinkedList() add '42'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableQueue(Queue); given '42'; when LinkedList() add '42'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue UnmodifiableQueue.unmodifiableQueue(Queue)"})
   void testUnmodifiableQueue_given42_whenLinkedListAdd42_thenReturnSizeIsTwo() {
     // Arrange
@@ -65,20 +72,23 @@ class UnmodifiableQueueDiffblueTest {
 
   /**
    * Test {@link UnmodifiableQueue#unmodifiableQueue(Queue)}.
+   *
    * <ul>
-   *   <li>When {@link LinkedList#LinkedList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link LinkedList#LinkedList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
+   *
+   * <p>Method under test: {@link UnmodifiableQueue#unmodifiableQueue(Queue)}
    */
   @Test
   @DisplayName("Test unmodifiableQueue(Queue); when LinkedList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Queue UnmodifiableQueue.unmodifiableQueue(Queue)"})
   void testUnmodifiableQueue_whenLinkedList_thenReturnEmpty() {
     // Arrange and Act
-    Queue<Object> actualUnmodifiableQueueResult = UnmodifiableQueue.unmodifiableQueue(new LinkedList<>());
+    Queue<Object> actualUnmodifiableQueueResult =
+        UnmodifiableQueue.unmodifiableQueue(new LinkedList<>());
 
     // Assert
     assertTrue(actualUnmodifiableQueueResult.isEmpty());

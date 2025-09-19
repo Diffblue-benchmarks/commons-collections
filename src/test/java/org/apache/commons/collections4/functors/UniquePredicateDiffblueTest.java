@@ -2,6 +2,7 @@ package org.apache.commons.collections4.functors;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +12,13 @@ import org.junit.jupiter.api.Test;
 class UniquePredicateDiffblueTest {
   /**
    * Test {@link UniquePredicate#uniquePredicate()}.
-   * <p>
-   * Method under test: {@link UniquePredicate#uniquePredicate()}
+   *
+   * <p>Method under test: {@link UniquePredicate#uniquePredicate()}
    */
   @Test
   @DisplayName("Test uniquePredicate()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate UniquePredicate.uniquePredicate()"})
   void testUniquePredicate() {
     // Arrange and Act
@@ -32,12 +34,13 @@ class UniquePredicateDiffblueTest {
 
   /**
    * Test {@link UniquePredicate#test(Object)}.
-   * <p>
-   * Method under test: {@link UniquePredicate#test(Object)}
+   *
+   * <p>Method under test: {@link UniquePredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean UniquePredicate.test(Object)"})
   void testTest() {
     // Arrange

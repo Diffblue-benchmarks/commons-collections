@@ -7,6 +7,7 @@ import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.BiPredicate;
 import org.junit.jupiter.api.DisplayName;
@@ -17,22 +18,27 @@ import org.mockito.Mockito;
 class CountingPredicateDiffblueTest {
   /**
    * Test {@link CountingPredicate#processRemaining()}.
+   *
    * <ul>
-   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code false}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code false}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link CountingPredicate#processRemaining()}
+   *
+   * <p>Method under test: {@link CountingPredicate#processRemaining()}
    */
   @Test
-  @DisplayName("Test processRemaining(); given BiPredicate test(Object, Object) return 'false'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processRemaining(); given BiPredicate test(Object, Object) return 'false'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean CountingPredicate.processRemaining()"})
   void testProcessRemaining_givenBiPredicateTestReturnFalse_thenReturnFalse() {
     // Arrange
     BiPredicate<Object, Object> func = mock(BiPredicate.class);
     when(func.test(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(false);
-    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[]{"Ary"}, func);
+    Object[] ary = new Object[] {"Ary"};
+
+    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(ary, func);
 
     // Act
     boolean actualProcessRemainingResult = countingPredicate.processRemaining();
@@ -44,22 +50,27 @@ class CountingPredicateDiffblueTest {
 
   /**
    * Test {@link CountingPredicate#processRemaining()}.
+   *
    * <ul>
-   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code true}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link CountingPredicate#processRemaining()}
+   *
+   * <p>Method under test: {@link CountingPredicate#processRemaining()}
    */
   @Test
-  @DisplayName("Test processRemaining(); given BiPredicate test(Object, Object) return 'true'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processRemaining(); given BiPredicate test(Object, Object) return 'true'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean CountingPredicate.processRemaining()"})
   void testProcessRemaining_givenBiPredicateTestReturnTrue_thenReturnTrue() {
     // Arrange
     BiPredicate<Object, Object> func = mock(BiPredicate.class);
     when(func.test(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(true);
-    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[]{"Ary"}, func);
+    Object[] ary = new Object[] {"Ary"};
+
+    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(ary, func);
 
     // Act
     boolean actualProcessRemainingResult = countingPredicate.processRemaining();
@@ -71,18 +82,21 @@ class CountingPredicateDiffblueTest {
 
   /**
    * Test {@link CountingPredicate#test(Object)}.
-   * <p>
-   * Method under test: {@link CountingPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link CountingPredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean CountingPredicate.test(Object)"})
   void testTest() {
     // Arrange
     BiPredicate<Object, Object> func = mock(BiPredicate.class);
     when(func.test(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(true);
-    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[]{"Ary"}, func);
+    Object[] ary = new Object[] {"Ary"};
+
+    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(ary, func);
 
     // Act
     boolean actualTestResult = countingPredicate.test("Other");
@@ -95,18 +109,19 @@ class CountingPredicateDiffblueTest {
 
   /**
    * Test {@link CountingPredicate#test(Object)}.
-   * <p>
-   * Method under test: {@link CountingPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link CountingPredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean CountingPredicate.test(Object)"})
   void testTest2() {
     // Arrange
     BiPredicate<Object, Object> func = mock(BiPredicate.class);
     when(func.test(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(true);
-    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[]{}, func);
+    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[] {}, func);
 
     // Act
     boolean actualTestResult = countingPredicate.test("Other");
@@ -119,22 +134,27 @@ class CountingPredicateDiffblueTest {
 
   /**
    * Test {@link CountingPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code false}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link BiPredicate} {@link BiPredicate#test(Object, Object)} return {@code false}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link CountingPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link CountingPredicate#test(Object)}
    */
   @Test
-  @DisplayName("Test test(Object); given BiPredicate test(Object, Object) return 'false'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test test(Object); given BiPredicate test(Object, Object) return 'false'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean CountingPredicate.test(Object)"})
   void testTest_givenBiPredicateTestReturnFalse_thenReturnFalse() {
     // Arrange
     BiPredicate<Object, Object> func = mock(BiPredicate.class);
     when(func.test(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(false);
-    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(new Object[]{"Ary"}, func);
+    Object[] ary = new Object[] {"Ary"};
+
+    CountingPredicate<Object> countingPredicate = new CountingPredicate<>(ary, func);
 
     // Act
     boolean actualTestResult = countingPredicate.test("Other");

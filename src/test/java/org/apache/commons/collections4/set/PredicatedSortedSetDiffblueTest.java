@@ -1,11 +1,13 @@
 package org.apache.commons.collections4.set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -18,29 +20,34 @@ import org.mockito.Mockito;
 class PredicatedSortedSetDiffblueTest {
   /**
    * Test {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code collection}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code collection}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); given 'foo'; when TreeSet() add 'foo'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"})
-  void testPredicatedSortedSet_givenFoo_whenTreeSetAddFoo_thenCallsTest() {
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); given 'collection'; when TreeSet() add 'collection'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"
+  })
+  void testPredicatedSortedSet_givenCollection_whenTreeSetAddCollection() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
-    set.add("foo");
+    set.add("collection");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedSortedSet<Object> actualPredicatedSortedSetResult = PredicatedSortedSet.predicatedSortedSet(set,
-        predicate);
+    PredicatedSortedSet<Object> actualPredicatedSortedSetResult =
+        PredicatedSortedSet.predicatedSortedSet(set, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(Mockito.<Object>any());
@@ -49,28 +56,67 @@ class PredicatedSortedSetDiffblueTest {
 
   /**
    * Test {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code false}.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"})
-  void testPredicatedSortedSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); given 'false'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"
+  })
+  void testPredicatedSortedSet_givenFalse_thenThrowIllegalArgumentException() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
+
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act and Assert
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> PredicatedSortedSet.predicatedSortedSet(set, predicate));
+    verify(predicate).test(isA(Object.class));
+  }
+
+  /**
+   * Test {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}.
+   *
+   * <ul>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
+   */
+  @Test
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"
+  })
+  void testPredicatedSortedSet_givenTrue_whenPredicateTestReturnTrue_thenReturnTreeSet() {
+    // Arrange
+    TreeSet<Object> set = new TreeSet<>();
+    set.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    PredicatedSortedSet<Object> actualPredicatedSortedSetResult = PredicatedSortedSet.predicatedSortedSet(set,
-        predicate);
+    PredicatedSortedSet<Object> actualPredicatedSortedSetResult =
+        PredicatedSortedSet.predicatedSortedSet(set, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -79,24 +125,29 @@ class PredicatedSortedSetDiffblueTest {
 
   /**
    * Test {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"})
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "PredicatedSortedSet PredicatedSortedSet.predicatedSortedSet(SortedSet, Predicate)"
+  })
   void testPredicatedSortedSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    PredicatedSortedSet<Object> actualPredicatedSortedSetResult = PredicatedSortedSet.predicatedSortedSet(set,
-        mock(Predicate.class));
+    PredicatedSortedSet<Object> actualPredicatedSortedSetResult =
+        PredicatedSortedSet.predicatedSortedSet(set, mock(Predicate.class));
 
     // Assert
     assertEquals(set, actualPredicatedSortedSetResult);
@@ -104,23 +155,26 @@ class PredicatedSortedSetDiffblueTest {
 
   /**
    * Test {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code collection}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code collection}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedSortedSet(SortedSet, Predicate); given 'foo'; when TreeSet() add 'foo'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedSortedSet(SortedSet, Predicate); given 'collection'; when TreeSet() add 'collection'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedSortedSet.<init>(SortedSet, Predicate)"})
-  void testNewPredicatedSortedSet_givenFoo_whenTreeSetAddFoo_thenCallsTest() {
+  void testNewPredicatedSortedSet_givenCollection_whenTreeSetAddCollection() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
-    set.add("foo");
+    set.add("collection");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -134,22 +188,54 @@ class PredicatedSortedSetDiffblueTest {
 
   /**
    * Test {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code false}.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedSortedSet(SortedSet, Predicate); given 'false'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedSortedSet.<init>(SortedSet, Predicate)"})
-  void testNewPredicatedSortedSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
+  void testNewPredicatedSortedSet_givenFalse_thenThrowIllegalArgumentException() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
+
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new PredicatedSortedSet<>(set, predicate));
+    verify(predicate).test(isA(Object.class));
+  }
+
+  /**
+   * Test {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}.
+   *
+   * <ul>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
+   */
+  @Test
+  @DisplayName(
+      "Test new PredicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void PredicatedSortedSet.<init>(SortedSet, Predicate)"})
+  void testNewPredicatedSortedSet_givenTrue_whenPredicateTestReturnTrue() {
+    // Arrange
+    TreeSet<Object> set = new TreeSet<>();
+    set.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -163,22 +249,29 @@ class PredicatedSortedSetDiffblueTest {
 
   /**
    * Test {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link PredicatedSortedSet#PredicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test new PredicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PredicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PredicatedSortedSet.<init>(SortedSet, Predicate)"})
   void testNewPredicatedSortedSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
-    // Act and Assert
-    assertEquals(set, new PredicatedSortedSet<>(set, mock(Predicate.class)));
+    // Act
+    PredicatedSortedSet<Object> actualObjectSet =
+        new PredicatedSortedSet<>(set, mock(Predicate.class));
+
+    // Assert
+    assertEquals(set, actualObjectSet);
   }
 }

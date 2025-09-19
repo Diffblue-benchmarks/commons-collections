@@ -3,6 +3,7 @@ package org.apache.commons.collections4.functors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.apache.commons.collections4.Factory;
@@ -15,16 +16,18 @@ import org.junit.jupiter.api.Test;
 class PrototypeFactoryDiffblueTest {
   /**
    * Test {@link PrototypeFactory#prototypeFactory(Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link PrototypeCloneFactory}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link PrototypeCloneFactory}.
    * </ul>
-   * <p>
-   * Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
+   *
+   * <p>Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
    */
   @Test
   @DisplayName("Test prototypeFactory(Object); when ArrayList(); then return PrototypeCloneFactory")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Factory PrototypeFactory.prototypeFactory(Object)"})
   void testPrototypeFactory_whenArrayList_thenReturnPrototypeCloneFactory() {
     // Arrange
@@ -43,39 +46,45 @@ class PrototypeFactoryDiffblueTest {
 
   /**
    * Test {@link PrototypeFactory#prototypeFactory(Object)}.
+   *
    * <ul>
-   *   <li>When forty-two.</li>
-   *   <li>Then return {@link PrototypeSerializationFactory}.</li>
+   *   <li>When forty-two.
+   *   <li>Then return {@link PrototypeSerializationFactory}.
    * </ul>
-   * <p>
-   * Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
+   *
+   * <p>Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
    */
   @Test
-  @DisplayName("Test prototypeFactory(Object); when forty-two; then return PrototypeSerializationFactory")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test prototypeFactory(Object); when forty-two; then return PrototypeSerializationFactory")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Factory PrototypeFactory.prototypeFactory(Object)"})
   void testPrototypeFactory_whenFortyTwo_thenReturnPrototypeSerializationFactory() {
     // Arrange and Act
-    Factory<Object> actualPrototypeFactoryResult = PrototypeFactory.<Object>prototypeFactory(42);
+    Factory<Object> actualPrototypeFactoryResult = PrototypeFactory.prototypeFactory(42);
+    Object actualCreateResult = actualPrototypeFactoryResult.create();
 
     // Assert
     assertTrue(actualPrototypeFactoryResult instanceof PrototypeSerializationFactory);
-    assertEquals(42, ((Integer) actualPrototypeFactoryResult.create()).intValue());
+    assertEquals(42, ((Integer) actualCreateResult).intValue());
     assertEquals(42, ((Integer) actualPrototypeFactoryResult.get()).intValue());
   }
 
   /**
    * Test {@link PrototypeFactory#prototypeFactory(Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link ConstantFactory}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link ConstantFactory}.
    * </ul>
-   * <p>
-   * Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
+   *
+   * <p>Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
    */
   @Test
   @DisplayName("Test prototypeFactory(Object); when 'null'; then return ConstantFactory")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Factory PrototypeFactory.prototypeFactory(Object)"})
   void testPrototypeFactory_whenNull_thenReturnConstantFactory() {
     // Arrange and Act
@@ -90,49 +99,55 @@ class PrototypeFactoryDiffblueTest {
 
   /**
    * Test {@link PrototypeFactory#prototypeFactory(Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return create is {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return create is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
+   *
+   * <p>Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
    */
   @Test
   @DisplayName("Test prototypeFactory(Object); when 'null'; then return create is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Factory PrototypeFactory.prototypeFactory(Object)"})
   void testPrototypeFactory_whenNull_thenReturnCreateIsNull() {
     // Arrange and Act
     Factory<Object> actualPrototypeFactoryResult = PrototypeFactory.prototypeFactory(null);
+    Object actualCreateResult = actualPrototypeFactoryResult.create();
 
     // Assert
     assertTrue(actualPrototypeFactoryResult instanceof ConstantFactory);
     assertNull(null);
-    assertNull(actualPrototypeFactoryResult.create());
+    assertNull(actualCreateResult);
     assertNull(actualPrototypeFactoryResult.get());
     assertNull(((ConstantFactory<Object>) actualPrototypeFactoryResult).getConstant());
   }
 
   /**
    * Test {@link PrototypeFactory#prototypeFactory(Object)}.
+   *
    * <ul>
-   *   <li>When {@code Prototype}.</li>
-   *   <li>Then return {@link InstantiateFactory}.</li>
+   *   <li>When {@code Prototype}.
+   *   <li>Then return {@link InstantiateFactory}.
    * </ul>
-   * <p>
-   * Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
+   *
+   * <p>Method under test: {@link PrototypeFactory#prototypeFactory(Object)}
    */
   @Test
   @DisplayName("Test prototypeFactory(Object); when 'Prototype'; then return InstantiateFactory")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Factory PrototypeFactory.prototypeFactory(Object)"})
   void testPrototypeFactory_whenPrototype_thenReturnInstantiateFactory() {
     // Arrange and Act
     Factory<Object> actualPrototypeFactoryResult = PrototypeFactory.prototypeFactory("Prototype");
+    Object actualCreateResult = actualPrototypeFactoryResult.create();
 
     // Assert
     assertTrue(actualPrototypeFactoryResult instanceof InstantiateFactory);
-    assertEquals("Prototype", actualPrototypeFactoryResult.create());
+    assertEquals("Prototype", actualCreateResult);
     assertEquals("Prototype", actualPrototypeFactoryResult.get());
   }
 }

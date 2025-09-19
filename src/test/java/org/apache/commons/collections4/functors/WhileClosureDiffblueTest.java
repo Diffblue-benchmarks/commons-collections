@@ -8,6 +8,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.Predicate;
@@ -19,22 +20,26 @@ import org.mockito.Mockito;
 class WhileClosureDiffblueTest {
   /**
    * Test {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then calls {@link Closure#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
+   *
+   * <p>Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
    */
   @Test
-  @DisplayName("Test whileClosure(Predicate, Closure, boolean); given 'false'; when Predicate test(Object) return 'false'; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test whileClosure(Predicate, Closure, boolean); given 'false'; when Predicate test(Object) return 'false'; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure WhileClosure.whileClosure(Predicate, Closure, boolean)"})
   void testWhileClosure_givenFalse_whenPredicateTestReturnFalse_thenCallsAccept() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
 
@@ -53,17 +58,20 @@ class WhileClosureDiffblueTest {
 
   /**
    * Test {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return not DoLoop.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then return not DoLoop.
    * </ul>
-   * <p>
-   * Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
+   *
+   * <p>Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
    */
   @Test
-  @DisplayName("Test whileClosure(Predicate, Closure, boolean); given 'false'; when Predicate test(Object) return 'false'; then return not DoLoop")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test whileClosure(Predicate, Closure, boolean); given 'false'; when Predicate test(Object) return 'false'; then return not DoLoop")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure WhileClosure.whileClosure(Predicate, Closure, boolean)"})
   void testWhileClosure_givenFalse_whenPredicateTestReturnFalse_thenReturnNotDoLoop() {
     // Arrange
@@ -85,16 +93,18 @@ class WhileClosureDiffblueTest {
 
   /**
    * Test {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}.
+   *
    * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return DoLoop.</li>
+   *   <li>When {@link Predicate}.
+   *   <li>Then return DoLoop.
    * </ul>
-   * <p>
-   * Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
+   *
+   * <p>Method under test: {@link WhileClosure#whileClosure(Predicate, Closure, boolean)}
    */
   @Test
   @DisplayName("Test whileClosure(Predicate, Closure, boolean); when Predicate; then return DoLoop")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure WhileClosure.whileClosure(Predicate, Closure, boolean)"})
   void testWhileClosure_whenPredicate_thenReturnDoLoop() {
     // Arrange
@@ -113,8 +123,9 @@ class WhileClosureDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link WhileClosure#WhileClosure(Predicate, Closure, boolean)}
    *   <li>{@link WhileClosure#getClosure()}
@@ -124,9 +135,14 @@ class WhileClosureDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void WhileClosure.<init>(Predicate, Closure, boolean)", "Closure WhileClosure.getClosure()",
-      "Predicate WhileClosure.getPredicate()", "boolean WhileClosure.isDoLoop()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void WhileClosure.<init>(Predicate, Closure, boolean)",
+    "Closure WhileClosure.getClosure()",
+    "Predicate WhileClosure.getPredicate()",
+    "boolean WhileClosure.isDoLoop()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
@@ -145,23 +161,28 @@ class WhileClosureDiffblueTest {
 
   /**
    * Test {@link WhileClosure#execute(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then calls {@link Closure#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link WhileClosure#execute(Object)}
+   *
+   * <p>Method under test: {@link WhileClosure#execute(Object)}
    */
   @Test
-  @DisplayName("Test execute(Object); given Predicate test(Object) return 'false'; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test execute(Object); given Predicate test(Object) return 'false'; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void WhileClosure.execute(Object)"})
   void testExecute_givenPredicateTestReturnFalse_thenCallsAccept() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
+
     WhileClosure<Object> whileClosure = new WhileClosure<>(predicate, closure, true);
 
     // Act
@@ -174,16 +195,19 @@ class WhileClosureDiffblueTest {
 
   /**
    * Test {@link WhileClosure#execute(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link WhileClosure#execute(Object)}
+   *
+   * <p>Method under test: {@link WhileClosure#execute(Object)}
    */
   @Test
-  @DisplayName("Test execute(Object); given Predicate test(Object) return 'false'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test execute(Object); given Predicate test(Object) return 'false'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void WhileClosure.execute(Object)"})
   void testExecute_givenPredicateTestReturnFalse_thenCallsTest() {
     // Arrange

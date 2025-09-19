@@ -3,6 +3,7 @@ package org.apache.commons.collections4.iterators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.DisplayName;
@@ -12,12 +13,13 @@ import org.junit.jupiter.api.Test;
 class AbstractEmptyIteratorDiffblueTest {
   /**
    * Test {@link AbstractEmptyIterator#add(Object)}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#add(Object)}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#add(Object)}
    */
   @Test
   @DisplayName("Test add(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractEmptyIterator.add(Object)"})
   void testAdd() {
     // Arrange
@@ -29,12 +31,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#hasNext()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#hasNext()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractEmptyIterator.hasNext()"})
   void testHasNext() {
     // Arrange
@@ -46,12 +49,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#hasPrevious()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test hasPrevious()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractEmptyIterator.hasPrevious()"})
   void testHasPrevious() {
     // Arrange
@@ -63,12 +67,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#next()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#next()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#next()}
    */
   @Test
   @DisplayName("Test next()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractEmptyIterator.next()"})
   void testNext() {
     // Arrange
@@ -80,12 +85,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#nextIndex()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#nextIndex()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#nextIndex()}
    */
   @Test
   @DisplayName("Test nextIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractEmptyIterator.nextIndex()"})
   void testNextIndex() {
     // Arrange
@@ -97,12 +103,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#previous()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#previous()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#previous()}
    */
   @Test
   @DisplayName("Test previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractEmptyIterator.previous()"})
   void testPrevious() {
     // Arrange
@@ -114,12 +121,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#previousIndex()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#previousIndex()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#previousIndex()}
    */
   @Test
   @DisplayName("Test previousIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractEmptyIterator.previousIndex()"})
   void testPreviousIndex() {
     // Arrange
@@ -131,12 +139,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#remove()}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#remove()}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#remove()}
    */
   @Test
   @DisplayName("Test remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractEmptyIterator.remove()"})
   void testRemove() {
     // Arrange
@@ -148,12 +157,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#set(Object)}.
-   * <p>
-   * Method under test: {@link AbstractEmptyIterator#set(Object)}
+   *
+   * <p>Method under test: {@link AbstractEmptyIterator#set(Object)}
    */
   @Test
   @DisplayName("Test set(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractEmptyIterator.set(Object)"})
   void testSet() {
     // Arrange

@@ -1,6 +1,7 @@
 package org.apache.commons.collections4.sequence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,12 +10,13 @@ import org.junit.jupiter.api.Test;
 class InsertCommandDiffblueTest {
   /**
    * Test {@link InsertCommand#InsertCommand(Object)}.
-   * <p>
-   * Method under test: {@link InsertCommand#InsertCommand(Object)}
+   *
+   * <p>Method under test: {@link InsertCommand#InsertCommand(Object)}
    */
   @Test
   @DisplayName("Test new InsertCommand(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void InsertCommand.<init>(Object)"})
   void testNewInsertCommand() {
     // Arrange and Act

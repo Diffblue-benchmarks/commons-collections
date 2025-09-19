@@ -2,6 +2,7 @@ package org.apache.commons.collections4.multimap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +12,13 @@ import org.junit.jupiter.api.Test;
 class AbstractListValuedMapDiffblueTest {
   /**
    * Test {@link AbstractListValuedMap#get(Object)}.
-   * <p>
-   * Method under test: {@link AbstractListValuedMap#get(Object)}
+   *
+   * <p>Method under test: {@link AbstractListValuedMap#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List AbstractListValuedMap.get(Object)"})
   void testGet() {
     // Arrange
@@ -28,12 +30,13 @@ class AbstractListValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractListValuedMap#getMap()}.
-   * <p>
-   * Method under test: {@link AbstractListValuedMap#getMap()}
+   *
+   * <p>Method under test: {@link AbstractListValuedMap#getMap()}
    */
   @Test
   @DisplayName("Test getMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Map AbstractListValuedMap.getMap()"})
   void testGetMap() {
     // Arrange
@@ -45,16 +48,20 @@ class AbstractListValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractListValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractListValuedMap#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List AbstractListValuedMap.remove(Object)"})
   void testRemove_givenArrayListValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -74,16 +81,18 @@ class AbstractListValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractListValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractListValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractListValuedMap#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object); given ArrayListValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List AbstractListValuedMap.remove(Object)"})
   void testRemove_givenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange
@@ -101,12 +110,13 @@ class AbstractListValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractListValuedMap#wrappedCollection(Object)}.
-   * <p>
-   * Method under test: {@link AbstractListValuedMap#wrappedCollection(Object)}
+   *
+   * <p>Method under test: {@link AbstractListValuedMap#wrappedCollection(Object)}
    */
   @Test
   @DisplayName("Test wrappedCollection(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List AbstractListValuedMap.wrappedCollection(Object)"})
   void testWrappedCollection() {
     // Arrange

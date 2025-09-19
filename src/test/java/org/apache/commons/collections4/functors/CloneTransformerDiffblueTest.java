@@ -3,6 +3,7 @@ package org.apache.commons.collections4.functors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.apache.commons.collections4.Transformer;
@@ -13,15 +14,17 @@ import org.junit.jupiter.api.Test;
 class CloneTransformerDiffblueTest {
   /**
    * Test {@link CloneTransformer#cloneTransformer()}.
+   *
    * <ul>
-   *   <li>Then return transform {@code 42} is {@code 42}.</li>
+   *   <li>Then return transform {@code 42} is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link CloneTransformer#cloneTransformer()}
+   *
+   * <p>Method under test: {@link CloneTransformer#cloneTransformer()}
    */
   @Test
   @DisplayName("Test cloneTransformer(); then return transform '42' is '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer CloneTransformer.cloneTransformer()"})
   void testCloneTransformer_thenReturnTransform42Is42() {
     // Arrange and Act
@@ -37,15 +40,17 @@ class CloneTransformerDiffblueTest {
 
   /**
    * Test {@link CloneTransformer#cloneTransformer()}.
+   *
    * <ul>
-   *   <li>Then return transform {@link ArrayList#ArrayList()} is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return transform {@link ArrayList#ArrayList()} is {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link CloneTransformer#cloneTransformer()}
+   *
+   * <p>Method under test: {@link CloneTransformer#cloneTransformer()}
    */
   @Test
   @DisplayName("Test cloneTransformer(); then return transform ArrayList() is ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer CloneTransformer.cloneTransformer()"})
   void testCloneTransformer_thenReturnTransformArrayListIsArrayList() {
     // Arrange and Act
@@ -62,15 +67,17 @@ class CloneTransformerDiffblueTest {
 
   /**
    * Test {@link CloneTransformer#cloneTransformer()}.
+   *
    * <ul>
-   *   <li>Then return transform {@code null} is {@code null}.</li>
+   *   <li>Then return transform {@code null} is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link CloneTransformer#cloneTransformer()}
+   *
+   * <p>Method under test: {@link CloneTransformer#cloneTransformer()}
    */
   @Test
   @DisplayName("Test cloneTransformer(); then return transform 'null' is 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer CloneTransformer.cloneTransformer()"})
   void testCloneTransformer_thenReturnTransformNullIsNull() {
     // Arrange and Act
@@ -86,15 +93,17 @@ class CloneTransformerDiffblueTest {
 
   /**
    * Test {@link CloneTransformer#cloneTransformer()}.
+   *
    * <ul>
-   *   <li>Then return transform one intValue is one.</li>
+   *   <li>Then return transform one intValue is one.
    * </ul>
-   * <p>
-   * Method under test: {@link CloneTransformer#cloneTransformer()}
+   *
+   * <p>Method under test: {@link CloneTransformer#cloneTransformer()}
    */
   @Test
   @DisplayName("Test cloneTransformer(); then return transform one intValue is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Transformer CloneTransformer.cloneTransformer()"})
   void testCloneTransformer_thenReturnTransformOneIntValueIsOne() {
     // Arrange and Act

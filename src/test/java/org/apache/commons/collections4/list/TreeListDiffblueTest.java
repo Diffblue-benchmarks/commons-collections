@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,8 +19,9 @@ import org.junit.jupiter.api.Test;
 class TreeListDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TreeList#TreeList()}
    *   <li>{@link TreeList#size()}
@@ -27,7 +29,8 @@ class TreeListDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.<init>()", "int TreeList.size()"})
   void testGettersAndSetters() {
     // Arrange and Act
@@ -39,38 +42,45 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#TreeList(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#TreeList(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#TreeList(Collection)}
    */
   @Test
   @DisplayName("Test new TreeList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.<init>(Collection)"})
   void testNewTreeList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
 
-    // Act and Assert
-    assertEquals(coll, new TreeList<>(coll));
+    // Act
+    TreeList<Object> actualObjectList = new TreeList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link TreeList#TreeList(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#TreeList(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#TreeList(Collection)}
    */
   @Test
   @DisplayName("Test new TreeList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.<init>(Collection)"})
   void testNewTreeList_given42_whenArrayListAdd422() {
     // Arrange
@@ -78,22 +88,27 @@ class TreeListDiffblueTest {
     coll.add("42");
     coll.add("42");
 
-    // Act and Assert
-    assertEquals(coll, new TreeList<>(coll));
+    // Act
+    TreeList<Object> actualObjectList = new TreeList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link TreeList#TreeList(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#TreeList(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#TreeList(Collection)}
    */
   @Test
   @DisplayName("Test new TreeList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.<init>(Collection)"})
   void testNewTreeList_given42_whenArrayListAdd423() {
     // Arrange
@@ -102,43 +117,54 @@ class TreeListDiffblueTest {
     coll.add("42");
     coll.add("42");
 
-    // Act and Assert
-    assertEquals(coll, new TreeList<>(coll));
+    // Act
+    TreeList<Object> actualObjectList = new TreeList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link TreeList#TreeList(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#TreeList(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#TreeList(Collection)}
    */
   @Test
   @DisplayName("Test new TreeList(Collection); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.<init>(Collection)"})
   void testNewTreeList_whenArrayList() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
 
-    // Act and Assert
-    assertEquals(coll, new TreeList<>(coll));
+    // Act
+    TreeList<Object> actualObjectList = new TreeList<>(coll);
+
+    // Assert
+    assertEquals(coll, actualObjectList);
   }
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is four.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is four.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() size is four")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeListAdd42_whenOne_thenTreeListSizeIsFour() {
     // Arrange
@@ -158,17 +184,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is two.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeListAdd42_whenOne_thenTreeListSizeIsTwo() {
     // Arrange
@@ -186,17 +215,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} third is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} third is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() third is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when one; then TreeList() third is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeListAdd42_whenOne_thenTreeListThirdIs42() {
     // Arrange
@@ -215,17 +247,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When two.</li>
-   *   <li>Then {@link TreeList#TreeList()} second is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When two.
+   *   <li>Then {@link TreeList#TreeList()} second is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when two; then TreeList() second is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when two; then TreeList() second is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeListAdd42_whenTwo_thenTreeListSecondIs42() {
     // Arrange
@@ -244,17 +279,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is four.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When zero.
+   *   <li>Then {@link TreeList#TreeList()} size is four.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when zero; then TreeList() size is four")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList() add '42'; when zero; then TreeList() size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeListAdd42_whenZero_thenTreeListSizeIsFour() {
     // Arrange
@@ -274,17 +312,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#add(int, Object)} with {@code int}, {@code Object}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is one.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When zero.
+   *   <li>Then {@link TreeList#TreeList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#add(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#add(int, Object)}
    */
   @Test
-  @DisplayName("Test add(int, Object) with 'int', 'Object'; given TreeList(); when zero; then TreeList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test add(int, Object) with 'int', 'Object'; given TreeList(); when zero; then TreeList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeList.add(int, Object)"})
   void testAddWithIntObject_givenTreeList_whenZero_thenTreeListSizeIsOne() {
     // Arrange
@@ -300,16 +341,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then ArrayList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then ArrayList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenArrayListSizeIsOne() {
     // Arrange
@@ -330,16 +374,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is five.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is five.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is five")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is five")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsFive() {
     // Arrange
@@ -363,16 +410,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is four.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is four.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is four")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsFour() {
     // Arrange
@@ -395,16 +445,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is four.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is four.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is four")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsFour2() {
     // Arrange
@@ -427,16 +480,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is six.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is six.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is six")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is six")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsSix() {
     // Arrange
@@ -461,16 +517,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is six.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is six.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is six")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is six")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsSix2() {
     // Arrange
@@ -495,16 +554,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsThree() {
     // Arrange
@@ -526,16 +588,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList() add '42'; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeListAdd42_thenTreeListSizeIsThree2() {
     // Arrange
@@ -557,16 +622,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList(); then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList(); then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeList_thenTreeListSizeIsThree() {
     // Arrange
@@ -588,17 +656,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is one.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList() add '42'; then TreeList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList() add '42'; then TreeList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeList_whenArrayListAdd42_thenTreeListSizeIsOne() {
     // Arrange
@@ -618,17 +689,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is two.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then {@link TreeList#TreeList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList() add '42'; then TreeList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList() add '42'; then TreeList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeList_whenArrayListAdd42_thenTreeListSizeIsTwo() {
     // Arrange
@@ -649,17 +723,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#addAll(Collection)} with {@code Collection}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#addAll(Collection)}
+   *
+   * <p>Method under test: {@link TreeList#addAll(Collection)}
    */
   @Test
-  @DisplayName("Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test addAll(Collection) with 'Collection'; given TreeList(); when ArrayList(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.addAll(Collection)"})
   void testAddAllWithCollection_givenTreeList_whenArrayList_thenReturnFalse() {
     // Arrange
@@ -674,17 +751,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given TreeList() add '42'; when '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeListAdd42_when42_thenReturnTrue() {
     // Arrange
@@ -697,17 +776,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given TreeList() add '42'; when '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeListAdd42_when42_thenReturnTrue2() {
     // Arrange
@@ -722,17 +803,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeListAdd42_whenObject_thenReturnFalse() {
     // Arrange
@@ -745,17 +829,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeListAdd42_whenObject_thenReturnFalse2() {
     // Arrange
@@ -769,17 +856,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Object); given TreeList() add '42'; when 'Object'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeListAdd42_whenObject_thenReturnFalse3() {
     // Arrange
@@ -794,17 +884,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#contains(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When {@code Object}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#contains(Object)}
+   *
+   * <p>Method under test: {@link TreeList#contains(Object)}
    */
   @Test
   @DisplayName("Test contains(Object); given TreeList(); when 'Object'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeList.contains(Object)"})
   void testContains_givenTreeList_whenObject_thenReturnFalse() {
     // Arrange
@@ -816,17 +908,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#get(int)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#get(int)}
+   *
+   * <p>Method under test: {@link TreeList#get(int)}
    */
   @Test
   @DisplayName("Test get(int); given TreeList() add '42'; when one; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.get(int)"})
   void testGet_givenTreeListAdd42_whenOne_thenReturn42() {
     // Arrange
@@ -840,17 +934,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#get(int)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When zero.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#get(int)}
+   *
+   * <p>Method under test: {@link TreeList#get(int)}
    */
   @Test
   @DisplayName("Test get(int); given TreeList() add '42'; when zero; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.get(int)"})
   void testGet_givenTreeListAdd42_whenZero_thenReturn42() {
     // Arrange
@@ -865,17 +961,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object); given TreeList() add '42'; when '42'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeListAdd42_when42_thenReturnZero() {
     // Arrange
@@ -888,17 +986,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object); given TreeList() add '42'; when '42'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeListAdd42_when42_thenReturnZero2() {
     // Arrange
@@ -913,17 +1013,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
-  @DisplayName("Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeListAdd42_whenObject_thenReturnMinusOne() {
     // Arrange
@@ -936,17 +1039,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
-  @DisplayName("Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeListAdd42_whenObject_thenReturnMinusOne2() {
     // Arrange
@@ -960,17 +1066,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When {@code Object}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
-  @DisplayName("Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test indexOf(Object); given TreeList() add '42'; when 'Object'; then return minus one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeListAdd42_whenObject_thenReturnMinusOne3() {
     // Arrange
@@ -985,17 +1094,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#indexOf(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return minus one.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When {@code Object}.
+   *   <li>Then return minus one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#indexOf(Object)}
+   *
+   * <p>Method under test: {@link TreeList#indexOf(Object)}
    */
   @Test
   @DisplayName("Test indexOf(Object); given TreeList(); when 'Object'; then return minus one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeList.indexOf(Object)"})
   void testIndexOf_givenTreeList_whenObject_thenReturnMinusOne() {
     // Arrange
@@ -1007,15 +1118,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#iterator()}
+   *
+   * <p>Method under test: {@link TreeList#iterator()}
    */
   @Test
   @DisplayName("Test iterator(); given TreeList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator TreeList.iterator()"})
   void testIterator_givenTreeList() {
     // Arrange
@@ -1031,16 +1144,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#iterator()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#iterator()}
+   *
+   * <p>Method under test: {@link TreeList#iterator()}
    */
   @Test
   @DisplayName("Test iterator(); given TreeList() add '42'; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Iterator TreeList.iterator()"})
   void testIterator_givenTreeListAdd42_thenReturnNextIs42() {
     // Arrange
@@ -1058,17 +1173,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#listIterator(int)}
+   *
+   * <p>Method under test: {@link TreeList#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given TreeList() add '42'; when one; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given TreeList() add '42'; when one; then return next is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator TreeList.listIterator(int)"})
   void testListIteratorWithInt_givenTreeListAdd42_whenOne_thenReturnNextIs42() {
     // Arrange
@@ -1087,17 +1205,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return {@link TreeListIterator}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then return {@link TreeListIterator}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#listIterator(int)}
+   *
+   * <p>Method under test: {@link TreeList#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given TreeList() add '42'; when one; then return TreeListIterator")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given TreeList() add '42'; when one; then return TreeListIterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator TreeList.listIterator(int)"})
   void testListIteratorWithInt_givenTreeListAdd42_whenOne_thenReturnTreeListIterator() {
     // Arrange
@@ -1114,17 +1235,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#listIterator(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@link TreeListIterator}.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>When zero.
+   *   <li>Then return {@link TreeListIterator}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#listIterator(int)}
+   *
+   * <p>Method under test: {@link TreeList#listIterator(int)}
    */
   @Test
-  @DisplayName("Test listIterator(int) with 'int'; given TreeList(); when zero; then return TreeListIterator")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test listIterator(int) with 'int'; given TreeList(); when zero; then return TreeListIterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator TreeList.listIterator(int)"})
   void testListIteratorWithInt_givenTreeList_whenZero_thenReturnTreeListIterator() {
     // Arrange
@@ -1140,15 +1264,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#listIterator()}
+   *
+   * <p>Method under test: {@link TreeList#listIterator()}
    */
   @Test
   @DisplayName("Test listIterator(); given TreeList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator TreeList.listIterator()"})
   void testListIterator_givenTreeList() {
     // Arrange
@@ -1164,16 +1290,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#listIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#listIterator()}
+   *
+   * <p>Method under test: {@link TreeList#listIterator()}
    */
   @Test
   @DisplayName("Test listIterator(); given TreeList() add '42'; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListIterator TreeList.listIterator()"})
   void testListIterator_givenTreeListAdd42_thenReturnNextIs42() {
     // Arrange
@@ -1191,17 +1319,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is five.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is five.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is five")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is five")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenOne_thenTreeListSizeIsFive() {
     // Arrange
@@ -1223,17 +1354,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is four.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is four.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is four")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenOne_thenTreeListSizeIsFour() {
     // Arrange
@@ -1254,17 +1388,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenOne_thenTreeListSizeIsOne() {
     // Arrange
@@ -1282,17 +1419,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenOne_thenTreeListSizeIsThree() {
     // Arrange
@@ -1312,17 +1452,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is two.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when one; then TreeList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenOne_thenTreeListSizeIsTwo() {
     // Arrange
@@ -1341,17 +1484,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When three.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is five.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When three.
+   *   <li>Then {@link TreeList#TreeList()} size is five.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when three; then TreeList() size is five")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when three; then TreeList() size is five")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenThree_thenTreeListSizeIsFive() {
     // Arrange
@@ -1373,17 +1519,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When three.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When three.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when three; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when three; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenThree_thenTreeListSizeIsThree() {
     // Arrange
@@ -1403,17 +1552,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is five.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When zero.
+   *   <li>Then {@link TreeList#TreeList()} size is five.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when zero; then TreeList() size is five")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when zero; then TreeList() size is five")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenZero_thenTreeListSizeIsFive() {
     // Arrange
@@ -1435,17 +1587,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#remove(int)} with {@code int}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When zero.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#remove(int)}
+   *
+   * <p>Method under test: {@link TreeList#remove(int)}
    */
   @Test
-  @DisplayName("Test remove(int) with 'int'; given TreeList() add '42'; when zero; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(int) with 'int'; given TreeList() add '42'; when zero; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.remove(int)"})
   void testRemoveWithInt_givenTreeListAdd42_whenZero_thenTreeListSizeIsThree() {
     // Arrange
@@ -1465,17 +1620,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#set(int, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is two.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When one.
+   *   <li>Then {@link TreeList#TreeList()} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#set(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#set(int, Object)}
    */
   @Test
-  @DisplayName("Test set(int, Object); given TreeList() add '42'; when one; then TreeList() size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test set(int, Object); given TreeList() add '42'; when one; then TreeList() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.set(int, Object)"})
   void testSet_givenTreeListAdd42_whenOne_thenTreeListSizeIsTwo() {
     // Arrange
@@ -1494,17 +1652,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#set(int, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then {@link TreeList#TreeList()} size is three.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>When zero.
+   *   <li>Then {@link TreeList#TreeList()} size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#set(int, Object)}
+   *
+   * <p>Method under test: {@link TreeList#set(int, Object)}
    */
   @Test
-  @DisplayName("Test set(int, Object); given TreeList() add '42'; when zero; then TreeList() size is three")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test set(int, Object); given TreeList() add '42'; when zero; then TreeList() size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeList.set(int, Object)"})
   void testSet_givenTreeListAdd42_whenZero_thenTreeListSizeIsThree() {
     // Arrange
@@ -1524,16 +1685,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#toArray()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then return array length is one.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then return array length is one.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#toArray()}
+   *
+   * <p>Method under test: {@link TreeList#toArray()}
    */
   @Test
   @DisplayName("Test toArray(); given TreeList() add '42'; then return array length is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] TreeList.toArray()"})
   void testToArray_givenTreeListAdd42_thenReturnArrayLengthIsOne() {
     // Arrange
@@ -1550,16 +1713,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#toArray()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then return array length is two.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then return array length is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#toArray()}
+   *
+   * <p>Method under test: {@link TreeList#toArray()}
    */
   @Test
   @DisplayName("Test toArray(); given TreeList() add '42'; then return array length is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] TreeList.toArray()"})
   void testToArray_givenTreeListAdd42_thenReturnArrayLengthIsTwo() {
     // Arrange
@@ -1578,16 +1743,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#toArray()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.</li>
-   *   <li>Then return third element is {@code 42}.</li>
+   *   <li>Given {@link TreeList#TreeList()} add {@code 42}.
+   *   <li>Then return third element is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#toArray()}
+   *
+   * <p>Method under test: {@link TreeList#toArray()}
    */
   @Test
   @DisplayName("Test toArray(); given TreeList() add '42'; then return third element is '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] TreeList.toArray()"})
   void testToArray_givenTreeListAdd42_thenReturnThirdElementIs42() {
     // Arrange
@@ -1607,16 +1774,18 @@ class TreeListDiffblueTest {
 
   /**
    * Test {@link TreeList#toArray()}.
+   *
    * <ul>
-   *   <li>Given {@link TreeList#TreeList()}.</li>
-   *   <li>Then return array length is zero.</li>
+   *   <li>Given {@link TreeList#TreeList()}.
+   *   <li>Then return array length is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeList#toArray()}
+   *
+   * <p>Method under test: {@link TreeList#toArray()}
    */
   @Test
   @DisplayName("Test toArray(); given TreeList(); then return array length is zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object[] TreeList.toArray()"})
   void testToArray_givenTreeList_thenReturnArrayLengthIsZero() {
     // Arrange
@@ -1628,15 +1797,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link TreeListIterator#hasNext()}
    */
   @Test
   @DisplayName("Test TreeListIterator hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeListIterator.hasNext()"})
   void testTreeListIteratorHasNext_thenReturnFalse() {
     // Arrange
@@ -1648,15 +1819,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#hasNext()}
+   *
+   * <p>Method under test: {@link TreeListIterator#hasNext()}
    */
   @Test
   @DisplayName("Test TreeListIterator hasNext(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeListIterator.hasNext()"})
   void testTreeListIteratorHasNext_thenReturnTrue() {
     // Arrange
@@ -1668,15 +1841,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#hasPrevious()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link TreeListIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test TreeListIterator hasPrevious(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeListIterator.hasPrevious()"})
   void testTreeListIteratorHasPrevious_thenReturnFalse() {
     // Arrange
@@ -1688,15 +1863,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#hasPrevious()}.
+   *
    * <ul>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link TreeListIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test TreeListIterator hasPrevious(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean TreeListIterator.hasPrevious()"})
   void testTreeListIteratorHasPrevious_thenReturnTrue() {
     // Arrange
@@ -1708,17 +1885,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#TreeListIterator(TreeList, int)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When one.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
+   *
+   * <p>Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
    */
   @Test
-  @DisplayName("Test TreeListIterator new TreeListIterator(TreeList, int); given '42'; when one; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test TreeListIterator new TreeListIterator(TreeList, int); given '42'; when one; then return next is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeListIterator.<init>(TreeList, int)"})
   void testTreeListIteratorNewTreeListIterator_given42_whenOne_thenReturnNextIs42() {
     // Arrange
@@ -1736,17 +1916,20 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#TreeListIterator(TreeList, int)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When one.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When one.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
+   *
+   * <p>Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
    */
   @Test
-  @DisplayName("Test TreeListIterator new TreeListIterator(TreeList, int); given '42'; when one; then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test TreeListIterator new TreeListIterator(TreeList, int); given '42'; when one; then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeListIterator.<init>(TreeList, int)"})
   void testTreeListIteratorNewTreeListIterator_given42_whenOne_thenReturnNotHasNext() {
     // Arrange
@@ -1762,16 +1945,19 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#TreeListIterator(TreeList, int)}.
+   *
    * <ul>
-   *   <li>When {@link TreeList#TreeList()}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When {@link TreeList#TreeList()}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
+   *
+   * <p>Method under test: {@link TreeListIterator#TreeListIterator(TreeList, int)}
    */
   @Test
-  @DisplayName("Test TreeListIterator new TreeListIterator(TreeList, int); when TreeList(); then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test TreeListIterator new TreeListIterator(TreeList, int); when TreeList(); then return not hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeListIterator.<init>(TreeList, int)"})
   void testTreeListIteratorNewTreeListIterator_whenTreeList_thenReturnNotHasNext() {
     // Arrange and Act
@@ -1783,12 +1969,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#nextIndex()}.
-   * <p>
-   * Method under test: {@link TreeListIterator#nextIndex()}
+   *
+   * <p>Method under test: {@link TreeListIterator#nextIndex()}
    */
   @Test
   @DisplayName("Test TreeListIterator nextIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeListIterator.nextIndex()"})
   void testTreeListIteratorNextIndex() {
     // Arrange
@@ -1800,15 +1987,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#next()}.
+   *
    * <ul>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#next()}
+   *
+   * <p>Method under test: {@link TreeListIterator#next()}
    */
   @Test
   @DisplayName("Test TreeListIterator next(); then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.next()"})
   void testTreeListIteratorNext_thenReturn42() {
     // Arrange
@@ -1824,15 +2013,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#next()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#next()}
+   *
+   * <p>Method under test: {@link TreeListIterator#next()}
    */
   @Test
   @DisplayName("Test TreeListIterator next(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.next()"})
   void testTreeListIteratorNext_thenThrowNoSuchElementException() {
     // Arrange
@@ -1844,12 +2035,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#previous()}.
-   * <p>
-   * Method under test: {@link TreeListIterator#previous()}
+   *
+   * <p>Method under test: {@link TreeListIterator#previous()}
    */
   @Test
   @DisplayName("Test TreeListIterator previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.previous()"})
   void testTreeListIteratorPrevious() {
     // Arrange
@@ -1869,12 +2061,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#previous()}.
-   * <p>
-   * Method under test: {@link TreeListIterator#previous()}
+   *
+   * <p>Method under test: {@link TreeListIterator#previous()}
    */
   @Test
   @DisplayName("Test TreeListIterator previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.previous()"})
   void testTreeListIteratorPrevious2() {
     // Arrange
@@ -1895,12 +2088,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#previousIndex()}.
-   * <p>
-   * Method under test: {@link TreeListIterator#previousIndex()}
+   *
+   * <p>Method under test: {@link TreeListIterator#previousIndex()}
    */
   @Test
   @DisplayName("Test TreeListIterator previousIndex()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int TreeListIterator.previousIndex()"})
   void testTreeListIteratorPreviousIndex() {
     // Arrange
@@ -1912,15 +2106,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#previous()}.
+   *
    * <ul>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#previous()}
+   *
+   * <p>Method under test: {@link TreeListIterator#previous()}
    */
   @Test
   @DisplayName("Test TreeListIterator previous(); then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.previous()"})
   void testTreeListIteratorPrevious_thenReturn42() {
     // Arrange
@@ -1939,15 +2135,17 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#previous()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link TreeListIterator#previous()}
+   *
+   * <p>Method under test: {@link TreeListIterator#previous()}
    */
   @Test
   @DisplayName("Test TreeListIterator previous(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object TreeListIterator.previous()"})
   void testTreeListIteratorPrevious_thenThrowNoSuchElementException() {
     // Arrange
@@ -1961,12 +2159,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#remove()}.
-   * <p>
-   * Method under test: {@link TreeListIterator#remove()}
+   *
+   * <p>Method under test: {@link TreeListIterator#remove()}
    */
   @Test
   @DisplayName("Test TreeListIterator remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeListIterator.remove()"})
   void testTreeListIteratorRemove() {
     // Arrange
@@ -1978,12 +2177,13 @@ class TreeListDiffblueTest {
 
   /**
    * Test TreeListIterator {@link TreeListIterator#set(Object)}.
-   * <p>
-   * Method under test: {@link TreeListIterator#set(Object)}
+   *
+   * <p>Method under test: {@link TreeListIterator#set(Object)}
    */
   @Test
   @DisplayName("Test TreeListIterator set(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TreeListIterator.set(Object)"})
   void testTreeListIteratorSet() {
     // Arrange

@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NavigableSet;
 import java.util.TreeSet;
@@ -18,28 +19,34 @@ import org.mockito.Mockito;
 class TransformedNavigableSetDiffblueTest {
   /**
    * Test {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code Apply}.</li>
-   *   <li>Then calls {@link Transformer#apply(Object)}.</li>
+   *   <li>Given {@code Apply}.
+   *   <li>Then calls {@link Transformer#apply(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
-  @DisplayName("Test transformedNavigableSet(NavigableSet, Transformer); given 'Apply'; then calls apply(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedNavigableSet(NavigableSet, Transformer); given 'Apply'; then calls apply(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "TransformedNavigableSet TransformedNavigableSet.transformedNavigableSet(NavigableSet, Transformer)"})
+    "TransformedNavigableSet TransformedNavigableSet.transformedNavigableSet(NavigableSet, Transformer)"
+  })
   void testTransformedNavigableSet_givenApply_thenCallsApply() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
+
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    TransformedNavigableSet<Object> actualTransformedNavigableSetResult = TransformedNavigableSet
-        .transformedNavigableSet(set, transformer);
+    TransformedNavigableSet<Object> actualTransformedNavigableSetResult =
+        TransformedNavigableSet.transformedNavigableSet(set, transformer);
 
     // Assert
     verify(transformer).apply(isA(Object.class));
@@ -48,25 +55,30 @@ class TransformedNavigableSetDiffblueTest {
 
   /**
    * Test {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#transformedNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
-  @DisplayName("Test transformedNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "TransformedNavigableSet TransformedNavigableSet.transformedNavigableSet(NavigableSet, Transformer)"})
+    "TransformedNavigableSet TransformedNavigableSet.transformedNavigableSet(NavigableSet, Transformer)"
+  })
   void testTransformedNavigableSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    TransformedNavigableSet<Object> actualTransformedNavigableSetResult = TransformedNavigableSet
-        .transformedNavigableSet(set, mock(Transformer.class));
+    TransformedNavigableSet<Object> actualTransformedNavigableSetResult =
+        TransformedNavigableSet.transformedNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedNavigableSetResult);
@@ -74,27 +86,32 @@ class TransformedNavigableSetDiffblueTest {
 
   /**
    * Test {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
-  @DisplayName("Test transformingNavigableSet(NavigableSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformingNavigableSet(NavigableSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"})
+    "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"
+  })
   void testTransformingNavigableSet_given42_whenTreeSetAdd42_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
 
     // Act
-    TransformedNavigableSet<Object> actualTransformingNavigableSetResult = TransformedNavigableSet
-        .transformingNavigableSet(set, mock(Transformer.class));
+    TransformedNavigableSet<Object> actualTransformingNavigableSetResult =
+        TransformedNavigableSet.transformingNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformingNavigableSetResult);
@@ -102,19 +119,24 @@ class TransformedNavigableSetDiffblueTest {
 
   /**
    * Test {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
-  @DisplayName("Test transformingNavigableSet(NavigableSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformingNavigableSet(NavigableSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"})
+    "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"
+  })
   void testTransformingNavigableSet_givenFoo_whenTreeSetAddFoo_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
@@ -122,8 +144,8 @@ class TransformedNavigableSetDiffblueTest {
     set.add("42");
 
     // Act
-    TransformedNavigableSet<Object> actualTransformingNavigableSetResult = TransformedNavigableSet
-        .transformingNavigableSet(set, mock(Transformer.class));
+    TransformedNavigableSet<Object> actualTransformingNavigableSetResult =
+        TransformedNavigableSet.transformingNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformingNavigableSetResult);
@@ -131,25 +153,30 @@ class TransformedNavigableSetDiffblueTest {
 
   /**
    * Test {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#transformingNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
-  @DisplayName("Test transformingNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformingNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"})
+    "TransformedNavigableSet TransformedNavigableSet.transformingNavigableSet(NavigableSet, Transformer)"
+  })
   void testTransformingNavigableSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    TransformedNavigableSet<Object> actualTransformingNavigableSetResult = TransformedNavigableSet
-        .transformingNavigableSet(set, mock(Transformer.class));
+    TransformedNavigableSet<Object> actualTransformingNavigableSetResult =
+        TransformedNavigableSet.transformingNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformingNavigableSetResult);
@@ -157,17 +184,19 @@ class TransformedNavigableSetDiffblueTest {
 
   /**
    * Test {@link TransformedNavigableSet#TransformedNavigableSet(NavigableSet, Transformer)}.
-   * <p>
-   * Method under test: {@link TransformedNavigableSet#TransformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link TransformedNavigableSet#TransformedNavigableSet(NavigableSet,
+   * Transformer)}
    */
   @Test
   @DisplayName("Test new TransformedNavigableSet(NavigableSet, Transformer)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void TransformedNavigableSet.<init>(NavigableSet, Transformer)"})
   void testNewTransformedNavigableSet() {
     // Arrange and Act
-    TransformedNavigableSet<Object> actualObjectSet = new TransformedNavigableSet<>(new TreeSet<>(),
-        mock(Transformer.class));
+    TransformedNavigableSet<Object> actualObjectSet =
+        new TransformedNavigableSet<>(new TreeSet<>(), mock(Transformer.class));
 
     // Assert
     assertTrue(actualObjectSet.isEmpty());

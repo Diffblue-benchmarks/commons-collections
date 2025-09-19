@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Collection;
 import java.util.List;
@@ -19,20 +20,24 @@ import org.junit.jupiter.api.Test;
 class MultiMapUtilsDiffblueTest {
   /**
    * Test {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@link ArrayListValuedHashMap}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@link ArrayListValuedHashMap}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test emptyIfNull(MultiValuedMap); when ArrayListValuedHashMap(); then return ArrayListValuedHashMap")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test emptyIfNull(MultiValuedMap); when ArrayListValuedHashMap(); then return ArrayListValuedHashMap")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiValuedMap MultiMapUtils.emptyIfNull(MultiValuedMap)"})
   void testEmptyIfNull_whenArrayListValuedHashMap_thenReturnArrayListValuedHashMap() {
     // Arrange and Act
-    MultiValuedMap<Object, Object> actualEmptyIfNullResult = MultiMapUtils.emptyIfNull(new ArrayListValuedHashMap<>());
+    MultiValuedMap<Object, Object> actualEmptyIfNullResult =
+        MultiMapUtils.emptyIfNull(new ArrayListValuedHashMap<>());
 
     // Assert
     assertTrue(actualEmptyIfNullResult instanceof ArrayListValuedHashMap);
@@ -42,16 +47,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link UnmodifiableMultiValuedMap}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link UnmodifiableMultiValuedMap}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#emptyIfNull(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test emptyIfNull(MultiValuedMap); when 'null'; then return UnmodifiableMultiValuedMap")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test emptyIfNull(MultiValuedMap); when 'null'; then return UnmodifiableMultiValuedMap")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiValuedMap MultiMapUtils.emptyIfNull(MultiValuedMap)"})
   void testEmptyIfNull_whenNull_thenReturnUnmodifiableMultiValuedMap() {
     // Arrange and Act
@@ -64,16 +72,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#emptyMultiValuedMap()}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#emptyMultiValuedMap()}
+   *
+   * <p>Method under test: {@link MultiMapUtils#emptyMultiValuedMap()}
    */
   @Test
   @DisplayName("Test emptyMultiValuedMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiValuedMap MultiMapUtils.emptyMultiValuedMap()"})
   void testEmptyMultiValuedMap() {
     // Arrange and Act
-    MultiValuedMap<Object, Object> actualEmptyMultiValuedMapResult = MultiMapUtils.emptyMultiValuedMap();
+    MultiValuedMap<Object, Object> actualEmptyMultiValuedMapResult =
+        MultiMapUtils.emptyMultiValuedMap();
 
     // Assert
     assertTrue(actualEmptyMultiValuedMapResult instanceof UnmodifiableMultiValuedMap);
@@ -82,17 +92,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getCollection(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualCollection = MultiMapUtils.getCollection(map, "Key");
@@ -104,17 +116,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getCollection(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualCollection = MultiMapUtils.getCollection(map, "Key");
@@ -126,19 +140,22 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getCollection(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection3() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> map2 = TransformedMultiValuedMap.transformedMap(map,
-        mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map2 =
+        TransformedMultiValuedMap.transformedMap(
+            map, mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualCollection = MultiMapUtils.getCollection(map2, "Key");
@@ -150,20 +167,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@link List}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@link List}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getCollection(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return List")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getCollection(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return List")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection_whenArrayListValuedHashMap_thenReturnList() {
     // Arrange and Act
-    Collection<Object> actualCollection = MultiMapUtils.getCollection(new ArrayListValuedHashMap<>(), "Key");
+    Collection<Object> actualCollection =
+        MultiMapUtils.getCollection(new ArrayListValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualCollection instanceof List);
@@ -172,20 +193,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return {@link Set}.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return {@link Set}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getCollection(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Set")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getCollection(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Set")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection_whenHashSetValuedHashMap_thenReturnSet() {
     // Arrange and Act
-    Collection<Object> actualCollection = MultiMapUtils.getCollection(new HashSetValuedHashMap<>(), "Key");
+    Collection<Object> actualCollection =
+        MultiMapUtils.getCollection(new HashSetValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualCollection instanceof Set);
@@ -194,16 +219,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getCollection(MultiValuedMap, Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -215,20 +242,23 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When unmodifiableMultiValuedMap {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
+   *   <li>When unmodifiableMultiValuedMap {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getCollection(MultiValuedMap, Object); when unmodifiableMultiValuedMap ArrayListValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getCollection(MultiValuedMap, Object); when unmodifiableMultiValuedMap ArrayListValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection_whenUnmodifiableMultiValuedMapArrayListValuedHashMap() {
     // Arrange
-    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
-        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
 
     // Act
     Collection<Object> actualCollection = MultiMapUtils.getCollection(map, "Key");
@@ -239,20 +269,23 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When unmodifiableMultiValuedMap {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
+   *   <li>When unmodifiableMultiValuedMap {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getCollection(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getCollection(MultiValuedMap, Object); when unmodifiableMultiValuedMap HashSetValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getCollection(MultiValuedMap, Object); when unmodifiableMultiValuedMap HashSetValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection MultiMapUtils.getCollection(MultiValuedMap, Object)"})
   void testGetCollection_whenUnmodifiableMultiValuedMapHashSetValuedHashMap() {
     // Arrange
-    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
-        .unmodifiableMultiValuedMap(new HashSetValuedHashMap<>());
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new HashSetValuedHashMap<>());
 
     // Act
     Collection<Object> actualCollection = MultiMapUtils.getCollection(map, "Key");
@@ -263,16 +296,20 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenArrayListValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -288,16 +325,20 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap() 'Key' is 'Value'; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap() 'Key' is 'Value'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenArrayListValuedHashMapKeyIsValue_thenReturnSizeIsTwo() {
     // Arrange
@@ -314,20 +355,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsBag(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    Bag<Object> actualValuesAsBag = MultiMapUtils.getValuesAsBag(new ArrayListValuedHashMap<>(), "Key");
+    Bag<Object> actualValuesAsBag =
+        MultiMapUtils.getValuesAsBag(new ArrayListValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsBag.isEmpty());
@@ -335,16 +380,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when HashSetValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsBag(MultiValuedMap, Object); when HashSetValuedHashMap() 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenHashSetValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -360,20 +408,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsBag(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenHashSetValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    Bag<Object> actualValuesAsBag = MultiMapUtils.getValuesAsBag(new HashSetValuedHashMap<>(), "Key");
+    Bag<Object> actualValuesAsBag =
+        MultiMapUtils.getValuesAsBag(new HashSetValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsBag.isEmpty());
@@ -381,16 +433,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsBag(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsBag(MultiValuedMap, Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Bag MultiMapUtils.getValuesAsBag(MultiValuedMap, Object)"})
   void testGetValuesAsBag_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -402,17 +456,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsList(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
   void testGetValuesAsList() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(map, "Key");
@@ -423,17 +479,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsList(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
   void testGetValuesAsList2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(map, "Key");
@@ -444,20 +502,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsList(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsList(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
   void testGetValuesAsList_whenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(new ArrayListValuedHashMap<>(), "Key");
+    List<Object> actualValuesAsList =
+        MultiMapUtils.getValuesAsList(new ArrayListValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsList.isEmpty());
@@ -465,20 +527,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsList(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsList(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
   void testGetValuesAsList_whenHashSetValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(new HashSetValuedHashMap<>(), "Key");
+    List<Object> actualValuesAsList =
+        MultiMapUtils.getValuesAsList(new HashSetValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsList.isEmpty());
@@ -486,16 +552,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsList(MultiValuedMap, Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
   void testGetValuesAsList_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -506,18 +574,74 @@ class MultiMapUtilsDiffblueTest {
   }
 
   /**
+   * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
+   *
+   * <ul>
+   *   <li>When unmodifiableMultiValuedMap {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test getValuesAsList(MultiValuedMap, Object); when unmodifiableMultiValuedMap ArrayListValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
+  void testGetValuesAsList_whenUnmodifiableMultiValuedMapArrayListValuedHashMap() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+
+    // Act
+    List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(map, "Key");
+
+    // Assert
+    assertTrue(actualValuesAsList.isEmpty());
+  }
+
+  /**
+   * Test {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}.
+   *
+   * <ul>
+   *   <li>When unmodifiableMultiValuedMap {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsList(MultiValuedMap, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test getValuesAsList(MultiValuedMap, Object); when unmodifiableMultiValuedMap HashSetValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"List MultiMapUtils.getValuesAsList(MultiValuedMap, Object)"})
+  void testGetValuesAsList_whenUnmodifiableMultiValuedMapHashSetValuedHashMap() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new HashSetValuedHashMap<>());
+
+    // Act
+    List<Object> actualValuesAsList = MultiMapUtils.getValuesAsList(map, "Key");
+
+    // Assert
+    assertTrue(actualValuesAsList.isEmpty());
+  }
+
+  /**
    * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsSet(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
   void testGetValuesAsSet() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(map, "Key");
@@ -528,17 +652,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsSet(MultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
   void testGetValuesAsSet2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map =
+        TransformedMultiValuedMap.transformedMap(
+            new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(map, "Key");
@@ -549,20 +675,53 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@code Key}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsSet(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test getValuesAsSet(MultiValuedMap, Object); given 'Key'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
+  void testGetValuesAsSet_givenKey_thenReturnSizeIsOne() {
+    // Arrange
+    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
+    map.put("Key", "Value");
+    UnmodifiableMultiValuedMap<Object, Object> map2 =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(map);
+
+    // Act
+    Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(map2, "Key");
+
+    // Assert
+    assertEquals(1, actualValuesAsSet.size());
+  }
+
+  /**
+   * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
+   * <ul>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test getValuesAsSet(MultiValuedMap, Object); when ArrayListValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
   void testGetValuesAsSet_whenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(new ArrayListValuedHashMap<>(), "Key");
+    Set<Object> actualValuesAsSet =
+        MultiMapUtils.getValuesAsSet(new ArrayListValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsSet.isEmpty());
@@ -570,20 +729,24 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
    */
   @Test
-  @DisplayName("Test getValuesAsSet(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test getValuesAsSet(MultiValuedMap, Object); when HashSetValuedHashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
   void testGetValuesAsSet_whenHashSetValuedHashMap_thenReturnEmpty() {
     // Arrange and Act
-    Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(new HashSetValuedHashMap<>(), "Key");
+    Set<Object> actualValuesAsSet =
+        MultiMapUtils.getValuesAsSet(new HashSetValuedHashMap<>(), "Key");
 
     // Assert
     assertTrue(actualValuesAsSet.isEmpty());
@@ -591,16 +754,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
    */
   @Test
   @DisplayName("Test getValuesAsSet(MultiValuedMap, Object); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
   void testGetValuesAsSet_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -611,18 +776,74 @@ class MultiMapUtilsDiffblueTest {
   }
 
   /**
+   * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
+   * <ul>
+   *   <li>When unmodifiableMultiValuedMap {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test getValuesAsSet(MultiValuedMap, Object); when unmodifiableMultiValuedMap ArrayListValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
+  void testGetValuesAsSet_whenUnmodifiableMultiValuedMapArrayListValuedHashMap() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+
+    // Act
+    Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(map, "Key");
+
+    // Assert
+    assertTrue(actualValuesAsSet.isEmpty());
+  }
+
+  /**
+   * Test {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}.
+   *
+   * <ul>
+   *   <li>When unmodifiableMultiValuedMap {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiMapUtils#getValuesAsSet(MultiValuedMap, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test getValuesAsSet(MultiValuedMap, Object); when unmodifiableMultiValuedMap HashSetValuedHashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Set MultiMapUtils.getValuesAsSet(MultiValuedMap, Object)"})
+  void testGetValuesAsSet_whenUnmodifiableMultiValuedMapHashSetValuedHashMap() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new HashSetValuedHashMap<>());
+
+    // Act
+    Set<Object> actualValuesAsSet = MultiMapUtils.getValuesAsSet(map, "Key");
+
+    // Assert
+    assertTrue(actualValuesAsSet.isEmpty());
+  }
+
+  /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty() {
     // Arrange
-    TransformedMultiValuedMap<?, ?> map = TransformedMultiValuedMap.transformedMap(new ArrayListValuedHashMap<>(),
-        mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<?, ?> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(MultiMapUtils.isEmpty(map));
@@ -630,17 +851,19 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty2() {
     // Arrange
-    TransformedMultiValuedMap<?, ?> map = TransformedMultiValuedMap.transformedMap(new HashSetValuedHashMap<>(),
-        mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<?, ?> map =
+        TransformedMultiValuedMap.transformedMap(
+            new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(MultiMapUtils.isEmpty(map));
@@ -648,19 +871,22 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty3() {
     // Arrange
-    TransformedMultiValuedMap<?, ?> map = TransformedMultiValuedMap.transformedMap(new ArrayListValuedHashMap<>(),
-        mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<?, ?> map2 = TransformedMultiValuedMap.transformedMap(map, mock(Transformer.class),
-        mock(Transformer.class));
+    TransformedMultiValuedMap<?, ?> map =
+        TransformedMultiValuedMap.transformedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<?, ?> map2 =
+        TransformedMultiValuedMap.transformedMap(
+            map, mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(MultiMapUtils.isEmpty(map2));
@@ -668,16 +894,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap); when ArrayListValuedHashMap(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty_whenArrayListValuedHashMap_thenReturnTrue() {
     // Arrange, Act and Assert
@@ -686,16 +914,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap); when HashSetValuedHashMap(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty_whenHashSetValuedHashMap_thenReturnTrue() {
     // Arrange, Act and Assert
@@ -704,16 +934,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#isEmpty(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#isEmpty(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test isEmpty(MultiValuedMap); when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiMapUtils.isEmpty(MultiValuedMap)"})
   void testIsEmpty_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
@@ -722,16 +954,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#newListValuedHashMap()}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#newListValuedHashMap()}
+   *
+   * <p>Method under test: {@link MultiMapUtils#newListValuedHashMap()}
    */
   @Test
   @DisplayName("Test newListValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"ListValuedMap MultiMapUtils.newListValuedHashMap()"})
   void testNewListValuedHashMap() {
     // Arrange and Act
-    ListValuedMap<Object, Object> actualNewListValuedHashMapResult = MultiMapUtils.newListValuedHashMap();
+    ListValuedMap<Object, Object> actualNewListValuedHashMapResult =
+        MultiMapUtils.newListValuedHashMap();
 
     // Assert
     assertTrue(actualNewListValuedHashMapResult instanceof ArrayListValuedHashMap);
@@ -741,16 +975,18 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#newSetValuedHashMap()}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#newSetValuedHashMap()}
+   *
+   * <p>Method under test: {@link MultiMapUtils#newSetValuedHashMap()}
    */
   @Test
   @DisplayName("Test newSetValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetValuedMap MultiMapUtils.newSetValuedHashMap()"})
   void testNewSetValuedHashMap() {
     // Arrange and Act
-    SetValuedMap<Object, Object> actualNewSetValuedHashMapResult = MultiMapUtils.newSetValuedHashMap();
+    SetValuedMap<Object, Object> actualNewSetValuedHashMapResult =
+        MultiMapUtils.newSetValuedHashMap();
 
     // Assert
     assertTrue(actualNewSetValuedHashMapResult instanceof HashSetValuedHashMap);
@@ -760,21 +996,27 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)}.
+   *
    * <ul>
-   *   <li>Then return {@link TransformedMultiValuedMap}.</li>
+   *   <li>Then return {@link TransformedMultiValuedMap}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#transformedMultiValuedMap(MultiValuedMap,
+   * Transformer, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer); then return TransformedMultiValuedMap")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer); then return TransformedMultiValuedMap")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({
-      "MultiValuedMap MultiMapUtils.transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)"})
+    "MultiValuedMap MultiMapUtils.transformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)"
+  })
   void testTransformedMultiValuedMap_thenReturnTransformedMultiValuedMap() {
     // Arrange and Act
-    MultiValuedMap<Object, Object> actualTransformedMultiValuedMapResult = MultiMapUtils
-        .transformedMultiValuedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    MultiValuedMap<Object, Object> actualTransformedMultiValuedMapResult =
+        MultiMapUtils.transformedMultiValuedMap(
+            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Assert
     assertTrue(actualTransformedMultiValuedMapResult instanceof TransformedMultiValuedMap);
@@ -783,21 +1025,22 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}.
-   * <p>
-   * Method under test: {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test unmodifiableMultiValuedMap(MultiValuedMap)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiValuedMap MultiMapUtils.unmodifiableMultiValuedMap(MultiValuedMap)"})
   void testUnmodifiableMultiValuedMap() {
     // Arrange
-    UnmodifiableMultiValuedMap<?, ?> map = UnmodifiableMultiValuedMap
-        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    UnmodifiableMultiValuedMap<?, ?> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
 
     // Act
-    MultiValuedMap<Object, Object> actualUnmodifiableMultiValuedMapResult = MultiMapUtils
-        .unmodifiableMultiValuedMap(map);
+    MultiValuedMap<Object, Object> actualUnmodifiableMultiValuedMapResult =
+        MultiMapUtils.unmodifiableMultiValuedMap(map);
 
     // Assert
     assertTrue(actualUnmodifiableMultiValuedMapResult instanceof UnmodifiableMultiValuedMap);
@@ -806,20 +1049,22 @@ class MultiMapUtilsDiffblueTest {
 
   /**
    * Test {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link MultiMapUtils#unmodifiableMultiValuedMap(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test unmodifiableMultiValuedMap(MultiValuedMap); when ArrayListValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MultiValuedMap MultiMapUtils.unmodifiableMultiValuedMap(MultiValuedMap)"})
   void testUnmodifiableMultiValuedMap_whenArrayListValuedHashMap() {
     // Arrange and Act
-    MultiValuedMap<Object, Object> actualUnmodifiableMultiValuedMapResult = MultiMapUtils
-        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    MultiValuedMap<Object, Object> actualUnmodifiableMultiValuedMapResult =
+        MultiMapUtils.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
 
     // Assert
     assertTrue(actualUnmodifiableMultiValuedMapResult instanceof UnmodifiableMultiValuedMap);

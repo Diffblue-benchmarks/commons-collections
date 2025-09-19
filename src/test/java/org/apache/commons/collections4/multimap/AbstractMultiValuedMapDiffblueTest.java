@@ -10,6 +10,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.iterators.EmptyMapIterator;
 import org.apache.commons.collections4.multimap.AbstractMultiValuedMap.WrappedCollection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -27,17 +29,39 @@ import org.junit.jupiter.api.Test;
 
 class AbstractMultiValuedMapDiffblueTest {
   /**
-   * Test {@link AbstractMultiValuedMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsKey(Object)}
+   * Test {@link AbstractMultiValuedMap#asMap()}.
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#asMap()}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test asMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Map AbstractMultiValuedMap.asMap()"})
+  void testAsMap() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+
+    // Act and Assert
+    assertTrue(arrayListValuedHashMap.asMap().isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#containsKey(Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsKey(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test containsKey(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsKey(Object)"})
   void testContainsKey_givenArrayListValuedHashMapKeyIsValue_thenReturnTrue() {
     // Arrange
@@ -50,16 +74,18 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsKey(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsKey(Object)}
    */
   @Test
   @DisplayName("Test containsKey(Object); given ArrayListValuedHashMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsKey(Object)"})
   void testContainsKey_givenArrayListValuedHashMap_thenReturnFalse() {
     // Arrange
@@ -71,16 +97,19 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is forty-two.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is forty-two.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
    */
   @Test
-  @DisplayName("Test containsMapping(Object, Object); given ArrayListValuedHashMap() 'Key' is forty-two; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsMapping(Object, Object); given ArrayListValuedHashMap() 'Key' is forty-two; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsMapping(Object, Object)"})
   void testContainsMapping_givenArrayListValuedHashMapKeyIsFortyTwo_thenReturnFalse() {
     // Arrange
@@ -93,16 +122,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
    */
   @Test
-  @DisplayName("Test containsMapping(Object, Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsMapping(Object, Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsMapping(Object, Object)"})
   void testContainsMapping_givenArrayListValuedHashMapKeyIsValue_thenReturnTrue() {
     // Arrange
@@ -115,16 +148,19 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsMapping(Object, Object)}
    */
   @Test
-  @DisplayName("Test containsMapping(Object, Object); given ArrayListValuedHashMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsMapping(Object, Object); given ArrayListValuedHashMap(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsMapping(Object, Object)"})
   void testContainsMapping_givenArrayListValuedHashMap_thenReturnFalse() {
     // Arrange
@@ -136,16 +172,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsValue(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsValue(Object)"})
   void testContainsValue_givenArrayListValuedHashMapKeyIsValue_thenReturnTrue() {
     // Arrange
@@ -158,16 +198,18 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#containsValue(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); given ArrayListValuedHashMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.containsValue(Object)"})
   void testContainsValue_givenArrayListValuedHashMap_thenReturnFalse() {
     // Arrange
@@ -179,45 +221,25 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}.
+   *
    * <ul>
-   *   <li>Given {@link IOException#IOException(String)} with {@code foo}.</li>
-   *   <li>Then throw {@link IOException}.</li>
+   *   <li>Given {@code Object}.
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
    */
   @Test
-  @DisplayName("Test doReadObject(ObjectInputStream); given IOException(String) with 'foo'; then throw IOException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); given 'Object'; then ArrayListValuedHashMap() Map size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractMultiValuedMap.doReadObject(ObjectInputStream)"})
-  void testDoReadObject_givenIOExceptionWithFoo_thenThrowIOException() throws IOException, ClassNotFoundException {
+  void testDoReadObject_givenObject_thenArrayListValuedHashMapMapSizeIsOne()
+      throws IOException, ClassNotFoundException {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-    ObjectInputStream in = mock(ObjectInputStream.class);
-    when(in.readObject()).thenThrow(new IOException("foo"));
-    when(in.readInt()).thenReturn(1);
 
-    // Act and Assert
-    assertThrows(IOException.class, () -> arrayListValuedHashMap.doReadObject(in));
-    verify(in).readInt();
-    verify(in).readObject();
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}.
-   * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
-   */
-  @Test
-  @DisplayName("Test doReadObject(ObjectInputStream); then ArrayListValuedHashMap() Map size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void AbstractMultiValuedMap.doReadObject(ObjectInputStream)"})
-  void testDoReadObject_thenArrayListValuedHashMapMapSizeIsOne() throws IOException, ClassNotFoundException {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
     ObjectInputStream in = mock(ObjectInputStream.class);
     when(in.readObject()).thenReturn("Object");
     when(in.readInt()).thenReturn(1);
@@ -238,13 +260,108 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
+   * Test {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}.
+   *
+   * <ul>
+   *   <li>Given zero.
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
+   */
+  @Test
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); given zero; then ArrayListValuedHashMap() size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void AbstractMultiValuedMap.doReadObject(ObjectInputStream)"})
+  void testDoReadObject_givenZero_thenArrayListValuedHashMapSizeIsZero()
+      throws IOException, ClassNotFoundException {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+
+    ObjectInputStream in = mock(ObjectInputStream.class);
+    when(in.readInt()).thenReturn(0);
+
+    // Act
+    arrayListValuedHashMap.doReadObject(in);
+
+    // Assert that nothing has changed
+    verify(in).readInt();
+    assertEquals(0, arrayListValuedHashMap.size());
+    assertTrue(arrayListValuedHashMap.getMap().isEmpty());
+    assertTrue(arrayListValuedHashMap.isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}.
+   *
+   * <ul>
+   *   <li>When {@link ObjectInputStream} {@link ObjectInputStream#readInt()} throw {@link
+   *       IOException#IOException()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
+   */
+  @Test
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); when ObjectInputStream readInt() throw IOException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void AbstractMultiValuedMap.doReadObject(ObjectInputStream)"})
+  void testDoReadObject_whenObjectInputStreamReadIntThrowIOException()
+      throws IOException, ClassNotFoundException {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+
+    ObjectInputStream in = mock(ObjectInputStream.class);
+    when(in.readInt()).thenThrow(new IOException());
+
+    // Act and Assert
+    assertThrows(IOException.class, () -> arrayListValuedHashMap.doReadObject(in));
+    verify(in).readInt();
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}.
+   *
+   * <ul>
+   *   <li>When {@link ObjectInputStream} {@link ObjectInputStream#readObject()} throw {@link
+   *       IOException#IOException()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#doReadObject(ObjectInputStream)}
+   */
+  @Test
+  @DisplayName(
+      "Test doReadObject(ObjectInputStream); when ObjectInputStream readObject() throw IOException()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void AbstractMultiValuedMap.doReadObject(ObjectInputStream)"})
+  void testDoReadObject_whenObjectInputStreamReadObjectThrowIOException()
+      throws IOException, ClassNotFoundException {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+
+    ObjectInputStream in = mock(ObjectInputStream.class);
+    when(in.readObject()).thenThrow(new IOException());
+    when(in.readInt()).thenReturn(1);
+
+    // Act and Assert
+    assertThrows(IOException.class, () -> arrayListValuedHashMap.doReadObject(in));
+    verify(in).readInt();
+    verify(in).readObject();
+  }
+
+  /**
    * Test {@link AbstractMultiValuedMap#entries()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#entries()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#entries()}
    */
   @Test
   @DisplayName("Test entries()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.entries()"})
   void testEntries() {
     // Arrange
@@ -255,13 +372,16 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link AbstractMultiValuedMap#hashCode()}.
+   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link
+   * AbstractMultiValuedMap#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractMultiValuedMap#equals(Object)}
    *   <li>{@link AbstractMultiValuedMap#hashCode()}
@@ -269,8 +389,12 @@ class AbstractMultiValuedMapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
@@ -278,18 +402,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
     // Act and Assert
     assertEquals(arrayListValuedHashMap, arrayListValuedHashMap2);
-    int expectedHashCodeResult = arrayListValuedHashMap.hashCode();
-    assertEquals(expectedHashCodeResult, arrayListValuedHashMap2.hashCode());
+    assertEquals(arrayListValuedHashMap.hashCode(), arrayListValuedHashMap2.hashCode());
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link AbstractMultiValuedMap#hashCode()}.
+   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link
+   * AbstractMultiValuedMap#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractMultiValuedMap#equals(Object)}
    *   <li>{@link AbstractMultiValuedMap#hashCode()}
@@ -297,29 +423,73 @@ class AbstractMultiValuedMapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-    ArrayListValuedLinkedHashMap<Object, Object> arrayListValuedLinkedHashMap = mock(
-        ArrayListValuedLinkedHashMap.class);
+
+    ArrayListValuedLinkedHashMap<Object, Object> arrayListValuedLinkedHashMap =
+        mock(ArrayListValuedLinkedHashMap.class);
     when(arrayListValuedLinkedHashMap.asMap()).thenReturn(new HashMap<>());
 
     // Act and Assert
     assertEquals(arrayListValuedHashMap, arrayListValuedLinkedHashMap);
-    int notExpectedHashCodeResult = arrayListValuedHashMap.hashCode();
-    assertNotEquals(notExpectedHashCodeResult, arrayListValuedLinkedHashMap.hashCode());
+    assertNotEquals(arrayListValuedHashMap.hashCode(), arrayListValuedLinkedHashMap.hashCode());
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link AbstractMultiValuedMap#hashCode()}.
+   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link
+   * AbstractMultiValuedMap#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link AbstractMultiValuedMap#equals(Object)}
+   *   <li>{@link AbstractMultiValuedMap#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual3() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+    arrayListValuedHashMap.put("Key", "Value");
+
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap2 = new ArrayListValuedHashMap<>();
+    arrayListValuedHashMap2.put("Key", "Value");
+
+    // Act and Assert
+    assertEquals(arrayListValuedHashMap, arrayListValuedHashMap2);
+    assertEquals(arrayListValuedHashMap.hashCode(), arrayListValuedHashMap2.hashCode());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#equals(Object)}, and {@link
+   * AbstractMultiValuedMap#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is same.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link AbstractMultiValuedMap#equals(Object)}
    *   <li>{@link AbstractMultiValuedMap#hashCode()}
@@ -327,8 +497,12 @@ class AbstractMultiValuedMapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
@@ -341,17 +515,22 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
@@ -363,17 +542,52 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+    arrayListValuedHashMap.put(new ArrayListValuedHashMap<>(), "Value");
+
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap2 = new ArrayListValuedHashMap<>();
+    arrayListValuedHashMap2.put("Key", "Value");
+
+    // Act and Assert
+    assertNotEquals(arrayListValuedHashMap, arrayListValuedHashMap2);
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
@@ -384,17 +598,22 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractMultiValuedMap.equals(Object)", "int AbstractMultiValuedMap.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractMultiValuedMap.equals(Object)",
+    "int AbstractMultiValuedMap.hashCode()"
+  })
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
@@ -405,12 +624,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#get(Object)}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#get(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.get(Object)"})
   void testGet() {
     // Arrange
@@ -426,12 +646,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#getMap()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#getMap()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#getMap()}
    */
   @Test
   @DisplayName("Test getMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Map AbstractMultiValuedMap.getMap()"})
   void testGetMap() {
     // Arrange
@@ -443,16 +664,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#isEmpty()}
    */
   @Test
-  @DisplayName("Test isEmpty(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEmpty(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.isEmpty()"})
   void testIsEmpty_givenArrayListValuedHashMapKeyIsValue_thenReturnFalse() {
     // Arrange
@@ -465,16 +690,18 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given ArrayListValuedHashMap(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.isEmpty()"})
   void testIsEmpty_givenArrayListValuedHashMap_thenReturnTrue() {
     // Arrange
@@ -486,12 +713,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#keys()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#keys()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#keys()}
    */
   @Test
   @DisplayName("Test keys()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"org.apache.commons.collections4.MultiSet AbstractMultiValuedMap.keys()"})
   void testKeys() {
     // Arrange
@@ -503,12 +731,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#keySet()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#keySet()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#keySet()}
    */
   @Test
   @DisplayName("Test keySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set AbstractMultiValuedMap.keySet()"})
   void testKeySet() {
     // Arrange
@@ -520,16 +749,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#mapIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return next is {@code Key}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return next is {@code Key}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#mapIterator()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#mapIterator()}
    */
   @Test
-  @DisplayName("Test mapIterator(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return next is 'Key'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test mapIterator(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return next is 'Key'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MapIterator AbstractMultiValuedMap.mapIterator()"})
   void testMapIterator_givenArrayListValuedHashMapKeyIsValue_thenReturnNextIsKey() {
     // Arrange
@@ -545,17 +778,48 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#put(Object, Object)}.
+   * Test {@link AbstractMultiValuedMap#mapIterator()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code Key} size is one.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@link EmptyMapIterator}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#put(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#mapIterator()}
    */
   @Test
-  @DisplayName("Test put(Object, Object); given ArrayListValuedHashMap(); then ArrayListValuedHashMap() Map 'Key' size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test mapIterator(); given ArrayListValuedHashMap(); then return EmptyMapIterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"MapIterator AbstractMultiValuedMap.mapIterator()"})
+  void testMapIterator_givenArrayListValuedHashMap_thenReturnEmptyMapIterator() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
+
+    // Act
+    MapIterator<Object, Object> actualMapIteratorResult = arrayListValuedHashMap.mapIterator();
+
+    // Assert
+    assertTrue(actualMapIteratorResult instanceof EmptyMapIterator);
+    assertFalse(actualMapIteratorResult.hasNext());
+    assertSame(((EmptyMapIterator) actualMapIteratorResult).INSTANCE, actualMapIteratorResult);
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMap#put(Object, Object)}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code Key} size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#put(Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test put(Object, Object); given ArrayListValuedHashMap(); then ArrayListValuedHashMap() Map 'Key' size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.put(Object, Object)"})
   void testPut_givenArrayListValuedHashMap_thenArrayListValuedHashMapMapKeySizeIsOne() {
     // Arrange
@@ -576,15 +840,17 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#put(Object, Object)}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code Key} size is two.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code Key} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#put(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#put(Object, Object)}
    */
   @Test
   @DisplayName("Test put(Object, Object); then ArrayListValuedHashMap() Map 'Key' size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.put(Object, Object)"})
   void testPut_thenArrayListValuedHashMapMapKeySizeIsTwo() {
     // Arrange
@@ -607,15 +873,17 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#putAll(Map)} with {@code Map}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code 42} size is one.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code 42} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
    */
   @Test
   @DisplayName("Test putAll(Map) with 'Map'; then ArrayListValuedHashMap() Map '42' size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(Map)"})
   void testPutAllWithMap_thenArrayListValuedHashMapMap42SizeIsOne() {
     // Arrange
@@ -639,15 +907,17 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#putAll(Map)} with {@code Map}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code 42} size is two.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map {@code 42} size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
    */
   @Test
   @DisplayName("Test putAll(Map) with 'Map'; then ArrayListValuedHashMap() Map '42' size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(Map)"})
   void testPutAllWithMap_thenArrayListValuedHashMapMap42SizeIsTwo() {
     // Arrange
@@ -671,16 +941,19 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#putAll(Map)} with {@code Map}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.</li>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map) with 'Map'; when HashMap(); then ArrayListValuedHashMap() size is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Map) with 'Map'; when HashMap(); then ArrayListValuedHashMap() size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(Map)"})
   void testPutAllWithMap_whenHashMap_thenArrayListValuedHashMapSizeIsZero() {
     // Arrange
@@ -698,21 +971,24 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'; then ArrayListValuedHashMap() size is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(MultiValuedMap) with 'MultiValuedMap'; then ArrayListValuedHashMap() size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(MultiValuedMap)"})
   void testPutAllWithMultiValuedMap_thenArrayListValuedHashMapSizeIsZero() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-    UnmodifiableMultiValuedMap<?, ?> map = UnmodifiableMultiValuedMap
-        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    UnmodifiableMultiValuedMap<?, ?> map =
+        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
 
     // Act
     boolean actualPutAllResult = arrayListValuedHashMap.putAll(map);
@@ -721,20 +997,23 @@ class AbstractMultiValuedMapDiffblueTest {
     assertEquals(0, arrayListValuedHashMap.size());
     assertFalse(actualPutAllResult);
     assertTrue(arrayListValuedHashMap.getMap().isEmpty());
+    assertTrue(arrayListValuedHashMap.isEmpty());
     assertEquals(arrayListValuedHashMap, map);
   }
 
   /**
    * Test {@link AbstractMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
+   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(MultiValuedMap)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(MultiValuedMap)}
    */
   @Test
   @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'; when ArrayListValuedHashMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(MultiValuedMap)"})
   void testPutAllWithMultiValuedMap_whenArrayListValuedHashMap() {
     // Arrange
@@ -748,23 +1027,27 @@ class AbstractMultiValuedMapDiffblueTest {
     assertEquals(0, arrayListValuedHashMap.size());
     assertFalse(actualPutAllResult);
     assertTrue(arrayListValuedHashMap.getMap().isEmpty());
+    assertTrue(arrayListValuedHashMap.isEmpty());
     assertEquals(arrayListValuedHashMap, map);
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
+   * Test {@link AbstractMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code
+   * Iterable}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(Object, Iterable)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'; given '42'; then ArrayListValuedHashMap() Map size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Object, Iterable) with 'Object', 'Iterable'; then ArrayListValuedHashMap() Map size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(Object, Iterable)"})
-  void testPutAllWithObjectIterable_given42_thenArrayListValuedHashMapMapSizeIsOne() {
+  void testPutAllWithObjectIterable_thenArrayListValuedHashMapMapSizeIsOne() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
 
@@ -784,17 +1067,21 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
+   * Test {@link AbstractMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code
+   * Iterable}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#putAll(Object, Iterable)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#putAll(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'; when ArrayList(); then ArrayListValuedHashMap() size is zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Object, Iterable) with 'Object', 'Iterable'; when ArrayList(); then ArrayListValuedHashMap() size is zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.putAll(Object, Iterable)"})
   void testPutAllWithObjectIterable_whenArrayList_thenArrayListValuedHashMapSizeIsZero() {
     // Arrange
@@ -812,16 +1099,20 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.remove(Object)"})
   void testRemove_givenArrayListValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -842,16 +1133,18 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object); given ArrayListValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.remove(Object)"})
   void testRemove_givenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange
@@ -870,16 +1163,19 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#removeMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
    */
   @Test
-  @DisplayName("Test removeMapping(Object, Object); given ArrayListValuedHashMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test removeMapping(Object, Object); given ArrayListValuedHashMap(); then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.removeMapping(Object, Object)"})
   void testRemoveMapping_givenArrayListValuedHashMap_thenReturnFalse() {
     // Arrange
@@ -897,15 +1193,17 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#removeMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
    */
   @Test
   @DisplayName("Test removeMapping(Object, Object); then ArrayListValuedHashMap() Map size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.removeMapping(Object, Object)"})
   void testRemoveMapping_thenArrayListValuedHashMapMapSizeIsOne() {
     // Arrange
@@ -927,15 +1225,17 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#removeMapping(Object, Object)}.
+   *
    * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.</li>
+   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} size is zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#removeMapping(Object, Object)}
    */
   @Test
   @DisplayName("Test removeMapping(Object, Object); then ArrayListValuedHashMap() size is zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractMultiValuedMap.removeMapping(Object, Object)"})
   void testRemoveMapping_thenArrayListValuedHashMapSizeIsZero() {
     // Arrange
@@ -954,12 +1254,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#setMap(Map)}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#setMap(Map)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#setMap(Map)}
    */
   @Test
   @DisplayName("Test setMap(Map)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void AbstractMultiValuedMap.setMap(Map)"})
   void testSetMap() {
     // Arrange
@@ -975,16 +1276,19 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#size()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return one.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
+   *       Value}.
+   *   <li>Then return one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#size()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#size()}
    */
   @Test
   @DisplayName("Test size(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractMultiValuedMap.size()"})
   void testSize_givenArrayListValuedHashMapKeyIsValue_thenReturnOne() {
     // Arrange
@@ -997,16 +1301,18 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#size()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#size()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#size()}
    */
   @Test
   @DisplayName("Test size(); given ArrayListValuedHashMap(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractMultiValuedMap.size()"})
   void testSize_givenArrayListValuedHashMap_thenReturnZero() {
     // Arrange
@@ -1018,12 +1324,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#toString()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#toString()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#toString()}
    */
   @Test
   @DisplayName("Test toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String AbstractMultiValuedMap.toString()"})
   void testToString() {
     // Arrange
@@ -1035,12 +1342,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#values()}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#values()}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#values()}
    */
   @Test
   @DisplayName("Test values()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.values()"})
   void testValues() {
     // Arrange
@@ -1052,12 +1360,13 @@ class AbstractMultiValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMap#wrappedCollection(Object)}.
-   * <p>
-   * Method under test: {@link AbstractMultiValuedMap#wrappedCollection(Object)}
+   *
+   * <p>Method under test: {@link AbstractMultiValuedMap#wrappedCollection(Object)}
    */
   @Test
   @DisplayName("Test wrappedCollection(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMap.wrappedCollection(Object)"})
   void testWrappedCollection() {
     // Arrange
@@ -1072,16 +1381,19 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test WrappedCollection {@link WrappedCollection#WrappedCollection(AbstractMultiValuedMap, Object)}.
-   * <p>
-   * Method under test: {@link WrappedCollection#WrappedCollection(AbstractMultiValuedMap, Object)}
+   * Test WrappedCollection {@link WrappedCollection#WrappedCollection(AbstractMultiValuedMap,
+   * Object)}.
+   *
+   * <p>Method under test: {@link WrappedCollection#WrappedCollection(AbstractMultiValuedMap,
+   * Object)}
    */
   @Test
   @DisplayName("Test WrappedCollection new WrappedCollection(AbstractMultiValuedMap, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void WrappedCollection.<init>(AbstractMultiValuedMap, Object)"})
   void testWrappedCollectionNewWrappedCollection() {
     // Arrange, Act and Assert
-    assertTrue(((new ArrayListValuedHashMap()).new WrappedCollection("Key")).isEmpty());
+    assertTrue(new ArrayListValuedHashMap().new WrappedCollection("Key").isEmpty());
   }
 }

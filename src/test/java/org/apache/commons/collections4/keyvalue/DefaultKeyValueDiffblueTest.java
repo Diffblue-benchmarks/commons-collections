@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -17,12 +18,13 @@ import org.junit.jupiter.api.Test;
 class DefaultKeyValueDiffblueTest {
   /**
    * Test {@link DefaultKeyValue#DefaultKeyValue(Entry)}.
-   * <p>
-   * Method under test: {@link DefaultKeyValue#DefaultKeyValue(Entry)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#DefaultKeyValue(Entry)}
    */
   @Test
   @DisplayName("Test new DefaultKeyValue(Entry)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void DefaultKeyValue.<init>(Entry)"})
   void testNewDefaultKeyValue() {
     // Arrange
@@ -41,33 +43,42 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#DefaultKeyValue(KeyValue)}.
-   * <p>
-   * Method under test: {@link DefaultKeyValue#DefaultKeyValue(KeyValue)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#DefaultKeyValue(KeyValue)}
    */
   @Test
   @DisplayName("Test new DefaultKeyValue(KeyValue)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void DefaultKeyValue.<init>(KeyValue)"})
   void testNewDefaultKeyValue2() {
     // Arrange
     DefaultKeyValue<?, ?> pair = new DefaultKeyValue<>();
 
-    // Act and Assert
-    assertEquals(pair, new DefaultKeyValue<>(pair));
+    // Act
+    DefaultKeyValue<Object, Object> actualDefaultKeyValue = new DefaultKeyValue<>(pair);
+
+    // Assert
+    assertEquals(pair, actualDefaultKeyValue);
   }
 
   /**
    * Test {@link DefaultKeyValue#DefaultKeyValue()}.
+   *
    * <ul>
-   *   <li>Then return Key is {@code null}.</li>
+   *   <li>Then return Key is {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#DefaultKeyValue()}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#DefaultKeyValue()}
    */
   @Test
   @DisplayName("Test new DefaultKeyValue(); then return Key is 'null'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void DefaultKeyValue.<init>()", "void DefaultKeyValue.<init>(Object, Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DefaultKeyValue.<init>()",
+    "void DefaultKeyValue.<init>(Object, Object)"
+  })
   void testNewDefaultKeyValue_thenReturnKeyIsNull() {
     // Arrange and Act
     DefaultKeyValue<Object, Object> actualDefaultKeyValue = new DefaultKeyValue<>();
@@ -79,17 +90,22 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#DefaultKeyValue(Object, Object)}.
+   *
    * <ul>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Key}.</li>
+   *   <li>When {@code Key}.
+   *   <li>Then return {@code Key}.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#DefaultKeyValue(Object, Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#DefaultKeyValue(Object, Object)}
    */
   @Test
   @DisplayName("Test new DefaultKeyValue(Object, Object); when 'Key'; then return 'Key'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void DefaultKeyValue.<init>()", "void DefaultKeyValue.<init>(Object, Object)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DefaultKeyValue.<init>()",
+    "void DefaultKeyValue.<init>(Object, Object)"
+  })
   void testNewDefaultKeyValue_whenKey_thenReturnKey() {
     // Arrange and Act
     DefaultKeyValue<Object, Object> actualDefaultKeyValue = new DefaultKeyValue<>("Key", "Value");
@@ -101,12 +117,14 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}, and {@link DefaultKeyValue#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link DefaultKeyValue#equals(Object)}
    *   <li>{@link DefaultKeyValue#hashCode()}
@@ -114,7 +132,8 @@ class DefaultKeyValueDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -123,18 +142,19 @@ class DefaultKeyValueDiffblueTest {
 
     // Act and Assert
     assertEquals(defaultKeyValue, defaultKeyValue2);
-    int expectedHashCodeResult = defaultKeyValue.hashCode();
-    assertEquals(expectedHashCodeResult, defaultKeyValue2.hashCode());
+    assertEquals(defaultKeyValue.hashCode(), defaultKeyValue2.hashCode());
   }
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}, and {@link DefaultKeyValue#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link DefaultKeyValue#equals(Object)}
    *   <li>{@link DefaultKeyValue#hashCode()}
@@ -142,7 +162,8 @@ class DefaultKeyValueDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -156,20 +177,23 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
-    DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>(new SimpleEntry<>("42", "42"));
+    DefaultKeyValue<Object, Object> defaultKeyValue =
+        new DefaultKeyValue<>(new SimpleEntry<>("42", "42"));
 
     // Act and Assert
     assertNotEquals(defaultKeyValue, new DefaultKeyValue<>());
@@ -177,16 +201,18 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
@@ -199,40 +225,20 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
-    // Arrange
-    DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>(
-        new SimpleEntry<>(new DefaultKeyValue<>(), "42"));
-
-    // Act and Assert
-    assertNotEquals(defaultKeyValue, new DefaultKeyValue<>());
-  }
-
-  /**
-   * Test {@link DefaultKeyValue#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
-  void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
     DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>();
     defaultKeyValue.setValue(new DefaultKeyValue<>());
@@ -243,16 +249,42 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
+    // Arrange
+    DefaultKeyValue<Object, Object> defaultKeyValue =
+        new DefaultKeyValue<>(new SimpleEntry<>(new DefaultKeyValue<>(), "42"));
+
+    // Act and Assert
+    assertNotEquals(defaultKeyValue, new DefaultKeyValue<>());
+  }
+
+  /**
+   * Test {@link DefaultKeyValue#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
@@ -264,16 +296,18 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link DefaultKeyValue#equals(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean DefaultKeyValue.equals(Object)", "int DefaultKeyValue.hashCode()"})
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
@@ -285,12 +319,13 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#setKey(Object)}.
-   * <p>
-   * Method under test: {@link DefaultKeyValue#setKey(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#setKey(Object)}
    */
   @Test
   @DisplayName("Test setKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object DefaultKeyValue.setKey(Object)"})
   void testSetKey() {
     // Arrange
@@ -309,12 +344,13 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#setValue(Object)}.
-   * <p>
-   * Method under test: {@link DefaultKeyValue#setValue(Object)}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#setValue(Object)}
    */
   @Test
   @DisplayName("Test setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object DefaultKeyValue.setValue(Object)"})
   void testSetValue() {
     // Arrange
@@ -333,12 +369,13 @@ class DefaultKeyValueDiffblueTest {
 
   /**
    * Test {@link DefaultKeyValue#toMapEntry()}.
-   * <p>
-   * Method under test: {@link DefaultKeyValue#toMapEntry()}
+   *
+   * <p>Method under test: {@link DefaultKeyValue#toMapEntry()}
    */
   @Test
   @DisplayName("Test toMapEntry()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Entry DefaultKeyValue.toMapEntry()"})
   void testToMapEntry() {
     // Arrange

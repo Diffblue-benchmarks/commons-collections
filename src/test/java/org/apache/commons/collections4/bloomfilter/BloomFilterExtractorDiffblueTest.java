@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.Supplier;
 import org.junit.jupiter.api.DisplayName;
@@ -16,21 +17,25 @@ import org.junit.jupiter.api.Test;
 class BloomFilterExtractorDiffblueTest {
   /**
    * Test {@link BloomFilterExtractor#fromBloomFilterArray(BloomFilter[])}.
-   * <p>
-   * Method under test: {@link BloomFilterExtractor#fromBloomFilterArray(BloomFilter[])}
+   *
+   * <p>Method under test: {@link BloomFilterExtractor#fromBloomFilterArray(BloomFilter[])}
    */
   @Test
   @DisplayName("Test fromBloomFilterArray(BloomFilter[])")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"BloomFilterExtractor BloomFilterExtractor.fromBloomFilterArray(BloomFilter[])"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "BloomFilterExtractor BloomFilterExtractor.fromBloomFilterArray(BloomFilter[])"
+  })
   void testFromBloomFilterArray() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(shape);
-    BloomFilter<?>[] filters = new BloomFilter[]{arrayCountingBloomFilter};
+    BloomFilter<?>[] filters = new BloomFilter[] {arrayCountingBloomFilter};
 
     // Act
-    BloomFilterExtractor actualFromBloomFilterArrayResult = BloomFilterExtractor.fromBloomFilterArray(filters);
+    BloomFilterExtractor actualFromBloomFilterArrayResult =
+        BloomFilterExtractor.fromBloomFilterArray(filters);
 
     // Assert
     BloomFilter flattenResult = actualFromBloomFilterArrayResult.flatten();
@@ -47,23 +52,25 @@ class BloomFilterExtractorDiffblueTest {
 
   /**
    * Test {@link BloomFilterExtractor#asBloomFilterArray()}.
+   *
    * <ul>
-   *   <li>Then first element return {@link ArrayCountingBloomFilter}.</li>
+   *   <li>Then first element return {@link ArrayCountingBloomFilter}.
    * </ul>
-   * <p>
-   * Method under test: {@link BloomFilterExtractor#asBloomFilterArray()}
+   *
+   * <p>Method under test: {@link BloomFilterExtractor#asBloomFilterArray()}
    */
   @Test
   @DisplayName("Test asBloomFilterArray(); then first element return ArrayCountingBloomFilter")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"BloomFilter[] BloomFilterExtractor.asBloomFilterArray()"})
   void testAsBloomFilterArray_thenFirstElementReturnArrayCountingBloomFilter() {
     // Arrange
     Supplier<CountingBloomFilter> supplier = mock(Supplier.class);
     Shape shape = Shape.fromKM(19088743, 10);
     when(supplier.get()).thenReturn(new ArrayCountingBloomFilter(shape));
-    LayeredBloomFilter<CountingBloomFilter> fixedResult = LayeredBloomFilterTest.fixed(Shape.fromKM(19088743, 10), 2,
-        supplier);
+    LayeredBloomFilter<CountingBloomFilter> fixedResult =
+        LayeredBloomFilterTest.fixed(Shape.fromKM(19088743, 10), 2, supplier);
 
     // Act
     BloomFilter[] actualAsBloomFilterArrayResult = fixedResult.asBloomFilterArray();

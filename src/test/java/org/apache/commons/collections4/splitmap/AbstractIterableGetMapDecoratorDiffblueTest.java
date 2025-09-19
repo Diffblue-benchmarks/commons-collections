@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import org.apache.commons.collections4.MapIterator;
@@ -17,17 +18,21 @@ import org.junit.jupiter.api.Test;
 class AbstractIterableGetMapDecoratorDiffblueTest {
   /**
    * Test {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator()}.
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator()}
    */
   @Test
   @DisplayName("Test new AbstractIterableGetMapDecorator()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void AbstractIterableGetMapDecorator.<init>()",
-      "java.lang.String AbstractIterableGetMapDecorator.toString()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void AbstractIterableGetMapDecorator.<init>()",
+    "java.lang.String AbstractIterableGetMapDecorator.toString()"
+  })
   void testNewAbstractIterableGetMapDecorator() {
     // Arrange and Act
-    AbstractIterableGetMapDecorator<Object, Object> actualAbstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>();
+    AbstractIterableGetMapDecorator<Object, Object> actualAbstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>();
 
     // Assert
     assertNull(actualAbstractIterableGetMapDecorator.map);
@@ -35,24 +40,27 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#containsKey(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object); given HashMap() '42' is '42'; when '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsKey(Object); given HashMap() '42' is '42'; when '42'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.containsKey(Object)"})
   void testContainsKey_givenHashMap42Is42_when42_thenReturnTrue() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        map);
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(map);
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.containsKey("42"));
@@ -60,20 +68,22 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#containsKey(Object)}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#containsKey(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#containsKey(Object)}
    */
   @Test
   @DisplayName("Test containsKey(Object); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.containsKey(Object)"})
   void testContainsKey_thenReturnFalse() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertFalse(abstractIterableGetMapDecorator.containsKey("Key"));
@@ -81,24 +91,27 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.
+   *   <li>When {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#containsValue(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object); given HashMap() '42' is '42'; when '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test containsValue(Object); given HashMap() '42' is '42'; when '42'; then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.containsValue(Object)"})
   void testContainsValue_givenHashMap42Is42_when42_thenReturnTrue() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        map);
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(map);
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.containsValue("42"));
@@ -106,20 +119,22 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#containsValue(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.containsValue(Object)"})
   void testContainsValue_thenReturnFalse() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertFalse(abstractIterableGetMapDecorator.containsValue("Value"));
@@ -127,16 +142,18 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#decorated()}.
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#decorated()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#decorated()}
    */
   @Test
   @DisplayName("Test decorated()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Map AbstractIterableGetMapDecorator.decorated()"})
   void testDecorated() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>();
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>();
 
     // Act and Assert
     assertNull(abstractIterableGetMapDecorator.decorated());
@@ -144,20 +161,22 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#entrySet()}.
+   *
    * <ul>
-   *   <li>Then return Empty.</li>
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#entrySet()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#entrySet()}
    */
   @Test
   @DisplayName("Test entrySet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set AbstractIterableGetMapDecorator.entrySet()"})
   void testEntrySet_thenReturnEmpty() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.entrySet().isEmpty());
@@ -165,22 +184,26 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.equals(Object)",
-      "int AbstractIterableGetMapDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractIterableGetMapDecorator.equals(Object)",
+    "int AbstractIterableGetMapDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertNotEquals(abstractIterableGetMapDecorator, new AbstractIterableGetMapDecorator<>());
@@ -188,21 +211,26 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then throw exception.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then throw exception.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then throw exception")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.equals(Object)",
-      "int AbstractIterableGetMapDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractIterableGetMapDecorator.equals(Object)",
+    "int AbstractIterableGetMapDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsNull_thenThrowException() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>();
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>();
 
     // Act and Assert
     assertThrows(NullPointerException.class, () -> abstractIterableGetMapDecorator.equals(null));
@@ -210,21 +238,26 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.equals(Object)",
-      "int AbstractIterableGetMapDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractIterableGetMapDecorator.equals(Object)",
+    "int AbstractIterableGetMapDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsSame_thenReturnEqual() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>();
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>();
 
     // Act and Assert
     assertEquals(abstractIterableGetMapDecorator, abstractIterableGetMapDecorator);
@@ -232,44 +265,56 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then throw exception.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then throw exception.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then throw exception")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.equals(Object)",
-      "int AbstractIterableGetMapDecorator.hashCode()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean AbstractIterableGetMapDecorator.equals(Object)",
+    "int AbstractIterableGetMapDecorator.hashCode()"
+  })
   void testEquals_whenOtherIsWrongType_thenThrowException() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>();
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>();
 
     // Act and Assert
-    assertThrows(NullPointerException.class,
-        () -> abstractIterableGetMapDecorator.equals("Different type to AbstractIterableGetMapDecorator"));
+    assertThrows(
+        NullPointerException.class,
+        () ->
+            abstractIterableGetMapDecorator.equals(
+                "Different type to AbstractIterableGetMapDecorator"));
   }
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#get(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#get(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#get(Object)}
    */
   @Test
-  @DisplayName("Test get(Object); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test get(Object); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractIterableGetMapDecorator.get(Object)"})
   void testGet_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnNull() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertNull(abstractIterableGetMapDecorator.get("Key"));
@@ -277,21 +322,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#isEmpty()}
    */
   @Test
-  @DisplayName("Test isEmpty(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEmpty(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.isEmpty()"})
   void testIsEmpty_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnTrue() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.isEmpty());
@@ -299,23 +348,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#isEmpty()}.
+   *
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#isEmpty()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#isEmpty()}
    */
   @Test
   @DisplayName("Test isEmpty(); given HashMap() '42' is '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean AbstractIterableGetMapDecorator.isEmpty()"})
   void testIsEmpty_givenHashMap42Is42_thenReturnFalse() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        map);
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(map);
 
     // Act and Assert
     assertFalse(abstractIterableGetMapDecorator.isEmpty());
@@ -323,21 +374,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#keySet()}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#keySet()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#keySet()}
    */
   @Test
-  @DisplayName("Test keySet(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test keySet(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Set AbstractIterableGetMapDecorator.keySet()"})
   void testKeySet_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnEmpty() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.keySet().isEmpty());
@@ -345,23 +400,26 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#mapIterator()}.
+   *
    * <ul>
-   *   <li>Then return {@link EntrySetToMapIteratorAdapter}.</li>
+   *   <li>Then return {@link EntrySetToMapIteratorAdapter}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#mapIterator()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#mapIterator()}
    */
   @Test
   @DisplayName("Test mapIterator(); then return EntrySetToMapIteratorAdapter")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"MapIterator AbstractIterableGetMapDecorator.mapIterator()"})
   void testMapIterator_thenReturnEntrySetToMapIteratorAdapter() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act
-    MapIterator<Object, Object> actualMapIteratorResult = abstractIterableGetMapDecorator.mapIterator();
+    MapIterator<Object, Object> actualMapIteratorResult =
+        abstractIterableGetMapDecorator.mapIterator();
 
     // Assert
     assertTrue(actualMapIteratorResult instanceof EntrySetToMapIteratorAdapter);
@@ -370,21 +428,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractIterableGetMapDecorator.remove(Object)"})
   void testRemove_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnNull() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertNull(abstractIterableGetMapDecorator.remove("Key"));
@@ -392,21 +454,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#size()}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#size()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#size()}
    */
   @Test
-  @DisplayName("Test size(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test size(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int AbstractIterableGetMapDecorator.size()"})
   void testSize_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnZero() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertEquals(0, abstractIterableGetMapDecorator.size());
@@ -414,21 +480,25 @@ class AbstractIterableGetMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractIterableGetMapDecorator#values()}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with map is {@link HashMap#HashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link AbstractIterableGetMapDecorator#AbstractIterableGetMapDecorator(Map)} with
+   *       map is {@link HashMap#HashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIterableGetMapDecorator#values()}
+   *
+   * <p>Method under test: {@link AbstractIterableGetMapDecorator#values()}
    */
   @Test
-  @DisplayName("Test values(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test values(); given AbstractIterableGetMapDecorator(Map) with map is HashMap(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Collection AbstractIterableGetMapDecorator.values()"})
   void testValues_givenAbstractIterableGetMapDecoratorWithMapIsHashMap_thenReturnEmpty() {
     // Arrange
-    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator = new AbstractIterableGetMapDecorator<>(
-        new HashMap<>());
+    AbstractIterableGetMapDecorator<Object, Object> abstractIterableGetMapDecorator =
+        new AbstractIterableGetMapDecorator<>(new HashMap<>());
 
     // Act and Assert
     assertTrue(abstractIterableGetMapDecorator.values().isEmpty());

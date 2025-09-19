@@ -2,6 +2,7 @@ package org.apache.commons.collections4.collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,26 +13,31 @@ import org.junit.jupiter.api.Test;
 class SynchronizedCollectionDiffblueTest {
   /**
    * Test {@link SynchronizedCollection#synchronizedCollection(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
    */
   @Test
-  @DisplayName("Test synchronizedCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"})
+  @DisplayName(
+      "Test synchronizedCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"
+  })
   void testSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
 
     // Act
-    SynchronizedCollection<Object> actualSynchronizedCollectionResult = SynchronizedCollection
-        .synchronizedCollection(coll);
+    SynchronizedCollection<Object> actualSynchronizedCollectionResult =
+        SynchronizedCollection.synchronizedCollection(coll);
 
     // Assert
     assertEquals(1, actualSynchronizedCollectionResult.size());
@@ -39,21 +45,25 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#synchronizedCollection(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
    */
   @Test
   @DisplayName("Test synchronizedCollection(Collection); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"
+  })
   void testSynchronizedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollectionResult = SynchronizedCollection
-        .synchronizedCollection(new ArrayList<>());
+    SynchronizedCollection<Object> actualSynchronizedCollectionResult =
+        SynchronizedCollection.synchronizedCollection(new ArrayList<>());
 
     // Assert
     assertTrue(actualSynchronizedCollectionResult.isEmpty());
@@ -61,17 +71,20 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#SynchronizedCollection(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
    */
   @Test
-  @DisplayName("Test new SynchronizedCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new SynchronizedCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection)"})
   void testNewSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -79,7 +92,8 @@ class SynchronizedCollectionDiffblueTest {
     collection.add("42");
 
     // Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(collection);
+    SynchronizedCollection<Object> actualSynchronizedCollection =
+        new SynchronizedCollection<>(collection);
 
     // Assert
     assertEquals(1, actualSynchronizedCollection.size());
@@ -87,17 +101,20 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
    */
   @Test
-  @DisplayName("Test new SynchronizedCollection(Collection, Object); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new SynchronizedCollection(Collection, Object); given '42'; when ArrayList() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection, Object)"})
   void testNewSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne2() {
     // Arrange
@@ -105,7 +122,8 @@ class SynchronizedCollectionDiffblueTest {
     collection.add("42");
 
     // Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(collection, "Lock");
+    SynchronizedCollection<Object> actualSynchronizedCollection =
+        new SynchronizedCollection<>(collection, "Lock");
 
     // Assert
     assertEquals(1, actualSynchronizedCollection.size());
@@ -113,20 +131,23 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#SynchronizedCollection(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
    */
   @Test
   @DisplayName("Test new SynchronizedCollection(Collection); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection)"})
   void testNewSynchronizedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>());
+    SynchronizedCollection<Object> actualSynchronizedCollection =
+        new SynchronizedCollection<>(new ArrayList<>());
 
     // Assert
     assertTrue(actualSynchronizedCollection.isEmpty());
@@ -134,21 +155,24 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
    */
   @Test
-  @DisplayName("Test new SynchronizedCollection(Collection, Object); when ArrayList(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new SynchronizedCollection(Collection, Object); when ArrayList(); then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection, Object)"})
   void testNewSynchronizedCollection_whenArrayList_thenReturnEmpty2() {
     // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>(),
-        "Lock");
+    SynchronizedCollection<Object> actualSynchronizedCollection =
+        new SynchronizedCollection<>(new ArrayList<>(), "Lock");
 
     // Assert
     assertTrue(actualSynchronizedCollection.isEmpty());
@@ -156,17 +180,18 @@ class SynchronizedCollectionDiffblueTest {
 
   /**
    * Test {@link SynchronizedCollection#toString()}.
-   * <p>
-   * Method under test: {@link SynchronizedCollection#toString()}
+   *
+   * <p>Method under test: {@link SynchronizedCollection#toString()}
    */
   @Test
   @DisplayName("Test toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String SynchronizedCollection.toString()"})
   void testToString() {
     // Arrange
-    SynchronizedCollection<Object> synchronizedCollectionResult = SynchronizedCollection
-        .synchronizedCollection(new ArrayList<>());
+    SynchronizedCollection<Object> synchronizedCollectionResult =
+        SynchronizedCollection.synchronizedCollection(new ArrayList<>());
 
     // Act and Assert
     assertEquals("[]", synchronizedCollectionResult.toString());

@@ -2,6 +2,7 @@ package org.apache.commons.collections4.multimap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +12,13 @@ import org.junit.jupiter.api.Test;
 class AbstractSetValuedMapDiffblueTest {
   /**
    * Test {@link AbstractSetValuedMap#get(Object)}.
-   * <p>
-   * Method under test: {@link AbstractSetValuedMap#get(Object)}
+   *
+   * <p>Method under test: {@link AbstractSetValuedMap#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set AbstractSetValuedMap.get(Object)"})
   void testGet() {
     // Arrange
@@ -28,12 +30,13 @@ class AbstractSetValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractSetValuedMap#getMap()}.
-   * <p>
-   * Method under test: {@link AbstractSetValuedMap#getMap()}
+   *
+   * <p>Method under test: {@link AbstractSetValuedMap#getMap()}
    */
   @Test
   @DisplayName("Test getMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.util.Map AbstractSetValuedMap.getMap()"})
   void testGetMap() {
     // Arrange
@@ -45,16 +48,19 @@ class AbstractSetValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractSetValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractSetValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractSetValuedMap#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object); given HashSetValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test remove(Object); given HashSetValuedHashMap() 'Key' is 'Value'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set AbstractSetValuedMap.remove(Object)"})
   void testRemove_givenHashSetValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
     // Arrange
@@ -73,16 +79,18 @@ class AbstractSetValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractSetValuedMap#remove(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractSetValuedMap#remove(Object)}
+   *
+   * <p>Method under test: {@link AbstractSetValuedMap#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object); given HashSetValuedHashMap(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set AbstractSetValuedMap.remove(Object)"})
   void testRemove_givenHashSetValuedHashMap_thenReturnEmpty() {
     // Arrange
@@ -100,12 +108,13 @@ class AbstractSetValuedMapDiffblueTest {
 
   /**
    * Test {@link AbstractSetValuedMap#wrappedCollection(Object)}.
-   * <p>
-   * Method under test: {@link AbstractSetValuedMap#wrappedCollection(Object)}
+   *
+   * <p>Method under test: {@link AbstractSetValuedMap#wrappedCollection(Object)}
    */
   @Test
   @DisplayName("Test wrappedCollection(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set AbstractSetValuedMap.wrappedCollection(Object)"})
   void testWrappedCollection() {
     // Arrange

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,16 +16,19 @@ import org.junit.jupiter.api.Test;
 class BoundedIteratorDiffblueTest {
   /**
    * Test {@link BoundedIterator#BoundedIterator(Iterator, long, long)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
+   *
+   * <p>Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
    */
   @Test
-  @DisplayName("Test new BoundedIterator(Iterator, long, long); given '42'; when ArrayList() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new BoundedIterator(Iterator, long, long); given '42'; when ArrayList() add '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.<init>(Iterator, long, long)"})
   void testNewBoundedIterator_given42_whenArrayListAdd42() {
     // Arrange
@@ -42,60 +46,71 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#BoundedIterator(Iterator, long, long)}.
+   *
    * <ul>
-   *   <li>When minus one.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When minus one.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
+   *
+   * <p>Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
    */
   @Test
-  @DisplayName("Test new BoundedIterator(Iterator, long, long); when minus one; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new BoundedIterator(Iterator, long, long); when minus one; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.<init>(Iterator, long, long)"})
   void testNewBoundedIterator_whenMinusOne_thenThrowIllegalArgumentException() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new BoundedIterator<>(objectList.iterator(), 0L, -1L));
-
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> new BoundedIterator<>(objectList.iterator(), 0L, -1L));
   }
 
   /**
    * Test {@link BoundedIterator#BoundedIterator(Iterator, long, long)}.
+   *
    * <ul>
-   *   <li>When minus one.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When minus one.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
+   *
+   * <p>Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
    */
   @Test
-  @DisplayName("Test new BoundedIterator(Iterator, long, long); when minus one; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new BoundedIterator(Iterator, long, long); when minus one; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.<init>(Iterator, long, long)"})
   void testNewBoundedIterator_whenMinusOne_thenThrowIllegalArgumentException2() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new BoundedIterator<>(objectList.iterator(), -1L, 0L));
-
+    assertThrows(
+        IllegalArgumentException.class,
+        () -> new BoundedIterator<>(objectList.iterator(), -1L, 0L));
   }
 
   /**
    * Test {@link BoundedIterator#BoundedIterator(Iterator, long, long)}.
+   *
    * <ul>
-   *   <li>When one.</li>
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
+   *   <li>When one.
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
+   *
+   * <p>Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
    */
   @Test
-  @DisplayName("Test new BoundedIterator(Iterator, long, long); when one; then not ArrayList() iterator hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new BoundedIterator(Iterator, long, long); when one; then not ArrayList() iterator hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.<init>(Iterator, long, long)"})
   void testNewBoundedIterator_whenOne_thenNotArrayListIteratorHasNext() {
     // Arrange
@@ -112,16 +127,19 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#BoundedIterator(Iterator, long, long)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
+   *   <li>When zero.
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
+   *
+   * <p>Method under test: {@link BoundedIterator#BoundedIterator(Iterator, long, long)}
    */
   @Test
-  @DisplayName("Test new BoundedIterator(Iterator, long, long); when zero; then not ArrayList() iterator hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new BoundedIterator(Iterator, long, long); when zero; then not ArrayList() iterator hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.<init>(Iterator, long, long)"})
   void testNewBoundedIterator_whenZero_thenNotArrayListIteratorHasNext() {
     // Arrange
@@ -138,12 +156,13 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#hasNext()}.
-   * <p>
-   * Method under test: {@link BoundedIterator#hasNext()}
+   *
+   * <p>Method under test: {@link BoundedIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BoundedIterator.hasNext()"})
   void testHasNext() {
     // Arrange
@@ -158,16 +177,18 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#hasNext()}
+   *
+   * <p>Method under test: {@link BoundedIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BoundedIterator.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -182,15 +203,17 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#hasNext()}
+   *
+   * <p>Method under test: {@link BoundedIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean BoundedIterator.hasNext()"})
   void testHasNext_thenReturnFalse() {
     // Arrange
@@ -203,16 +226,18 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#next()}
+   *
+   * <p>Method under test: {@link BoundedIterator#next()}
    */
   @Test
   @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BoundedIterator.next()"})
   void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
@@ -228,15 +253,17 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#next()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link BoundedIterator#next()}
+   *
+   * <p>Method under test: {@link BoundedIterator#next()}
    */
   @Test
   @DisplayName("Test next(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object BoundedIterator.next()"})
   void testNext_thenThrowNoSuchElementException() {
     // Arrange
@@ -251,12 +278,13 @@ class BoundedIteratorDiffblueTest {
 
   /**
    * Test {@link BoundedIterator#remove()}.
-   * <p>
-   * Method under test: {@link BoundedIterator#remove()}
+   *
+   * <p>Method under test: {@link BoundedIterator#remove()}
    */
   @Test
   @DisplayName("Test remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void BoundedIterator.remove()"})
   void testRemove() {
     // Arrange

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Equator;
 import org.apache.commons.collections4.Predicate;
@@ -13,17 +14,21 @@ import org.junit.jupiter.api.Test;
 
 class EqualPredicateDiffblueTest {
   /**
-   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code equator}.
+   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code
+   * equator}.
+   *
    * <ul>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return Value is {@code 42}.</li>
+   *   <li>When {@code 42}.
+   *   <li>Then return Value is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
    */
   @Test
-  @DisplayName("Test equalPredicate(Object, Equator) with 'object', 'equator'; when '42'; then return Value is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test equalPredicate(Object, Equator) with 'object', 'equator'; when '42'; then return Value is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object, Equator)"})
   void testEqualPredicateWithObjectEquator_when42_thenReturnValueIs42() {
     // Arrange
@@ -40,17 +45,21 @@ class EqualPredicateDiffblueTest {
   }
 
   /**
-   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code equator}.
+   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code
+   * equator}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link NullPredicate}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link NullPredicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
    */
   @Test
-  @DisplayName("Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'null'; then return NullPredicate")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'null'; then return NullPredicate")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object, Equator)"})
   void testEqualPredicateWithObjectEquator_whenNull_thenReturnNullPredicate() {
     // Arrange
@@ -58,26 +67,31 @@ class EqualPredicateDiffblueTest {
 
     // Act
     Predicate<Object> actualEqualPredicateResult = EqualPredicate.equalPredicate(null, equator);
+    boolean actualEvaluateResult = actualEqualPredicateResult.evaluate("42");
 
     // Assert
     assertTrue(actualEqualPredicateResult instanceof NullPredicate);
-    assertFalse(actualEqualPredicateResult.evaluate("42"));
+    assertFalse(actualEvaluateResult);
     assertFalse(actualEqualPredicateResult.evaluate("Object"));
     assertFalse(actualEqualPredicateResult.test("Object"));
   }
 
   /**
-   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code equator}.
+   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code
+   * equator}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return Value is {@code Object}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return Value is {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
    */
   @Test
-  @DisplayName("Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'Object'; then return Value is 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'Object'; then return Value is 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object, Equator)"})
   void testEqualPredicateWithObjectEquator_whenObject_thenReturnValueIsObject() {
     // Arrange
@@ -94,17 +108,21 @@ class EqualPredicateDiffblueTest {
   }
 
   /**
-   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code equator}.
+   * Test {@link EqualPredicate#equalPredicate(Object, Equator)} with {@code object}, {@code
+   * equator}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return Value is {@code Object}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return Value is {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object, Equator)}
    */
   @Test
-  @DisplayName("Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'Object'; then return Value is 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test equalPredicate(Object, Equator) with 'object', 'equator'; when 'Object'; then return Value is 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object, Equator)"})
   void testEqualPredicateWithObjectEquator_whenObject_thenReturnValueIsObject2() {
     // Arrange and Act
@@ -119,16 +137,18 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#equalPredicate(Object)} with {@code object}.
+   *
    * <ul>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return Value is {@code 42}.</li>
+   *   <li>When {@code 42}.
+   *   <li>Then return Value is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object)}
    */
   @Test
   @DisplayName("Test equalPredicate(Object) with 'object'; when '42'; then return Value is '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object)"})
   void testEqualPredicateWithObject_when42_thenReturnValueIs42() {
     // Arrange and Act
@@ -143,41 +163,46 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#equalPredicate(Object)} with {@code object}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link NullPredicate}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link NullPredicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object)}
    */
   @Test
   @DisplayName("Test equalPredicate(Object) with 'object'; when 'null'; then return NullPredicate")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object)"})
   void testEqualPredicateWithObject_whenNull_thenReturnNullPredicate() {
     // Arrange and Act
     Predicate<Object> actualEqualPredicateResult = EqualPredicate.equalPredicate(null);
+    boolean actualEvaluateResult = actualEqualPredicateResult.evaluate("42");
 
     // Assert
     assertTrue(actualEqualPredicateResult instanceof NullPredicate);
     assertNull(null);
-    assertFalse(actualEqualPredicateResult.evaluate("42"));
+    assertFalse(actualEvaluateResult);
     assertFalse(actualEqualPredicateResult.evaluate("Object"));
     assertFalse(actualEqualPredicateResult.test("Object"));
   }
 
   /**
    * Test {@link EqualPredicate#equalPredicate(Object)} with {@code object}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link NullPredicate}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@link NullPredicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object)}
    */
   @Test
   @DisplayName("Test equalPredicate(Object) with 'object'; when 'null'; then return NullPredicate")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object)"})
   void testEqualPredicateWithObject_whenNull_thenReturnNullPredicate2() {
     // Arrange and Act
@@ -192,16 +217,19 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#equalPredicate(Object)} with {@code object}.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return Value is {@code Object}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return Value is {@code Object}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#equalPredicate(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#equalPredicate(Object)}
    */
   @Test
-  @DisplayName("Test equalPredicate(Object) with 'object'; when 'Object'; then return Value is 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test equalPredicate(Object) with 'object'; when 'Object'; then return Value is 'Object'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate EqualPredicate.equalPredicate(Object)"})
   void testEqualPredicateWithObject_whenObject_thenReturnValueIsObject() {
     // Arrange and Act
@@ -216,12 +244,14 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Object}.</li>
-   *   <li>Then return Value is {@code Object}.</li>
+   *   <li>When {@code Object}.
+   *   <li>Then return Value is {@code Object}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link EqualPredicate#EqualPredicate(Object)}
    *   <li>{@link EqualPredicate#getValue()}
@@ -229,9 +259,13 @@ class EqualPredicateDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Object'; then return Value is 'Object'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void EqualPredicate.<init>(Object)", "void EqualPredicate.<init>(Object, Equator)",
-      "Object EqualPredicate.getValue()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void EqualPredicate.<init>(Object)",
+    "void EqualPredicate.<init>(Object, Equator)",
+    "Object EqualPredicate.getValue()"
+  })
   void testGettersAndSetters_whenObject_thenReturnValueIsObject() {
     // Arrange and Act
     EqualPredicate<Object> actualEqualPredicate = new EqualPredicate<>("Object");
@@ -242,12 +276,14 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test getters and setters.
+   *
    * <ul>
-   *   <li>When {@code Test}.</li>
-   *   <li>Then return Value is {@code Test}.</li>
+   *   <li>When {@code Test}.
+   *   <li>Then return Value is {@code Test}.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link EqualPredicate#EqualPredicate(Object, Equator)}
    *   <li>{@link EqualPredicate#getValue()}
@@ -255,9 +291,13 @@ class EqualPredicateDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters; when 'Test'; then return Value is 'Test'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void EqualPredicate.<init>(Object)", "void EqualPredicate.<init>(Object, Equator)",
-      "Object EqualPredicate.getValue()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void EqualPredicate.<init>(Object)",
+    "void EqualPredicate.<init>(Object, Equator)",
+    "Object EqualPredicate.getValue()"
+  })
   void testGettersAndSetters_whenTest_thenReturnValueIsTest() {
     // Arrange
     DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
@@ -271,16 +311,18 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object); given EqualPredicate(Object) with 'Object'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean EqualPredicate.test(Object)"})
   void testTest_givenEqualPredicateWithObject_thenReturnTrue() {
     // Arrange
@@ -292,16 +334,20 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and equator is defaultEquator.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and
+   *       equator is defaultEquator.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#test(Object)}
    */
   @Test
-  @DisplayName("Test test(Object); given EqualPredicate(Object, Equator) with 'Test' and equator is defaultEquator; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test test(Object); given EqualPredicate(Object, Equator) with 'Test' and equator is defaultEquator; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean EqualPredicate.test(Object)"})
   void testTest_givenEqualPredicateWithTestAndEquatorIsDefaultEquator_thenReturnFalse() {
     // Arrange
@@ -314,16 +360,20 @@ class EqualPredicateDiffblueTest {
 
   /**
    * Test {@link EqualPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and equator is {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and
+   *       equator is {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link EqualPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link EqualPredicate#test(Object)}
    */
   @Test
-  @DisplayName("Test test(Object); given EqualPredicate(Object, Equator) with 'Test' and equator is 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test test(Object); given EqualPredicate(Object, Equator) with 'Test' and equator is 'null'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean EqualPredicate.test(Object)"})
   void testTest_givenEqualPredicateWithTestAndEquatorIsNull_thenReturnFalse() {
     // Arrange

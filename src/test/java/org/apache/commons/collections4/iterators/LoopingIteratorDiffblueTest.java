@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,17 +16,20 @@ import org.junit.jupiter.api.Test;
 class LoopingIteratorDiffblueTest {
   /**
    * Test {@link LoopingIterator#LoopingIterator(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
+   *
+   * <p>Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
    */
   @Test
-  @DisplayName("Test new LoopingIterator(Collection); given '42'; when ArrayList() add '42'; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new LoopingIterator(Collection); given '42'; when ArrayList() add '42'; then return next is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LoopingIterator.<init>(Collection)"})
   void testNewLoopingIterator_given42_whenArrayListAdd42_thenReturnNextIs42() {
     // Arrange
@@ -51,17 +55,20 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#LoopingIterator(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return next is {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return next is {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
+   *
+   * <p>Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
    */
   @Test
-  @DisplayName("Test new LoopingIterator(Collection); given '42'; when ArrayList() add '42'; then return next is '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new LoopingIterator(Collection); given '42'; when ArrayList() add '42'; then return next is '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LoopingIterator.<init>(Collection)"})
   void testNewLoopingIterator_given42_whenArrayListAdd42_thenReturnNextIs422() {
     // Arrange
@@ -88,16 +95,18 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#LoopingIterator(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return not hasNext.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return not hasNext.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
+   *
+   * <p>Method under test: {@link LoopingIterator#LoopingIterator(Collection)}
    */
   @Test
   @DisplayName("Test new LoopingIterator(Collection); when ArrayList(); then return not hasNext")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void LoopingIterator.<init>(Collection)"})
   void testNewLoopingIterator_whenArrayList_thenReturnNotHasNext() {
     // Arrange and Act
@@ -109,16 +118,18 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#hasNext()}
+   *
+   * <p>Method under test: {@link LoopingIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LoopingIterator.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -132,15 +143,17 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#hasNext()}.
+   *
    * <ul>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#hasNext()}
+   *
+   * <p>Method under test: {@link LoopingIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean LoopingIterator.hasNext()"})
   void testHasNext_thenReturnFalse() {
     // Arrange
@@ -152,16 +165,18 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#next()}
+   *
+   * <p>Method under test: {@link LoopingIterator#next()}
    */
   @Test
   @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LoopingIterator.next()"})
   void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
@@ -175,15 +190,17 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#next()}.
+   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.
    * </ul>
-   * <p>
-   * Method under test: {@link LoopingIterator#next()}
+   *
+   * <p>Method under test: {@link LoopingIterator#next()}
    */
   @Test
   @DisplayName("Test next(); then throw NoSuchElementException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object LoopingIterator.next()"})
   void testNext_thenThrowNoSuchElementException() {
     // Arrange
@@ -195,12 +212,13 @@ class LoopingIteratorDiffblueTest {
 
   /**
    * Test {@link LoopingIterator#size()}.
-   * <p>
-   * Method under test: {@link LoopingIterator#size()}
+   *
+   * <p>Method under test: {@link LoopingIterator#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int LoopingIterator.size()"})
   void testSize() {
     // Arrange

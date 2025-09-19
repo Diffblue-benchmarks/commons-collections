@@ -2,6 +2,7 @@ package org.apache.commons.collections4.keyvalue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -14,12 +15,13 @@ import org.junit.jupiter.api.Test;
 class DefaultMapEntryDiffblueTest {
   /**
    * Test {@link DefaultMapEntry#DefaultMapEntry(Object, Object)}.
-   * <p>
-   * Method under test: {@link DefaultMapEntry#DefaultMapEntry(Object, Object)}
+   *
+   * <p>Method under test: {@link DefaultMapEntry#DefaultMapEntry(Object, Object)}
    */
   @Test
   @DisplayName("Test new DefaultMapEntry(Object, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void DefaultMapEntry.<init>(Object, Object)"})
   void testNewDefaultMapEntry() {
     // Arrange and Act
@@ -32,33 +34,39 @@ class DefaultMapEntryDiffblueTest {
 
   /**
    * Test {@link DefaultMapEntry#DefaultMapEntry(Entry)}.
-   * <p>
-   * Method under test: {@link DefaultMapEntry#DefaultMapEntry(Entry)}
+   *
+   * <p>Method under test: {@link DefaultMapEntry#DefaultMapEntry(Entry)}
    */
   @Test
   @DisplayName("Test new DefaultMapEntry(Entry)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void DefaultMapEntry.<init>(Entry)"})
   void testNewDefaultMapEntry2() {
     // Arrange
     SimpleEntry<Object, Object> entry = new SimpleEntry<>("42", "42");
 
-    // Act and Assert
-    assertEquals(entry, new DefaultMapEntry<>(entry));
+    // Act
+    DefaultMapEntry<Object, Object> actualDefaultMapEntry = new DefaultMapEntry<>(entry);
+
+    // Assert
+    assertEquals(entry, actualDefaultMapEntry);
   }
 
   /**
    * Test {@link DefaultMapEntry#DefaultMapEntry(KeyValue)}.
-   * <p>
-   * Method under test: {@link DefaultMapEntry#DefaultMapEntry(KeyValue)}
+   *
+   * <p>Method under test: {@link DefaultMapEntry#DefaultMapEntry(KeyValue)}
    */
   @Test
   @DisplayName("Test new DefaultMapEntry(KeyValue)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void DefaultMapEntry.<init>(KeyValue)"})
   void testNewDefaultMapEntry3() {
     // Arrange and Act
-    DefaultMapEntry<Object, Object> actualDefaultMapEntry = new DefaultMapEntry<>(new DefaultKeyValue<>());
+    DefaultMapEntry<Object, Object> actualDefaultMapEntry =
+        new DefaultMapEntry<>(new DefaultKeyValue<>());
 
     // Assert
     assertNull(actualDefaultMapEntry.getKey());

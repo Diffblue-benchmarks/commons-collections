@@ -8,6 +8,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
 import org.junit.jupiter.api.DisplayName;
@@ -18,17 +19,20 @@ import org.mockito.Mockito;
 class NotPredicateDiffblueTest {
   /**
    * Test {@link NotPredicate#notPredicate(Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return evaluate {@code 42}.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then return evaluate {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link NotPredicate#notPredicate(Predicate)}
+   *
+   * <p>Method under test: {@link NotPredicate#notPredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test notPredicate(Predicate); given 'false'; when Predicate test(Object) return 'false'; then return evaluate '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test notPredicate(Predicate); given 'false'; when Predicate test(Object) return 'false'; then return evaluate '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate NotPredicate.notPredicate(Predicate)"})
   void testNotPredicate_givenFalse_whenPredicateTestReturnFalse_thenReturnEvaluate42() {
     // Arrange
@@ -42,7 +46,8 @@ class NotPredicateDiffblueTest {
     // Assert
     verify(predicate).test(isA(Object.class));
     assertTrue(actualNotPredicateResult instanceof NotPredicate);
-    Predicate<? super Object>[] predicates = ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates =
+        ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
     assertEquals(1, predicates.length);
     assertTrue(actualEvaluateResult);
     assertSame(predicate, predicates[0]);
@@ -50,17 +55,20 @@ class NotPredicateDiffblueTest {
 
   /**
    * Test {@link NotPredicate#notPredicate(Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return not evaluate {@code 42}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return not evaluate {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link NotPredicate#notPredicate(Predicate)}
+   *
+   * <p>Method under test: {@link NotPredicate#notPredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test notPredicate(Predicate); given 'true'; when Predicate test(Object) return 'true'; then return not evaluate '42'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test notPredicate(Predicate); given 'true'; when Predicate test(Object) return 'true'; then return not evaluate '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate NotPredicate.notPredicate(Predicate)"})
   void testNotPredicate_givenTrue_whenPredicateTestReturnTrue_thenReturnNotEvaluate42() {
     // Arrange
@@ -74,7 +82,8 @@ class NotPredicateDiffblueTest {
     // Assert
     verify(predicate).test(isA(Object.class));
     assertTrue(actualNotPredicateResult instanceof NotPredicate);
-    Predicate<? super Object>[] predicates = ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates =
+        ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
     assertEquals(1, predicates.length);
     assertFalse(actualEvaluateResult);
     assertSame(predicate, predicates[0]);
@@ -82,16 +91,18 @@ class NotPredicateDiffblueTest {
 
   /**
    * Test {@link NotPredicate#notPredicate(Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return {@link NotPredicate}.</li>
+   *   <li>When {@link Predicate}.
+   *   <li>Then return {@link NotPredicate}.
    * </ul>
-   * <p>
-   * Method under test: {@link NotPredicate#notPredicate(Predicate)}
+   *
+   * <p>Method under test: {@link NotPredicate#notPredicate(Predicate)}
    */
   @Test
   @DisplayName("Test notPredicate(Predicate); when Predicate; then return NotPredicate")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate NotPredicate.notPredicate(Predicate)"})
   void testNotPredicate_whenPredicate_thenReturnNotPredicate() {
     // Arrange
@@ -102,19 +113,21 @@ class NotPredicateDiffblueTest {
 
     // Assert
     assertTrue(actualNotPredicateResult instanceof NotPredicate);
-    Predicate<? super Object>[] predicates = ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates =
+        ((NotPredicate<Object>) actualNotPredicateResult).getPredicates();
     assertEquals(1, predicates.length);
     assertSame(predicate, predicates[0]);
   }
 
   /**
    * Test {@link NotPredicate#NotPredicate(Predicate)}.
-   * <p>
-   * Method under test: {@link NotPredicate#NotPredicate(Predicate)}
+   *
+   * <p>Method under test: {@link NotPredicate#NotPredicate(Predicate)}
    */
   @Test
   @DisplayName("Test new NotPredicate(Predicate)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void NotPredicate.<init>(Predicate)"})
   void testNewNotPredicate() {
     // Arrange
@@ -131,12 +144,13 @@ class NotPredicateDiffblueTest {
 
   /**
    * Test {@link NotPredicate#getPredicates()}.
-   * <p>
-   * Method under test: {@link NotPredicate#getPredicates()}
+   *
+   * <p>Method under test: {@link NotPredicate#getPredicates()}
    */
   @Test
   @DisplayName("Test getPredicates()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Predicate[] NotPredicate.getPredicates()"})
   void testGetPredicates() {
     // Arrange
@@ -148,16 +162,18 @@ class NotPredicateDiffblueTest {
 
   /**
    * Test {@link NotPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link NotPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link NotPredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object); given Predicate test(Object) return 'false'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean NotPredicate.test(Object)"})
   void testTest_givenPredicateTestReturnFalse_thenReturnTrue() {
     // Arrange
@@ -175,16 +191,18 @@ class NotPredicateDiffblueTest {
 
   /**
    * Test {@link NotPredicate#test(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link NotPredicate#test(Object)}
+   *
+   * <p>Method under test: {@link NotPredicate#test(Object)}
    */
   @Test
   @DisplayName("Test test(Object); given Predicate test(Object) return 'true'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean NotPredicate.test(Object)"})
   void testTest_givenPredicateTestReturnTrue_thenReturnFalse() {
     // Arrange

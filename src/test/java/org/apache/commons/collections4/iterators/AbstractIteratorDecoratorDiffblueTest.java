@@ -1,6 +1,7 @@
 package org.apache.commons.collections4.iterators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import org.junit.jupiter.api.DisplayName;
@@ -10,16 +11,18 @@ import org.junit.jupiter.api.Test;
 class AbstractIteratorDecoratorDiffblueTest {
   /**
    * Test {@link AbstractIteratorDecorator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link AbstractIteratorDecorator#next()}
+   *
+   * <p>Method under test: {@link AbstractIteratorDecorator#next()}
    */
   @Test
   @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractIteratorDecorator.next()"})
   void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange

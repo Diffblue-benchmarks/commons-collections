@@ -1,6 +1,7 @@
 package org.apache.commons.collections4.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -11,20 +12,22 @@ import org.junit.jupiter.api.Test;
 class UnmodifiableSortedMapDiffblueTest {
   /**
    * Test {@link UnmodifiableSortedMap#unmodifiableSortedMap(SortedMap)}.
-   * <p>
-   * Method under test: {@link UnmodifiableSortedMap#unmodifiableSortedMap(SortedMap)}
+   *
+   * <p>Method under test: {@link UnmodifiableSortedMap#unmodifiableSortedMap(SortedMap)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedMap(SortedMap)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedMap UnmodifiableSortedMap.unmodifiableSortedMap(SortedMap)"})
   void testUnmodifiableSortedMap() {
     // Arrange and Act
-    SortedMap<Object, Object> actualUnmodifiableSortedMapResult = UnmodifiableSortedMap
-        .unmodifiableSortedMap(new TreeMap<>());
+    SortedMap<Object, Object> actualUnmodifiableSortedMapResult =
+        UnmodifiableSortedMap.unmodifiableSortedMap(new TreeMap<>());
 
     // Assert
-    assertEquals(((AbstractMapDecorator<?, ?>) actualUnmodifiableSortedMapResult).map,
+    assertEquals(
+        ((AbstractMapDecorator) actualUnmodifiableSortedMapResult).map,
         actualUnmodifiableSortedMapResult);
   }
 }

@@ -9,6 +9,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,16 +28,18 @@ import org.mockito.Mockito;
 class SetUtilsDiffblueTest {
   /**
    * Test {@link SetUtils#difference(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#difference(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#difference(Set, Set)}
    */
   @Test
   @DisplayName("Test difference(Set, Set); given '42'; when HashSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.difference(Set, Set)"})
   void testDifference_given42_whenHashSetAdd42() {
     // Arrange
@@ -52,16 +55,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#difference(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#difference(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#difference(Set, Set)}
    */
   @Test
   @DisplayName("Test difference(Set, Set); given '42'; when HashSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.difference(Set, Set)"})
   void testDifference_given42_whenHashSetAdd422() {
     // Arrange
@@ -79,16 +84,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#difference(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#difference(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#difference(Set, Set)}
    */
   @Test
   @DisplayName("Test difference(Set, Set); given two; when HashSet() add two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.difference(Set, Set)"})
   void testDifference_givenTwo_whenHashSetAddTwo() {
     // Arrange
@@ -105,16 +112,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#difference(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#difference(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#difference(Set, Set)}
    */
   @Test
   @DisplayName("Test difference(Set, Set); given two; when HashSet() add two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.difference(Set, Set)"})
   void testDifference_givenTwo_whenHashSetAddTwo2() {
     // Arrange
@@ -133,15 +142,17 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#difference(Set, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
+   *   <li>When {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#difference(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#difference(Set, Set)}
    */
   @Test
   @DisplayName("Test difference(Set, Set); when HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.difference(Set, Set)"})
   void testDifference_whenHashSet() {
     // Arrange
@@ -156,17 +167,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#disjunction(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#disjunction(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#disjunction(Set, Set)}
    */
   @Test
-  @DisplayName("Test disjunction(Set, Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test disjunction(Set, Set); given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.disjunction(Set, Set)"})
   void testDisjunction_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -182,17 +196,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#disjunction(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#disjunction(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#disjunction(Set, Set)}
    */
   @Test
-  @DisplayName("Test disjunction(Set, Set); given '42'; when HashSet() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test disjunction(Set, Set); given '42'; when HashSet() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.disjunction(Set, Set)"})
   void testDisjunction_given42_whenHashSetAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -210,17 +227,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#disjunction(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#disjunction(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#disjunction(Set, Set)}
    */
   @Test
-  @DisplayName("Test disjunction(Set, Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test disjunction(Set, Set); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.disjunction(Set, Set)"})
   void testDisjunction_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -237,17 +257,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#disjunction(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#disjunction(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#disjunction(Set, Set)}
    */
   @Test
-  @DisplayName("Test disjunction(Set, Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test disjunction(Set, Set); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.disjunction(Set, Set)"})
   void testDisjunction_givenTwo_whenHashSetAddTwo_thenReturnHashSet2() {
     // Arrange
@@ -266,16 +289,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#disjunction(Set, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#disjunction(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#disjunction(Set, Set)}
    */
   @Test
   @DisplayName("Test disjunction(Set, Set); when HashSet(); then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.disjunction(Set, Set)"})
   void testDisjunction_whenHashSet_thenReturnHashSet() {
     // Arrange
@@ -290,17 +315,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptyIfNull(Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#emptyIfNull(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#emptyIfNull(Set)}
    */
   @Test
-  @DisplayName("Test emptyIfNull(Set); given '42'; when HashSet() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test emptyIfNull(Set); given '42'; when HashSet() add '42'; then return size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.emptyIfNull(Set)"})
   void testEmptyIfNull_given42_whenHashSetAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -316,17 +344,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptyIfNull(Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return size is two.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#emptyIfNull(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#emptyIfNull(Set)}
    */
   @Test
   @DisplayName("Test emptyIfNull(Set); given two; when HashSet() add two; then return size is two")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.emptyIfNull(Set)"})
   void testEmptyIfNull_givenTwo_whenHashSetAddTwo_thenReturnSizeIsTwo() {
     // Arrange
@@ -343,16 +373,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptyIfNull(Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#emptyIfNull(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#emptyIfNull(Set)}
    */
   @Test
   @DisplayName("Test emptyIfNull(Set); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.emptyIfNull(Set)"})
   void testEmptyIfNull_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
@@ -364,16 +396,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptyIfNull(Set)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#emptyIfNull(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#emptyIfNull(Set)}
    */
   @Test
   @DisplayName("Test emptyIfNull(Set); when 'null'; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.emptyIfNull(Set)"})
   void testEmptyIfNull_whenNull_thenReturnEmpty() {
     // Arrange and Act
@@ -385,12 +419,13 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptySet()}.
-   * <p>
-   * Method under test: {@link SetUtils#emptySet()}
+   *
+   * <p>Method under test: {@link SetUtils#emptySet()}
    */
   @Test
   @DisplayName("Test emptySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.emptySet()"})
   void testEmptySet() {
     // Arrange and Act
@@ -402,12 +437,13 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#emptySortedSet()}.
-   * <p>
-   * Method under test: {@link SetUtils#emptySortedSet()}
+   *
+   * <p>Method under test: {@link SetUtils#emptySortedSet()}
    */
   @Test
   @DisplayName("Test emptySortedSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.emptySortedSet()"})
   void testEmptySortedSet() {
     // Arrange and Act
@@ -419,17 +455,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashCodeForSet(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 3324}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 3324}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashCodeForSet(Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#hashCodeForSet(Collection)}
    */
   @Test
-  @DisplayName("Test hashCodeForSet(Collection); given '42'; when ArrayList() add '42'; then return '3324'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test hashCodeForSet(Collection); given '42'; when ArrayList() add '42'; then return '3324'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetUtils.hashCodeForSet(Collection)"})
   void testHashCodeForSet_given42_whenArrayListAdd42_thenReturn3324() {
     // Arrange
@@ -443,17 +482,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashCodeForSet(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link LinkedHashSet#LinkedHashSet()} add {@code null}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link LinkedHashSet#LinkedHashSet()} add {@code null}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashCodeForSet(Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#hashCodeForSet(Collection)}
    */
   @Test
-  @DisplayName("Test hashCodeForSet(Collection); given 'null'; when LinkedHashSet() add 'null'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test hashCodeForSet(Collection); given 'null'; when LinkedHashSet() add 'null'; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetUtils.hashCodeForSet(Collection)"})
   void testHashCodeForSet_givenNull_whenLinkedHashSetAddNull_thenReturnZero() {
     // Arrange
@@ -466,17 +508,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashCodeForSet(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code Set}.</li>
-   *   <li>When {@link LinkedHashSet#LinkedHashSet()} add {@code Set}.</li>
-   *   <li>Then return {@code 83010}.</li>
+   *   <li>Given {@code Set}.
+   *   <li>When {@link LinkedHashSet#LinkedHashSet()} add {@code Set}.
+   *   <li>Then return {@code 83010}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashCodeForSet(Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#hashCodeForSet(Collection)}
    */
   @Test
-  @DisplayName("Test hashCodeForSet(Collection); given 'Set'; when LinkedHashSet() add 'Set'; then return '83010'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test hashCodeForSet(Collection); given 'Set'; when LinkedHashSet() add 'Set'; then return '83010'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetUtils.hashCodeForSet(Collection)"})
   void testHashCodeForSet_givenSet_whenLinkedHashSetAddSet_thenReturn83010() {
     // Arrange
@@ -489,16 +534,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashCodeForSet(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashCodeForSet(Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#hashCodeForSet(Collection)}
    */
   @Test
   @DisplayName("Test hashCodeForSet(Collection); when ArrayList(); then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetUtils.hashCodeForSet(Collection)"})
   void testHashCodeForSet_whenArrayList_thenReturnZero() {
     // Arrange, Act and Assert
@@ -507,16 +554,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashCodeForSet(Collection)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return zero.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return zero.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashCodeForSet(Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#hashCodeForSet(Collection)}
    */
   @Test
   @DisplayName("Test hashCodeForSet(Collection); when 'null'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetUtils.hashCodeForSet(Collection)"})
   void testHashCodeForSet_whenNull_thenReturnZero() {
     // Arrange, Act and Assert
@@ -525,16 +574,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashSet(Object[])}.
+   *
    * <ul>
-   *   <li>When {@code Items}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@code Items}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashSet(Object[])}
+   *
+   * <p>Method under test: {@link SetUtils#hashSet(Object[])}
    */
   @Test
   @DisplayName("Test hashSet(Object[]); when 'Items'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"HashSet SetUtils.hashSet(Object[])"})
   void testHashSet_whenItems_thenReturnSizeIsOne() {
     // Arrange and Act
@@ -546,16 +597,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#hashSet(Object[])}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#hashSet(Object[])}
+   *
+   * <p>Method under test: {@link SetUtils#hashSet(Object[])}
    */
   @Test
   @DisplayName("Test hashSet(Object[]); when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"HashSet SetUtils.hashSet(Object[])"})
   void testHashSet_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -567,17 +620,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#intersection(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#intersection(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#intersection(Set, Set)}
    */
   @Test
-  @DisplayName("Test intersection(Set, Set); given '42'; when HashSet() add '42'; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test intersection(Set, Set); given '42'; when HashSet() add '42'; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.intersection(Set, Set)"})
   void testIntersection_given42_whenHashSetAdd42_thenReturnEmpty() {
     // Arrange
@@ -593,17 +649,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#intersection(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#intersection(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#intersection(Set, Set)}
    */
   @Test
-  @DisplayName("Test intersection(Set, Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test intersection(Set, Set); given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.intersection(Set, Set)"})
   void testIntersection_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -621,17 +680,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#intersection(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#intersection(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#intersection(Set, Set)}
    */
   @Test
   @DisplayName("Test intersection(Set, Set); given two; when HashSet() add two; then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.intersection(Set, Set)"})
   void testIntersection_givenTwo_whenHashSetAddTwo_thenReturnEmpty() {
     // Arrange
@@ -648,17 +709,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#intersection(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#intersection(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#intersection(Set, Set)}
    */
   @Test
-  @DisplayName("Test intersection(Set, Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test intersection(Set, Set); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.intersection(Set, Set)"})
   void testIntersection_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -677,16 +741,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#intersection(Set, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#intersection(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#intersection(Set, Set)}
    */
   @Test
   @DisplayName("Test intersection(Set, Set); when HashSet(); then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.intersection(Set, Set)"})
   void testIntersection_whenHashSet_thenReturnHashSet() {
     // Arrange
@@ -701,17 +767,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
@@ -724,17 +793,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_given42_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
@@ -748,17 +820,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_given42_whenArrayListAdd42_thenReturnFalse3() {
     // Arrange
@@ -773,17 +848,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test isEqualSet(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_given42_whenArrayListAdd42_thenReturnFalse4() {
     // Arrange
@@ -799,16 +877,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
   @DisplayName("Test isEqualSet(Collection, Collection); when ArrayList(); then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_whenArrayList_thenReturnTrue() {
     // Arrange
@@ -820,16 +900,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
   @DisplayName("Test isEqualSet(Collection, Collection); when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_whenNull_thenReturnFalse() {
     // Arrange, Act and Assert
@@ -838,16 +920,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
   @DisplayName("Test isEqualSet(Collection, Collection); when 'null'; then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_whenNull_thenReturnFalse2() {
     // Arrange, Act and Assert
@@ -856,16 +940,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#isEqualSet(Collection, Collection)}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
+   *
+   * <p>Method under test: {@link SetUtils#isEqualSet(Collection, Collection)}
    */
   @Test
   @DisplayName("Test isEqualSet(Collection, Collection); when 'null'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SetUtils.isEqualSet(Collection, Collection)"})
   void testIsEqualSet_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
@@ -874,12 +960,13 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#newIdentityHashSet()}.
-   * <p>
-   * Method under test: {@link SetUtils#newIdentityHashSet()}
+   *
+   * <p>Method under test: {@link SetUtils#newIdentityHashSet()}
    */
   @Test
   @DisplayName("Test newIdentityHashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.newIdentityHashSet()"})
   void testNewIdentityHashSet() {
     // Arrange and Act
@@ -891,17 +978,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#orderedSet(Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#orderedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#orderedSet(Set)}
    */
   @Test
   @DisplayName("Test orderedSet(Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.orderedSet(Set)"})
   void testOrderedSet_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -917,17 +1006,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#orderedSet(Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#orderedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#orderedSet(Set)}
    */
   @Test
   @DisplayName("Test orderedSet(Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.orderedSet(Set)"})
   void testOrderedSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -944,16 +1035,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#orderedSet(Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#orderedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#orderedSet(Set)}
    */
   @Test
   @DisplayName("Test orderedSet(Set); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.orderedSet(Set)"})
   void testOrderedSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
@@ -965,28 +1058,32 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code collection}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code collection}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedNavigableSet(NavigableSet, Predicate); given 'foo'; when TreeSet() add 'foo'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedNavigableSet(NavigableSet, Predicate); given 'collection'; when TreeSet() add 'collection'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedNavigableSet(NavigableSet, Predicate)"})
-  void testPredicatedNavigableSet_givenFoo_whenTreeSetAddFoo_thenCallsTest() {
+  void testPredicatedNavigableSet_givenCollection_whenTreeSetAddCollection() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
-    set.add("foo");
+    set.add("collection");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    SortedSet<Object> actualPredicatedNavigableSetResult = SetUtils.predicatedNavigableSet(set, predicate);
+    SortedSet<Object> actualPredicatedNavigableSetResult =
+        SetUtils.predicatedNavigableSet(set, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(Mockito.<Object>any());
@@ -995,27 +1092,32 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedNavigableSet(NavigableSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedNavigableSet(NavigableSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedNavigableSet(NavigableSet, Predicate)"})
   void testPredicatedNavigableSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    SortedSet<Object> actualPredicatedNavigableSetResult = SetUtils.predicatedNavigableSet(set, predicate);
+    SortedSet<Object> actualPredicatedNavigableSetResult =
+        SetUtils.predicatedNavigableSet(set, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -1024,23 +1126,27 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedNavigableSet(NavigableSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedNavigableSet(NavigableSet, Predicate); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedNavigableSet(NavigableSet, Predicate); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedNavigableSet(NavigableSet, Predicate)"})
   void testPredicatedNavigableSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    SortedSet<Object> actualPredicatedNavigableSetResult = SetUtils.predicatedNavigableSet(set, mock(Predicate.class));
+    SortedSet<Object> actualPredicatedNavigableSetResult =
+        SetUtils.predicatedNavigableSet(set, mock(Predicate.class));
 
     // Assert
     assertEquals(set, actualPredicatedNavigableSetResult);
@@ -1048,22 +1154,26 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSet(Set, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSet(Set, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedSet(Set, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.predicatedSet(Set, Predicate)"})
   void testPredicatedSet_givenTrue_whenPredicateTestReturnTrue_thenReturnHashSet() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
     set.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -1077,23 +1187,27 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSet(Set, Predicate)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSet(Set, Predicate); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedSet(Set, Predicate); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.predicatedSet(Set, Predicate)"})
   void testPredicatedSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
     set.add("42");
     set.add(2);
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -1107,20 +1221,23 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSet(Set, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSet(Set, Predicate)}
    */
   @Test
   @DisplayName("Test predicatedSet(Set, Predicate); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.predicatedSet(Set, Predicate)"})
   void testPredicatedSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
-    Set<Object> actualPredicatedSetResult = SetUtils.predicatedSet(new HashSet<>(), mock(Predicate.class));
+    Set<Object> actualPredicatedSetResult =
+        SetUtils.predicatedSet(new HashSet<>(), mock(Predicate.class));
 
     // Assert
     assertTrue(actualPredicatedSetResult.isEmpty());
@@ -1128,28 +1245,33 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code collection}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code collection}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); given 'foo'; when TreeSet() add 'foo'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); given 'collection'; when TreeSet() add 'collection'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedSortedSet(SortedSet, Predicate)"})
-  void testPredicatedSortedSet_givenFoo_whenTreeSetAddFoo_thenCallsTest() {
+  void testPredicatedSortedSet_givenCollection_whenTreeSetAddCollection_thenCallsTest() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
-    set.add("foo");
+    set.add("collection");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    SortedSet<Object> actualPredicatedSortedSetResult = SetUtils.predicatedSortedSet(set, predicate);
+    SortedSet<Object> actualPredicatedSortedSetResult =
+        SetUtils.predicatedSortedSet(set, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(Mockito.<Object>any());
@@ -1158,27 +1280,32 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then calls {@link Predicate#test(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedSortedSet(SortedSet, Predicate)"})
   void testPredicatedSortedSet_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
     set.add("42");
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    SortedSet<Object> actualPredicatedSortedSetResult = SetUtils.predicatedSortedSet(set, predicate);
+    SortedSet<Object> actualPredicatedSortedSetResult =
+        SetUtils.predicatedSortedSet(set, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -1187,23 +1314,27 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
+   *
+   * <p>Method under test: {@link SetUtils#predicatedSortedSet(SortedSet, Predicate)}
    */
   @Test
-  @DisplayName("Test predicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test predicatedSortedSet(SortedSet, Predicate); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.predicatedSortedSet(SortedSet, Predicate)"})
   void testPredicatedSortedSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    SortedSet<Object> actualPredicatedSortedSetResult = SetUtils.predicatedSortedSet(set, mock(Predicate.class));
+    SortedSet<Object> actualPredicatedSortedSetResult =
+        SetUtils.predicatedSortedSet(set, mock(Predicate.class));
 
     // Assert
     assertEquals(set, actualPredicatedSortedSetResult);
@@ -1211,17 +1342,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSet(Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSet(Set)}
    */
   @Test
-  @DisplayName("Test synchronizedSet(Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test synchronizedSet(Set); given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.synchronizedSet(Set)"})
   void testSynchronizedSet_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -1237,17 +1371,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSet(Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSet(Set)}
    */
   @Test
-  @DisplayName("Test synchronizedSet(Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test synchronizedSet(Set); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.synchronizedSet(Set)"})
   void testSynchronizedSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -1264,16 +1401,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSet(Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSet(Set)}
    */
   @Test
   @DisplayName("Test synchronizedSet(Set); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.synchronizedSet(Set)"})
   void testSynchronizedSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
@@ -1285,16 +1424,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test synchronizedSortedSet(SortedSet); given '42'; when TreeSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.synchronizedSortedSet(SortedSet)"})
   void testSynchronizedSortedSet_given42_whenTreeSetAdd42() {
     // Arrange
@@ -1310,16 +1451,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test synchronizedSortedSet(SortedSet); given 'foo'; when TreeSet() add 'foo'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.synchronizedSortedSet(SortedSet)"})
   void testSynchronizedSortedSet_givenFoo_whenTreeSetAddFoo() {
     // Arrange
@@ -1336,15 +1479,17 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#synchronizedSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#synchronizedSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test synchronizedSortedSet(SortedSet); when TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.synchronizedSortedSet(SortedSet)"})
   void testSynchronizedSortedSet_whenTreeSet() {
     // Arrange
@@ -1359,17 +1504,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedNavigableSet(NavigableSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedNavigableSet(NavigableSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedNavigableSet(NavigableSet, Transformer)"})
   void testTransformedNavigableSet_given42_whenTreeSetAdd42_thenReturnTreeSet() {
     // Arrange
@@ -1377,8 +1525,8 @@ class SetUtilsDiffblueTest {
     set.add("42");
 
     // Act
-    SortedSet<Object> actualTransformedNavigableSetResult = SetUtils.transformedNavigableSet(set,
-        mock(Transformer.class));
+    SortedSet<Object> actualTransformedNavigableSetResult =
+        SetUtils.transformedNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedNavigableSetResult);
@@ -1386,17 +1534,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedNavigableSet(NavigableSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedNavigableSet(NavigableSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedNavigableSet(NavigableSet, Transformer)"})
   void testTransformedNavigableSet_givenFoo_whenTreeSetAddFoo_thenReturnTreeSet() {
     // Arrange
@@ -1405,8 +1556,8 @@ class SetUtilsDiffblueTest {
     set.add("42");
 
     // Act
-    SortedSet<Object> actualTransformedNavigableSetResult = SetUtils.transformedNavigableSet(set,
-        mock(Transformer.class));
+    SortedSet<Object> actualTransformedNavigableSetResult =
+        SetUtils.transformedNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedNavigableSetResult);
@@ -1414,24 +1565,27 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedNavigableSet(NavigableSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedNavigableSet(NavigableSet, Transformer); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedNavigableSet(NavigableSet, Transformer)"})
   void testTransformedNavigableSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    SortedSet<Object> actualTransformedNavigableSetResult = SetUtils.transformedNavigableSet(set,
-        mock(Transformer.class));
+    SortedSet<Object> actualTransformedNavigableSetResult =
+        SetUtils.transformedNavigableSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedNavigableSetResult);
@@ -1439,17 +1593,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSet(Set, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedSet(Set, Transformer); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedSet(Set, Transformer); given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.transformedSet(Set, Transformer)"})
   void testTransformedSet_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -1465,17 +1622,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSet(Set, Transformer)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedSet(Set, Transformer); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedSet(Set, Transformer); given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.transformedSet(Set, Transformer)"})
   void testTransformedSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -1492,20 +1652,23 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSet(Set, Transformer)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSet(Set, Transformer)}
    */
   @Test
   @DisplayName("Test transformedSet(Set, Transformer); when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.transformedSet(Set, Transformer)"})
   void testTransformedSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
-    Set<Object> actualTransformedSetResult = SetUtils.transformedSet(new HashSet<>(), mock(Transformer.class));
+    Set<Object> actualTransformedSetResult =
+        SetUtils.transformedSet(new HashSet<>(), mock(Transformer.class));
 
     // Assert
     assertTrue(actualTransformedSetResult.isEmpty());
@@ -1513,17 +1676,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedSortedSet(SortedSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedSortedSet(SortedSet, Transformer); given '42'; when TreeSet() add '42'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedSortedSet(SortedSet, Transformer)"})
   void testTransformedSortedSet_given42_whenTreeSetAdd42_thenReturnTreeSet() {
     // Arrange
@@ -1531,7 +1697,8 @@ class SetUtilsDiffblueTest {
     set.add("42");
 
     // Act
-    SortedSet<Object> actualTransformedSortedSetResult = SetUtils.transformedSortedSet(set, mock(Transformer.class));
+    SortedSet<Object> actualTransformedSortedSetResult =
+        SetUtils.transformedSortedSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedSortedSetResult);
@@ -1539,17 +1706,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedSortedSet(SortedSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedSortedSet(SortedSet, Transformer); given 'foo'; when TreeSet() add 'foo'; then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedSortedSet(SortedSet, Transformer)"})
   void testTransformedSortedSet_givenFoo_whenTreeSetAddFoo_thenReturnTreeSet() {
     // Arrange
@@ -1558,7 +1728,8 @@ class SetUtilsDiffblueTest {
     set.add("42");
 
     // Act
-    SortedSet<Object> actualTransformedSortedSetResult = SetUtils.transformedSortedSet(set, mock(Transformer.class));
+    SortedSet<Object> actualTransformedSortedSetResult =
+        SetUtils.transformedSortedSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedSortedSetResult);
@@ -1566,23 +1737,27 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
-   *   <li>Then return {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
+   *   <li>Then return {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
+   *
+   * <p>Method under test: {@link SetUtils#transformedSortedSet(SortedSet, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedSortedSet(SortedSet, Transformer); when TreeSet(); then return TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test transformedSortedSet(SortedSet, Transformer); when TreeSet(); then return TreeSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.transformedSortedSet(SortedSet, Transformer)"})
   void testTransformedSortedSet_whenTreeSet_thenReturnTreeSet() {
     // Arrange
     TreeSet<Object> set = new TreeSet<>();
 
     // Act
-    SortedSet<Object> actualTransformedSortedSetResult = SetUtils.transformedSortedSet(set, mock(Transformer.class));
+    SortedSet<Object> actualTransformedSortedSetResult =
+        SetUtils.transformedSortedSet(set, mock(Transformer.class));
 
     // Assert
     assertEquals(set, actualTransformedSortedSetResult);
@@ -1590,17 +1765,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#union(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#union(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#union(Set, Set)}
    */
   @Test
   @DisplayName("Test union(Set, Set); given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.union(Set, Set)"})
   void testUnion_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -1616,17 +1793,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#union(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#union(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#union(Set, Set)}
    */
   @Test
   @DisplayName("Test union(Set, Set); given '42'; when HashSet() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.union(Set, Set)"})
   void testUnion_given42_whenHashSetAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -1644,17 +1823,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#union(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#union(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#union(Set, Set)}
    */
   @Test
   @DisplayName("Test union(Set, Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.union(Set, Set)"})
   void testUnion_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -1671,17 +1852,19 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#union(Set, Set)}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#union(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#union(Set, Set)}
    */
   @Test
   @DisplayName("Test union(Set, Set); given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.union(Set, Set)"})
   void testUnion_givenTwo_whenHashSetAddTwo_thenReturnHashSet2() {
     // Arrange
@@ -1700,16 +1883,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#union(Set, Set)}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#union(Set, Set)}
+   *
+   * <p>Method under test: {@link SetUtils#union(Set, Set)}
    */
   @Test
   @DisplayName("Test union(Set, Set); when HashSet(); then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SetView SetUtils.union(Set, Set)"})
   void testUnion_whenHashSet_thenReturnHashSet() {
     // Arrange
@@ -1724,16 +1909,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
    */
   @Test
   @DisplayName("Test unmodifiableNavigableSet(NavigableSet); given '42'; when TreeSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableNavigableSet(NavigableSet)"})
   void testUnmodifiableNavigableSet_given42_whenTreeSetAdd42() {
     // Arrange
@@ -1749,16 +1936,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
    */
   @Test
   @DisplayName("Test unmodifiableNavigableSet(NavigableSet); given 'foo'; when TreeSet() add 'foo'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableNavigableSet(NavigableSet)"})
   void testUnmodifiableNavigableSet_givenFoo_whenTreeSetAddFoo() {
     // Arrange
@@ -1775,15 +1964,17 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableNavigableSet(NavigableSet)}
    */
   @Test
   @DisplayName("Test unmodifiableNavigableSet(NavigableSet); when TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableNavigableSet(NavigableSet)"})
   void testUnmodifiableNavigableSet_whenTreeSet() {
     // Arrange
@@ -1798,16 +1989,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSet(Object[])} with {@code items}.
+   *
    * <ul>
-   *   <li>When {@code Items}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@code Items}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSet(Object[])}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSet(Object[])}
    */
   @Test
   @DisplayName("Test unmodifiableSet(Object[]) with 'items'; when 'Items'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.unmodifiableSet(Object[])"})
   void testUnmodifiableSetWithItems_whenItems_thenReturnSizeIsOne() {
     // Arrange and Act
@@ -1819,16 +2012,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSet(Object[])} with {@code items}.
+   *
    * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
+   *   <li>When {@code null}.
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSet(Object[])}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSet(Object[])}
    */
   @Test
   @DisplayName("Test unmodifiableSet(Object[]) with 'items'; when 'null'; then return 'null'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.unmodifiableSet(Object[])"})
   void testUnmodifiableSetWithItems_whenNull_thenReturnNull() {
     // Arrange and Act
@@ -1840,17 +2035,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSet(Set)} with {@code set}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableSet(Set) with 'set'; given '42'; when HashSet() add '42'; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableSet(Set) with 'set'; given '42'; when HashSet() add '42'; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.unmodifiableSet(Set)"})
   void testUnmodifiableSetWithSet_given42_whenHashSetAdd42_thenReturnHashSet() {
     // Arrange
@@ -1866,17 +2064,20 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSet(Set)} with {@code set}.
+   *
    * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
+   *   <li>Given two.
+   *   <li>When {@link HashSet#HashSet()} add two.
+   *   <li>Then return {@link HashSet#HashSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSet(Set)}
    */
   @Test
-  @DisplayName("Test unmodifiableSet(Set) with 'set'; given two; when HashSet() add two; then return HashSet()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test unmodifiableSet(Set) with 'set'; given two; when HashSet() add two; then return HashSet()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.unmodifiableSet(Set)"})
   void testUnmodifiableSetWithSet_givenTwo_whenHashSetAddTwo_thenReturnHashSet() {
     // Arrange
@@ -1893,16 +2094,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSet(Set)} with {@code set}.
+   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
+   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSet(Set)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSet(Set)}
    */
   @Test
   @DisplayName("Test unmodifiableSet(Set) with 'set'; when HashSet(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SetUtils.unmodifiableSet(Set)"})
   void testUnmodifiableSetWithSet_whenHashSet_thenReturnEmpty() {
     // Arrange and Act
@@ -1914,16 +2117,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedSet(SortedSet); given '42'; when TreeSet() add '42'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableSortedSet(SortedSet)"})
   void testUnmodifiableSortedSet_given42_whenTreeSetAdd42() {
     // Arrange
@@ -1939,16 +2144,18 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>Given {@code foo}.</li>
-   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.</li>
+   *   <li>Given {@code foo}.
+   *   <li>When {@link TreeSet#TreeSet()} add {@code foo}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedSet(SortedSet); given 'foo'; when TreeSet() add 'foo'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableSortedSet(SortedSet)"})
   void testUnmodifiableSortedSet_givenFoo_whenTreeSetAddFoo() {
     // Arrange
@@ -1965,15 +2172,17 @@ class SetUtilsDiffblueTest {
 
   /**
    * Test {@link SetUtils#unmodifiableSortedSet(SortedSet)}.
+   *
    * <ul>
-   *   <li>When {@link TreeSet#TreeSet()}.</li>
+   *   <li>When {@link TreeSet#TreeSet()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
+   *
+   * <p>Method under test: {@link SetUtils#unmodifiableSortedSet(SortedSet)}
    */
   @Test
   @DisplayName("Test unmodifiableSortedSet(SortedSet); when TreeSet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SortedSet SetUtils.unmodifiableSortedSet(SortedSet)"})
   void testUnmodifiableSortedSet_whenTreeSet() {
     // Arrange

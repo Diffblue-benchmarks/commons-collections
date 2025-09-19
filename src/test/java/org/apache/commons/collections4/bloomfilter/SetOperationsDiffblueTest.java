@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.LongPredicate;
 import org.apache.commons.collections4.bloomfilter.DefaultBloomFilterTest.SparseDefaultBloomFilter;
@@ -17,20 +18,23 @@ import org.mockito.Mockito;
 class SetOperationsDiffblueTest {
   /**
    * Test {@link SetOperations#andCardinality(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#andCardinality(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#andCardinality(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test andCardinality(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetOperations.andCardinality(BitMapExtractor, BitMapExtractor)"})
   void testAndCardinality() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    int actualAndCardinalityResult = SetOperations.andCardinality(first, mock(BitMapExtractor.class));
+    int actualAndCardinalityResult =
+        SetOperations.andCardinality(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -39,12 +43,13 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#cardinality(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <p>
-   * Method under test: {@link SetOperations#cardinality(BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#cardinality(BitMapExtractor)}
    */
   @Test
   @DisplayName("Test cardinality(BitMapExtractor) with 'bitMapExtractor'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetOperations.cardinality(BitMapExtractor)"})
   void testCardinalityWithBitMapExtractor() {
     // Arrange
@@ -61,20 +66,23 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#cosineDistance(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#cosineDistance(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#cosineDistance(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test cosineDistance(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineDistance(BitMapExtractor, BitMapExtractor)"})
   void testCosineDistance() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    double actualCosineDistanceResult = SetOperations.cosineDistance(first, mock(BitMapExtractor.class));
+    double actualCosineDistanceResult =
+        SetOperations.cosineDistance(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -82,21 +90,26 @@ class SetOperationsDiffblueTest {
   }
 
   /**
-   * Test {@link SetOperations#cosineSimilarity(BitMapExtractor, BitMapExtractor)} with {@code BitMapExtractor}, {@code BitMapExtractor}.
-   * <p>
-   * Method under test: {@link SetOperations#cosineSimilarity(BitMapExtractor, BitMapExtractor)}
+   * Test {@link SetOperations#cosineSimilarity(BitMapExtractor, BitMapExtractor)} with {@code
+   * BitMapExtractor}, {@code BitMapExtractor}.
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BitMapExtractor, BitMapExtractor)}
    */
   @Test
-  @DisplayName("Test cosineSimilarity(BitMapExtractor, BitMapExtractor) with 'BitMapExtractor', 'BitMapExtractor'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test cosineSimilarity(BitMapExtractor, BitMapExtractor) with 'BitMapExtractor', 'BitMapExtractor'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineSimilarity(BitMapExtractor, BitMapExtractor)"})
   void testCosineSimilarityWithBitMapExtractorBitMapExtractor() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    double actualCosineSimilarityResult = SetOperations.cosineSimilarity(first, mock(BitMapExtractor.class));
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -104,59 +117,166 @@ class SetOperationsDiffblueTest {
   }
 
   /**
-   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter}, {@code BloomFilter}.
-   * <p>
-   * Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
    */
   @Test
   @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
   void testCosineSimilarityWithBloomFilterBloomFilter() {
     // Arrange
-    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(Shape.fromNP(1000, 0.25d));
+    Shape shape = Shape.fromKM(19088743, 10);
+    SparseDefaultBloomFilter first = new SparseDefaultBloomFilter(shape);
+    Shape shape2 = Shape.fromKM(19088743, 10);
 
-    // Act and Assert
-    assertEquals(0.0d, SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10))));
+    // Act
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(shape2));
+
+    // Assert
+    assertEquals(0.0d, actualCosineSimilarityResult);
   }
 
   /**
-   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter}, {@code BloomFilter}.
-   * <p>
-   * Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
    */
   @Test
   @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
   void testCosineSimilarityWithBloomFilterBloomFilter2() {
     // Arrange
-    SparseDefaultBloomFilter first = new SparseDefaultBloomFilter(Shape.fromKM(19088743, 10));
+    Shape shape = Shape.fromKM(19088743, 10);
+    SimpleBloomFilter first = new SimpleBloomFilter(shape);
+    Shape shape2 = Shape.fromKM(19088743, 10);
 
-    // Act and Assert
-    assertEquals(0.0d, SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10))));
+    // Act
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(shape2));
+
+    // Assert
+    assertEquals(0.0d, actualCosineSimilarityResult);
   }
 
   /**
-   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter}, {@code BloomFilter}.
-   * <ul>
-   *   <li>Then calls {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
    */
   @Test
-  @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; then calls processBitMapPairs(BitMapExtractor, LongBiPredicate)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
+  void testCosineSimilarityWithBloomFilterBloomFilter3() {
+    // Arrange
+    Shape shape = Shape.fromKM(19088743, 10);
+    SparseBloomFilter first = new SparseBloomFilter(shape);
+    Shape shape2 = Shape.fromKM(19088743, 10);
+
+    // Act
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(shape2));
+
+    // Assert
+    assertEquals(0.0d, actualCosineSimilarityResult);
+  }
+
+  /**
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   */
+  @Test
+  @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
+  void testCosineSimilarityWithBloomFilterBloomFilter4() {
+    // Arrange
+    Shape shape = Shape.fromNP(1000, 0.25d);
+    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(shape);
+
+    NumberedBloomFilter second = mock(NumberedBloomFilter.class);
+    when(second.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
+
+    // Act
+    double actualCosineSimilarityResult = SetOperations.cosineSimilarity(first, second);
+
+    // Assert
+    verify(second).processBitMaps(isA(LongPredicate.class));
+    assertEquals(0.0d, actualCosineSimilarityResult);
+  }
+
+  /**
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <ul>
+   *   <li>Given {@code false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; given 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
+  void testCosineSimilarityWithBloomFilterBloomFilter_givenFalse() {
+    // Arrange
+    Shape shape = Shape.fromKM(19088743, 10);
+    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(shape);
+
+    NumberedBloomFilter second = mock(NumberedBloomFilter.class);
+    when(second.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
+
+    // Act
+    double actualCosineSimilarityResult = SetOperations.cosineSimilarity(first, second);
+
+    // Assert
+    verify(second).processBitMaps(isA(LongPredicate.class));
+    assertEquals(0.0d, actualCosineSimilarityResult);
+  }
+
+  /**
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <ul>
+   *   <li>Then calls {@link NumberedBloomFilter#processBitMapPairs(BitMapExtractor,
+   *       LongBiPredicate)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; then calls processBitMapPairs(BitMapExtractor, LongBiPredicate)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
   void testCosineSimilarityWithBloomFilterBloomFilter_thenCallsProcessBitMapPairs() {
     // Arrange
     NumberedBloomFilter first = mock(NumberedBloomFilter.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
+    Shape shape = Shape.fromKM(19088743, 10);
 
     // Act
-    double actualCosineSimilarityResult = SetOperations.cosineSimilarity(first,
-        new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10)));
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(shape));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -164,41 +284,86 @@ class SetOperationsDiffblueTest {
   }
 
   /**
-   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter}, {@code BloomFilter}.
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
    * <ul>
-   *   <li>Then return zero.</li>
+   *   <li>Then calls {@link NumberedBloomFilter#processBitMaps(LongPredicate)}.
    * </ul>
-   * <p>
-   * Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
    */
   @Test
-  @DisplayName("Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; then return zero")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; then calls processBitMaps(LongPredicate)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
+  void testCosineSimilarityWithBloomFilterBloomFilter_thenCallsProcessBitMaps() {
+    // Arrange
+    Shape shape = Shape.fromKM(19088743, 10);
+    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(shape);
+
+    NumberedBloomFilter second = mock(NumberedBloomFilter.class);
+    when(second.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
+
+    // Act
+    double actualCosineSimilarityResult = SetOperations.cosineSimilarity(first, second);
+
+    // Assert
+    verify(second).processBitMaps(isA(LongPredicate.class));
+    assertEquals(0.0d, actualCosineSimilarityResult);
+  }
+
+  /**
+   * Test {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)} with {@code BloomFilter},
+   * {@code BloomFilter}.
+   *
+   * <ul>
+   *   <li>Then return zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link SetOperations#cosineSimilarity(BloomFilter, BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test cosineSimilarity(BloomFilter, BloomFilter) with 'BloomFilter', 'BloomFilter'; then return zero")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.cosineSimilarity(BloomFilter, BloomFilter)"})
   void testCosineSimilarityWithBloomFilterBloomFilter_thenReturnZero() {
     // Arrange
-    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
+    Shape shape = Shape.fromKM(19088743, 10);
+    ArrayCountingBloomFilter first = new ArrayCountingBloomFilter(shape);
+    Shape shape2 = Shape.fromKM(19088743, 10);
 
-    // Act and Assert
-    assertEquals(0.0d, SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10))));
+    // Act
+    double actualCosineSimilarityResult =
+        SetOperations.cosineSimilarity(first, new ArrayCountingBloomFilter(shape2));
+
+    // Assert
+    assertEquals(0.0d, actualCosineSimilarityResult);
   }
 
   /**
    * Test {@link SetOperations#hammingDistance(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#hammingDistance(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#hammingDistance(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test hammingDistance(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetOperations.hammingDistance(BitMapExtractor, BitMapExtractor)"})
   void testHammingDistance() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    int actualHammingDistanceResult = SetOperations.hammingDistance(first, mock(BitMapExtractor.class));
+    int actualHammingDistanceResult =
+        SetOperations.hammingDistance(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -207,20 +372,23 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#jaccardDistance(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#jaccardDistance(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#jaccardDistance(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test jaccardDistance(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.jaccardDistance(BitMapExtractor, BitMapExtractor)"})
   void testJaccardDistance() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    double actualJaccardDistanceResult = SetOperations.jaccardDistance(first, mock(BitMapExtractor.class));
+    double actualJaccardDistanceResult =
+        SetOperations.jaccardDistance(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -229,20 +397,23 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#jaccardSimilarity(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#jaccardSimilarity(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#jaccardSimilarity(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test jaccardSimilarity(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"double SetOperations.jaccardSimilarity(BitMapExtractor, BitMapExtractor)"})
   void testJaccardSimilarity() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    double actualJaccardSimilarityResult = SetOperations.jaccardSimilarity(first, mock(BitMapExtractor.class));
+    double actualJaccardSimilarityResult =
+        SetOperations.jaccardSimilarity(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
@@ -251,17 +422,19 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#orCardinality(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#orCardinality(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#orCardinality(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test orCardinality(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetOperations.orCardinality(BitMapExtractor, BitMapExtractor)"})
   void testOrCardinality() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
     int actualOrCardinalityResult = SetOperations.orCardinality(first, mock(BitMapExtractor.class));
@@ -273,20 +446,23 @@ class SetOperationsDiffblueTest {
 
   /**
    * Test {@link SetOperations#xorCardinality(BitMapExtractor, BitMapExtractor)}.
-   * <p>
-   * Method under test: {@link SetOperations#xorCardinality(BitMapExtractor, BitMapExtractor)}
+   *
+   * <p>Method under test: {@link SetOperations#xorCardinality(BitMapExtractor, BitMapExtractor)}
    */
   @Test
   @DisplayName("Test xorCardinality(BitMapExtractor, BitMapExtractor)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SetOperations.xorCardinality(BitMapExtractor, BitMapExtractor)"})
   void testXorCardinality() {
     // Arrange
     BitMapExtractor first = mock(BitMapExtractor.class);
-    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any())).thenReturn(true);
+    when(first.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+        .thenReturn(true);
 
     // Act
-    int actualXorCardinalityResult = SetOperations.xorCardinality(first, mock(BitMapExtractor.class));
+    int actualXorCardinalityResult =
+        SetOperations.xorCardinality(first, mock(BitMapExtractor.class));
 
     // Assert
     verify(first).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));

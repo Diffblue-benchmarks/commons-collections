@@ -4,6 +4,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.IntPredicate;
 import java.util.function.LongPredicate;
@@ -16,19 +17,24 @@ import org.mockito.Mockito;
 class WrappedBloomFilterDiffblueTest {
   /**
    * Test {@link WrappedBloomFilter#contains(BitMapExtractor)} with {@code bitMapExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BitMapExtractor)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BitMapExtractor)}
+   *       return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(BitMapExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(BitMapExtractor)}
    */
   @Test
-  @DisplayName("Test contains(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter contains(BitMapExtractor) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter contains(BitMapExtractor) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(BitMapExtractor)"})
   void testContainsWithBitMapExtractor_givenWrappedBloomFilterContainsReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<BitMapExtractor>any())).thenReturn(false);
 
     // Act
@@ -40,19 +46,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#contains(BitMapExtractor)} with {@code bitMapExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BitMapExtractor)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BitMapExtractor)}
+   *       return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(BitMapExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(BitMapExtractor)}
    */
   @Test
-  @DisplayName("Test contains(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter contains(BitMapExtractor) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter contains(BitMapExtractor) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(BitMapExtractor)"})
   void testContainsWithBitMapExtractor_givenWrappedBloomFilterContainsReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<BitMapExtractor>any())).thenReturn(true);
 
     // Act
@@ -64,19 +75,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#contains(Hasher)} with {@code hasher}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(Hasher)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(Hasher)} return
+   *       {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(Hasher)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(Hasher)}
    */
   @Test
-  @DisplayName("Test contains(Hasher) with 'hasher'; given WrappedBloomFilter contains(Hasher) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Hasher) with 'hasher'; given WrappedBloomFilter contains(Hasher) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(Hasher)"})
   void testContainsWithHasher_givenWrappedBloomFilterContainsReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<Hasher>any())).thenReturn(false);
 
     // Act
@@ -88,19 +104,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#contains(Hasher)} with {@code hasher}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(Hasher)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(Hasher)} return
+   *       {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(Hasher)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(Hasher)}
    */
   @Test
-  @DisplayName("Test contains(Hasher) with 'hasher'; given WrappedBloomFilter contains(Hasher) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(Hasher) with 'hasher'; given WrappedBloomFilter contains(Hasher) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(Hasher)"})
   void testContainsWithHasher_givenWrappedBloomFilterContainsReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<Hasher>any())).thenReturn(true);
 
     // Act
@@ -112,19 +133,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#contains(IndexExtractor)} with {@code indexExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(IndexExtractor)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(IndexExtractor)}
+   *       return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(IndexExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(IndexExtractor)}
    */
   @Test
-  @DisplayName("Test contains(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter contains(IndexExtractor) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter contains(IndexExtractor) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(IndexExtractor)"})
   void testContainsWithIndexExtractor_givenWrappedBloomFilterContainsReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<IndexExtractor>any())).thenReturn(false);
 
     // Act
@@ -136,19 +162,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#contains(IndexExtractor)} with {@code indexExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(IndexExtractor)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(IndexExtractor)}
+   *       return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#contains(IndexExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(IndexExtractor)}
    */
   @Test
-  @DisplayName("Test contains(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter contains(IndexExtractor) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test contains(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter contains(IndexExtractor) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.contains(IndexExtractor)"})
   void testContainsWithIndexExtractor_givenWrappedBloomFilterContainsReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.contains(Mockito.<IndexExtractor>any())).thenReturn(true);
 
     // Act
@@ -159,20 +190,84 @@ class WrappedBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link WrappedBloomFilter#isFull()}.
+   * Test {@link WrappedBloomFilter#contains(BloomFilter)} with {@code other}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#isFull()} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BloomFilter)} return
+   *       {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#isFull()}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test contains(BloomFilter) with 'other'; given WrappedBloomFilter contains(BloomFilter) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean WrappedBloomFilter.contains(BloomFilter)"})
+  void testContainsWithOther_givenWrappedBloomFilterContainsReturnFalse() {
+    // Arrange
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.contains(Mockito.<BloomFilter<?>>any())).thenReturn(false);
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    // Act
+    wrappedBloomFilter.contains((BloomFilter<?>) new ArrayCountingBloomFilter(shape));
+
+    // Assert
+    verify(wrappedBloomFilter).contains(isA(BloomFilter.class));
+  }
+
+  /**
+   * Test {@link WrappedBloomFilter#contains(BloomFilter)} with {@code other}.
+   *
+   * <ul>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#contains(BloomFilter)} return
+   *       {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#contains(BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test contains(BloomFilter) with 'other'; given WrappedBloomFilter contains(BloomFilter) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean WrappedBloomFilter.contains(BloomFilter)"})
+  void testContainsWithOther_givenWrappedBloomFilterContainsReturnTrue() {
+    // Arrange
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.contains(Mockito.<BloomFilter<?>>any())).thenReturn(true);
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    // Act
+    wrappedBloomFilter.contains((BloomFilter<?>) new ArrayCountingBloomFilter(shape));
+
+    // Assert
+    verify(wrappedBloomFilter).contains(isA(BloomFilter.class));
+  }
+
+  /**
+   * Test {@link WrappedBloomFilter#isFull()}.
+   *
+   * <ul>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#isFull()} return {@code
+   *       false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#isFull()}
    */
   @Test
   @DisplayName("Test isFull(); given WrappedBloomFilter isFull() return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.isFull()"})
   void testIsFull_givenWrappedBloomFilterIsFullReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.isFull()).thenReturn(false);
 
     // Act
@@ -184,19 +279,22 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#isFull()}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#isFull()} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#isFull()} return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#isFull()}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#isFull()}
    */
   @Test
   @DisplayName("Test isFull(); given WrappedBloomFilter isFull() return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.isFull()"})
   void testIsFull_givenWrappedBloomFilterIsFullReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.isFull()).thenReturn(true);
 
     // Act
@@ -208,19 +306,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(BitMapExtractor)} with {@code bitMapExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BitMapExtractor)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BitMapExtractor)} return
+   *       {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(BitMapExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(BitMapExtractor)}
    */
   @Test
-  @DisplayName("Test merge(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter merge(BitMapExtractor) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter merge(BitMapExtractor) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(BitMapExtractor)"})
   void testMergeWithBitMapExtractor_givenWrappedBloomFilterMergeReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<BitMapExtractor>any())).thenReturn(false);
 
     // Act
@@ -232,19 +335,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(BitMapExtractor)} with {@code bitMapExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BitMapExtractor)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BitMapExtractor)} return
+   *       {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(BitMapExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(BitMapExtractor)}
    */
   @Test
-  @DisplayName("Test merge(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter merge(BitMapExtractor) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(BitMapExtractor) with 'bitMapExtractor'; given WrappedBloomFilter merge(BitMapExtractor) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(BitMapExtractor)"})
   void testMergeWithBitMapExtractor_givenWrappedBloomFilterMergeReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<BitMapExtractor>any())).thenReturn(true);
 
     // Act
@@ -256,19 +364,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(Hasher)} with {@code hasher}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(Hasher)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(Hasher)} return {@code
+   *       false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(Hasher)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(Hasher)}
    */
   @Test
-  @DisplayName("Test merge(Hasher) with 'hasher'; given WrappedBloomFilter merge(Hasher) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(Hasher) with 'hasher'; given WrappedBloomFilter merge(Hasher) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(Hasher)"})
   void testMergeWithHasher_givenWrappedBloomFilterMergeReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<Hasher>any())).thenReturn(false);
 
     // Act
@@ -280,19 +393,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(Hasher)} with {@code hasher}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(Hasher)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(Hasher)} return {@code
+   *       true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(Hasher)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(Hasher)}
    */
   @Test
-  @DisplayName("Test merge(Hasher) with 'hasher'; given WrappedBloomFilter merge(Hasher) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(Hasher) with 'hasher'; given WrappedBloomFilter merge(Hasher) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(Hasher)"})
   void testMergeWithHasher_givenWrappedBloomFilterMergeReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<Hasher>any())).thenReturn(true);
 
     // Act
@@ -304,19 +422,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(IndexExtractor)} with {@code indexExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(IndexExtractor)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(IndexExtractor)} return
+   *       {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(IndexExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(IndexExtractor)}
    */
   @Test
-  @DisplayName("Test merge(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter merge(IndexExtractor) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter merge(IndexExtractor) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(IndexExtractor)"})
   void testMergeWithIndexExtractor_givenWrappedBloomFilterMergeReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<IndexExtractor>any())).thenReturn(false);
 
     // Act
@@ -328,19 +451,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#merge(IndexExtractor)} with {@code indexExtractor}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(IndexExtractor)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(IndexExtractor)} return
+   *       {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#merge(IndexExtractor)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(IndexExtractor)}
    */
   @Test
-  @DisplayName("Test merge(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter merge(IndexExtractor) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test merge(IndexExtractor) with 'indexExtractor'; given WrappedBloomFilter merge(IndexExtractor) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.merge(IndexExtractor)"})
   void testMergeWithIndexExtractor_givenWrappedBloomFilterMergeReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.merge(Mockito.<IndexExtractor>any())).thenReturn(true);
 
     // Act
@@ -351,70 +479,157 @@ class WrappedBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}.
+   * Test {@link WrappedBloomFilter#merge(BloomFilter)} with {@code other}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BloomFilter)} return
+   *       {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(BloomFilter)}
    */
   @Test
-  @DisplayName("Test processBitMapPairs(BitMapExtractor, LongBiPredicate); given WrappedBloomFilter processBitMapPairs(BitMapExtractor, LongBiPredicate) return 'false'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean WrappedBloomFilter.processBitMapPairs(BitMapExtractor, LongBiPredicate)"})
+  @DisplayName(
+      "Test merge(BloomFilter) with 'other'; given WrappedBloomFilter merge(BloomFilter) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean WrappedBloomFilter.merge(BloomFilter)"})
+  void testMergeWithOther_givenWrappedBloomFilterMergeReturnFalse() {
+    // Arrange
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.merge(Mockito.<BloomFilter<?>>any())).thenReturn(false);
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    // Act
+    wrappedBloomFilter.merge((BloomFilter<?>) new ArrayCountingBloomFilter(shape));
+
+    // Assert
+    verify(wrappedBloomFilter).merge(isA(BloomFilter.class));
+  }
+
+  /**
+   * Test {@link WrappedBloomFilter#merge(BloomFilter)} with {@code other}.
+   *
+   * <ul>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#merge(BloomFilter)} return
+   *       {@code true}.
+   * </ul>
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#merge(BloomFilter)}
+   */
+  @Test
+  @DisplayName(
+      "Test merge(BloomFilter) with 'other'; given WrappedBloomFilter merge(BloomFilter) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean WrappedBloomFilter.merge(BloomFilter)"})
+  void testMergeWithOther_givenWrappedBloomFilterMergeReturnTrue() {
+    // Arrange
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.merge(Mockito.<BloomFilter<?>>any())).thenReturn(true);
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    // Act
+    wrappedBloomFilter.merge((BloomFilter<?>) new ArrayCountingBloomFilter(shape));
+
+    // Assert
+    verify(wrappedBloomFilter).merge(isA(BloomFilter.class));
+  }
+
+  /**
+   * Test {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}.
+   *
+   * <ul>
+   *   <li>Given {@link WrappedBloomFilter} {@link
+   *       WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)} return {@code
+   *       false}.
+   * </ul>
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor,
+   * LongBiPredicate)}
+   */
+  @Test
+  @DisplayName(
+      "Test processBitMapPairs(BitMapExtractor, LongBiPredicate); given WrappedBloomFilter processBitMapPairs(BitMapExtractor, LongBiPredicate) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean WrappedBloomFilter.processBitMapPairs(BitMapExtractor, LongBiPredicate)"
+  })
   void testProcessBitMapPairs_givenWrappedBloomFilterProcessBitMapPairsReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
-    when(wrappedBloomFilter.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.processBitMapPairs(
+            Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
         .thenReturn(false);
 
     // Act
     wrappedBloomFilter.processBitMapPairs(mock(BitMapExtractor.class), mock(LongBiPredicate.class));
 
     // Assert
-    verify(wrappedBloomFilter).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
+    verify(wrappedBloomFilter)
+        .processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
   }
 
   /**
    * Test {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link
+   *       WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)} return {@code
+   *       true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor, LongBiPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processBitMapPairs(BitMapExtractor,
+   * LongBiPredicate)}
    */
   @Test
-  @DisplayName("Test processBitMapPairs(BitMapExtractor, LongBiPredicate); given WrappedBloomFilter processBitMapPairs(BitMapExtractor, LongBiPredicate) return 'true'")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"boolean WrappedBloomFilter.processBitMapPairs(BitMapExtractor, LongBiPredicate)"})
+  @DisplayName(
+      "Test processBitMapPairs(BitMapExtractor, LongBiPredicate); given WrappedBloomFilter processBitMapPairs(BitMapExtractor, LongBiPredicate) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean WrappedBloomFilter.processBitMapPairs(BitMapExtractor, LongBiPredicate)"
+  })
   void testProcessBitMapPairs_givenWrappedBloomFilterProcessBitMapPairsReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
-    when(wrappedBloomFilter.processBitMapPairs(Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
+    when(wrappedBloomFilter.processBitMapPairs(
+            Mockito.<BitMapExtractor>any(), Mockito.<LongBiPredicate>any()))
         .thenReturn(true);
 
     // Act
     wrappedBloomFilter.processBitMapPairs(mock(BitMapExtractor.class), mock(LongBiPredicate.class));
 
     // Assert
-    verify(wrappedBloomFilter).processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
+    verify(wrappedBloomFilter)
+        .processBitMapPairs(isA(BitMapExtractor.class), isA(LongBiPredicate.class));
   }
 
   /**
    * Test {@link WrappedBloomFilter#processBitMaps(LongPredicate)}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMaps(LongPredicate)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
+   *       return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
    */
   @Test
-  @DisplayName("Test processBitMaps(LongPredicate); given WrappedBloomFilter processBitMaps(LongPredicate) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processBitMaps(LongPredicate); given WrappedBloomFilter processBitMaps(LongPredicate) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.processBitMaps(LongPredicate)"})
   void testProcessBitMaps_givenWrappedBloomFilterProcessBitMapsReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
 
     // Act
@@ -426,19 +641,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#processBitMaps(LongPredicate)}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMaps(LongPredicate)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
+   *       return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processBitMaps(LongPredicate)}
    */
   @Test
-  @DisplayName("Test processBitMaps(LongPredicate); given WrappedBloomFilter processBitMaps(LongPredicate) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processBitMaps(LongPredicate); given WrappedBloomFilter processBitMaps(LongPredicate) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.processBitMaps(LongPredicate)"})
   void testProcessBitMaps_givenWrappedBloomFilterProcessBitMapsReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
 
     // Act
@@ -450,19 +670,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#processIndices(IntPredicate)}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processIndices(IntPredicate)} return {@code false}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processIndices(IntPredicate)}
+   *       return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processIndices(IntPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processIndices(IntPredicate)}
    */
   @Test
-  @DisplayName("Test processIndices(IntPredicate); given WrappedBloomFilter processIndices(IntPredicate) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processIndices(IntPredicate); given WrappedBloomFilter processIndices(IntPredicate) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.processIndices(IntPredicate)"})
   void testProcessIndices_givenWrappedBloomFilterProcessIndicesReturnFalse() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.processIndices(Mockito.<IntPredicate>any())).thenReturn(false);
 
     // Act
@@ -474,19 +699,24 @@ class WrappedBloomFilterDiffblueTest {
 
   /**
    * Test {@link WrappedBloomFilter#processIndices(IntPredicate)}.
+   *
    * <ul>
-   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processIndices(IntPredicate)} return {@code true}.</li>
+   *   <li>Given {@link WrappedBloomFilter} {@link WrappedBloomFilter#processIndices(IntPredicate)}
+   *       return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link WrappedBloomFilter#processIndices(IntPredicate)}
+   *
+   * <p>Method under test: {@link WrappedBloomFilter#processIndices(IntPredicate)}
    */
   @Test
-  @DisplayName("Test processIndices(IntPredicate); given WrappedBloomFilter processIndices(IntPredicate) return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test processIndices(IntPredicate); given WrappedBloomFilter processIndices(IntPredicate) return 'true'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean WrappedBloomFilter.processIndices(IntPredicate)"})
   void testProcessIndices_givenWrappedBloomFilterProcessIndicesReturnTrue() {
     // Arrange
-    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter = mock(WrappedBloomFilter.class);
+    WrappedBloomFilter<NumberedBloomFilter, SimpleBloomFilter> wrappedBloomFilter =
+        mock(WrappedBloomFilter.class);
     when(wrappedBloomFilter.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
 
     // Act

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,43 +25,53 @@ import org.junit.jupiter.api.Test;
 class SingletonMapDiffblueTest {
   /**
    * Test {@link SingletonMap#SingletonMap(Map)}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashMap#HashMap()}.</li>
+   *   <li>Given {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#SingletonMap(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#SingletonMap(Map)}
    */
   @Test
-  @DisplayName("Test new SingletonMap(Map); given NULL; when HashMap() NULL is NULL; then return HashMap()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new SingletonMap(Map); given NULL; when HashMap() NULL is NULL; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.<init>(Map)"})
   void testNewSingletonMap_givenNull_whenHashMapNullIsNull_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(map, new SingletonMap<>(map));
+    // Act
+    SingletonMap<Object, Object> actualObjectObjectMap = new SingletonMap<>(map);
+
+    // Assert
+    assertEquals(map, actualObjectObjectMap);
   }
 
   /**
    * Test {@link SingletonMap#SingletonMap(KeyValue)}.
+   *
    * <ul>
-   *   <li>When {@link DefaultKeyValue#DefaultKeyValue()}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>When {@link DefaultKeyValue#DefaultKeyValue()}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#SingletonMap(KeyValue)}
+   *
+   * <p>Method under test: {@link SingletonMap#SingletonMap(KeyValue)}
    */
   @Test
   @DisplayName("Test new SingletonMap(KeyValue); when DefaultKeyValue(); then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.<init>(KeyValue)"})
   void testNewSingletonMap_whenDefaultKeyValue_thenReturnSizeIsOne() {
     // Arrange and Act
-    SingletonMap<Object, Object> actualObjectObjectMap = new SingletonMap<>(new DefaultKeyValue<>());
+    SingletonMap<Object, Object> actualObjectObjectMap =
+        new SingletonMap<>(new DefaultKeyValue<>());
 
     // Assert
     assertEquals(1, actualObjectObjectMap.size());
@@ -69,16 +80,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#SingletonMap(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#SingletonMap(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#SingletonMap(Map)}
    */
   @Test
   @DisplayName("Test new SingletonMap(Map); when HashMap(); then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.<init>(Map)"})
   void testNewSingletonMap_whenHashMap_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
@@ -87,33 +100,40 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#SingletonMap(KeyValue)}.
+   *
    * <ul>
-   *   <li>When {@link SingletonMap#SingletonMap()}.</li>
-   *   <li>Then return {@link SingletonMap#SingletonMap()}.</li>
+   *   <li>When {@link SingletonMap#SingletonMap()}.
+   *   <li>Then return {@link SingletonMap#SingletonMap()}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#SingletonMap(KeyValue)}
+   *
+   * <p>Method under test: {@link SingletonMap#SingletonMap(KeyValue)}
    */
   @Test
   @DisplayName("Test new SingletonMap(KeyValue); when SingletonMap(); then return SingletonMap()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.<init>(KeyValue)"})
   void testNewSingletonMap_whenSingletonMap_thenReturnSingletonMap() {
     // Arrange
     SingletonMap<Object, Object> keyValue = new SingletonMap<>();
 
-    // Act and Assert
-    assertEquals(keyValue, new SingletonMap<>((KeyValue<Object, Object>) keyValue));
+    // Act
+    SingletonMap<Object, Object> actualObjectObjectMap =
+        new SingletonMap<>((KeyValue<Object, Object>) keyValue);
+
+    // Assert
+    assertEquals(keyValue, actualObjectObjectMap);
   }
 
   /**
    * Test {@link SingletonMap#clear()}.
-   * <p>
-   * Method under test: {@link SingletonMap#clear()}
+   *
+   * <p>Method under test: {@link SingletonMap#clear()}
    */
   @Test
   @DisplayName("Test clear()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.clear()"})
   void testClear() {
     // Arrange
@@ -125,29 +145,34 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#clone()}.
-   * <p>
-   * Method under test: {@link SingletonMap#clone()}
+   *
+   * <p>Method under test: {@link SingletonMap#clone()}
    */
   @Test
   @DisplayName("Test clone()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"SingletonMap SingletonMap.clone()"})
   void testClone() {
     // Arrange
     SingletonMap<Object, Object> objectObjectMap = new SingletonMap<>();
 
-    // Act and Assert
-    assertEquals(objectObjectMap, objectObjectMap.clone());
+    // Act
+    SingletonMap<Object, Object> actualCloneResult = objectObjectMap.clone();
+
+    // Assert
+    assertEquals(objectObjectMap, actualCloneResult);
   }
 
   /**
    * Test {@link SingletonMap#containsKey(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#containsKey(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#containsKey(Object)}
    */
   @Test
   @DisplayName("Test containsKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.containsKey(Object)"})
   void testContainsKey() {
     // Arrange
@@ -159,16 +184,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link SingletonMap#SingletonMap()} Value is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link SingletonMap#SingletonMap()} Value is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#containsValue(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); given SingletonMap() Value is NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.containsValue(Object)"})
   void testContainsValue_givenSingletonMapValueIsNull_thenReturnTrue() {
     // Arrange
@@ -181,16 +208,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#containsValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link SingletonMap#SingletonMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link SingletonMap#SingletonMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#containsValue(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#containsValue(Object)}
    */
   @Test
   @DisplayName("Test containsValue(Object); given SingletonMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.containsValue(Object)"})
   void testContainsValue_givenSingletonMap_thenReturnFalse() {
     // Arrange
@@ -202,12 +231,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#entrySet()}.
-   * <p>
-   * Method under test: {@link SingletonMap#entrySet()}
+   *
+   * <p>Method under test: {@link SingletonMap#entrySet()}
    */
   @Test
   @DisplayName("Test entrySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SingletonMap.entrySet()"})
   void testEntrySet() {
     // Arrange
@@ -219,12 +249,14 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#equals(Object)}, and {@link SingletonMap#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SingletonMap#equals(Object)}
    *   <li>{@link SingletonMap#hashCode()}
@@ -232,7 +264,8 @@ class SingletonMapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.equals(Object)", "int SingletonMap.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -241,18 +274,19 @@ class SingletonMapDiffblueTest {
 
     // Act and Assert
     assertEquals(objectObjectMap, objectObjectMap2);
-    int expectedHashCodeResult = objectObjectMap.hashCode();
-    assertEquals(expectedHashCodeResult, objectObjectMap2.hashCode());
+    assertEquals(objectObjectMap.hashCode(), objectObjectMap2.hashCode());
   }
 
   /**
    * Test {@link SingletonMap#equals(Object)}, and {@link SingletonMap#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SingletonMap#equals(Object)}
    *   <li>{@link SingletonMap#hashCode()}
@@ -260,7 +294,8 @@ class SingletonMapDiffblueTest {
    */
   @Test
   @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.equals(Object)", "int SingletonMap.hashCode()"})
   void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -274,16 +309,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#equals(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.equals(Object)", "int SingletonMap.hashCode()"})
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
@@ -296,16 +333,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#equals(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.equals(Object)", "int SingletonMap.hashCode()"})
   void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
@@ -317,16 +356,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#equals(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#equals(Object)}
    */
   @Test
   @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.equals(Object)", "int SingletonMap.hashCode()"})
   void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
@@ -338,12 +379,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#firstKey()}.
-   * <p>
-   * Method under test: {@link SingletonMap#firstKey()}
+   *
+   * <p>Method under test: {@link SingletonMap#firstKey()}
    */
   @Test
   @DisplayName("Test firstKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.firstKey()"})
   void testFirstKey() {
     // Arrange
@@ -355,12 +397,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#get(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#get(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#get(Object)}
    */
   @Test
   @DisplayName("Test get(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.get(Object)"})
   void testGet() {
     // Arrange
@@ -372,12 +415,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#isEqualKey(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#isEqualKey(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#isEqualKey(Object)}
    */
   @Test
   @DisplayName("Test isEqualKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.isEqualKey(Object)"})
   void testIsEqualKey() {
     // Arrange
@@ -389,16 +433,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#isEqualValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link SingletonMap#SingletonMap()} Value is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link SingletonMap#SingletonMap()} Value is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#isEqualValue(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#isEqualValue(Object)}
    */
   @Test
   @DisplayName("Test isEqualValue(Object); given SingletonMap() Value is NULL; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.isEqualValue(Object)"})
   void testIsEqualValue_givenSingletonMapValueIsNull_thenReturnTrue() {
     // Arrange
@@ -411,16 +457,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#isEqualValue(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link SingletonMap#SingletonMap()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link SingletonMap#SingletonMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#isEqualValue(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#isEqualValue(Object)}
    */
   @Test
   @DisplayName("Test isEqualValue(Object); given SingletonMap(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMap.isEqualValue(Object)"})
   void testIsEqualValue_givenSingletonMap_thenReturnFalse() {
     // Arrange
@@ -432,12 +480,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#keySet()}.
-   * <p>
-   * Method under test: {@link SingletonMap#keySet()}
+   *
+   * <p>Method under test: {@link SingletonMap#keySet()}
    */
   @Test
   @DisplayName("Test keySet()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Set SingletonMap.keySet()"})
   void testKeySet() {
     // Arrange
@@ -449,12 +498,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#lastKey()}.
-   * <p>
-   * Method under test: {@link SingletonMap#lastKey()}
+   *
+   * <p>Method under test: {@link SingletonMap#lastKey()}
    */
   @Test
   @DisplayName("Test lastKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.lastKey()"})
   void testLastKey() {
     // Arrange
@@ -466,12 +516,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#mapIterator()}.
-   * <p>
-   * Method under test: {@link SingletonMap#mapIterator()}
+   *
+   * <p>Method under test: {@link SingletonMap#mapIterator()}
    */
   @Test
   @DisplayName("Test mapIterator()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"OrderedMapIterator SingletonMap.mapIterator()"})
   void testMapIterator() {
     // Arrange
@@ -488,12 +539,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#maxSize()}.
-   * <p>
-   * Method under test: {@link SingletonMap#maxSize()}
+   *
+   * <p>Method under test: {@link SingletonMap#maxSize()}
    */
   @Test
   @DisplayName("Test maxSize()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int SingletonMap.maxSize()"})
   void testMaxSize() {
     // Arrange
@@ -505,12 +557,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#nextKey(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#nextKey(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#nextKey(Object)}
    */
   @Test
   @DisplayName("Test nextKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.nextKey(Object)"})
   void testNextKey() {
     // Arrange
@@ -522,12 +575,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#previousKey(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#previousKey(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#previousKey(Object)}
    */
   @Test
   @DisplayName("Test previousKey(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.previousKey(Object)"})
   void testPreviousKey() {
     // Arrange
@@ -539,35 +593,40 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#put(Object, Object)}.
-   * <p>
-   * Method under test: {@link SingletonMap#put(Object, Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#put(Object, Object)}
    */
   @Test
   @DisplayName("Test put(Object, Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.put(Object, Object)"})
   void testPut() {
     // Arrange
     SingletonMap<Object, Object> objectObjectMap = new SingletonMap<>();
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class,
+    assertThrows(
+        IllegalArgumentException.class,
         () -> objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
   }
 
   /**
    * Test {@link SingletonMap#putAll(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code null} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then {@link HashMap#HashMap()} size is one.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link HashMap#HashMap()} {@code null} is {@link AbstractHashedMap#NULL}.
+   *   <li>Then {@link HashMap#HashMap()} size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given 'null'; when HashMap() 'null' is NULL; then HashMap() size is one")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Map); given 'null'; when HashMap() 'null' is NULL; then HashMap() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.putAll(Map)"})
   void testPutAll_givenNull_whenHashMapNullIsNull_thenHashMapSizeIsOne() {
     // Arrange
@@ -586,17 +645,21 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#putAll(Map)}.
+   *
    * <ul>
-   *   <li>Given {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>Given {@link AbstractHashedMap#NULL}.
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given NULL; when HashMap() NULL is NULL; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Map); given NULL; when HashMap() NULL is NULL; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.putAll(Map)"})
   void testPutAll_givenNull_whenHashMapNullIsNull_thenThrowIllegalArgumentException() {
     // Arrange
@@ -611,17 +674,21 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#putAll(Map)}.
+   *
    * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   *   <li>Given {@code null}.
+   *   <li>When {@link HashMap#HashMap()} {@link AbstractHashedMap#NULL} is {@link
+   *       AbstractHashedMap#NULL}.
+   *   <li>Then throw {@link IllegalArgumentException}.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given 'null'; when HashMap() NULL is NULL; then throw IllegalArgumentException")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test putAll(Map); given 'null'; when HashMap() NULL is NULL; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.putAll(Map)"})
   void testPutAll_givenNull_whenHashMapNullIsNull_thenThrowIllegalArgumentException2() {
     // Arrange
@@ -637,16 +704,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#putAll(Map)}.
+   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.</li>
-   *   <li>Then {@link HashMap#HashMap()} Empty.</li>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then {@link HashMap#HashMap()} Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link SingletonMap#putAll(Map)}
+   *
+   * <p>Method under test: {@link SingletonMap#putAll(Map)}
    */
   @Test
   @DisplayName("Test putAll(Map); when HashMap(); then HashMap() Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMap.putAll(Map)"})
   void testPutAll_whenHashMap_thenHashMapEmpty() {
     // Arrange
@@ -662,33 +731,37 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#remove(Object)} with {@code Object}.
-   * <p>
-   * Method under test: {@link SingletonMap#remove(Object)}
+   *
+   * <p>Method under test: {@link SingletonMap#remove(Object)}
    */
   @Test
   @DisplayName("Test remove(Object) with 'Object'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMap.remove(Object)"})
   void testRemoveWithObject() {
     // Arrange
     SingletonMap<Object, Object> objectObjectMap = new SingletonMap<>();
 
     // Act and Assert
-    assertThrows(UnsupportedOperationException.class, () -> objectObjectMap.remove(AbstractHashedMap.NULL));
+    assertThrows(
+        UnsupportedOperationException.class, () -> objectObjectMap.remove(AbstractHashedMap.NULL));
   }
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#getKey()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#getKey()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#getKey()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator getKey()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMapIterator.getKey()"})
   void testSingletonMapIteratorGetKey() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> singletonMapIterator.getKey());
@@ -696,16 +769,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#getValue()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#getValue()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#getValue()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator getValue()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMapIterator.getValue()"})
   void testSingletonMapIteratorGetValue() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> singletonMapIterator.getValue());
@@ -713,16 +788,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#hasPrevious()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#hasPrevious()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#hasPrevious()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator hasPrevious()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean SingletonMapIterator.hasPrevious()"})
   void testSingletonMapIteratorHasPrevious() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertFalse(singletonMapIterator.hasPrevious());
@@ -730,16 +807,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#next()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#next()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#next()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator next()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMapIterator.next()"})
   void testSingletonMapIteratorNext() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertNull(singletonMapIterator.next());
@@ -748,16 +827,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#previous()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#previous()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#previous()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator previous()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMapIterator.previous()"})
   void testSingletonMapIteratorPrevious() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> singletonMapIterator.previous());
@@ -765,16 +846,18 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#remove()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#remove()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#remove()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void SingletonMapIterator.remove()"})
   void testSingletonMapIteratorRemove() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertThrows(UnsupportedOperationException.class, () -> singletonMapIterator.remove());
@@ -782,33 +865,38 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#setValue(Object)}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#setValue(Object)}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#setValue(Object)}
    */
   @Test
   @DisplayName("Test SingletonMapIterator setValue(Object)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object SingletonMapIterator.setValue(Object)"})
   void testSingletonMapIteratorSetValue() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
-    assertThrows(IllegalStateException.class, () -> singletonMapIterator.setValue(AbstractHashedMap.NULL));
+    assertThrows(
+        IllegalStateException.class, () -> singletonMapIterator.setValue(AbstractHashedMap.NULL));
   }
 
   /**
    * Test SingletonMapIterator {@link SingletonMapIterator#toString()}.
-   * <p>
-   * Method under test: {@link SingletonMapIterator#toString()}
+   *
+   * <p>Method under test: {@link SingletonMapIterator#toString()}
    */
   @Test
   @DisplayName("Test SingletonMapIterator toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String SingletonMapIterator.toString()"})
   void testSingletonMapIteratorToString() {
     // Arrange
-    SingletonMapIterator<Object, Object> singletonMapIterator = new SingletonMapIterator<>(new SingletonMap<>());
+    SingletonMapIterator<Object, Object> singletonMapIterator =
+        new SingletonMapIterator<>(new SingletonMap<>());
 
     // Act and Assert
     assertEquals("Iterator[]", singletonMapIterator.toString());
@@ -816,8 +904,9 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test SingletonValues getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link SingletonValues#SingletonValues(SingletonMap)}
    *   <li>{@link SingletonValues#isEmpty()}
@@ -826,9 +915,13 @@ class SingletonMapDiffblueTest {
    */
   @Test
   @DisplayName("Test SingletonValues getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void SingletonValues.<init>(SingletonMap)", "boolean SingletonValues.isEmpty()",
-      "int SingletonValues.size()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void SingletonValues.<init>(SingletonMap)",
+    "boolean SingletonValues.isEmpty()",
+    "int SingletonValues.size()"
+  })
   void testSingletonValuesGettersAndSetters() {
     // Arrange and Act
     SingletonValues<Object> actualObjectSet = new SingletonValues<>(new SingletonMap<>());
@@ -841,12 +934,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#toString()}.
-   * <p>
-   * Method under test: {@link SingletonMap#toString()}
+   *
+   * <p>Method under test: {@link SingletonMap#toString()}
    */
   @Test
   @DisplayName("Test toString()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"java.lang.String SingletonMap.toString()"})
   void testToString() {
     // Arrange
@@ -858,12 +952,13 @@ class SingletonMapDiffblueTest {
 
   /**
    * Test {@link SingletonMap#values()}.
-   * <p>
-   * Method under test: {@link SingletonMap#values()}
+   *
+   * <p>Method under test: {@link SingletonMap#values()}
    */
   @Test
   @DisplayName("Test values()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Collection SingletonMap.values()"})
   void testValues() {
     // Arrange

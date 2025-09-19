@@ -10,6 +10,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.Predicate;
@@ -21,16 +22,19 @@ import org.mockito.Mockito;
 class ForClosureDiffblueTest {
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Given {@code false}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
-  @DisplayName("Test forClosure(int, Closure); given 'false'; when Predicate test(Object) return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test forClosure(int, Closure); given 'false'; when Predicate test(Object) return 'false'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_givenFalse_whenPredicateTestReturnFalse() {
     // Arrange
@@ -54,24 +58,29 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then Closure return {@link IfClosure}.</li>
+   *   <li>Given {@code true}.
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
+   *   <li>Then Closure return {@link IfClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
-  @DisplayName("Test forClosure(int, Closure); given 'true'; when Predicate test(Object) return 'true'; then Closure return IfClosure")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test forClosure(int, Closure); given 'true'; when Predicate test(Object) return 'true'; then Closure return IfClosure")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_givenTrue_whenPredicateTestReturnTrue_thenClosureReturnIfClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
     Closure<Object> trueClosure = mock(Closure.class);
     doNothing().when(trueClosure).accept(Mockito.<Object>any());
+
     IfClosure<? super Object> closure = new IfClosure<>(predicate, trueClosure);
 
     // Act
@@ -91,15 +100,17 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>Then Closure return {@link ForClosure}.</li>
+   *   <li>Then Closure return {@link ForClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
   @DisplayName("Test forClosure(int, Closure); then Closure return ForClosure")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_thenClosureReturnForClosure() {
     // Arrange
@@ -124,16 +135,19 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>When {@link Closure} {@link Closure#accept(Object)} does nothing.</li>
-   *   <li>Then return {@link Closure}.</li>
+   *   <li>When {@link Closure} {@link Closure#accept(Object)} does nothing.
+   *   <li>Then return {@link Closure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
-  @DisplayName("Test forClosure(int, Closure); when Closure accept(Object) does nothing; then return Closure")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test forClosure(int, Closure); when Closure accept(Object) does nothing; then return Closure")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_whenClosureAcceptDoesNothing_thenReturnClosure() {
     // Arrange
@@ -153,16 +167,18 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>When {@link Closure}.</li>
-   *   <li>Then return {@link Closure}.</li>
+   *   <li>When {@link Closure}.
+   *   <li>Then return {@link Closure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
   @DisplayName("Test forClosure(int, Closure); when Closure; then return Closure")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_whenClosure_thenReturnClosure() {
     // Arrange
@@ -179,16 +195,18 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>When one.</li>
-   *   <li>Then return {@link NOPClosure}.</li>
+   *   <li>When one.
+   *   <li>Then return {@link NOPClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
   @DisplayName("Test forClosure(int, Closure); when one; then return NOPClosure")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_whenOne_thenReturnNOPClosure() {
     // Arrange and Act
@@ -202,16 +220,18 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#forClosure(int, Closure)}.
+   *
    * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return {@link NOPClosure}.</li>
+   *   <li>When zero.
+   *   <li>Then return {@link NOPClosure}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#forClosure(int, Closure)}
+   *
+   * <p>Method under test: {@link ForClosure#forClosure(int, Closure)}
    */
   @Test
   @DisplayName("Test forClosure(int, Closure); when zero; then return NOPClosure")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Closure ForClosure.forClosure(int, Closure)"})
   void testForClosure_whenZero_thenReturnNOPClosure() {
     // Arrange and Act
@@ -225,8 +245,9 @@ class ForClosureDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ForClosure#ForClosure(int, Closure)}
    *   <li>{@link ForClosure#getClosure()}
@@ -235,9 +256,13 @@ class ForClosureDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"void ForClosure.<init>(int, Closure)", "Closure ForClosure.getClosure()",
-      "int ForClosure.getCount()"})
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ForClosure.<init>(int, Closure)",
+    "Closure ForClosure.getClosure()",
+    "int ForClosure.getCount()"
+  })
   void testGettersAndSetters() {
     // Arrange
     Closure<Object> closure = mock(Closure.class);
@@ -253,16 +278,19 @@ class ForClosureDiffblueTest {
 
   /**
    * Test {@link ForClosure#execute(Object)}.
+   *
    * <ul>
-   *   <li>Given {@link Closure} {@link Closure#accept(Object)} does nothing.</li>
-   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   *   <li>Given {@link Closure} {@link Closure#accept(Object)} does nothing.
+   *   <li>Then calls {@link Closure#accept(Object)}.
    * </ul>
-   * <p>
-   * Method under test: {@link ForClosure#execute(Object)}
+   *
+   * <p>Method under test: {@link ForClosure#execute(Object)}
    */
   @Test
-  @DisplayName("Test execute(Object); given Closure accept(Object) does nothing; then calls accept(Object)")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test execute(Object); given Closure accept(Object) does nothing; then calls accept(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void ForClosure.execute(Object)"})
   void testExecute_givenClosureAcceptDoesNothing_thenCallsAccept() {
     // Arrange

@@ -3,6 +3,7 @@ package org.apache.commons.collections4.iterators;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,8 +15,9 @@ import org.junit.jupiter.api.Test;
 class IteratorChainDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link IteratorChain#IteratorChain()}
    *   <li>{@link IteratorChain#isLocked()}
@@ -23,7 +25,8 @@ class IteratorChainDiffblueTest {
    */
   @Test
   @DisplayName("Test getters and setters")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>()", "boolean IteratorChain.isLocked()"})
   void testGettersAndSetters() {
     // Arrange and Act
@@ -35,12 +38,13 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#IteratorChain(Iterator)}.
-   * <p>
-   * Method under test: {@link IteratorChain#IteratorChain(Iterator)}
+   *
+   * <p>Method under test: {@link IteratorChain#IteratorChain(Iterator)}
    */
   @Test
   @DisplayName("Test new IteratorChain(Iterator)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>(Iterator)"})
   void testNewIteratorChain() {
     // Arrange
@@ -55,12 +59,13 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#IteratorChain(Iterator, Iterator)}.
-   * <p>
-   * Method under test: {@link IteratorChain#IteratorChain(Iterator, Iterator)}
+   *
+   * <p>Method under test: {@link IteratorChain#IteratorChain(Iterator, Iterator)}
    */
   @Test
   @DisplayName("Test new IteratorChain(Iterator, Iterator)")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>(Iterator, Iterator)"})
   void testNewIteratorChain2() {
     // Arrange
@@ -78,12 +83,13 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#IteratorChain(Iterator[])}.
-   * <p>
-   * Method under test: {@link IteratorChain#IteratorChain(Iterator[])}
+   *
+   * <p>Method under test: {@link IteratorChain#IteratorChain(Iterator[])}
    */
   @Test
   @DisplayName("Test new IteratorChain(Iterator[])")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>(Iterator[])"})
   void testNewIteratorChain3() {
     // Arrange
@@ -98,16 +104,19 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#IteratorChain(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} iterator.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} iterator.
+   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()} iterator.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#IteratorChain(Collection)}
+   *
+   * <p>Method under test: {@link IteratorChain#IteratorChain(Collection)}
    */
   @Test
-  @DisplayName("Test new IteratorChain(Collection); given ArrayList() iterator; when ArrayList() add ArrayList() iterator")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new IteratorChain(Collection); given ArrayList() iterator; when ArrayList() add ArrayList() iterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>(Collection)"})
   void testNewIteratorChain_givenArrayListIterator_whenArrayListAddArrayListIterator() {
     // Arrange
@@ -128,15 +137,17 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#IteratorChain(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#IteratorChain(Collection)}
+   *
+   * <p>Method under test: {@link IteratorChain#IteratorChain(Collection)}
    */
   @Test
   @DisplayName("Test new IteratorChain(Collection); when ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void IteratorChain.<init>(Collection)"})
   void testNewIteratorChain_whenArrayList() {
     // Arrange and Act
@@ -148,20 +159,22 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#hasNext()}.
-   * <p>
-   * Method under test: {@link IteratorChain#hasNext()}
+   *
+   * <p>Method under test: {@link IteratorChain#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean IteratorChain.hasNext()"})
   void testHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> iteratorResult = objectList.iterator();
+
+    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList.iterator());
 
     ArrayList<Object> objectList2 = new ArrayList<>();
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(iteratorResult, objectList2.iterator());
+    iteratorChain.addIterator(objectList2.iterator());
 
     // Act and Assert
     assertFalse(iteratorChain.hasNext());
@@ -169,16 +182,18 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code true}.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#hasNext()}
+   *
+   * <p>Method under test: {@link IteratorChain#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean IteratorChain.hasNext()"})
   void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
@@ -192,15 +207,19 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain(Iterator[])} with iteratorQueue is {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>Given {@link IteratorChain#IteratorChain(Iterator[])} with iteratorQueue is {@link
+   *       ArrayList#ArrayList()} iterator.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#hasNext()}
+   *
+   * <p>Method under test: {@link IteratorChain#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given IteratorChain(Iterator[]) with iteratorQueue is ArrayList() iterator")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test hasNext(); given IteratorChain(Iterator[]) with iteratorQueue is ArrayList() iterator")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean IteratorChain.hasNext()"})
   void testHasNext_givenIteratorChainWithIteratorQueueIsArrayListIterator() {
     // Arrange
@@ -213,16 +232,18 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#hasNext()}.
+   *
    * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()}.</li>
-   *   <li>Then return {@code false}.</li>
+   *   <li>Given {@link IteratorChain#IteratorChain()}.
+   *   <li>Then return {@code false}.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#hasNext()}
+   *
+   * <p>Method under test: {@link IteratorChain#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext(); given IteratorChain(); then return 'false'")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean IteratorChain.hasNext()"})
   void testHasNext_givenIteratorChain_thenReturnFalse() {
     // Arrange
@@ -234,40 +255,20 @@ class IteratorChainDiffblueTest {
 
   /**
    * Test {@link IteratorChain#next()}.
-   * <p>
-   * Method under test: {@link IteratorChain#next()}
-   */
-  @Test
-  @DisplayName("Test next()")
-  @Tag("MaintainedByDiffblue")
-  @MethodsUnderTest({"Object IteratorChain.next()"})
-  void testNext() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iteratorResult = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList2.iterator(), iteratorResult);
-
-    // Act and Assert
-    assertEquals("42", iteratorChain.next());
-    assertFalse(iteratorChain.hasNext());
-  }
-
-  /**
-   * Test {@link IteratorChain#next()}.
+   *
    * <ul>
-   *   <li>Then not {@link IteratorChain#IteratorChain(Iterator[])} with iteratorQueue is {@link ArrayList#ArrayList()} iterator hasNext.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
    * </ul>
-   * <p>
-   * Method under test: {@link IteratorChain#next()}
+   *
+   * <p>Method under test: {@link IteratorChain#next()}
    */
   @Test
-  @DisplayName("Test next(); then not IteratorChain(Iterator[]) with iteratorQueue is ArrayList() iterator hasNext")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"Object IteratorChain.next()"})
-  void testNext_thenNotIteratorChainWithIteratorQueueIsArrayListIteratorHasNext() {
+  void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -279,13 +280,45 @@ class IteratorChainDiffblueTest {
   }
 
   /**
+   * Test {@link IteratorChain#next()}.
+   *
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return {@code 42}.
+   * </ul>
+   *
+   * <p>Method under test: {@link IteratorChain#next()}
+   */
+  @Test
+  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object IteratorChain.next()"})
+  void testNext_givenArrayListAdd42_thenReturn422() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterator<Object> iterator = objectList.iterator();
+
+    ArrayList<Object> objectList2 = new ArrayList<>();
+
+    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList2.iterator());
+    iteratorChain.addIterator(iterator);
+
+    // Act and Assert
+    assertEquals("42", iteratorChain.next());
+    assertFalse(iteratorChain.hasNext());
+  }
+
+  /**
    * Test {@link IteratorChain#size()}.
-   * <p>
-   * Method under test: {@link IteratorChain#size()}
+   *
+   * <p>Method under test: {@link IteratorChain#size()}
    */
   @Test
   @DisplayName("Test size()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"int IteratorChain.size()"})
   void testSize() {
     // Arrange

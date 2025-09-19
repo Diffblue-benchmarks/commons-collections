@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,17 +16,20 @@ import org.junit.jupiter.api.Test;
 class PermutationIteratorDiffblueTest {
   /**
    * Test {@link PermutationIterator#PermutationIterator(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return next is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return next is {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
+   *
+   * <p>Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
    */
   @Test
-  @DisplayName("Test new PermutationIterator(Collection); given '42'; when ArrayList() add '42'; then return next is ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PermutationIterator(Collection); given '42'; when ArrayList() add '42'; then return next is ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PermutationIterator.<init>(Collection)"})
   void testNewPermutationIterator_given42_whenArrayListAdd42_thenReturnNextIsArrayList() {
     // Arrange
@@ -43,17 +47,20 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#PermutationIterator(Collection)}.
+   *
    * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return next is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Given {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return next is {@link ArrayList#ArrayList()}.
    * </ul>
-   * <p>
-   * Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
+   *
+   * <p>Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
    */
   @Test
-  @DisplayName("Test new PermutationIterator(Collection); given '42'; when ArrayList() add '42'; then return next is ArrayList()")
-  @Tag("MaintainedByDiffblue")
+  @DisplayName(
+      "Test new PermutationIterator(Collection); given '42'; when ArrayList() add '42'; then return next is ArrayList()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PermutationIterator.<init>(Collection)"})
   void testNewPermutationIterator_given42_whenArrayListAdd42_thenReturnNextIsArrayList2() {
     // Arrange
@@ -74,20 +81,23 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#PermutationIterator(Collection)}.
+   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return next Empty.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>Then return next Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
+   *
+   * <p>Method under test: {@link PermutationIterator#PermutationIterator(Collection)}
    */
   @Test
   @DisplayName("Test new PermutationIterator(Collection); when ArrayList(); then return next Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PermutationIterator.<init>(Collection)"})
   void testNewPermutationIterator_whenArrayList_thenReturnNextEmpty() {
     // Arrange and Act
-    PermutationIterator<Object> actualPermutationIterator = new PermutationIterator<>(new ArrayList<>());
+    PermutationIterator<Object> actualPermutationIterator =
+        new PermutationIterator<>(new ArrayList<>());
 
     // Assert
     List<Object> nextResult = actualPermutationIterator.next();
@@ -97,12 +107,13 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#hasNext()}.
-   * <p>
-   * Method under test: {@link PermutationIterator#hasNext()}
+   *
+   * <p>Method under test: {@link PermutationIterator#hasNext()}
    */
   @Test
   @DisplayName("Test hasNext()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"boolean PermutationIterator.hasNext()"})
   void testHasNext() {
     // Arrange
@@ -114,16 +125,18 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#next()}.
+   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link PermutationIterator#next()}
+   *
+   * <p>Method under test: {@link PermutationIterator#next()}
    */
   @Test
   @DisplayName("Test next(); given ArrayList() add '42'; then return size is one")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List PermutationIterator.next()"})
   void testNext_givenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
@@ -141,15 +154,17 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#next()}.
+   *
    * <ul>
-   *   <li>Then return Empty.</li>
+   *   <li>Then return Empty.
    * </ul>
-   * <p>
-   * Method under test: {@link PermutationIterator#next()}
+   *
+   * <p>Method under test: {@link PermutationIterator#next()}
    */
   @Test
   @DisplayName("Test next(); then return Empty")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"List PermutationIterator.next()"})
   void testNext_thenReturnEmpty() {
     // Arrange
@@ -165,12 +180,13 @@ class PermutationIteratorDiffblueTest {
 
   /**
    * Test {@link PermutationIterator#remove()}.
-   * <p>
-   * Method under test: {@link PermutationIterator#remove()}
+   *
+   * <p>Method under test: {@link PermutationIterator#remove()}
    */
   @Test
   @DisplayName("Test remove()")
-  @Tag("MaintainedByDiffblue")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
   @MethodsUnderTest({"void PermutationIterator.remove()"})
   void testRemove() {
     // Arrange
