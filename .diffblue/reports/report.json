@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.09.01-44e352d-licensed",
-    "creationTimestamp" : "2025-09-19T09:33:17.088268Z",
+    "creationTimestamp" : "2025-10-15T15:24:40.141974Z",
     "command" : "dcover create --coverage-reports --upload http://localhost:8080 --project-name commons-collections --name with-diffblue-tests",
-    "totalTime" : 8544.14,
-    "environmentDetectionTime" : 6.056,
-    "indexingTime" : 0.372,
-    "entryPointsTime" : 6.031,
-    "generationTime" : 7911.049,
-    "timeToFirstTest" : 76.555,
-    "timeToLastTest" : 8240.355,
-    "indexQueryTime" : 11.41,
-    "verificationTime" : 266.301,
-    "validationTime" : 169.411
+    "totalTime" : 117111.317,
+    "environmentDetectionTime" : 5.716,
+    "indexingTime" : 0.391,
+    "entryPointsTime" : 5.692,
+    "generationTime" : 116504.18,
+    "timeToFirstTest" : 78.636,
+    "timeToLastTest" : 116853.664,
+    "indexQueryTime" : 10.974,
+    "verificationTime" : 284.584,
+    "validationTime" : 105.453
   },
   "codes" : {
     "F009" : "Internal error",
@@ -43,16 +43,15 @@
     "T021" : "Empty method body",
     "T023" : "Testability unknown",
     "V000" : "Validated successfully",
-    "V003" : "Tests discarded during validation",
     "W001" : "Test did not compile",
     "W002" : "Test compiled, but did not pass"
   },
   "summary" : {
     "classesCount" : 582,
     "methodsCount" : 5262,
-    "cumulativeDiffblueTestCount" : 6451,
+    "cumulativeDiffblueTestCount" : 6604,
     "cumulativeManualTestCount" : 8399,
-    "completeTestCount" : 6459,
+    "completeTestCount" : 6604,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 32655,
@@ -72,14 +71,14 @@
       "T023" : 54
     },
     "perMethodOutcome" : {
-      "F009" : 123,
-      "R000" : 2409,
-      "R002" : 24,
-      "R004" : 70,
-      "R008" : 495,
-      "R013" : 175,
-      "R015" : 6,
-      "R024" : 5,
+      "F009" : 40,
+      "R000" : 2462,
+      "R002" : 27,
+      "R004" : 72,
+      "R008" : 511,
+      "R013" : 174,
+      "R015" : 11,
+      "R024" : 6,
       "R034" : 1,
       "R081" : 21,
       "R083" : 272,
@@ -96,16 +95,15 @@
       "W002" : 10
     },
     "perTestOutcome" : {
-      "R000" : 6459
+      "R000" : 6604
     },
     "perTestValidation" : {
-      "V000" : 6451,
-      "V003" : 8
+      "V000" : 6604
     },
     "warnings" : {
       "F009" : 5,
       "W001" : 113,
-      "W002" : 27
+      "W002" : 35
     }
   },
   "classes" : {
@@ -220,19 +218,18 @@
     },
     "org.apache.commons.collections4.ClosureUtils" : {
       "methodsCount" : 17,
-      "completeTestCount" : 73,
+      "completeTestCount" : 79,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 16,
         "T008" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 15,
-        "R013" : 1,
+        "R000" : 16,
         "T008" : 1
       },
       "perTestOutcome" : {
-        "R000" : 73
+        "R000" : 79
       },
       "warnings" : {
         "W001" : 3
@@ -1756,7 +1753,7 @@
     },
     "org.apache.commons.collections4.bidimap.TreeBidiMap" : {
       "methodsCount" : 87,
-      "completeTestCount" : 90,
+      "completeTestCount" : 84,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 23,
@@ -1772,7 +1769,10 @@
         "T012" : 22
       },
       "perTestOutcome" : {
-        "R000" : 90
+        "R000" : 84
+      },
+      "warnings" : {
+        "W002" : 7
       }
     },
     "org.apache.commons.collections4.bidimap.TreeBidiMap$1" : {
@@ -5417,8 +5417,8 @@
       "perMethodOutcome" : {
         "F009" : 1,
         "R000" : 29,
-        "R013" : 18,
-        "R015" : 1,
+        "R013" : 17,
+        "R015" : 2,
         "T023" : 1,
         "W002" : 1
       },
@@ -5752,7 +5752,7 @@
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap" : {
-      "methodsCount" : 29,
+      "methodsCount" : 28,
       "completeTestCount" : 25,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
@@ -5763,7 +5763,7 @@
       "perMethodOutcome" : {
         "F009" : 2,
         "R000" : 13,
-        "R004" : 5,
+        "R004" : 4,
         "R013" : 2,
         "R024" : 1,
         "T010" : 2,
@@ -5788,21 +5788,25 @@
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceBaseIterator" : {
-      "methodsCount" : 7,
-      "completeTestCount" : 0,
+      "methodsCount" : 4,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 5,
         "T003" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 5,
+        "F009" : 1,
+        "R024" : 1,
         "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry" : {
       "methodsCount" : 11,
-      "completeTestCount" : 0,
+      "completeTestCount" : 20,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 9,
@@ -5810,69 +5814,93 @@
         "T021" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 11
+        "R000" : 9,
+        "R002" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 20
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntrySet" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 3
+        "R000" : 1,
+        "R008" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntrySetIterator" : {
       "methodsCount" : 2,
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 2
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 3
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceKeySet" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 3
+        "R000" : 1,
+        "R008" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceKeySetIterator" : {
       "methodsCount" : 2,
-      "completeTestCount" : 0,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 2
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator" : {
       "methodsCount" : 5,
-      "completeTestCount" : 0,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 5
       },
       "perMethodOutcome" : {
-        "F009" : 5
+        "R000" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 7
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceStrength" : {
       "methodsCount" : 5,
-      "completeTestCount" : 0,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -5881,57 +5909,73 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 1,
+        "R000" : 1,
         "T003" : 1,
         "T012" : 2,
         "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 4
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceValues" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 3
+        "R000" : 1,
+        "R008" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceValuesIterator" : {
       "methodsCount" : 2,
-      "completeTestCount" : 0,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 2
+        "R000" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 4
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$SoftRef" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 3
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 6
       }
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$WeakRef" : {
       "methodsCount" : 3,
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 3
+        "R000" : 3
+      },
+      "perTestOutcome" : {
+        "R000" : 6
       }
     },
     "org.apache.commons.collections4.map.AbstractSortedMapDecorator" : {
@@ -5943,37 +5987,47 @@
         "T010" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 10,
+        "R008" : 10,
         "T010" : 2
       }
     },
     "org.apache.commons.collections4.map.AbstractSortedMapDecorator$SortedMapIterator" : {
       "methodsCount" : 4,
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4
       },
       "perMethodOutcome" : {
-        "F009" : 4
+        "R000" : 2,
+        "R004" : 1,
+        "R013" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 2
       }
     },
     "org.apache.commons.collections4.map.CaseInsensitiveMap" : {
       "methodsCount" : 8,
-      "completeTestCount" : 0,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 6,
         "T003" : 2
       },
       "perMethodOutcome" : {
-        "F009" : 6,
+        "F009" : 1,
+        "R000" : 3,
+        "R015" : 2,
         "T003" : 2
+      },
+      "perTestOutcome" : {
+        "R000" : 7
       }
     },
     "org.apache.commons.collections4.map.CompositeMap" : {
       "methodsCount" : 23,
-      "completeTestCount" : 0,
+      "completeTestCount" : 51,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 21,
@@ -5981,8 +6035,14 @@
         "T023" : 1
       },
       "perMethodOutcome" : {
-        "F009" : 22,
+        "R000" : 17,
+        "R002" : 1,
+        "R004" : 2,
+        "R013" : 2,
         "T023" : 1
+      },
+      "perTestOutcome" : {
+        "R000" : 51
       }
     },
     "org.apache.commons.collections4.map.CompositeMap$MapMutator" : {
@@ -6362,7 +6422,7 @@
     },
     "org.apache.commons.collections4.map.Flat3Map" : {
       "methodsCount" : 34,
-      "completeTestCount" : 63,
+      "completeTestCount" : 64,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 19,
@@ -6378,7 +6438,7 @@
         "T012" : 11
       },
       "perTestOutcome" : {
-        "R000" : 63
+        "R000" : 64
       }
     },
     "org.apache.commons.collections4.map.Flat3Map$EntryIterator" : {
@@ -6534,7 +6594,7 @@
       "perMethodOutcome" : {
         "F009" : 1,
         "R000" : 2,
-        "R013" : 2,
+        "R015" : 2,
         "T003" : 2
       },
       "perTestOutcome" : {
@@ -6543,7 +6603,7 @@
     },
     "org.apache.commons.collections4.map.LRUMap" : {
       "methodsCount" : 25,
-      "completeTestCount" : 53,
+      "completeTestCount" : 60,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 21,
@@ -6557,7 +6617,7 @@
         "T003" : 2
       },
       "perTestOutcome" : {
-        "R000" : 53
+        "R000" : 60
       }
     },
     "org.apache.commons.collections4.map.LazyMap" : {
@@ -6594,7 +6654,7 @@
     },
     "org.apache.commons.collections4.map.LinkedMap" : {
       "methodsCount" : 12,
-      "completeTestCount" : 19,
+      "completeTestCount" : 18,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 10,
@@ -6608,7 +6668,7 @@
         "T003" : 2
       },
       "perTestOutcome" : {
-        "R000" : 19
+        "R000" : 18
       },
       "warnings" : {
         "W001" : 1
@@ -6772,7 +6832,7 @@
     },
     "org.apache.commons.collections4.map.MultiKeyMap" : {
       "methodsCount" : 42,
-      "completeTestCount" : 357,
+      "completeTestCount" : 377,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 39,
@@ -6786,7 +6846,7 @@
         "T012" : 1
       },
       "perTestOutcome" : {
-        "R000" : 357
+        "R000" : 377
       },
       "warnings" : {
         "F009" : 1,
@@ -9615,10 +9675,13 @@
       ]
     },
     "org.apache.commons.collections4.ClosureUtils.switchClosure:(Ljava/util/Map;)Lorg/apache/commons/collections4/Closure;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
       "lineNumbers" : [
         255
       ]
@@ -23087,12 +23150,15 @@
       ]
     },
     "org.apache.commons.collections4.bidimap.TreeBidiMap.<init>:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 12,
+      "completeTestCount" : 9,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 12
+        "R000" : 9
+      },
+      "warnings" : {
+        "W002" : 4
       },
       "lineNumbers" : [
         1016,
@@ -24101,12 +24167,15 @@
       ]
     },
     "org.apache.commons.collections4.bidimap.TreeBidiMap.putAll:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 15,
+      "completeTestCount" : 12,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 15
+        "R000" : 12
+      },
+      "warnings" : {
+        "W002" : 3
       },
       "lineNumbers" : [
         1940,
@@ -47393,7 +47462,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R015",
       "lineNumbers" : [
         613,
         614,
@@ -49247,10 +49316,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceBaseIterator.currentEntry:()Lorg/apache/commons/collections4/map/AbstractReferenceMap$ReferenceEntry;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R024",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         130,
         131
@@ -49326,10 +49398,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.<init>:(Lorg/apache/commons/collections4/map/AbstractReferenceMap;Lorg/apache/commons/collections4/map/AbstractHashedMap$HashEntry;ILjava/lang/Object;Ljava/lang/Object;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         214,
         215,
@@ -49339,10 +49414,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
       "lineNumbers" : [
         232,
         233,
@@ -49359,37 +49437,49 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.getKey:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         260
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.getValue:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         272
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.hashCode:()I" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 11
+      },
       "lineNumbers" : [
         284
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.next:()Lorg/apache/commons/collections4/map/AbstractReferenceMap$ReferenceEntry;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         293
       ]
@@ -49398,7 +49488,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T002",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R002",
       "lineNumbers" : [
         300,
         301
@@ -49408,16 +49498,19 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T021",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R002",
       "lineNumbers" : [
         308
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.purge:(Ljava/lang/ref/Reference;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         316,
         317,
@@ -49432,10 +49525,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.setValue:(Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         340,
         341,
@@ -49445,10 +49541,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntry.toReference:(Lorg/apache/commons/collections4/map/AbstractReferenceMap$ReferenceStrength;Ljava/lang/Object;I)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         361,
         363,
@@ -49458,10 +49557,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntrySet.<init>:(Lorg/apache/commons/collections4/map/AbstractHashedMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         381,
         382
@@ -49471,7 +49573,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         386
       ]
@@ -49480,7 +49582,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         392,
         393,
@@ -49490,29 +49592,41 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntrySetIterator.<init>:(Lorg/apache/commons/collections4/map/AbstractReferenceMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
+      "warnings" : {
+        "W002" : 1
+      },
       "lineNumbers" : [
         407,
         408
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceEntrySetIterator.next:()Ljava/util/Map$Entry;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         412
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceKeySet.<init>:(Lorg/apache/commons/collections4/map/AbstractHashedMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         423,
         424
@@ -49522,7 +49636,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         428
       ]
@@ -49531,7 +49645,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         434,
         435,
@@ -49539,39 +49653,51 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceKeySetIterator.<init>:(Lorg/apache/commons/collections4/map/AbstractReferenceMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         447,
         448
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceKeySetIterator.next:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         452
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator.<init>:(Lorg/apache/commons/collections4/map/AbstractReferenceMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         462,
         463
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator.getKey:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         467,
         468,
@@ -49580,10 +49706,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator.getValue:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         476,
         477,
@@ -49592,19 +49721,25 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator.next:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         485
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceMapIterator.setValue:(Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         490,
         491,
@@ -49630,10 +49765,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceStrength.resolve:(I)Lorg/apache/commons/collections4/map/AbstractReferenceMap$ReferenceStrength;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 4
+      },
       "lineNumbers" : [
         525,
         527,
@@ -49661,10 +49799,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceValues.<init>:(Lorg/apache/commons/collections4/map/AbstractHashedMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         552,
         553
@@ -49674,7 +49815,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         557
       ]
@@ -49683,7 +49824,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         563,
         564,
@@ -49691,29 +49832,38 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceValuesIterator.<init>:(Lorg/apache/commons/collections4/map/AbstractReferenceMap;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         576,
         577
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$ReferenceValuesIterator.next:()Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         581
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$SoftRef.<init>:(ILjava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         593,
         594,
@@ -49721,10 +49871,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$SoftRef.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         599,
         600,
@@ -49737,19 +49890,25 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$SoftRef.hashCode:()I" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         614
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$WeakRef.<init>:(ILjava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T005",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         626,
         627,
@@ -49757,10 +49916,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$WeakRef.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         632,
         633,
@@ -49773,10 +49935,13 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractReferenceMap$WeakRef.hashCode:()I" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         647
       ]
@@ -50161,7 +50326,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R004",
+      "perMethodOutcome" : "R024",
       "lineNumbers" : [
         1087,
         1088
@@ -50171,7 +50336,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R024",
+      "perMethodOutcome" : "F009",
       "lineNumbers" : [
         1101,
         1102,
@@ -50213,20 +50378,26 @@
       ]
     },
     "org.apache.commons.collections4.map.AbstractSortedMapDecorator$SortedMapIterator.<init>:(Ljava/util/Set;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         65,
         66
       ]
     },
     "org.apache.commons.collections4.map.AbstractSortedMapDecorator$SortedMapIterator.hasPrevious:()Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         73
       ]
@@ -50235,7 +50406,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         81,
         82
@@ -50245,7 +50416,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R004",
       "lineNumbers" : [
         90,
         91,
@@ -50276,7 +50447,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         114
       ]
@@ -50285,7 +50456,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         124
       ]
@@ -50294,7 +50465,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         129
       ]
@@ -50303,7 +50474,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         134
       ]
@@ -50312,7 +50483,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         139
       ]
@@ -50321,7 +50492,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         147
       ]
@@ -50330,7 +50501,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         152,
         153,
@@ -50341,7 +50512,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         159,
         160
@@ -50351,7 +50522,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         165
       ]
@@ -50360,16 +50531,19 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R008",
       "lineNumbers" : [
         170
       ]
     },
     "org.apache.commons.collections4.map.CaseInsensitiveMap.<init>:()V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         83,
         84
@@ -50379,7 +50553,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R015",
       "lineNumbers" : [
         93,
         94
@@ -50389,7 +50563,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R015",
       "lineNumbers" : [
         106,
         107
@@ -50406,19 +50580,25 @@
       ]
     },
     "org.apache.commons.collections4.map.CaseInsensitiveMap.clone:()Lorg/apache/commons/collections4/map/CaseInsensitiveMap;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         130
       ]
     },
     "org.apache.commons.collections4.map.CaseInsensitiveMap.convertKey:(Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         144,
         145,
@@ -50476,30 +50656,39 @@
       "perMethodOutcome" : "T023"
     },
     "org.apache.commons.collections4.map.CompositeMap.<init>:()V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         132,
         133
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.<init>:(Ljava/util/Map;Ljava/util/Map;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         155,
         156
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.<init>:(Ljava/util/Map;Ljava/util/Map;Lorg/apache/commons/collections4/map/CompositeMap$MapMutator;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         167,
         168
@@ -50509,7 +50698,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         143,
         144
@@ -50519,7 +50708,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         178,
         179,
@@ -50534,7 +50723,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R004",
       "lineNumbers" : [
         194,
         195,
@@ -50554,7 +50743,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R004",
       "lineNumbers" : [
         217,
         218,
@@ -50563,10 +50752,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.containsKey:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         240,
         241,
@@ -50576,10 +50768,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.containsValue:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         266,
         267,
@@ -50589,10 +50784,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.entrySet:()Ljava/util/Set;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         293,
         294,
@@ -50602,10 +50800,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
       "lineNumbers" : [
         308,
         309,
@@ -50614,10 +50815,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.get:(Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         341,
         342,
@@ -50627,10 +50831,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.hashCode:()I" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 6
+      },
       "lineNumbers" : [
         355,
         356,
@@ -50640,10 +50847,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.isEmpty:()Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         369,
         370,
@@ -50653,10 +50863,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.keySet:()Ljava/util/Set;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 5
+      },
       "lineNumbers" : [
         395,
         396,
@@ -50666,10 +50879,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         429,
         430,
@@ -50677,10 +50893,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.putAll:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         458,
         459,
@@ -50689,10 +50908,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.remove:(Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         491,
         492,
@@ -50702,10 +50924,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.removeComposited:(Ljava/util/Map;)Ljava/util/Map;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 3
+      },
       "lineNumbers" : [
         507,
         508,
@@ -50723,17 +50948,20 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T002",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R002",
       "lineNumbers" : [
         526,
         527
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.size:()I" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         538,
         539,
@@ -50743,10 +50971,13 @@
       ]
     },
     "org.apache.commons.collections4.map.CompositeMap.values:()Ljava/util/Collection;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "F009",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         560,
         561,
@@ -53875,12 +54106,12 @@
       ]
     },
     "org.apache.commons.collections4.map.Flat3Map.<init>:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 10,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 10
+        "R000" : 11
       },
       "lineNumbers" : [
         558,
@@ -54569,7 +54800,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R015",
       "lineNumbers" : [
         65,
         66
@@ -54579,7 +54810,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R015",
       "lineNumbers" : [
         78,
         79
@@ -54682,12 +54913,12 @@
       ]
     },
     "org.apache.commons.collections4.map.LRUMap.<init>:(II)V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 5
       },
       "lineNumbers" : [
         145,
@@ -54695,12 +54926,12 @@
       ]
     },
     "org.apache.commons.collections4.map.LRUMap.<init>:(IIF)V" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 7
       },
       "lineNumbers" : [
         161,
@@ -54708,12 +54939,12 @@
       ]
     },
     "org.apache.commons.collections4.map.LRUMap.<init>:(IIFZ)V" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 6
       },
       "lineNumbers" : [
         181,
@@ -55426,12 +55657,12 @@
       ]
     },
     "org.apache.commons.collections4.map.LinkedMap.clone:()Lorg/apache/commons/collections4/map/LinkedMap;" : {
-      "completeTestCount" : 10,
+      "completeTestCount" : 9,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 10
+        "R000" : 9
       },
       "warnings" : {
         "W001" : 1
@@ -56485,12 +56716,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.containsKey:(Ljava/lang/Object;Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 8,
+      "completeTestCount" : 12,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 8
+        "R000" : 12
       },
       "lineNumbers" : [
         166,
@@ -56593,12 +56824,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.get:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 8,
+      "completeTestCount" : 12,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 8
+        "R000" : 12
       },
       "lineNumbers" : [
         264,
@@ -56880,12 +57111,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.put:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 9,
+      "completeTestCount" : 13,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 13
       },
       "lineNumbers" : [
         622,
@@ -56924,12 +57155,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.put:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 19,
+      "completeTestCount" : 21,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 19
+        "R000" : 21
       },
       "lineNumbers" : [
         573,
@@ -56968,12 +57199,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.put:(Lorg/apache/commons/collections4/keyvalue/MultiKey;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 5
       },
       "lineNumbers" : [
         649,
@@ -56981,12 +57212,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.putAll:(Ljava/util/Map;)V" : {
-      "completeTestCount" : 5,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 6
       },
       "lineNumbers" : [
         663,
@@ -57098,12 +57329,12 @@
       ]
     },
     "org.apache.commons.collections4.map.MultiKeyMap.removeMultiKey:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" : {
-      "completeTestCount" : 9,
+      "completeTestCount" : 13,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 13
       },
       "lineNumbers" : [
         799,

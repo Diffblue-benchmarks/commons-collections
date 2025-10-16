@@ -62,7 +62,7 @@ class PassiveExpiringMapDiffblueTest {
   void testConstantTimeToLiveExpirationPolicyNewConstantTimeToLiveExpirationPolicy() {
     // Arrange and Act
     ConstantTimeToLiveExpirationPolicy<Object, Object> actualConstantTimeToLiveExpirationPolicy =
-        new ConstantTimeToLiveExpirationPolicy<>(Long.MIN_VALUE, TimeUnit.NANOSECONDS);
+        new ConstantTimeToLiveExpirationPolicy<>(-278871974L, TimeUnit.NANOSECONDS);
 
     // Assert
     assertEquals(

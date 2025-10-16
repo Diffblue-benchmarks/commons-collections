@@ -36,10 +36,13 @@ class SwitchTransformerDiffblueTest {
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());
 
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(false);
+    AndPredicate<? super Object> andPredicate =
+        new AndPredicate<>(predicate1, mock(Predicate.class));
+
     HashMap<Predicate<? super Object>, Transformer<? super Object, ?>> map = new HashMap<>();
     map.put(predicate, null);
-    AndPredicate<? super Object> andPredicate =
-        new AndPredicate<>(mock(Predicate.class), mock(Predicate.class));
     map.put(andPredicate, mock(Transformer.class));
 
     // Act
@@ -145,18 +148,18 @@ class SwitchTransformerDiffblueTest {
    *
    * <ul>
    *   <li>Given {@link Predicate}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When {@link HashMap#HashMap()} {@link Predicate} is {@code null}.
    * </ul>
    *
    * <p>Method under test: {@link SwitchTransformer#switchTransformer(Map)}
    */
   @Test
   @DisplayName(
-      "Test switchTransformer(Map) with 'map'; given Predicate; then throw IllegalArgumentException")
+      "Test switchTransformer(Map) with 'map'; given Predicate; when HashMap() Predicate is 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Transformer SwitchTransformer.switchTransformer(Map)"})
-  void testSwitchTransformerWithMap_givenPredicate_thenThrowIllegalArgumentException() {
+  void testSwitchTransformerWithMap_givenPredicate_whenHashMapPredicateIsNull() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());

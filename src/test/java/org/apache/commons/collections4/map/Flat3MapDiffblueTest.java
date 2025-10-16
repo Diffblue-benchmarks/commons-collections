@@ -1317,8 +1317,8 @@ class Flat3MapDiffblueTest {
    * Test {@link Flat3Map#Flat3Map(Map)}.
    *
    * <ul>
-   *   <li>Given {@code 1148503186}.
-   *   <li>When {@link HashMap#HashMap()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Given {@code 950390550}.
+   *   <li>When {@link HashMap#HashMap()} {@code 950390550} is {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
    *
@@ -1326,21 +1326,58 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test new Flat3Map(Map); given '1148503186'; when HashMap() '1148503186' is NULL; then return HashMap()")
+      "Test new Flat3Map(Map); given '950390550'; when HashMap() '950390550' is NULL; then return HashMap()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
-  void testNewFlat3Map_given1148503186_whenHashMap1148503186IsNull_thenReturnHashMap() {
+  void testNewFlat3Map_given950390550_whenHashMap950390550IsNull_thenReturnHashMap() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    map.put(1148503186, AbstractHashedMap.NULL);
+    map.put(950390550, AbstractHashedMap.NULL);
 
     // Act
     Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
 
     // Assert
     assertEquals(map, actualObjectObjectMap);
+  }
+
+  /**
+   * Test {@link Flat3Map#Flat3Map(Map)}.
+   *
+   * <ul>
+   *   <li>Given {@code 1073741824}.
+   *   <li>When {@link HashMap#HashMap()} {@code 1073741824} is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return size is four.
+   * </ul>
+   *
+   * <p>Method under test: {@link Flat3Map#Flat3Map(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test new Flat3Map(Map); given '1073741824'; when HashMap() '1073741824' is NULL; then return size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Flat3Map.<init>(Map)"})
+  void testNewFlat3Map_given1073741824_whenHashMap1073741824IsNull_thenReturnSizeIsFour() {
+    // Arrange
+    HashMap<Object, Object> map = new HashMap<>();
+    map.put(1073741824, AbstractHashedMap.NULL);
+    map.put(0, AbstractHashedMap.NULL);
+    map.put(
+        new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+    map.put(null, AbstractHashedMap.NULL);
+
+    // Act
+    Flat3Map<Object, Object> actualObjectObjectMap = new Flat3Map<>(map);
+
+    // Assert
+    assertEquals(4, actualObjectObjectMap.size());
+    assertTrue(actualObjectObjectMap.containsKey(null));
+    Object getResult = actualObjectObjectMap.get(null);
+    assertSame(getResult, actualObjectObjectMap.get(0));
+    assertSame(getResult, actualObjectObjectMap.get(1073741824));
   }
 
   /**
@@ -1649,7 +1686,7 @@ class Flat3MapDiffblueTest {
    * Test {@link Flat3Map#containsKey(Object)}.
    *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 950390550} is {@link AbstractHashedMap#NULL}.
    *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@code false}.
    * </ul>
@@ -1658,14 +1695,14 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test containsKey(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'false'")
+      "Test containsKey(Object); given Flat3Map() '950390550' is NULL; when NULL; then return 'false'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
-  void testContainsKey_givenFlat3Map1148503186IsNull_whenNull_thenReturnFalse() {
+  void testContainsKey_givenFlat3Map950390550IsNull_whenNull_thenReturnFalse() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
+    objectObjectMap.put(950390550, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL));
@@ -1675,7 +1712,7 @@ class Flat3MapDiffblueTest {
    * Test {@link Flat3Map#containsKey(Object)}.
    *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 950390550} is {@link AbstractHashedMap#NULL}.
    *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@code true}.
    * </ul>
@@ -1684,15 +1721,15 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test containsKey(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'true'")
+      "Test containsKey(Object); given Flat3Map() '950390550' is NULL; when NULL; then return 'true'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean Flat3Map.containsKey(Object)"})
-  void testContainsKey_givenFlat3Map1148503186IsNull_whenNull_thenReturnTrue() {
+  void testContainsKey_givenFlat3Map950390550IsNull_whenNull_thenReturnTrue() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
+    objectObjectMap.put(950390550, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertTrue(objectObjectMap.containsKey(AbstractHashedMap.NULL));
@@ -2484,7 +2521,7 @@ class Flat3MapDiffblueTest {
   void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
+    objectObjectMap.put(950390550, AbstractHashedMap.NULL);
 
     Flat3Map<Object, Object> objectObjectMap2 = new Flat3Map<>();
     objectObjectMap2.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -2570,7 +2607,7 @@ class Flat3MapDiffblueTest {
    * Test {@link Flat3Map#get(Object)}.
    *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 950390550} is {@link AbstractHashedMap#NULL}.
    *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@code null}.
    * </ul>
@@ -2579,14 +2616,14 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test get(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return 'null'")
+      "Test get(Object); given Flat3Map() '950390550' is NULL; when NULL; then return 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
-  void testGet_givenFlat3Map1148503186IsNull_whenNull_thenReturnNull() {
+  void testGet_givenFlat3Map950390550IsNull_whenNull_thenReturnNull() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
-    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
+    objectObjectMap.put(950390550, AbstractHashedMap.NULL);
 
     // Act and Assert
     assertNull(objectObjectMap.get(AbstractHashedMap.NULL));
@@ -2596,7 +2633,7 @@ class Flat3MapDiffblueTest {
    * Test {@link Flat3Map#get(Object)}.
    *
    * <ul>
-   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 1148503186} is {@link AbstractHashedMap#NULL}.
+   *   <li>Given {@link Flat3Map#Flat3Map()} {@code 950390550} is {@link AbstractHashedMap#NULL}.
    *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@link AbstractHashedMap#NULL}.
    * </ul>
@@ -2605,15 +2642,15 @@ class Flat3MapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test get(Object); given Flat3Map() '1148503186' is NULL; when NULL; then return NULL")
+      "Test get(Object); given Flat3Map() '950390550' is NULL; when NULL; then return NULL")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object Flat3Map.get(Object)"})
-  void testGet_givenFlat3Map1148503186IsNull_whenNull_thenReturnNull2() {
+  void testGet_givenFlat3Map950390550IsNull_whenNull_thenReturnNull2() {
     // Arrange
     Flat3Map<Object, Object> objectObjectMap = new Flat3Map<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(1148503186, AbstractHashedMap.NULL);
+    objectObjectMap.put(950390550, AbstractHashedMap.NULL);
     Object object = AbstractHashedMap.NULL;
 
     // Act

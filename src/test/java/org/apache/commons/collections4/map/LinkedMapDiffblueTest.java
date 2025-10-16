@@ -128,17 +128,16 @@ class LinkedMapDiffblueTest {
   @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
   void testClone() {
     // Arrange
-    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
+    LinkedMap<Object, Object> objectObjectMap = new LinkedMap<>();
     objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    LinkedMap<Object, Object> objectObjectMap2 = new LinkedMap<>();
-    objectObjectMap2.put(objectObjectMap, AbstractHashedMap.NULL);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
     // Act
-    LinkedMap<Object, Object> actualCloneResult = objectObjectMap2.clone();
+    LinkedMap<Object, Object> actualCloneResult = objectObjectMap.clone();
 
     // Assert
-    assertEquals(objectObjectMap2, actualCloneResult);
+    assertEquals(1, actualCloneResult.size());
+    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
   }
 
   /**
@@ -153,12 +152,17 @@ class LinkedMapDiffblueTest {
   @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
   void testClone2() {
     // Arrange
-    LinkedMap<Object, Object> objectObjectMap = new LinkedMap<>();
-    objectObjectMap.addMapping(1, 2, new AbstractHashedMap<>(), AbstractHashedMap.NULL);
-    objectObjectMap.put(new AbstractHashedMap<>(), AbstractHashedMap.NULL);
+    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
+    objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
-    // Act and Assert
-    assertEquals(1, objectObjectMap.clone().size());
+    LinkedMap<Object, Object> objectObjectMap2 = new LinkedMap<>();
+    objectObjectMap2.put(objectObjectMap, AbstractHashedMap.NULL);
+
+    // Act
+    LinkedMap<Object, Object> actualCloneResult = objectObjectMap2.clone();
+
+    // Assert
+    assertEquals(objectObjectMap2, actualCloneResult);
   }
 
   /**
@@ -184,6 +188,32 @@ class LinkedMapDiffblueTest {
 
     // Assert
     assertEquals(objectObjectMap2, actualCloneResult);
+  }
+
+  /**
+   * Test {@link LinkedMap#clone()}.
+   *
+   * <p>Method under test: {@link LinkedMap#clone()}
+   */
+  @Test
+  @DisplayName("Test clone()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
+  void testClone4() {
+    // Arrange
+    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
+    AbstractHashedMap<Object, Object> objectObjectMap2 = new AbstractHashedMap<>();
+    objectObjectMap.addMapping(1, 2, objectObjectMap2, new AbstractHashedMap<>());
+
+    LinkedMap<Object, Object> objectObjectMap3 = new LinkedMap<>();
+    objectObjectMap3.put(objectObjectMap, AbstractHashedMap.NULL);
+
+    // Act
+    LinkedMap<Object, Object> actualCloneResult = objectObjectMap3.clone();
+
+    // Assert
+    assertEquals(objectObjectMap3, actualCloneResult);
   }
 
   /**
@@ -276,36 +306,6 @@ class LinkedMapDiffblueTest {
    * Test {@link LinkedMap#clone()}.
    *
    * <ul>
-   *   <li>Given {@link LinkedMap#LinkedMap()} {@link AbstractHashedMap#NULL} is {@link
-   *       AbstractHashedMap#NULL}.
-   *   <li>Then return size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link LinkedMap#clone()}
-   */
-  @Test
-  @DisplayName("Test clone(); given LinkedMap() NULL is NULL; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
-  void testClone_givenLinkedMapNullIsNull_thenReturnSizeIsOne2() {
-    // Arrange
-    LinkedMap<Object, Object> objectObjectMap = new LinkedMap<>();
-    objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act
-    LinkedMap<Object, Object> actualCloneResult = objectObjectMap.clone();
-
-    // Assert
-    assertEquals(1, actualCloneResult.size());
-    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
-  }
-
-  /**
-   * Test {@link LinkedMap#clone()}.
-   *
-   * <ul>
    *   <li>Given {@link LinkedMap#LinkedMap()}.
    *   <li>Then return {@link LinkedMap#LinkedMap()}.
    * </ul>
@@ -344,39 +344,11 @@ class LinkedMapDiffblueTest {
   @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
   void testClone_thenReturnSizeIsTwo() {
     // Arrange
-    LinkedMap<Object, Object> objectObjectMap = new LinkedMap<>();
-    objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(new AbstractHashedMap<>(), AbstractHashedMap.NULL);
-
-    // Act
-    LinkedMap<Object, Object> actualCloneResult = objectObjectMap.clone();
-
-    // Assert
-    assertEquals(2, actualCloneResult.size());
-    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
-  }
-
-  /**
-   * Test {@link LinkedMap#clone()}.
-   *
-   * <ul>
-   *   <li>Then return size is two.
-   * </ul>
-   *
-   * <p>Method under test: {@link LinkedMap#clone()}
-   */
-  @Test
-  @DisplayName("Test clone(); then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
-  void testClone_thenReturnSizeIsTwo2() {
-    // Arrange
     LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
     objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
     LinkedMap<Object, Object> objectObjectMap2 = new LinkedMap<>();
-    objectObjectMap2.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap2.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
     objectObjectMap2.put(objectObjectMap, AbstractHashedMap.NULL);
 
     // Act

@@ -63,23 +63,19 @@ class SwitchClosureDiffblueTest {
   void testSwitchClosureWithPredicatesAndClosures2() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-    AllPredicate<Object> allPredicate = new AllPredicate<>(predicate);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
+    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());
 
     HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
-    predicatesAndClosures.put(mock(Predicate.class), null);
-
-    predicatesAndClosures.put(allPredicate, closure);
+    predicatesAndClosures.put(predicate, null);
+    AndPredicate<Object> andPredicate =
+        new AndPredicate<>(mock(Predicate.class), mock(Predicate.class));
+    predicatesAndClosures.put(andPredicate, mock(Closure.class));
 
     // Act
     Closure<Object> actualSwitchClosureResult = SwitchClosure.switchClosure(predicatesAndClosures);
-    actualSwitchClosureResult.execute("42");
 
     // Assert
-    verify(closure).accept(isA(Object.class));
+    assertThrows(IllegalArgumentException.class, () -> actualSwitchClosureResult.execute("42"));
     verify(predicate).test(isA(Object.class));
   }
 
@@ -95,14 +91,15 @@ class SwitchClosureDiffblueTest {
   @MethodsUnderTest({"Closure SwitchClosure.switchClosure(Map)"})
   void testSwitchClosureWithPredicatesAndClosures3() {
     // Arrange
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException());
-
-    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
     predicatesAndClosures.put(predicate, mock(Closure.class));
-    AllPredicate<Object> allPredicate =
-        new AllPredicate<>(mock(Predicate.class), mock(Predicate.class));
-    predicatesAndClosures.put(allPredicate, mock(Closure.class));
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+    predicatesAndClosures.put(predicate2, mock(Closure.class));
 
     // Act
     Closure<Object> actualSwitchClosureResult = SwitchClosure.switchClosure(predicatesAndClosures);
@@ -110,6 +107,7 @@ class SwitchClosureDiffblueTest {
     // Assert
     assertThrows(IllegalArgumentException.class, () -> actualSwitchClosureResult.execute("42"));
     verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
   }
 
   /**

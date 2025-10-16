@@ -145,6 +145,68 @@ class LRUMapDiffblueTest {
   }
 
   /**
+   * Test {@link LRUMap#LRUMap(int, int)}.
+   *
+   * <ul>
+   *   <li>When {@code 1073741825}.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int)}
+   */
+  @Test
+  @DisplayName("Test new LRUMap(int, int); when '1073741825'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int)"})
+  void testNewLRUMap_when1073741825_thenThrowIllegalArgumentException() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 1073741825));
+  }
+
+  /**
+   * Test {@link LRUMap#LRUMap(int, int, float)}.
+   *
+   * <ul>
+   *   <li>When {@code 1073741825}.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float)}
+   */
+  @Test
+  @DisplayName(
+      "Test new LRUMap(int, int, float); when '1073741825'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
+  void testNewLRUMap_when1073741825_thenThrowIllegalArgumentException2() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 1073741825, 1.0E-5f));
+  }
+
+  /**
+   * Test {@link LRUMap#LRUMap(int, int, float, boolean)}.
+   *
+   * <ul>
+   *   <li>When {@code 1073741825}.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float, boolean)}
+   */
+  @Test
+  @DisplayName(
+      "Test new LRUMap(int, int, float, boolean); when '1073741825'; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float, boolean)"})
+  void testNewLRUMap_when1073741825_thenThrowIllegalArgumentException3() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 1073741825, 1.0E-5f, true));
+  }
+
+  /**
    * Test {@link LRUMap#LRUMap(int)}.
    *
    * <ul>
@@ -288,6 +350,26 @@ class LRUMapDiffblueTest {
   }
 
   /**
+   * Test {@link LRUMap#LRUMap(int, int, float)}.
+   *
+   * <ul>
+   *   <li>When {@link Float#NaN}.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float)}
+   */
+  @Test
+  @DisplayName("Test new LRUMap(int, int, float); when NaN; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
+  void testNewLRUMap_whenNaN_thenThrowIllegalArgumentException() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(3, 3, Float.NaN));
+  }
+
+  /**
    * Test {@link LRUMap#LRUMap(int, float)}.
    *
    * <ul>
@@ -326,6 +408,49 @@ class LRUMapDiffblueTest {
   void testNewLRUMap_whenOne_thenThrowIllegalArgumentException2() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 0.0f, true));
+  }
+
+  /**
+   * Test {@link LRUMap#LRUMap(int, int, float)}.
+   *
+   * <ul>
+   *   <li>When ten.
+   *   <li>Then return Empty.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float)}
+   */
+  @Test
+  @DisplayName("Test new LRUMap(int, int, float); when ten; then return Empty")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
+  void testNewLRUMap_whenTen_thenReturnEmpty() {
+    // Arrange and Act
+    LRUMap<Object, Object> actualObjectObjectMap = new LRUMap<>(3, 3, 10.0f);
+
+    // Assert
+    assertTrue(actualObjectObjectMap.isEmpty());
+  }
+
+  /**
+   * Test {@link LRUMap#LRUMap(int, int, float)}.
+   *
+   * <ul>
+   *   <li>When ten.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float)}
+   */
+  @Test
+  @DisplayName("Test new LRUMap(int, int, float); when ten; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
+  void testNewLRUMap_whenTen_thenThrowIllegalArgumentException() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(0, 3, 10.0f));
   }
 
   /**
@@ -421,29 +546,6 @@ class LRUMapDiffblueTest {
   }
 
   /**
-   * Test {@link LRUMap#LRUMap(int, int, float)}.
-   *
-   * <ul>
-   *   <li>When three.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float)}
-   */
-  @Test
-  @DisplayName("Test new LRUMap(int, int, float); when three; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
-  void testNewLRUMap_whenThree_thenReturnEmpty5() {
-    // Arrange and Act
-    LRUMap<Object, Object> actualObjectObjectMap = new LRUMap<>(3, 3, 10.0f);
-
-    // Assert
-    assertTrue(actualObjectObjectMap.isEmpty());
-  }
-
-  /**
    * Test {@link LRUMap#LRUMap(int, int, float, boolean)}.
    *
    * <ul>
@@ -458,7 +560,7 @@ class LRUMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void LRUMap.<init>(int, int, float, boolean)"})
-  void testNewLRUMap_whenThree_thenReturnEmpty6() {
+  void testNewLRUMap_whenThree_thenReturnEmpty5() {
     // Arrange and Act
     LRUMap<Object, Object> actualObjectObjectMap = new LRUMap<>(3, 3, 10.0f, true);
 
@@ -481,12 +583,33 @@ class LRUMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void LRUMap.<init>(int, boolean)"})
-  void testNewLRUMap_whenThree_thenReturnEmpty7() {
+  void testNewLRUMap_whenThree_thenReturnEmpty6() {
     // Arrange and Act
     LRUMap<Object, Object> actualObjectObjectMap = new LRUMap<>(3, true);
 
     // Assert
     assertTrue(actualObjectObjectMap.isEmpty());
+  }
+
+  /**
+   * Test {@link LRUMap#LRUMap(int, int, float, boolean)}.
+   *
+   * <ul>
+   *   <li>When three.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int, float, boolean)}
+   */
+  @Test
+  @DisplayName(
+      "Test new LRUMap(int, int, float, boolean); when three; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int, float, boolean)"})
+  void testNewLRUMap_whenThree_thenThrowIllegalArgumentException() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(0, 3, 10.0f, true));
   }
 
   /**
@@ -510,6 +633,26 @@ class LRUMapDiffblueTest {
   }
 
   /**
+   * Test {@link LRUMap#LRUMap(int, int)}.
+   *
+   * <ul>
+   *   <li>When zero.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link LRUMap#LRUMap(int, int)}
+   */
+  @Test
+  @DisplayName("Test new LRUMap(int, int); when zero; then throw IllegalArgumentException")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void LRUMap.<init>(int, int)"})
+  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException2() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(0, 0));
+  }
+
+  /**
    * Test {@link LRUMap#LRUMap(int, int, float)}.
    *
    * <ul>
@@ -524,7 +667,7 @@ class LRUMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void LRUMap.<init>(int, int, float)"})
-  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException2() {
+  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException3() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 0, 0.0f));
   }
@@ -545,7 +688,7 @@ class LRUMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void LRUMap.<init>(int, int, float, boolean)"})
-  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException3() {
+  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException4() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(1, 0, 0.0f, true));
   }
@@ -565,7 +708,7 @@ class LRUMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void LRUMap.<init>(int, boolean)"})
-  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException4() {
+  void testNewLRUMap_whenZero_thenThrowIllegalArgumentException5() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> new LRUMap<>(0, true));
   }

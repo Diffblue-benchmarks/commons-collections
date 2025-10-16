@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.collections4.functors.ChainedClosure;
+import org.apache.commons.collections4.functors.DefaultEquator;
 import org.apache.commons.collections4.functors.EqualPredicate;
 import org.apache.commons.collections4.functors.ExceptionClosure;
 import org.apache.commons.collections4.functors.ForClosure;
@@ -2054,6 +2055,225 @@ class ClosureUtilsDiffblueTest {
 
     // Assert
     assertTrue(actualNopClosureResult instanceof NOPClosure);
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName("Test switchClosure(Map) with 'predicatesAndClosures'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures() {
+    // Arrange
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
+    EqualPredicate<Object> equalPredicate = new EqualPredicate<>("Test", equator);
+    predicatesAndClosures.put(equalPredicate, mock(Closure.class));
+    predicatesAndClosures.put(null, closure);
+
+    // Act
+    Closure<Object> actualSwitchClosureResult = ClosureUtils.switchClosure(predicatesAndClosures);
+    actualSwitchClosureResult.execute("42");
+
+    // Assert
+    verify(closure).accept(isA(Object.class));
+    assertEquals(1, predicatesAndClosures.size());
+    Predicate<? super Object>[] predicates =
+        ((SwitchClosure<Object>) actualSwitchClosureResult).getPredicates();
+    Predicate<? super Object> predicate = predicates[0];
+    assertTrue(predicate instanceof EqualPredicate);
+    assertTrue(actualSwitchClosureResult instanceof SwitchClosure);
+    assertEquals("Test", ((EqualPredicate<? super Object>) predicate).getValue());
+    assertEquals(1, ((SwitchClosure<Object>) actualSwitchClosureResult).getClosures().length);
+    assertEquals(1, predicates.length);
+    assertSame(equalPredicate, predicate);
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName("Test switchClosure(Map) with 'predicatesAndClosures'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures2() {
+    // Arrange
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+    EqualPredicate<Object> equalPredicate = new EqualPredicate<>("Test", null);
+    predicatesAndClosures.put(equalPredicate, mock(Closure.class));
+    predicatesAndClosures.put(null, closure);
+
+    // Act
+    Closure<Object> actualSwitchClosureResult = ClosureUtils.switchClosure(predicatesAndClosures);
+    actualSwitchClosureResult.execute("42");
+
+    // Assert
+    verify(closure).accept(isA(Object.class));
+    assertEquals(1, predicatesAndClosures.size());
+    Predicate<? super Object>[] predicates =
+        ((SwitchClosure<Object>) actualSwitchClosureResult).getPredicates();
+    Predicate<? super Object> predicate = predicates[0];
+    assertTrue(predicate instanceof EqualPredicate);
+    assertTrue(actualSwitchClosureResult instanceof SwitchClosure);
+    assertEquals("Test", ((EqualPredicate<? super Object>) predicate).getValue());
+    assertEquals(1, ((SwitchClosure<Object>) actualSwitchClosureResult).getClosures().length);
+    assertEquals(1, predicates.length);
+    assertSame(equalPredicate, predicate);
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <ul>
+   *   <li>Then {@link HashMap#HashMap()} size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName("Test switchClosure(Map) with 'predicatesAndClosures'; then HashMap() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures_thenHashMapSizeIsTwo() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+    predicatesAndClosures.put(predicate, null);
+    predicatesAndClosures.put(predicate2, mock(Closure.class));
+
+    // Act
+    Closure<Object> actualSwitchClosureResult = ClosureUtils.switchClosure(predicatesAndClosures);
+    actualSwitchClosureResult.execute("42");
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertEquals(2, predicatesAndClosures.size());
+    assertTrue(
+        ((SwitchClosure<Object>) actualSwitchClosureResult).getDefaultClosure()
+            instanceof NOPClosure);
+    assertTrue(actualSwitchClosureResult instanceof SwitchClosure);
+    assertEquals(2, ((SwitchClosure<Object>) actualSwitchClosureResult).getClosures().length);
+    assertEquals(2, ((SwitchClosure<Object>) actualSwitchClosureResult).getPredicates().length);
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <ul>
+   *   <li>Then return first element is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test switchClosure(Map) with 'predicatesAndClosures'; then return first element is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures_thenReturnFirstElementIsNull() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+    predicatesAndClosures.put(predicate, null);
+    predicatesAndClosures.put(null, closure);
+
+    // Act
+    Closure<Object> actualSwitchClosureResult = ClosureUtils.switchClosure(predicatesAndClosures);
+    actualSwitchClosureResult.execute("42");
+
+    // Assert
+    verify(closure).accept(isA(Object.class));
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualSwitchClosureResult instanceof SwitchClosure);
+    assertEquals(1, predicatesAndClosures.size());
+    Closure<? super Object>[] closures =
+        ((SwitchClosure<Object>) actualSwitchClosureResult).getClosures();
+    assertNull(closures[0]);
+    assertEquals(1, closures.length);
+    assertEquals(1, ((SwitchClosure<Object>) actualSwitchClosureResult).getPredicates().length);
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()} {@code null} is {@code null}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test switchClosure(Map) with 'predicatesAndClosures'; when HashMap() 'null' is 'null'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures_whenHashMapNullIsNull() {
+    // Arrange
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+    predicatesAndClosures.put(null, null);
+    predicatesAndClosures.put(null, mock(Closure.class));
+
+    // Act
+    ClosureUtils.switchClosure(predicatesAndClosures);
+
+    // Assert
+    assertTrue(predicatesAndClosures.isEmpty());
+  }
+
+  /**
+   * Test {@link ClosureUtils#switchClosure(Map)} with {@code predicatesAndClosures}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()}.
+   *   <li>Then return {@link NOPClosure}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ClosureUtils#switchClosure(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test switchClosure(Map) with 'predicatesAndClosures'; when HashMap(); then return NOPClosure")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Closure ClosureUtils.switchClosure(Map)"})
+  void testSwitchClosureWithPredicatesAndClosures_whenHashMap_thenReturnNOPClosure() {
+    // Arrange
+    HashMap<Predicate<Object>, Closure<Object>> predicatesAndClosures = new HashMap<>();
+
+    // Act
+    Closure<Object> actualSwitchClosureResult = ClosureUtils.switchClosure(predicatesAndClosures);
+    actualSwitchClosureResult.execute("42");
+
+    // Assert
+    assertTrue(actualSwitchClosureResult instanceof NOPClosure);
+    assertTrue(predicatesAndClosures.isEmpty());
   }
 
   /**
