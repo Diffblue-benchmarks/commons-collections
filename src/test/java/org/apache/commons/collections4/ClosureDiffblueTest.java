@@ -4,26 +4,23 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.functors.TransformerClosure;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class ClosureDiffblueTest {
+public class ClosureDiffblueTest {
   /**
    * Test {@link Closure#accept(Object)}.
-   *
-   * <p>Method under test: {@link Closure#accept(Object)}
+   * <p>
+   * Method under test: {@link Closure#accept(Object)}
    */
   @Test
-  @DisplayName("Test accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Closure.accept(Object)"})
-  void testAccept() {
+  public void testAccept() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");

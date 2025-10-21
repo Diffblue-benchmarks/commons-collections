@@ -1,98 +1,82 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class IteratorOperationsDiffblueTest {
+public class IteratorOperationsDiffblueTest {
   /**
    * Test {@link IteratorOperations#addTo(Collection)}.
-   *
    * <ul>
-   *   <li>Given create {@link ArrayList#ArrayList()} iterator.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given create {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorOperations#addTo(Collection)}
+   * <p>
+   * Method under test: {@link IteratorOperations#addTo(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test addTo(Collection); given create ArrayList() iterator; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection IteratorOperations.addTo(Collection)"})
-  void testAddTo_givenCreateArrayListIterator_whenArrayList_thenReturnArrayList() {
+  public void testAddTo_givenCreateArrayListIterator_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
     ArrayList<Object> objectList2 = new ArrayList<>();
 
-    // Act
-    Collection<Object> actualAddToResult = createResult.addTo(objectList2);
-
-    // Assert
-    assertSame(objectList2, actualAddToResult);
+    // Act and Assert
+    assertSame(objectList2, createResult.addTo(objectList2));
   }
 
   /**
    * Test {@link IteratorOperations#removeNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorOperations#removeNext()}
+   * <p>
+   * Method under test: {@link IteratorOperations#removeNext()}
    */
   @Test
-  @DisplayName("Test removeNext(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object IteratorOperations.removeNext()"})
-  void testRemoveNext_givenArrayListAdd42_thenReturn42() {
+  public void testRemoveNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    FilterIterator<Object> filterIterator = new FilterIterator<>(objectList.iterator());
+    UniqueFilterIterator<Object> uniqueFilterIterator = new UniqueFilterIterator<>(objectList.iterator());
 
     // Act and Assert
-    assertEquals("42", filterIterator.removeNext());
+    assertEquals("42", uniqueFilterIterator.removeNext());
   }
 
   /**
    * Test {@link IteratorOperations#toCollection(Supplier)}.
-   *
    * <ul>
-   *   <li>Then return {@link List}.
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorOperations#toCollection(Supplier)}
+   * <p>
+   * Method under test: {@link IteratorOperations#toCollection(Supplier)}
    */
   @Test
-  @DisplayName("Test toCollection(Supplier); then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection IteratorOperations.toCollection(Supplier)"})
-  void testToCollection_thenReturnList() {
+  public void testToCollection_thenReturnList() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    FilterIterator<Object> filterIterator =
-        new FilterIterator<>(objectList.iterator(), mock(Predicate.class));
-
+    FilterIterator<Object> filterIterator = new FilterIterator<>(objectList.iterator(), mock(Predicate.class));
     Supplier<Collection<Object>> collectionSupplier = mock(Supplier.class);
     ArrayList<Object> objectList2 = new ArrayList<>();
     when(collectionSupplier.get()).thenReturn(objectList2);
@@ -109,20 +93,17 @@ class IteratorOperationsDiffblueTest {
 
   /**
    * Test {@link IteratorOperations#toList()}.
-   *
    * <ul>
-   *   <li>Given create {@link ArrayList#ArrayList()} iterator.
-   *   <li>Then return Empty.
+   *   <li>Given create {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorOperations#toList()}
+   * <p>
+   * Method under test: {@link IteratorOperations#toList()}
    */
   @Test
-  @DisplayName("Test toList(); given create ArrayList() iterator; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List IteratorOperations.toList()"})
-  void testToList_givenCreateArrayListIterator_thenReturnEmpty() {
+  public void testToList_givenCreateArrayListIterator_thenReturnEmpty() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
@@ -133,20 +114,17 @@ class IteratorOperationsDiffblueTest {
 
   /**
    * Test {@link IteratorOperations#toSet()}.
-   *
    * <ul>
-   *   <li>Given create {@link ArrayList#ArrayList()} iterator.
-   *   <li>Then return Empty.
+   *   <li>Given create {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorOperations#toSet()}
+   * <p>
+   * Method under test: {@link IteratorOperations#toSet()}
    */
   @Test
-  @DisplayName("Test toSet(); given create ArrayList() iterator; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set IteratorOperations.toSet()"})
-  void testToSet_givenCreateArrayListIterator_thenReturnEmpty() {
+  public void testToSet_givenCreateArrayListIterator_thenReturnEmpty() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());

@@ -1,44 +1,37 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.OrderedMapIterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class AbstractOrderedMapIteratorDecoratorDiffblueTest {
+public class AbstractOrderedMapIteratorDecoratorDiffblueTest {
   /**
-   * Test {@link
-   * AbstractOrderedMapIteratorDecorator#AbstractOrderedMapIteratorDecorator(OrderedMapIterator)}.
-   *
+   * Test {@link AbstractOrderedMapIteratorDecorator#AbstractOrderedMapIteratorDecorator(OrderedMapIterator)}.
    * <ul>
-   *   <li>Then return not hasNext.
+   *   <li>Then return not hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * AbstractOrderedMapIteratorDecorator#AbstractOrderedMapIteratorDecorator(OrderedMapIterator)}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#AbstractOrderedMapIteratorDecorator(OrderedMapIterator)}
    */
   @Test
-  @DisplayName(
-      "Test new AbstractOrderedMapIteratorDecorator(OrderedMapIterator); then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractOrderedMapIteratorDecorator.<init>(OrderedMapIterator)"})
-  void testNewAbstractOrderedMapIteratorDecorator_thenReturnNotHasNext() {
+  public void testNewAbstractOrderedMapIteratorDecorator_thenReturnNotHasNext() {
     // Arrange and Act
-    AbstractOrderedMapIteratorDecorator<Object, Object> actualAbstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>());
+    AbstractOrderedMapIteratorDecorator<Object, Object> actualAbstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new EmptyOrderedMapIterator<>());
 
     // Assert
     assertFalse(actualAbstractOrderedMapIteratorDecorator.hasNext());
@@ -46,27 +39,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#getKey()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#getKey()} return
-   *       {@code Key}.
-   *   <li>Then return {@code Key}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#getKey()} return {@code Key}.</li>
+   *   <li>Then return {@code Key}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#getKey()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#getKey()}
    */
   @Test
-  @DisplayName(
-      "Test getKey(); given EmptyOrderedMapIterator getKey() return 'Key'; then return 'Key'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.getKey()"})
-  void testGetKey_givenEmptyOrderedMapIteratorGetKeyReturnKey_thenReturnKey() {
+  public void testGetKey_givenEmptyOrderedMapIteratorGetKeyReturnKey_thenReturnKey() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.getKey()).thenReturn("Key");
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     Object actualKey = abstractOrderedMapIteratorDecorator.getKey();
@@ -78,29 +66,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#getKey()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#getKey()} return
-   *       {@code Key}.
-   *   <li>Then return {@code Key}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#getKey()} return {@code Key}.</li>
+   *   <li>Then return {@code Key}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#getKey()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#getKey()}
    */
   @Test
-  @DisplayName(
-      "Test getKey(); given EmptyOrderedMapIterator getKey() return 'Key'; then return 'Key'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.getKey()"})
-  void testGetKey_givenEmptyOrderedMapIteratorGetKeyReturnKey_thenReturnKey2() {
+  public void testGetKey_givenEmptyOrderedMapIteratorGetKeyReturnKey_thenReturnKey2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.getKey()).thenReturn("Key");
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     Object actualKey = abstractOrderedMapIteratorDecorator.getKey();
@@ -112,25 +93,21 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#getOrderedMapIterator()}.
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#getOrderedMapIterator()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#getOrderedMapIterator()}
    */
   @Test
-  @DisplayName("Test getOrderedMapIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "OrderedMapIterator AbstractOrderedMapIteratorDecorator.getOrderedMapIterator()"
-  })
-  void testGetOrderedMapIterator() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"OrderedMapIterator AbstractOrderedMapIteratorDecorator.getOrderedMapIterator()"})
+  public void testGetOrderedMapIterator() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = new EmptyOrderedMapIterator<>();
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
-    OrderedMapIterator<Object, Object> actualOrderedMapIterator =
-        abstractOrderedMapIteratorDecorator.getOrderedMapIterator();
+    OrderedMapIterator<Object, Object> actualOrderedMapIterator = abstractOrderedMapIteratorDecorator
+        .getOrderedMapIterator();
 
     // Assert
     assertTrue(actualOrderedMapIterator instanceof EmptyOrderedMapIterator);
@@ -139,27 +116,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#getValue()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#getValue()} return
-   *       {@code Value}.
-   *   <li>Then return {@code Value}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#getValue()} return {@code Value}.</li>
+   *   <li>Then return {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#getValue()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#getValue()}
    */
   @Test
-  @DisplayName(
-      "Test getValue(); given EmptyOrderedMapIterator getValue() return 'Value'; then return 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.getValue()"})
-  void testGetValue_givenEmptyOrderedMapIteratorGetValueReturnValue_thenReturnValue() {
+  public void testGetValue_givenEmptyOrderedMapIteratorGetValueReturnValue_thenReturnValue() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.getValue()).thenReturn("Value");
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     Object actualValue = abstractOrderedMapIteratorDecorator.getValue();
@@ -171,29 +143,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#getValue()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#getValue()} return
-   *       {@code Value}.
-   *   <li>Then return {@code Value}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#getValue()} return {@code Value}.</li>
+   *   <li>Then return {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#getValue()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#getValue()}
    */
   @Test
-  @DisplayName(
-      "Test getValue(); given EmptyOrderedMapIterator getValue() return 'Value'; then return 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.getValue()"})
-  void testGetValue_givenEmptyOrderedMapIteratorGetValueReturnValue_thenReturnValue2() {
+  public void testGetValue_givenEmptyOrderedMapIteratorGetValueReturnValue_thenReturnValue2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.getValue()).thenReturn("Value");
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     Object actualValue = abstractOrderedMapIteratorDecorator.getValue();
@@ -205,18 +170,16 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#hasNext()}.
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#hasNext()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractOrderedMapIteratorDecorator.hasNext()"})
-  void testHasNext() {
+  public void testHasNext() {
     // Arrange
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>());
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new EmptyOrderedMapIterator<>());
 
     // Act and Assert
     assertFalse(abstractOrderedMapIteratorDecorator.hasNext());
@@ -224,19 +187,16 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#hasNext()}.
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#hasNext()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractOrderedMapIteratorDecorator.hasNext()"})
-  void testHasNext2() {
+  public void testHasNext2() {
     // Arrange
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(
-            new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
 
     // Act and Assert
     assertFalse(abstractOrderedMapIteratorDecorator.hasNext());
@@ -244,18 +204,16 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}.
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}
    */
   @Test
-  @DisplayName("Test hasPrevious()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractOrderedMapIteratorDecorator.hasPrevious()"})
-  void testHasPrevious() {
+  public void testHasPrevious() {
     // Arrange
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>());
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new EmptyOrderedMapIterator<>());
 
     // Act and Assert
     assertFalse(abstractOrderedMapIteratorDecorator.hasPrevious());
@@ -263,19 +221,16 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}.
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#hasPrevious()}
    */
   @Test
-  @DisplayName("Test hasPrevious()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractOrderedMapIteratorDecorator.hasPrevious()"})
-  void testHasPrevious2() {
+  public void testHasPrevious2() {
     // Arrange
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(
-            new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
 
     // Act and Assert
     assertFalse(abstractOrderedMapIteratorDecorator.hasPrevious());
@@ -283,27 +238,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#next()} return
-   *       {@code Next}.
-   *   <li>Then return {@code Next}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyIterator#next()} return {@code Next}.</li>
+   *   <li>Then return {@code Next}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#next()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given EmptyOrderedMapIterator next() return 'Next'; then return 'Next'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.next()"})
-  void testNext_givenEmptyOrderedMapIteratorNextReturnNext_thenReturnNext() {
+  public void testNext_givenEmptyOrderedMapIteratorNextReturnNext_thenReturnNext() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.next()).thenReturn("Next");
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     Object actualNextResult = abstractOrderedMapIteratorDecorator.next();
@@ -315,29 +265,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#next()} return
-   *       {@code Next}.
-   *   <li>Then return {@code Next}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyIterator#next()} return {@code Next}.</li>
+   *   <li>Then return {@code Next}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#next()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given EmptyOrderedMapIterator next() return 'Next'; then return 'Next'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.next()"})
-  void testNext_givenEmptyOrderedMapIteratorNextReturnNext_thenReturnNext2() {
+  public void testNext_givenEmptyOrderedMapIteratorNextReturnNext_thenReturnNext2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.next()).thenReturn("Next");
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     Object actualNextResult = abstractOrderedMapIteratorDecorator.next();
@@ -349,24 +292,21 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#previous()}.
-   *
    * <ul>
-   *   <li>Then return {@code Previous}.
+   *   <li>Then return {@code Previous}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#previous()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#previous()}
    */
   @Test
-  @DisplayName("Test previous(); then return 'Previous'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.previous()"})
-  void testPrevious_thenReturnPrevious() {
+  public void testPrevious_thenReturnPrevious() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.previous()).thenReturn("Previous");
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     Object actualPreviousResult = abstractOrderedMapIteratorDecorator.previous();
@@ -378,26 +318,21 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#previous()}.
-   *
    * <ul>
-   *   <li>Then return {@code Previous}.
+   *   <li>Then return {@code Previous}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#previous()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#previous()}
    */
   @Test
-  @DisplayName("Test previous(); then return 'Previous'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.previous()"})
-  void testPrevious_thenReturnPrevious2() {
+  public void testPrevious_thenReturnPrevious2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.previous()).thenReturn("Previous");
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     Object actualPreviousResult = abstractOrderedMapIteratorDecorator.previous();
@@ -409,27 +344,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#remove()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#remove()} does
-   *       nothing.
-   *   <li>Then calls {@link EmptyOrderedMapIterator#remove()}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyIterator#remove()} does nothing.</li>
+   *   <li>Then calls {@link AbstractEmptyIterator#remove()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#remove()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#remove()}
    */
   @Test
-  @DisplayName(
-      "Test remove(); given EmptyOrderedMapIterator remove() does nothing; then calls remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractOrderedMapIteratorDecorator.remove()"})
-  void testRemove_givenEmptyOrderedMapIteratorRemoveDoesNothing_thenCallsRemove() {
+  public void testRemove_givenEmptyOrderedMapIteratorRemoveDoesNothing_thenCallsRemove() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     doNothing().when(iterator).remove();
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     abstractOrderedMapIteratorDecorator.remove();
@@ -440,29 +370,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#remove()}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#remove()} does
-   *       nothing.
-   *   <li>Then calls {@link EmptyOrderedMapIterator#remove()}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyIterator#remove()} does nothing.</li>
+   *   <li>Then calls {@link AbstractEmptyIterator#remove()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#remove()}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#remove()}
    */
   @Test
-  @DisplayName(
-      "Test remove(); given EmptyOrderedMapIterator remove() does nothing; then calls remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractOrderedMapIteratorDecorator.remove()"})
-  void testRemove_givenEmptyOrderedMapIteratorRemoveDoesNothing_thenCallsRemove2() {
+  public void testRemove_givenEmptyOrderedMapIteratorRemoveDoesNothing_thenCallsRemove2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     doNothing().when(iterator).remove();
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     abstractOrderedMapIteratorDecorator.remove();
@@ -473,27 +396,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#setValue(Object)}
-   *       return {@code Value}.
-   *   <li>Then return {@code Value}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#setValue(Object)} return {@code Value}.</li>
+   *   <li>Then return {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}
    */
   @Test
-  @DisplayName(
-      "Test setValue(Object); given EmptyOrderedMapIterator setValue(Object) return 'Value'; then return 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.setValue(Object)"})
-  void testSetValue_givenEmptyOrderedMapIteratorSetValueReturnValue_thenReturnValue() {
+  public void testSetValue_givenEmptyOrderedMapIteratorSetValueReturnValue_thenReturnValue() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.setValue(Mockito.<Object>any())).thenReturn("Value");
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        iterator);
 
     // Act
     Object actualSetValueResult = abstractOrderedMapIteratorDecorator.setValue("Value");
@@ -505,29 +423,22 @@ class AbstractOrderedMapIteratorDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link EmptyOrderedMapIterator} {@link EmptyOrderedMapIterator#setValue(Object)}
-   *       return {@code Value}.
-   *   <li>Then return {@code Value}.
+   *   <li>Given {@link EmptyOrderedMapIterator} {@link AbstractEmptyMapIterator#setValue(Object)} return {@code Value}.</li>
+   *   <li>Then return {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractOrderedMapIteratorDecorator#setValue(Object)}
    */
   @Test
-  @DisplayName(
-      "Test setValue(Object); given EmptyOrderedMapIterator setValue(Object) return 'Value'; then return 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractOrderedMapIteratorDecorator.setValue(Object)"})
-  void testSetValue_givenEmptyOrderedMapIteratorSetValueReturnValue_thenReturnValue2() {
+  public void testSetValue_givenEmptyOrderedMapIteratorSetValueReturnValue_thenReturnValue2() {
     // Arrange
     EmptyOrderedMapIterator<Object, Object> iterator = mock(EmptyOrderedMapIterator.class);
     when(iterator.setValue(Mockito.<Object>any())).thenReturn("Value");
-    AbstractOrderedMapIteratorDecorator<Object, Object> iterator2 =
-        new AbstractOrderedMapIteratorDecorator<>(iterator);
-    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator =
-        new AbstractOrderedMapIteratorDecorator<>(iterator2);
+    AbstractOrderedMapIteratorDecorator<Object, Object> abstractOrderedMapIteratorDecorator = new AbstractOrderedMapIteratorDecorator<>(
+        new AbstractOrderedMapIteratorDecorator<>(iterator));
 
     // Act
     Object actualSetValueResult = abstractOrderedMapIteratorDecorator.setValue("Value");

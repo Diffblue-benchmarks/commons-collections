@@ -1,11 +1,11 @@
 package org.apache.commons.collections4.multiset;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -18,72 +18,56 @@ import org.apache.commons.collections4.multiset.AbstractMapMultiSet.UniqueSetIte
 import org.apache.commons.collections4.multiset.AbstractMultiSet.AbstractEntry;
 import org.apache.commons.collections4.multiset.AbstractMultiSet.EntrySet;
 import org.apache.commons.collections4.multiset.AbstractMultiSet.UniqueSet;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class AbstractMultiSetDiffblueTest {
+public class AbstractMultiSetDiffblueTest {
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}, and {@link AbstractEntry#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is equal.
-   *   <li>Then return equal.
+   *   <li>When other is equal.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link AbstractEntry#equals(Object)}
    *   <li>{@link AbstractEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName(
-      "Test AbstractEntry equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+  public void testAbstractEntryEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
-    SimpleEntry<Object, MutableInteger> parentEntry2 =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry2 = new MultiSetEntry<>(parentEntry2);
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
+    MultiSetEntry<Object> multiSetEntry2 = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
 
     // Act and Assert
     assertEquals(multiSetEntry, multiSetEntry2);
-    assertEquals(multiSetEntry.hashCode(), multiSetEntry2.hashCode());
+    int expectedHashCodeResult = multiSetEntry.hashCode();
+    assertEquals(expectedHashCodeResult, multiSetEntry2.hashCode());
   }
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}, and {@link AbstractEntry#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is same.
-   *   <li>Then return equal.
+   *   <li>When other is same.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link AbstractEntry#equals(Object)}
    *   <li>{@link AbstractEntry#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName(
-      "Test AbstractEntry equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+  public void testAbstractEntryEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
 
     // Act and Assert
     assertEquals(multiSetEntry, multiSetEntry);
@@ -93,107 +77,81 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractEntry#equals(Object)}
    */
   @Test
-  @DisplayName("Test AbstractEntry equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+  public void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(1));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
-    SimpleEntry<Object, MutableInteger> parentEntry2 =
-        new SimpleEntry<>("42", new MutableInteger(42));
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>(1, new MutableInteger(42)));
 
     // Act and Assert
-    assertNotEquals(multiSetEntry, new MultiSetEntry<>(parentEntry2));
+    assertNotEquals(multiSetEntry, new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42))));
   }
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractEntry#equals(Object)}
    */
   @Test
-  @DisplayName("Test AbstractEntry equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+  public void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry = new SimpleEntry<>(1, new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
-    SimpleEntry<Object, MutableInteger> parentEntry2 =
-        new SimpleEntry<>("42", new MutableInteger(42));
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
+    MultiSetEntry<Object> multiSetEntry2 = new MultiSetEntry<>(
+        new SimpleEntry<>(multiSetEntry, new MutableInteger(42)));
 
     // Act and Assert
-    assertNotEquals(multiSetEntry, new MultiSetEntry<>(parentEntry2));
+    assertNotEquals(multiSetEntry2, new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42))));
   }
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractEntry#equals(Object)}
    */
   @Test
-  @DisplayName("Test AbstractEntry equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
+  public void testAbstractEntryEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
-    SimpleEntry<Object, MutableInteger> parentEntry2 =
-        new SimpleEntry<>(multiSetEntry, new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry2 = new MultiSetEntry<>(parentEntry2);
-    SimpleEntry<Object, MutableInteger> parentEntry3 =
-        new SimpleEntry<>("42", new MutableInteger(42));
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(1)));
 
     // Act and Assert
-    assertNotEquals(multiSetEntry2, new MultiSetEntry<>(parentEntry3));
+    assertNotEquals(multiSetEntry, new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42))));
   }
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is {@code null}.
-   *   <li>Then return not equal.
+   *   <li>When other is {@code null}.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractEntry#equals(Object)}
    */
   @Test
-  @DisplayName("Test AbstractEntry equals(Object); when other is 'null'; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEquals_whenOtherIsNull_thenReturnNotEqual() {
+  public void testAbstractEntryEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
 
     // Act and Assert
     assertNotEquals(multiSetEntry, null);
@@ -201,24 +159,19 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test AbstractEntry {@link AbstractEntry#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is wrong type.
-   *   <li>Then return not equal.
+   *   <li>When other is wrong type.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractEntry#equals(Object)}
    */
   @Test
-  @DisplayName("Test AbstractEntry equals(Object); when other is wrong type; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEntry.equals(Object)", "int AbstractEntry.hashCode()"})
-  void testAbstractEntryEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+  public void testAbstractEntryEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
 
     // Act and Assert
     assertNotEquals(multiSetEntry, "Different type to AbstractEntry");
@@ -226,25 +179,19 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test AbstractEntry {@link AbstractEntry#toString()}.
-   *
    * <ul>
-   *   <li>Given {@link MutableInteger#MutableInteger(int)} with value is forty-two.
-   *   <li>Then return {@code 42:42}.
+   *   <li>Given {@link MutableInteger#MutableInteger(int)} with value is forty-two.</li>
+   *   <li>Then return {@code 42:42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractEntry#toString()}
+   * <p>
+   * Method under test: {@link AbstractEntry#toString()}
    */
   @Test
-  @DisplayName(
-      "Test AbstractEntry toString(); given MutableInteger(int) with value is forty-two; then return '42:42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String AbstractEntry.toString()"})
-  void testAbstractEntryToString_givenMutableIntegerWithValueIsFortyTwo_thenReturn4242() {
+  public void testAbstractEntryToString_givenMutableIntegerWithValueIsFortyTwo_thenReturn4242() {
     // Arrange
-    SimpleEntry<Object, MutableInteger> parentEntry =
-        new SimpleEntry<>("42", new MutableInteger(42));
-    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(parentEntry);
+    MultiSetEntry<Object> multiSetEntry = new MultiSetEntry<>(new SimpleEntry<>("42", new MutableInteger(42)));
 
     // Act and Assert
     assertEquals("42:42", multiSetEntry.toString());
@@ -252,15 +199,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#add(Object)} with {@code object}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#add(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#add(Object)}
    */
   @Test
-  @DisplayName("Test add(Object) with 'object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.add(Object)"})
-  void testAddWithObject() {
+  public void testAddWithObject() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -274,15 +219,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#add(Object, int)} with {@code object}, {@code occurrences}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#add(Object, int)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#add(Object, int)}
    */
   @Test
-  @DisplayName("Test add(Object, int) with 'object', 'occurrences'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.add(Object, int)"})
-  void testAddWithObjectOccurrences() {
+  public void testAddWithObjectOccurrences() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -293,20 +236,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#contains(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code Object}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#contains(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given HashMultiSet() add 'Object'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.contains(Object)"})
-  void testContains_givenHashMultiSetAddObject_thenReturnTrue() {
+  public void testContains_givenHashMultiSetAddObject_thenReturnTrue() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     hashMultiSet.add("Object");
@@ -317,20 +257,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#contains(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#contains(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given HashMultiSet(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.contains(Object)"})
-  void testContains_givenHashMultiSet_thenReturnFalse() {
+  public void testContains_givenHashMultiSet_thenReturnFalse() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -340,15 +277,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#createEntrySet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#createEntrySet()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#createEntrySet()}
    */
   @Test
-  @DisplayName("Test createEntrySet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiSet.createEntrySet()"})
-  void testCreateEntrySet() {
+  public void testCreateEntrySet() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -358,15 +293,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#createUniqueSet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#createUniqueSet()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#createUniqueSet()}
    */
   @Test
-  @DisplayName("Test createUniqueSet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiSet.createUniqueSet()"})
-  void testCreateUniqueSet() {
+  public void testCreateUniqueSet() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -376,15 +309,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#createUniqueSetIterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#createUniqueSetIterator()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#createUniqueSetIterator()}
    */
   @Test
-  @DisplayName("Test createUniqueSetIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator AbstractMultiSet.createUniqueSetIterator()"})
-  void testCreateUniqueSetIterator() {
+  public void testCreateUniqueSetIterator() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -398,15 +329,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#entrySet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#entrySet()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#entrySet()}
    */
   @Test
-  @DisplayName("Test entrySet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiSet.entrySet()"})
-  void testEntrySet() {
+  public void testEntrySet() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -416,15 +345,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test EntrySet {@link EntrySet#EntrySet(AbstractMultiSet)}.
-   *
-   * <p>Method under test: {@link EntrySet#EntrySet(AbstractMultiSet)}
+   * <p>
+   * Method under test: {@link EntrySet#EntrySet(AbstractMultiSet)}
    */
   @Test
-  @DisplayName("Test EntrySet new EntrySet(AbstractMultiSet)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EntrySet.<init>(AbstractMultiSet)"})
-  void testEntrySetNewEntrySet() {
+  public void testEntrySetNewEntrySet() {
     // Arrange and Act
     EntrySet<Object> actualObjectSet = new EntrySet<>(new HashMultiSet<>());
 
@@ -434,45 +361,40 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#equals(Object)}, and {@link AbstractMultiSet#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is equal.
-   *   <li>Then return equal.
+   *   <li>When other is equal.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+  public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     HashMultiSet<Object> hashMultiSet2 = new HashMultiSet<>();
 
     // Act and Assert
     assertEquals(hashMultiSet, hashMultiSet2);
-    assertEquals(hashMultiSet.hashCode(), hashMultiSet2.hashCode());
+    int expectedHashCodeResult = hashMultiSet.hashCode();
+    assertEquals(expectedHashCodeResult, hashMultiSet2.hashCode());
   }
 
   /**
    * Test {@link AbstractMultiSet#equals(Object)}, and {@link AbstractMultiSet#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is same.
-   *   <li>Then return equal.
+   *   <li>When other is same.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+  public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -484,20 +406,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     hashMultiSet.add("Object");
@@ -508,20 +427,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is {@code null}.
-   *   <li>Then return not equal.
+   *   <li>When other is {@code null}.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+  public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -531,20 +447,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is wrong type.
-   *   <li>Then return not equal.
+   *   <li>When other is wrong type.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+  public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -554,15 +467,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#getCount(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#getCount(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#getCount(Object)}
    */
   @Test
-  @DisplayName("Test getCount(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.getCount(Object)"})
-  void testGetCount() {
+  public void testGetCount() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -572,15 +483,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#iterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#iterator()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#iterator()}
    */
   @Test
-  @DisplayName("Test iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator AbstractMultiSet.iterator()"})
-  void testIterator() {
+  public void testIterator() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -590,15 +499,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#remove(Object, int)} with {@code object}, {@code occurrences}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#remove(Object, int)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#remove(Object, int)}
    */
   @Test
-  @DisplayName("Test remove(Object, int) with 'object', 'occurrences'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.remove(Object, int)"})
-  void testRemoveWithObjectOccurrences() {
+  public void testRemoveWithObjectOccurrences() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -608,21 +515,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#remove(Object)} with {@code object}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code Object}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#remove(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#remove(Object)}
    */
   @Test
-  @DisplayName(
-      "Test remove(Object) with 'object'; given HashMultiSet() add 'Object'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.remove(Object)"})
-  void testRemoveWithObject_givenHashMultiSetAddObject_thenReturnTrue() {
+  public void testRemoveWithObject_givenHashMultiSetAddObject_thenReturnTrue() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     hashMultiSet.add("Object");
@@ -637,20 +540,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#remove(Object)} with {@code object}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#remove(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object) with 'object'; given HashMultiSet(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.remove(Object)"})
-  void testRemoveWithObject_givenHashMultiSet_thenReturnFalse() {
+  public void testRemoveWithObject_givenHashMultiSet_thenReturnFalse() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -661,22 +561,18 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#removeAll(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#removeAll(Collection)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#removeAll(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection); given HashMultiSet() add '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.removeAll(Collection)"})
-  void testRemoveAll_givenHashMultiSetAdd42_whenArrayListAdd42_thenReturnTrue() {
+  public void testRemoveAll_givenHashMultiSetAdd42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     hashMultiSet.add("42");
@@ -694,22 +590,18 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#removeAll(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#removeAll(Collection)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#removeAll(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection); given HashMultiSet() add '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.removeAll(Collection)"})
-  void testRemoveAll_givenHashMultiSetAdd42_whenArrayListAdd42_thenReturnTrue2() {
+  public void testRemoveAll_givenHashMultiSetAdd42_whenArrayListAdd42_thenReturnTrue2() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
     hashMultiSet.add("42");
@@ -728,22 +620,18 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#removeAll(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#removeAll(Collection)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#removeAll(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection); given HashMultiSet(); when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.removeAll(Collection)"})
-  void testRemoveAll_givenHashMultiSet_whenArrayListAdd42_thenReturnFalse() {
+  public void testRemoveAll_givenHashMultiSet_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -757,22 +645,18 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#removeAll(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#removeAll(Collection)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#removeAll(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection); given HashMultiSet(); when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.removeAll(Collection)"})
-  void testRemoveAll_givenHashMultiSet_whenArrayListAdd42_thenReturnFalse2() {
+  public void testRemoveAll_givenHashMultiSet_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -787,22 +671,18 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#removeAll(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMultiSet#HashMultiSet()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#removeAll(Collection)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#removeAll(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection); given HashMultiSet(); when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiSet.removeAll(Collection)"})
-  void testRemoveAll_givenHashMultiSet_whenArrayList_thenReturnFalse() {
+  public void testRemoveAll_givenHashMultiSet_whenArrayList_thenReturnFalse() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -813,20 +693,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#setCount(Object, int)}.
-   *
    * <ul>
-   *   <li>When minus one.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When minus one.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#setCount(Object, int)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#setCount(Object, int)}
    */
   @Test
-  @DisplayName("Test setCount(Object, int); when minus one; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.setCount(Object, int)"})
-  void testSetCount_whenMinusOne_thenThrowIllegalArgumentException() {
+  public void testSetCount_whenMinusOne_thenThrowIllegalArgumentException() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -836,20 +713,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#setCount(Object, int)}.
-   *
    * <ul>
-   *   <li>When three.
-   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is three.
+   *   <li>When three.</li>
+   *   <li>Then {@link HashMultiSet#HashMultiSet()} size is three.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#setCount(Object, int)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#setCount(Object, int)}
    */
   @Test
-  @DisplayName("Test setCount(Object, int); when three; then HashMultiSet() size is three")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.setCount(Object, int)"})
-  void testSetCount_whenThree_thenHashMultiSetSizeIsThree() {
+  public void testSetCount_whenThree_thenHashMultiSetSizeIsThree() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -860,20 +734,17 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#setCount(Object, int)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then {@link HashMultiSet#HashMultiSet()} Empty.
+   *   <li>When zero.</li>
+   *   <li>Then {@link HashMultiSet#HashMultiSet()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#setCount(Object, int)}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#setCount(Object, int)}
    */
   @Test
-  @DisplayName("Test setCount(Object, int); when zero; then HashMultiSet() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.setCount(Object, int)"})
-  void testSetCount_whenZero_thenHashMultiSetEmpty() {
+  public void testSetCount_whenZero_thenHashMultiSetEmpty() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -884,15 +755,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#size()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#size()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#size()}
    */
   @Test
-  @DisplayName("Test size()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiSet.size()"})
-  void testSize() {
+  public void testSize() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -902,15 +771,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#toString()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#toString()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String AbstractMultiSet.toString()"})
-  void testToString() {
+  public void testToString() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -920,15 +787,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test {@link AbstractMultiSet#uniqueSet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#uniqueSet()}
+   * <p>
+   * Method under test: {@link AbstractMultiSet#uniqueSet()}
    */
   @Test
-  @DisplayName("Test uniqueSet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiSet.uniqueSet()"})
-  void testUniqueSet() {
+  public void testUniqueSet() {
     // Arrange
     HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
 
@@ -938,15 +803,13 @@ class AbstractMultiSetDiffblueTest {
 
   /**
    * Test UniqueSet {@link UniqueSet#UniqueSet(AbstractMultiSet)}.
-   *
-   * <p>Method under test: {@link UniqueSet#UniqueSet(AbstractMultiSet)}
+   * <p>
+   * Method under test: {@link UniqueSet#UniqueSet(AbstractMultiSet)}
    */
   @Test
-  @DisplayName("Test UniqueSet new UniqueSet(AbstractMultiSet)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void UniqueSet.<init>(AbstractMultiSet)"})
-  void testUniqueSetNewUniqueSet() {
+  public void testUniqueSetNewUniqueSet() {
     // Arrange and Act
     UniqueSet<Object> actualObjectSet = new UniqueSet<>(new HashMultiSet<>());
 

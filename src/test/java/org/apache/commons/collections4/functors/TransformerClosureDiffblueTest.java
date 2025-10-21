@@ -1,129 +1,112 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.Transformer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class TransformerClosureDiffblueTest {
+public class TransformerClosureDiffblueTest {
   /**
    * Test {@link TransformerClosure#transformerClosure(Transformer)}.
-   *
    * <ul>
-   *   <li>Given {@code Apply}.
-   *   <li>Then return {@link Transformer}.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>Then return {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
+   * <p>
+   * Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
    */
   @Test
-  @DisplayName("Test transformerClosure(Transformer); given 'Apply'; then return Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure TransformerClosure.transformerClosure(Transformer)"})
-  void testTransformerClosure_givenApply_thenReturnTransformer() {
+  public void testTransformerClosure_givenApply_thenReturnTransformer() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    Closure<Object> actualTransformerClosureResult =
-        TransformerClosure.transformerClosure(transformer);
+    Closure<Object> actualTransformerClosureResult = TransformerClosure.transformerClosure(transformer);
     actualTransformerClosureResult.execute("42");
 
     // Assert
     verify(transformer).apply(isA(Object.class));
     assertTrue(actualTransformerClosureResult instanceof TransformerClosure);
-    assertSame(
-        transformer,
-        ((TransformerClosure<Object>) actualTransformerClosureResult).getTransformer());
+    assertSame(transformer, ((TransformerClosure<Object>) actualTransformerClosureResult).getTransformer());
   }
 
   /**
    * Test {@link TransformerClosure#transformerClosure(Transformer)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@link NOPClosure}.
+   *   <li>Then Transformer return {@link ClosureTransformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
+   * <p>
+   * Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
    */
   @Test
-  @DisplayName("Test transformerClosure(Transformer); when 'null'; then return NOPClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure TransformerClosure.transformerClosure(Transformer)"})
-  void testTransformerClosure_whenNull_thenReturnNOPClosure() {
+  public void testTransformerClosure_thenTransformerReturnClosureTransformer() {
+    // Arrange
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+    ClosureTransformer<? super Object> transformer = new ClosureTransformer<>(closure);
+
+    // Act
+    Closure<Object> actualTransformerClosureResult = TransformerClosure.transformerClosure(transformer);
+    actualTransformerClosureResult.execute("42");
+
+    // Assert
+    verify(closure).accept(isA(Object.class));
+    Transformer<? super Object, ?> transformer2 = ((TransformerClosure<Object>) actualTransformerClosureResult)
+        .getTransformer();
+    assertTrue(transformer2 instanceof ClosureTransformer);
+    assertTrue(actualTransformerClosureResult instanceof TransformerClosure);
+    assertSame(transformer, transformer2);
+  }
+
+  /**
+   * Test {@link TransformerClosure#transformerClosure(Transformer)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@link NOPClosure}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Closure TransformerClosure.transformerClosure(Transformer)"})
+  public void testTransformerClosure_whenNull_thenReturnNOPClosure() {
     // Arrange and Act
     Closure<Object> actualTransformerClosureResult = TransformerClosure.transformerClosure(null);
     actualTransformerClosureResult.execute("42");
 
     // Assert
     assertTrue(actualTransformerClosureResult instanceof NOPClosure);
-    assertNull(null);
-  }
-
-  /**
-   * Test {@link TransformerClosure#transformerClosure(Transformer)}.
-   *
-   * <ul>
-   *   <li>When {@link Transformer}.
-   *   <li>Then return {@link Transformer}.
-   * </ul>
-   *
-   * <p>Method under test: {@link TransformerClosure#transformerClosure(Transformer)}
-   */
-  @Test
-  @DisplayName("Test transformerClosure(Transformer); when Transformer; then return Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure TransformerClosure.transformerClosure(Transformer)"})
-  void testTransformerClosure_whenTransformer_thenReturnTransformer() {
-    // Arrange
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Closure<Object> actualTransformerClosureResult =
-        TransformerClosure.transformerClosure(transformer);
-
-    // Assert
-    assertTrue(actualTransformerClosureResult instanceof TransformerClosure);
-    assertSame(
-        transformer,
-        ((TransformerClosure<Object>) actualTransformerClosureResult).getTransformer());
   }
 
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link TransformerClosure#TransformerClosure(Transformer)}
    *   <li>{@link TransformerClosure#getTransformer()}
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void TransformerClosure.<init>(Transformer)",
-    "Transformer TransformerClosure.getTransformer()"
-  })
-  void testGettersAndSetters() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void TransformerClosure.<init>(Transformer)", "Transformer TransformerClosure.getTransformer()"})
+  public void testGettersAndSetters() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
 
@@ -136,15 +119,13 @@ class TransformerClosureDiffblueTest {
 
   /**
    * Test {@link TransformerClosure#execute(Object)}.
-   *
-   * <p>Method under test: {@link TransformerClosure#execute(Object)}
+   * <p>
+   * Method under test: {@link TransformerClosure#execute(Object)}
    */
   @Test
-  @DisplayName("Test execute(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TransformerClosure.execute(Object)"})
-  void testExecute() {
+  public void testExecute() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");

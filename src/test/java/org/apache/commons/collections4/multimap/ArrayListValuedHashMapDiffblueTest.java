@@ -1,33 +1,29 @@
 package org.apache.commons.collections4.multimap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.collections4.MultiValuedMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class ArrayListValuedHashMapDiffblueTest {
+public class ArrayListValuedHashMapDiffblueTest {
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>()"})
-  void testNewArrayListValuedHashMap() {
+  public void testNewArrayListValuedHashMap() {
     // Arrange and Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>();
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>();
 
     // Assert
     assertEquals(0, actualArrayListValuedHashMap.size());
@@ -37,18 +33,15 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int)}.
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap(int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(int)"})
-  void testNewArrayListValuedHashMap2() {
+  public void testNewArrayListValuedHashMap2() {
     // Arrange and Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(1);
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>(1);
 
     // Assert
     assertEquals(0, actualArrayListValuedHashMap.size());
@@ -58,18 +51,15 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int, int)}.
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int, int)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(int, int)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap(int, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(int, int)"})
-  void testNewArrayListValuedHashMap3() {
+  public void testNewArrayListValuedHashMap3() {
     // Arrange and Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(1, 1);
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>(1, 1);
 
     // Assert
     assertEquals(0, actualArrayListValuedHashMap.size());
@@ -79,29 +69,24 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code 42}.
-   *   <li>Then return Map size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
+   *   <li>Then return Map size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}
    */
   @Test
-  @DisplayName(
-      "Test new ArrayListValuedHashMap(Map); given '42'; when HashMap() '42' is '42'; then return Map size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(Map)"})
-  void testNewArrayListValuedHashMap_given42_whenHashMap42Is42_thenReturnMapSizeIsOne() {
+  public void testNewArrayListValuedHashMap_given42_whenHashMap42Is42_thenReturnMapSizeIsOne() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
 
     // Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(map);
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>(map);
 
     // Assert
     Map<Object, List<Object>> map2 = actualArrayListValuedHashMap.getMap();
@@ -115,53 +100,41 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>Then return {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>Then return {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new ArrayListValuedHashMap(MultiValuedMap); then return HashSetValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewArrayListValuedHashMap_thenReturnHashSetValuedHashMap() {
+  public void testNewArrayListValuedHashMap_thenReturnHashSetValuedHashMap() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
 
-    // Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualArrayListValuedHashMap);
+    // Act and Assert
+    assertEquals(map, new ArrayListValuedHashMap<>(map));
   }
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>Then return Map size is one.
+   *   <li>Then return Map size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap(MultiValuedMap); then return Map size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewArrayListValuedHashMap_thenReturnMapSizeIsOne() {
+  public void testNewArrayListValuedHashMap_thenReturnMapSizeIsOne() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
     map.put("Key", "Value");
 
     // Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(map);
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>(map);
 
     // Assert
     Map<Object, List<Object>> map2 = actualArrayListValuedHashMap.getMap();
@@ -175,49 +148,38 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap(MultiValuedMap); when ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewArrayListValuedHashMap_whenArrayListValuedHashMap() {
+  public void testNewArrayListValuedHashMap_whenArrayListValuedHashMap() {
     // Arrange
     ArrayListValuedHashMap<?, ?> map = new ArrayListValuedHashMap<>();
 
-    // Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualArrayListValuedHashMap);
+    // Act and Assert
+    assertEquals(map, new ArrayListValuedHashMap<>(map));
   }
 
   /**
    * Test {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then return size is zero.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then return size is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#ArrayListValuedHashMap(Map)}
    */
   @Test
-  @DisplayName("Test new ArrayListValuedHashMap(Map); when HashMap(); then return size is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayListValuedHashMap.<init>(Map)"})
-  void testNewArrayListValuedHashMap_whenHashMap_thenReturnSizeIsZero() {
+  public void testNewArrayListValuedHashMap_whenHashMap_thenReturnSizeIsZero() {
     // Arrange and Act
-    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap =
-        new ArrayListValuedHashMap<>(new HashMap<>());
+    ArrayListValuedHashMap<Object, Object> actualArrayListValuedHashMap = new ArrayListValuedHashMap<>(new HashMap<>());
 
     // Assert
     assertEquals(0, actualArrayListValuedHashMap.size());
@@ -227,20 +189,17 @@ class ArrayListValuedHashMapDiffblueTest {
 
   /**
    * Test {@link ArrayListValuedHashMap#createCollection()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
-   *   <li>Then return Empty.
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayListValuedHashMap#createCollection()}
+   * <p>
+   * Method under test: {@link ArrayListValuedHashMap#createCollection()}
    */
   @Test
-  @DisplayName("Test createCollection(); given ArrayListValuedHashMap(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.ArrayList ArrayListValuedHashMap.createCollection()"})
-  void testCreateCollection_givenArrayListValuedHashMap_thenReturnEmpty() {
+  public void testCreateCollection_givenArrayListValuedHashMap_thenReturnEmpty() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
 

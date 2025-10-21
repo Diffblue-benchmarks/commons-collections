@@ -1,44 +1,35 @@
 package org.apache.commons.collections4.list;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.ListIterator;
 import org.apache.commons.collections4.list.AbstractLinkedList.LinkedListIterator;
-import org.apache.commons.collections4.list.AbstractLinkedList.LinkedSubList;
 import org.apache.commons.collections4.list.AbstractLinkedList.Node;
 import org.apache.commons.collections4.list.CursorableLinkedList.Cursor;
-import org.apache.commons.collections4.list.CursorableLinkedList.SubCursor;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class CursorableLinkedListDiffblueTest {
+public class CursorableLinkedListDiffblueTest {
   /**
    * Test Cursor {@link Cursor#add(Object)}.
-   *
    * <ul>
-   *   <li>Then {@link Cursor#Cursor(CursorableLinkedList, int)} with parent is {@link
-   *       CursorableLinkedList#CursorableLinkedList()} and index is one next is {@code Obj}.
+   *   <li>Then {@link Cursor#Cursor(CursorableLinkedList, int)} with parent is {@link CursorableLinkedList#CursorableLinkedList()} and index is one next is {@code Obj}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#add(Object)}
+   * <p>
+   * Method under test: {@link Cursor#add(Object)}
    */
   @Test
-  @DisplayName(
-      "Test Cursor add(Object); then Cursor(CursorableLinkedList, int) with parent is CursorableLinkedList() and index is one next is 'Obj'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Cursor.add(Object)"})
-  void testCursorAdd_thenCursorWithParentIsCursorableLinkedListAndIndexIsOneNextIsObj() {
+  public void testCursorAdd_thenCursorWithParentIsCursorableLinkedListAndIndexIsOneNextIsObj() {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -56,21 +47,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test Cursor {@link Cursor#Cursor(CursorableLinkedList, int)}.
-   *
    * <ul>
-   *   <li>Given {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
+   * <p>
+   * Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
    */
   @Test
-  @DisplayName(
-      "Test Cursor new Cursor(CursorableLinkedList, int); given 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Cursor.<init>(CursorableLinkedList, int)"})
-  void testCursorNewCursor_givenValue_thenReturnNextIsValue() {
+  public void testCursorNewCursor_givenValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -86,21 +73,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test Cursor {@link Cursor#Cursor(CursorableLinkedList, int)}.
-   *
    * <ul>
-   *   <li>Given {@code Value}.
-   *   <li>When {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Given {@code Value}.</li>
+   *   <li>When {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
+   * <p>
+   * Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
    */
   @Test
-  @DisplayName(
-      "Test Cursor new Cursor(CursorableLinkedList, int); given 'Value'; when CursorableLinkedList() add 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Cursor.<init>(CursorableLinkedList, int)"})
-  void testCursorNewCursor_givenValue_whenCursorableLinkedListAddValue() {
+  public void testCursorNewCursor_givenValue_whenCursorableLinkedListAddValue() {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -114,22 +97,18 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test Cursor {@link Cursor#Cursor(CursorableLinkedList, int)}.
-   *
    * <ul>
-   *   <li>Given {@code Value}.
-   *   <li>When zero.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@code Value}.</li>
+   *   <li>When zero.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
+   * <p>
+   * Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
    */
   @Test
-  @DisplayName(
-      "Test Cursor new Cursor(CursorableLinkedList, int); given 'Value'; when zero; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Cursor.<init>(CursorableLinkedList, int)"})
-  void testCursorNewCursor_givenValue_whenZero_thenReturnNextIsValue() {
+  public void testCursorNewCursor_givenValue_whenZero_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -146,21 +125,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test Cursor {@link Cursor#Cursor(CursorableLinkedList, int)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then return not hasNext.
+   *   <li>When zero.</li>
+   *   <li>Then return not hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
+   * <p>
+   * Method under test: {@link Cursor#Cursor(CursorableLinkedList, int)}
    */
   @Test
-  @DisplayName(
-      "Test Cursor new Cursor(CursorableLinkedList, int); when zero; then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Cursor.<init>(CursorableLinkedList, int)"})
-  void testCursorNewCursor_whenZero_thenReturnNotHasNext() {
+  public void testCursorNewCursor_whenZero_thenReturnNotHasNext() {
     // Arrange and Act
     Cursor<Object> actualCursor = new Cursor<>(new CursorableLinkedList<>(), 0);
 
@@ -170,20 +145,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test Cursor {@link Cursor#nextIndex()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return one.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Cursor#nextIndex()}
+   * <p>
+   * Method under test: {@link Cursor#nextIndex()}
    */
   @Test
-  @DisplayName("Test Cursor nextIndex(); given CursorableLinkedList() add 'Value'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int Cursor.nextIndex()"})
-  void testCursorNextIndex_givenCursorableLinkedListAddValue_thenReturnOne() {
+  public void testCursorNextIndex_givenCursorableLinkedListAddValue_thenReturnOne() {
     // Arrange
     CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
     parent.add("Value");
@@ -194,40 +166,14 @@ class CursorableLinkedListDiffblueTest {
   }
 
   /**
-   * Test Cursor {@link Cursor#remove()}.
-   *
-   * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link Cursor#remove()}
-   */
-  @Test
-  @DisplayName("Test Cursor remove(); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Cursor.remove()"})
-  void testCursorRemove_thenThrowIllegalStateException() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    Cursor<Object> cursor = new Cursor<>(parent, 1);
-
-    // Act and Assert
-    assertThrows(IllegalStateException.class, () -> cursor.remove());
-  }
-
-  /**
    * Test {@link CursorableLinkedList#CursorableLinkedList()}.
-   *
-   * <p>Method under test: {@link CursorableLinkedList#CursorableLinkedList()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#CursorableLinkedList()}
    */
   @Test
-  @DisplayName("Test new CursorableLinkedList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.<init>()"})
-  void testNewCursorableLinkedList() {
+  public void testNewCursorableLinkedList() {
     // Arrange and Act
     CursorableLinkedList<Object> actualObjectList = new CursorableLinkedList<>();
 
@@ -237,100 +183,79 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#CursorableLinkedList(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
    */
   @Test
-  @DisplayName("Test new CursorableLinkedList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.<init>(Collection)"})
-  void testNewCursorableLinkedList_given42_whenArrayListAdd42() {
+  public void testNewCursorableLinkedList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
 
-    // Act
-    CursorableLinkedList<Object> actualObjectList = new CursorableLinkedList<>(coll);
-
-    // Assert
-    assertEquals(coll, actualObjectList);
+    // Act and Assert
+    assertEquals(coll, new CursorableLinkedList<>(coll));
   }
 
   /**
    * Test {@link CursorableLinkedList#CursorableLinkedList(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
    */
   @Test
-  @DisplayName("Test new CursorableLinkedList(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.<init>(Collection)"})
-  void testNewCursorableLinkedList_given42_whenArrayListAdd422() {
+  public void testNewCursorableLinkedList_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
     coll.add("42");
 
-    // Act
-    CursorableLinkedList<Object> actualObjectList = new CursorableLinkedList<>(coll);
-
-    // Assert
-    assertEquals(coll, actualObjectList);
+    // Act and Assert
+    assertEquals(coll, new CursorableLinkedList<>(coll));
   }
 
   /**
    * Test {@link CursorableLinkedList#CursorableLinkedList(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#CursorableLinkedList(Collection)}
    */
   @Test
-  @DisplayName("Test new CursorableLinkedList(Collection); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.<init>(Collection)"})
-  void testNewCursorableLinkedList_whenArrayList() {
+  public void testNewCursorableLinkedList_whenArrayList() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
 
-    // Act
-    CursorableLinkedList<Object> actualObjectList = new CursorableLinkedList<>(coll);
-
-    // Assert
-    assertEquals(coll, actualObjectList);
+    // Act and Assert
+    assertEquals(coll, new CursorableLinkedList<>(coll));
   }
 
   /**
    * Test {@link CursorableLinkedList#addNode(Node, Node)}.
-   *
    * <ul>
-   *   <li>When {@link Node#Node()}.
-   *   <li>Then {@link Node#Node()} NextNode Value is {@code null}.
+   *   <li>When {@link Node#Node()}.</li>
+   *   <li>Then {@link Node#Node()} NextNode Value is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#addNode(Node, Node)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#addNode(Node, Node)}
    */
   @Test
-  @DisplayName("Test addNode(Node, Node); when Node(); then Node() NextNode Value is 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.addNode(Node, Node)"})
-  void testAddNode_whenNode_thenNodeNextNodeValueIsNull() {
+  public void testAddNode_whenNode_thenNodeNextNodeValueIsNull() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     Node<Object> nodeToInsert = new Node<>();
@@ -348,189 +273,18 @@ class CursorableLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link CursorableLinkedList#createSubListListIterator(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link CursorableLinkedList#createSubListListIterator(LinkedSubList,
-   * int)}
-   */
-  @Test
-  @DisplayName("Test createSubListListIterator(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "ListIterator CursorableLinkedList.createSubListListIterator(LinkedSubList, int)"
-  })
-  void testCreateSubListListIterator() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> subList = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    ListIterator<Object> actualCreateSubListListIteratorResult =
-        objectList.createSubListListIterator(subList, 1);
-
-    // Assert
-    assertTrue(actualCreateSubListListIteratorResult instanceof SubCursor);
-    assertFalse(actualCreateSubListListIteratorResult.hasNext());
-    assertEquals(objectList, subList);
-  }
-
-  /**
-   * Test {@link CursorableLinkedList#createSubListListIterator(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link CursorableLinkedList#createSubListListIterator(LinkedSubList,
-   * int)}
-   */
-  @Test
-  @DisplayName("Test createSubListListIterator(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "ListIterator CursorableLinkedList.createSubListListIterator(LinkedSubList, int)"
-  })
-  void testCreateSubListListIterator2() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> subList = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    ListIterator<Object> actualCreateSubListListIteratorResult =
-        objectList.createSubListListIterator(subList, 1);
-
-    // Assert
-    assertTrue(actualCreateSubListListIteratorResult instanceof SubCursor);
-    assertFalse(actualCreateSubListListIteratorResult.hasNext());
-    assertEquals(objectList, subList);
-  }
-
-  /**
-   * Test {@link CursorableLinkedList#createSubListListIterator(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link CursorableLinkedList#createSubListListIterator(LinkedSubList,
-   * int)}
-   */
-  @Test
-  @DisplayName("Test createSubListListIterator(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "ListIterator CursorableLinkedList.createSubListListIterator(LinkedSubList, int)"
-  })
-  void testCreateSubListListIterator3() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    LinkedSubList<Object> subList = new LinkedSubList<>(parent, 0, 1);
-
-    // Act
-    objectList.createSubListListIterator(subList, 1);
-
-    // Assert
-    assertEquals(1, subList.size());
-  }
-
-  /**
-   * Test {@link CursorableLinkedList#createSubListListIterator(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link CursorableLinkedList#createSubListListIterator(LinkedSubList,
-   * int)}
-   */
-  @Test
-  @DisplayName("Test createSubListListIterator(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "ListIterator CursorableLinkedList.createSubListListIterator(LinkedSubList, int)"
-  })
-  void testCreateSubListListIterator4() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> subList = new LinkedSubList<>(parent, 1, 3);
-
-    // Act
-    ListIterator<Object> actualCreateSubListListIteratorResult =
-        objectList.createSubListListIterator(subList, 1);
-
-    // Assert
-    assertTrue(actualCreateSubListListIteratorResult instanceof SubCursor);
-    assertEquals(2, subList.size());
-    assertEquals("Value", actualCreateSubListListIteratorResult.next());
-    assertFalse(actualCreateSubListListIteratorResult.hasNext());
-  }
-
-  /**
-   * Test {@link CursorableLinkedList#createSubListListIterator(LinkedSubList, int)}.
-   *
-   * <ul>
-   *   <li>Given {@code Value}.
-   *   <li>When minus one.
-   *   <li>Then return next is {@code Value}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#createSubListListIterator(LinkedSubList,
-   * int)}
-   */
-  @Test
-  @DisplayName(
-      "Test createSubListListIterator(LinkedSubList, int); given 'Value'; when minus one; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "ListIterator CursorableLinkedList.createSubListListIterator(LinkedSubList, int)"
-  })
-  void testCreateSubListListIterator_givenValue_whenMinusOne_thenReturnNextIsValue() {
-    // Arrange
-    CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
-
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> subList = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    ListIterator<Object> actualCreateSubListListIteratorResult =
-        objectList.createSubListListIterator(subList, -1);
-
-    // Assert
-    assertTrue(actualCreateSubListListIteratorResult instanceof SubCursor);
-    assertEquals("Value", actualCreateSubListListIteratorResult.next());
-    assertFalse(actualCreateSubListListIteratorResult.hasNext());
-    assertEquals(objectList, subList);
-  }
-
-  /**
    * Test {@link CursorableLinkedList#cursor(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor(int)}
    */
   @Test
-  @DisplayName(
-      "Test cursor(int) with 'int'; given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor(int)"})
-  void testCursorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
+  public void testCursorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -545,21 +299,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#cursor(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor(int)}
    */
   @Test
-  @DisplayName(
-      "Test cursor(int) with 'int'; given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor(int)"})
-  void testCursorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
+  public void testCursorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -576,22 +326,18 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#cursor(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
-   *   <li>When zero.
-   *   <li>Then return not hasNext.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
+   *   <li>When zero.</li>
+   *   <li>Then return not hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor(int)}
    */
   @Test
-  @DisplayName(
-      "Test cursor(int) with 'int'; given CursorableLinkedList(); when zero; then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor(int)"})
-  void testCursorWithInt_givenCursorableLinkedList_whenZero_thenReturnNotHasNext() {
+  public void testCursorWithInt_givenCursorableLinkedList_whenZero_thenReturnNotHasNext() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -601,19 +347,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#cursor()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor()}
    */
   @Test
-  @DisplayName("Test cursor(); given CursorableLinkedList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor()"})
-  void testCursor_givenCursorableLinkedList() {
+  public void testCursor_givenCursorableLinkedList() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -623,21 +366,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#cursor()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor()}
    */
   @Test
-  @DisplayName(
-      "Test cursor(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor()"})
-  void testCursor_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
+  public void testCursor_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -652,21 +391,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#cursor()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#cursor()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#cursor()}
    */
   @Test
-  @DisplayName(
-      "Test cursor(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Cursor CursorableLinkedList.cursor()"})
-  void testCursor_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
+  public void testCursor_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -683,19 +418,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#iterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#iterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#iterator()}
    */
   @Test
-  @DisplayName("Test iterator(); given CursorableLinkedList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator CursorableLinkedList.iterator()"})
-  void testIterator_givenCursorableLinkedList() {
+  public void testIterator_givenCursorableLinkedList() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -709,21 +441,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#iterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#iterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#iterator()}
    */
   @Test
-  @DisplayName(
-      "Test iterator(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator CursorableLinkedList.iterator()"})
-  void testIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
+  public void testIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -739,21 +467,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#iterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#iterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#iterator()}
    */
   @Test
-  @DisplayName(
-      "Test iterator(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator CursorableLinkedList.iterator()"})
-  void testIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
+  public void testIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -771,21 +495,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator(int)}
    */
   @Test
-  @DisplayName(
-      "Test listIterator(int) with 'int'; given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator(int)"})
-  void testListIteratorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
+  public void testListIteratorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -801,21 +521,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator(int)}
    */
   @Test
-  @DisplayName(
-      "Test listIterator(int) with 'int'; given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator(int)"})
-  void testListIteratorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
+  public void testListIteratorWithInt_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -833,22 +549,18 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator(int)} with {@code int}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
-   *   <li>When zero.
-   *   <li>Then return {@link Cursor}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
+   *   <li>When zero.</li>
+   *   <li>Then return {@link Cursor}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator(int)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator(int)}
    */
   @Test
-  @DisplayName(
-      "Test listIterator(int) with 'int'; given CursorableLinkedList(); when zero; then return Cursor")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator(int)"})
-  void testListIteratorWithInt_givenCursorableLinkedList_whenZero_thenReturnCursor() {
+  public void testListIteratorWithInt_givenCursorableLinkedList_whenZero_thenReturnCursor() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -862,19 +574,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator()}
    */
   @Test
-  @DisplayName("Test listIterator(); given CursorableLinkedList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator()"})
-  void testListIterator_givenCursorableLinkedList() {
+  public void testListIterator_givenCursorableLinkedList() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -888,21 +597,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator()}
    */
   @Test
-  @DisplayName(
-      "Test listIterator(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator()"})
-  void testListIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
+  public void testListIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -918,21 +623,17 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#listIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
-   *   <li>Then return next is {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
+   *   <li>Then return next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#listIterator()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#listIterator()}
    */
   @Test
-  @DisplayName(
-      "Test listIterator(); given CursorableLinkedList() add 'Value'; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator CursorableLinkedList.listIterator()"})
-  void testListIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
+  public void testListIterator_givenCursorableLinkedListAddValue_thenReturnNextIsValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -950,19 +651,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#removeAllNodes()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#removeAllNodes()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#removeAllNodes()}
    */
   @Test
-  @DisplayName("Test removeAllNodes(); given CursorableLinkedList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.removeAllNodes()"})
-  void testRemoveAllNodes_givenCursorableLinkedList() {
+  public void testRemoveAllNodes_givenCursorableLinkedList() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
 
@@ -975,19 +673,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#removeAllNodes()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#removeAllNodes()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#removeAllNodes()}
    */
   @Test
-  @DisplayName("Test removeAllNodes(); given CursorableLinkedList() add 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.removeAllNodes()"})
-  void testRemoveAllNodes_givenCursorableLinkedListAddValue() {
+  public void testRemoveAllNodes_givenCursorableLinkedListAddValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -1001,19 +696,16 @@ class CursorableLinkedListDiffblueTest {
 
   /**
    * Test {@link CursorableLinkedList#removeAllNodes()}.
-   *
    * <ul>
-   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.
+   *   <li>Given {@link CursorableLinkedList#CursorableLinkedList()} add {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#removeAllNodes()}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#removeAllNodes()}
    */
   @Test
-  @DisplayName("Test removeAllNodes(); given CursorableLinkedList() add 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.removeAllNodes()"})
-  void testRemoveAllNodes_givenCursorableLinkedListAddValue2() {
+  public void testRemoveAllNodes_givenCursorableLinkedListAddValue2() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     objectList.add("Value");
@@ -1027,182 +719,18 @@ class CursorableLinkedListDiffblueTest {
   }
 
   /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName("Test SubCursor new SubCursor(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    SubCursor<Object> actualSubCursor = new SubCursor<>(sub, 1);
-
-    // Assert
-    assertFalse(actualSubCursor.hasNext());
-    assertTrue(sub.isEmpty());
-  }
-
-  /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName("Test SubCursor new SubCursor(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor2() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    SubCursor<Object> actualSubCursor = new SubCursor<>(sub, 1);
-
-    // Assert
-    assertFalse(actualSubCursor.hasNext());
-    assertTrue(sub.isEmpty());
-  }
-
-  /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName("Test SubCursor new SubCursor(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor3() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 0, 1);
-
-    // Act
-    new SubCursor<>(sub, 1);
-
-    // Assert
-    assertEquals(1, sub.size());
-  }
-
-  /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName("Test SubCursor new SubCursor(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor4() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 1, 3);
-
-    // Act
-    SubCursor<Object> actualSubCursor = new SubCursor<>(sub, 1);
-
-    // Assert
-    assertEquals(2, sub.size());
-    assertEquals("Value", actualSubCursor.next());
-    assertFalse(actualSubCursor.hasNext());
-  }
-
-  /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName("Test SubCursor new SubCursor(LinkedSubList, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor5() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 0, 1);
-
-    // Act
-    SubCursor<Object> actualSubCursor = new SubCursor<>(sub, 1);
-
-    // Assert
-    assertEquals(1, sub.size());
-    assertFalse(actualSubCursor.hasNext());
-  }
-
-  /**
-   * Test SubCursor {@link SubCursor#SubCursor(LinkedSubList, int)}.
-   *
-   * <ul>
-   *   <li>Given {@code Value}.
-   *   <li>When minus one.
-   *   <li>Then return next is {@code Value}.
-   * </ul>
-   *
-   * <p>Method under test: {@link SubCursor#SubCursor(LinkedSubList, int)}
-   */
-  @Test
-  @DisplayName(
-      "Test SubCursor new SubCursor(LinkedSubList, int); given 'Value'; when minus one; then return next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void SubCursor.<init>(LinkedSubList, int)"})
-  void testSubCursorNewSubCursor_givenValue_whenMinusOne_thenReturnNextIsValue() {
-    // Arrange
-    CursorableLinkedList<Object> parent = new CursorableLinkedList<>();
-    parent.add("Value");
-    parent.add("Value");
-    LinkedSubList<Object> sub = new LinkedSubList<>(parent, 1, 1);
-
-    // Act
-    SubCursor<Object> actualSubCursor = new SubCursor<>(sub, -1);
-
-    // Assert
-    assertEquals("Value", actualSubCursor.next());
-    assertFalse(actualSubCursor.hasNext());
-    assertTrue(sub.isEmpty());
-  }
-
-  /**
    * Test {@link CursorableLinkedList#updateNode(Node, Object)}.
-   *
    * <ul>
-   *   <li>When {@link Node#Node()}.
-   *   <li>Then {@link Node#Node()} Value is {@code Value}.
+   *   <li>When {@link Node#Node()}.</li>
+   *   <li>Then {@link Node#Node()} Value is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CursorableLinkedList#updateNode(Node, Object)}
+   * <p>
+   * Method under test: {@link CursorableLinkedList#updateNode(Node, Object)}
    */
   @Test
-  @DisplayName("Test updateNode(Node, Object); when Node(); then Node() Value is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CursorableLinkedList.updateNode(Node, Object)"})
-  void testUpdateNode_whenNode_thenNodeValueIsValue() {
+  public void testUpdateNode_whenNode_thenNodeValueIsValue() {
     // Arrange
     CursorableLinkedList<Object> objectList = new CursorableLinkedList<>();
     Node<Object> node = new Node<>();

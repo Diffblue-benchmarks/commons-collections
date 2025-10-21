@@ -1,59 +1,52 @@
 package org.apache.commons.collections4.properties;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Enumeration;
 import org.apache.commons.collections4.iterators.IteratorEnumeration;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class SortedPropertiesDiffblueTest {
+public class SortedPropertiesDiffblueTest {
   /**
    * Test new {@link SortedProperties} (default constructor).
-   *
-   * <p>Method under test: default or parameterless constructor of {@link SortedProperties}
+   * <p>
+   * Method under test: default or parameterless constructor of {@link SortedProperties}
    */
   @Test
-  @DisplayName("Test new SortedProperties (default constructor)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SortedProperties.<init>()"})
-  void testNewSortedProperties() {
+  public void testNewSortedProperties() {
     // Arrange, Act and Assert
-    assertTrue(new SortedProperties().isEmpty());
+    assertTrue((new SortedProperties()).isEmpty());
   }
 
   /**
    * Test {@link SortedProperties#entrySet()}.
-   *
-   * <p>Method under test: {@link SortedProperties#entrySet()}
+   * <p>
+   * Method under test: {@link SortedProperties#entrySet()}
    */
   @Test
-  @DisplayName("Test entrySet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set SortedProperties.entrySet()"})
-  void testEntrySet() {
+  public void testEntrySet() {
     // Arrange, Act and Assert
-    assertTrue(new SortedProperties().entrySet().isEmpty());
+    assertTrue((new SortedProperties()).entrySet().isEmpty());
   }
 
   /**
    * Test {@link SortedProperties#keys()}.
-   *
-   * <p>Method under test: {@link SortedProperties#keys()}
+   * <p>
+   * Method under test: {@link SortedProperties#keys()}
    */
   @Test
-  @DisplayName("Test keys()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Enumeration SortedProperties.keys()"})
-  void testKeys() {
+  public void testKeys() {
     // Arrange and Act
-    Enumeration<Object> actualKeysResult = new SortedProperties().keys();
+    Enumeration<Object> actualKeysResult = (new SortedProperties()).keys();
 
     // Assert
     assertTrue(actualKeysResult instanceof IteratorEnumeration);

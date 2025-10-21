@@ -1,42 +1,33 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.OrderedMapIterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class UnmodifiableOrderedMapIteratorDiffblueTest {
+public class UnmodifiableOrderedMapIteratorDiffblueTest {
   /**
    * Test {@link UnmodifiableOrderedMapIterator#unmodifiableOrderedMapIterator(OrderedMapIterator)}.
-   *
    * <ul>
-   *   <li>Then return {@link UnmodifiableOrderedMapIterator}.
+   *   <li>Then return {@link UnmodifiableOrderedMapIterator}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * UnmodifiableOrderedMapIterator#unmodifiableOrderedMapIterator(OrderedMapIterator)}
+   * <p>
+   * Method under test: {@link UnmodifiableOrderedMapIterator#unmodifiableOrderedMapIterator(OrderedMapIterator)}
    */
   @Test
-  @DisplayName(
-      "Test unmodifiableOrderedMapIterator(OrderedMapIterator); then return UnmodifiableOrderedMapIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({
-    "OrderedMapIterator UnmodifiableOrderedMapIterator.unmodifiableOrderedMapIterator(OrderedMapIterator)"
-  })
-  void testUnmodifiableOrderedMapIterator_thenReturnUnmodifiableOrderedMapIterator() {
+      "OrderedMapIterator UnmodifiableOrderedMapIterator.unmodifiableOrderedMapIterator(OrderedMapIterator)"})
+  public void testUnmodifiableOrderedMapIterator_thenReturnUnmodifiableOrderedMapIterator() {
     // Arrange and Act
-    OrderedMapIterator<Object, Object> actualUnmodifiableOrderedMapIteratorResult =
-        UnmodifiableOrderedMapIterator.unmodifiableOrderedMapIterator(
-            new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
+    OrderedMapIterator<Object, Object> actualUnmodifiableOrderedMapIteratorResult = UnmodifiableOrderedMapIterator
+        .unmodifiableOrderedMapIterator(new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
 
     // Assert
-    assertTrue(
-        actualUnmodifiableOrderedMapIteratorResult instanceof UnmodifiableOrderedMapIterator);
+    assertTrue(actualUnmodifiableOrderedMapIteratorResult instanceof UnmodifiableOrderedMapIterator);
     assertFalse(actualUnmodifiableOrderedMapIteratorResult.hasNext());
   }
 }

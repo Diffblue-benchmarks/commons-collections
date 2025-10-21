@@ -1,28 +1,25 @@
 package org.apache.commons.collections4.keyvalue;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Map;
 import java.util.Map.Entry;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class AbstractKeyValueDiffblueTest {
+public class AbstractKeyValueDiffblueTest {
   /**
    * Test {@link AbstractKeyValue#getKey()}.
-   *
-   * <p>Method under test: {@link AbstractKeyValue#getKey()}
+   * <p>
+   * Method under test: {@link AbstractKeyValue#getKey()}
    */
   @Test
-  @DisplayName("Test getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractKeyValue.getKey()"})
-  void testGetKey() {
+  public void testGetKey() {
     // Arrange
     DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>();
 
@@ -32,15 +29,13 @@ class AbstractKeyValueDiffblueTest {
 
   /**
    * Test {@link AbstractKeyValue#getValue()}.
-   *
-   * <p>Method under test: {@link AbstractKeyValue#getValue()}
+   * <p>
+   * Method under test: {@link AbstractKeyValue#getValue()}
    */
   @Test
-  @DisplayName("Test getValue()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractKeyValue.getValue()"})
-  void testGetValue() {
+  public void testGetValue() {
     // Arrange
     DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>();
 
@@ -50,15 +45,13 @@ class AbstractKeyValueDiffblueTest {
 
   /**
    * Test {@link AbstractKeyValue#setKey(Object)}.
-   *
-   * <p>Method under test: {@link AbstractKeyValue#setKey(Object)}
+   * <p>
+   * Method under test: {@link AbstractKeyValue#setKey(Object)}
    */
   @Test
-  @DisplayName("Test setKey(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractKeyValue.setKey(Object)"})
-  void testSetKey() {
+  public void testSetKey() {
     // Arrange
     DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
 
@@ -68,15 +61,13 @@ class AbstractKeyValueDiffblueTest {
 
   /**
    * Test {@link AbstractKeyValue#setValue(Object)}.
-   *
-   * <p>Method under test: {@link AbstractKeyValue#setValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractKeyValue#setValue(Object)}
    */
   @Test
-  @DisplayName("Test setValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractKeyValue.setValue(Object)"})
-  void testSetValue() {
+  public void testSetValue() {
     // Arrange
     DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>();
 
@@ -93,15 +84,13 @@ class AbstractKeyValueDiffblueTest {
 
   /**
    * Test {@link AbstractKeyValue#toString()}.
-   *
-   * <p>Method under test: {@link AbstractKeyValue#toString()}
+   * <p>
+   * Method under test: {@link AbstractKeyValue#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String AbstractKeyValue.toString()"})
-  void testToString() {
+  public void testToString() {
     // Arrange
     DefaultKeyValue<Object, Object> defaultKeyValue = new DefaultKeyValue<>();
 

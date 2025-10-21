@@ -1,25 +1,22 @@
 package org.apache.commons.collections4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.functors.ConstantFactory;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class FactoryDiffblueTest {
+public class FactoryDiffblueTest {
   /**
    * Test {@link Factory#get()}.
-   *
-   * <p>Method under test: {@link Factory#get()}
+   * <p>
+   * Method under test: {@link Factory#get()}
    */
   @Test
-  @DisplayName("Test get()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object Factory.get()"})
-  void testGet() {
+  public void testGet() {
     // Arrange
     ConstantFactory<Object> constantFactory = new ConstantFactory<>("Constant To Return");
 

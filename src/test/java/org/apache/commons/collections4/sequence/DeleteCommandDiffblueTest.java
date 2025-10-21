@@ -1,24 +1,21 @@
 package org.apache.commons.collections4.sequence;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class DeleteCommandDiffblueTest {
+public class DeleteCommandDiffblueTest {
   /**
    * Test {@link DeleteCommand#DeleteCommand(Object)}.
-   *
-   * <p>Method under test: {@link DeleteCommand#DeleteCommand(Object)}
+   * <p>
+   * Method under test: {@link DeleteCommand#DeleteCommand(Object)}
    */
   @Test
-  @DisplayName("Test new DeleteCommand(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DeleteCommand.<init>(Object)"})
-  void testNewDeleteCommand() {
+  public void testNewDeleteCommand() {
     // Arrange and Act
     DeleteCommand<Object> actualDeleteCommand = new DeleteCommand<>("Object");
 

@@ -1,31 +1,27 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class SingletonListIteratorDiffblueTest {
+public class SingletonListIteratorDiffblueTest {
   /**
    * Test {@link SingletonListIterator#SingletonListIterator(Object)}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#SingletonListIterator(Object)}
+   * <p>
+   * Method under test: {@link SingletonListIterator#SingletonListIterator(Object)}
    */
   @Test
-  @DisplayName("Test new SingletonListIterator(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonListIterator.<init>(Object)"})
-  void testNewSingletonListIterator() {
+  public void testNewSingletonListIterator() {
     // Arrange and Act
-    SingletonListIterator<Object> actualSingletonListIterator =
-        new SingletonListIterator<>("Object");
+    SingletonListIterator<Object> actualSingletonListIterator = new SingletonListIterator<>("Object");
 
     // Assert
     assertEquals("Object", actualSingletonListIterator.next());
@@ -34,15 +30,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#add(Object)}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#add(Object)}
+   * <p>
+   * Method under test: {@link SingletonListIterator#add(Object)}
    */
   @Test
-  @DisplayName("Test add(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonListIterator.add(Object)"})
-  void testAdd() {
+  public void testAdd() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -52,15 +46,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#hasNext()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#hasNext()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean SingletonListIterator.hasNext()"})
-  void testHasNext() {
+  public void testHasNext() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -70,15 +62,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#hasPrevious()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#hasPrevious()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#hasPrevious()}
    */
   @Test
-  @DisplayName("Test hasPrevious()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean SingletonListIterator.hasPrevious()"})
-  void testHasPrevious() {
+  public void testHasPrevious() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -88,15 +78,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#next()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#next()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#next()}
    */
   @Test
-  @DisplayName("Test next()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object SingletonListIterator.next()"})
-  void testNext() {
+  public void testNext() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -107,15 +95,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#nextIndex()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#nextIndex()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#nextIndex()}
    */
   @Test
-  @DisplayName("Test nextIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int SingletonListIterator.nextIndex()"})
-  void testNextIndex() {
+  public void testNextIndex() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -125,15 +111,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#previous()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#previous()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#previous()}
    */
   @Test
-  @DisplayName("Test previous()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object SingletonListIterator.previous()"})
-  void testPrevious() {
+  public void testPrevious() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -143,15 +127,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#previousIndex()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#previousIndex()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#previousIndex()}
    */
   @Test
-  @DisplayName("Test previousIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int SingletonListIterator.previousIndex()"})
-  void testPreviousIndex() {
+  public void testPreviousIndex() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -161,15 +143,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#remove()}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#remove()}
+   * <p>
+   * Method under test: {@link SingletonListIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonListIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 
@@ -179,15 +159,13 @@ class SingletonListIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonListIterator#set(Object)}.
-   *
-   * <p>Method under test: {@link SingletonListIterator#set(Object)}
+   * <p>
+   * Method under test: {@link SingletonListIterator#set(Object)}
    */
   @Test
-  @DisplayName("Test set(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonListIterator.set(Object)"})
-  void testSet() {
+  public void testSet() {
     // Arrange
     SingletonListIterator<Object> singletonListIterator = new SingletonListIterator<>("Object");
 

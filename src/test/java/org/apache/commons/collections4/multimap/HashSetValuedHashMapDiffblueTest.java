@@ -1,30 +1,27 @@
 package org.apache.commons.collections4.multimap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.apache.commons.collections4.MultiValuedMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class HashSetValuedHashMapDiffblueTest {
+public class HashSetValuedHashMapDiffblueTest {
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap()}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap()}
    */
   @Test
-  @DisplayName("Test new HashSetValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>()"})
-  void testNewHashSetValuedHashMap() {
+  public void testNewHashSetValuedHashMap() {
     // Arrange and Act
     HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap = new HashSetValuedHashMap<>();
 
@@ -36,15 +33,13 @@ class HashSetValuedHashMapDiffblueTest {
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(int)}.
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(int)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(int)}
    */
   @Test
-  @DisplayName("Test new HashSetValuedHashMap(int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(int)"})
-  void testNewHashSetValuedHashMap2() {
+  public void testNewHashSetValuedHashMap2() {
     // Arrange and Act
     HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap = new HashSetValuedHashMap<>(1);
 
@@ -56,18 +51,15 @@ class HashSetValuedHashMapDiffblueTest {
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(int, int)}.
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(int, int)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(int, int)}
    */
   @Test
-  @DisplayName("Test new HashSetValuedHashMap(int, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(int, int)"})
-  void testNewHashSetValuedHashMap3() {
+  public void testNewHashSetValuedHashMap3() {
     // Arrange and Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(1, 1);
+    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap = new HashSetValuedHashMap<>(1, 1);
 
     // Assert
     assertEquals(0, actualHashSetValuedHashMap.size());
@@ -77,29 +69,24 @@ class HashSetValuedHashMapDiffblueTest {
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code 42}.
-   *   <li>Then return Map size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
+   *   <li>Then return Map size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}
    */
   @Test
-  @DisplayName(
-      "Test new HashSetValuedHashMap(Map); given '42'; when HashMap() '42' is '42'; then return Map size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(Map)"})
-  void testNewHashSetValuedHashMap_given42_whenHashMap42Is42_thenReturnMapSizeIsOne() {
+  public void testNewHashSetValuedHashMap_given42_whenHashMap42Is42_thenReturnMapSizeIsOne() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
 
     // Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(map);
+    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap = new HashSetValuedHashMap<>(map);
 
     // Assert
     Map<Object, Set<Object>> map2 = actualHashSetValuedHashMap.getMap();
@@ -111,50 +98,38 @@ class HashSetValuedHashMapDiffblueTest {
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>Then return {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new HashSetValuedHashMap(MultiValuedMap); then return ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewHashSetValuedHashMap_thenReturnArrayListValuedHashMap() {
+  public void testNewHashSetValuedHashMap_thenReturnArrayListValuedHashMap() {
     // Arrange
     ArrayListValuedHashMap<?, ?> map = new ArrayListValuedHashMap<>();
 
-    // Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualHashSetValuedHashMap);
+    // Act and Assert
+    assertEquals(map, new HashSetValuedHashMap<>(map));
   }
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then return size is zero.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then return size is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(Map)}
    */
   @Test
-  @DisplayName("Test new HashSetValuedHashMap(Map); when HashMap(); then return size is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(Map)"})
-  void testNewHashSetValuedHashMap_whenHashMap_thenReturnSizeIsZero() {
+  public void testNewHashSetValuedHashMap_whenHashMap_thenReturnSizeIsZero() {
     // Arrange and Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(new HashMap<>());
+    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap = new HashSetValuedHashMap<>(new HashMap<>());
 
     // Assert
     assertEquals(0, actualHashSetValuedHashMap.size());
@@ -164,74 +139,56 @@ class HashSetValuedHashMapDiffblueTest {
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test new HashSetValuedHashMap(MultiValuedMap); when HashSetValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewHashSetValuedHashMap_whenHashSetValuedHashMap() {
+  public void testNewHashSetValuedHashMap_whenHashSetValuedHashMap() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
 
-    // Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualHashSetValuedHashMap);
+    // Act and Assert
+    assertEquals(map, new HashSetValuedHashMap<>(map));
   }
 
   /**
    * Test {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#HashSetValuedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new HashSetValuedHashMap(MultiValuedMap); when HashSetValuedHashMap() 'Key' is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashSetValuedHashMap.<init>(MultiValuedMap)"})
-  void testNewHashSetValuedHashMap_whenHashSetValuedHashMapKeyIsValue() {
+  public void testNewHashSetValuedHashMap_whenHashSetValuedHashMapKeyIsValue() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
     map.put("Key", "Value");
 
-    // Act
-    HashSetValuedHashMap<Object, Object> actualHashSetValuedHashMap =
-        new HashSetValuedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualHashSetValuedHashMap);
+    // Act and Assert
+    assertEquals(map, new HashSetValuedHashMap<>(map));
   }
 
   /**
    * Test {@link HashSetValuedHashMap#createCollection()}.
-   *
    * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
-   *   <li>Then return Empty.
+   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashSetValuedHashMap#createCollection()}
+   * <p>
+   * Method under test: {@link HashSetValuedHashMap#createCollection()}
    */
   @Test
-  @DisplayName("Test createCollection(); given HashSetValuedHashMap(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.HashSet HashSetValuedHashMap.createCollection()"})
-  void testCreateCollection_givenHashSetValuedHashMap_thenReturnEmpty() {
+  public void testCreateCollection_givenHashSetValuedHashMap_thenReturnEmpty() {
     // Arrange
     HashSetValuedHashMap<Object, Object> hashSetValuedHashMap = new HashSetValuedHashMap<>();
 

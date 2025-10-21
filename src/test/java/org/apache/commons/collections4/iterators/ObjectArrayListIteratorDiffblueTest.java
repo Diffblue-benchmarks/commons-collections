@@ -1,30 +1,26 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class ObjectArrayListIteratorDiffblueTest {
+public class ObjectArrayListIteratorDiffblueTest {
   /**
    * Test {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])}
    */
   @Test
-  @DisplayName("Test new ObjectArrayListIterator(Object[])")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectArrayListIterator.<init>(Object[])"})
-  void testNewObjectArrayListIterator() {
+  public void testNewObjectArrayListIterator() {
     // Arrange and Act
-    ObjectArrayListIterator<Object> actualObjectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> actualObjectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Assert
     assertEquals("Array", actualObjectArrayListIterator.next());
@@ -32,101 +28,59 @@ class ObjectArrayListIteratorDiffblueTest {
   }
 
   /**
+   * Test {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int, int)}.
+   * <ul>
+   *   <li>Then return next is {@code Array}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int, int)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void ObjectArrayListIterator.<init>(Object[], int, int)"})
+  public void testNewObjectArrayListIterator_thenReturnNextIsArray() {
+    // Arrange and Act
+    ObjectArrayListIterator<Object> actualObjectArrayListIterator = new ObjectArrayListIterator<>(
+        new Object[]{"Array", "Array", "Array"}, 1, 3);
+
+    // Assert
+    assertEquals("Array", actualObjectArrayListIterator.next());
+    assertEquals("Array", actualObjectArrayListIterator.next());
+    assertFalse(actualObjectArrayListIterator.hasNext());
+  }
+
+  /**
    * Test {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int)}.
-   *
    * <ul>
-   *   <li>When array of {@link Object} with {@code Array}.
-   *   <li>Then return not hasNext.
+   *   <li>When array of {@link Object} with {@code Array}.</li>
+   *   <li>Then return not hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int)}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int)}
    */
   @Test
-  @DisplayName(
-      "Test new ObjectArrayListIterator(Object[], int); when array of Object with 'Array'; then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectArrayListIterator.<init>(Object[], int)"})
-  void testNewObjectArrayListIterator_whenArrayOfObjectWithArray_thenReturnNotHasNext() {
-    // Arrange
-    Object[] array = new Object[] {"Array"};
-
-    // Act
-    ObjectArrayListIterator<Object> actualObjectArrayListIterator =
-        new ObjectArrayListIterator<>(array, 1);
+  public void testNewObjectArrayListIterator_whenArrayOfObjectWithArray_thenReturnNotHasNext() {
+    // Arrange and Act
+    ObjectArrayListIterator<Object> actualObjectArrayListIterator = new ObjectArrayListIterator<>(new Object[]{"Array"},
+        1);
 
     // Assert
     assertFalse(actualObjectArrayListIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int, int)}.
-   *
-   * <ul>
-   *   <li>When array of {@link Object} with {@code Array}.
-   *   <li>Then return not hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int,
-   * int)}
-   */
-  @Test
-  @DisplayName(
-      "Test new ObjectArrayListIterator(Object[], int, int); when array of Object with 'Array'; then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectArrayListIterator.<init>(Object[], int, int)"})
-  void testNewObjectArrayListIterator_whenArrayOfObjectWithArray_thenReturnNotHasNext2() {
-    // Arrange
-    Object[] array = new Object[] {"Array"};
-
-    // Act
-    ObjectArrayListIterator<Object> actualObjectArrayListIterator =
-        new ObjectArrayListIterator<>(array, 1, 1);
-
-    // Assert
-    assertFalse(actualObjectArrayListIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int, int)}.
-   *
-   * <ul>
-   *   <li>When zero.
-   *   <li>Then throw {@link IllegalArgumentException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[], int,
-   * int)}
-   */
-  @Test
-  @DisplayName(
-      "Test new ObjectArrayListIterator(Object[], int, int); when zero; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectArrayListIterator.<init>(Object[], int, int)"})
-  void testNewObjectArrayListIterator_whenZero_thenThrowIllegalArgumentException() {
-    // Arrange
-    Object[] array = new Object[] {"Array"};
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> new ObjectArrayListIterator<>(array, 1, 0));
   }
 
   /**
    * Test {@link ObjectArrayListIterator#add(Object)}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#add(Object)}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#add(Object)}
    */
   @Test
-  @DisplayName("Test add(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectArrayListIterator.add(Object)"})
-  void testAdd() {
+  public void testAdd() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertThrows(UnsupportedOperationException.class, () -> objectArrayListIterator.add("Obj"));
@@ -134,18 +88,15 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#hasPrevious()}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#hasPrevious()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#hasPrevious()}
    */
   @Test
-  @DisplayName("Test hasPrevious()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectArrayListIterator.hasPrevious()"})
-  void testHasPrevious() {
+  public void testHasPrevious() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertFalse(objectArrayListIterator.hasPrevious());
@@ -153,25 +104,19 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])} with {@code
-   *       Array}.
-   *   <li>Then return {@code Array}.
+   *   <li>Given {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])} with {@code Array}.</li>
+   *   <li>Then return {@code Array}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given ObjectArrayListIterator(Object[]) with 'Array'; then return 'Array'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectArrayListIterator.next()"})
-  void testNext_givenObjectArrayListIteratorWithArray_thenReturnArray() {
+  public void testNext_givenObjectArrayListIteratorWithArray_thenReturnArray() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertEquals("Array", objectArrayListIterator.next());
@@ -180,21 +125,17 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])}.
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Given {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])}.</li>
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given ObjectArrayListIterator(Object[]); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectArrayListIterator.next()"})
-  void testNext_givenObjectArrayListIterator_thenThrowNoSuchElementException() {
+  public void testNext_givenObjectArrayListIterator_thenThrowNoSuchElementException() {
     // Arrange
     ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>();
 
@@ -204,18 +145,15 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#nextIndex()}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#nextIndex()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#nextIndex()}
    */
   @Test
-  @DisplayName("Test nextIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int ObjectArrayListIterator.nextIndex()"})
-  void testNextIndex() {
+  public void testNextIndex() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertEquals(0, objectArrayListIterator.nextIndex());
@@ -223,18 +161,15 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#previous()}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#previous()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#previous()}
    */
   @Test
-  @DisplayName("Test previous()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectArrayListIterator.previous()"})
-  void testPrevious() {
+  public void testPrevious() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectArrayListIterator.previous());
@@ -242,18 +177,15 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#previousIndex()}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#previousIndex()}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#previousIndex()}
    */
   @Test
-  @DisplayName("Test previousIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int ObjectArrayListIterator.previousIndex()"})
-  void testPreviousIndex() {
+  public void testPreviousIndex() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertEquals(-1, objectArrayListIterator.previousIndex());
@@ -261,18 +193,15 @@ class ObjectArrayListIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectArrayListIterator#set(Object)}.
-   *
-   * <p>Method under test: {@link ObjectArrayListIterator#set(Object)}
+   * <p>
+   * Method under test: {@link ObjectArrayListIterator#set(Object)}
    */
   @Test
-  @DisplayName("Test set(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectArrayListIterator.set(Object)"})
-  void testSet() {
+  public void testSet() {
     // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
+    ObjectArrayListIterator<Object> objectArrayListIterator = new ObjectArrayListIterator<>("Array");
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> objectArrayListIterator.set("Obj"));

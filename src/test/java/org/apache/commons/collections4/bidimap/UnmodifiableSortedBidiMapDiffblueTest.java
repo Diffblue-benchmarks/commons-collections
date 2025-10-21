@@ -1,34 +1,28 @@
 package org.apache.commons.collections4.bidimap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.SortedBidiMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class UnmodifiableSortedBidiMapDiffblueTest {
+public class UnmodifiableSortedBidiMapDiffblueTest {
   /**
    * Test {@link UnmodifiableSortedBidiMap#unmodifiableSortedBidiMap(SortedBidiMap)}.
-   *
-   * <p>Method under test: {@link
-   * UnmodifiableSortedBidiMap#unmodifiableSortedBidiMap(SortedBidiMap)}
+   * <p>
+   * Method under test: {@link UnmodifiableSortedBidiMap#unmodifiableSortedBidiMap(SortedBidiMap)}
    */
   @Test
-  @DisplayName("Test unmodifiableSortedBidiMap(SortedBidiMap)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "SortedBidiMap UnmodifiableSortedBidiMap.unmodifiableSortedBidiMap(SortedBidiMap)"
-  })
-  void testUnmodifiableSortedBidiMap() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"SortedBidiMap UnmodifiableSortedBidiMap.unmodifiableSortedBidiMap(SortedBidiMap)"})
+  public void testUnmodifiableSortedBidiMap() {
     // Arrange
     DualTreeBidiMap<Object, Object> map = new DualTreeBidiMap<>();
 
     // Act
-    SortedBidiMap<Object, Object> actualUnmodifiableSortedBidiMapResult =
-        UnmodifiableSortedBidiMap.unmodifiableSortedBidiMap(map);
+    SortedBidiMap<Object, Object> actualUnmodifiableSortedBidiMapResult = UnmodifiableSortedBidiMap
+        .unmodifiableSortedBidiMap(map);
 
     // Assert
     assertEquals(map, actualUnmodifiableSortedBidiMapResult);

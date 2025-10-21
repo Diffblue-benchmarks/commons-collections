@@ -1,24 +1,21 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertThrows;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class AbstractEmptyMapIteratorDiffblueTest {
+public class AbstractEmptyMapIteratorDiffblueTest {
   /**
    * Test {@link AbstractEmptyMapIterator#getKey()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyMapIterator#getKey()}
+   * <p>
+   * Method under test: {@link AbstractEmptyMapIterator#getKey()}
    */
   @Test
-  @DisplayName("Test getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.getKey()"})
-  void testGetKey() {
+  public void testGetKey() {
     // Arrange
     EmptyMapIterator<Object, Object> emptyMapIterator = new EmptyMapIterator<>();
 
@@ -28,15 +25,13 @@ class AbstractEmptyMapIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyMapIterator#getValue()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyMapIterator#getValue()}
+   * <p>
+   * Method under test: {@link AbstractEmptyMapIterator#getValue()}
    */
   @Test
-  @DisplayName("Test getValue()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.getValue()"})
-  void testGetValue() {
+  public void testGetValue() {
     // Arrange
     EmptyMapIterator<Object, Object> emptyMapIterator = new EmptyMapIterator<>();
 
@@ -46,15 +41,13 @@ class AbstractEmptyMapIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyMapIterator#setValue(Object)}.
-   *
-   * <p>Method under test: {@link AbstractEmptyMapIterator#setValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractEmptyMapIterator#setValue(Object)}
    */
   @Test
-  @DisplayName("Test setValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractEmptyMapIterator.setValue(Object)"})
-  void testSetValue() {
+  public void testSetValue() {
     // Arrange
     EmptyMapIterator<Object, Object> emptyMapIterator = new EmptyMapIterator<>();
 

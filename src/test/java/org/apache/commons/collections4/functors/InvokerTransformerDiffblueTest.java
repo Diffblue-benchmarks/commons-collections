@@ -1,130 +1,58 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.FunctorException;
 import org.apache.commons.collections4.Transformer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class InvokerTransformerDiffblueTest {
+public class InvokerTransformerDiffblueTest {
   /**
-   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code
-   * methodName}, {@code paramTypes}, {@code args}.
-   *
+   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code methodName}, {@code paramTypes}, {@code args}.
    * <ul>
-   *   <li>Then return {@link InvokerTransformer}.
+   *   <li>Then return {@link InvokerTransformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
+   * <p>
+   * Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
    */
   @Test
-  @DisplayName(
-      "Test invokerTransformer(String, Class[], Object[]) with 'methodName', 'paramTypes', 'args'; then return InvokerTransformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"
-  })
-  void testInvokerTransformerWithMethodNameParamTypesArgs_thenReturnInvokerTransformer() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"})
+  public void testInvokerTransformerWithMethodNameParamTypesArgs_thenReturnInvokerTransformer() {
     // Arrange
     Class<Object> forNameResult = Object.class;
 
     // Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer(
-            "Method Name", new Class[] {forNameResult}, new Object[] {"Args"});
-    Object actualTransformResult = actualInvokerTransformerResult.transform(null);
+    Transformer<Object, Object> actualInvokerTransformerResult = InvokerTransformer.invokerTransformer("Method Name",
+        new Class[]{forNameResult}, new Object[]{"Args"});
 
     // Assert
     assertTrue(actualInvokerTransformerResult instanceof InvokerTransformer);
-    assertNull(actualTransformResult);
+    assertNull(actualInvokerTransformerResult.transform(null));
   }
 
   /**
-   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code
-   * methodName}, {@code paramTypes}, {@code args}.
-   *
+   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code methodName}, {@code paramTypes}, {@code args}.
    * <ul>
-   *   <li>Then throw {@link FunctorException}.
+   *   <li>Then throw {@link FunctorException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
+   * <p>
+   * Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
    */
   @Test
-  @DisplayName(
-      "Test invokerTransformer(String, Class[], Object[]) with 'methodName', 'paramTypes', 'args'; then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"
-  })
-  void testInvokerTransformerWithMethodNameParamTypesArgs_thenThrowFunctorException() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"})
+  public void testInvokerTransformerWithMethodNameParamTypesArgs_thenThrowFunctorException() {
     // Arrange
     Class<Object> forNameResult = Object.class;
 
     // Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer(
-            "Method Name", new Class[] {forNameResult}, new Object[] {"Args"});
-
-    // Assert
-    assertThrows(FunctorException.class, () -> actualInvokerTransformerResult.transform("42"));
-  }
-
-  /**
-   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code
-   * methodName}, {@code paramTypes}, {@code args}.
-   *
-   * <ul>
-   *   <li>Then throw {@link FunctorException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
-   */
-  @Test
-  @DisplayName(
-      "Test invokerTransformer(String, Class[], Object[]) with 'methodName', 'paramTypes', 'args'; then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"
-  })
-  void testInvokerTransformerWithMethodNameParamTypesArgs_thenThrowFunctorException2() {
-    // Arrange and Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer("Method Name", null, null);
-
-    // Assert
-    assertThrows(FunctorException.class, () -> actualInvokerTransformerResult.transform("42"));
-  }
-
-  /**
-   * Test {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])} with {@code
-   * methodName}, {@code paramTypes}, {@code args}.
-   *
-   * <ul>
-   *   <li>When empty array of {@link Object}.
-   * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String, Class[], Object[])}
-   */
-  @Test
-  @DisplayName(
-      "Test invokerTransformer(String, Class[], Object[]) with 'methodName', 'paramTypes', 'args'; when empty array of Object")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Transformer InvokerTransformer.invokerTransformer(String, Class[], Object[])"
-  })
-  void testInvokerTransformerWithMethodNameParamTypesArgs_whenEmptyArrayOfObject() {
-    // Arrange and Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer("Method Name", new Class[] {}, new Object[] {});
+    Transformer<Object, Object> actualInvokerTransformerResult = InvokerTransformer.invokerTransformer("Method Name",
+        new Class[]{forNameResult}, new Object[]{"Args"});
 
     // Assert
     assertThrows(FunctorException.class, () -> actualInvokerTransformerResult.transform("42"));
@@ -132,51 +60,38 @@ class InvokerTransformerDiffblueTest {
 
   /**
    * Test {@link InvokerTransformer#invokerTransformer(String)} with {@code methodName}.
-   *
    * <ul>
-   *   <li>When {@code Method Name}.
-   *   <li>Then return {@link InvokerTransformer}.
+   *   <li>Then return {@link InvokerTransformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String)}
+   * <p>
+   * Method under test: {@link InvokerTransformer#invokerTransformer(String)}
    */
   @Test
-  @DisplayName(
-      "Test invokerTransformer(String) with 'methodName'; when 'Method Name'; then return InvokerTransformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Transformer InvokerTransformer.invokerTransformer(String)"})
-  void testInvokerTransformerWithMethodName_whenMethodName_thenReturnInvokerTransformer() {
+  public void testInvokerTransformerWithMethodName_thenReturnInvokerTransformer() {
     // Arrange and Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer("Method Name");
-    Object actualTransformResult = actualInvokerTransformerResult.transform(null);
+    Transformer<Object, Object> actualInvokerTransformerResult = InvokerTransformer.invokerTransformer("Method Name");
 
     // Assert
     assertTrue(actualInvokerTransformerResult instanceof InvokerTransformer);
-    assertNull(actualTransformResult);
+    assertNull(actualInvokerTransformerResult.transform(null));
   }
 
   /**
    * Test {@link InvokerTransformer#invokerTransformer(String)} with {@code methodName}.
-   *
    * <ul>
-   *   <li>When {@code Method Name}.
-   *   <li>Then throw {@link FunctorException}.
+   *   <li>Then throw {@link FunctorException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#invokerTransformer(String)}
+   * <p>
+   * Method under test: {@link InvokerTransformer#invokerTransformer(String)}
    */
   @Test
-  @DisplayName(
-      "Test invokerTransformer(String) with 'methodName'; when 'Method Name'; then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Transformer InvokerTransformer.invokerTransformer(String)"})
-  void testInvokerTransformerWithMethodName_whenMethodName_thenThrowFunctorException() {
+  public void testInvokerTransformerWithMethodName_thenThrowFunctorException() {
     // Arrange and Act
-    Transformer<Object, Object> actualInvokerTransformerResult =
-        InvokerTransformer.invokerTransformer("Method Name");
+    Transformer<Object, Object> actualInvokerTransformerResult = InvokerTransformer.invokerTransformer("Method Name");
 
     // Assert
     assertThrows(FunctorException.class, () -> actualInvokerTransformerResult.transform("42"));
@@ -184,29 +99,23 @@ class InvokerTransformerDiffblueTest {
 
   /**
    * Test {@link InvokerTransformer#InvokerTransformer(String, Class[], Object[])}.
-   *
    * <ul>
-   *   <li>When {@code Method Name}.
-   *   <li>Then return transform {@code null} is {@code null}.
+   *   <li>When {@code Method Name}.</li>
+   *   <li>Then return transform {@code null} is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#InvokerTransformer(String, Class[], Object[])}
+   * <p>
+   * Method under test: {@link InvokerTransformer#InvokerTransformer(String, Class[], Object[])}
    */
   @Test
-  @DisplayName(
-      "Test new InvokerTransformer(String, Class[], Object[]); when 'Method Name'; then return transform 'null' is 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void InvokerTransformer.<init>(String, Class[], Object[])"})
-  void testNewInvokerTransformer_whenMethodName_thenReturnTransformNullIsNull() {
+  public void testNewInvokerTransformer_whenMethodName_thenReturnTransformNullIsNull() {
     // Arrange
     Class<Object> forNameResult = Object.class;
-    Class<?>[] paramTypes = new Class[] {forNameResult};
-    Object[] args = new Object[] {"Args"};
 
     // Act
-    InvokerTransformer<Object, Object> actualInvokerTransformer =
-        new InvokerTransformer<>("Method Name", paramTypes, args);
+    InvokerTransformer<Object, Object> actualInvokerTransformer = new InvokerTransformer<>("Method Name",
+        new Class[]{forNameResult}, new Object[]{"Args"});
 
     // Assert
     assertNull(actualInvokerTransformer.transform(null));
@@ -214,26 +123,20 @@ class InvokerTransformerDiffblueTest {
 
   /**
    * Test {@link InvokerTransformer#transform(Object)}.
-   *
    * <ul>
-   *   <li>Then throw {@link FunctorException}.
+   *   <li>Then throw {@link FunctorException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#transform(Object)}
+   * <p>
+   * Method under test: {@link InvokerTransformer#transform(Object)}
    */
   @Test
-  @DisplayName("Test transform(Object); then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object InvokerTransformer.transform(Object)"})
-  void testTransform_thenThrowFunctorException() {
+  public void testTransform_thenThrowFunctorException() {
     // Arrange
     Class<Object> forNameResult = Object.class;
-    Class<?>[] paramTypes = new Class[] {forNameResult};
-    Object[] args = new Object[] {"Args"};
-
-    InvokerTransformer<Object, Object> invokerTransformer =
-        new InvokerTransformer<>("Method Name", paramTypes, args);
+    InvokerTransformer<Object, Object> invokerTransformer = new InvokerTransformer<>("Method Name",
+        new Class[]{forNameResult}, new Object[]{"Args"});
 
     // Act and Assert
     assertThrows(FunctorException.class, () -> invokerTransformer.transform("Input"));
@@ -241,27 +144,21 @@ class InvokerTransformerDiffblueTest {
 
   /**
    * Test {@link InvokerTransformer#transform(Object)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvokerTransformer#transform(Object)}
+   * <p>
+   * Method under test: {@link InvokerTransformer#transform(Object)}
    */
   @Test
-  @DisplayName("Test transform(Object); when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object InvokerTransformer.transform(Object)"})
-  void testTransform_whenNull_thenReturnNull() {
+  public void testTransform_whenNull_thenReturnNull() {
     // Arrange
     Class<Object> forNameResult = Object.class;
-    Class<?>[] paramTypes = new Class[] {forNameResult};
-    Object[] args = new Object[] {"Args"};
-
-    InvokerTransformer<Object, Object> invokerTransformer =
-        new InvokerTransformer<>("Method Name", paramTypes, args);
+    InvokerTransformer<Object, Object> invokerTransformer = new InvokerTransformer<>("Method Name",
+        new Class[]{forNameResult}, new Object[]{"Args"});
 
     // Act and Assert
     assertNull(invokerTransformer.transform(null));

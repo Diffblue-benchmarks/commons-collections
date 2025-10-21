@@ -1,30 +1,27 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class ZippingIteratorDiffblueTest {
+public class ZippingIteratorDiffblueTest {
   /**
    * Test {@link ZippingIterator#ZippingIterator(Iterator, Iterator, Iterator)}.
-   *
-   * <p>Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator, Iterator)}
+   * <p>
+   * Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator, Iterator)}
    */
   @Test
-  @DisplayName("Test new ZippingIterator(Iterator, Iterator, Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ZippingIterator.<init>(Iterator, Iterator, Iterator)"})
-  void testNewZippingIterator() {
+  public void testNewZippingIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> a = objectList.iterator();
@@ -35,8 +32,7 @@ class ZippingIteratorDiffblueTest {
     ArrayList<Object> objectList3 = new ArrayList<>();
 
     // Act
-    ZippingIterator<Object> actualZippingIterator =
-        new ZippingIterator<>(a, b, objectList3.iterator());
+    ZippingIterator<Object> actualZippingIterator = new ZippingIterator<>(a, b, objectList3.iterator());
 
     // Assert
     assertFalse(actualZippingIterator.hasNext());
@@ -44,15 +40,13 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#ZippingIterator(Iterator[])}.
-   *
-   * <p>Method under test: {@link ZippingIterator#ZippingIterator(Iterator[])}
+   * <p>
+   * Method under test: {@link ZippingIterator#ZippingIterator(Iterator[])}
    */
   @Test
-  @DisplayName("Test new ZippingIterator(Iterator[])")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ZippingIterator.<init>(Iterator[])"})
-  void testNewZippingIterator2() {
+  public void testNewZippingIterator2() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
@@ -65,23 +59,18 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return next is {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return next is {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}
+   * <p>
+   * Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test new ZippingIterator(Iterator, Iterator); given '42'; when ArrayList() add '42'; then return next is '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ZippingIterator.<init>(Iterator, Iterator)"})
-  void testNewZippingIterator_given42_whenArrayListAdd42_thenReturnNextIs42()
-      throws NoSuchElementException {
+  public void testNewZippingIterator_given42_whenArrayListAdd42_thenReturnNextIs42() throws NoSuchElementException {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -90,8 +79,7 @@ class ZippingIteratorDiffblueTest {
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    ZippingIterator<Object> actualZippingIterator =
-        new ZippingIterator<>(a, objectList2.iterator());
+    ZippingIterator<Object> actualZippingIterator = new ZippingIterator<>(a, objectList2.iterator());
 
     // Assert
     assertEquals("42", actualZippingIterator.next());
@@ -101,19 +89,16 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.
+   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}
+   * <p>
+   * Method under test: {@link ZippingIterator#ZippingIterator(Iterator, Iterator)}
    */
   @Test
-  @DisplayName("Test new ZippingIterator(Iterator, Iterator); when ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ZippingIterator.<init>(Iterator, Iterator)"})
-  void testNewZippingIterator_whenArrayListIterator() {
+  public void testNewZippingIterator_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> a = objectList.iterator();
@@ -121,8 +106,7 @@ class ZippingIteratorDiffblueTest {
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    ZippingIterator<Object> actualZippingIterator =
-        new ZippingIterator<>(a, objectList2.iterator());
+    ZippingIterator<Object> actualZippingIterator = new ZippingIterator<>(a, objectList2.iterator());
 
     // Assert
     assertFalse(a.hasNext());
@@ -131,20 +115,37 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#hasNext()}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ZippingIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ZippingIterator.hasNext()"})
-  void testHasNext_givenArrayListAdd42_thenReturnTrue() {
+  public void testHasNext() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    Iterator<Object> iteratorResult = objectList.iterator();
+
+    ArrayList<Object> objectList2 = new ArrayList<>();
+    ZippingIterator<Object> zippingIterator = new ZippingIterator<>(iteratorResult, objectList2.iterator());
+
+    // Act and Assert
+    assertFalse(zippingIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ZippingIterator#hasNext()}.
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ZippingIterator#hasNext()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean ZippingIterator.hasNext()"})
+  public void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -156,50 +157,17 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ZippingIterator#ZippingIterator(Iterator, Iterator)} with a is {@link
-   *       ArrayList#ArrayList()} iterator and b is {@link ArrayList#ArrayList()} iterator.
+   *   <li>Given {@link ZippingIterator#ZippingIterator(Iterator[])} with iterators is {@link ArrayList#ArrayList()} iterator.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ZippingIterator#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given ZippingIterator(Iterator, Iterator) with a is ArrayList() iterator and b is ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ZippingIterator.hasNext()"})
-  void testHasNext_givenZippingIteratorWithAIsArrayListIteratorAndBIsArrayListIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> a = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    ZippingIterator<Object> zippingIterator = new ZippingIterator<>(a, objectList2.iterator());
-
-    // Act and Assert
-    assertFalse(zippingIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ZippingIterator#hasNext()}.
-   *
-   * <ul>
-   *   <li>Given {@link ZippingIterator#ZippingIterator(Iterator[])} with iterators is {@link
-   *       ArrayList#ArrayList()} iterator.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#hasNext()}
-   */
-  @Test
-  @DisplayName(
-      "Test hasNext(); given ZippingIterator(Iterator[]) with iterators is ArrayList() iterator; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean ZippingIterator.hasNext()"})
-  void testHasNext_givenZippingIteratorWithIteratorsIsArrayListIterator_thenReturnFalse() {
+  public void testHasNext_givenZippingIteratorWithIteratorsIsArrayListIterator_thenReturnFalse() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ZippingIterator<Object> zippingIterator = new ZippingIterator<>(objectList.iterator());
@@ -210,20 +178,37 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#next()}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#next()}
+   * <p>
+   * Method under test: {@link ZippingIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ZippingIterator.next()"})
-  void testNext_givenArrayListAdd42_thenReturn42() throws NoSuchElementException {
+  public void testNext() throws NoSuchElementException {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    Iterator<Object> iteratorResult = objectList.iterator();
+
+    ArrayList<Object> objectList2 = new ArrayList<>();
+    ZippingIterator<Object> zippingIterator = new ZippingIterator<>(iteratorResult, objectList2.iterator());
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> zippingIterator.next());
+  }
+
+  /**
+   * Test {@link ZippingIterator#next()}.
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ZippingIterator#next()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object ZippingIterator.next()"})
+  public void testNext_givenArrayListAdd42_thenReturn42() throws NoSuchElementException {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -236,48 +221,16 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ZippingIterator#ZippingIterator(Iterator, Iterator)} with a is {@link
-   *       ArrayList#ArrayList()} iterator and b is {@link ArrayList#ArrayList()} iterator.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#next()}
+   * <p>
+   * Method under test: {@link ZippingIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given ZippingIterator(Iterator, Iterator) with a is ArrayList() iterator and b is ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ZippingIterator.next()"})
-  void testNext_givenZippingIteratorWithAIsArrayListIteratorAndBIsArrayListIterator()
-      throws NoSuchElementException {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> a = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    ZippingIterator<Object> zippingIterator = new ZippingIterator<>(a, objectList2.iterator());
-
-    // Act and Assert
-    assertThrows(NoSuchElementException.class, () -> zippingIterator.next());
-  }
-
-  /**
-   * Test {@link ZippingIterator#next()}.
-   *
-   * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ZippingIterator#next()}
-   */
-  @Test
-  @DisplayName("Test next(); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ZippingIterator.next()"})
-  void testNext_thenThrowNoSuchElementException() throws NoSuchElementException {
+  public void testNext_thenThrowNoSuchElementException() throws NoSuchElementException {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ZippingIterator<Object> zippingIterator = new ZippingIterator<>(objectList.iterator());
@@ -288,15 +241,13 @@ class ZippingIteratorDiffblueTest {
 
   /**
    * Test {@link ZippingIterator#remove()}.
-   *
-   * <p>Method under test: {@link ZippingIterator#remove()}
+   * <p>
+   * Method under test: {@link ZippingIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ZippingIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ZippingIterator<Object> zippingIterator = new ZippingIterator<>(objectList.iterator());

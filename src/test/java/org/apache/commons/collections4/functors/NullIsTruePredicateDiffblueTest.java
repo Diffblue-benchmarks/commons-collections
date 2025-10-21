@@ -1,53 +1,47 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class NullIsTruePredicateDiffblueTest {
+public class NullIsTruePredicateDiffblueTest {
   /**
    * Test {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>Then return not evaluate {@code 42}.
+   *   <li>Given {@code false}.</li>
+   *   <li>Then return not evaluate {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test nullIsTruePredicate(Predicate); given 'false'; then return not evaluate '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate NullIsTruePredicate.nullIsTruePredicate(Predicate)"})
-  void testNullIsTruePredicate_givenFalse_thenReturnNotEvaluate42() {
+  public void testNullIsTruePredicate_givenFalse_thenReturnNotEvaluate42() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act
-    Predicate<Object> actualNullIsTruePredicateResult =
-        NullIsTruePredicate.nullIsTruePredicate(predicate);
+    Predicate<Object> actualNullIsTruePredicateResult = NullIsTruePredicate.nullIsTruePredicate(predicate);
     boolean actualEvaluateResult = actualNullIsTruePredicateResult.evaluate("42");
 
     // Assert
     verify(predicate).test(isA(Object.class));
     assertTrue(actualNullIsTruePredicateResult instanceof NullIsTruePredicate);
-    Predicate<? super Object>[] predicates =
-        ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates = ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult)
+        .getPredicates();
     assertEquals(1, predicates.length);
     assertFalse(actualEvaluateResult);
     assertSame(predicate, predicates[0]);
@@ -55,34 +49,30 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>Then return evaluate {@code 42}.
+   *   <li>Given {@code true}.</li>
+   *   <li>Then return evaluate {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test nullIsTruePredicate(Predicate); given 'true'; then return evaluate '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate NullIsTruePredicate.nullIsTruePredicate(Predicate)"})
-  void testNullIsTruePredicate_givenTrue_thenReturnEvaluate42() {
+  public void testNullIsTruePredicate_givenTrue_thenReturnEvaluate42() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Predicate<Object> actualNullIsTruePredicateResult =
-        NullIsTruePredicate.nullIsTruePredicate(predicate);
+    Predicate<Object> actualNullIsTruePredicateResult = NullIsTruePredicate.nullIsTruePredicate(predicate);
     boolean actualEvaluateResult = actualNullIsTruePredicateResult.evaluate("42");
 
     // Assert
     verify(predicate).test(isA(Object.class));
     assertTrue(actualNullIsTruePredicateResult instanceof NullIsTruePredicate);
-    Predicate<? super Object>[] predicates =
-        ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates = ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult)
+        .getPredicates();
     assertEquals(1, predicates.length);
     assertTrue(actualEvaluateResult);
     assertSame(predicate, predicates[0]);
@@ -90,81 +80,42 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link Predicate}.
-   *   <li>Then {@code null}.
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return evaluate {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test nullIsTruePredicate(Predicate); when Predicate; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate NullIsTruePredicate.nullIsTruePredicate(Predicate)"})
-  void testNullIsTruePredicate_whenPredicate_thenNull() {
+  public void testNullIsTruePredicate_whenPredicate_thenReturnEvaluateNull() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
 
     // Act
-    Predicate<Object> actualNullIsTruePredicateResult =
-        NullIsTruePredicate.nullIsTruePredicate(predicate);
+    Predicate<Object> actualNullIsTruePredicateResult = NullIsTruePredicate.nullIsTruePredicate(predicate);
     boolean actualEvaluateResult = actualNullIsTruePredicateResult.evaluate(null);
 
     // Assert
     assertTrue(actualNullIsTruePredicateResult instanceof NullIsTruePredicate);
-    assertNull(null);
-    Predicate<? super Object>[] predicates =
-        ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult).getPredicates();
+    Predicate<? super Object>[] predicates = ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult)
+        .getPredicates();
     assertEquals(1, predicates.length);
     assertTrue(actualEvaluateResult);
-    assertSame(predicate, predicates[0]);
-  }
-
-  /**
-   * Test {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}.
-   *
-   * <ul>
-   *   <li>When {@link Predicate}.
-   *   <li>Then return {@link NullIsTruePredicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#nullIsTruePredicate(Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test nullIsTruePredicate(Predicate); when Predicate; then return NullIsTruePredicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Predicate NullIsTruePredicate.nullIsTruePredicate(Predicate)"})
-  void testNullIsTruePredicate_whenPredicate_thenReturnNullIsTruePredicate() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-
-    // Act
-    Predicate<Object> actualNullIsTruePredicateResult =
-        NullIsTruePredicate.nullIsTruePredicate(predicate);
-
-    // Assert
-    assertTrue(actualNullIsTruePredicateResult instanceof NullIsTruePredicate);
-    Predicate<? super Object>[] predicates =
-        ((NullIsTruePredicate<Object>) actualNullIsTruePredicateResult).getPredicates();
-    assertEquals(1, predicates.length);
     assertSame(predicate, predicates[0]);
   }
 
   /**
    * Test {@link NullIsTruePredicate#NullIsTruePredicate(Predicate)}.
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#NullIsTruePredicate(Predicate)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#NullIsTruePredicate(Predicate)}
    */
   @Test
-  @DisplayName("Test new NullIsTruePredicate(Predicate)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void NullIsTruePredicate.<init>(Predicate)"})
-  void testNewNullIsTruePredicate() {
+  public void testNewNullIsTruePredicate() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
 
@@ -179,18 +130,15 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#getPredicates()}.
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#getPredicates()}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#getPredicates()}
    */
   @Test
-  @DisplayName("Test getPredicates()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate[] NullIsTruePredicate.getPredicates()"})
-  void testGetPredicates() {
+  public void testGetPredicates() {
     // Arrange
-    NullIsTruePredicate<Object> nullIsTruePredicate =
-        new NullIsTruePredicate<>(mock(Predicate.class));
+    NullIsTruePredicate<Object> nullIsTruePredicate = new NullIsTruePredicate<>(mock(Predicate.class));
 
     // Act and Assert
     assertEquals(1, nullIsTruePredicate.getPredicates().length);
@@ -198,25 +146,20 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#test(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link NullIsTruePredicate#NullIsTruePredicate(Predicate)} with {@link Predicate}.
-   *   <li>When {@code null}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link NullIsTruePredicate#NullIsTruePredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#test(Object)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#test(Object)}
    */
   @Test
-  @DisplayName(
-      "Test test(Object); given NullIsTruePredicate(Predicate) with Predicate; when 'null'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean NullIsTruePredicate.test(Object)"})
-  void testTest_givenNullIsTruePredicateWithPredicate_whenNull_thenReturnTrue() {
+  public void testTest_givenNullIsTruePredicateWithPredicate_whenNull_thenReturnTrue() {
     // Arrange
-    NullIsTruePredicate<Object> nullIsTruePredicate =
-        new NullIsTruePredicate<>(mock(Predicate.class));
+    NullIsTruePredicate<Object> nullIsTruePredicate = new NullIsTruePredicate<>(mock(Predicate.class));
 
     // Act and Assert
     assertTrue(nullIsTruePredicate.test(null));
@@ -224,22 +167,18 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#test(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>When {@code Object}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#test(Object)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#test(Object)}
    */
   @Test
-  @DisplayName(
-      "Test test(Object); given Predicate test(Object) return 'false'; when 'Object'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean NullIsTruePredicate.test(Object)"})
-  void testTest_givenPredicateTestReturnFalse_whenObject_thenReturnFalse() {
+  public void testTest_givenPredicateTestReturnFalse_whenObject_thenReturnFalse() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
@@ -255,22 +194,18 @@ class NullIsTruePredicateDiffblueTest {
 
   /**
    * Test {@link NullIsTruePredicate#test(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>When {@code Object}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NullIsTruePredicate#test(Object)}
+   * <p>
+   * Method under test: {@link NullIsTruePredicate#test(Object)}
    */
   @Test
-  @DisplayName(
-      "Test test(Object); given Predicate test(Object) return 'true'; when 'Object'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean NullIsTruePredicate.test(Object)"})
-  void testTest_givenPredicateTestReturnTrue_whenObject_thenReturnTrue() {
+  public void testTest_givenPredicateTestReturnTrue_whenObject_thenReturnTrue() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);

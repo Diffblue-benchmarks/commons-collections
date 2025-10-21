@@ -1,41 +1,37 @@
 package org.apache.commons.collections4.splitmap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.collections4.Transformer;
 import org.apache.commons.collections4.map.LRUMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class TransformedSplitMapDiffblueTest {
+public class TransformedSplitMapDiffblueTest {
   /**
    * Test {@link TransformedSplitMap#checkSetValue(Object)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#checkSetValue(Object)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#checkSetValue(Object)}
    */
   @Test
-  @DisplayName("Test checkSetValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object TransformedSplitMap.checkSetValue(Object)"})
-  void testCheckSetValue() {
+  public void testCheckSetValue() {
     // Arrange
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(
-            new HashMap<>(), mock(Transformer.class), valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .<Object, Object, Object, Object>transformingMap(new HashMap<>(), mock(Transformer.class), valueTransformer);
 
     // Act
     Object actualCheckSetValueResult = transformingMapResult.checkSetValue("Value");
@@ -47,24 +43,20 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#put(Object, Object)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#put(Object, Object)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#put(Object, Object)}
    */
   @Test
-  @DisplayName("Test put(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object TransformedSplitMap.put(Object, Object)"})
-  void testPut() {
+  public void testPut() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
 
     // Act
     Object actualPutResult = transformingMapResult.put("Key", "Value");
@@ -81,19 +73,17 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#putAll(Map)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#putAll(Map)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TransformedSplitMap.putAll(Map)"})
-  void testPutAll() {
+  public void testPutAll() {
     // Arrange
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(
-            new HashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .<Object, Object, Object, Object>transformingMap(new HashMap<>(), mock(Transformer.class),
+            mock(Transformer.class));
 
     // Act
     transformingMapResult.putAll(new HashMap<>());
@@ -105,24 +95,20 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#putAll(Map)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#putAll(Map)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TransformedSplitMap.putAll(Map)"})
-  void testPutAll2() {
+  public void testPutAll2() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
 
     HashMap<Object, Object> mapToCopy = new HashMap<>();
     mapToCopy.put("42", "42");
@@ -141,29 +127,23 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#putAll(Map)}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       LRUMap#LRUMap()}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link LRUMap#LRUMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TransformedSplitMap#putAll(Map)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given Transformer apply(Object) return LRUMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TransformedSplitMap.putAll(Map)"})
-  void testPutAll_givenTransformerApplyReturnLRUMap() {
+  public void testPutAll_givenTransformerApplyReturnLRUMap() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn(new LRUMap<>());
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
 
     HashMap<Object, Object> mapToCopy = new HashMap<>();
     mapToCopy.put("42", "42");
@@ -180,21 +160,18 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#transformKey(Object)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#transformKey(Object)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#transformKey(Object)}
    */
   @Test
-  @DisplayName("Test transformKey(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object TransformedSplitMap.transformKey(Object)"})
-  void testTransformKey() {
+  public void testTransformKey() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(
-            new HashMap<>(), keyTransformer, mock(Transformer.class));
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .<Object, Object, Object, Object>transformingMap(new HashMap<>(), keyTransformer, mock(Transformer.class));
 
     // Act
     Object actualTransformKeyResult = transformingMapResult.transformKey("Object");
@@ -206,30 +183,24 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#transformMap(Map)}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
-   *   <li>Then return size is one.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TransformedSplitMap#transformMap(Map)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#transformMap(Map)}
    */
   @Test
-  @DisplayName(
-      "Test transformMap(Map); given Transformer apply(Object) return 'Apply'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map TransformedSplitMap.transformMap(Map)"})
-  void testTransformMap_givenTransformerApplyReturnApply_thenReturnSizeIsOne() {
+  public void testTransformMap_givenTransformerApplyReturnApply_thenReturnSizeIsOne() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .transformingMap(new HashMap<>(), keyTransformer, valueTransformer);
 
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
@@ -246,24 +217,21 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#transformMap(Map)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TransformedSplitMap#transformMap(Map)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#transformMap(Map)}
    */
   @Test
-  @DisplayName("Test transformMap(Map); when HashMap(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map TransformedSplitMap.transformMap(Map)"})
-  void testTransformMap_whenHashMap_thenReturnEmpty() {
+  public void testTransformMap_whenHashMap_thenReturnEmpty() {
     // Arrange
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(
-            new HashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .<Object, Object, Object, Object>transformingMap(new HashMap<>(), mock(Transformer.class),
+            mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformingMapResult.transformMap(new HashMap<>()).isEmpty());
@@ -271,21 +239,18 @@ class TransformedSplitMapDiffblueTest {
 
   /**
    * Test {@link TransformedSplitMap#transformValue(Object)}.
-   *
-   * <p>Method under test: {@link TransformedSplitMap#transformValue(Object)}
+   * <p>
+   * Method under test: {@link TransformedSplitMap#transformValue(Object)}
    */
   @Test
-  @DisplayName("Test transformValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object TransformedSplitMap.transformValue(Object)"})
-  void testTransformValue() {
+  public void testTransformValue() {
     // Arrange
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult =
-        TransformedSplitMap.transformingMap(
-            new HashMap<>(), mock(Transformer.class), valueTransformer);
+    TransformedSplitMap<Object, Object, Object, Object> transformingMapResult = TransformedSplitMap
+        .<Object, Object, Object, Object>transformingMap(new HashMap<>(), mock(Transformer.class), valueTransformer);
 
     // Act
     Object actualTransformValueResult = transformingMapResult.transformValue("Object");

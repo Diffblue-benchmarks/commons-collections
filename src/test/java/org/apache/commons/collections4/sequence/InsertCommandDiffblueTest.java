@@ -1,24 +1,21 @@
 package org.apache.commons.collections4.sequence;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class InsertCommandDiffblueTest {
+public class InsertCommandDiffblueTest {
   /**
    * Test {@link InsertCommand#InsertCommand(Object)}.
-   *
-   * <p>Method under test: {@link InsertCommand#InsertCommand(Object)}
+   * <p>
+   * Method under test: {@link InsertCommand#InsertCommand(Object)}
    */
   @Test
-  @DisplayName("Test new InsertCommand(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void InsertCommand.<init>(Object)"})
-  void testNewInsertCommand() {
+  public void testNewInsertCommand() {
     // Arrange and Act
     InsertCommand<Object> actualInsertCommand = new InsertCommand<>("Object");
 

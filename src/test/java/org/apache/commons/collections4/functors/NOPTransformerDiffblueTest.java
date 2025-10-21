@@ -1,26 +1,23 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Transformer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class NOPTransformerDiffblueTest {
+public class NOPTransformerDiffblueTest {
   /**
    * Test {@link NOPTransformer#nopTransformer()}.
-   *
-   * <p>Method under test: {@link NOPTransformer#nopTransformer()}
+   * <p>
+   * Method under test: {@link NOPTransformer#nopTransformer()}
    */
   @Test
-  @DisplayName("Test nopTransformer()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Transformer NOPTransformer.nopTransformer()"})
-  void testNopTransformer() {
+  public void testNopTransformer() {
     // Arrange and Act
     Transformer<Object, Object> actualNopTransformerResult = NOPTransformer.nopTransformer();
     Object actualTransformResult = actualNopTransformerResult.transform("42");

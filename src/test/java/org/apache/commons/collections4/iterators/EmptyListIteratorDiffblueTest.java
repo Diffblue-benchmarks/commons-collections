@@ -1,27 +1,24 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ListIterator;
 import org.apache.commons.collections4.ResettableListIterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class EmptyListIteratorDiffblueTest {
+public class EmptyListIteratorDiffblueTest {
   /**
    * Test {@link EmptyListIterator#emptyListIterator()}.
-   *
-   * <p>Method under test: {@link EmptyListIterator#emptyListIterator()}
+   * <p>
+   * Method under test: {@link EmptyListIterator#emptyListIterator()}
    */
   @Test
-  @DisplayName("Test emptyListIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ListIterator EmptyListIterator.emptyListIterator()"})
-  void testEmptyListIterator() {
+  public void testEmptyListIterator() {
     // Arrange and Act
     ListIterator<Object> actualEmptyListIteratorResult = EmptyListIterator.emptyListIterator();
 
@@ -32,18 +29,16 @@ class EmptyListIteratorDiffblueTest {
 
   /**
    * Test {@link EmptyListIterator#resettableEmptyListIterator()}.
-   *
-   * <p>Method under test: {@link EmptyListIterator#resettableEmptyListIterator()}
+   * <p>
+   * Method under test: {@link EmptyListIterator#resettableEmptyListIterator()}
    */
   @Test
-  @DisplayName("Test resettableEmptyListIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ResettableListIterator EmptyListIterator.resettableEmptyListIterator()"})
-  void testResettableEmptyListIterator() {
+  public void testResettableEmptyListIterator() {
     // Arrange and Act
-    ResettableListIterator<Object> actualResettableEmptyListIteratorResult =
-        EmptyListIterator.resettableEmptyListIterator();
+    ResettableListIterator<Object> actualResettableEmptyListIteratorResult = EmptyListIterator
+        .resettableEmptyListIterator();
 
     // Assert
     assertTrue(actualResettableEmptyListIteratorResult instanceof EmptyListIterator);
@@ -52,15 +47,13 @@ class EmptyListIteratorDiffblueTest {
 
   /**
    * Test {@link EmptyListIterator#EmptyListIterator()}.
-   *
-   * <p>Method under test: default or parameterless constructor of {@link EmptyListIterator}
+   * <p>
+   * Method under test: default or parameterless constructor of {@link EmptyListIterator}
    */
   @Test
-  @DisplayName("Test new EmptyListIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EmptyListIterator.<init>()"})
-  void testNewEmptyListIterator() {
+  public void testNewEmptyListIterator() {
     // Arrange and Act
     EmptyListIterator<Object> actualEmptyListIterator = new EmptyListIterator<>();
 

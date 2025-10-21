@@ -1,33 +1,29 @@
 package org.apache.commons.collections4.map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.bidimap.DualTreeBidiMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class UnmodifiableOrderedMapDiffblueTest {
+public class UnmodifiableOrderedMapDiffblueTest {
   /**
    * Test {@link UnmodifiableOrderedMap#unmodifiableOrderedMap(OrderedMap)}.
-   *
-   * <p>Method under test: {@link UnmodifiableOrderedMap#unmodifiableOrderedMap(OrderedMap)}
+   * <p>
+   * Method under test: {@link UnmodifiableOrderedMap#unmodifiableOrderedMap(OrderedMap)}
    */
   @Test
-  @DisplayName("Test unmodifiableOrderedMap(OrderedMap)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"OrderedMap UnmodifiableOrderedMap.unmodifiableOrderedMap(OrderedMap)"})
-  void testUnmodifiableOrderedMap() {
+  public void testUnmodifiableOrderedMap() {
     // Arrange and Act
-    OrderedMap<Object, Object> actualUnmodifiableOrderedMapResult =
-        UnmodifiableOrderedMap.unmodifiableOrderedMap(new DualTreeBidiMap<>());
+    OrderedMap<Object, Object> actualUnmodifiableOrderedMapResult = UnmodifiableOrderedMap
+        .unmodifiableOrderedMap(new DualTreeBidiMap<>());
 
     // Assert
-    assertEquals(
-        ((AbstractMapDecorator) actualUnmodifiableOrderedMapResult).map,
+    assertEquals(((AbstractMapDecorator<?, ?>) actualUnmodifiableOrderedMapResult).map,
         actualUnmodifiableOrderedMapResult);
   }
 }

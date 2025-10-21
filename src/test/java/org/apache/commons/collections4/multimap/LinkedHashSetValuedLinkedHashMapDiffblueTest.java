@@ -1,34 +1,29 @@
 package org.apache.commons.collections4.multimap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import org.apache.commons.collections4.MultiValuedMap;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class LinkedHashSetValuedLinkedHashMapDiffblueTest {
+public class LinkedHashSetValuedLinkedHashMapDiffblueTest {
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap()}.
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap()}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap()}
    */
   @Test
-  @DisplayName("Test new LinkedHashSetValuedLinkedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>()"})
-  void testNewLinkedHashSetValuedLinkedHashMap() {
+  public void testNewLinkedHashSetValuedLinkedHashMap() {
     // Arrange and Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>();
+    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>();
 
     // Assert
     assertEquals(0, actualLinkedHashSetValuedLinkedHashMap.size());
@@ -38,19 +33,16 @@ class LinkedHashSetValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int)}.
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int)}
    */
   @Test
-  @DisplayName("Test new LinkedHashSetValuedLinkedHashMap(int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(int)"})
-  void testNewLinkedHashSetValuedLinkedHashMap2() {
+  public void testNewLinkedHashSetValuedLinkedHashMap2() {
     // Arrange and Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(1);
+    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>(
+        1);
 
     // Assert
     assertEquals(0, actualLinkedHashSetValuedLinkedHashMap.size());
@@ -60,19 +52,16 @@ class LinkedHashSetValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int, int)}.
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int, int)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(int, int)}
    */
   @Test
-  @DisplayName("Test new LinkedHashSetValuedLinkedHashMap(int, int)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(int, int)"})
-  void testNewLinkedHashSetValuedLinkedHashMap3() {
+  public void testNewLinkedHashSetValuedLinkedHashMap3() {
     // Arrange and Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(1, 1);
+    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>(
+        1, 1);
 
     // Assert
     assertEquals(0, actualLinkedHashSetValuedLinkedHashMap.size());
@@ -82,29 +71,24 @@ class LinkedHashSetValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return Map size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return Map size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}
    */
   @Test
-  @DisplayName(
-      "Test new LinkedHashSetValuedLinkedHashMap(Map); given '42'; then return Map size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(Map)"})
-  void testNewLinkedHashSetValuedLinkedHashMap_given42_thenReturnMapSizeIsOne() {
+  public void testNewLinkedHashSetValuedLinkedHashMap_given42_thenReturnMapSizeIsOne() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
 
     // Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(map);
+    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>(
+        map);
 
     // Assert
     Map<Object, Set<Object>> map2 = actualLinkedHashSetValuedLinkedHashMap.getMap();
@@ -116,53 +100,39 @@ class LinkedHashSetValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>Then return {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>Then return {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new LinkedHashSetValuedLinkedHashMap(MultiValuedMap); then return ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(MultiValuedMap)"})
-  void testNewLinkedHashSetValuedLinkedHashMap_thenReturnArrayListValuedHashMap() {
+  public void testNewLinkedHashSetValuedLinkedHashMap_thenReturnArrayListValuedHashMap() {
     // Arrange
     ArrayListValuedHashMap<?, ?> map = new ArrayListValuedHashMap<>();
 
-    // Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualLinkedHashSetValuedLinkedHashMap);
+    // Act and Assert
+    assertEquals(map, new LinkedHashSetValuedLinkedHashMap<>(map));
   }
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then return size is zero.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then return size is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(Map)}
    */
   @Test
-  @DisplayName(
-      "Test new LinkedHashSetValuedLinkedHashMap(Map); when HashMap(); then return size is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(Map)"})
-  void testNewLinkedHashSetValuedLinkedHashMap_whenHashMap_thenReturnSizeIsZero() {
+  public void testNewLinkedHashSetValuedLinkedHashMap_whenHashMap_thenReturnSizeIsZero() {
     // Arrange and Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(new HashMap<>());
+    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>(
+        new HashMap<>());
 
     // Assert
     assertEquals(0, actualLinkedHashSetValuedLinkedHashMap.size());
@@ -172,81 +142,58 @@ class LinkedHashSetValuedLinkedHashMapDiffblueTest {
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new LinkedHashSetValuedLinkedHashMap(MultiValuedMap); when HashSetValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(MultiValuedMap)"})
-  void testNewLinkedHashSetValuedLinkedHashMap_whenHashSetValuedHashMap() {
+  public void testNewLinkedHashSetValuedLinkedHashMap_whenHashSetValuedHashMap() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
 
-    // Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualLinkedHashSetValuedLinkedHashMap);
+    // Act and Assert
+    assertEquals(map, new LinkedHashSetValuedLinkedHashMap<>(map));
   }
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}.
-   *
    * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.
+   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap(MultiValuedMap)}
    */
   @Test
-  @DisplayName(
-      "Test new LinkedHashSetValuedLinkedHashMap(MultiValuedMap); when HashSetValuedHashMap() 'Key' is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LinkedHashSetValuedLinkedHashMap.<init>(MultiValuedMap)"})
-  void testNewLinkedHashSetValuedLinkedHashMap_whenHashSetValuedHashMapKeyIsValue() {
+  public void testNewLinkedHashSetValuedLinkedHashMap_whenHashSetValuedHashMapKeyIsValue() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
     map.put("Key", "Value");
 
-    // Act
-    LinkedHashSetValuedLinkedHashMap<Object, Object> actualLinkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>(map);
-
-    // Assert
-    assertEquals(map, actualLinkedHashSetValuedLinkedHashMap);
+    // Act and Assert
+    assertEquals(map, new LinkedHashSetValuedLinkedHashMap<>(map));
   }
 
   /**
    * Test {@link LinkedHashSetValuedLinkedHashMap#createCollection()}.
-   *
    * <ul>
-   *   <li>Given {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap()}.
-   *   <li>Then return Empty.
+   *   <li>Given {@link LinkedHashSetValuedLinkedHashMap#LinkedHashSetValuedLinkedHashMap()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LinkedHashSetValuedLinkedHashMap#createCollection()}
+   * <p>
+   * Method under test: {@link LinkedHashSetValuedLinkedHashMap#createCollection()}
    */
   @Test
-  @DisplayName(
-      "Test createCollection(); given LinkedHashSetValuedLinkedHashMap(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.LinkedHashSet LinkedHashSetValuedLinkedHashMap.createCollection()"})
-  void testCreateCollection_givenLinkedHashSetValuedLinkedHashMap_thenReturnEmpty() {
+  public void testCreateCollection_givenLinkedHashSetValuedLinkedHashMap_thenReturnEmpty() {
     // Arrange
-    LinkedHashSetValuedLinkedHashMap<Object, Object> linkedHashSetValuedLinkedHashMap =
-        new LinkedHashSetValuedLinkedHashMap<>();
+    LinkedHashSetValuedLinkedHashMap<Object, Object> linkedHashSetValuedLinkedHashMap = new LinkedHashSetValuedLinkedHashMap<>();
 
     // Act and Assert
     assertTrue(linkedHashSetValuedLinkedHashMap.createCollection().isEmpty());

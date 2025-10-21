@@ -1,45 +1,39 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class IfClosureDiffblueTest {
+public class IfClosureDiffblueTest {
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
+   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code trueClosure}.
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
    */
   @Test
-  @DisplayName("Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure() {
+  public void testIfClosureWithPredicateTrueClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Predicate<Object> predicate2 = mock(Predicate.class);
     when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
     Closure<Object> trueClosure = mock(Closure.class);
     doNothing().when(trueClosure).accept(Mockito.<Object>any());
-
     IfClosure<? super Object> trueClosure2 = new IfClosure<>(predicate2, trueClosure);
 
     // Act
@@ -50,12 +44,10 @@ class IfClosureDiffblueTest {
     verify(trueClosure).accept(isA(Object.class));
     verify(predicate).test(isA(Object.class));
     verify(predicate2).test(isA(Object.class));
-    Closure<? super Object> trueClosure3 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    Closure<? super Object> trueClosure3 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
     assertTrue(trueClosure3 instanceof IfClosure);
     assertTrue(actualIfClosureResult instanceof IfClosure);
-    Closure<? super Object> falseClosure =
-        ((IfClosure<Object>) actualIfClosureResult).getFalseClosure();
+    Closure<? super Object> falseClosure = ((IfClosure<Object>) actualIfClosureResult).getFalseClosure();
     assertTrue(falseClosure instanceof NOPClosure);
     assertSame(trueClosure2, trueClosure3);
     assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
@@ -63,29 +55,22 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
+   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code trueClosure}.
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
    */
   @Test
-  @DisplayName("Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure2() {
+  public void testIfClosureWithPredicateTrueClosure2() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Predicate<Object> predicate2 = mock(Predicate.class);
     when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
-
     Closure<Object> falseClosure = mock(Closure.class);
     doNothing().when(falseClosure).accept(Mockito.<Object>any());
-
-    IfClosure<? super Object> trueClosure =
-        new IfClosure<>(predicate2, mock(Closure.class), falseClosure);
+    IfClosure<? super Object> trueClosure = new IfClosure<>(predicate2, mock(Closure.class), falseClosure);
 
     // Act
     Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
@@ -95,8 +80,7 @@ class IfClosureDiffblueTest {
     verify(falseClosure).accept(isA(Object.class));
     verify(predicate).test(isA(Object.class));
     verify(predicate2).test(isA(Object.class));
-    Closure<? super Object> trueClosure2 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    Closure<? super Object> trueClosure2 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
     assertTrue(trueClosure2 instanceof IfClosure);
     assertTrue(actualIfClosureResult instanceof IfClosure);
     assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
@@ -105,74 +89,93 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
+   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code trueClosure}, {@code falseClosure}.
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure() {
+  public void testIfClosureWithPredicateTrueClosureFalseClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
-    ChainedClosure<? super Object> trueClosure = new ChainedClosure<>(closure);
+    ForClosure<? super Object> trueClosure = new ForClosure<>(3, closure);
+
     Closure<Object> falseClosure = mock(Closure.class);
 
     // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure, falseClosure);
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure, falseClosure);
     actualIfClosureResult.execute("42");
 
     // Assert
-    verify(closure).accept(isA(Object.class));
+    verify(closure, atLeast(1)).accept(isA(Object.class));
     verify(predicate).test(isA(Object.class));
-    Closure<? super Object> trueClosure2 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
-    assertTrue(trueClosure2 instanceof ChainedClosure);
+    Closure<? super Object> trueClosure2 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    assertTrue(trueClosure2 instanceof ForClosure);
     assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertEquals(1, trueClosure.getClosures().length);
-    assertEquals(1, ((ChainedClosure<? super Object>) trueClosure2).getClosures().length);
+    assertEquals(3, ((ForClosure<? super Object>) trueClosure2).getCount());
     assertSame(trueClosure, trueClosure2);
     assertSame(falseClosure, ((IfClosure<Object>) actualIfClosureResult).getFalseClosure());
     assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
+   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code trueClosure}, {@code falseClosure}.
    * <ul>
-   *   <li>Given {@code false}.
+   *   <li>Then return TrueClosure is {@link Closure}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'; given 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure_givenFalse() {
+  public void testIfClosureWithPredicateTrueClosureFalseClosure_thenReturnTrueClosureIsClosure() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+    Closure<Object> trueClosure = mock(Closure.class);
+    doNothing().when(trueClosure).accept(Mockito.<Object>any());
+    Closure<Object> falseClosure = mock(Closure.class);
+
+    // Act
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure, falseClosure);
+    actualIfClosureResult.execute("42");
+
+    // Assert
+    verify(trueClosure).accept(isA(Object.class));
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualIfClosureResult instanceof IfClosure);
+    assertSame(falseClosure, ((IfClosure<Object>) actualIfClosureResult).getFalseClosure());
+    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
+    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code trueClosure}, {@code falseClosure}.
+   * <ul>
+   *   <li>Then return TrueClosure is {@link Closure}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
+  public void testIfClosureWithPredicateTrueClosureFalseClosure_thenReturnTrueClosureIsClosure2() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
     Closure<Object> trueClosure = mock(Closure.class);
-
+    doNothing().when(trueClosure).accept(Mockito.<Object>any());
     Closure<Object> falseClosure = mock(Closure.class);
     doNothing().when(falseClosure).accept(Mockito.<Object>any());
 
     // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure, falseClosure);
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure, falseClosure);
     actualIfClosureResult.execute("42");
 
     // Assert
@@ -185,118 +188,37 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
+   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code trueClosure}, {@code falseClosure}.
    * <ul>
-   *   <li>Then return TrueClosure is {@link Closure}.
+   *   <li>Then TrueClosure return {@link IfClosure}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'; then return TrueClosure is Closure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure_thenReturnTrueClosureIsClosure() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    Closure<Object> trueClosure = mock(Closure.class);
-    Closure<Object> falseClosure = mock(Closure.class);
-
-    // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure, falseClosure);
-
-    // Assert
-    assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertSame(falseClosure, ((IfClosure<Object>) actualIfClosureResult).getFalseClosure());
-    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
-    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
-  }
-
-  /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
-   * <ul>
-   *   <li>Then return TrueClosure is {@link Closure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'; then return TrueClosure is Closure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure_thenReturnTrueClosureIsClosure2() {
+  public void testIfClosureWithPredicateTrueClosureFalseClosure_thenTrueClosureReturnIfClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    Closure<Object> trueClosure = mock(Closure.class);
-    doNothing().when(trueClosure).accept(Mockito.<Object>any());
-    Closure<Object> falseClosure = mock(Closure.class);
-
-    // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure, falseClosure);
-    actualIfClosureResult.execute("42");
-
-    // Assert
-    verify(trueClosure).accept(isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertSame(falseClosure, ((IfClosure<Object>) actualIfClosureResult).getFalseClosure());
-    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
-    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
-  }
-
-  /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
-   * <ul>
-   *   <li>Then TrueClosure return {@link IfClosure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'; then TrueClosure return IfClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure_thenTrueClosureReturnIfClosure() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Predicate<Object> predicate2 = mock(Predicate.class);
     when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
     Closure<Object> trueClosure = mock(Closure.class);
     doNothing().when(trueClosure).accept(Mockito.<Object>any());
-
     IfClosure<? super Object> trueClosure2 = new IfClosure<>(predicate2, trueClosure);
+
     Closure<Object> falseClosure = mock(Closure.class);
 
     // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure2, falseClosure);
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure2, falseClosure);
     actualIfClosureResult.execute("42");
 
     // Assert
     verify(trueClosure).accept(isA(Object.class));
     verify(predicate).test(isA(Object.class));
     verify(predicate2).test(isA(Object.class));
-    Closure<? super Object> trueClosure3 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    Closure<? super Object> trueClosure3 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
     assertTrue(trueClosure3 instanceof IfClosure);
     assertTrue(actualIfClosureResult instanceof IfClosure);
     assertTrue(((IfClosure<? super Object>) trueClosure3).getFalseClosure() instanceof NOPClosure);
@@ -306,41 +228,34 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code
-   * trueClosure}, {@code falseClosure}.
-   *
+   * Test {@link IfClosure#ifClosure(Predicate, Closure, Closure)} with {@code predicate}, {@code trueClosure}, {@code falseClosure}.
    * <ul>
-   *   <li>Then TrueClosure return {@link IfClosure}.
+   *   <li>Then TrueClosure return {@link IfClosure}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure, Closure) with 'predicate', 'trueClosure', 'falseClosure'; then TrueClosure return IfClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure, Closure)"})
-  void testIfClosureWithPredicateTrueClosureFalseClosure_thenTrueClosureReturnIfClosure2() {
+  public void testIfClosureWithPredicateTrueClosureFalseClosure_thenTrueClosureReturnIfClosure2() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Predicate<Object> predicate2 = mock(Predicate.class);
     when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
     IfClosure<? super Object> trueClosure = new IfClosure<>(predicate2, mock(Closure.class));
+
     Closure<Object> falseClosure = mock(Closure.class);
 
     // Act
-    Closure<Object> actualIfClosureResult =
-        IfClosure.ifClosure(predicate, trueClosure, falseClosure);
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure, falseClosure);
     actualIfClosureResult.execute("42");
 
     // Assert
     verify(predicate).test(isA(Object.class));
     verify(predicate2).test(isA(Object.class));
-    Closure<? super Object> trueClosure2 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    Closure<? super Object> trueClosure2 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
     assertTrue(trueClosure2 instanceof IfClosure);
     assertTrue(actualIfClosureResult instanceof IfClosure);
     assertTrue(((IfClosure<? super Object>) trueClosure2).getFalseClosure() instanceof NOPClosure);
@@ -350,23 +265,85 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
+   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code trueClosure}.
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
+   *   <li>Given {@code true}.</li>
+   *   <li>Then return TrueClosure is {@link Closure}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'; given 'false'; when Predicate test(Object) return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure_givenFalse_whenPredicateTestReturnFalse() {
+  public void testIfClosureWithPredicateTrueClosure_givenTrue_thenReturnTrueClosureIsClosure() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+    Closure<Object> trueClosure = mock(Closure.class);
+    doNothing().when(trueClosure).accept(Mockito.<Object>any());
+
+    // Act
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
+    actualIfClosureResult.execute("42");
+
+    // Assert
+    verify(trueClosure).accept(isA(Object.class));
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualIfClosureResult instanceof IfClosure);
+    assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
+    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
+    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code trueClosure}.
+   * <ul>
+   *   <li>Then TrueClosure return {@link ForClosure}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
+  public void testIfClosureWithPredicateTrueClosure_thenTrueClosureReturnForClosure() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+    ForClosure<? super Object> trueClosure = new ForClosure<>(3, closure);
+
+    // Act
+    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
+    actualIfClosureResult.execute("42");
+
+    // Assert
+    verify(closure, atLeast(1)).accept(isA(Object.class));
+    verify(predicate).test(isA(Object.class));
+    Closure<? super Object> trueClosure2 = ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
+    assertTrue(trueClosure2 instanceof ForClosure);
+    assertTrue(actualIfClosureResult instanceof IfClosure);
+    assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
+    assertEquals(3, ((ForClosure<? super Object>) trueClosure2).getCount());
+    assertSame(trueClosure, trueClosure2);
+    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
+  }
+
+  /**
+   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code trueClosure}.
+   * <ul>
+   *   <li>When {@link Closure}.</li>
+   *   <li>Then return TrueClosure is {@link Closure}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
+  public void testIfClosureWithPredicateTrueClosure_whenClosure_thenReturnTrueClosureIsClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
@@ -385,121 +362,9 @@ class IfClosureDiffblueTest {
   }
 
   /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
-   * <ul>
-   *   <li>Given {@code true}.
-   *   <li>Then return TrueClosure is {@link Closure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'; given 'true'; then return TrueClosure is Closure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure_givenTrue_thenReturnTrueClosureIsClosure() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    Closure<Object> trueClosure = mock(Closure.class);
-    doNothing().when(trueClosure).accept(Mockito.<Object>any());
-
-    // Act
-    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
-    actualIfClosureResult.execute("42");
-
-    // Assert
-    verify(trueClosure).accept(isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
-    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
-    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
-  }
-
-  /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
-   * <ul>
-   *   <li>Then TrueClosure return {@link ChainedClosure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'; then TrueClosure return ChainedClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure_thenTrueClosureReturnChainedClosure() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    ChainedClosure<? super Object> trueClosure = new ChainedClosure<>(closure);
-
-    // Act
-    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
-    actualIfClosureResult.execute("42");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    Closure<? super Object> trueClosure2 =
-        ((IfClosure<Object>) actualIfClosureResult).getTrueClosure();
-    assertTrue(trueClosure2 instanceof ChainedClosure);
-    assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
-    assertEquals(1, trueClosure.getClosures().length);
-    assertEquals(1, ((ChainedClosure<? super Object>) trueClosure2).getClosures().length);
-    assertSame(trueClosure, trueClosure2);
-    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
-  }
-
-  /**
-   * Test {@link IfClosure#ifClosure(Predicate, Closure)} with {@code predicate}, {@code
-   * trueClosure}.
-   *
-   * <ul>
-   *   <li>When {@link Predicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#ifClosure(Predicate, Closure)}
-   */
-  @Test
-  @DisplayName("Test ifClosure(Predicate, Closure) with 'predicate', 'trueClosure'; when Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure IfClosure.ifClosure(Predicate, Closure)"})
-  void testIfClosureWithPredicateTrueClosure_whenPredicate() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    Closure<Object> trueClosure = mock(Closure.class);
-
-    // Act
-    Closure<Object> actualIfClosureResult = IfClosure.ifClosure(predicate, trueClosure);
-
-    // Assert
-    assertTrue(actualIfClosureResult instanceof IfClosure);
-    assertTrue(((IfClosure<Object>) actualIfClosureResult).getFalseClosure() instanceof NOPClosure);
-    assertSame(trueClosure, ((IfClosure<Object>) actualIfClosureResult).getTrueClosure());
-    assertSame(predicate, ((IfClosure<Object>) actualIfClosureResult).getPredicate());
-  }
-
-  /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link IfClosure#IfClosure(Predicate, Closure, Closure)}
    *   <li>{@link IfClosure#getFalseClosure()}
@@ -508,16 +373,10 @@ class IfClosureDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void IfClosure.<init>(Predicate, Closure, Closure)",
-    "Closure IfClosure.getFalseClosure()",
-    "Predicate IfClosure.getPredicate()",
-    "Closure IfClosure.getTrueClosure()"
-  })
-  void testGettersAndSetters() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void IfClosure.<init>(Predicate, Closure, Closure)", "Closure IfClosure.getFalseClosure()",
+      "Predicate IfClosure.getPredicate()", "Closure IfClosure.getTrueClosure()"})
+  public void testGettersAndSetters() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     Closure<Object> trueClosure = mock(Closure.class);
@@ -536,15 +395,13 @@ class IfClosureDiffblueTest {
 
   /**
    * Test {@link IfClosure#IfClosure(Predicate, Closure)}.
-   *
-   * <p>Method under test: {@link IfClosure#IfClosure(Predicate, Closure)}
+   * <p>
+   * Method under test: {@link IfClosure#IfClosure(Predicate, Closure)}
    */
   @Test
-  @DisplayName("Test new IfClosure(Predicate, Closure)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void IfClosure.<init>(Predicate, Closure)"})
-  void testNewIfClosure() {
+  public void testNewIfClosure() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     Closure<Object> trueClosure = mock(Closure.class);
@@ -560,22 +417,18 @@ class IfClosureDiffblueTest {
 
   /**
    * Test {@link IfClosure#execute(Object)}.
-   *
-   * <p>Method under test: {@link IfClosure#execute(Object)}
+   * <p>
+   * Method under test: {@link IfClosure#execute(Object)}
    */
   @Test
-  @DisplayName("Test execute(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void IfClosure.execute(Object)"})
-  void testExecute() {
+  public void testExecute() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
     Closure<Object> falseClosure = mock(Closure.class);
     doNothing().when(falseClosure).accept(Mockito.<Object>any());
-
     IfClosure<Object> ifClosure = new IfClosure<>(predicate, mock(Closure.class), falseClosure);
 
     // Act
@@ -588,64 +441,78 @@ class IfClosureDiffblueTest {
 
   /**
    * Test {@link IfClosure#execute(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ChainedClosure#ChainedClosure(Closure[])} with closures is {@link Closure}.
-   *   <li>Then calls {@link Closure#accept(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#execute(Object)}
+   * <p>
+   * Method under test: {@link IfClosure#execute(Object)}
    */
   @Test
-  @DisplayName(
-      "Test execute(Object); given ChainedClosure(Closure[]) with closures is Closure; then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void IfClosure.execute(Object)"})
-  void testExecute_givenChainedClosureWithClosuresIsClosure_thenCallsAccept() {
+  public void testExecute2() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    ChainedClosure<? super Object> trueClosure = new ChainedClosure<>(closure);
-
-    IfClosure<Object> ifClosure = new IfClosure<>(predicate, trueClosure);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+    Closure<Object> trueClosure = mock(Closure.class);
+    doNothing().when(trueClosure).accept(Mockito.<Object>any());
+    IfClosure<Object> ifClosure = new IfClosure<>(predicate, new IfClosure<>(predicate2, trueClosure),
+        mock(Closure.class));
 
     // Act
-    ifClosure.execute(42);
+    ifClosure.execute("Input");
 
     // Assert
-    verify(closure).accept(isA(Object.class));
+    verify(trueClosure).accept(isA(Object.class));
+    verify(predicate).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+  }
+
+  /**
+   * Test {@link IfClosure#execute(Object)}.
+   * <ul>
+   *   <li>Given {@link ForClosure#ForClosure(int, Closure)} with count is three and {@link Closure}.</li>
+   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IfClosure#execute(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void IfClosure.execute(Object)"})
+  public void testExecute_givenForClosureWithCountIsThreeAndClosure_thenCallsAccept() {
+    // Arrange
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+    Closure<Object> closure = mock(Closure.class);
+    doNothing().when(closure).accept(Mockito.<Object>any());
+    IfClosure<Object> ifClosure = new IfClosure<>(predicate, new ForClosure<>(3, closure), mock(Closure.class));
+
+    // Act
+    ifClosure.execute("Input");
+
+    // Assert
+    verify(closure, atLeast(1)).accept(isA(Object.class));
     verify(predicate).test(isA(Object.class));
   }
 
   /**
    * Test {@link IfClosure#execute(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link IfClosure#IfClosure(Predicate, Closure)} with {@link Predicate} and
-   *       trueClosure is {@link Closure}.
-   *   <li>When {@code Input}.
+   *   <li>Given {@link IfClosure#IfClosure(Predicate, Closure)} with {@link Predicate} and trueClosure is {@link Closure}.</li>
+   *   <li>Then calls {@link Closure#accept(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#execute(Object)}
+   * <p>
+   * Method under test: {@link IfClosure#execute(Object)}
    */
   @Test
-  @DisplayName(
-      "Test execute(Object); given IfClosure(Predicate, Closure) with Predicate and trueClosure is Closure; when 'Input'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void IfClosure.execute(Object)"})
-  void testExecute_givenIfClosureWithPredicateAndTrueClosureIsClosure_whenInput() {
+  public void testExecute_givenIfClosureWithPredicateAndTrueClosureIsClosure_thenCallsAccept() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
     Closure<Object> trueClosure = mock(Closure.class);
     doNothing().when(trueClosure).accept(Mockito.<Object>any());
-
     IfClosure<Object> ifClosure = new IfClosure<>(predicate, trueClosure);
 
     // Act
@@ -658,70 +525,24 @@ class IfClosureDiffblueTest {
 
   /**
    * Test {@link IfClosure#execute(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link IfClosure#IfClosure(Predicate, Closure)} with {@link Predicate} and
-   *       trueClosure is {@link IfClosure#IfClosure(Predicate, Closure)}.
-   *   <li>Then calls {@link Closure#accept(Object)}.
+   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#execute(Object)}
+   * <p>
+   * Method under test: {@link IfClosure#execute(Object)}
    */
   @Test
-  @DisplayName(
-      "Test execute(Object); given IfClosure(Predicate, Closure) with Predicate and trueClosure is IfClosure(Predicate, Closure); then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void IfClosure.execute(Object)"})
-  void testExecute_givenIfClosureWithPredicateAndTrueClosureIsIfClosure_thenCallsAccept() {
-    // Arrange
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    Predicate<Object> predicate2 = mock(Predicate.class);
-    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
-    Closure<Object> trueClosure = mock(Closure.class);
-    doNothing().when(trueClosure).accept(Mockito.<Object>any());
-
-    IfClosure<? super Object> trueClosure2 = new IfClosure<>(predicate2, trueClosure);
-
-    IfClosure<Object> ifClosure = new IfClosure<>(predicate, trueClosure2);
-
-    // Act
-    ifClosure.execute(42);
-
-    // Assert
-    verify(trueClosure).accept(isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    verify(predicate2).test(isA(Object.class));
-  }
-
-  /**
-   * Test {@link IfClosure#execute(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>When forty-two.
-   *   <li>Then calls {@link Predicate#test(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link IfClosure#execute(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test execute(Object); given Predicate test(Object) return 'false'; when forty-two; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void IfClosure.execute(Object)"})
-  void testExecute_givenPredicateTestReturnFalse_whenFortyTwo_thenCallsTest() {
+  public void testExecute_givenPredicateTestReturnFalse_thenCallsTest() {
     // Arrange
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
     IfClosure<Object> ifClosure = new IfClosure<>(predicate, mock(Closure.class));
 
     // Act
-    ifClosure.execute(42);
+    ifClosure.execute("Input");
 
     // Assert
     verify(predicate).test(isA(Object.class));

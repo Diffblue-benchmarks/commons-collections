@@ -1,29 +1,25 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Transformer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class StringValueTransformerDiffblueTest {
+public class StringValueTransformerDiffblueTest {
   /**
    * Test {@link StringValueTransformer#stringValueTransformer()}.
-   *
-   * <p>Method under test: {@link StringValueTransformer#stringValueTransformer()}
+   * <p>
+   * Method under test: {@link StringValueTransformer#stringValueTransformer()}
    */
   @Test
-  @DisplayName("Test stringValueTransformer()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Transformer StringValueTransformer.stringValueTransformer()"})
-  void testStringValueTransformer() {
+  public void testStringValueTransformer() {
     // Arrange and Act
-    Transformer<Object, String> actualStringValueTransformerResult =
-        StringValueTransformer.stringValueTransformer();
+    Transformer<Object, String> actualStringValueTransformerResult = StringValueTransformer.stringValueTransformer();
     String actualTransformResult = actualStringValueTransformerResult.transform("42");
 
     // Assert

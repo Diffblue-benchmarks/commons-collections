@@ -1,26 +1,23 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertThrows;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Closure;
 import org.apache.commons.collections4.FunctorException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class ExceptionClosureDiffblueTest {
+public class ExceptionClosureDiffblueTest {
   /**
    * Test {@link ExceptionClosure#exceptionClosure()}.
-   *
-   * <p>Method under test: {@link ExceptionClosure#exceptionClosure()}
+   * <p>
+   * Method under test: {@link ExceptionClosure#exceptionClosure()}
    */
   @Test
-  @DisplayName("Test exceptionClosure()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Closure ExceptionClosure.exceptionClosure()"})
-  void testExceptionClosure() {
+  public void testExceptionClosure() {
     // Arrange and Act
     Closure<Object> actualExceptionClosureResult = ExceptionClosure.exceptionClosure();
 

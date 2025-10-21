@@ -1,45 +1,41 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import org.apache.commons.collections4.Transformer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class ObjectGraphIteratorDiffblueTest {
+public class ObjectGraphIteratorDiffblueTest {
   /**
    * Test {@link ObjectGraphIterator#ObjectGraphIterator(Iterator)}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Iterator)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Iterator)}
    */
   @Test
-  @DisplayName("Test new ObjectGraphIterator(Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.<init>(Iterator)"})
-  void testNewObjectGraphIterator() {
+  public void testNewObjectGraphIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    ObjectGraphIterator<Object> actualObjectGraphIterator =
-        new ObjectGraphIterator<>(objectList.iterator());
+    ObjectGraphIterator<Object> actualObjectGraphIterator = new ObjectGraphIterator<>(objectList.iterator());
 
     // Assert
     assertFalse(actualObjectGraphIterator.hasNext());
@@ -47,25 +43,22 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.
+   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}
    */
   @Test
-  @DisplayName("Test new ObjectGraphIterator(Object, Transformer); when ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.<init>(Object, Transformer)"})
-  void testNewObjectGraphIterator_whenArrayListIterator() {
+  public void testNewObjectGraphIterator_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    ObjectGraphIterator<Object> actualObjectGraphIterator =
-        new ObjectGraphIterator<>(objectList.iterator(), mock(Transformer.class));
+    ObjectGraphIterator<Object> actualObjectGraphIterator = new ObjectGraphIterator<>(objectList.iterator(),
+        mock(Transformer.class));
 
     // Assert
     assertFalse(actualObjectGraphIterator.hasNext());
@@ -73,24 +66,19 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}.
-   *
    * <ul>
-   *   <li>When {@code Root}.
-   *   <li>Then return next is {@code null}.
+   *   <li>When {@code Root}.</li>
+   *   <li>Then return next is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test new ObjectGraphIterator(Object, Transformer); when 'Root'; then return next is 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.<init>(Object, Transformer)"})
-  void testNewObjectGraphIterator_whenRoot_thenReturnNextIsNull() {
+  public void testNewObjectGraphIterator_whenRoot_thenReturnNextIsNull() {
     // Arrange and Act
-    ObjectGraphIterator<Object> actualObjectGraphIterator =
-        new ObjectGraphIterator<>("Root", mock(Transformer.class));
+    ObjectGraphIterator<Object> actualObjectGraphIterator = new ObjectGraphIterator<>("Root", mock(Transformer.class));
 
     // Assert
     assertNull(actualObjectGraphIterator.next());
@@ -99,122 +87,122 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#findNext(Object)}.
-   *
    * <ul>
-   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} hasNext.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNext(Object)}
    */
   @Test
-  @DisplayName(
-      "Test findNext(Object); then not ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_thenNotObjectGraphIteratorWithRootAndTransformerHasNext() {
+  public void testFindNext_givenTransformerApplyReturnScannerWithFoo() {
     // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", mock(Transformer.class));
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> iteratorResult = objectList.iterator();
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
+    Scanner scanner = new Scanner("foo");
 
     // Act
-    objectGraphIterator.findNext(iteratorResult);
+    objectGraphIterator.findNext(scanner);
 
     // Assert
-    assertFalse(iteratorResult.hasNext());
+    verify(transformer, atLeast(1)).apply(isA(Object.class));
+    assertFalse(scanner.hasNext());
     assertFalse(objectGraphIterator.hasNext());
   }
 
   /**
    * Test {@link ObjectGraphIterator#findNext(Object)}.
-   *
    * <ul>
-   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is
-   *       {@link Scanner#Scanner(String)} and {@link Transformer} next is {@code Apply}.
+   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} next is {@code Apply}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNext(Object)}
    */
   @Test
-  @DisplayName(
-      "Test findNext(Object); then ObjectGraphIterator(Object, Transformer) with root is Scanner(String) and Transformer next is 'Apply'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_thenObjectGraphIteratorWithRootIsScannerAndTransformerNextIsApply() {
+  public void testFindNext_thenObjectGraphIteratorWithRootAndTransformerNextIsApply() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> iteratorResult = objectList.iterator();
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
+    Scanner scanner = new Scanner("foo");
 
     // Act
-    objectGraphIterator.findNext(iteratorResult);
+    objectGraphIterator.findNext(scanner);
 
-    // Assert that nothing has changed
+    // Assert
     verify(transformer).apply(isA(Object.class));
     assertEquals("Apply", objectGraphIterator.next());
-    assertFalse(iteratorResult.hasNext());
+    assertFalse(scanner.hasNext());
     assertFalse(objectGraphIterator.hasNext());
   }
 
   /**
    * Test {@link ObjectGraphIterator#findNext(Object)}.
-   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Iterator)} with rootIterator is {@link ArrayList#ArrayList()} iterator next is {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNext(Object)}
    */
   @Test
-  @DisplayName("Test findNext(Object); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_thenThrowNoSuchElementException() {
+  public void testFindNext_thenObjectGraphIteratorWithRootIteratorIsArrayListIteratorNextIsFoo() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(objectList.iterator());
+    Scanner scanner = new Scanner("foo");
+
+    // Act
+    objectGraphIterator.findNext(scanner);
+
+    // Assert
+    assertEquals("foo", objectGraphIterator.next());
+    assertFalse(scanner.hasNext());
+    assertFalse(objectGraphIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#findNext(Object)}.
+   * <ul>
+   *   <li>Then throw {@link NoSuchElementException}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
+  public void testFindNext_thenThrowNoSuchElementException() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException());
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
-
-    ArrayList<Object> objectList = new ArrayList<>();
+    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act and Assert
-    assertThrows(
-        NoSuchElementException.class, () -> objectGraphIterator.findNext(objectList.iterator()));
+    assertThrows(NoSuchElementException.class, () -> objectGraphIterator.findNext(new Scanner("foo")));
     verify(transformer).apply(isA(Object.class));
   }
 
   /**
    * Test {@link ObjectGraphIterator#findNext(Object)}.
-   *
    * <ul>
-   *   <li>When {@code Value}.
-   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} next is {@code Value}.
+   *   <li>When {@code Value}.</li>
+   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} next is {@code Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNext(Object)}
    */
   @Test
-  @DisplayName(
-      "Test findNext(Object); when 'Value'; then ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer next is 'Value'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_whenValue_thenObjectGraphIteratorWithRootAndTransformerNextIsValue() {
+  public void testFindNext_whenValue_thenObjectGraphIteratorWithRootAndTransformerNextIsValue() {
     // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", mock(Transformer.class));
 
     // Act
     objectGraphIterator.findNext("Value");
@@ -227,19 +215,16 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
    */
   @Test
-  @DisplayName("Test findNextByIterator(Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator() {
+  public void testFindNextByIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(objectList.iterator());
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(objectList.iterator());
 
     ArrayList<Object> objectList2 = new ArrayList<>();
     Iterator<Object> iterator = objectList2.iterator();
@@ -254,21 +239,102 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
    */
   @Test
-  @DisplayName("Test findNextByIterator(Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator2() {
+  public void testFindNextByIterator2() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(objectList.iterator());
+
+    ArrayList<Object> objectList2 = new ArrayList<>();
+    objectList2.add("42");
+    Iterator<Object> iterator = objectList2.iterator();
+
+    // Act
+    objectGraphIterator.findNextByIterator(iterator);
+
+    // Assert
+    assertEquals("42", objectGraphIterator.next());
+    assertFalse(iterator.hasNext());
+    assertFalse(objectGraphIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
+   * <ul>
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
+  public void testFindNextByIterator_givenTransformerApplyReturnScannerWithFoo() {
+    // Arrange
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterator<Object> iterator = objectList.iterator();
+
+    // Act
+    objectGraphIterator.findNextByIterator(iterator);
+
+    // Assert
+    verify(transformer, atLeast(1)).apply(Mockito.<Object>any());
+    assertFalse(iterator.hasNext());
+    assertFalse(objectGraphIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
+   * <ul>
+   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} hasNext.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
+  public void testFindNextByIterator_thenNotObjectGraphIteratorWithRootAndTransformerHasNext() {
+    // Arrange
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", mock(Transformer.class));
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    Iterator<Object> iterator = objectList.iterator();
+
+    // Act
+    objectGraphIterator.findNextByIterator(iterator);
+
+    // Assert
+    assertFalse(iterator.hasNext());
+    assertFalse(objectGraphIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
+   * <ul>
+   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} next is {@code Apply}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
+  public void testFindNextByIterator_thenObjectGraphIteratorWithRootAndTransformerNextIsApply() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(null, transformer);
-    objectGraphIterator.updateCurrentIterator();
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -286,162 +352,42 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
-   */
-  @Test
-  @DisplayName("Test findNextByIterator(Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(objectList.iterator());
-    objectGraphIterator.updateCurrentIterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator = objectList2.iterator();
-
-    // Act
-    objectGraphIterator.findNextByIterator(iterator);
-
-    // Assert
-    assertEquals("42", objectGraphIterator.next());
-    assertFalse(iterator.hasNext());
-    assertFalse(objectGraphIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer}.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test findNextByIterator(Iterator); given ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator_givenObjectGraphIteratorWithRootAndTransformer() {
-    // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", mock(Transformer.class));
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> iterator = objectList.iterator();
-
-    // Act
-    objectGraphIterator.findNextByIterator(iterator);
-
-    // Assert
-    assertFalse(iterator.hasNext());
-    assertFalse(objectGraphIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
-   * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       ArrayList#ArrayList()} iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
-   */
-  @Test
-  @DisplayName(
-      "Test findNextByIterator(Iterator); given Transformer apply(Object) return ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator_givenTransformerApplyReturnArrayListIterator() {
+  public void testFindNextByIterator_thenThrowNoSuchElementException() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     ArrayList<Object> objectList = new ArrayList<>();
-    when(transformer.apply(Mockito.<Object>any())).thenReturn(objectList.iterator());
+    objectList.add("42");
 
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
-    objectGraphIterator.updateCurrentIterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator = objectList2.iterator();
-
-    // Act
-    objectGraphIterator.findNextByIterator(iterator);
-
-    // Assert
-    verify(transformer, atLeast(1)).apply(Mockito.<Object>any());
-    assertFalse(iterator.hasNext());
-    assertFalse(objectGraphIterator.hasNext());
-  }
-
-  /**
-   * Test {@link ObjectGraphIterator#findNextByIterator(Iterator)}.
-   *
-   * <ul>
-   *   <li>Then {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} next is {@code Apply}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNextByIterator(Iterator)}
-   */
-  @Test
-  @DisplayName(
-      "Test findNextByIterator(Iterator); then ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer next is 'Apply'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectGraphIterator.findNextByIterator(Iterator)"})
-  void testFindNextByIterator_thenObjectGraphIteratorWithRootAndTransformerNextIsApply() {
-    // Arrange
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
-    objectGraphIterator.updateCurrentIterator();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    Iterator<Object> iterator = objectList.iterator();
-
-    // Act
-    objectGraphIterator.findNextByIterator(iterator);
-
-    // Assert that nothing has changed
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> objectGraphIterator.findNextByIterator(objectList.iterator()));
     verify(transformer).apply(isA(Object.class));
-    assertEquals("Apply", objectGraphIterator.next());
-    assertFalse(iterator.hasNext());
-    assertFalse(objectGraphIterator.hasNext());
   }
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext() {
+  public void testHasNext() {
     // Arrange
-    AbstractMapIteratorDecorator<Object, Object> abstractMapIteratorDecorator =
-        new AbstractMapIteratorDecorator<>(
-            new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(abstractMapIteratorDecorator, mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(
+        new AbstractMapIteratorDecorator<>(new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>())),
+        mock(Transformer.class));
 
     // Act and Assert
     assertFalse(objectGraphIterator.hasNext());
@@ -449,27 +395,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} updateCurrentIterator.
+   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} updateCurrentIterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer updateCurrentIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenObjectGraphIteratorWithRootAndTransformerUpdateCurrentIterator() {
+  public void testHasNext_givenObjectGraphIteratorWithRootAndTransformerUpdateCurrentIterator() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
     objectGraphIterator.updateCurrentIterator();
 
     // Act
@@ -482,25 +422,19 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is
-   *       {@code null} and {@link Transformer}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is {@code null} and {@link Transformer}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given ObjectGraphIterator(Object, Transformer) with root is 'null' and Transformer; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenObjectGraphIteratorWithRootIsNullAndTransformer_thenReturnFalse() {
+  public void testHasNext_givenObjectGraphIteratorWithRootIsNullAndTransformer_thenReturnFalse() {
     // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(null, mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(null, mock(Transformer.class));
 
     // Act and Assert
     assertFalse(objectGraphIterator.hasNext());
@@ -508,25 +442,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link Scanner#Scanner(String)} with {@code foo}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link Scanner#Scanner(String)} with {@code foo}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given Scanner(String) with 'foo'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenScannerWithFoo_thenReturnTrue() {
+  public void testHasNext_givenScannerWithFoo_thenReturnTrue() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act
     boolean actualHasNextResult = objectGraphIterator.hasNext();
@@ -538,25 +468,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given Transformer apply(Object) return 'Apply'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenTransformerApplyReturnApply_thenReturnTrue() {
+  public void testHasNext_givenTransformerApplyReturnApply_thenReturnTrue() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act
     boolean actualHasNextResult = objectGraphIterator.hasNext();
@@ -568,27 +494,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given Transformer apply(Object) return Scanner(String) with 'foo'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenTransformerApplyReturnScannerWithFoo_thenReturnFalse() {
+  public void testHasNext_givenTransformerApplyReturnScannerWithFoo_thenReturnFalse() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act
     boolean actualHasNextResult = objectGraphIterator.hasNext();
@@ -600,27 +520,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given Transformer apply(Object) return Scanner(String) with 'foo'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_givenTransformerApplyReturnScannerWithFoo_thenReturnFalse2() {
+  public void testHasNext_givenTransformerApplyReturnScannerWithFoo_thenReturnFalse2() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act
     boolean actualHasNextResult = objectGraphIterator.hasNext();
@@ -632,24 +546,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
-  void testHasNext_thenThrowNoSuchElementException() {
+  public void testHasNext_thenThrowNoSuchElementException() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException());
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.hasNext());
@@ -658,21 +568,17 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName("Test next()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext() {
+  public void testNext() {
     // Arrange
-    AbstractMapIteratorDecorator<Object, Object> abstractMapIteratorDecorator =
-        new AbstractMapIteratorDecorator<>(
-            new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>()));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(abstractMapIteratorDecorator, mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(
+        new AbstractMapIteratorDecorator<>(new AbstractOrderedMapIteratorDecorator<>(new EmptyOrderedMapIterator<>())),
+        mock(Transformer.class));
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.next());
@@ -680,27 +586,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} updateCurrentIterator.
+   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} updateCurrentIterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer updateCurrentIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_givenObjectGraphIteratorWithRootAndTransformerUpdateCurrentIterator() {
+  public void testNext_givenObjectGraphIteratorWithRootAndTransformerUpdateCurrentIterator() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
     objectGraphIterator.updateCurrentIterator();
 
     // Act
@@ -714,24 +614,18 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is
-   *       {@code null} and {@link Transformer}.
+   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is {@code null} and {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given ObjectGraphIterator(Object, Transformer) with root is 'null' and Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_givenObjectGraphIteratorWithRootIsNullAndTransformer() {
+  public void testNext_givenObjectGraphIteratorWithRootIsNullAndTransformer() {
     // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(null, mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(null, mock(Transformer.class));
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.next());
@@ -739,25 +633,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given Transformer apply(Object) return Scanner(String) with 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_givenTransformerApplyReturnScannerWithFoo() {
+  public void testNext_givenTransformerApplyReturnScannerWithFoo() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.next());
@@ -766,25 +655,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given Transformer apply(Object) return Scanner(String) with 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_givenTransformerApplyReturnScannerWithFoo2() {
+  public void testNext_givenTransformerApplyReturnScannerWithFoo2() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.next());
@@ -793,25 +677,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} throw {@link
-   *       NoSuchElementException#NoSuchElementException()}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} throw {@link NoSuchElementException#NoSuchElementException(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given Transformer apply(Object) throw NoSuchElementException()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_givenTransformerApplyThrowNoSuchElementException() {
+  public void testNext_givenTransformerApplyThrowNoSuchElementExceptionWithFoo() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException());
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.next());
@@ -820,26 +699,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer} hasNext.
+   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer} hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); then not ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_thenNotObjectGraphIteratorWithRootAndTransformerHasNext() {
+  public void testNext_thenNotObjectGraphIteratorWithRootAndTransformerHasNext() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act
     Object actualNextResult = objectGraphIterator.next();
@@ -852,26 +725,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#next()}.
-   *
    * <ul>
-   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root
-   *       is {@link Scanner#Scanner(String)} and {@link Transformer} hasNext.
+   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with root is {@link Scanner#Scanner(String)} and {@link Transformer} hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#next()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); then not ObjectGraphIterator(Object, Transformer) with root is Scanner(String) and Transformer hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ObjectGraphIterator.next()"})
-  void testNext_thenNotObjectGraphIteratorWithRootIsScannerAndTransformerHasNext() {
+  public void testNext_thenNotObjectGraphIteratorWithRootIsScannerAndTransformerHasNext() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act
     Object actualNextResult = objectGraphIterator.next();
@@ -884,18 +751,15 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#remove()}.
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#remove()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", mock(Transformer.class));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", mock(Transformer.class));
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> objectGraphIterator.remove());
@@ -903,26 +767,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#updateCurrentIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
-   *       Root} and {@link Transformer}.
+   *   <li>Given {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code Root} and {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
    */
   @Test
-  @DisplayName(
-      "Test updateCurrentIterator(); given ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.updateCurrentIterator()"})
-  void testUpdateCurrentIterator_givenObjectGraphIteratorWithRootAndTransformer() {
+  public void testUpdateCurrentIterator_givenObjectGraphIteratorWithRootAndTransformer() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act
     objectGraphIterator.updateCurrentIterator();
@@ -933,26 +791,21 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#updateCurrentIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link Scanner#Scanner(String)} with {@code foo}.
-   *   <li>Then calls {@link Transformer#apply(Object)}.
+   *   <li>Given {@link Scanner#Scanner(String)} with {@code foo}.</li>
+   *   <li>Then calls {@link Transformer#apply(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
    */
   @Test
-  @DisplayName(
-      "Test updateCurrentIterator(); given Scanner(String) with 'foo'; then calls apply(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.updateCurrentIterator()"})
-  void testUpdateCurrentIterator_givenScannerWithFoo_thenCallsApply() {
+  public void testUpdateCurrentIterator_givenScannerWithFoo_thenCallsApply() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act
     objectGraphIterator.updateCurrentIterator();
@@ -963,26 +816,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#updateCurrentIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
    */
   @Test
-  @DisplayName(
-      "Test updateCurrentIterator(); given Transformer apply(Object) return Scanner(String) with 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.updateCurrentIterator()"})
-  void testUpdateCurrentIterator_givenTransformerApplyReturnScannerWithFoo() {
+  public void testUpdateCurrentIterator_givenTransformerApplyReturnScannerWithFoo() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act
     objectGraphIterator.updateCurrentIterator();
@@ -993,26 +840,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#updateCurrentIterator()}.
-   *
    * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link
-   *       Scanner#Scanner(String)} with {@code foo}.
+   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@link Scanner#Scanner(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
    */
   @Test
-  @DisplayName(
-      "Test updateCurrentIterator(); given Transformer apply(Object) return Scanner(String) with 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.updateCurrentIterator()"})
-  void testUpdateCurrentIterator_givenTransformerApplyReturnScannerWithFoo2() {
+  public void testUpdateCurrentIterator_givenTransformerApplyReturnScannerWithFoo2() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn(new Scanner("foo"));
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>(new Scanner("foo"), transformer);
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>(new Scanner("foo"), transformer);
 
     // Act
     objectGraphIterator.updateCurrentIterator();
@@ -1023,24 +864,20 @@ class ObjectGraphIteratorDiffblueTest {
 
   /**
    * Test {@link ObjectGraphIterator#updateCurrentIterator()}.
-   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
+   * <p>
+   * Method under test: {@link ObjectGraphIterator#updateCurrentIterator()}
    */
   @Test
-  @DisplayName("Test updateCurrentIterator(); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ObjectGraphIterator.updateCurrentIterator()"})
-  void testUpdateCurrentIterator_thenThrowNoSuchElementException() {
+  public void testUpdateCurrentIterator_thenThrowNoSuchElementException() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException());
-    ObjectGraphIterator<Object> objectGraphIterator =
-        new ObjectGraphIterator<>("Root", transformer);
+    when(transformer.apply(Mockito.<Object>any())).thenThrow(new NoSuchElementException("foo"));
+    ObjectGraphIterator<Object> objectGraphIterator = new ObjectGraphIterator<>("Root", transformer);
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> objectGraphIterator.updateCurrentIterator());

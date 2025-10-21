@@ -1,33 +1,29 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class SkippingIteratorDiffblueTest {
+public class SkippingIteratorDiffblueTest {
   /**
    * Test {@link SkippingIterator#SkippingIterator(Iterator, long)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
+   * <p>
+   * Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
    */
   @Test
-  @DisplayName("Test new SkippingIterator(Iterator, long); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SkippingIterator.<init>(Iterator, long)"})
-  void testNewSkippingIterator_given42_whenArrayListAdd42() {
+  public void testNewSkippingIterator_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -43,46 +39,38 @@ class SkippingIteratorDiffblueTest {
 
   /**
    * Test {@link SkippingIterator#SkippingIterator(Iterator, long)}.
-   *
    * <ul>
-   *   <li>When minus one.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When minus one.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
+   * <p>
+   * Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
    */
   @Test
-  @DisplayName(
-      "Test new SkippingIterator(Iterator, long); when minus one; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SkippingIterator.<init>(Iterator, long)"})
-  void testNewSkippingIterator_whenMinusOne_thenThrowIllegalArgumentException() {
+  public void testNewSkippingIterator_whenMinusOne_thenThrowIllegalArgumentException() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act and Assert
-    assertThrows(
-        IllegalArgumentException.class, () -> new SkippingIterator<>(objectList.iterator(), -1L));
+    assertThrows(IllegalArgumentException.class, () -> new SkippingIterator<>(objectList.iterator(), -1L));
+
   }
 
   /**
    * Test {@link SkippingIterator#SkippingIterator(Iterator, long)}.
-   *
    * <ul>
-   *   <li>When one.
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>When one.</li>
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
+   * <p>
+   * Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
    */
   @Test
-  @DisplayName(
-      "Test new SkippingIterator(Iterator, long); when one; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SkippingIterator.<init>(Iterator, long)"})
-  void testNewSkippingIterator_whenOne_thenNotArrayListIteratorHasNext() {
+  public void testNewSkippingIterator_whenOne_thenNotArrayListIteratorHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> iterator = objectList.iterator();
@@ -97,21 +85,17 @@ class SkippingIteratorDiffblueTest {
 
   /**
    * Test {@link SkippingIterator#SkippingIterator(Iterator, long)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>When zero.</li>
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
+   * <p>
+   * Method under test: {@link SkippingIterator#SkippingIterator(Iterator, long)}
    */
   @Test
-  @DisplayName(
-      "Test new SkippingIterator(Iterator, long); when zero; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SkippingIterator.<init>(Iterator, long)"})
-  void testNewSkippingIterator_whenZero_thenNotArrayListIteratorHasNext() {
+  public void testNewSkippingIterator_whenZero_thenNotArrayListIteratorHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> iterator = objectList.iterator();
@@ -126,20 +110,17 @@ class SkippingIteratorDiffblueTest {
 
   /**
    * Test {@link SkippingIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SkippingIterator#next()}
+   * <p>
+   * Method under test: {@link SkippingIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object SkippingIterator.next()"})
-  void testNext_givenArrayListAdd42_thenReturn42() {
+  public void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -152,15 +133,13 @@ class SkippingIteratorDiffblueTest {
 
   /**
    * Test {@link SkippingIterator#remove()}.
-   *
-   * <p>Method under test: {@link SkippingIterator#remove()}
+   * <p>
+   * Method under test: {@link SkippingIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SkippingIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     SkippingIterator<Object> skippingIterator = new SkippingIterator<>(objectList.iterator(), 1L);

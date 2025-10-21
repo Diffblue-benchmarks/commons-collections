@@ -1,32 +1,28 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class EntrySetMapIteratorDiffblueTest {
+public class EntrySetMapIteratorDiffblueTest {
   /**
    * Test {@link EntrySetMapIterator#EntrySetMapIterator(Map)}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#EntrySetMapIterator(Map)}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#EntrySetMapIterator(Map)}
    */
   @Test
-  @DisplayName("Test new EntrySetMapIterator(Map)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EntrySetMapIterator.<init>(Map)"})
-  void testNewEntrySetMapIterator() {
+  public void testNewEntrySetMapIterator() {
     // Arrange and Act
-    EntrySetMapIterator<Object, Object> actualEntrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> actualEntrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Assert
     assertFalse(actualEntrySetMapIterator.hasNext());
@@ -34,18 +30,15 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#getKey()}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#getKey()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#getKey()}
    */
   @Test
-  @DisplayName("Test getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetMapIterator.getKey()"})
-  void testGetKey() {
+  public void testGetKey() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetMapIterator.getKey());
@@ -53,18 +46,15 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#getValue()}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#getValue()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#getValue()}
    */
   @Test
-  @DisplayName("Test getValue()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetMapIterator.getValue()"})
-  void testGetValue() {
+  public void testGetValue() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetMapIterator.getValue());
@@ -72,20 +62,17 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#hasNext()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given HashMap() '42' is '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EntrySetMapIterator.hasNext()"})
-  void testHasNext_givenHashMap42Is42_thenReturnTrue() {
+  public void testHasNext_givenHashMap42Is42_thenReturnTrue() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
@@ -97,22 +84,18 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#hasNext()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EntrySetMapIterator.hasNext()"})
-  void testHasNext_thenReturnFalse() {
+  public void testHasNext_thenReturnFalse() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertFalse(entrySetMapIterator.hasNext());
@@ -120,20 +103,17 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link HashMap#HashMap()} {@code 42} is {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#next()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given HashMap() '42' is '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetMapIterator.next()"})
-  void testNext_givenHashMap42Is42_thenReturn42() {
+  public void testNext_givenHashMap42Is42_thenReturn42() {
     // Arrange
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
@@ -146,18 +126,15 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#remove()}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#remove()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EntrySetMapIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetMapIterator.remove());
@@ -165,18 +142,15 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#setValue(Object)}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#setValue(Object)}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#setValue(Object)}
    */
   @Test
-  @DisplayName("Test setValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetMapIterator.setValue(Object)"})
-  void testSetValue() {
+  public void testSetValue() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetMapIterator.setValue("Value"));
@@ -184,18 +158,15 @@ class EntrySetMapIteratorDiffblueTest {
 
   /**
    * Test {@link EntrySetMapIterator#toString()}.
-   *
-   * <p>Method under test: {@link EntrySetMapIterator#toString()}
+   * <p>
+   * Method under test: {@link EntrySetMapIterator#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String EntrySetMapIterator.toString()"})
-  void testToString() {
+  public void testToString() {
     // Arrange
-    EntrySetMapIterator<Object, Object> entrySetMapIterator =
-        new EntrySetMapIterator<>(new HashMap<>());
+    EntrySetMapIterator<Object, Object> entrySetMapIterator = new EntrySetMapIterator<>(new HashMap<>());
 
     // Act and Assert
     assertEquals("MapIterator[]", entrySetMapIterator.toString());

@@ -1,48 +1,22 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class UniquePredicateDiffblueTest {
-  /**
-   * Test {@link UniquePredicate#uniquePredicate()}.
-   *
-   * <p>Method under test: {@link UniquePredicate#uniquePredicate()}
-   */
-  @Test
-  @DisplayName("Test uniquePredicate()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Predicate UniquePredicate.uniquePredicate()"})
-  void testUniquePredicate() {
-    // Arrange and Act
-    Predicate<Object> actualUniquePredicateResult = UniquePredicate.uniquePredicate();
-    boolean actualEvaluateResult = actualUniquePredicateResult.evaluate("42");
-
-    // Assert
-    assertTrue(actualUniquePredicateResult instanceof UniquePredicate);
-    assertTrue(actualUniquePredicateResult.evaluate("Object"));
-    assertFalse(actualUniquePredicateResult.test("Object"));
-    assertTrue(actualEvaluateResult);
-  }
-
+public class UniquePredicateDiffblueTest {
   /**
    * Test {@link UniquePredicate#test(Object)}.
-   *
-   * <p>Method under test: {@link UniquePredicate#test(Object)}
+   * <p>
+   * Method under test: {@link UniquePredicate#test(Object)}
    */
   @Test
-  @DisplayName("Test test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean UniquePredicate.test(Object)"})
-  void testTest() {
+  public void testTest() {
     // Arrange
     UniquePredicate<Object> uniquePredicate = new UniquePredicate<>();
 

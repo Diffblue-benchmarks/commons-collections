@@ -1,23 +1,21 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class IteratorEnumerationDiffblueTest {
+public class IteratorEnumerationDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link IteratorEnumeration#IteratorEnumeration()}
    *   <li>{@link IteratorEnumeration#setIterator(Iterator)}
@@ -25,16 +23,10 @@ class IteratorEnumerationDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void IteratorEnumeration.<init>()",
-    "void IteratorEnumeration.<init>(Iterator)",
-    "Iterator IteratorEnumeration.getIterator()",
-    "void IteratorEnumeration.setIterator(Iterator)"
-  })
-  void testGettersAndSetters() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void IteratorEnumeration.<init>()", "void IteratorEnumeration.<init>(Iterator)",
+      "Iterator IteratorEnumeration.getIterator()", "void IteratorEnumeration.setIterator(Iterator)"})
+  public void testGettersAndSetters() {
     // Arrange and Act
     IteratorEnumeration<Object> actualIteratorEnumeration = new IteratorEnumeration<>();
     ArrayList<Object> objectList = new ArrayList<>();
@@ -49,13 +41,11 @@ class IteratorEnumerationDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.
+   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link IteratorEnumeration#IteratorEnumeration(Iterator)}
    *   <li>{@link IteratorEnumeration#setIterator(Iterator)}
@@ -63,22 +53,15 @@ class IteratorEnumerationDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void IteratorEnumeration.<init>()",
-    "void IteratorEnumeration.<init>(Iterator)",
-    "Iterator IteratorEnumeration.getIterator()",
-    "void IteratorEnumeration.setIterator(Iterator)"
-  })
-  void testGettersAndSetters_whenArrayListIterator() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void IteratorEnumeration.<init>()", "void IteratorEnumeration.<init>(Iterator)",
+      "Iterator IteratorEnumeration.getIterator()", "void IteratorEnumeration.setIterator(Iterator)"})
+  public void testGettersAndSetters_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    IteratorEnumeration<Object> actualIteratorEnumeration =
-        new IteratorEnumeration<>(objectList.iterator());
+    IteratorEnumeration<Object> actualIteratorEnumeration = new IteratorEnumeration<>(objectList.iterator());
     ArrayList<Object> objectList2 = new ArrayList<>();
     Iterator<Object> iterator = objectList2.iterator();
     actualIteratorEnumeration.setIterator(iterator);
@@ -91,20 +74,17 @@ class IteratorEnumerationDiffblueTest {
 
   /**
    * Test {@link IteratorEnumeration#hasMoreElements()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorEnumeration#hasMoreElements()}
+   * <p>
+   * Method under test: {@link IteratorEnumeration#hasMoreElements()}
    */
   @Test
-  @DisplayName("Test hasMoreElements(); given ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean IteratorEnumeration.hasMoreElements()"})
-  void testHasMoreElements_givenArrayListAdd42_thenReturnTrue() {
+  public void testHasMoreElements_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -119,19 +99,16 @@ class IteratorEnumerationDiffblueTest {
 
   /**
    * Test {@link IteratorEnumeration#hasMoreElements()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorEnumeration#hasMoreElements()}
+   * <p>
+   * Method under test: {@link IteratorEnumeration#hasMoreElements()}
    */
   @Test
-  @DisplayName("Test hasMoreElements(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean IteratorEnumeration.hasMoreElements()"})
-  void testHasMoreElements_thenReturnFalse() {
+  public void testHasMoreElements_thenReturnFalse() {
     // Arrange
     IteratorEnumeration<Object> iteratorEnumeration = new IteratorEnumeration<>();
 
@@ -144,20 +121,17 @@ class IteratorEnumerationDiffblueTest {
 
   /**
    * Test {@link IteratorEnumeration#nextElement()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IteratorEnumeration#nextElement()}
+   * <p>
+   * Method under test: {@link IteratorEnumeration#nextElement()}
    */
   @Test
-  @DisplayName("Test nextElement(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object IteratorEnumeration.nextElement()"})
-  void testNextElement_givenArrayListAdd42_thenReturn42() {
+  public void testNextElement_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");

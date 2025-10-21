@@ -1,26 +1,22 @@
 package org.apache.commons.collections4.properties;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class OrderedPropertiesFactoryDiffblueTest {
+public class OrderedPropertiesFactoryDiffblueTest {
   /**
    * Test {@link OrderedPropertiesFactory#createProperties()}.
-   *
-   * <p>Method under test: {@link OrderedPropertiesFactory#createProperties()}
+   * <p>
+   * Method under test: {@link OrderedPropertiesFactory#createProperties()}
    */
   @Test
-  @DisplayName("Test createProperties()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({
-    "org.apache.commons.collections4.properties.OrderedProperties OrderedPropertiesFactory.createProperties()"
-  })
-  void testCreateProperties() {
+      "org.apache.commons.collections4.properties.OrderedProperties OrderedPropertiesFactory.createProperties()"})
+  public void testCreateProperties() {
     // Arrange, Act and Assert
     assertTrue(OrderedPropertiesFactory.INSTANCE.createProperties().isEmpty());
   }

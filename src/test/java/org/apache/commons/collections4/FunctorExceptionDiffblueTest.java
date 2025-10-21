@@ -1,35 +1,27 @@
 package org.apache.commons.collections4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class FunctorExceptionDiffblueTest {
+public class FunctorExceptionDiffblueTest {
   /**
    * Test {@link FunctorException#FunctorException()}.
-   *
    * <ul>
-   *   <li>Then return Message is {@code null}.
+   *   <li>Then return Message is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FunctorException#FunctorException()}
+   * <p>
+   * Method under test: {@link FunctorException#FunctorException()}
    */
   @Test
-  @DisplayName("Test new FunctorException(); then return Message is 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FunctorException.<init>()",
-    "void FunctorException.<init>(String)",
-    "void FunctorException.<init>(String, Throwable)",
-    "void FunctorException.<init>(Throwable)"
-  })
-  void testNewFunctorException_thenReturnMessageIsNull() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FunctorException.<init>()", "void FunctorException.<init>(String)",
+      "void FunctorException.<init>(String, Throwable)", "void FunctorException.<init>(Throwable)"})
+  public void testNewFunctorException_thenReturnMessageIsNull() {
     // Arrange and Act
     FunctorException actualFunctorException = new FunctorException();
 
@@ -41,25 +33,18 @@ class FunctorExceptionDiffblueTest {
 
   /**
    * Test {@link FunctorException#FunctorException(String)}.
-   *
    * <ul>
-   *   <li>When {@code Msg}.
-   *   <li>Then return Message is {@code Msg}.
+   *   <li>When {@code Msg}.</li>
+   *   <li>Then return Message is {@code Msg}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FunctorException#FunctorException(String)}
+   * <p>
+   * Method under test: {@link FunctorException#FunctorException(String)}
    */
   @Test
-  @DisplayName("Test new FunctorException(String); when 'Msg'; then return Message is 'Msg'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FunctorException.<init>()",
-    "void FunctorException.<init>(String)",
-    "void FunctorException.<init>(String, Throwable)",
-    "void FunctorException.<init>(Throwable)"
-  })
-  void testNewFunctorException_whenMsg_thenReturnMessageIsMsg() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FunctorException.<init>()", "void FunctorException.<init>(String)",
+      "void FunctorException.<init>(String, Throwable)", "void FunctorException.<init>(Throwable)"})
+  public void testNewFunctorException_whenMsg_thenReturnMessageIsMsg() {
     // Arrange and Act
     FunctorException actualFunctorException = new FunctorException("Msg");
 
@@ -71,26 +56,18 @@ class FunctorExceptionDiffblueTest {
 
   /**
    * Test {@link FunctorException#FunctorException(String, Throwable)}.
-   *
    * <ul>
-   *   <li>When {@code Msg}.
-   *   <li>Then return Message is {@code Msg}.
+   *   <li>When {@code Msg}.</li>
+   *   <li>Then return Message is {@code Msg}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FunctorException#FunctorException(String, Throwable)}
+   * <p>
+   * Method under test: {@link FunctorException#FunctorException(String, Throwable)}
    */
   @Test
-  @DisplayName(
-      "Test new FunctorException(String, Throwable); when 'Msg'; then return Message is 'Msg'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FunctorException.<init>()",
-    "void FunctorException.<init>(String)",
-    "void FunctorException.<init>(String, Throwable)",
-    "void FunctorException.<init>(Throwable)"
-  })
-  void testNewFunctorException_whenMsg_thenReturnMessageIsMsg2() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FunctorException.<init>()", "void FunctorException.<init>(String)",
+      "void FunctorException.<init>(String, Throwable)", "void FunctorException.<init>(Throwable)"})
+  public void testNewFunctorException_whenMsg_thenReturnMessageIsMsg2() {
     // Arrange
     Throwable rootCause = new Throwable();
 
@@ -105,26 +82,18 @@ class FunctorExceptionDiffblueTest {
 
   /**
    * Test {@link FunctorException#FunctorException(Throwable)}.
-   *
    * <ul>
-   *   <li>When {@link Throwable#Throwable()}.
-   *   <li>Then return Message is {@code Throwable}.
+   *   <li>When {@link Throwable#Throwable()}.</li>
+   *   <li>Then return Message is {@code Throwable}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FunctorException#FunctorException(Throwable)}
+   * <p>
+   * Method under test: {@link FunctorException#FunctorException(Throwable)}
    */
   @Test
-  @DisplayName(
-      "Test new FunctorException(Throwable); when Throwable(); then return Message is 'java.lang.Throwable'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FunctorException.<init>()",
-    "void FunctorException.<init>(String)",
-    "void FunctorException.<init>(String, Throwable)",
-    "void FunctorException.<init>(Throwable)"
-  })
-  void testNewFunctorException_whenThrowable_thenReturnMessageIsJavaLangThrowable() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FunctorException.<init>()", "void FunctorException.<init>(String)",
+      "void FunctorException.<init>(String, Throwable)", "void FunctorException.<init>(Throwable)"})
+  public void testNewFunctorException_whenThrowable_thenReturnMessageIsJavaLangThrowable() {
     // Arrange
     Throwable rootCause = new Throwable();
 

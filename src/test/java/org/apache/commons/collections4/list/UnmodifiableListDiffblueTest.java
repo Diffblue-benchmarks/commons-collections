@@ -1,34 +1,29 @@
 package org.apache.commons.collections4.list;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class UnmodifiableListDiffblueTest {
+public class UnmodifiableListDiffblueTest {
   /**
    * Test {@link UnmodifiableList#unmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#unmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#unmodifiableList(List)}
    */
   @Test
-  @DisplayName(
-      "Test unmodifiableList(List); given '42'; when ArrayList() add '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List UnmodifiableList.unmodifiableList(List)"})
-  void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -42,22 +37,18 @@ class UnmodifiableListDiffblueTest {
 
   /**
    * Test {@link UnmodifiableList#unmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#unmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#unmodifiableList(List)}
    */
   @Test
-  @DisplayName(
-      "Test unmodifiableList(List); given '42'; when ArrayList() add '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List UnmodifiableList.unmodifiableList(List)"})
-  void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList2() {
+  public void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -72,23 +63,19 @@ class UnmodifiableListDiffblueTest {
 
   /**
    * Test {@link UnmodifiableList#unmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#unmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#unmodifiableList(List)}
    */
   @Test
-  @DisplayName("Test unmodifiableList(List); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List UnmodifiableList.unmodifiableList(List)"})
-  void testUnmodifiableList_whenArrayList_thenReturnEmpty() {
+  public void testUnmodifiableList_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    List<Object> actualUnmodifiableListResult =
-        UnmodifiableList.unmodifiableList(new ArrayList<>());
+    List<Object> actualUnmodifiableListResult = UnmodifiableList.unmodifiableList(new ArrayList<>());
 
     // Assert
     assertTrue(actualUnmodifiableListResult.isEmpty());
@@ -96,81 +83,63 @@ class UnmodifiableListDiffblueTest {
 
   /**
    * Test {@link UnmodifiableList#UnmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
    */
   @Test
-  @DisplayName("Test new UnmodifiableList(List); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void UnmodifiableList.<init>(List)"})
-  void testNewUnmodifiableList_given42_whenArrayListAdd42() {
+  public void testNewUnmodifiableList_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
 
-    // Act
-    UnmodifiableList<Object> actualObjectList = new UnmodifiableList<>(list);
-
-    // Assert
-    assertEquals(list, actualObjectList);
+    // Act and Assert
+    assertEquals(list, new UnmodifiableList<>(list));
   }
 
   /**
    * Test {@link UnmodifiableList#UnmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
    */
   @Test
-  @DisplayName("Test new UnmodifiableList(List); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void UnmodifiableList.<init>(List)"})
-  void testNewUnmodifiableList_given42_whenArrayListAdd422() {
+  public void testNewUnmodifiableList_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
     list.add("42");
 
-    // Act
-    UnmodifiableList<Object> actualObjectList = new UnmodifiableList<>(list);
-
-    // Assert
-    assertEquals(list, actualObjectList);
+    // Act and Assert
+    assertEquals(list, new UnmodifiableList<>(list));
   }
 
   /**
    * Test {@link UnmodifiableList#UnmodifiableList(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
+   * <p>
+   * Method under test: {@link UnmodifiableList#UnmodifiableList(List)}
    */
   @Test
-  @DisplayName("Test new UnmodifiableList(List); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void UnmodifiableList.<init>(List)"})
-  void testNewUnmodifiableList_whenArrayList() {
+  public void testNewUnmodifiableList_whenArrayList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
 
-    // Act
-    UnmodifiableList<Object> actualObjectList = new UnmodifiableList<>(list);
-
-    // Assert
-    assertEquals(list, actualObjectList);
+    // Act and Assert
+    assertEquals(list, new UnmodifiableList<>(list));
   }
 }

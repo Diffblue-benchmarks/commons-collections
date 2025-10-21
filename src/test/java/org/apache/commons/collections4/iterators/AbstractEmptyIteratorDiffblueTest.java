@@ -1,27 +1,24 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class AbstractEmptyIteratorDiffblueTest {
+public class AbstractEmptyIteratorDiffblueTest {
   /**
    * Test {@link AbstractEmptyIterator#add(Object)}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#add(Object)}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#add(Object)}
    */
   @Test
-  @DisplayName("Test add(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractEmptyIterator.add(Object)"})
-  void testAdd() {
+  public void testAdd() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -31,15 +28,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#hasNext()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#hasNext()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEmptyIterator.hasNext()"})
-  void testHasNext() {
+  public void testHasNext() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -49,15 +44,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#hasPrevious()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#hasPrevious()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#hasPrevious()}
    */
   @Test
-  @DisplayName("Test hasPrevious()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractEmptyIterator.hasPrevious()"})
-  void testHasPrevious() {
+  public void testHasPrevious() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -67,15 +60,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#next()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#next()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#next()}
    */
   @Test
-  @DisplayName("Test next()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractEmptyIterator.next()"})
-  void testNext() {
+  public void testNext() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -85,15 +76,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#nextIndex()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#nextIndex()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#nextIndex()}
    */
   @Test
-  @DisplayName("Test nextIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractEmptyIterator.nextIndex()"})
-  void testNextIndex() {
+  public void testNextIndex() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -103,15 +92,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#previous()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#previous()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#previous()}
    */
   @Test
-  @DisplayName("Test previous()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object AbstractEmptyIterator.previous()"})
-  void testPrevious() {
+  public void testPrevious() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -121,15 +108,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#previousIndex()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#previousIndex()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#previousIndex()}
    */
   @Test
-  @DisplayName("Test previousIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractEmptyIterator.previousIndex()"})
-  void testPreviousIndex() {
+  public void testPreviousIndex() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -139,15 +124,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#remove()}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#remove()}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractEmptyIterator.remove()"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 
@@ -157,15 +140,13 @@ class AbstractEmptyIteratorDiffblueTest {
 
   /**
    * Test {@link AbstractEmptyIterator#set(Object)}.
-   *
-   * <p>Method under test: {@link AbstractEmptyIterator#set(Object)}
+   * <p>
+   * Method under test: {@link AbstractEmptyIterator#set(Object)}
    */
   @Test
-  @DisplayName("Test set(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void AbstractEmptyIterator.set(Object)"})
-  void testSet() {
+  public void testSet() {
     // Arrange
     EmptyIterator<Object> emptyIterator = new EmptyIterator<>();
 

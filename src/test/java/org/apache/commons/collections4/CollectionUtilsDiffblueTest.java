@@ -1,128 +1,98 @@
 package org.apache.commons.collections4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.StringTokenizer;
 import org.apache.commons.collections4.bag.HashBag;
-import org.apache.commons.collections4.functors.AllPredicate;
+import org.apache.commons.collections4.bag.PredicatedBag;
+import org.apache.commons.collections4.collection.AbstractCollectionDecorator;
 import org.apache.commons.collections4.functors.AndPredicate;
 import org.apache.commons.collections4.functors.AnyPredicate;
-import org.apache.commons.collections4.functors.ChainedClosure;
+import org.apache.commons.collections4.functors.ChainedTransformer;
 import org.apache.commons.collections4.functors.DefaultEquator;
 import org.apache.commons.collections4.functors.EqualPredicate;
 import org.apache.commons.collections4.functors.IdentityPredicate;
-import org.apache.commons.collections4.functors.IfClosure;
 import org.apache.commons.collections4.functors.InstanceofPredicate;
-import org.apache.commons.collections4.functors.NOPClosure;
+import org.apache.commons.collections4.functors.InvokerTransformer;
 import org.apache.commons.collections4.functors.NonePredicate;
 import org.apache.commons.collections4.functors.NotPredicate;
 import org.apache.commons.collections4.iterators.AbstractListIteratorDecorator;
 import org.apache.commons.collections4.iterators.BoundedIterator;
 import org.apache.commons.collections4.iterators.CollatingIterator;
-import org.apache.commons.collections4.iterators.FilterIterator;
 import org.apache.commons.collections4.iterators.IteratorChain;
 import org.apache.commons.collections4.iterators.ListIteratorWrapper;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.collections4.iterators.LoopingListIterator;
+import org.apache.commons.collections4.iterators.ObjectArrayListIterator;
+import org.apache.commons.collections4.set.CompositeSet;
+import org.apache.commons.collections4.set.ListOrderedSet;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class CollectionUtilsDiffblueTest {
+public class CollectionUtilsDiffblueTest {
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code
-   * elements}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code elements}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Object[]) with 'collection', 'elements'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Object[])"})
-  void testAddAllWithCollectionElements_whenArrayList_thenReturnFalse() {
+  public void testAddAllWithCollectionElements_given42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
-
-    // Act and Assert
-    assertFalse(CollectionUtils.addAll(collection));
-    assertTrue(collection.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code
-   * elements}.
-   *
-   * <ul>
-   *   <li>When {@code Elements} and {@code Elements}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
-   */
-  @Test
-  @DisplayName(
-      "Test addAll(Collection, Object[]) with 'collection', 'elements'; when 'Elements' and 'Elements'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Object[])"})
-  void testAddAllWithCollectionElements_whenElementsAndElements_thenArrayListSizeIsTwo() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
 
     // Act
-    boolean actualAddAllResult = CollectionUtils.addAll(collection, "Elements", "Elements");
+    boolean actualAddAllResult = CollectionUtils.addAll(collection, "Elements");
 
     // Assert
     assertEquals(2, collection.size());
-    assertEquals("Elements", collection.get(0));
+    assertEquals("42", collection.get(0));
     assertEquals("Elements", collection.get(1));
     assertTrue(actualAddAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code
-   * elements}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code elements}.
    * <ul>
-   *   <li>When {@code Elements}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Object[]) with 'collection', 'elements'; when 'Elements'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Object[])"})
-  void testAddAllWithCollectionElements_whenElements_thenArrayListSizeIsOne() {
+  public void testAddAllWithCollectionElements_whenArrayList_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -136,17 +106,35 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code
-   * enumeration}.
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
+   * Test {@link CollectionUtils#addAll(Collection, Object[])} with {@code collection}, {@code elements}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Object[])}
    */
   @Test
-  @DisplayName("Test addAll(Collection, Enumeration) with 'collection', 'enumeration'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Object[])"})
+  public void testAddAllWithCollectionElements_whenArrayList_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+
+    // Act and Assert
+    assertFalse(CollectionUtils.addAll(collection));
+    assertTrue(collection.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code enumeration}.
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Enumeration)"})
-  void testAddAllWithCollectionEnumeration() {
+  public void testAddAllWithCollectionEnumeration() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     StringTokenizer enumeration = new StringTokenizer("");
@@ -161,23 +149,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code
-   * enumeration}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code enumeration}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Enumeration) with 'collection', 'enumeration'; given '42'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Enumeration)"})
-  void testAddAllWithCollectionEnumeration_given42_thenArrayListSizeIsTwo() {
+  public void testAddAllWithCollectionEnumeration_given42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -195,22 +178,17 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code
-   * enumeration}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Enumeration)} with {@code collection}, {@code enumeration}.
    * <ul>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Enumeration)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Enumeration) with 'collection', 'enumeration'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Enumeration)"})
-  void testAddAllWithCollectionEnumeration_thenArrayListSizeIsOne() {
+  public void testAddAllWithCollectionEnumeration_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     StringTokenizer enumeration = new StringTokenizer("foo");
@@ -226,23 +204,72 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code
-   * iterable}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code iterable}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterable) with 'collection', 'iterable'; given '42'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterable)"})
-  void testAddAllWithCollectionIterable_given42_thenArrayListSizeIsOne() {
+  public void testAddAllWithCollectionIterable_given42_thenArrayListSizeIsOne() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    // Act
+    boolean actualAddAllResult = CollectionUtils.addAll(collection, new ArrayList<>());
+
+    // Assert
+    assertEquals(1, collection.size());
+    assertEquals("42", collection.get(0));
+    assertFalse(actualAddAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code iterable}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterable)"})
+  public void testAddAllWithCollectionIterable_given42_thenArrayListSizeIsTwo() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+    collection.add("42");
+
+    // Act
+    boolean actualAddAllResult = CollectionUtils.addAll(collection, new ArrayList<>());
+
+    // Assert
+    assertEquals(2, collection.size());
+    assertEquals("42", collection.get(0));
+    assertFalse(actualAddAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code iterable}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterable)"})
+  public void testAddAllWithCollectionIterable_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -259,58 +286,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code
-   * iterable}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code iterable}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterable) with 'collection', 'iterable'; given '42'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterable)"})
-  void testAddAllWithCollectionIterable_given42_thenArrayListSizeIsTwo() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-
-    ArrayList<Object> iterable = new ArrayList<>();
-    iterable.add("42");
-    iterable.add("42");
-
-    // Act
-    boolean actualAddAllResult = CollectionUtils.addAll(collection, iterable);
-
-    // Assert
-    assertEquals(2, collection.size());
-    assertEquals("42", collection.get(0));
-    assertEquals("42", collection.get(1));
-    assertTrue(actualAddAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterable)} with {@code collection}, {@code
-   * iterable}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterable)}
-   */
-  @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterable) with 'collection', 'iterable'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterable)"})
-  void testAddAllWithCollectionIterable_whenArrayList_thenReturnFalse() {
+  public void testAddAllWithCollectionIterable_whenArrayList_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -320,23 +307,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code
-   * iterator}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code iterator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterator) with 'collection', 'iterator'; given '42'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterator)"})
-  void testAddAllWithCollectionIterator_given42_thenArrayListSizeIsOne() {
+  public void testAddAllWithCollectionIterator_given42_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -355,23 +337,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code
-   * iterator}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code iterator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterator) with 'collection', 'iterator'; given '42'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterator)"})
-  void testAddAllWithCollectionIterator_given42_thenArrayListSizeIsTwo() {
+  public void testAddAllWithCollectionIterator_given42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -391,24 +368,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code
-   * iterator}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code iterator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterator) with 'collection', 'iterator'; given '42'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterator)"})
-  void testAddAllWithCollectionIterator_given42_whenArrayList_thenReturnTrue() {
+  public void testAddAllWithCollectionIterator_given42_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -427,23 +399,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code
-   * iterator}.
-   *
+   * Test {@link CollectionUtils#addAll(Collection, Iterator)} with {@code collection}, {@code iterator}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addAll(Collection, Iterator)}
    */
   @Test
-  @DisplayName(
-      "Test addAll(Collection, Iterator) with 'collection', 'iterator'; when ArrayList(); then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addAll(Collection, Iterator)"})
-  void testAddAllWithCollectionIterator_whenArrayList_thenArrayListEmpty() {
+  public void testAddAllWithCollectionIterator_whenArrayList_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -461,22 +428,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#addIgnoreNull(Collection, Object)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
    */
   @Test
-  @DisplayName(
-      "Test addIgnoreNull(Collection, Object); given '42'; when ArrayList() add '42'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addIgnoreNull(Collection, Object)"})
-  void testAddIgnoreNull_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
+  public void testAddIgnoreNull_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -493,21 +456,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#addIgnoreNull(Collection, Object)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
    */
   @Test
-  @DisplayName(
-      "Test addIgnoreNull(Collection, Object); when ArrayList(); then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addIgnoreNull(Collection, Object)"})
-  void testAddIgnoreNull_whenArrayList_thenArrayListSizeIsOne() {
+  public void testAddIgnoreNull_whenArrayList_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -522,20 +481,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#addIgnoreNull(Collection, Object)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#addIgnoreNull(Collection, Object)}
    */
   @Test
-  @DisplayName("Test addIgnoreNull(Collection, Object); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.addIgnoreNull(Collection, Object)"})
-  void testAddIgnoreNull_whenNull_thenReturnFalse() {
+  public void testAddIgnoreNull_whenNull_thenReturnFalse() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -546,22 +502,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return zero.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given '42'; when ArrayList() add '42'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_given42_whenArrayListAdd42_thenReturnZero() {
+  public void testCardinality_given42_whenArrayListAdd42_thenReturnZero() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -572,21 +524,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link HashBag#HashBag()}.
-   *   <li>Then return zero.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test cardinality(Object, Iterable); given '42'; when HashBag(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_given42_whenHashBag_thenReturnZero() {
+  public void testCardinality_given42_whenArrayListAdd42_thenReturnZero2() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
 
@@ -599,21 +548,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@code Obj}.
-   *   <li>Then return zero.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@code Obj}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test cardinality(Object, Iterable); given '42'; when 'Obj'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_given42_whenObj_thenReturnZero() {
+  public void testCardinality_given42_whenObj_thenReturnZero() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -624,220 +570,87 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code null}.
-   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.</li>
+   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.</li>
+   *   <li>Then calls {@link PredicatedBag#getCount(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag() add 'null'; when HashBag() add HashBag(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBagAddNull_whenHashBagAddHashBag_thenReturnZero() {
-    // Arrange
-    HashBag<Object> hashBag = new HashBag<>();
-    hashBag.add(null);
-
-    HashBag<Object> hashBag2 = new HashBag<>();
-    hashBag2.add(hashBag);
-
-    HashBag<Object> hashBag3 = new HashBag<>();
-    hashBag3.add("Object");
-
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag3);
-
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag2, collection));
-  }
-
-  /**
-   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
-   * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
-   */
-  @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag() add 'Object'; when HashBag() add HashBag(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBagAddObject_whenHashBagAddHashBag_thenReturnZero() {
+  public void testCardinality_givenHashBagAddObject_whenHashBagAddHashBag_thenCallsGetCount() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add("Object");
 
     HashBag<Object> hashBag2 = new HashBag<>();
     hashBag2.add(hashBag);
-
-    HashBag<Object> hashBag3 = new HashBag<>();
-    hashBag3.add("Object");
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.getCount(Mockito.<Object>any())).thenReturn(3);
+    when(predicatedBag.size()).thenReturn(1);
 
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag3);
+    collection.add(predicatedBag);
 
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag2, collection));
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag2, collection);
+
+    // Assert
+    verify(predicatedBag).getCount(isA(Object.class));
+    verify(predicatedBag).size();
+    assertEquals(0, actualCardinalityResult);
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add two.
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>Then return zero.
+   *   <li>Given {@link HashBag#HashBag()}.</li>
+   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.</li>
+   *   <li>Then calls {@link PredicatedBag#getCount(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag() add two; when HashBag() add 'Object'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBagAddTwo_whenHashBagAddObject_thenReturnZero() {
-    // Arrange
-    HashBag<Object> hashBag = new HashBag<>();
-    hashBag.add("Object");
-
-    HashBag<Object> hashBag2 = new HashBag<>();
-    hashBag2.add(2);
-
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag2);
-
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag, collection));
-  }
-
-  /**
-   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
-   * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add zero.
-   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
-   */
-  @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag() add zero; when HashBag() add HashBag(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBagAddZero_whenHashBagAddHashBag_thenReturnZero() {
-    // Arrange
-    HashBag<Object> hashBag = new HashBag<>();
-    hashBag.add(0);
-    hashBag.add("Object");
-
-    HashBag<Object> hashBag2 = new HashBag<>();
-    hashBag2.add(hashBag);
-
-    HashBag<Object> hashBag3 = new HashBag<>();
-    hashBag3.add("Object");
-
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag3);
-
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag2, collection));
-  }
-
-  /**
-   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
-   * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>When {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
-   */
-  @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag(); when HashBag() add HashBag(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBag_whenHashBagAddHashBag_thenReturnZero() {
+  public void testCardinality_givenHashBag_whenHashBagAddHashBag_thenCallsGetCount() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add(new HashBag<>());
-
-    HashBag<Object> hashBag2 = new HashBag<>();
-    hashBag2.add("Object");
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.getCount(Mockito.<Object>any())).thenReturn(3);
+    when(predicatedBag.size()).thenReturn(1);
 
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag2);
+    collection.add(predicatedBag);
 
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag, collection));
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag, collection);
+
+    // Assert
+    verify(predicatedBag).getCount(isA(Object.class));
+    verify(predicatedBag).size();
+    assertEquals(0, actualCardinalityResult);
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>When {@link HashBag#HashBag()}.
-   *   <li>Then return one.
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
+   *   <li>Then return one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given HashBag(); when HashBag(); then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenHashBag_whenHashBag_thenReturnOne() {
-    // Arrange
-    HashBag<Object> hashBag = new HashBag<>();
-
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add(new HashBag<>());
-
-    // Act and Assert
-    assertEquals(1, CollectionUtils.cardinality(hashBag, collection));
-  }
-
-  /**
-   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
-   *   <li>Then return one.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
-   */
-  @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given 'null'; when ArrayList() add 'null'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenNull_whenArrayListAddNull_thenReturnOne() {
+  public void testCardinality_givenNull_whenArrayListAddNull_thenReturnOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add(null);
@@ -848,183 +661,225 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code Object}.
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>Then return one.
+   *   <li>Given {@code Object}.</li>
+   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
+   *   <li>Then calls {@link PredicatedBag#getCount(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given 'Object'; when HashBag() add 'Object'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenObject_whenHashBagAddObject_thenReturnOne() {
+  public void testCardinality_givenObject_whenHashBagAddObject_thenCallsGetCount() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add("Object");
-
-    HashBag<Object> hashBag2 = new HashBag<>();
-    hashBag2.add("Object");
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.getCount(Mockito.<Object>any())).thenReturn(3);
+    when(predicatedBag.size()).thenReturn(1);
 
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add(hashBag2);
+    collection.add(predicatedBag);
 
-    // Act and Assert
-    assertEquals(1, CollectionUtils.cardinality(hashBag, collection));
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag, collection);
+
+    // Assert
+    verify(predicatedBag).getCount(isA(Object.class));
+    verify(predicatedBag).size();
+    assertEquals(0, actualCardinalityResult);
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code Object}.
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>Then return zero.
+   *   <li>Given {@link PredicatedBag} {@link PredicatedBag#getCount(Object)} return one.</li>
+   *   <li>Then return one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test cardinality(Object, Iterable); given 'Object'; when HashBag() add 'Object'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_givenObject_whenHashBagAddObject_thenReturnZero() {
+  public void testCardinality_givenPredicatedBagGetCountReturnOne_thenReturnOne() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add("Object");
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.getCount(Mockito.<Object>any())).thenReturn(1);
+    when(predicatedBag.size()).thenReturn(1);
 
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add(new HashBag<>());
+    collection.add(predicatedBag);
 
-    // Act and Assert
-    assertEquals(0, CollectionUtils.cardinality(hashBag, collection));
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag, collection);
+
+    // Assert
+    verify(predicatedBag).getCount(isA(Object.class));
+    verify(predicatedBag).size();
+    assertEquals(1, actualCardinalityResult);
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link PredicatedBag} {@link AbstractCollectionDecorator#size()} return three.</li>
+   *   <li>When {@link HashBag#HashBag()}.</li>
+   *   <li>Then calls {@link AbstractCollectionDecorator#size()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test cardinality(Object, Iterable); when ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_whenArrayList_thenReturnZero() {
+  public void testCardinality_givenPredicatedBagSizeReturnThree_whenHashBag_thenCallsSize() {
+    // Arrange
+    HashBag<Object> hashBag = new HashBag<>();
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.size()).thenReturn(3);
+
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add(predicatedBag);
+
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag, collection);
+
+    // Assert
+    verify(predicatedBag).size();
+    assertEquals(0, actualCardinalityResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
+   * <ul>
+   *   <li>Given {@link PredicatedBag} {@link AbstractCollectionDecorator#size()} return zero.</li>
+   *   <li>When {@link HashBag#HashBag()}.</li>
+   *   <li>Then return one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
+  public void testCardinality_givenPredicatedBagSizeReturnZero_whenHashBag_thenReturnOne() {
+    // Arrange
+    HashBag<Object> hashBag = new HashBag<>();
+    PredicatedBag<Object> predicatedBag = mock(PredicatedBag.class);
+    when(predicatedBag.size()).thenReturn(0);
+
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add(predicatedBag);
+
+    // Act
+    int actualCardinalityResult = CollectionUtils.cardinality(hashBag, collection);
+
+    // Assert
+    verify(predicatedBag).size();
+    assertEquals(1, actualCardinalityResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
+  public void testCardinality_whenArrayList_thenReturnZero() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.cardinality(null, new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test cardinality(Object, Iterable); when ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_whenArrayList_thenReturnZero2() {
+  public void testCardinality_whenArrayList_thenReturnZero2() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.cardinality(null, new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#cardinality(Object, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@code Obj}.
-   *   <li>Then return zero.
+   *   <li>When {@code Obj}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#cardinality(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test cardinality(Object, Iterable); when 'Obj'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.cardinality(Object, Iterable)"})
-  void testCardinality_whenObj_thenReturnZero() {
+  public void testCardinality_whenObj_thenReturnZero() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.cardinality("Obj", new ArrayList<>()));
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b},
-   * {@code c}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b}, {@code c}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator) with 'a', 'b', 'c'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator)"})
-  void testCollateWithABC_given42_whenArrayList_thenReturnArrayList() {
+  public void testCollateWithABC_given42_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(a, new ArrayList<>(), mock(Comparator.class));
+    List<Object> actualCollateResult = CollectionUtils.collate(a, new ArrayList<>(), mock(Comparator.class));
 
     // Assert
     assertEquals(a, actualCollateResult);
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b},
-   * {@code c}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b}, {@code c}.
    * <ul>
-   *   <li>Given {@link CollectionUtils#INDEX_NOT_FOUND}.
+   *   <li>Given {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator) with 'a', 'b', 'c'; given INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator)"})
-  void testCollateWithABC_givenIndex_not_found() {
+  public void testCollateWithABC_givenIndex_not_found() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
-
     Comparator<Object> c = mock(Comparator.class);
-    when(c.compare(Mockito.<Object>any(), Mockito.<Object>any()))
-        .thenReturn(CollectionUtils.INDEX_NOT_FOUND);
+    when(c.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(CollectionUtils.INDEX_NOT_FOUND);
 
     // Act
     List<Object> actualCollateResult = CollectionUtils.collate(a, b, c);
@@ -1037,31 +892,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b},
-   * {@code c}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b}, {@code c}.
    * <ul>
-   *   <li>Given one.
-   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.
-   *   <li>Then return size is two.
+   *   <li>Given one.</li>
+   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator) with 'a', 'b', 'c'; given one; when Comparator compare(Object, Object) return one; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator)"})
-  void testCollateWithABC_givenOne_whenComparatorCompareReturnOne_thenReturnSizeIsTwo() {
+  public void testCollateWithABC_givenOne_whenComparatorCompareReturnOne_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
-
     Comparator<Object> c = mock(Comparator.class);
     when(c.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
@@ -1076,87 +925,69 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b},
-   * {@code c}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator)} with {@code a}, {@code b}, {@code c}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator) with 'a', 'b', 'c'; when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator)"})
-  void testCollateWithABC_whenArrayList_thenReturnEmpty() {
+  public void testCollateWithABC_whenArrayList_thenReturnEmpty() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(a, new ArrayList<>(), mock(Comparator.class));
+    List<Object> actualCollateResult = CollectionUtils.collate(a, new ArrayList<>(), mock(Comparator.class));
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, boolean)} with {@code a}, {@code b},
-   * {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, boolean)} with {@code a}, {@code b}, {@code includeDuplicates}.
    * <ul>
-   *   <li>When {@code false}.
-   *   <li>Then return Empty.
+   *   <li>When {@code false}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, boolean) with 'a', 'b', 'includeDuplicates'; when 'false'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, boolean)"})
-  void testCollateWithABIncludeDuplicates_whenFalse_thenReturnEmpty() {
+  public void testCollateWithABIncludeDuplicates_whenFalse_thenReturnEmpty() {
     // Arrange
     ArrayList<Comparable<? super Comparable>> a = new ArrayList<>();
 
     // Act
-    List<Comparable<? super Comparable>> actualCollateResult =
-        CollectionUtils.collate(a, new ArrayList<>(), false);
+    List<Comparable<? super Comparable>> actualCollateResult = CollectionUtils.collate(a, new ArrayList<>(), false);
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, boolean)} with {@code a}, {@code b},
-   * {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, boolean)} with {@code a}, {@code b}, {@code includeDuplicates}.
    * <ul>
-   *   <li>When {@code true}.
-   *   <li>Then return Empty.
+   *   <li>When {@code true}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, boolean) with 'a', 'b', 'includeDuplicates'; when 'true'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, boolean)"})
-  void testCollateWithABIncludeDuplicates_whenTrue_thenReturnEmpty() {
+  public void testCollateWithABIncludeDuplicates_whenTrue_thenReturnEmpty() {
     // Arrange
     ArrayList<Comparable<? super Comparable>> a = new ArrayList<>();
 
     // Act
-    List<Comparable<? super Comparable>> actualCollateResult =
-        CollectionUtils.collate(a, new ArrayList<>(), true);
+    List<Comparable<? super Comparable>> actualCollateResult = CollectionUtils.collate(a, new ArrayList<>(), true);
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
@@ -1164,59 +995,47 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#collate(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable) with 'a', 'b'; when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable)"})
-  void testCollateWithAB_whenArrayList_thenReturnEmpty() {
+  public void testCollateWithAB_whenArrayList_thenReturnEmpty() {
     // Arrange
     ArrayList<Comparable<? super Comparable>> a = new ArrayList<>();
 
     // Act
-    List<Comparable<? super Comparable>> actualCollateResult =
-        CollectionUtils.collate(a, new ArrayList<>());
+    List<Comparable<? super Comparable>> actualCollateResult = CollectionUtils.collate(a, new ArrayList<>());
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
     iterableA.add("42");
 
     ArrayList<Object> iterableB = new ArrayList<>();
     iterableB.add("42");
-
     Comparator<Object> comparator = mock(Comparator.class);
-    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any()))
-        .thenReturn(CollectionUtils.INDEX_NOT_FOUND);
+    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(CollectionUtils.INDEX_NOT_FOUND);
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, iterableB, comparator, true);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, iterableB, comparator, true);
 
     // Assert
     verify(comparator).compare(isA(Object.class), isA(Object.class));
@@ -1226,31 +1045,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates2() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates2() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
     iterableA.add(2);
 
     ArrayList<Object> iterableB = new ArrayList<>();
     iterableB.add("42");
-
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, iterableB, comparator, false);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, iterableB, comparator, false);
 
     // Assert
     verify(comparator).compare(isA(Object.class), isA(Object.class));
@@ -1260,64 +1073,52 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
    * <ul>
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnArrayList() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
     iterableA.add("42");
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class), true);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class),
+        true);
 
     // Assert
     assertEquals(iterableA, actualCollateResult);
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
    * <ul>
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnArrayList2() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
     iterableA.add("42");
 
     ArrayList<Object> iterableB = new ArrayList<>();
     iterableB.add("42");
-
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, iterableB, comparator, false);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, iterableB, comparator, false);
 
     // Assert
     verify(comparator).compare(isA(Object.class), isA(Object.class));
@@ -1325,91 +1126,74 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
    * <ul>
-   *   <li>Then return Empty.
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnEmpty() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnEmpty() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class), true);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class),
+        true);
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
    * <ul>
-   *   <li>Then return Empty.
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnEmpty2() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnEmpty2() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class), false);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, new ArrayList<>(), mock(Comparator.class),
+        false);
 
     // Assert
     assertTrue(actualCollateResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code
-   * iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
-   *
+   * Test {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)} with {@code iterableA}, {@code iterableB}, {@code comparator}, {@code includeDuplicates}.
    * <ul>
-   *   <li>Then return first is {@code 42}.
+   *   <li>Then return first is {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collate(Iterable, Iterable, Comparator, boolean)}
    */
   @Test
-  @DisplayName(
-      "Test collate(Iterable, Iterable, Comparator, boolean) with 'iterableA', 'iterableB', 'comparator', 'includeDuplicates'; then return first is '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List CollectionUtils.collate(Iterable, Iterable, Comparator, boolean)"})
-  void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnFirstIs42() {
+  public void testCollateWithIterableAIterableBComparatorIncludeDuplicates_thenReturnFirstIs42() {
     // Arrange
     ArrayList<Object> iterableA = new ArrayList<>();
     iterableA.add("42");
 
     ArrayList<Object> iterableB = new ArrayList<>();
     iterableB.add("42");
-
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    List<Object> actualCollateResult =
-        CollectionUtils.collate(iterableA, iterableB, comparator, true);
+    List<Object> actualCollateResult = CollectionUtils.collate(iterableA, iterableB, comparator, true);
 
     // Assert
     verify(comparator).compare(isA(Object.class), isA(Object.class));
@@ -1419,353 +1203,99 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName("Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    BoundedIterator<Object> boundedIteratorResult =
-        IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-    when(inputCollection.iterator()).thenReturn(boundedIteratorResult);
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName("Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer2() {
-    // Arrange
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    iteratorChain.addIterator(objectList.iterator());
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName("Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer3() {
+  public void testCollectWithInputCollectionTransformer() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList.iterator());
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    iteratorChain.addIterator(objectList2.iterator());
-
+    objectList.add("42");
     Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName("Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer4() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    FilterIterator<Object> filterIterator =
-        new FilterIterator<>(objectList.iterator(), mock(Predicate.class));
-    filterIterator.addTo(new ArrayList<>());
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(filterIterator);
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    BoundedIterator<Object> boundedIteratorResult =
-        IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-    when(inputCollection.iterator()).thenReturn(boundedIteratorResult);
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection2() {
-    // Arrange
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    iteratorChain.addIterator(objectList.iterator());
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(iteratorChain);
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList.iterator());
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    iteratorChain.addIterator(objectList2.iterator());
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(iteratorChain);
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; given CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_givenCollatingIterator() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(new CollatingIterator<>());
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; given IteratorChain()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_givenIteratorChain() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(new IteratorChain<>());
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; given 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_givenNull() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(null);
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, null, new ArrayList<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Then return size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-
+    when(inputCollection.iterator()).thenReturn(objectList.iterator());
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
+    Collection<Object> actualCollectResult = CollectionUtils.collect(inputCollection,
+        new ChainedTransformer<>(transformer));
+
+    // Assert
+    verify(inputCollection).iterator();
+    verify(transformer).apply(isA(Object.class));
+    assertTrue(actualCollectResult instanceof List);
+    assertEquals(1, actualCollectResult.size());
+    assertEquals("Apply", ((List<Object>) actualCollectResult).get(0));
+  }
+
+  /**
+   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code inputCollection}, {@code transformer}, {@code outputCollection}.
+   * <ul>
+   *   <li>Then return Empty.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
+  public void testCollectWithInputCollectionTransformerOutputCollection_thenReturnEmpty() {
+    // Arrange and Act
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect((Iterable<?>) null, null,
+        new ArrayList<>());
+
+    // Assert
+    assertTrue(actualCollectResult instanceof List);
+    assertTrue(actualCollectResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code inputCollection}, {@code transformer}, {@code outputCollection}.
+   * <ul>
+   *   <li>Then return Empty.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
+  public void testCollectWithInputCollectionTransformerOutputCollection_thenReturnEmpty2() {
+    // Arrange
+    ArrayList<Object> inputCollection = new ArrayList<>();
+
+    // Act
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputCollection, null, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualCollectResult instanceof List);
+    assertTrue(actualCollectResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code inputCollection}, {@code transformer}, {@code outputCollection}.
+   * <ul>
+   *   <li>Then return size is one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
+  public void testCollectWithInputCollectionTransformerOutputCollection_thenReturnSizeIsOne() {
+    // Arrange
+    ArrayList<Object> inputCollection = new ArrayList<>();
+    inputCollection.add("42");
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+
+    // Act
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputCollection, transformer,
+        new ArrayList<>());
 
     // Assert
     verify(transformer).apply(isA(Object.class));
@@ -1775,33 +1305,27 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code inputCollection}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>Then return size is two.
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_thenReturnSizeIsTwo() {
+  public void testCollectWithInputCollectionTransformerOutputCollection_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
     inputCollection.add("42");
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputCollection, transformer,
+        new ArrayList<>());
 
     // Assert
     verify(transformer, atLeast(1)).apply(isA(Object.class));
@@ -1812,84 +1336,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code inputCollection}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
+   *   <li>When {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; when 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_whenNull() {
-    // Arrange and Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect((Iterable<?>) null, null, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; when 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_whenNull2() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-
-    // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, null, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer, Collection)} with {@code
-   * inputCollection}, {@code transformer}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>When {@link Transformer}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer, Collection) with 'inputCollection', 'transformer', 'outputCollection'; when Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer, Collection)"})
-  void testCollectWithInputCollectionTransformerOutputCollection_whenTransformer() {
+  public void testCollectWithInputCollectionTransformerOutputCollection_whenTransformer() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     Transformer<Object, Object> transformer = mock(Transformer.class);
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, transformer, new ArrayList<>());
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputCollection, transformer,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualCollectResult instanceof List);
@@ -1897,27 +1361,21 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return first is {@code Apply}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; given '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_given42_thenReturnSizeIsOne() {
+  public void testCollectWithInputCollectionTransformer_given42_thenReturnFirstIsApply() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
@@ -1932,186 +1390,49 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Then return first is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; given ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_givenArrayListAdd42() {
+  public void testCollectWithInputCollectionTransformer_thenReturnFirstIsNull() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-    iteratorChain.addIterator(iterator);
-
+    objectList.add(null);
     Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(iteratorChain);
-
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+    when(inputCollection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("foo");
+    Class<Object> forNameResult = Object.class;
 
     // Act
-    Collection<Object> actualCollectResult = CollectionUtils.collect(inputCollection, transformer);
+    Collection<Object> actualCollectResult = CollectionUtils.collect(inputCollection,
+        new InvokerTransformer<>("Method Name", new Class[]{forNameResult}, new Object[]{"Args"}));
 
     // Assert
     verify(inputCollection).iterator();
-    verify(transformer).apply(isA(Object.class));
     assertTrue(actualCollectResult instanceof List);
     assertEquals(1, actualCollectResult.size());
-    assertEquals("Apply", ((List<Object>) actualCollectResult).get(0));
+    assertNull(((List<Object>) actualCollectResult).get(0));
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
    * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; given CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_givenCollatingIterator() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(new CollatingIterator<>());
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; given IteratorChain()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_givenIteratorChain() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(new IteratorChain<>());
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; given 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_givenNull() {
-    // Arrange
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(null);
-
-    // Act
-    Collection<Object> actualCollectResult = CollectionUtils.collect(inputCollection, null);
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualCollectResult instanceof List);
-    assertTrue(actualCollectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_whenArrayList_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-
-    // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputCollection, mock(Transformer.class));
-
-    // Assert
-    assertEquals(inputCollection, actualCollectResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
-   */
-  @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_whenArrayList_thenReturnArrayList2() {
+  public void testCollectWithInputCollectionTransformer_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
@@ -2123,23 +1444,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection},
-   * {@code transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterable, Transformer) with 'inputCollection', 'transformer'; when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
-  void testCollectWithInputCollectionTransformer_whenNull_thenReturnEmpty() {
+  public void testCollectWithInputCollectionTransformer_whenNull_thenReturnEmpty() {
     // Arrange and Act
     Collection<Object> actualCollectResult = CollectionUtils.collect((Iterable<Object>) null, null);
 
@@ -2149,34 +1465,79 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code
-   * inputIterator}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
    * <ul>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer, Collection) with 'inputIterator', 'transformer', 'outputCollection'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
+  public void testCollectWithInputCollectionTransformer_whenNull_thenReturnEmpty2() {
+    // Arrange
+    Iterable<Object> inputCollection = mock(Iterable.class);
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    when(inputCollection.iterator()).thenReturn(objectList.iterator());
+
+    // Act
+    Collection<Object> actualCollectResult = CollectionUtils.collect(inputCollection, null);
+
+    // Assert
+    verify(inputCollection).iterator();
+    assertTrue(actualCollectResult instanceof List);
+    assertTrue(actualCollectResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#collect(Iterable, Transformer)} with {@code inputCollection}, {@code transformer}.
+   * <ul>
+   *   <li>When {@link Transformer}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterable, Transformer)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.collect(Iterable, Transformer)"})
+  public void testCollectWithInputCollectionTransformer_whenTransformer_thenReturnArrayList() {
+    // Arrange
+    ArrayList<Object> inputCollection = new ArrayList<>();
+
+    // Act
+    Collection<Object> actualCollectResult = CollectionUtils.<Object, Object>collect(inputCollection,
+        mock(Transformer.class));
+
+    // Assert
+    assertEquals(inputCollection, actualCollectResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code inputIterator}, {@code transformer}, {@code outputCollection}.
+   * <ul>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer, Collection)"})
-  void testCollectWithInputIteratorTransformerOutputCollection_thenArrayListSizeIsOne() {
+  public void testCollectWithInputIteratorTransformerOutputCollection_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
     Iterator<Object> inputIterator = objectList.iterator();
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputIterator, transformer, objectList2);
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputIterator, transformer, objectList2);
 
     // Assert
     verify(transformer).apply(isA(Object.class));
@@ -2189,35 +1550,28 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code
-   * inputIterator}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code inputIterator}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer, Collection) with 'inputIterator', 'transformer', 'outputCollection'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer, Collection)"})
-  void testCollectWithInputIteratorTransformerOutputCollection_thenArrayListSizeIsTwo() {
+  public void testCollectWithInputIteratorTransformerOutputCollection_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
     objectList.add("42");
     Iterator<Object> inputIterator = objectList.iterator();
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputIterator, transformer, objectList2);
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputIterator, transformer, objectList2);
 
     // Assert
     verify(transformer, atLeast(1)).apply(isA(Object.class));
@@ -2229,31 +1583,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code
-   * inputIterator}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code inputIterator}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@link ArrayList#ArrayList()}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer, Collection) with 'inputIterator', 'transformer', 'outputCollection'; when 'null'; then ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer, Collection)"})
-  void testCollectWithInputIteratorTransformerOutputCollection_whenNull_thenArrayList() {
+  public void testCollectWithInputIteratorTransformerOutputCollection_whenNull_thenArrayList() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> inputIterator = objectList.iterator();
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputIterator, null, objectList2);
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputIterator, null, objectList2);
 
     // Assert
     assertTrue(actualCollectResult instanceof List);
@@ -2263,29 +1611,23 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code
-   * inputIterator}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code inputIterator}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer, Collection) with 'inputIterator', 'transformer', 'outputCollection'; when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer, Collection)"})
-  void testCollectWithInputIteratorTransformerOutputCollection_whenNull_thenNull() {
+  public void testCollectWithInputIteratorTransformerOutputCollection_whenNull_thenNull() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect((Iterator<?>) null, null, objectList);
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect((Iterator<?>) null, null, objectList);
 
     // Assert
     assertTrue(actualCollectResult instanceof List);
@@ -2295,22 +1637,17 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code
-   * inputIterator}, {@code transformer}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer, Collection)} with {@code inputIterator}, {@code transformer}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@link Transformer}.
+   *   <li>When {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer, Collection) with 'inputIterator', 'transformer', 'outputCollection'; when Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer, Collection)"})
-  void testCollectWithInputIteratorTransformerOutputCollection_whenTransformer() {
+  public void testCollectWithInputIteratorTransformerOutputCollection_whenTransformer() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> inputIterator = objectList.iterator();
@@ -2318,8 +1655,7 @@ class CollectionUtilsDiffblueTest {
     ArrayList<Object> objectList2 = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualCollectResult =
-        CollectionUtils.collect(inputIterator, transformer, objectList2);
+    Collection<? super Object> actualCollectResult = CollectionUtils.collect(inputIterator, transformer, objectList2);
 
     // Assert
     assertTrue(actualCollectResult instanceof List);
@@ -2329,28 +1665,22 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code
-   * transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code transformer}.
    * <ul>
-   *   <li>Given {@code Apply}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer) with 'inputIterator', 'transformer'; given 'Apply'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer)"})
-  void testCollectWithInputIteratorTransformer_givenApply_thenReturnSizeIsOne() {
+  public void testCollectWithInputIteratorTransformer_givenApply_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
     Iterator<Object> inputIterator = objectList.iterator();
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
@@ -2366,23 +1696,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code
-   * transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code transformer}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>When {@code null}.</li>
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer) with 'inputIterator', 'transformer'; when 'null'; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer)"})
-  void testCollectWithInputIteratorTransformer_whenNull_thenNotArrayListIteratorHasNext() {
+  public void testCollectWithInputIteratorTransformer_whenNull_thenNotArrayListIteratorHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> inputIterator = objectList.iterator();
@@ -2397,23 +1722,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code
-   * transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code transformer}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer) with 'inputIterator', 'transformer'; when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer)"})
-  void testCollectWithInputIteratorTransformer_whenNull_thenNull() {
+  public void testCollectWithInputIteratorTransformer_whenNull_thenNull() {
     // Arrange and Act
     Collection<Object> actualCollectResult = CollectionUtils.collect((Iterator<Object>) null, null);
 
@@ -2424,29 +1744,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code
-   * transformer}.
-   *
+   * Test {@link CollectionUtils#collect(Iterator, Transformer)} with {@code inputIterator}, {@code transformer}.
    * <ul>
-   *   <li>When {@link Transformer}.
+   *   <li>When {@link Transformer}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#collect(Iterator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test collect(Iterator, Transformer) with 'inputIterator', 'transformer'; when Transformer")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.collect(Iterator, Transformer)"})
-  void testCollectWithInputIteratorTransformer_whenTransformer() {
+  public void testCollectWithInputIteratorTransformer_whenTransformer() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> inputIterator = objectList.iterator();
 
     // Act
-    Collection<Object> actualCollectResult =
-        CollectionUtils.collect(inputIterator, mock(Transformer.class));
+    Collection<Object> actualCollectResult = CollectionUtils.<Object, Object>collect(inputIterator,
+        mock(Transformer.class));
 
     // Assert
     assertTrue(actualCollectResult instanceof List);
@@ -2456,22 +1771,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testContainsAll_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
@@ -2485,52 +1796,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_given42_whenArrayListAdd42_thenReturnTrue2() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-    coll1.add("42");
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
-
-    // Act and Assert
-    assertTrue(CollectionUtils.containsAll(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_given42_whenArrayListAdd42_thenReturnTrue3() {
+  public void testContainsAll_given42_whenArrayListAdd42_thenReturnTrue2() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
@@ -2545,22 +1822,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_given42_whenArrayList_thenReturnFalse() {
+  public void testContainsAll_given42_whenArrayList_thenReturnFalse() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
 
@@ -2573,22 +1846,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_given42_whenArrayList_thenReturnFalse2() {
+  public void testContainsAll_given42_whenArrayList_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
 
@@ -2602,28 +1871,69 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given two.
-   *   <li>When {@link ArrayList#ArrayList()} add two.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test containsAll(Collection, Collection); given two; when ArrayList() add two; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
+  public void testContainsAll_given42_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add(2);
+    coll1.add("42");
+
+    // Act and Assert
+    assertTrue(CollectionUtils.containsAll(coll1, new ArrayList<>()));
+  }
+
+  /**
+   * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
+  public void testContainsAll_given42_whenArrayList_thenReturnTrue2() {
+    // Arrange
+    ArrayList<Object> coll1 = new ArrayList<>();
+    coll1.add("42");
+    coll1.add("42");
+
+    // Act and Assert
+    assertTrue(CollectionUtils.containsAll(coll1, new ArrayList<>()));
+  }
+
+  /**
+   * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
+   * <ul>
+   *   <li>Given two.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
+  public void testContainsAll_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> coll1 = new ArrayList<>();
+    coll1.add("42");
 
     ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
+    coll2.add(2);
 
     // Act and Assert
     assertFalse(CollectionUtils.containsAll(coll1, coll2));
@@ -2631,20 +1941,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#containsAll(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAll(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test containsAll(Collection, Collection); when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAll(Collection, Collection)"})
-  void testContainsAll_whenArrayList_thenReturnTrue() {
+  public void testContainsAll_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
 
@@ -2653,281 +1960,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_thenReturnTrue() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
-
-    // Act and Assert
-    assertTrue(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_thenReturnTrue2() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
-    coll2.add("42");
-
-    // Act and Assert
-    assertTrue(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_whenArrayList_thenReturnFalse() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_whenArrayList_thenReturnFalse2() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-    coll1.add("42");
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_whenArrayList_thenReturnFalse3() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_given42_whenArrayList_thenReturnFalse4() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add("42");
-    coll2.add("42");
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given two.
-   *   <li>When {@link ArrayList#ArrayList()} add two.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given two; when ArrayList() add two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_givenTwo_whenArrayListAddTwo() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add(2);
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>Given two.
-   *   <li>When {@link ArrayList#ArrayList()} add two.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; given two; when ArrayList() add two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_givenTwo_whenArrayListAddTwo2() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-    coll1.add("42");
-
-    ArrayList<Object> coll2 = new ArrayList<>();
-    coll2.add(2);
-    coll2.add(2);
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, coll2));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Collection)} with {@code Collection},
-   * {@code Collection}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Collection) with 'Collection', 'Collection'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Collection)"})
-  void testContainsAnyWithCollectionCollection_whenArrayList_thenReturnFalse() {
-    // Arrange
-    ArrayList<Object> coll1 = new ArrayList<>();
-
-    // Act and Assert
-    assertFalse(CollectionUtils.containsAny(coll1, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@code 42}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
-   */
-  @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; given '42'; when '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_given42_when42_thenReturnTrue() {
+  public void testContainsAnyWithCollectionObject_given42_when42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
@@ -2937,54 +1982,41 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@code Coll2} and {@code Coll2}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@code Coll2} and {@code Coll2}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; given '42'; when 'Coll2' and 'Coll2'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_given42_whenColl2AndColl2_thenReturnFalse() {
+  public void testContainsAnyWithCollectionObject_given42_whenColl2AndColl2_thenReturnFalse() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
 
-    // Act
-    boolean actualContainsAnyResult = CollectionUtils.containsAny(coll1, "Coll2", "Coll2");
-
-    // Assert
-    assertFalse(actualContainsAnyResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.containsAny(coll1, "Coll2", "Coll2"));
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@code Coll2}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@code Coll2}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; given '42'; when 'Coll2'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_given42_whenColl2_thenReturnFalse() {
+  public void testContainsAnyWithCollectionObject_given42_whenColl2_thenReturnFalse() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
@@ -2994,24 +2026,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@code Coll2}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@code Coll2}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; given '42'; when 'Coll2'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_given42_whenColl2_thenReturnFalse2() {
+  public void testContainsAnyWithCollectionObject_given42_whenColl2_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("42");
@@ -3022,78 +2049,60 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>Given {@code Coll2}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code Coll2}.
+   *   <li>Given {@code Coll2}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code Coll2}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; given 'Coll2'; when ArrayList() add 'Coll2'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_givenColl2_whenArrayListAddColl2() {
+  public void testContainsAnyWithCollectionObject_givenColl2_whenArrayListAddColl2() {
     // Arrange
     ArrayList<Object> coll1 = new ArrayList<>();
     coll1.add("Coll2");
 
-    // Act
-    boolean actualContainsAnyResult = CollectionUtils.containsAny(coll1, "Coll2", "Coll2");
-
-    // Assert
-    assertTrue(actualContainsAnyResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.containsAny(coll1, "Coll2", "Coll2"));
   }
 
   /**
-   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code
-   * Object[]}.
-   *
+   * Test {@link CollectionUtils#containsAny(Collection, Object[])} with {@code Collection}, {@code Object[]}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
+   * <p>
+   * Method under test: {@link CollectionUtils#containsAny(Collection, Object[])}
    */
   @Test
-  @DisplayName(
-      "Test containsAny(Collection, Object[]) with 'Collection', 'Object[]'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.containsAny(Collection, Object[])"})
-  void testContainsAnyWithCollectionObject_whenArrayList_thenReturnFalse() {
+  public void testContainsAnyWithCollectionObject_whenArrayList_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.containsAny(new ArrayList<>(), "Coll2"));
   }
 
   /**
    * Test {@link CollectionUtils#countMatches(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test countMatches(Iterable, Predicate); given 'false'; when Predicate test(Object) return 'false'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.countMatches(Iterable, Predicate)"})
-  void testCountMatches_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
+  public void testCountMatches_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -3107,26 +2116,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#countMatches(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return one.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test countMatches(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.countMatches(Iterable, Predicate)"})
-  void testCountMatches_givenTrue_whenPredicateTestReturnTrue_thenReturnOne() {
+  public void testCountMatches_givenTrue_whenPredicateTestReturnTrue_thenReturnOne() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -3140,80 +2144,68 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#countMatches(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test countMatches(Iterable, Predicate); when ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.countMatches(Iterable, Predicate)"})
-  void testCountMatches_whenArrayList_thenReturnZero() {
+  public void testCountMatches_whenArrayList_thenReturnZero() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.countMatches(new ArrayList<>(), mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#countMatches(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test countMatches(Iterable, Predicate); when 'null'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.countMatches(Iterable, Predicate)"})
-  void testCountMatches_whenNull_thenReturnZero() {
+  public void testCountMatches_whenNull_thenReturnZero() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.countMatches(null, null));
   }
 
   /**
    * Test {@link CollectionUtils#countMatches(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#countMatches(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test countMatches(Iterable, Predicate); when 'null'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.countMatches(Iterable, Predicate)"})
-  void testCountMatches_whenNull_thenReturnZero2() {
+  public void testCountMatches_whenNull_thenReturnZero2() {
     // Arrange, Act and Assert
     assertEquals(0, CollectionUtils.countMatches(null, mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#disjunction(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test disjunction(Iterable, Iterable); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.disjunction(Iterable, Iterable)"})
-  void testDisjunction_given42_whenArrayListAdd42() {
+  public void testDisjunction_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -3227,20 +2219,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#disjunction(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test disjunction(Iterable, Iterable); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.disjunction(Iterable, Iterable)"})
-  void testDisjunction_given42_whenArrayListAdd422() {
+  public void testDisjunction_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -3255,19 +2244,16 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#disjunction(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#disjunction(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test disjunction(Iterable, Iterable); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.disjunction(Iterable, Iterable)"})
-  void testDisjunction_whenArrayList() {
+  public void testDisjunction_whenArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -3280,15 +2266,13 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#emptyCollection()}.
-   *
-   * <p>Method under test: {@link CollectionUtils#emptyCollection()}
+   * <p>
+   * Method under test: {@link CollectionUtils#emptyCollection()}
    */
   @Test
-  @DisplayName("Test emptyCollection()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.emptyCollection()"})
-  void testEmptyCollection() {
+  public void testEmptyCollection() {
     // Arrange and Act
     Collection<Object> actualEmptyCollectionResult = CollectionUtils.emptyCollection();
 
@@ -3299,22 +2283,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#emptyIfNull(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test emptyIfNull(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.emptyIfNull(Collection)"})
-  void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -3330,22 +2310,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#emptyIfNull(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test emptyIfNull(Collection); given '42'; when ArrayList() add '42'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.emptyIfNull(Collection)"})
-  void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -3363,20 +2339,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#emptyIfNull(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
    */
   @Test
-  @DisplayName("Test emptyIfNull(Collection); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.emptyIfNull(Collection)"})
-  void testEmptyIfNull_whenArrayList_thenReturnEmpty() {
+  public void testEmptyIfNull_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
     Collection<Object> actualEmptyIfNullResult = CollectionUtils.emptyIfNull(new ArrayList<>());
 
@@ -3387,20 +2360,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#emptyIfNull(Collection)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#emptyIfNull(Collection)}
    */
   @Test
-  @DisplayName("Test emptyIfNull(Collection); when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.emptyIfNull(Collection)"})
-  void testEmptyIfNull_whenNull_thenReturnEmpty() {
+  public void testEmptyIfNull_whenNull_thenReturnEmpty() {
     // Arrange and Act
     Collection<Object> actualEmptyIfNullResult = CollectionUtils.emptyIfNull(null);
 
@@ -3411,56 +2381,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@link
-   *       CollatingIterator#CollatingIterator()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test exists(Iterable, Predicate); given CollatingIterator(); when Iterable iterator() return CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_givenCollatingIterator_whenIterableIteratorReturnCollatingIterator() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(new CollatingIterator<>());
-
-    // Act
-    boolean actualExistsResult = CollectionUtils.exists(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertFalse(actualExistsResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test exists(Iterable, Predicate); given 'false'; when Predicate test(Object) return 'false'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
+  public void testExists_given42_whenArrayListAdd42_thenCallsTest() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -3474,56 +2409,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@code null}.
-   *   <li>Then calls {@link Iterable#iterator()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test exists(Iterable, Predicate); given 'null'; when Iterable iterator() return 'null'; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_givenNull_whenIterableIteratorReturnNull_thenCallsIterator() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(null);
-
-    // Act
-    boolean actualExistsResult = CollectionUtils.exists(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertFalse(actualExistsResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test exists(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
+  public void testExists_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -3537,108 +2437,490 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test exists(Iterable, Predicate); when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_whenArrayList_thenReturnFalse() {
+  public void testExists_givenFalse_whenAnyPredicateWithPredicatesIsPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_givenFalse_whenNonePredicateWithPredicatesIsPredicate_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_givenFalse_whenNotPredicateWithPredicate_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_givenTrue_whenAnyPredicateWithPredicatesIsPredicate_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_givenTrue_whenNonePredicateWithPredicatesIsPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_givenTrue_whenNotPredicateWithPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertTrue(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate2() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(false);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate3() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenArrayList_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.exists(new ArrayList<>(), mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test exists(Iterable, Predicate); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_whenNull_thenReturnFalse() {
+  public void testExists_whenEqualPredicateWithObject_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new EqualPredicate<>("Object"));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and equator is defaultEquator.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenEqualPredicateWithTestAndEquatorIsDefaultEquator_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new EqualPredicate<>("Test", equator));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link IdentityPredicate#IdentityPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenIdentityPredicateWithObject_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new IdentityPredicate<>("Object"));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenJavaLangObject_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Class<Object> type = Object.class;
+
+    // Act
+    boolean actualExistsResult = CollectionUtils.exists(input, new InstanceofPredicate(type));
+
+    // Assert
+    verify(input).iterator();
+    assertTrue(actualExistsResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
+  public void testExists_whenNull_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.exists(null, null));
   }
 
   /**
    * Test {@link CollectionUtils#exists(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#exists(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test exists(Iterable, Predicate); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.exists(Iterable, Predicate)"})
-  void testExists_whenNull_thenReturnFalse2() {
+  public void testExists_whenNull_thenReturnFalse2() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.exists(null, mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#extractSingleton(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#extractSingleton(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#extractSingleton(Collection)}
    */
   @Test
-  @DisplayName("Test extractSingleton(Collection); given '42'; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.extractSingleton(Collection)"})
-  void testExtractSingleton_given42_thenThrowIllegalArgumentException() {
+  public void testExtractSingleton_given42_thenThrowIllegalArgumentException() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
 
     // Act and Assert
-    assertThrows(
-        IllegalArgumentException.class, () -> CollectionUtils.extractSingleton(collection));
+    assertThrows(IllegalArgumentException.class, () -> CollectionUtils.extractSingleton(collection));
   }
 
   /**
    * Test {@link CollectionUtils#extractSingleton(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#extractSingleton(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#extractSingleton(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test extractSingleton(Collection); given '42'; when ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.extractSingleton(Collection)"})
-  void testExtractSingleton_given42_whenArrayListAdd42_thenReturn42() {
+  public void testExtractSingleton_given42_whenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -3649,48 +2931,38 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#extractSingleton(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#extractSingleton(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#extractSingleton(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test extractSingleton(Collection); when ArrayList(); then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.extractSingleton(Collection)"})
-  void testExtractSingleton_whenArrayList_thenThrowIllegalArgumentException() {
+  public void testExtractSingleton_whenArrayList_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(
-        IllegalArgumentException.class, () -> CollectionUtils.extractSingleton(new ArrayList<>()));
+    assertThrows(IllegalArgumentException.class, () -> CollectionUtils.extractSingleton(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#filter(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test filter(Iterable, Predicate); given 'false'; when Predicate test(Object) return 'false'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filter(Iterable, Predicate)"})
-  void testFilter_givenFalse_whenPredicateTestReturnFalse_thenReturnTrue() {
+  public void testFilter_givenFalse_whenPredicateTestReturnFalse_thenReturnTrue() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -3705,26 +2977,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filter(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test filter(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filter(Iterable, Predicate)"})
-  void testFilter_givenTrue_whenPredicateTestReturnTrue_thenArrayListSizeIsOne() {
+  public void testFilter_givenTrue_whenPredicateTestReturnTrue_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -3739,20 +3006,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filter(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filter(Iterable, Predicate); when ArrayList(); then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filter(Iterable, Predicate)"})
-  void testFilter_whenArrayList_thenArrayListEmpty() {
+  public void testFilter_whenArrayList_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -3763,20 +3027,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filter(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filter(Iterable, Predicate); when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filter(Iterable, Predicate)"})
-  void testFilter_whenNull_thenNull() {
+  public void testFilter_whenNull_thenNull() {
     // Arrange, Act and Assert
     assertNull(null);
     assertFalse(CollectionUtils.filter(null, null));
@@ -3784,20 +3045,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filter(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link Predicate}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filter(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filter(Iterable, Predicate); when Predicate; then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filter(Iterable, Predicate)"})
-  void testFilter_whenPredicate_thenArrayListEmpty() {
+  public void testFilter_whenPredicate_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -3808,26 +3066,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filterInverse(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test filterInverse(Iterable, Predicate); given 'false'; when Predicate test(Object) return 'false'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filterInverse(Iterable, Predicate)"})
-  void testFilterInverse_givenFalse_whenPredicateTestReturnFalse_thenArrayListSizeIsOne() {
+  public void testFilterInverse_givenFalse_whenPredicateTestReturnFalse_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -3842,26 +3095,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filterInverse(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test filterInverse(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filterInverse(Iterable, Predicate)"})
-  void testFilterInverse_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
+  public void testFilterInverse_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -3876,20 +3124,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filterInverse(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filterInverse(Iterable, Predicate); when ArrayList(); then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filterInverse(Iterable, Predicate)"})
-  void testFilterInverse_whenArrayList_thenArrayListEmpty() {
+  public void testFilterInverse_whenArrayList_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -3900,20 +3145,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filterInverse(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filterInverse(Iterable, Predicate); when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filterInverse(Iterable, Predicate)"})
-  void testFilterInverse_whenNull_thenNull() {
+  public void testFilterInverse_whenNull_thenNull() {
     // Arrange, Act and Assert
     assertNull(null);
     assertFalse(CollectionUtils.filterInverse(null, null));
@@ -3921,20 +3163,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#filterInverse(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link Predicate}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#filterInverse(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test filterInverse(Iterable, Predicate); when Predicate; then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.filterInverse(Iterable, Predicate)"})
-  void testFilterInverse_whenPredicate_thenArrayListEmpty() {
+  public void testFilterInverse_whenPredicate_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -3945,56 +3184,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@link
-   *       CollatingIterator#CollatingIterator()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test find(Iterable, Predicate); given CollatingIterator(); when Iterable iterator() return CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_givenCollatingIterator_whenIterableIteratorReturnCollatingIterator() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(new CollatingIterator<>());
-
-    // Act
-    Object actualFindResult = CollectionUtils.find(collection, mock(Predicate.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualFindResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test find(Iterable, Predicate); given 'false'; when Predicate test(Object) return 'false'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
+  public void testFind_given42_whenArrayListAdd42_thenCallsTest() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -4008,56 +3212,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@code null}.
-   *   <li>Then calls {@link Iterable#iterator()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test find(Iterable, Predicate); given 'null'; when Iterable iterator() return 'null'; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_givenNull_whenIterableIteratorReturnNull_thenCallsIterator() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(null);
-
-    // Act
-    Object actualFindResult = CollectionUtils.find(collection, mock(Predicate.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualFindResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test find(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_givenTrue_whenPredicateTestReturnTrue_thenReturn42() {
+  public void testFind_given42_whenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -4071,209 +3240,493 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code null}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test find(Iterable, Predicate); when ArrayList(); then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_whenArrayList_thenReturnNull() {
+  public void testFind_givenFalse_whenAnyPredicateWithPredicatesIsPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then return {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_givenFalse_whenNonePredicateWithPredicatesIsPredicate_thenReturn42() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertEquals("42", actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then return {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_givenFalse_whenNotPredicateWithPredicate_thenReturn42() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertEquals("42", actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then return {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_givenTrue_whenAnyPredicateWithPredicatesIsPredicate_thenReturn42() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertEquals("42", actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_givenTrue_whenNonePredicateWithPredicatesIsPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_givenTrue_whenNotPredicateWithPredicate_thenCallsTest() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertEquals("42", actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate2() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(false);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate1).test(isA(Object.class));
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate3() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(collection).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenArrayList_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(CollectionUtils.find(new ArrayList<>(), mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test find(Iterable, Predicate); when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_whenNull_thenReturnNull() {
+  public void testFind_whenEqualPredicateWithObject_thenReturnNull() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new EqualPredicate<>("Object"));
+
+    // Assert
+    verify(collection).iterator();
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and equator is defaultEquator.</li>
+   *   <li>Then return {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenEqualPredicateWithTestAndEquatorIsDefaultEquator_thenReturnNull() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new EqualPredicate<>("Test", equator));
+
+    // Assert
+    verify(collection).iterator();
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link IdentityPredicate#IdentityPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenIdentityPredicateWithObject_thenReturnNull() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new IdentityPredicate<>("Object"));
+
+    // Assert
+    verify(collection).iterator();
+    assertNull(actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenJavaLangObject_thenReturn42() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> collection = mock(Iterable.class);
+    when(collection.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Class<Object> type = Object.class;
+
+    // Act
+    Object actualFindResult = CollectionUtils.find(collection, new InstanceofPredicate(type));
+
+    // Assert
+    verify(collection).iterator();
+    assertEquals("42", actualFindResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#find(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
+  public void testFind_whenNull_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(CollectionUtils.find(null, null));
   }
 
   /**
    * Test {@link CollectionUtils#find(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#find(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test find(Iterable, Predicate); when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.find(Iterable, Predicate)"})
-  void testFind_whenNull_thenReturnNull2() {
+  public void testFind_whenNull_thenReturnNull2() {
     // Arrange, Act and Assert
     assertNull(CollectionUtils.find(null, mock(Predicate.class)));
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    BoundedIterator<Object> boundedIteratorResult =
-        IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-    when(collection.iterator()).thenReturn(boundedIteratorResult);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure2() {
-    // Arrange
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    iteratorChain.addIterator(objectList.iterator());
-
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList.iterator());
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    iteratorChain.addIterator(objectList2.iterator());
-
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure4() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    FilterIterator<Object> filterIterator =
-        new FilterIterator<>(objectList.iterator(), mock(Predicate.class));
-    filterIterator.addTo(new ArrayList<>());
-
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(filterIterator);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code closure}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then calls {@link Closure#accept(Object)}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given '42'; then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_given42_thenCallsAccept() {
+  public void testForAllButLastDoWithCollectionClosure_given42_whenArrayListAdd42_thenReturn42() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    // Act and Assert
+    assertEquals("42",
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(collection, mock(Closure.class)));
+  }
+
+  /**
+   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code closure}.
+   * <ul>
+   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
+  public void testForAllButLastDoWithCollectionClosure_thenCallsAccept() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
-
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
 
@@ -4286,312 +3739,159 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code closure}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given '42'; when ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_given42_whenArrayListAdd42_thenReturn42() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    // Act and Assert
-    assertEquals("42", CollectionUtils.forAllButLastDo(collection, mock(Closure.class)));
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_givenArrayListAdd42() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-    iteratorChain.addIterator(iterator);
-
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertEquals("42", actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_givenArrayListAdd422() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    objectList.add("42");
-    BoundedIterator<Object> boundedIteratorResult =
-        IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(boundedIteratorResult);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertEquals("42", actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_givenCollatingIterator() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(new CollatingIterator<>());
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given IteratorChain()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_givenIteratorChain() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(new IteratorChain<>());
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; given 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_givenNull() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(null);
-
-    // Act
-    Object actualForAllButLastDoResult =
-        CollectionUtils.forAllButLastDo(collection, mock(Closure.class));
-
-    // Assert
-    verify(collection).iterator();
-    assertNull(actualForAllButLastDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; when ArrayList(); then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_whenArrayList_thenReturnNull() {
+  public void testForAllButLastDoWithCollectionClosure_whenArrayList_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo(new ArrayList<>(), mock(Closure.class)));
+    assertNull(
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(new ArrayList<>(), mock(Closure.class)));
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code closure}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_whenNull_thenReturnNull() {
+  public void testForAllButLastDoWithCollectionClosure_whenNull_thenReturnNull() {
     // Arrange, Act and Assert
     assertNull(CollectionUtils.forAllButLastDo((Iterable<Object>) null, null));
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterable, Closure)} with {@code collection}, {@code closure}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterable, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterable, Closure) with 'collection', 'closure'; when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterable, Closure)"})
-  void testForAllButLastDoWithCollectionClosure_whenNull_thenReturnNull2() {
+  public void testForAllButLastDoWithCollectionClosure_whenNull_thenReturnNull2() {
     // Arrange, Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo((Iterable<Object>) null, mock(Closure.class)));
+    assertNull(
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo((Iterable<Object>) null, mock(Closure.class)));
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; given '42'; when ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_given42_whenArrayListAdd42_thenReturn42() {
+  public void testForAllButLastDoWithIteratorClosure() {
     // Arrange
+    new IndexOutOfBoundsException("closure");
+
     ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
+    BoundedIterator<Object> iterator = IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
 
     // Act and Assert
-    assertEquals("42", CollectionUtils.forAllButLastDo(iterator, mock(Closure.class)));
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
     assertFalse(iterator.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Then calls {@link Closure#accept(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_thenCallsAccept() {
+  public void testForAllButLastDoWithIteratorClosure2() {
+    // Arrange
+    CollatingIterator<Object> iterator = new CollatingIterator<>();
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    iterator.addIterator(objectList.iterator());
+
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
+    assertFalse(iterator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure3() {
+    // Arrange
+    IteratorChain<Object> iterator = new IteratorChain<>();
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    iterator.addIterator(objectList.iterator());
+
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
+    assertFalse(iterator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure4() {
+    // Arrange
+    IteratorChain<Object> iterator = new IteratorChain<>();
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    iterator.addIterator(objectList.iterator());
+
+    ArrayList<Object> objectList2 = new ArrayList<>();
+    iterator.addIterator(objectList2.iterator());
+
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
+    assertFalse(iterator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then calls {@link Closure#accept(Object)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_given42_thenCallsAccept() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
     objectList.add("42");
     Iterator<Object> iterator = objectList.iterator();
-
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
 
@@ -4605,637 +3905,40 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_thenNotArrayListIteratorHasNext() {
+  public void testForAllButLastDoWithIteratorClosure_given42_thenNotArrayListIteratorHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
     Iterator<Object> iterator = objectList.iterator();
 
     // Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo(iterator, mock(Closure.class)));
+    assertEquals("42", CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
     assertFalse(iterator.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>Then not {@link CollatingIterator#CollatingIterator()} hasNext.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; then not CollatingIterator() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_thenNotCollatingIteratorHasNext() {
-    // Arrange
-    CollatingIterator<Object> iterator = new CollatingIterator<>();
-
-    // Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo(iterator, mock(Closure.class)));
-    assertFalse(iterator.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_whenNull_thenNull() {
-    // Arrange, Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo((Iterator<Object>) null, null));
-    assertNull(null);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllButLastDo(Iterator, Closure) with 'iterator', 'closure'; when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
-  void testForAllButLastDoWithIteratorClosure_whenNull_thenNull2() {
-    // Arrange, Act and Assert
-    assertNull(CollectionUtils.forAllButLastDo((Iterator<Object>) null, mock(Closure.class)));
-    assertNull(null);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; given CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_givenCollatingIterator() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(new CollatingIterator<>());
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(collection, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(collection).iterator();
-    verify(closure).execute(isA(Object.class));
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@code false}.
-   *   <li>Then return {@link IfClosure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; given 'false'; then return IfClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_givenFalse_thenReturnIfClosure() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-    IfClosure<? super Object> ifClosure = new IfClosure<>(predicate, mock(Closure.class));
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(collection, ifClosure);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualForAllDoResult instanceof IfClosure);
-    assertEquals(1, collection.size());
-    assertTrue(
-        ((IfClosure<? super Object>) actualForAllDoResult).getFalseClosure() instanceof NOPClosure);
-    assertEquals("42", collection.get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; given 'null'; when Iterable iterator() return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_givenNull_whenIterableIteratorReturnNull() {
-    // Arrange
-    Iterable<Object> collection = mock(Iterable.class);
-    when(collection.iterator()).thenReturn(null);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(collection, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(collection).iterator();
-    verify(closure).execute(isA(Object.class));
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Then return {@link ChainedClosure}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; then return ChainedClosure")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_thenReturnChainedClosure() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    ChainedClosure<? super Object> chainedClosure = new ChainedClosure<>(closure);
-
-    // Act
-    Closure<? super Object> actualForAllDoResult =
-        CollectionUtils.forAllDo(collection, chainedClosure);
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    assertTrue(actualForAllDoResult instanceof ChainedClosure);
-    assertEquals(1, collection.size());
-    assertEquals("42", collection.get(0));
-    assertEquals(1, chainedClosure.getClosures().length);
-    assertEquals(1, ((ChainedClosure<? super Object>) actualForAllDoResult).getClosures().length);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; when ArrayList(); then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_whenArrayList_thenArrayListEmpty() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    CollectionUtils.forAllDo(collection, mock(Closure.class));
-
-    // Assert that nothing has changed
-    assertTrue(collection.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@link Closure} {@link Closure#accept(Object)} does nothing.
-   *   <li>Then calls {@link Closure#accept(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; when Closure accept(Object) does nothing; then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_whenClosureAcceptDoesNothing_thenCallsAccept() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(collection, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
-    assertEquals(1, collection.size());
-    assertEquals("42", collection.get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When empty.
-   *   <li>Then empty toList Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; when empty; then empty toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_whenEmpty_thenEmptyToListEmpty() {
-    // Arrange
-    FluentIterable<Object> collection = FluentIterable.empty();
-
-    // Act
-    CollectionUtils.forAllDo(collection, mock(Closure.class));
-
-    // Assert that nothing has changed
-    assertTrue(collection.toList().isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_whenNull_thenNull() {
-    // Arrange and Act
-    CollectionUtils.forAllDo((Iterable<Object>) null, mock(Closure.class));
-
-    // Assert that nothing has changed
-    assertNull(null);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterable, Closure)} with {@code collection}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterable, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterable, Closure) with 'collection', 'closure'; when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterable, Closure)"})
-  void testForAllDoWithCollectionClosure_whenNull_thenReturnNull() {
-    // Arrange and Act
-    Closure<? super Object> actualForAllDoResult =
-        CollectionUtils.forAllDo((Iterable<Object>) null, null);
-
-    // Assert
-    assertNull(null);
-    assertNull(null);
-    assertNull(actualForAllDoResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllDo(Iterator, Closure) with 'iterator', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    BoundedIterator<Object> iterator = IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllDo(Iterator, Closure) with 'iterator', 'closure'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    IteratorChain<Object> iterator = new IteratorChain<>(objectList.iterator());
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    iterator.addIterator(objectList2.iterator());
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; given '42'; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_given42_thenNotArrayListIteratorHasNext() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given {@link CollectionUtils#INDEX_NOT_FOUND}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName("Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; given INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_givenIndex_not_found() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator2 = objectList2.iterator();
-
-    Comparator<Object> comp = mock(Comparator.class);
-    when(comp.compare(Mockito.<Object>any(), Mockito.<Object>any()))
-        .thenReturn(CollectionUtils.INDEX_NOT_FOUND);
-
-    CollatingIterator<Object> iterator3 = new CollatingIterator<>(comp);
-    iterator3.addIterator(iterator2);
-    iterator3.addIterator(iterator);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator3, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(comp).compare(isA(Object.class), isA(Object.class));
-    verify(closure, atLeast(1)).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator3.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Given one.
-   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; given one; when Comparator compare(Object, Object) return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_givenOne_whenComparatorCompareReturnOne() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator2 = objectList2.iterator();
-
-    Comparator<Object> comp = mock(Comparator.class);
-    when(comp.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
-
-    CollatingIterator<Object> iterator3 = new CollatingIterator<>(comp);
-    iterator3.addIterator(iterator2);
-    iterator3.addIterator(iterator);
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator3, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(comp).compare(isA(Object.class), isA(Object.class));
-    verify(closure, atLeast(1)).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator3.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Then not {@link CollatingIterator#CollatingIterator()} hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; then not CollatingIterator() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_thenNotCollatingIteratorHasNext() {
-    // Arrange
-    CollatingIterator<Object> iterator = new CollatingIterator<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    iterator.addIterator(objectList.iterator());
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator.hasNext());
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>Then not {@link CollatingIterator#CollatingIterator()} hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; then not CollatingIterator() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_thenNotCollatingIteratorHasNext2() {
+  public void testForAllButLastDoWithIteratorClosure_givenArrayListAdd42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -5244,37 +3947,50 @@ class CollectionUtilsDiffblueTest {
     CollatingIterator<Object> iterator2 = new CollatingIterator<>();
     iterator2.addIterator(iterator);
 
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator2, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
+    // Act and Assert
+    assertEquals("42",
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator2, mock(Closure.class)));
     assertFalse(iterator2.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>Then not {@link CollatingIterator#CollatingIterator()} hasNext.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; then not CollatingIterator() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_thenNotCollatingIteratorHasNext3() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_givenArrayListAdd422() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterator<Object> iterator = objectList.iterator();
+
+    IteratorChain<Object> iterator2 = new IteratorChain<>();
+    iterator2.addIterator(iterator);
+
+    // Act and Assert
+    assertEquals("42",
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator2, mock(Closure.class)));
+    assertFalse(iterator2.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
+   * <ul>
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_givenArrayListAdd423() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -5286,221 +4002,124 @@ class CollectionUtilsDiffblueTest {
     iterator2.addIterator(objectList2.iterator());
     iterator2.addIterator(iterator);
 
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator2, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    verify(closure).execute(isA(Object.class));
+    // Act and Assert
+    assertEquals("42",
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator2, mock(Closure.class)));
     assertFalse(iterator2.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>When {@link Closure}.
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when Closure; then not ArrayList() iterator hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenClosure_thenNotArrayListIteratorHasNext() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_thenNotArrayListIteratorHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Iterator<Object> iterator = objectList.iterator();
 
-    // Act
-    CollectionUtils.forAllDo(iterator, mock(Closure.class));
-
-    // Assert that nothing has changed
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
     assertFalse(iterator.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>When {@link Closure}.
-   *   <li>Then {@code null}.
+   *   <li>When {@link CollatingIterator#CollatingIterator()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when Closure; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenClosure_thenNull() {
-    // Arrange and Act
-    CollectionUtils.forAllDo((Iterator<Object>) null, mock(Closure.class));
-
-    // Assert that nothing has changed
-    assertNull(null);
-  }
-
-  /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
-   * <ul>
-   *   <li>When {@link CollatingIterator#CollatingIterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
-   */
-  @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenCollatingIterator() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_whenCollatingIterator() {
     // Arrange
     CollatingIterator<Object> iterator = new CollatingIterator<>();
 
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
     assertFalse(iterator.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>When {@link IteratorChain#IteratorChain()} addIterator {@link ArrayList#ArrayList()}
-   *       iterator.
+   *   <li>When {@link IteratorChain#IteratorChain()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when IteratorChain() addIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenIteratorChainAddIteratorArrayListIterator() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_whenIteratorChain() {
     // Arrange
     IteratorChain<Object> iterator = new IteratorChain<>();
 
-    ArrayList<Object> objectList = new ArrayList<>();
-    iterator.addIterator(objectList.iterator());
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
+    // Act and Assert
+    assertNull(CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo(iterator, mock(Closure.class)));
     assertFalse(iterator.hasNext());
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>When {@link IteratorChain#IteratorChain()}.
-   *   <li>Then not {@link IteratorChain#IteratorChain()} hasNext.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when IteratorChain(); then not IteratorChain() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenIteratorChain_thenNotIteratorChainHasNext() {
-    // Arrange
-    IteratorChain<Object> iterator = new IteratorChain<>();
-
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).execute(Mockito.<Object>any());
-
-    // Act
-    Closure<? super Object> actualForAllDoResult = CollectionUtils.forAllDo(iterator, closure);
-    actualForAllDoResult.execute("42");
-
-    // Assert that nothing has changed
-    verify(closure).execute(isA(Object.class));
-    assertFalse(iterator.hasNext());
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_whenNull_thenNull() {
+    // Arrange, Act and Assert
+    assertNull(CollectionUtils.forAllButLastDo((Iterator<Object>) null, null));
+    assertNull(null);
   }
 
   /**
-   * Test {@link CollectionUtils#forAllDo(Iterator, Closure)} with {@code iterator}, {@code
-   * closure}.
-   *
+   * Test {@link CollectionUtils#forAllButLastDo(Iterator, Closure)} with {@code iterator}, {@code closure}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#forAllDo(Iterator, Closure)}
+   * <p>
+   * Method under test: {@link CollectionUtils#forAllButLastDo(Iterator, Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forAllDo(Iterator, Closure) with 'iterator', 'closure'; when 'null'; then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Closure CollectionUtils.forAllDo(Iterator, Closure)"})
-  void testForAllDoWithIteratorClosure_whenNull_thenReturnNull() {
-    // Arrange and Act
-    Closure<? super Object> actualForAllDoResult =
-        CollectionUtils.forAllDo((Iterator<Object>) null, null);
-
-    // Assert
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.forAllButLastDo(Iterator, Closure)"})
+  public void testForAllButLastDoWithIteratorClosure_whenNull_thenNull2() {
+    // Arrange, Act and Assert
+    assertNull(
+        CollectionUtils.<Object, Closure<? super Object>>forAllButLastDo((Iterator<Object>) null, mock(Closure.class)));
     assertNull(null);
-    assertNull(null);
-    assertNull(actualForAllDoResult);
   }
 
   /**
    * Test {@link CollectionUtils#get(Iterable, int)} with {@code iterable}, {@code index}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Iterable, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Iterable, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Iterable, int) with 'iterable', 'index'; given '42'; when ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Iterable, int)"})
-  void testGetWithIterableIndex_given42_whenArrayListAdd42_thenReturn42() {
+  public void testGetWithIterableIndex_given42_whenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
@@ -5512,59 +4131,20 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#get(Iterable, int)} with {@code iterable}, {@code index}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then calls {@link Iterable#iterator()}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then calls {@link Iterable#iterator()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Iterable, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Iterable, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Iterable, int) with 'iterable', 'index'; given ArrayList() add '42'; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Iterable, int)"})
-  void testGetWithIterableIndex_givenArrayListAdd42_thenCallsIterator() {
+  public void testGetWithIterableIndex_givenArrayListAdd42_thenCallsIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Object actualGetResult = CollectionUtils.get(iterable, 1);
-
-    // Assert
-    verify(iterable).iterator();
-    assertEquals("42", actualGetResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#get(Iterable, int)} with {@code iterable}, {@code index}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When zero.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Iterable, int)}
-   */
-  @Test
-  @DisplayName(
-      "Test get(Iterable, int) with 'iterable', 'index'; given ArrayList() add '42'; when zero; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object CollectionUtils.get(Iterable, int)"})
-  void testGetWithIterableIndex_givenArrayListAdd42_whenZero_thenCallsIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
     Iterable<Object> iterable = mock(Iterable.class);
     when(iterable.iterator()).thenReturn(objectList.iterator());
 
@@ -5578,22 +4158,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#get(Iterator, int)} with {@code iterator}, {@code index}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Iterator, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Iterator, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Iterator, int) with 'iterator', 'index'; given '42'; when ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Iterator, int)"})
-  void testGetWithIteratorIndex_given42_whenArrayListAdd42_thenReturn42() {
+  public void testGetWithIteratorIndex_given42_whenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -5607,45 +4183,59 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName("Test get(Object, int) with 'object', 'index'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex() {
+  public void testGetWithObjectIndex() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    ListIteratorWrapper<Object> iterator = new ListIteratorWrapper<>(objectList.iterator());
-    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator =
-        new AbstractListIteratorDecorator<>(iterator);
+    objectList.add("42");
+    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(
+        new ListIteratorWrapper<>(objectList.iterator()));
 
     // Act and Assert
-    assertEquals("42", CollectionUtils.get(abstractListIteratorDecorator, 0));
+    assertEquals("42", CollectionUtils.get(abstractListIteratorDecorator, 1));
     assertFalse(abstractListIteratorDecorator.hasNext());
   }
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Object, int) with 'object', 'index'; given '42'; when ArrayList() add '42'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
+  public void testGetWithObjectIndex2() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(
+        new LoopingListIterator<>(list));
+
+    // Act and Assert
+    assertEquals("42", CollectionUtils.get(abstractListIteratorDecorator, 1));
+    assertTrue(abstractListIteratorDecorator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
+  public void testGetWithObjectIndex_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -5661,51 +4251,37 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code 42}.
-   *   <li>Then {@link HashMap#HashMap()} size is one.
+   *   <li>Then return {@code Array}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Object, int) with 'object', 'index'; given '42'; when HashMap() '42' is '42'; then HashMap() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex_given42_whenHashMap42Is42_thenHashMapSizeIsOne() {
+  public void testGetWithObjectIndex_thenReturnArray() {
     // Arrange
-    HashMap<Object, Object> objectObjectMap = new HashMap<>();
-    objectObjectMap.put("42", "42");
+    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(
+        new ObjectArrayListIterator<>("Array", "Array"));
 
-    // Act
-    CollectionUtils.get(objectObjectMap, 0);
-
-    // Assert that nothing has changed
-    assertEquals(1, objectObjectMap.size());
-    assertTrue(objectObjectMap.containsKey("42"));
+    // Act and Assert
+    assertEquals("Array", CollectionUtils.get(abstractListIteratorDecorator, 1));
+    assertFalse(abstractListIteratorDecorator.hasNext());
   }
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
    * <ul>
-   *   <li>Then {@link Scanner#Scanner(String)} with {@code Unsupported object type:} next is {@code
-   *       type:}.
+   *   <li>Then {@link Scanner#Scanner(String)} with {@code Unsupported object type:} next is {@code type:}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Object, int) with 'object', 'index'; then Scanner(String) with 'Unsupported object type:' next is 'type:'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex_thenScannerWithUnsupportedObjectTypeNextIsType() {
+  public void testGetWithObjectIndex_thenScannerWithUnsupportedObjectTypeNextIsType() {
     // Arrange
     Scanner scanner = new Scanner("Unsupported object type: ");
 
@@ -5717,65 +4293,51 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
    * <ul>
-   *   <li>When {@code Object}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When {@code Object}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Object, int) with 'object', 'index'; when 'Object'; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex_whenObject_thenThrowIllegalArgumentException() {
+  public void testGetWithObjectIndex_whenObject_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> CollectionUtils.get("Object", 1));
   }
 
   /**
    * Test {@link CollectionUtils#get(Object, int)} with {@code object}, {@code index}.
-   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object
-   *       type:}.
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object type:}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#get(Object, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#get(Object, int)}
    */
   @Test
-  @DisplayName(
-      "Test get(Object, int) with 'object', 'index'; when StringTokenizer(String) with 'Unsupported object type:'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object CollectionUtils.get(Object, int)"})
-  void testGetWithObjectIndex_whenStringTokenizerWithUnsupportedObjectType() {
+  public void testGetWithObjectIndex_whenStringTokenizerWithUnsupportedObjectType() {
     // Arrange, Act and Assert
-    assertEquals(
-        "object", CollectionUtils.get(new StringTokenizer("Unsupported object type: "), 1));
+    assertEquals("object", CollectionUtils.get(new StringTokenizer("Unsupported object type: "), 1));
   }
 
   /**
    * Test {@link CollectionUtils#getCardinalityMap(Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42} intValue is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42} intValue is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test getCardinalityMap(Iterable); given '42'; when ArrayList() add '42'; then return '42' intValue is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map CollectionUtils.getCardinalityMap(Iterable)"})
-  void testGetCardinalityMap_given42_whenArrayListAdd42_thenReturn42IntValueIsOne() {
+  public void testGetCardinalityMap_given42_whenArrayListAdd42_thenReturn42IntValueIsOne() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -5790,22 +4352,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#getCardinalityMap(Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42} intValue is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42} intValue is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test getCardinalityMap(Iterable); given '42'; when ArrayList() add '42'; then return '42' intValue is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map CollectionUtils.getCardinalityMap(Iterable)"})
-  void testGetCardinalityMap_given42_whenArrayListAdd42_thenReturn42IntValueIsTwo() {
+  public void testGetCardinalityMap_given42_whenArrayListAdd42_thenReturn42IntValueIsTwo() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -5821,47 +4379,38 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#getCardinalityMap(Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#getCardinalityMap(Iterable)}
    */
   @Test
-  @DisplayName("Test getCardinalityMap(Iterable); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map CollectionUtils.getCardinalityMap(Iterable)"})
-  void testGetCardinalityMap_whenArrayList_thenReturnEmpty() {
+  public void testGetCardinalityMap_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    Map<Object, Integer> actualCardinalityMap =
-        CollectionUtils.getCardinalityMap(new ArrayList<>());
+    Map<Object, Integer> actualCardinalityMap = CollectionUtils.getCardinalityMap(new ArrayList<>());
 
     // Assert
     assertTrue(actualCardinalityMap.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code
-   * Equator}.
-   *
+   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code Equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 1693}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 1693}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test hashCode(Collection, Equator) with 'Collection', 'Equator'; given '42'; when ArrayList() add '42'; then return '1693'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.hashCode(Collection, Equator)"})
-  void testHashCodeWithCollectionEquator_given42_whenArrayListAdd42_thenReturn1693() {
+  public void testHashCodeWithCollectionEquator_given42_whenArrayListAdd42_thenReturn1693() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -5872,24 +4421,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code
-   * Equator}.
-   *
+   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code Equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 54145}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 54145}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test hashCode(Collection, Equator) with 'Collection', 'Equator'; given '42'; when ArrayList() add '42'; then return '54145'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.hashCode(Collection, Equator)"})
-  void testHashCodeWithCollectionEquator_given42_whenArrayListAdd42_thenReturn54145() {
+  public void testHashCodeWithCollectionEquator_given42_whenArrayListAdd42_thenReturn54145() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -5901,23 +4445,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code
-   * Equator}.
-   *
+   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code Equator}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return one.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test hashCode(Collection, Equator) with 'Collection', 'Equator'; when ArrayList(); then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.hashCode(Collection, Equator)"})
-  void testHashCodeWithCollectionEquator_whenArrayList_thenReturnOne() {
+  public void testHashCodeWithCollectionEquator_whenArrayList_thenReturnOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
@@ -5927,23 +4466,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code
-   * Equator}.
-   *
+   * Test {@link CollectionUtils#hashCode(Collection, Equator)} with {@code Collection}, {@code Equator}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#hashCode(Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test hashCode(Collection, Equator) with 'Collection', 'Equator'; when 'null'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.hashCode(Collection, Equator)"})
-  void testHashCodeWithCollectionEquator_whenNull_thenReturnZero() {
+  public void testHashCodeWithCollectionEquator_whenNull_thenReturnZero() {
     // Arrange
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
@@ -5953,22 +4487,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#intersection(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test intersection(Iterable, Iterable); given '42'; when ArrayList() add '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.intersection(Iterable, Iterable)"})
-  void testIntersection_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testIntersection_given42_whenArrayListAdd42_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -5985,29 +4515,24 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#intersection(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test intersection(Iterable, Iterable); given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.intersection(Iterable, Iterable)"})
-  void testIntersection_given42_whenArrayListAdd42_thenReturnList() {
+  public void testIntersection_given42_whenArrayListAdd42_thenReturnList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     // Act
-    Collection<Object> actualIntersectionResult =
-        CollectionUtils.intersection(a, new ArrayList<>());
+    Collection<Object> actualIntersectionResult = CollectionUtils.intersection(a, new ArrayList<>());
 
     // Assert
     assertTrue(actualIntersectionResult instanceof List);
@@ -6016,30 +4541,25 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#intersection(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test intersection(Iterable, Iterable); given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.intersection(Iterable, Iterable)"})
-  void testIntersection_given42_whenArrayListAdd42_thenReturnList2() {
+  public void testIntersection_given42_whenArrayListAdd42_thenReturnList2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
     a.add("42");
 
     // Act
-    Collection<Object> actualIntersectionResult =
-        CollectionUtils.intersection(a, new ArrayList<>());
+    Collection<Object> actualIntersectionResult = CollectionUtils.intersection(a, new ArrayList<>());
 
     // Assert
     assertTrue(actualIntersectionResult instanceof List);
@@ -6048,26 +4568,22 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#intersection(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#intersection(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test intersection(Iterable, Iterable); when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.intersection(Iterable, Iterable)"})
-  void testIntersection_whenArrayList_thenReturnArrayList() {
+  public void testIntersection_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     // Act
-    Collection<Object> actualIntersectionResult =
-        CollectionUtils.intersection(a, new ArrayList<>());
+    Collection<Object> actualIntersectionResult = CollectionUtils.intersection(a, new ArrayList<>());
 
     // Assert
     assertEquals(a, actualIntersectionResult);
@@ -6075,22 +4591,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEmpty(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEmpty(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEmpty(Collection)"})
-  void testIsEmpty_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testIsEmpty_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -6101,22 +4613,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEmpty(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEmpty(Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEmpty(Collection)"})
-  void testIsEmpty_given42_whenArrayListAdd42_thenReturnFalse2() {
+  public void testIsEmpty_given42_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -6128,64 +4636,52 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEmpty(Collection)}
    */
   @Test
-  @DisplayName("Test isEmpty(Collection); when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEmpty(Collection)"})
-  void testIsEmpty_whenArrayList_thenReturnTrue() {
+  public void testIsEmpty_whenArrayList_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.isEmpty(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#isEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEmpty(Collection)}
    */
   @Test
-  @DisplayName("Test isEmpty(Collection); when 'null'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEmpty(Collection)"})
-  void testIsEmpty_whenNull_thenReturnTrue() {
+  public void testIsEmpty_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.isEmpty(null));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6194,33 +4690,24 @@ class CollectionUtilsDiffblueTest {
     b.add("42");
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertTrue(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayListAdd42_thenReturnTrue2() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayListAdd42_thenReturnTrue2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6231,66 +4718,48 @@ class CollectionUtilsDiffblueTest {
     b.add("42");
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertTrue(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
     ArrayList<Object> b = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse2() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6298,33 +4767,24 @@ class CollectionUtilsDiffblueTest {
     ArrayList<Object> b = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse3() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse3() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -6332,33 +4792,24 @@ class CollectionUtilsDiffblueTest {
     b.add("42");
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse4() {
+  public void testIsEqualCollectionWithABEquator_given42_whenArrayList_thenReturnFalse4() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -6367,32 +4818,48 @@ class CollectionUtilsDiffblueTest {
     b.add("42");
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link ArrayList#ArrayList()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag() add 'null'; when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBagAddNull_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithABEquator_givenArrayList_whenArrayListAddArrayList() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(new ArrayList<>());
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
+  }
+
+  /**
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
+   * <ul>
+   *   <li>Given {@link HashBag#HashBag()} add {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
+  public void testIsEqualCollectionWithABEquator_givenHashBagAddNull_whenArrayListAddHashBag() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6404,32 +4871,23 @@ class CollectionUtilsDiffblueTest {
     b.add(hashBag);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag() add 'Object'; when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBagAddObject_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithABEquator_givenHashBagAddObject_whenArrayListAddHashBag() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6441,32 +4899,23 @@ class CollectionUtilsDiffblueTest {
     b.add(hashBag);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add one.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashBag#HashBag()} add one.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag() add one; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBagAddOne_thenReturnTrue() {
+  public void testIsEqualCollectionWithABEquator_givenHashBagAddOne_thenReturnTrue() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add(1);
@@ -6481,32 +4930,23 @@ class CollectionUtilsDiffblueTest {
     b.add(hashBag2);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertTrue(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add one.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()} add one.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag() add one; when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBagAddOne_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithABEquator_givenHashBagAddOne_whenArrayListAddHashBag() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add(1);
@@ -6518,32 +4958,23 @@ class CollectionUtilsDiffblueTest {
     b.add(new HashBag<>());
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashBag#HashBag()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBag_thenReturnTrue() {
+  public void testIsEqualCollectionWithABEquator_givenHashBag_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add(new HashBag<>());
@@ -6552,32 +4983,23 @@ class CollectionUtilsDiffblueTest {
     b.add(new HashBag<>());
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertTrue(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given HashBag(); when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenHashBag_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithABEquator_givenHashBag_whenArrayListAddHashBag() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6586,32 +5008,23 @@ class CollectionUtilsDiffblueTest {
     b.add(new HashBag<>());
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given 'null'; when ArrayList() add 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenNull_whenArrayListAddNull() {
+  public void testIsEqualCollectionWithABEquator_givenNull_whenArrayListAddNull() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6620,98 +5033,46 @@ class CollectionUtilsDiffblueTest {
     b.add(null);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a}, {@code b}, {@code equator}.
    * <ul>
-   *   <li>Given two.
-   *   <li>When {@link ArrayList#ArrayList()} add two.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; given two; when ArrayList() add two; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add(2);
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertFalse(actualIsEqualCollectionResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection, Equator)} with {@code a},
-   * {@code b}, {@code equator}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection,
-   * Equator)}
-   */
-  @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection, Equator) with 'a', 'b', 'equator'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection, Equator)"})
-  void testIsEqualCollectionWithABEquator_whenArrayList_thenReturnTrue() {
+  public void testIsEqualCollectionWithABEquator_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     ArrayList<Object> b = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
-    // Act
-    boolean actualIsEqualCollectionResult = CollectionUtils.isEqualCollection(a, b, equator);
-
-    // Assert
-    assertTrue(actualIsEqualCollectionResult);
+    // Act and Assert
+    assertTrue(CollectionUtils.isEqualCollection(a, b, equator));
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6721,24 +5082,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse2() {
+  public void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6749,24 +5105,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse3() {
+  public void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse3() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -6778,24 +5129,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse4() {
+  public void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnFalse4() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -6808,24 +5154,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsEqualCollectionWithAB_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -6838,23 +5179,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()} add {@link HashBag#HashBag()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashBag() add HashBag(); when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashBagAddHashBag_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithAB_givenHashBagAddHashBag_whenArrayListAddHashBag() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add(new HashBag<>());
@@ -6867,23 +5203,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()} add {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashBag() add 'null'; when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashBagAddNull_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithAB_givenHashBagAddNull_whenArrayListAddHashBag() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add(null);
@@ -6896,23 +5227,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
+   *   <li>Given {@link HashBag#HashBag()} add {@code Object}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashBag() add 'Object'; when ArrayList() add HashBag()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashBagAddObject_whenArrayListAddHashBag() {
+  public void testIsEqualCollectionWithAB_givenHashBagAddObject_whenArrayListAddHashBag() {
     // Arrange
     HashBag<Object> hashBag = new HashBag<>();
     hashBag.add("Object");
@@ -6925,24 +5251,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashBag#HashBag()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashBag(); when ArrayList() add HashBag(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashBag_whenArrayListAddHashBag_thenReturnFalse() {
+  public void testIsEqualCollectionWithAB_givenHashBag_whenArrayListAddHashBag_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add(new HashBag<>());
@@ -6952,24 +5273,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashBag#HashBag()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashBag#HashBag()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashBag#HashBag()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashBag(); when ArrayList() add HashBag(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashBag_whenArrayListAddHashBag_thenReturnFalse2() {
+  public void testIsEqualCollectionWithAB_givenHashBag_whenArrayListAddHashBag_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add(new HashBag<>());
@@ -6982,24 +5298,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>Given {@link HashMap#HashMap()}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@link HashMap#HashMap()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link HashMap#HashMap()}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@link HashMap#HashMap()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; given HashMap(); when ArrayList() add HashMap(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_givenHashMap_whenArrayListAddHashMap_thenReturnFalse() {
+  public void testIsEqualCollectionWithAB_givenHashMap_whenArrayListAddHashMap_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add(new HashBag<>());
@@ -7012,23 +5323,43 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code
-   * b}.
-   *
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given two.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isEqualCollection(Collection, Collection) with 'a', 'b'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
-  void testIsEqualCollectionWithAB_whenArrayList_thenReturnTrue() {
+  public void testIsEqualCollectionWithAB_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(2);
+
+    // Act and Assert
+    assertFalse(CollectionUtils.isEqualCollection(a, b));
+  }
+
+  /**
+   * Test {@link CollectionUtils#isEqualCollection(Collection, Collection)} with {@code a}, {@code b}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#isEqualCollection(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.isEqualCollection(Collection, Collection)"})
+  public void testIsEqualCollectionWithAB_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7038,20 +5369,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isFull(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isFull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isFull(Collection)}
    */
   @Test
-  @DisplayName("Test isFull(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isFull(Collection)"})
-  void testIsFull_given42_whenArrayListAdd42() {
+  public void testIsFull_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -7062,20 +5390,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isFull(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isFull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isFull(Collection)}
    */
   @Test
-  @DisplayName("Test isFull(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isFull(Collection)"})
-  void testIsFull_given42_whenArrayListAdd422() {
+  public void testIsFull_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -7087,41 +5412,34 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isFull(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isFull(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isFull(Collection)}
    */
   @Test
-  @DisplayName("Test isFull(Collection); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isFull(Collection)"})
-  void testIsFull_whenArrayList() {
+  public void testIsFull_whenArrayList() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.isFull(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#isNotEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isNotEmpty(Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isNotEmpty(Collection)"})
-  void testIsNotEmpty_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsNotEmpty_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -7132,22 +5450,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isNotEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isNotEmpty(Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isNotEmpty(Collection)"})
-  void testIsNotEmpty_given42_whenArrayListAdd42_thenReturnTrue2() {
+  public void testIsNotEmpty_given42_whenArrayListAdd42_thenReturnTrue2() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -7159,62 +5473,52 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isNotEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
    */
   @Test
-  @DisplayName("Test isNotEmpty(Collection); when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isNotEmpty(Collection)"})
-  void testIsNotEmpty_whenArrayList_thenReturnFalse() {
+  public void testIsNotEmpty_whenArrayList_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.isNotEmpty(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#isNotEmpty(Collection)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isNotEmpty(Collection)}
    */
   @Test
-  @DisplayName("Test isNotEmpty(Collection); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isNotEmpty(Collection)"})
-  void testIsNotEmpty_whenNull_thenReturnFalse() {
+  public void testIsNotEmpty_whenNull_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.isNotEmpty(null));
   }
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsProperSubCollection_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7229,22 +5533,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_given42_whenArrayList_thenReturnFalse() {
+  public void testIsProperSubCollection_given42_whenArrayList_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7255,22 +5555,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_given42_whenArrayList_thenReturnFalse2() {
+  public void testIsProperSubCollection_given42_whenArrayList_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7282,22 +5578,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_given42_whenArrayList_thenReturnTrue() {
+  public void testIsProperSubCollection_given42_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7310,22 +5602,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_given42_whenArrayList_thenReturnTrue2() {
+  public void testIsProperSubCollection_given42_whenArrayList_thenReturnTrue2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7339,22 +5627,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given two.
-   *   <li>When {@link ArrayList#ArrayList()} add two.
-   *   <li>Then return {@code false}.
+   *   <li>Given two.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); given two; when ArrayList() add two; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
+  public void testIsProperSubCollection_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add(2);
@@ -7369,21 +5653,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isProperSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isProperSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isProperSubCollection(Collection, Collection); when ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isProperSubCollection(Collection, Collection)"})
-  void testIsProperSubCollection_whenArrayList_thenReturnFalse() {
+  public void testIsProperSubCollection_whenArrayList_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7393,22 +5673,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isSubCollection(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testIsSubCollection_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7419,22 +5695,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isSubCollection(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_given42_whenArrayListAdd42_thenReturnFalse2() {
+  public void testIsSubCollection_given42_whenArrayListAdd42_thenReturnFalse2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7446,22 +5718,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isSubCollection(Collection, Collection); given '42'; when ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsSubCollection_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -7475,22 +5743,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_given42_whenArrayList_thenReturnTrue() {
+  public void testIsSubCollection_given42_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7503,22 +5767,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test isSubCollection(Collection, Collection); given '42'; when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_given42_whenArrayList_thenReturnTrue2() {
+  public void testIsSubCollection_given42_whenArrayList_thenReturnTrue2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7532,20 +5792,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#isSubCollection(Collection, Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#isSubCollection(Collection, Collection)}
    */
   @Test
-  @DisplayName("Test isSubCollection(Collection, Collection); when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.isSubCollection(Collection, Collection)"})
-  void testIsSubCollection_whenArrayList_thenReturnTrue() {
+  public void testIsSubCollection_whenArrayList_thenReturnTrue() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -7555,83 +5812,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    BoundedIterator<Object> boundedIteratorResult =
-        IteratorUtils.boundedIterator(objectList.iterator(), 1L, 1L);
-    when(input.iterator()).thenReturn(boundedIteratorResult);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    IteratorChain<Object> iteratorChain = new IteratorChain<>(objectList.iterator());
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    iteratorChain.addIterator(objectList2.iterator());
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given '42'; when ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testMatchesAll_given42_whenArrayListAdd42_thenReturnFalse() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -7645,413 +5840,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate); given CollatingIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenCollatingIterator() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(new CollatingIterator<>());
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()} addIterator {@link
-   *       ArrayList#ArrayList()} iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given CollatingIterator() addIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenCollatingIteratorAddIteratorArrayListIterator() {
-    // Arrange
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    collatingIterator.addIterator(objectList.iterator());
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()} addIterator {@link
-   *       ArrayList#ArrayList()} iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given CollatingIterator() addIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenCollatingIteratorAddIteratorArrayListIterator2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>();
-    collatingIterator.addIterator(iterator);
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, predicate);
-
-    // Assert
-    verify(input).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertFalse(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link CollatingIterator#CollatingIterator()} addIterator {@link
-   *       ArrayList#ArrayList()} iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given CollatingIterator() addIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenCollatingIteratorAddIteratorArrayListIterator3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    collatingIterator.addIterator(objectList2.iterator());
-    collatingIterator.addIterator(iterator);
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, predicate);
-
-    // Assert
-    verify(input).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertFalse(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link Comparator} {@link Comparator#compare(Object, Object)} return {@link
-   *       CollectionUtils#INDEX_NOT_FOUND}.
-   *   <li>Then calls {@link Comparator#compare(Object, Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given Comparator compare(Object, Object) return INDEX_NOT_FOUND; then calls compare(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenComparatorCompareReturnIndex_not_found_thenCallsCompare() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator2 = objectList2.iterator();
-
-    Comparator<Object> comp = mock(Comparator.class);
-    when(comp.compare(Mockito.<Object>any(), Mockito.<Object>any()))
-        .thenReturn(CollectionUtils.INDEX_NOT_FOUND);
-
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>(comp);
-    collatingIterator.addIterator(iterator2);
-    collatingIterator.addIterator(iterator);
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, predicate);
-
-    // Assert
-    verify(input).iterator();
-    verify(comp).compare(isA(Object.class), isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    assertFalse(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link Comparator} {@link Comparator#compare(Object, Object)} return one.
-   *   <li>Then calls {@link Comparator#compare(Object, Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given Comparator compare(Object, Object) return one; then calls compare(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenComparatorCompareReturnOne_thenCallsCompare() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator2 = objectList2.iterator();
-
-    Comparator<Object> comp = mock(Comparator.class);
-    when(comp.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
-
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>(comp);
-    collatingIterator.addIterator(iterator2);
-    collatingIterator.addIterator(iterator);
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, predicate);
-
-    // Assert
-    verify(input).iterator();
-    verify(comp).compare(isA(Object.class), isA(Object.class));
-    verify(predicate).test(isA(Object.class));
-    assertFalse(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link Comparator} {@link Comparator#compare(Object, Object)} return one.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given Comparator compare(Object, Object) return one; when Predicate test(Object) return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenComparatorCompareReturnOne_whenPredicateTestReturnTrue() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    Iterator<Object> iterator = objectList.iterator();
-
-    ArrayList<Object> objectList2 = new ArrayList<>();
-    objectList2.add("42");
-    Iterator<Object> iterator2 = objectList2.iterator();
-
-    Comparator<Object> comp = mock(Comparator.class);
-    when(comp.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
-
-    CollatingIterator<Object> collatingIterator = new CollatingIterator<>(comp);
-    collatingIterator.addIterator(iterator2);
-    collatingIterator.addIterator(iterator);
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(collatingIterator);
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, predicate);
-
-    // Assert
-    verify(input).iterator();
-    verify(comp).compare(isA(Object.class), isA(Object.class));
-    verify(predicate, atLeast(1)).test(isA(Object.class));
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()} addIterator {@link ArrayList#ArrayList()}
-   *       iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given IteratorChain() addIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenIteratorChainAddIteratorArrayListIterator() {
-    // Arrange
-    IteratorChain<Object> iteratorChain = new IteratorChain<>();
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    iteratorChain.addIterator(objectList.iterator());
-
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(iteratorChain);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorChain#IteratorChain()}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@link
-   *       IteratorChain#IteratorChain()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given IteratorChain(); when Iterable iterator() return IteratorChain()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenIteratorChain_whenIterableIteratorReturnIteratorChain() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(new IteratorChain<>());
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link Iterable} {@link Iterable#iterator()} return {@code null}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given 'null'; when Iterable iterator() return 'null'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenNull_whenIterableIteratorReturnNull_thenReturnTrue() {
-    // Arrange
-    Iterable<Object> input = mock(Iterable.class);
-    when(input.iterator()).thenReturn(null);
-
-    // Act
-    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, mock(Predicate.class));
-
-    // Assert
-    verify(input).iterator();
-    assertTrue(actualMatchesAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
-   * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test matchesAll(Iterable, Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
+  public void testMatchesAll_given42_whenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -8065,80 +5868,462 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate); when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_whenArrayList_thenReturnTrue() {
+  public void testMatchesAll_givenFalse_whenAnyPredicateWithPredicatesIsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_givenFalse_whenNonePredicateWithPredicatesIsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_givenFalse_whenNotPredicateWithPredicate_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_givenTrue_whenNonePredicateWithPredicatesIsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new NonePredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_givenTrue_whenNotPredicateWithPredicate_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new NotPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertTrue(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate2() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(false);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AndPredicate#AndPredicate(Predicate, Predicate)} with predicate1 is {@link Predicate} and predicate2 is {@link Predicate}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenAndPredicateWithPredicate1IsPredicateAndPredicate2IsPredicate3() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate1 = mock(Predicate.class);
+    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
+    Predicate<Object> predicate2 = mock(Predicate.class);
+    when(predicate2.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new AndPredicate<>(predicate1, predicate2));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate1).test(isA(Object.class));
+    verify(predicate2).test(isA(Object.class));
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenAnyPredicateWithPredicatesIsPredicate_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new AnyPredicate<>(predicate));
+
+    // Assert
+    verify(input).iterator();
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenArrayList_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.matchesAll(new ArrayList<>(), mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_whenNull_thenReturnFalse() {
+  public void testMatchesAll_whenEqualPredicateWithObject_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new EqualPredicate<>("Object"));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link EqualPredicate#EqualPredicate(Object, Equator)} with {@code Test} and equator is defaultEquator.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenEqualPredicateWithTestAndEquatorIsDefaultEquator() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new EqualPredicate<>("Test", equator));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@link IdentityPredicate#IdentityPredicate(Object)} with {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenIdentityPredicateWithObject_thenReturnFalse() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new IdentityPredicate<>("Object"));
+
+    // Assert
+    verify(input).iterator();
+    assertFalse(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenJavaLangObject_thenReturnTrue() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    Iterable<Object> input = mock(Iterable.class);
+    when(input.iterator()).thenReturn(objectList.iterator());
+    new IndexOutOfBoundsException("predicate");
+    Class<Object> type = Object.class;
+
+    // Act
+    boolean actualMatchesAllResult = CollectionUtils.matchesAll(input, new InstanceofPredicate(type));
+
+    // Assert
+    verify(input).iterator();
+    assertTrue(actualMatchesAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
+  public void testMatchesAll_whenNull_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.matchesAll(null, null));
   }
 
   /**
    * Test {@link CollectionUtils#matchesAll(Iterable, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#matchesAll(Iterable, Predicate)}
    */
   @Test
-  @DisplayName("Test matchesAll(Iterable, Predicate); when 'null'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.matchesAll(Iterable, Predicate)"})
-  void testMatchesAll_whenNull_thenReturnTrue() {
+  public void testMatchesAll_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.matchesAll(null, mock(Predicate.class)));
   }
 
   /**
    * Test {@link CollectionUtils#maxSize(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#maxSize(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#maxSize(Collection)}
    */
   @Test
-  @DisplayName("Test maxSize(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.maxSize(Collection)"})
-  void testMaxSize_given42_whenArrayListAdd42() {
+  public void testMaxSize_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8149,20 +6334,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#maxSize(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#maxSize(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#maxSize(Collection)}
    */
   @Test
-  @DisplayName("Test maxSize(Collection); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.maxSize(Collection)"})
-  void testMaxSize_given42_whenArrayListAdd422() {
+  public void testMaxSize_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8174,41 +6356,34 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#maxSize(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#maxSize(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#maxSize(Collection)}
    */
   @Test
-  @DisplayName("Test maxSize(Collection); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.maxSize(Collection)"})
-  void testMaxSize_whenArrayList() {
+  public void testMaxSize_whenArrayList() {
     // Arrange, Act and Assert
     assertEquals(CollectionUtils.INDEX_NOT_FOUND, CollectionUtils.maxSize(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#permutations(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#permutations(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#permutations(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test permutations(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.permutations(Collection)"})
-  void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8224,22 +6399,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#permutations(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is six.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is six.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#permutations(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#permutations(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test permutations(Collection); given '42'; when ArrayList() add '42'; then return size is six")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.permutations(Collection)"})
-  void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsSix() {
+  public void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsSix() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8260,22 +6431,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#permutations(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is twenty-four.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is twenty-four.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#permutations(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#permutations(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test permutations(Collection); given '42'; when ArrayList() add '42'; then return size is twenty-four")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.permutations(Collection)"})
-  void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsTwentyFour() {
+  public void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsTwentyFour() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8299,22 +6466,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#permutations(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#permutations(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#permutations(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test permutations(Collection); given '42'; when ArrayList() add '42'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.permutations(Collection)"})
-  void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testPermutations_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8332,23 +6495,19 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#permutations(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return first Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return first Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#permutations(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#permutations(Collection)}
    */
   @Test
-  @DisplayName("Test permutations(Collection); when ArrayList(); then return first Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.permutations(Collection)"})
-  void testPermutations_whenArrayList_thenReturnFirstEmpty() {
+  public void testPermutations_whenArrayList_thenReturnFirstEmpty() {
     // Arrange and Act
-    Collection<List<Object>> actualPermutationsResult =
-        CollectionUtils.permutations(new ArrayList<>());
+    Collection<List<Object>> actualPermutationsResult = CollectionUtils.permutations(new ArrayList<>());
 
     // Assert
     assertTrue(actualPermutationsResult instanceof List);
@@ -8358,31 +6517,25 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#predicatedCollection(Collection, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code true}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test predicatedCollection(Collection, Predicate); given 'true'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.predicatedCollection(Collection, Predicate)"})
-  void testPredicatedCollection_givenTrue_thenReturnSizeIsOne() {
+  public void testPredicatedCollection_givenTrue_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<Object> actualPredicatedCollectionResult =
-        CollectionUtils.predicatedCollection(collection, predicate);
+    Collection<Object> actualPredicatedCollectionResult = CollectionUtils.predicatedCollection(collection, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -8391,32 +6544,26 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#predicatedCollection(Collection, Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>Then return size is two.
+   *   <li>Given {@code true}.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test predicatedCollection(Collection, Predicate); given 'true'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.predicatedCollection(Collection, Predicate)"})
-  void testPredicatedCollection_givenTrue_thenReturnSizeIsTwo() {
+  public void testPredicatedCollection_givenTrue_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<Object> actualPredicatedCollectionResult =
-        CollectionUtils.predicatedCollection(collection, predicate);
+    Collection<Object> actualPredicatedCollectionResult = CollectionUtils.predicatedCollection(collection, predicate);
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -8425,47 +6572,38 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#predicatedCollection(Collection, Predicate)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#predicatedCollection(Collection, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test predicatedCollection(Collection, Predicate); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.predicatedCollection(Collection, Predicate)"})
-  void testPredicatedCollection_whenArrayList_thenReturnEmpty() {
+  public void testPredicatedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    Collection<Object> actualPredicatedCollectionResult =
-        CollectionUtils.predicatedCollection(new ArrayList<>(), mock(Predicate.class));
+    Collection<Object> actualPredicatedCollectionResult = CollectionUtils.predicatedCollection(new ArrayList<>(),
+        mock(Predicate.class));
 
     // Assert
     assertTrue(actualPredicatedCollectionResult.isEmpty());
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_given42_thenReturnList() {
+  public void testRemoveAllWithCollectionRemoveEquator_given42_thenReturnEmpty() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8475,8 +6613,7 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertTrue(actualRemoveAllResult instanceof List);
@@ -8484,23 +6621,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd42() {
+  public void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8508,31 +6640,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd422() {
+  public void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -8541,31 +6667,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd423() {
+  public void testRemoveAllWithCollectionRemoveEquator_given42_whenArrayListAdd423() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -8575,64 +6695,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>Given {@link CollectionUtils#INDEX_NOT_FOUND}.
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_givenIndex_not_found() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add(null);
-
-    ArrayList<Object> remove = new ArrayList<>();
-    remove.add(CollectionUtils.INDEX_NOT_FOUND);
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
-
-    // Assert
-    assertEquals(collection, actualRemoveAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
-   * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; given 'null'; when ArrayList() add 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_givenNull_whenArrayListAddNull() {
+  public void testRemoveAllWithCollectionRemoveEquator_givenNull_whenArrayListAddNull() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add(null);
@@ -8640,63 +6721,198 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code remove}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Iterable, Iterable, Equator) with 'collection', 'remove', 'equator'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
-  void testRemoveAllWithCollectionRemoveEquator_whenArrayList_thenReturnArrayList() {
+  public void testRemoveAllWithCollectionRemoveEquator_givenZero_whenArrayListAddZero() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+    collection.add(objectSet);
+
+    ArrayList<Object> remove = new ArrayList<>();
+    remove.add(0);
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
+
+    // Assert
+    assertTrue(actualRemoveAllResult instanceof List);
+    assertEquals(1, actualRemoveAllResult.size());
+    Object getResult = ((List<Object>) actualRemoveAllResult).get(0);
+    assertTrue(getResult instanceof Set);
+    assertTrue(((Set<Object>) getResult).isEmpty());
+    assertSame(objectSet, getResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
+   * <ul>
+   *   <li>Then return first is {@link CompositeSet#CompositeSet()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
+  public void testRemoveAllWithCollectionRemoveEquator_thenReturnFirstIsCompositeSet() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    CompositeSet<Object> objectSet = new CompositeSet<>();
+    collection.add(objectSet);
+    ArrayList<Object> remove = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
+
+    // Assert
+    assertTrue(actualRemoveAllResult instanceof List);
+    assertEquals(1, actualRemoveAllResult.size());
+    Object getResult = ((List<Object>) actualRemoveAllResult).get(0);
+    assertTrue(getResult instanceof Set);
+    assertTrue(((Set<Object>) getResult).isEmpty());
+    assertSame(objectSet, getResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
+   * <ul>
+   *   <li>Then return first is {@link ListOrderedSet#ListOrderedSet()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
+  public void testRemoveAllWithCollectionRemoveEquator_thenReturnFirstIsListOrderedSet() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+    collection.add(objectSet);
+    ArrayList<Object> remove = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
+
+    // Assert
+    assertTrue(actualRemoveAllResult instanceof List);
+    assertEquals(1, actualRemoveAllResult.size());
+    Object getResult = ((List<Object>) actualRemoveAllResult).get(0);
+    assertTrue(getResult instanceof Set);
+    assertTrue(((Set<Object>) getResult).isEmpty());
+    assertSame(objectSet, getResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)} with {@code collection}, {@code remove}, {@code equator}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Iterable, Iterable, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Iterable, Iterable, Equator)"})
+  public void testRemoveAllWithCollectionRemoveEquator_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     ArrayList<Object> remove = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, remove, equator);
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove, equator);
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code
-   * remove}.
-   *
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection, Collection) with 'collection', 'remove'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
-  void testRemoveAllWithCollectionRemove_given42_whenArrayListAdd42_thenReturnList() {
+  public void testRemoveAllWithCollectionRemove_given42_whenArrayListAdd42_thenReturnArrayList() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, new ArrayList<>());
+
+    // Assert
+    assertEquals(collection, actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
+  public void testRemoveAllWithCollectionRemove_given42_whenArrayListAdd42_thenReturnArrayList2() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+    collection.add("42");
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, new ArrayList<>());
+
+    // Assert
+    assertEquals(collection, actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
+  public void testRemoveAllWithCollectionRemove_given42_whenArrayListAdd42_thenReturnList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -8713,27 +6929,48 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code
-   * remove}.
-   *
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection, Collection) with 'collection', 'remove'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
-  void testRemoveAllWithCollectionRemove_given42_whenArrayListAdd42_thenReturnList2() {
+  public void testRemoveAllWithCollectionRemove_given42_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
+
+    ArrayList<Object> remove = new ArrayList<>();
+    remove.add("42");
+
+    // Act
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove);
+
+    // Assert
+    assertEquals(collection, actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
+  public void testRemoveAllWithCollectionRemove_given42_whenArrayList_thenReturnArrayList2() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
 
     ArrayList<Object> remove = new ArrayList<>();
     remove.add("42");
@@ -8743,97 +6980,27 @@ class CollectionUtilsDiffblueTest {
     Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, remove);
 
     // Assert
-    assertTrue(actualRemoveAllResult instanceof List);
-    assertTrue(actualRemoveAllResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code
-   * remove}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeAll(Collection, Collection) with 'collection', 'remove'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
-  void testRemoveAllWithCollectionRemove_given42_whenArrayList_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, new ArrayList<>());
-
-    // Assert
     assertEquals(collection, actualRemoveAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code
-   * remove}.
-   *
+   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code remove}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test removeAll(Collection, Collection) with 'collection', 'remove'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
-  void testRemoveAllWithCollectionRemove_given42_whenArrayList_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-    collection.add("42");
-
-    // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, new ArrayList<>());
-
-    // Assert
-    assertEquals(collection, actualRemoveAllResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#removeAll(Collection, Collection)} with {@code collection}, {@code
-   * remove}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeAll(Collection, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeAll(Collection, Collection) with 'collection', 'remove'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.removeAll(Collection, Collection)"})
-  void testRemoveAllWithCollectionRemove_whenArrayList_thenReturnArrayList() {
+  public void testRemoveAllWithCollectionRemove_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
     // Act
-    Collection<Object> actualRemoveAllResult =
-        CollectionUtils.removeAll(collection, new ArrayList<>());
+    Collection<Object> actualRemoveAllResult = CollectionUtils.removeAll(collection, new ArrayList<>());
 
     // Assert
     assertEquals(collection, actualRemoveAllResult);
@@ -8841,22 +7008,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#removeCount(Collection, int, int)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeCount(Collection, int, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeCount(Collection, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test removeCount(Collection, int, int); given '42'; when ArrayList() add '42'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeCount(Collection, int, int)"})
-  void testRemoveCount_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
+  public void testRemoveCount_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
@@ -8872,20 +7035,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#removeCount(Collection, int, int)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When zero.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeCount(Collection, int, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeCount(Collection, int, int)}
    */
   @Test
-  @DisplayName("Test removeCount(Collection, int, int); when zero; then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeCount(Collection, int, int)"})
-  void testRemoveCount_whenZero_thenArrayListEmpty() {
+  public void testRemoveCount_whenZero_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
 
@@ -8899,22 +7059,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#removeRange(Collection, int, int)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeRange(Collection, int, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeRange(Collection, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test removeRange(Collection, int, int); given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeRange(Collection, int, int)"})
-  void testRemoveRange_given42_whenArrayListAdd42_thenReturnList() {
+  public void testRemoveRange_given42_whenArrayListAdd42_thenReturnList() {
     // Arrange
     ArrayList<Object> input = new ArrayList<>();
     input.add("42");
@@ -8934,44 +7090,34 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#removeRange(Collection, int, int)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When ten.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#removeRange(Collection, int, int)}
+   * <p>
+   * Method under test: {@link CollectionUtils#removeRange(Collection, int, int)}
    */
   @Test
-  @DisplayName(
-      "Test removeRange(Collection, int, int); when zero; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.removeRange(Collection, int, int)"})
-  void testRemoveRange_whenZero_thenThrowIllegalArgumentException() {
+  public void testRemoveRange_whenTen_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
-    assertThrows(
-        IllegalArgumentException.class, () -> CollectionUtils.removeRange(new ArrayList<>(), 1, 0));
+    assertThrows(IllegalArgumentException.class, () -> CollectionUtils.removeRange(new ArrayList<>(), 10, 3));
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList() {
+  public void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -8980,31 +7126,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertEquals(collection, actualRetainAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList2() {
+  public void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -9014,31 +7154,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertEquals(collection, actualRetainAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList3() {
+  public void testRetainAllWithCollectionRetainEquator_given42_thenReturnArrayList3() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -9048,31 +7182,25 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertEquals(collection, actualRetainAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_given42_thenReturnList() {
+  public void testRetainAllWithCollectionRetainEquator_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -9080,8 +7208,7 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertTrue(actualRetainAllResult instanceof List);
@@ -9089,33 +7216,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@link CollectionUtils#INDEX_NOT_FOUND}.
+   *   <li>Given {@link CompositeSet#CompositeSet()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_givenIndex_not_found() {
+  public void testRetainAllWithCollectionRetainEquator_givenCompositeSet() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add(null);
-
+    collection.add(new CompositeSet<>());
     ArrayList<Object> retain = new ArrayList<>();
-    retain.add(CollectionUtils.INDEX_NOT_FOUND);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertTrue(actualRetainAllResult instanceof List);
@@ -9123,23 +7242,44 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>Given {@code null}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.
+   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; given 'null'; when ArrayList() add 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_givenNull_whenArrayListAddNull() {
+  public void testRetainAllWithCollectionRetainEquator_givenListOrderedSet() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add(new ListOrderedSet<>());
+    ArrayList<Object> retain = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
+
+    // Assert
+    assertTrue(actualRetainAllResult instanceof List);
+    assertTrue(actualRetainAllResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
+   * <ul>
+   *   <li>Given {@code null}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
+  public void testRetainAllWithCollectionRetainEquator_givenNull_whenArrayListAddNull() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add(null);
@@ -9147,8 +7287,7 @@ class CollectionUtilsDiffblueTest {
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertTrue(actualRetainAllResult instanceof List);
@@ -9156,55 +7295,73 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection},
-   * {@code retain}, {@code equator}.
-   *
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given zero.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Iterable, Iterable, Equator) with 'collection', 'retain', 'equator'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
-  void testRetainAllWithCollectionRetainEquator_whenArrayList_thenReturnArrayList() {
+  public void testRetainAllWithCollectionRetainEquator_givenZero_whenArrayListAddZero() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add(new ListOrderedSet<>());
+
+    ArrayList<Object> retain = new ArrayList<>();
+    retain.add(0);
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
+
+    // Assert
+    assertTrue(actualRetainAllResult instanceof List);
+    assertTrue(actualRetainAllResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)} with {@code collection}, {@code retain}, {@code equator}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Iterable, Iterable, Equator)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.retainAll(Iterable, Iterable, Equator)"})
+  public void testRetainAllWithCollectionRetainEquator_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     ArrayList<Object> retain = new ArrayList<>();
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, retain, equator);
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, retain, equator);
 
     // Assert
     assertEquals(collection, actualRetainAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; given '42'; when ArrayList() add '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -9220,31 +7377,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnList() {
+  public void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, new ArrayList<>());
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, new ArrayList<>());
 
     // Assert
     assertTrue(actualRetainAllResult instanceof List);
@@ -9252,32 +7403,26 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnList2() {
+  public void testRetainAllWithCollectionRetain_given42_whenArrayListAdd42_thenReturnList2() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, new ArrayList<>());
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, new ArrayList<>());
 
     // Assert
     assertTrue(actualRetainAllResult instanceof List);
@@ -9285,24 +7430,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_given42_whenArrayList_thenReturnArrayList() {
+  public void testRetainAllWithCollectionRetain_given42_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -9317,24 +7457,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_given42_whenArrayList_thenReturnArrayList2() {
+  public void testRetainAllWithCollectionRetain_given42_whenArrayList_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -9350,199 +7485,45 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code
-   * retain}.
-   *
+   * Test {@link CollectionUtils#retainAll(Collection, Collection)} with {@code collection}, {@code retain}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test retainAll(Collection, Collection) with 'collection', 'retain'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.retainAll(Collection, Collection)"})
-  void testRetainAllWithCollectionRetain_whenArrayList_thenReturnArrayList() {
+  public void testRetainAllWithCollectionRetain_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
     // Act
-    Collection<Object> actualRetainAllResult =
-        CollectionUtils.retainAll(collection, new ArrayList<>());
+    Collection<Object> actualRetainAllResult = CollectionUtils.retainAll(collection, new ArrayList<>());
 
     // Assert
     assertEquals(collection, actualRetainAllResult);
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName("Test select(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate1 = mock(Predicate.class);
-    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
-
-    Predicate<Object> predicate2 = mock(Predicate.class);
-    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
-    AndPredicate<? super Object> predicate = new AndPredicate<>(predicate1, predicate2);
-
-    // Act
-    Collection<Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate);
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate1).test(isA(Object.class));
-    verify(predicate2).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test select(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new EqualPredicate<>("Test", equator));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test select(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new NonePredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test select(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate4() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    Predicate<Object> predicate2 = mock(Predicate.class);
-    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
-    NonePredicate<? super Object> predicate3 =
-        new NonePredicate<>(predicate, predicate2, mock(Predicate.class));
-
-    // Act
-    Collection<Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate3);
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    verify(predicate2).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     Predicate<Object> predicate = mock(Predicate.class);
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, objectList, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate, objectList,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9550,27 +7531,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection2() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection2() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(null, null, objectList, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(null, null, objectList, new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9578,28 +7551,21 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection3() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection3() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, null, objectList, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, null, objectList,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9607,66 +7573,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection4() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection4() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, objectList, new ArrayList<>());
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection5() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, objectList, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate, objectList,
+        new ArrayList<>());
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -9676,68 +7600,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection6() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection5() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
     inputCollection.add("42");
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-    ArrayList<Object> objectList = new ArrayList<>();
-
-    // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, objectList, new ArrayList<>());
-
-    // Assert
-    verify(predicate, atLeast(1)).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection,
-   * Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection, Collection) with 'inputCollection', 'predicate', 'outputCollection', 'rejectedCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"
-  })
-  void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection7() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, objectList, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate, objectList,
+        new ArrayList<>());
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -9748,32 +7629,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Given {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; given 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_givenFalse() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection6() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+    ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate, objectList,
+        new ArrayList<>());
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -9782,32 +7655,81 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
-   * <ul>
-   *   <li>Then return size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}, {@code rejectedCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_thenReturnSizeIsOne() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollectionRejectedCollection7() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
+    inputCollection.add("42");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+    ArrayList<Object> objectList = new ArrayList<>();
 
+    // Act
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate, objectList,
+        new ArrayList<>());
+
+    // Assert
+    verify(predicate, atLeast(1)).test(isA(Object.class));
+    assertTrue(actualSelectResult instanceof List);
+    assertTrue(actualSelectResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
+   * <ul>
+   *   <li>Given {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollection_givenFalse() {
+    // Arrange
+    ArrayList<Object> inputCollection = new ArrayList<>();
+    inputCollection.add("42");
+    Predicate<Object> predicate = mock(Predicate.class);
+    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
+
+    // Act
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate,
+        new ArrayList<>());
+
+    // Assert
+    verify(predicate).test(isA(Object.class));
+    assertTrue(actualSelectResult instanceof List);
+    assertTrue(actualSelectResult.isEmpty());
+  }
+
+  /**
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
+   * <ul>
+   *   <li>Then return size is one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
+  public void testSelectWithInputCollectionPredicateOutputCollection_thenReturnSizeIsOne() {
+    // Arrange
+    ArrayList<Object> inputCollection = new ArrayList<>();
+    inputCollection.add("42");
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -9817,33 +7739,27 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>Then return size is two.
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_thenReturnSizeIsTwo() {
+  public void testSelectWithInputCollectionPredicateOutputCollection_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -9854,26 +7770,20 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_whenNull_thenReturnEmpty() {
+  public void testSelectWithInputCollectionPredicateOutputCollection_whenNull_thenReturnEmpty() {
     // Arrange and Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(null, null, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(null, null, new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9881,29 +7791,23 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_whenNull_thenReturnEmpty2() {
+  public void testSelectWithInputCollectionPredicateOutputCollection_whenNull_thenReturnEmpty2() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, null, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, null, new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9911,29 +7815,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@link Predicate}.
+   *   <li>When {@link Predicate}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate, Collection)"})
-  void testSelectWithInputCollectionPredicateOutputCollection_whenPredicate() {
+  public void testSelectWithInputCollectionPredicateOutputCollection_whenPredicate() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     Predicate<Object> predicate = mock(Predicate.class);
 
     // Act
-    Collection<? super Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectResult instanceof List);
@@ -9941,61 +7840,21 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; given '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_given42_thenReturnArrayList() {
+  public void testSelectWithInputCollectionPredicate_givenFalse_whenPredicateTestReturnFalse() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(inputCollection, actualSelectResult);
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; given '42'; when ArrayList() add '42'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_given42_whenArrayListAdd42_thenCallsTest() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -10009,244 +7868,68 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; given 'false'; when NotPredicate(Predicate) with Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_givenFalse_whenNotPredicateWithPredicate() {
+  public void testSelectWithInputCollectionPredicate_givenTrue_whenPredicateTestReturnTrue() {
     // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new NotPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; given 'true'; when NotPredicate(Predicate) with Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_givenTrue_whenNotPredicateWithPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
+    ArrayList<Object> inputCollection = new ArrayList<>();
+    inputCollection.add("42");
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new NotPredicate<>(predicate));
+    Collection<Object> actualSelectResult = CollectionUtils.select(inputCollection, predicate);
 
     // Assert
-    verify(inputCollection).iterator();
     verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
+    assertEquals(inputCollection, actualSelectResult);
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link AllPredicate#AllPredicate(Predicate[])} with predicates is {@link Predicate}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when AllPredicate(Predicate[]) with predicates is Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenAllPredicateWithPredicatesIsPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new AllPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])} with predicates is {@link Predicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when AnyPredicate(Predicate[]) with predicates is Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenAnyPredicateWithPredicatesIsPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new AnyPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when AnyPredicate(Predicate[]); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenAnyPredicate_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new AnyPredicate<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenArrayList_thenReturnArrayList() {
+  public void testSelectWithInputCollectionPredicate_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
     // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, mock(Predicate.class));
+    Collection<Object> actualSelectResult = CollectionUtils.select(inputCollection, mock(Predicate.class));
 
     // Assert
     assertEquals(inputCollection, actualSelectResult);
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenArrayList_thenReturnArrayList2() {
+  public void testSelectWithInputCollectionPredicate_whenArrayList_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
@@ -10258,91 +7941,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.
+   *   <li>When {@link Iterable}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when EqualPredicate(Object) with 'Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenEqualPredicateWithObject() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new EqualPredicate<>("Object"));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link IdentityPredicate#IdentityPredicate(Object)} with {@code Object}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when IdentityPredicate(Object) with 'Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenIdentityPredicateWithObject() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new IdentityPredicate<>("Object"));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link Iterable}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when Iterable; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenIterable_thenReturnEmpty() {
+  public void testSelectWithInputCollectionPredicate_whenIterable_thenReturnList() {
     // Arrange and Act
     Collection<Object> actualSelectResult = CollectionUtils.select(mock(Iterable.class), null);
 
@@ -10352,96 +7962,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
+   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@code Object}.
-   *   <li>Then return size is one.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when 'java.lang.Object'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenJavaLangObject_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-    Class<Object> type = Object.class;
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new InstanceofPredicate(type));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])}.
-   *   <li>Then return size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when NonePredicate(Predicate[]); then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenNonePredicate_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectResult =
-        CollectionUtils.select(inputCollection, new NonePredicate<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectResult instanceof List);
-    assertEquals(1, actualSelectResult.size());
-    assertEquals("42", ((List<Object>) actualSelectResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#select(Iterable, Predicate)} with {@code inputCollection}, {@code
-   * predicate}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#select(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test select(Iterable, Predicate) with 'inputCollection', 'predicate'; when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.select(Iterable, Predicate)"})
-  void testSelectWithInputCollectionPredicate_whenNull_thenReturnEmpty() {
+  public void testSelectWithInputCollectionPredicate_whenNull_thenReturnList() {
     // Arrange and Act
     Collection<Object> actualSelectResult = CollectionUtils.select(null, null);
 
@@ -10451,239 +7983,23 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new AllPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate1 = mock(Predicate.class);
-    when(predicate1.test(Mockito.<Object>any())).thenReturn(true);
-
-    Predicate<Object> predicate2 = mock(Predicate.class);
-    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
-    AndPredicate<? super Object> predicate = new AndPredicate<>(predicate1, predicate2);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate);
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate1).test(isA(Object.class));
-    verify(predicate2).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate3() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new AnyPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate4() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-    DefaultEquator<Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new EqualPredicate<>("Test", equator));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate5() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new NonePredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName("Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate6() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    Predicate<Object> predicate2 = mock(Predicate.class);
-    when(predicate2.test(Mockito.<Object>any())).thenReturn(true);
-
-    NonePredicate<? super Object> predicate3 =
-        new NonePredicate<>(predicate, predicate2, mock(Predicate.class));
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate3);
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    verify(predicate2).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -10693,29 +8009,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection2() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection2() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     verify(predicate, atLeast(1)).test(isA(Object.class));
@@ -10726,32 +8037,26 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>Given {@code true}.
+   *   <li>Given {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; given 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection_givenTrue() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection_givenTrue() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -10760,25 +8065,20 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
+   *   <li>When {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenNull() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenNull() {
     // Arrange and Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(null, null, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(null, null,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectRejectedResult instanceof List);
@@ -10786,28 +8086,23 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@code null}.
+   *   <li>When {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenNull2() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenNull2() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
     // Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, null, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, null,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectRejectedResult instanceof List);
@@ -10815,29 +8110,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code
-   * inputCollection}, {@code predicate}, {@code outputCollection}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)} with {@code inputCollection}, {@code predicate}, {@code outputCollection}.
    * <ul>
-   *   <li>When {@link Predicate}.
+   *   <li>When {@link Predicate}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate, Collection)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate, Collection) with 'inputCollection', 'predicate', 'outputCollection'; when Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate, Collection)"})
-  void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenPredicate() {
+  public void testSelectRejectedWithInputCollectionPredicateOutputCollection_whenPredicate() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     Predicate<Object> predicate = mock(Predicate.class);
 
     // Act
-    Collection<? super Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate, new ArrayList<>());
+    Collection<? super Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate,
+        new ArrayList<>());
 
     // Assert
     assertTrue(actualSelectRejectedResult instanceof List);
@@ -10845,33 +8135,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; given '42'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_given42_thenReturnArrayList() {
+  public void testSelectRejectedWithInputCollectionPredicate_givenFalse() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
     // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate);
+    Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -10879,33 +8161,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_given42_whenArrayListAdd42() {
+  public void testSelectRejectedWithInputCollectionPredicate_givenTrue() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
     inputCollection.add("42");
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, predicate);
+    Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, predicate);
 
     // Assert
     verify(predicate).test(isA(Object.class));
@@ -10914,189 +8188,67 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link AnyPredicate#AnyPredicate(Predicate[])}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when AnyPredicate(Predicate[])")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenAnyPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new AnyPredicate<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenArrayList_thenReturnArrayList() {
+  public void testSelectRejectedWithInputCollectionPredicate_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
     // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, mock(Predicate.class));
+    Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection,
+        mock(Predicate.class));
 
     // Assert
     assertEquals(inputCollection, actualSelectRejectedResult);
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenArrayList_thenReturnArrayList2() {
+  public void testSelectRejectedWithInputCollectionPredicate_whenArrayList_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> inputCollection = new ArrayList<>();
 
     // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, null);
+    Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(inputCollection, null);
 
     // Assert
     assertEquals(inputCollection, actualSelectRejectedResult);
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@link EqualPredicate#EqualPredicate(Object)} with {@code Object}.
+   *   <li>When {@link Iterable}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when EqualPredicate(Object) with 'Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenEqualPredicateWithObject() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new EqualPredicate<>("Object"));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link IdentityPredicate#IdentityPredicate(Object)} with {@code Object}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when IdentityPredicate(Object) with 'Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenIdentityPredicateWithObject() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new IdentityPredicate<>("Object"));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link Iterable}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when Iterable; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenIterable_thenReturnEmpty() {
+  public void testSelectRejectedWithInputCollectionPredicate_whenIterable_thenReturnList() {
     // Arrange and Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(mock(Iterable.class), null);
+    Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(mock(Iterable.class), null);
 
     // Assert
     assertTrue(actualSelectRejectedResult instanceof List);
@@ -11104,170 +8256,18 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
+   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection}, {@code predicate}.
    * <ul>
-   *   <li>When {@code Object}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when 'java.lang.Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenJavaLangObject() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-    Class<Object> type = Object.class;
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new InstanceofPredicate(type));
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link NonePredicate#NonePredicate(Predicate[])}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when NonePredicate(Predicate[]); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenNonePredicate_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new NonePredicate<>());
-
-    // Assert
-    verify(inputCollection).iterator();
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when NotPredicate(Predicate) with Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenNotPredicateWithPredicate() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new NotPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertEquals(1, actualSelectRejectedResult.size());
-    assertEquals("42", ((List<Object>) actualSelectRejectedResult).get(0));
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@link NotPredicate#NotPredicate(Predicate)} with {@link Predicate}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when NotPredicate(Predicate) with Predicate")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenNotPredicateWithPredicate2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> inputCollection = mock(Iterable.class);
-    when(inputCollection.iterator()).thenReturn(objectList.iterator());
-
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    Collection<Object> actualSelectRejectedResult =
-        CollectionUtils.selectRejected(inputCollection, new NotPredicate<>(predicate));
-
-    // Assert
-    verify(inputCollection).iterator();
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult instanceof List);
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link CollectionUtils#selectRejected(Iterable, Predicate)} with {@code inputCollection},
-   * {@code predicate}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#selectRejected(Iterable, Predicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test selectRejected(Iterable, Predicate) with 'inputCollection', 'predicate'; when 'null'; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection CollectionUtils.selectRejected(Iterable, Predicate)"})
-  void testSelectRejectedWithInputCollectionPredicate_whenNull_thenReturnEmpty() {
+  public void testSelectRejectedWithInputCollectionPredicate_whenNull_thenReturnList() {
     // Arrange and Act
     Collection<Object> actualSelectRejectedResult = CollectionUtils.selectRejected(null, null);
 
@@ -11278,20 +8278,60 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
-   * <ul>
-   *   <li>Then not {@link Scanner#Scanner(String)} with {@code Unsupported object type:} hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName(
-      "Test size(Object); then not Scanner(String) with 'Unsupported object type:' hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_thenNotScannerWithUnsupportedObjectTypeHasNext() {
+  public void testSize() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(
+        new ListIteratorWrapper<>(objectList.iterator()));
+
+    // Act and Assert
+    assertEquals(0, CollectionUtils.size(abstractListIteratorDecorator));
+    assertFalse(abstractListIteratorDecorator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#size(Object)}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"int CollectionUtils.size(Object)"})
+  public void testSize_given42_whenArrayListAdd42_thenReturnOne() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    objectList.add("42");
+    AbstractListIteratorDecorator<Object> abstractListIteratorDecorator = new AbstractListIteratorDecorator<>(
+        new ListIteratorWrapper<>(objectList.iterator()));
+
+    // Act and Assert
+    assertEquals(1, CollectionUtils.size(abstractListIteratorDecorator));
+    assertFalse(abstractListIteratorDecorator.hasNext());
+  }
+
+  /**
+   * Test {@link CollectionUtils#size(Object)}.
+   * <ul>
+   *   <li>Then not {@link Scanner#Scanner(String)} with {@code Unsupported object type:} hasNext.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"int CollectionUtils.size(Object)"})
+  public void testSize_thenNotScannerWithUnsupportedObjectTypeHasNext() {
     // Arrange
     Scanner scanner = new Scanner("Unsupported object type: ");
 
@@ -11302,21 +8342,16 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
    * <ul>
-   *   <li>Then not {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object
-   *       type:} hasMoreElements.
+   *   <li>Then not {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object type:} hasMoreElements.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName(
-      "Test size(Object); then not StringTokenizer(String) with 'Unsupported object type:' hasMoreElements")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_thenNotStringTokenizerWithUnsupportedObjectTypeHasMoreElements() {
+  public void testSize_thenNotStringTokenizerWithUnsupportedObjectTypeHasMoreElements() {
     // Arrange
     StringTokenizer stringTokenizer = new StringTokenizer("Unsupported object type: ");
 
@@ -11327,20 +8362,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName("Test size(Object); when ArrayList(); then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_whenArrayList_thenArrayListEmpty() {
+  public void testSize_whenArrayList_thenArrayListEmpty() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
@@ -11351,20 +8383,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then {@link HashMap#HashMap()} Empty.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then {@link HashMap#HashMap()} Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName("Test size(Object); when HashMap(); then HashMap() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_whenHashMap_thenHashMapEmpty() {
+  public void testSize_whenHashMap_thenHashMapEmpty() {
     // Arrange
     HashMap<Object, Object> objectObjectMap = new HashMap<>();
 
@@ -11375,20 +8404,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName("Test size(Object); when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_whenNull_thenNull() {
+  public void testSize_whenNull_thenNull() {
     // Arrange, Act and Assert
     assertNull(null);
     assertEquals(0, CollectionUtils.size(null));
@@ -11396,220 +8422,301 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#size(Object)}.
-   *
    * <ul>
-   *   <li>When {@code Object}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When {@code Object}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#size(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#size(Object)}
    */
   @Test
-  @DisplayName("Test size(Object); when 'Object'; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int CollectionUtils.size(Object)"})
-  void testSize_whenObject_thenThrowIllegalArgumentException() {
+  public void testSize_whenObject_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> CollectionUtils.size("Object"));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName("Test sizeIsEmpty(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty() {
+  public void testSizeIsEmpty() {
     // Arrange, Act and Assert
     assertTrue(
-        CollectionUtils.sizeIsEmpty(
-            new StringTokenizer("Unsupported object type: ", "Unsupported object type: ")));
+        CollectionUtils.sizeIsEmpty(new StringTokenizer("Unsupported object type: ", "Unsupported object type: ")));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName("Test sizeIsEmpty(Object); when ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenArrayList_thenReturnTrue() {
+  public void testSizeIsEmpty2() {
+    // Arrange
+    new IndexOutOfBoundsException("foo");
+
+    // Act and Assert
+    assertTrue(CollectionUtils.sizeIsEmpty(new AbstractListIteratorDecorator<>(new ObjectArrayListIterator<>())));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_given42_whenArrayListAdd42_thenReturnFalse() {
+    // Arrange
+    new IndexOutOfBoundsException("foo");
+
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+
+    // Act and Assert
+    assertFalse(CollectionUtils.sizeIsEmpty(new AbstractListIteratorDecorator<>(new LoopingListIterator<>(list))));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_whenArrayList_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.sizeIsEmpty(new ArrayList<>()));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@link HashMap#HashMap()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName("Test sizeIsEmpty(Object); when HashMap(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenHashMap_thenReturnTrue() {
+  public void testSizeIsEmpty_whenHashMap_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.sizeIsEmpty(new HashMap<>()));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code true}.
+   *   <li>When {@link ListIteratorWrapper#ListIteratorWrapper(Iterator)} with iterator is {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName("Test sizeIsEmpty(Object); when 'null'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenNull_thenReturnTrue() {
+  public void testSizeIsEmpty_whenListIteratorWrapperWithIteratorIsArrayListIterator() {
+    // Arrange
+    new IndexOutOfBoundsException("foo");
+
+    ArrayList<Object> objectList = new ArrayList<>();
+
+    // Act and Assert
+    assertTrue(CollectionUtils
+        .sizeIsEmpty(new AbstractListIteratorDecorator<>(new ListIteratorWrapper<>(objectList.iterator()))));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>When {@link LoopingListIterator#LoopingListIterator(List)} with list is {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_whenLoopingListIteratorWithListIsArrayList() {
+    // Arrange
+    new IndexOutOfBoundsException("foo");
+
+    // Act and Assert
+    assertTrue(
+        CollectionUtils.sizeIsEmpty(new AbstractListIteratorDecorator<>(new LoopingListIterator<>(new ArrayList<>()))));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_whenNull_thenReturnTrue() {
     // Arrange, Act and Assert
     assertTrue(CollectionUtils.sizeIsEmpty(null));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
    * <ul>
-   *   <li>When {@code Object}.
-   *   <li>Then throw {@link IllegalArgumentException}.
+   *   <li>When {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])} with {@code Array}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName("Test sizeIsEmpty(Object); when 'Object'; then throw IllegalArgumentException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenObject_thenThrowIllegalArgumentException() {
+  public void testSizeIsEmpty_whenObjectArrayListIteratorWithArray_thenReturnFalse() {
+    // Arrange
+    new IndexOutOfBoundsException("foo");
+
+    // Act and Assert
+    assertFalse(
+        CollectionUtils.sizeIsEmpty(new AbstractListIteratorDecorator<>(new ObjectArrayListIterator<>("Array"))));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then throw {@link IllegalArgumentException}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_whenObject_thenThrowIllegalArgumentException() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> CollectionUtils.sizeIsEmpty("Object"));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
    * <ul>
-   *   <li>When {@link Scanner#Scanner(String)} with {@code Unsupported object type:}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link Scanner#Scanner(String)} with empty string.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName(
-      "Test sizeIsEmpty(Object); when Scanner(String) with 'Unsupported object type:'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenScannerWithUnsupportedObjectType_thenReturnFalse() {
+  public void testSizeIsEmpty_whenScannerWithEmptyString_thenReturnTrue() {
+    // Arrange, Act and Assert
+    assertTrue(CollectionUtils.sizeIsEmpty(new Scanner("")));
+  }
+
+  /**
+   * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
+   * <ul>
+   *   <li>When {@link Scanner#Scanner(String)} with {@code Unsupported object type:}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
+  public void testSizeIsEmpty_whenScannerWithUnsupportedObjectType_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.sizeIsEmpty(new Scanner("Unsupported object type: ")));
   }
 
   /**
    * Test {@link CollectionUtils#sizeIsEmpty(Object)}.
-   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object
-   *       type:}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code Unsupported object type:}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
+   * <p>
+   * Method under test: {@link CollectionUtils#sizeIsEmpty(Object)}
    */
   @Test
-  @DisplayName(
-      "Test sizeIsEmpty(Object); when StringTokenizer(String) with 'Unsupported object type:'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CollectionUtils.sizeIsEmpty(Object)"})
-  void testSizeIsEmpty_whenStringTokenizerWithUnsupportedObjectType_thenReturnFalse() {
+  public void testSizeIsEmpty_whenStringTokenizerWithUnsupportedObjectType_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(CollectionUtils.sizeIsEmpty(new StringTokenizer("Unsupported object type: ")));
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link Predicate}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given '42'; when Predicate; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_given42_whenPredicate_thenReturnArrayList() {
+  public void testSubtractWithABP_given42_whenPredicate_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     // Act
-    Collection<Object> actualSubtractResult =
-        CollectionUtils.subtract(a, new ArrayList<>(), mock(Predicate.class));
+    Collection<Object> actualSubtractResult = CollectionUtils.subtract(a, new ArrayList<>(), mock(Predicate.class));
 
     // Assert
     assertEquals(a, actualSubtractResult);
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given 'false'; when Predicate test(Object) return 'false'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_givenFalse_whenPredicateTestReturnFalse_thenReturnArrayList() {
+  public void testSubtractWithABP_givenFalse_whenPredicateTestReturnFalse_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
-
     Predicate<Object> p = mock(Predicate.class);
     when(p.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -11622,30 +8729,24 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given 'true'; when Predicate test(Object) return 'true'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList() {
+  public void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
-
     Predicate<Object> p = mock(Predicate.class);
     when(p.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -11658,31 +8759,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given 'true'; when Predicate test(Object) return 'true'; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList2() {
+  public void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
     b.add("42");
-
     Predicate<Object> p = mock(Predicate.class);
     when(p.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -11695,31 +8790,25 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given 'true'; when Predicate test(Object) return 'true'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnList() {
+  public void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
 
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
-
     Predicate<Object> p = mock(Predicate.class);
     when(p.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -11733,24 +8822,19 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; given 'true'; when Predicate test(Object) return 'true'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnList2() {
+  public void testSubtractWithABP_givenTrue_whenPredicateTestReturnTrue_thenReturnList2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -11758,7 +8842,6 @@ class CollectionUtilsDiffblueTest {
     ArrayList<Object> b = new ArrayList<>();
     b.add("42");
     b.add("42");
-
     Predicate<Object> p = mock(Predicate.class);
     when(p.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -11772,29 +8855,23 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b},
-   * {@code p}.
-   *
+   * Test {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)} with {@code a}, {@code b}, {@code p}.
    * <ul>
-   *   <li>When {@link Predicate}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable, Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable, Predicate) with 'a', 'b', 'p'; when Predicate; then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable, Predicate)"})
-  void testSubtractWithABP_whenPredicate_thenReturnArrayList() {
+  public void testSubtractWithABP_whenPredicate_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
     // Act
-    Collection<Object> actualSubtractResult =
-        CollectionUtils.subtract(a, new ArrayList<>(), mock(Predicate.class));
+    Collection<Object> actualSubtractResult = CollectionUtils.subtract(a, new ArrayList<>(), mock(Predicate.class));
 
     // Assert
     assertEquals(a, actualSubtractResult);
@@ -11802,22 +8879,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_given42_whenArrayListAdd42_thenReturnList() {
+  public void testSubtractWithAB_given42_whenArrayListAdd42_thenReturnList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -11835,22 +8908,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@link List}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@link List}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; given '42'; when ArrayList() add '42'; then return List")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_given42_whenArrayListAdd42_thenReturnList2() {
+  public void testSubtractWithAB_given42_whenArrayListAdd42_thenReturnList2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -11869,22 +8938,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList() {
+  public void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -11898,22 +8963,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList2() {
+  public void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList2() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -11929,22 +8990,18 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; given '42'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList3() {
+  public void testSubtractWithAB_given42_whenArrayList_thenReturnArrayList3() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -11961,21 +9018,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#subtract(Iterable, Iterable)} with {@code a}, {@code b}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#subtract(Iterable, Iterable)}
    */
   @Test
-  @DisplayName(
-      "Test subtract(Iterable, Iterable) with 'a', 'b'; when ArrayList(); then return ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.subtract(Iterable, Iterable)"})
-  void testSubtractWithAB_whenArrayList_thenReturnArrayList() {
+  public void testSubtractWithAB_whenArrayList_thenReturnArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -11988,29 +9041,24 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#synchronizedCollection(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#synchronizedCollection(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#synchronizedCollection(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test synchronizedCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.synchronizedCollection(Collection)"})
-  void testSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
 
     // Act
-    Collection<Object> actualSynchronizedCollectionResult =
-        CollectionUtils.synchronizedCollection(collection);
+    Collection<Object> actualSynchronizedCollectionResult = CollectionUtils.synchronizedCollection(collection);
 
     // Assert
     assertEquals(1, actualSynchronizedCollectionResult.size());
@@ -12018,23 +9066,19 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#synchronizedCollection(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#synchronizedCollection(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#synchronizedCollection(Collection)}
    */
   @Test
-  @DisplayName("Test synchronizedCollection(Collection); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.synchronizedCollection(Collection)"})
-  void testSynchronizedCollection_whenArrayList_thenReturnEmpty() {
+  public void testSynchronizedCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    Collection<Object> actualSynchronizedCollectionResult =
-        CollectionUtils.synchronizedCollection(new ArrayList<>());
+    Collection<Object> actualSynchronizedCollectionResult = CollectionUtils.synchronizedCollection(new ArrayList<>());
 
     // Assert
     assertTrue(actualSynchronizedCollectionResult.isEmpty());
@@ -12042,26 +9086,21 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#transform(Collection, Transformer)}.
-   *
    * <ul>
-   *   <li>Given {@code Apply}.
-   *   <li>When {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#transform(Collection, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#transform(Collection, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transform(Collection, Transformer); given 'Apply'; when Transformer apply(Object) return 'Apply'; then ArrayList() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CollectionUtils.transform(Collection, Transformer)"})
-  void testTransform_givenApply_whenTransformerApplyReturnApply_thenArrayListSizeIsOne() {
+  public void testTransform_givenApply_whenArrayListAdd42_thenArrayListSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
@@ -12076,27 +9115,22 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#transform(Collection, Transformer)}.
-   *
    * <ul>
-   *   <li>Given {@code Apply}.
-   *   <li>When {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#transform(Collection, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#transform(Collection, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transform(Collection, Transformer); given 'Apply'; when Transformer apply(Object) return 'Apply'; then ArrayList() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CollectionUtils.transform(Collection, Transformer)"})
-  void testTransform_givenApply_whenTransformerApplyReturnApply_thenArrayListSizeIsTwo() {
+  public void testTransform_givenApply_whenArrayListAdd42_thenArrayListSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
-
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
@@ -12111,30 +9145,53 @@ class CollectionUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionUtils#transformingCollection(Collection, Transformer)}.
-   *
+   * Test {@link CollectionUtils#transform(Collection, Transformer)}.
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
+   *   <li>Then calls {@link Transformer#apply(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#transform(Collection, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transformingCollection(Collection, Transformer); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void CollectionUtils.transform(Collection, Transformer)"})
+  public void testTransform_givenApply_whenHashSetAdd42_thenCallsApply() {
+    // Arrange
+    HashSet<Object> collection = new HashSet<>();
+    collection.add("42");
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+
+    // Act
+    CollectionUtils.transform(collection, transformer);
+
+    // Assert
+    verify(transformer).apply(isA(Object.class));
+  }
+
+  /**
+   * Test {@link CollectionUtils#transformingCollection(Collection, Transformer)}.
+   * <ul>
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.transformingCollection(Collection, Transformer)"})
-  void testTransformingCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testTransformingCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
 
     // Act
-    Collection<Object> actualTransformingCollectionResult =
-        CollectionUtils.transformingCollection(collection, mock(Transformer.class));
+    Collection<Object> actualTransformingCollectionResult = CollectionUtils.transformingCollection(collection,
+        mock(Transformer.class));
 
     // Assert
     assertEquals(1, actualTransformingCollectionResult.size());
@@ -12142,30 +9199,26 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#transformingCollection(Collection, Transformer)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transformingCollection(Collection, Transformer); given '42'; when ArrayList() add '42'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.transformingCollection(Collection, Transformer)"})
-  void testTransformingCollection_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testTransformingCollection_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
 
     // Act
-    Collection<Object> actualTransformingCollectionResult =
-        CollectionUtils.transformingCollection(collection, mock(Transformer.class));
+    Collection<Object> actualTransformingCollectionResult = CollectionUtils.transformingCollection(collection,
+        mock(Transformer.class));
 
     // Assert
     assertEquals(2, actualTransformingCollectionResult.size());
@@ -12173,24 +9226,20 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#transformingCollection(Collection, Transformer)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
+   * <p>
+   * Method under test: {@link CollectionUtils#transformingCollection(Collection, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transformingCollection(Collection, Transformer); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.transformingCollection(Collection, Transformer)"})
-  void testTransformingCollection_whenArrayList_thenReturnEmpty() {
+  public void testTransformingCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    Collection<Object> actualTransformingCollectionResult =
-        CollectionUtils.transformingCollection(new ArrayList<>(), mock(Transformer.class));
+    Collection<Object> actualTransformingCollectionResult = CollectionUtils.transformingCollection(new ArrayList<>(),
+        mock(Transformer.class));
 
     // Assert
     assertTrue(actualTransformingCollectionResult.isEmpty());
@@ -12198,20 +9247,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#union(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test union(Iterable, Iterable); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.union(Iterable, Iterable)"})
-  void testUnion_given42_whenArrayListAdd42() {
+  public void testUnion_given42_whenArrayListAdd42() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -12225,20 +9271,17 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#union(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test union(Iterable, Iterable); given '42'; when ArrayList() add '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.union(Iterable, Iterable)"})
-  void testUnion_given42_whenArrayListAdd422() {
+  public void testUnion_given42_whenArrayListAdd422() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
     a.add("42");
@@ -12253,19 +9296,16 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#union(Iterable, Iterable)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
+   * <p>
+   * Method under test: {@link CollectionUtils#union(Iterable, Iterable)}
    */
   @Test
-  @DisplayName("Test union(Iterable, Iterable); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.union(Iterable, Iterable)"})
-  void testUnion_whenArrayList() {
+  public void testUnion_whenArrayList() {
     // Arrange
     ArrayList<Object> a = new ArrayList<>();
 
@@ -12278,29 +9318,24 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#unmodifiableCollection(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test unmodifiableCollection(Collection); given '42'; when ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.unmodifiableCollection(Collection)"})
-  void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
 
     // Act
-    Collection<Object> actualUnmodifiableCollectionResult =
-        CollectionUtils.unmodifiableCollection(collection);
+    Collection<Object> actualUnmodifiableCollectionResult = CollectionUtils.unmodifiableCollection(collection);
 
     // Assert
     assertEquals(1, actualUnmodifiableCollectionResult.size());
@@ -12308,30 +9343,25 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#unmodifiableCollection(Collection)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is two.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test unmodifiableCollection(Collection); given '42'; when ArrayList() add '42'; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.unmodifiableCollection(Collection)"})
-  void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
     collection.add("42");
 
     // Act
-    Collection<Object> actualUnmodifiableCollectionResult =
-        CollectionUtils.unmodifiableCollection(collection);
+    Collection<Object> actualUnmodifiableCollectionResult = CollectionUtils.unmodifiableCollection(collection);
 
     // Assert
     assertEquals(2, actualUnmodifiableCollectionResult.size());
@@ -12339,23 +9369,19 @@ class CollectionUtilsDiffblueTest {
 
   /**
    * Test {@link CollectionUtils#unmodifiableCollection(Collection)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
+   * <p>
+   * Method under test: {@link CollectionUtils#unmodifiableCollection(Collection)}
    */
   @Test
-  @DisplayName("Test unmodifiableCollection(Collection); when ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection CollectionUtils.unmodifiableCollection(Collection)"})
-  void testUnmodifiableCollection_whenArrayList_thenReturnEmpty() {
+  public void testUnmodifiableCollection_whenArrayList_thenReturnEmpty() {
     // Arrange and Act
-    Collection<Object> actualUnmodifiableCollectionResult =
-        CollectionUtils.unmodifiableCollection(new ArrayList<>());
+    Collection<Object> actualUnmodifiableCollectionResult = CollectionUtils.unmodifiableCollection(new ArrayList<>());
 
     // Assert
     assertTrue(actualUnmodifiableCollectionResult.isEmpty());

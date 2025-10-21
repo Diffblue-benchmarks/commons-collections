@@ -1,41 +1,35 @@
 package org.apache.commons.collections4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.collections4.iterators.EmptyIterator;
 import org.apache.commons.collections4.iterators.IteratorEnumeration;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class FluentIterableDiffblueTest {
+public class FluentIterableDiffblueTest {
   /**
    * Test {@link FluentIterable#empty()}.
-   *
-   * <p>Method under test: {@link FluentIterable#empty()}
+   * <p>
+   * Method under test: {@link FluentIterable#empty()}
    */
   @Test
-  @DisplayName("Test empty()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.empty()"})
-  void testEmpty() {
+  public void testEmpty() {
     // Arrange and Act
     FluentIterable<Object> actualEmptyResult = FluentIterable.empty();
 
@@ -45,15 +39,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#of(Object[])} with {@code elements}.
-   *
-   * <p>Method under test: {@link FluentIterable#of(Object[])}
+   * <p>
+   * Method under test: {@link FluentIterable#of(Object[])}
    */
   @Test
-  @DisplayName("Test of(Object[]) with 'elements'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.of(Object[])"})
-  void testOfWithElements() {
+  public void testOfWithElements() {
     // Arrange and Act
     FluentIterable<Object> actualOfResult = FluentIterable.of("Elements");
 
@@ -65,19 +57,16 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#of(Iterable)} with {@code iterable}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#of(Iterable)}
+   * <p>
+   * Method under test: {@link FluentIterable#of(Iterable)}
    */
   @Test
-  @DisplayName("Test of(Iterable) with 'iterable'; when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.of(Iterable)"})
-  void testOfWithIterable_whenArrayList() {
+  public void testOfWithIterable_whenArrayList() {
     // Arrange and Act
     FluentIterable<Object> actualOfResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -87,19 +76,16 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#of(Iterable)} with {@code iterable}.
-   *
    * <ul>
-   *   <li>When empty.
+   *   <li>When empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#of(Iterable)}
+   * <p>
+   * Method under test: {@link FluentIterable#of(Iterable)}
    */
   @Test
-  @DisplayName("Test of(Iterable) with 'iterable'; when empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.of(Iterable)"})
-  void testOfWithIterable_whenEmpty() {
+  public void testOfWithIterable_whenEmpty() {
     // Arrange
     FluentIterable<Object> iterable = FluentIterable.empty();
 
@@ -112,15 +98,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#of(Object)} with {@code singleton}.
-   *
-   * <p>Method under test: {@link FluentIterable#of(Object)}
+   * <p>
+   * Method under test: {@link FluentIterable#of(Object)}
    */
   @Test
-  @DisplayName("Test of(Object) with 'singleton'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.of(Object)"})
-  void testOfWithSingleton() {
+  public void testOfWithSingleton() {
     // Arrange and Act
     FluentIterable<Object> actualOfResult = FluentIterable.of("Singleton");
 
@@ -132,21 +116,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#allMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@link Predicate}.
-   *   <li>Then return {@code true}.
+   *   <li>Given empty.</li>
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#allMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#allMatch(Predicate)}
    */
   @Test
-  @DisplayName("Test allMatch(Predicate); given empty; when Predicate; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.allMatch(Predicate)"})
-  void testAllMatch_givenEmpty_whenPredicate_thenReturnTrue() {
+  public void testAllMatch_givenEmpty_whenPredicate_thenReturnTrue() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -156,27 +137,22 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#allMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#allMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#allMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test allMatch(Predicate); given 'false'; when Predicate test(Object) return 'false'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.allMatch(Predicate)"})
-  void testAllMatch_givenFalse_whenPredicateTestReturnFalse_thenReturnFalse() {
+  public void testAllMatch_givenFalse_whenPredicateTestReturnFalse_thenReturnFalse() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -190,21 +166,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#allMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#allMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#allMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test allMatch(Predicate); given FluentIterable with iterable is ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.allMatch(Predicate)"})
-  void testAllMatch_givenFluentIterableWithIterableIsArrayList_thenReturnTrue() {
+  public void testAllMatch_givenFluentIterableWithIterableIsArrayList_thenReturnTrue() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -214,27 +186,22 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#allMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#allMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#allMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test allMatch(Predicate); given 'true'; when Predicate test(Object) return 'true'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.allMatch(Predicate)"})
-  void testAllMatch_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
+  public void testAllMatch_givenTrue_whenPredicateTestReturnTrue_thenCallsTest() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -248,21 +215,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#anyMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@link Predicate}.
-   *   <li>Then return {@code false}.
+   *   <li>Given empty.</li>
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#anyMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#anyMatch(Predicate)}
    */
   @Test
-  @DisplayName("Test anyMatch(Predicate); given empty; when Predicate; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.anyMatch(Predicate)"})
-  void testAnyMatch_givenEmpty_whenPredicate_thenReturnFalse() {
+  public void testAnyMatch_givenEmpty_whenPredicate_thenReturnFalse() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -272,27 +236,22 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#anyMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.
-   *   <li>Then calls {@link Predicate#test(Object)}.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
+   *   <li>Then calls {@link Predicate#test(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#anyMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#anyMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test anyMatch(Predicate); given 'false'; when Predicate test(Object) return 'false'; then calls test(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.anyMatch(Predicate)"})
-  void testAnyMatch_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
+  public void testAnyMatch_givenFalse_whenPredicateTestReturnFalse_thenCallsTest() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(false);
 
@@ -306,21 +265,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#anyMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#anyMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#anyMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test anyMatch(Predicate); given FluentIterable with iterable is ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.anyMatch(Predicate)"})
-  void testAnyMatch_givenFluentIterableWithIterableIsArrayList_thenReturnFalse() {
+  public void testAnyMatch_givenFluentIterableWithIterableIsArrayList_thenReturnFalse() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -330,27 +285,22 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#anyMatch(Predicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@code true}.</li>
+   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#anyMatch(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#anyMatch(Predicate)}
    */
   @Test
-  @DisplayName(
-      "Test anyMatch(Predicate); given 'true'; when Predicate test(Object) return 'true'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.anyMatch(Predicate)"})
-  void testAnyMatch_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
+  public void testAnyMatch_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
     Predicate<Object> predicate = mock(Predicate.class);
     when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
@@ -364,15 +314,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#append(Object[])} with {@code elements}.
-   *
-   * <p>Method under test: {@link FluentIterable#append(Object[])}
+   * <p>
+   * Method under test: {@link FluentIterable#append(Object[])}
    */
   @Test
-  @DisplayName("Test append(Object[]) with 'elements'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.append(Object[])"})
-  void testAppendWithElements() {
+  public void testAppendWithElements() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -384,15 +332,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#append(Iterable)} with {@code other}.
-   *
-   * <p>Method under test: {@link FluentIterable#append(Iterable)}
+   * <p>
+   * Method under test: {@link FluentIterable#append(Iterable)}
    */
   @Test
-  @DisplayName("Test append(Iterable) with 'other'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.append(Iterable)"})
-  void testAppendWithOther() {
+  public void testAppendWithOther() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -402,20 +348,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#asEnumeration()}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>Then Iterator return {@link EmptyIterator}.
+   *   <li>Given empty.</li>
+   *   <li>Then Iterator return {@link EmptyIterator}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#asEnumeration()}
+   * <p>
+   * Method under test: {@link FluentIterable#asEnumeration()}
    */
   @Test
-  @DisplayName("Test asEnumeration(); given empty; then Iterator return EmptyIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Enumeration FluentIterable.asEnumeration()"})
-  void testAsEnumeration_givenEmpty_thenIteratorReturnEmptyIterator() {
+  public void testAsEnumeration_givenEmpty_thenIteratorReturnEmptyIterator() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -432,19 +375,16 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#asEnumeration()}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#asEnumeration()}
+   * <p>
+   * Method under test: {@link FluentIterable#asEnumeration()}
    */
   @Test
-  @DisplayName("Test asEnumeration(); given FluentIterable with iterable is ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Enumeration FluentIterable.asEnumeration()"})
-  void testAsEnumeration_givenFluentIterableWithIterableIsArrayList() {
+  public void testAsEnumeration_givenFluentIterableWithIterableIsArrayList() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -459,15 +399,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#collate(Iterable)} with {@code other}.
-   *
-   * <p>Method under test: {@link FluentIterable#collate(Iterable)}
+   * <p>
+   * Method under test: {@link FluentIterable#collate(Iterable)}
    */
   @Test
-  @DisplayName("Test collate(Iterable) with 'other'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.collate(Iterable)"})
-  void testCollateWithOther() {
+  public void testCollateWithOther() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -476,141 +414,19 @@ class FluentIterableDiffblueTest {
   }
 
   /**
-   * Test {@link FluentIterable#collate(Iterable, Comparator)} with {@code other}, {@code
-   * comparator}.
-   *
-   * <p>Method under test: {@link FluentIterable#collate(Iterable, Comparator)}
-   */
-  @Test
-  @DisplayName("Test collate(Iterable, Comparator) with 'other', 'comparator'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"FluentIterable FluentIterable.collate(Iterable, Comparator)"})
-  void testCollateWithOtherComparator() {
-    // Arrange
-    FluentIterable<Object> emptyResult = FluentIterable.empty();
-
-    // Act and Assert
-    assertTrue(emptyResult.collate(new ArrayList<>(), mock(Comparator.class)).toList().isEmpty());
-  }
-
-  /**
    * Test {@link FluentIterable#contains(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given empty.</li>
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
+   * <p>
+   * Method under test: {@link FluentIterable#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given ArrayList() add '42'; when '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenArrayListAdd42_when42_thenReturnTrue() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualContainsResult = ofResult.contains("42");
-
-    // Assert
-    verify(iterable).iterator();
-    assertTrue(actualContainsResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When {@code null}.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test contains(Object); given ArrayList() add '42'; when 'null'; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenArrayListAdd42_whenNull_thenCallsIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualContainsResult = ofResult.contains(null);
-
-    // Assert
-    verify(iterable).iterator();
-    assertFalse(actualContainsResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When one.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
-   */
-  @Test
-  @DisplayName("Test contains(Object); given ArrayList() add '42'; when one; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenArrayListAdd42_whenOne_thenCallsIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualContainsResult = ofResult.contains(1);
-
-    // Assert
-    verify(iterable).iterator();
-    assertFalse(actualContainsResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given empty.
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
-   */
-  @Test
-  @DisplayName("Test contains(Object); given empty; when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenEmpty_whenNull_thenReturnFalse() {
+  public void testContains_givenEmpty_whenNull_thenReturnFalse() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -620,21 +436,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#contains(Object)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@code Object}.
-   *   <li>Then return {@code false}.
+   *   <li>Given empty.</li>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
+   * <p>
+   * Method under test: {@link FluentIterable#contains(Object)}
    */
   @Test
-  @DisplayName("Test contains(Object); given empty; when 'Object'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenEmpty_whenObject_thenReturnFalse() {
+  public void testContains_givenEmpty_whenObject_thenReturnFalse() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -644,220 +457,37 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#contains(Object)}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>When {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
+   * <p>
+   * Method under test: {@link FluentIterable#contains(Object)}
    */
   @Test
-  @DisplayName(
-      "Test contains(Object); given FluentIterable with iterable is ArrayList(); when '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenFluentIterableWithIterableIsArrayList_when42_thenReturnTrue() {
-    // Arrange
-    ArrayList<Object> iterable = new ArrayList<>();
-    iterable.add("42");
-    FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
-    // Act and Assert
-    assertTrue(ofResult.contains("42"));
-  }
-
-  /**
-   * Test {@link FluentIterable#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>When {@code null}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test contains(Object); given FluentIterable with iterable is ArrayList(); when 'null'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenFluentIterableWithIterableIsArrayList_whenNull_thenReturnFalse() {
+  public void testContains_givenFluentIterableWithIterableIsArrayList_thenReturnFalse() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
     // Act and Assert
-    assertFalse(ofResult.contains(null));
-  }
-
-  /**
-   * Test {@link FluentIterable#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link Iterable} {@link Iterable#iterator()} return {@link ArrayList#ArrayList()}
-   *       iterator.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#contains(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test contains(Object); given Iterable iterator() return ArrayList() iterator; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.contains(Object)"})
-  void testContains_givenIterableIteratorReturnArrayListIterator_thenCallsIterator() {
-    // Arrange
-    Iterable<Object> iterable = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualContainsResult = ofResult.contains(null);
-
-    // Assert
-    verify(iterable).iterator();
-    assertFalse(actualContainsResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#copyInto(Collection)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#copyInto(Collection)}
-   */
-  @Test
-  @DisplayName("Test copyInto(Collection); given ArrayList() add '42'; then ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void FluentIterable.copyInto(Collection)"})
-  void testCopyInto_givenArrayListAdd42_thenArrayList() {
-    // Arrange
-    ArrayList<Object> iterable = new ArrayList<>();
-    iterable.add("42");
-    FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    ofResult.copyInto(collection);
-
-    // Assert
-    assertEquals(iterable, collection);
-  }
-
-  /**
-   * Test {@link FluentIterable#copyInto(Collection)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#copyInto(Collection)}
-   */
-  @Test
-  @DisplayName("Test copyInto(Collection); given ArrayList() add '42'; then ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void FluentIterable.copyInto(Collection)"})
-  void testCopyInto_givenArrayListAdd42_thenArrayList2() {
-    // Arrange
-    ArrayList<Object> iterable = new ArrayList<>();
-    iterable.add("42");
-    iterable.add("42");
-    FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    ofResult.copyInto(collection);
-
-    // Assert
-    assertEquals(iterable, collection);
-  }
-
-  /**
-   * Test {@link FluentIterable#copyInto(Collection)}.
-   *
-   * <ul>
-   *   <li>Given empty.
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#copyInto(Collection)}
-   */
-  @Test
-  @DisplayName("Test copyInto(Collection); given empty; then ArrayList() Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void FluentIterable.copyInto(Collection)"})
-  void testCopyInto_givenEmpty_thenArrayListEmpty() {
-    // Arrange
-    FluentIterable<Object> emptyResult = FluentIterable.empty();
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    emptyResult.copyInto(collection);
-
-    // Assert that nothing has changed
-    assertTrue(collection.isEmpty());
-  }
-
-  /**
-   * Test {@link FluentIterable#copyInto(Collection)}.
-   *
-   * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then {@link ArrayList#ArrayList()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#copyInto(Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test copyInto(Collection); given FluentIterable with iterable is ArrayList(); then ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void FluentIterable.copyInto(Collection)"})
-  void testCopyInto_givenFluentIterableWithIterableIsArrayList_thenArrayList() {
-    // Arrange
-    ArrayList<Object> iterable = new ArrayList<>();
-    FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    ofResult.copyInto(collection);
-
-    // Assert that nothing has changed
-    assertEquals(iterable, collection);
+    assertFalse(ofResult.contains("Object"));
   }
 
   /**
    * Test {@link FluentIterable#eval()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return toList size is one.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return toList size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#eval()}
+   * <p>
+   * Method under test: {@link FluentIterable#eval()}
    */
   @Test
-  @DisplayName("Test eval(); given ArrayList() add '42'; then return toList size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.eval()"})
-  void testEval_givenArrayListAdd42_thenReturnToListSizeIsOne() {
+  public void testEval_givenArrayListAdd42_thenReturnToListSizeIsOne() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
@@ -871,20 +501,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#eval()}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>Then return toList Empty.
+   *   <li>Given empty.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#eval()}
+   * <p>
+   * Method under test: {@link FluentIterable#eval()}
    */
   @Test
-  @DisplayName("Test eval(); given empty; then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.eval()"})
-  void testEval_givenEmpty_thenReturnToListEmpty() {
+  public void testEval_givenEmpty_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -894,21 +521,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#eval()}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return toList Empty.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#eval()}
+   * <p>
+   * Method under test: {@link FluentIterable#eval()}
    */
   @Test
-  @DisplayName(
-      "Test eval(); given FluentIterable with iterable is ArrayList(); then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.eval()"})
-  void testEval_givenFluentIterableWithIterableIsArrayList_thenReturnToListEmpty() {
+  public void testEval_givenFluentIterableWithIterableIsArrayList_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -918,21 +541,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#filter(Predicate)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@link Predicate}.
-   *   <li>Then return toList Empty.
+   *   <li>Given empty.</li>
+   *   <li>When {@link Predicate}.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#filter(Predicate)}
+   * <p>
+   * Method under test: {@link FluentIterable#filter(Predicate)}
    */
   @Test
-  @DisplayName("Test filter(Predicate); given empty; when Predicate; then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.filter(Predicate)"})
-  void testFilter_givenEmpty_whenPredicate_thenReturnToListEmpty() {
+  public void testFilter_givenEmpty_whenPredicate_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -942,26 +562,21 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#forEach(Closure)} with {@code Closure}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then calls {@link Closure#accept(Object)}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then calls {@link Closure#accept(Object)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#forEach(Closure)}
+   * <p>
+   * Method under test: {@link FluentIterable#forEach(Closure)}
    */
   @Test
-  @DisplayName(
-      "Test forEach(Closure) with 'Closure'; given ArrayList() add '42'; then calls accept(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void FluentIterable.forEach(Closure)"})
-  void testForEachWithClosure_givenArrayListAdd42_thenCallsAccept() {
+  public void testForEachWithClosure_givenArrayListAdd42_thenCallsAccept() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
-
     Closure<Object> closure = mock(Closure.class);
     doNothing().when(closure).accept(Mockito.<Object>any());
 
@@ -974,114 +589,41 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#get(int)}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When one.
-   *   <li>Then calls {@link Iterable#iterator()}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>When one.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#get(int)}
+   * <p>
+   * Method under test: {@link FluentIterable#get(int)}
    */
   @Test
-  @DisplayName("Test get(int); given ArrayList() add '42'; when one; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object FluentIterable.get(int)"})
-  void testGet_givenArrayListAdd42_whenOne_thenCallsIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    Object actualGetResult = ofResult.get(1);
-
-    // Assert
-    verify(iterable).iterator();
-    assertEquals("42", actualGetResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#get(int)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When zero.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#get(int)}
-   */
-  @Test
-  @DisplayName("Test get(int); given ArrayList() add '42'; when zero; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object FluentIterable.get(int)"})
-  void testGet_givenArrayListAdd42_whenZero_thenCallsIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    Object actualGetResult = ofResult.get(0);
-
-    // Assert
-    verify(iterable).iterator();
-    assertEquals("42", actualGetResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#get(int)}.
-   *
-   * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>When zero.
-   *   <li>Then return {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#get(int)}
-   */
-  @Test
-  @DisplayName(
-      "Test get(int); given FluentIterable with iterable is ArrayList(); when zero; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object FluentIterable.get(int)"})
-  void testGet_givenFluentIterableWithIterableIsArrayList_whenZero_thenReturn42() {
+  public void testGet_givenArrayListAdd42_whenOne_thenReturn42() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
+    iterable.add("42");
     iterable.add("42");
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) iterable);
 
     // Act and Assert
-    assertEquals("42", ofResult.get(0));
+    assertEquals("42", ofResult.get(1));
   }
 
   /**
    * Test {@link FluentIterable#isEmpty()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#isEmpty()}
+   * <p>
+   * Method under test: {@link FluentIterable#isEmpty()}
    */
   @Test
-  @DisplayName("Test isEmpty(); given ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.isEmpty()"})
-  void testIsEmpty_givenArrayListAdd42_thenReturnFalse() {
+  public void testIsEmpty_givenArrayListAdd42_thenReturnFalse() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
@@ -1093,52 +635,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#isEmpty()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code false}.
+   *   <li>Given empty.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#isEmpty()}
+   * <p>
+   * Method under test: {@link FluentIterable#isEmpty()}
    */
   @Test
-  @DisplayName("Test isEmpty(); given ArrayList() add '42'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.isEmpty()"})
-  void testIsEmpty_givenArrayListAdd42_thenReturnFalse2() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualIsEmptyResult = ofResult.isEmpty();
-
-    // Assert
-    verify(iterable).iterator();
-    assertFalse(actualIsEmptyResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#isEmpty()}.
-   *
-   * <ul>
-   *   <li>Given empty.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#isEmpty()}
-   */
-  @Test
-  @DisplayName("Test isEmpty(); given empty; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.isEmpty()"})
-  void testIsEmpty_givenEmpty_thenReturnTrue() {
+  public void testIsEmpty_givenEmpty_thenReturnTrue() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1148,21 +655,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#isEmpty()}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#isEmpty()}
+   * <p>
+   * Method under test: {@link FluentIterable#isEmpty()}
    */
   @Test
-  @DisplayName(
-      "Test isEmpty(); given FluentIterable with iterable is ArrayList(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean FluentIterable.isEmpty()"})
-  void testIsEmpty_givenFluentIterableWithIterableIsArrayList_thenReturnTrue() {
+  public void testIsEmpty_givenFluentIterableWithIterableIsArrayList_thenReturnTrue() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -1171,83 +674,18 @@ class FluentIterableDiffblueTest {
   }
 
   /**
-   * Test {@link FluentIterable#isEmpty()}.
-   *
-   * <ul>
-   *   <li>Given {@link Iterable} {@link Iterable#iterator()} return {@link ArrayList#ArrayList()}
-   *       iterator.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#isEmpty()}
-   */
-  @Test
-  @DisplayName(
-      "Test isEmpty(); given Iterable iterator() return ArrayList() iterator; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean FluentIterable.isEmpty()"})
-  void testIsEmpty_givenIterableIteratorReturnArrayListIterator_thenCallsIterator() {
-    // Arrange
-    Iterable<Object> iterable = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    boolean actualIsEmptyResult = ofResult.isEmpty();
-
-    // Assert
-    verify(iterable).iterator();
-    assertTrue(actualIsEmptyResult);
-  }
-
-  /**
    * Test {@link FluentIterable#iterator()}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>Then return {@link EmptyIterator}.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return not hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#iterator()}
+   * <p>
+   * Method under test: {@link FluentIterable#iterator()}
    */
   @Test
-  @DisplayName("Test iterator(); given empty; then return EmptyIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Iterator FluentIterable.iterator()"})
-  void testIterator_givenEmpty_thenReturnEmptyIterator() {
-    // Arrange
-    FluentIterable<Object> emptyResult = FluentIterable.empty();
-
-    // Act
-    Iterator<Object> actualIteratorResult = emptyResult.iterator();
-
-    // Assert
-    assertTrue(actualIteratorResult instanceof EmptyIterator);
-    assertFalse(actualIteratorResult.hasNext());
-    assertSame(((EmptyIterator) actualIteratorResult).RESETTABLE_INSTANCE, actualIteratorResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#iterator()}.
-   *
-   * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return not hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#iterator()}
-   */
-  @Test
-  @DisplayName(
-      "Test iterator(); given FluentIterable with iterable is ArrayList(); then return not hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator FluentIterable.iterator()"})
-  void testIterator_givenFluentIterableWithIterableIsArrayList_thenReturnNotHasNext() {
+  public void testIterator_givenFluentIterableWithIterableIsArrayList_thenReturnNotHasNext() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -1257,20 +695,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#limit(long)}.
-   *
    * <ul>
-   *   <li>When three.
-   *   <li>Then return toList Empty.
+   *   <li>When three.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#limit(long)}
+   * <p>
+   * Method under test: {@link FluentIterable#limit(long)}
    */
   @Test
-  @DisplayName("Test limit(long); when three; then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.limit(long)"})
-  void testLimit_whenThree_thenReturnToListEmpty() {
+  public void testLimit_whenThree_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1280,15 +715,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#loop()}.
-   *
-   * <p>Method under test: {@link FluentIterable#loop()}
+   * <p>
+   * Method under test: {@link FluentIterable#loop()}
    */
   @Test
-  @DisplayName("Test loop()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.loop()"})
-  void testLoop() {
+  public void testLoop() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1298,15 +731,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#reverse()}.
-   *
-   * <p>Method under test: {@link FluentIterable#reverse()}
+   * <p>
+   * Method under test: {@link FluentIterable#reverse()}
    */
   @Test
-  @DisplayName("Test reverse()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.reverse()"})
-  void testReverse() {
+  public void testReverse() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1316,52 +747,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#size()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return one.
+   *   <li>Given empty.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#size()}
+   * <p>
+   * Method under test: {@link FluentIterable#size()}
    */
   @Test
-  @DisplayName("Test size(); given ArrayList() add '42'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int FluentIterable.size()"})
-  void testSize_givenArrayListAdd42_thenReturnOne() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    objectList.add("42");
-
-    Iterable<Object> iterable = mock(Iterable.class);
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    int actualSizeResult = ofResult.size();
-
-    // Assert
-    verify(iterable).iterator();
-    assertEquals(1, actualSizeResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#size()}.
-   *
-   * <ul>
-   *   <li>Given empty.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#size()}
-   */
-  @Test
-  @DisplayName("Test size(); given empty; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int FluentIterable.size()"})
-  void testSize_givenEmpty_thenReturnZero() {
+  public void testSize_givenEmpty_thenReturnZero() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1371,20 +767,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#size()}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return zero.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#size()}
+   * <p>
+   * Method under test: {@link FluentIterable#size()}
    */
   @Test
-  @DisplayName("Test size(); given FluentIterable with iterable is ArrayList(); then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int FluentIterable.size()"})
-  void testSize_givenFluentIterableWithIterableIsArrayList_thenReturnZero() {
+  public void testSize_givenFluentIterableWithIterableIsArrayList_thenReturnZero() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -1393,54 +786,18 @@ class FluentIterableDiffblueTest {
   }
 
   /**
-   * Test {@link FluentIterable#size()}.
-   *
-   * <ul>
-   *   <li>Given {@link Iterable} {@link Iterable#iterator()} return {@link ArrayList#ArrayList()}
-   *       iterator.
-   *   <li>Then calls {@link Iterable#iterator()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#size()}
-   */
-  @Test
-  @DisplayName(
-      "Test size(); given Iterable iterator() return ArrayList() iterator; then calls iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int FluentIterable.size()"})
-  void testSize_givenIterableIteratorReturnArrayListIterator_thenCallsIterator() {
-    // Arrange
-    Iterable<Object> iterable = mock(Iterable.class);
-
-    ArrayList<Object> objectList = new ArrayList<>();
-    when(iterable.iterator()).thenReturn(objectList.iterator());
-    FluentIterable<Object> ofResult = FluentIterable.of(iterable);
-
-    // Act
-    int actualSizeResult = ofResult.size();
-
-    // Assert
-    verify(iterable).iterator();
-    assertEquals(0, actualSizeResult);
-  }
-
-  /**
    * Test {@link FluentIterable#skip(long)}.
-   *
    * <ul>
-   *   <li>When one.
-   *   <li>Then return toList Empty.
+   *   <li>When one.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#skip(long)}
+   * <p>
+   * Method under test: {@link FluentIterable#skip(long)}
    */
   @Test
-  @DisplayName("Test skip(long); when one; then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.skip(long)"})
-  void testSkip_whenOne_thenReturnToListEmpty() {
+  public void testSkip_whenOne_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1450,22 +807,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toArray(Class)}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>When {@code Object}.
-   *   <li>Then return first element is {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return first element is {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toArray(Class)}
+   * <p>
+   * Method under test: {@link FluentIterable#toArray(Class)}
    */
   @Test
-  @DisplayName(
-      "Test toArray(Class); given ArrayList() add '42'; when 'java.lang.Object'; then return first element is '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object[] FluentIterable.toArray(Class)"})
-  void testToArray_givenArrayListAdd42_whenJavaLangObject_thenReturnFirstElementIs42() {
+  public void testToArray_givenArrayListAdd42_whenJavaLangObject_thenReturnFirstElementIs42() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
@@ -1482,22 +835,18 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toArray(Class)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@code Object}.
-   *   <li>Then return array length is zero.
+   *   <li>Given empty.</li>
+   *   <li>When {@code Object}.</li>
+   *   <li>Then return array length is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toArray(Class)}
+   * <p>
+   * Method under test: {@link FluentIterable#toArray(Class)}
    */
   @Test
-  @DisplayName(
-      "Test toArray(Class); given empty; when 'java.lang.Object'; then return array length is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object[] FluentIterable.toArray(Class)"})
-  void testToArray_givenEmpty_whenJavaLangObject_thenReturnArrayLengthIsZero() {
+  public void testToArray_givenEmpty_whenJavaLangObject_thenReturnArrayLengthIsZero() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
     Class<Object> arrayClass = Object.class;
@@ -1508,19 +857,16 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toArray(Class)}.
-   *
    * <ul>
-   *   <li>Then return array length is zero.
+   *   <li>Then return array length is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toArray(Class)}
+   * <p>
+   * Method under test: {@link FluentIterable#toArray(Class)}
    */
   @Test
-  @DisplayName("Test toArray(Class); then return array length is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object[] FluentIterable.toArray(Class)"})
-  void testToArray_thenReturnArrayLengthIsZero() {
+  public void testToArray_thenReturnArrayLengthIsZero() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
     Class<Object> arrayClass = Object.class;
@@ -1531,20 +877,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toList()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return size is one.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toList()}
+   * <p>
+   * Method under test: {@link FluentIterable#toList()}
    */
   @Test
-  @DisplayName("Test toList(); given ArrayList() add '42'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List FluentIterable.toList()"})
-  void testToList_givenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testToList_givenArrayListAdd42_thenReturnSizeIsOne() {
     // Arrange
     ArrayList<Object> iterable = new ArrayList<>();
     iterable.add("42");
@@ -1560,20 +903,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toList()}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>Then return Empty.
+   *   <li>Given empty.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toList()}
+   * <p>
+   * Method under test: {@link FluentIterable#toList()}
    */
   @Test
-  @DisplayName("Test toList(); given empty; then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List FluentIterable.toList()"})
-  void testToList_givenEmpty_thenReturnEmpty() {
+  public void testToList_givenEmpty_thenReturnEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1583,21 +923,17 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toList()}.
-   *
    * <ul>
-   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.
-   *   <li>Then return Empty.
+   *   <li>Given {@link FluentIterable} with iterable is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#toList()}
+   * <p>
+   * Method under test: {@link FluentIterable#toList()}
    */
   @Test
-  @DisplayName(
-      "Test toList(); given FluentIterable with iterable is ArrayList(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List FluentIterable.toList()"})
-  void testToList_givenFluentIterableWithIterableIsArrayList_thenReturnEmpty() {
+  public void testToList_givenFluentIterableWithIterableIsArrayList_thenReturnEmpty() {
     // Arrange
     FluentIterable<Object> ofResult = FluentIterable.of((Iterable<Object>) new ArrayList<>());
 
@@ -1607,15 +943,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#toString()}.
-   *
-   * <p>Method under test: {@link FluentIterable#toString()}
+   * <p>
+   * Method under test: {@link FluentIterable#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String FluentIterable.toString()"})
-  void testToString() {
+  public void testToString() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1625,40 +959,34 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#transform(Transformer)}.
-   *
    * <ul>
-   *   <li>Given empty.
-   *   <li>When {@link Transformer}.
-   *   <li>Then return toList Empty.
+   *   <li>Given empty.</li>
+   *   <li>When {@link Transformer}.</li>
+   *   <li>Then return toList Empty.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#transform(Transformer)}
+   * <p>
+   * Method under test: {@link FluentIterable#transform(Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transform(Transformer); given empty; when Transformer; then return toList Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.transform(Transformer)"})
-  void testTransform_givenEmpty_whenTransformer_thenReturnToListEmpty() {
+  public void testTransform_givenEmpty_whenTransformer_thenReturnToListEmpty() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
     // Act and Assert
-    assertTrue(emptyResult.transform(mock(Transformer.class)).toList().isEmpty());
+    assertTrue(emptyResult.<Object>transform(mock(Transformer.class)).toList().isEmpty());
   }
 
   /**
    * Test {@link FluentIterable#unique()}.
-   *
-   * <p>Method under test: {@link FluentIterable#unique()}
+   * <p>
+   * Method under test: {@link FluentIterable#unique()}
    */
   @Test
-  @DisplayName("Test unique()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.unique()"})
-  void testUnique() {
+  public void testUnique() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1668,15 +996,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#unmodifiable()}.
-   *
-   * <p>Method under test: {@link FluentIterable#unmodifiable()}
+   * <p>
+   * Method under test: {@link FluentIterable#unmodifiable()}
    */
   @Test
-  @DisplayName("Test unmodifiable()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.unmodifiable()"})
-  void testUnmodifiable() {
+  public void testUnmodifiable() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1686,15 +1012,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#zip(Iterable)} with {@code other}.
-   *
-   * <p>Method under test: {@link FluentIterable#zip(Iterable)}
+   * <p>
+   * Method under test: {@link FluentIterable#zip(Iterable)}
    */
   @Test
-  @DisplayName("Test zip(Iterable) with 'other'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.zip(Iterable)"})
-  void testZipWithOther() {
+  public void testZipWithOther() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 
@@ -1704,15 +1028,13 @@ class FluentIterableDiffblueTest {
 
   /**
    * Test {@link FluentIterable#zip(Iterable[])} with {@code others}.
-   *
-   * <p>Method under test: {@link FluentIterable#zip(Iterable[])}
+   * <p>
+   * Method under test: {@link FluentIterable#zip(Iterable[])}
    */
   @Test
-  @DisplayName("Test zip(Iterable[]) with 'others'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"FluentIterable FluentIterable.zip(Iterable[])"})
-  void testZipWithOthers() {
+  public void testZipWithOthers() {
     // Arrange
     FluentIterable<Object> emptyResult = FluentIterable.empty();
 

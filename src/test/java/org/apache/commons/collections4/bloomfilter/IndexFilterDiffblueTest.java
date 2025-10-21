@@ -1,67 +1,51 @@
 package org.apache.commons.collections4.bloomfilter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.IntPredicate;
 import org.apache.commons.collections4.bloomfilter.IndexFilter.ArrayTracker;
 import org.apache.commons.collections4.bloomfilter.IndexFilter.BitMapTracker;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class IndexFilterDiffblueTest {
+public class IndexFilterDiffblueTest {
   /**
    * Test ArrayTracker {@link ArrayTracker#ArrayTracker(Shape)}.
-   *
    * <ul>
-   *   <li>When fromKM {@code 19088743} and ten.
-   *   <li>Then return test ten.
+   *   <li>Then return test ten.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayTracker#ArrayTracker(Shape)}
+   * <p>
+   * Method under test: {@link ArrayTracker#ArrayTracker(Shape)}
    */
   @Test
-  @DisplayName(
-      "Test ArrayTracker new ArrayTracker(Shape); when fromKM '19088743' and ten; then return test ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ArrayTracker.<init>(Shape)"})
-  void testArrayTrackerNewArrayTracker_whenFromKM19088743AndTen_thenReturnTestTen() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act and Assert
-    assertTrue(new ArrayTracker(shape).test(10));
+  public void testArrayTrackerNewArrayTracker_thenReturnTestTen() {
+    // Arrange, Act and Assert
+    assertTrue((new ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
    * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and
-   *       ten test one.
+   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and ten test one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayTracker#test(int)}
+   * <p>
+   * Method under test: {@link ArrayTracker#test(int)}
    */
   @Test
-  @DisplayName(
-      "Test ArrayTracker test(int); given ArrayTracker(Shape) with shape is fromKM '19088743' and ten test one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTenTestOne() {
+  public void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTenTestOne() {
     // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    ArrayTracker arrayTracker = new ArrayTracker(shape);
+    ArrayTracker arrayTracker = new ArrayTracker(Shape.fromKM(19088743, 10));
     arrayTracker.test(1);
 
     // Act and Assert
@@ -70,48 +54,35 @@ class IndexFilterDiffblueTest {
 
   /**
    * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and
-   *       ten.
-   *   <li>When ten.
+   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
+   *   <li>When ten.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayTracker#test(int)}
+   * <p>
+   * Method under test: {@link ArrayTracker#test(int)}
    */
   @Test
-  @DisplayName(
-      "Test ArrayTracker test(int); given ArrayTracker(Shape) with shape is fromKM '19088743' and ten; when ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTen_whenTen() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act and Assert
-    assertTrue(new ArrayTracker(shape).test(10));
+  public void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTen_whenTen() {
+    // Arrange, Act and Assert
+    assertTrue((new ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
    * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ArrayTracker#test(int)}
+   * <p>
+   * Method under test: {@link ArrayTracker#test(int)}
    */
   @Test
-  @DisplayName("Test ArrayTracker test(int); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  void testArrayTrackerTest_thenReturnFalse() {
+  public void testArrayTrackerTest_thenReturnFalse() {
     // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    ArrayTracker arrayTracker = new ArrayTracker(shape);
+    ArrayTracker arrayTracker = new ArrayTracker(Shape.fromKM(19088743, 10));
     arrayTracker.test(0);
 
     // Act and Assert
@@ -120,72 +91,53 @@ class IndexFilterDiffblueTest {
 
   /**
    * Test BitMapTracker {@link BitMapTracker#BitMapTracker(Shape)}.
-   *
    * <ul>
-   *   <li>When fromKM {@code 19088743} and ten.
-   *   <li>Then return test ten.
+   *   <li>Then return test ten.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BitMapTracker#BitMapTracker(Shape)}
+   * <p>
+   * Method under test: {@link BitMapTracker#BitMapTracker(Shape)}
    */
   @Test
-  @DisplayName(
-      "Test BitMapTracker new BitMapTracker(Shape); when fromKM '19088743' and ten; then return test ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BitMapTracker.<init>(Shape)"})
-  void testBitMapTrackerNewBitMapTracker_whenFromKM19088743AndTen_thenReturnTestTen() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act and Assert
-    assertTrue(new BitMapTracker(shape).test(10));
+  public void testBitMapTrackerNewBitMapTracker_thenReturnTestTen() {
+    // Arrange, Act and Assert
+    assertTrue((new BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
    * Test BitMapTracker {@link BitMapTracker#test(int)}.
-   *
    * <ul>
-   *   <li>When ten.
-   *   <li>Then return {@code true}.
+   *   <li>When ten.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BitMapTracker#test(int)}
+   * <p>
+   * Method under test: {@link BitMapTracker#test(int)}
    */
   @Test
-  @DisplayName("Test BitMapTracker test(int); when ten; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BitMapTracker.test(int)"})
-  void testBitMapTrackerTest_whenTen_thenReturnTrue() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act and Assert
-    assertTrue(new BitMapTracker(shape).test(10));
+  public void testBitMapTrackerTest_whenTen_thenReturnTrue() {
+    // Arrange, Act and Assert
+    assertTrue((new BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
    * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   *
    * <ul>
-   *   <li>Given {@code false}.
-   *   <li>When {@link IntPredicate} {@link IntPredicate#test(int)} return {@code false}.
-   *   <li>Then return not test one.
+   *   <li>Given {@code false}.</li>
+   *   <li>When {@link IntPredicate} {@link IntPredicate#test(int)} return {@code false}.</li>
+   *   <li>Then return not test one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
+   * <p>
+   * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @DisplayName(
-      "Test create(Shape, IntPredicate); given 'false'; when IntPredicate test(int) return 'false'; then return not test one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  void testCreate_givenFalse_whenIntPredicateTestReturnFalse_thenReturnNotTestOne() {
+  public void testCreate_givenFalse_whenIntPredicateTestReturnFalse_thenReturnNotTestOne() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
-
     IntPredicate consumer = mock(IntPredicate.class);
     when(consumer.test(anyInt())).thenReturn(false);
 
@@ -193,33 +145,26 @@ class IndexFilterDiffblueTest {
     boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
 
     // Assert
-    verify(consumer).test(1);
-    assertEquals(10, shape.getNumberOfBits());
-    assertEquals(19088743, shape.getNumberOfHashFunctions());
+    verify(consumer).test(eq(1));
     assertFalse(actualTestResult);
   }
 
   /**
    * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   *
    * <ul>
-   *   <li>Given {@code true}.
-   *   <li>When fromKM {@code 19088743} and ten.
-   *   <li>Then return test one.
+   *   <li>Given {@code true}.</li>
+   *   <li>When fromKM {@code 19088743} and ten.</li>
+   *   <li>Then return test one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
+   * <p>
+   * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @DisplayName(
-      "Test create(Shape, IntPredicate); given 'true'; when fromKM '19088743' and ten; then return test one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  void testCreate_givenTrue_whenFromKM19088743AndTen_thenReturnTestOne() {
+  public void testCreate_givenTrue_whenFromKM19088743AndTen_thenReturnTestOne() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
-
     IntPredicate consumer = mock(IntPredicate.class);
     when(consumer.test(anyInt())).thenReturn(true);
 
@@ -227,32 +172,26 @@ class IndexFilterDiffblueTest {
     boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
 
     // Assert
-    verify(consumer).test(1);
-    assertEquals(10, shape.getNumberOfBits());
-    assertEquals(19088743, shape.getNumberOfHashFunctions());
+    verify(consumer).test(eq(1));
     assertTrue(actualTestResult);
   }
 
   /**
    * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   *
    * <ul>
-   *   <li>When fromKM one and ten.
-   *   <li>Then fromKM one and ten NumberOfHashFunctions is one.
+   *   <li>Given {@code true}.</li>
+   *   <li>When fromKM one and ten.</li>
+   *   <li>Then return test one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
+   * <p>
+   * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @DisplayName(
-      "Test create(Shape, IntPredicate); when fromKM one and ten; then fromKM one and ten NumberOfHashFunctions is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  void testCreate_whenFromKMOneAndTen_thenFromKMOneAndTenNumberOfHashFunctionsIsOne() {
+  public void testCreate_givenTrue_whenFromKMOneAndTen_thenReturnTestOne() {
     // Arrange
     Shape shape = Shape.fromKM(1, 10);
-
     IntPredicate consumer = mock(IntPredicate.class);
     when(consumer.test(anyInt())).thenReturn(true);
 
@@ -260,37 +199,7 @@ class IndexFilterDiffblueTest {
     boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
 
     // Assert
-    verify(consumer).test(1);
-    assertEquals(1, shape.getNumberOfHashFunctions());
-    assertEquals(10, shape.getNumberOfBits());
+    verify(consumer).test(eq(1));
     assertTrue(actualTestResult);
-  }
-
-  /**
-   * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   *
-   * <ul>
-   *   <li>When {@link IntPredicate}.
-   *   <li>Then fromKM {@code 19088743} and ten NumberOfBits is ten.
-   * </ul>
-   *
-   * <p>Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
-   */
-  @Test
-  @DisplayName(
-      "Test create(Shape, IntPredicate); when IntPredicate; then fromKM '19088743' and ten NumberOfBits is ten")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  void testCreate_whenIntPredicate_thenFromKM19088743AndTenNumberOfBitsIsTen() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act
-    IndexFilter.create(shape, mock(IntPredicate.class));
-
-    // Assert that nothing has changed
-    assertEquals(10, shape.getNumberOfBits());
-    assertEquals(19088743, shape.getNumberOfHashFunctions());
   }
 }

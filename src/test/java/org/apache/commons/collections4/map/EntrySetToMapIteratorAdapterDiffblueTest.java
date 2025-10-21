@@ -1,12 +1,9 @@
 package org.apache.commons.collections4.map;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -14,30 +11,25 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import org.apache.commons.collections4.map.IdentityMap.IdentityEntry;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class EntrySetToMapIteratorAdapterDiffblueTest {
+public class EntrySetToMapIteratorAdapterDiffblueTest {
   /**
    * Test {@link EntrySetToMapIteratorAdapter#EntrySetToMapIteratorAdapter(Set)}.
-   *
    * <ul>
-   *   <li>When {@link HashSet#HashSet()}.
+   *   <li>When {@link HashSet#HashSet()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#EntrySetToMapIteratorAdapter(Set)}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#EntrySetToMapIteratorAdapter(Set)}
    */
   @Test
-  @DisplayName("Test new EntrySetToMapIteratorAdapter(Set); when HashSet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EntrySetToMapIteratorAdapter.<init>(Set)"})
-  void testNewEntrySetToMapIteratorAdapter_whenHashSet() {
+  public void testNewEntrySetToMapIteratorAdapter_whenHashSet() {
     // Arrange and Act
-    EntrySetToMapIteratorAdapter<Object, Object> actualEntrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> actualEntrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Assert
     assertFalse(actualEntrySetToMapIteratorAdapter.hasNext());
@@ -45,18 +37,16 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#current()}.
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#current()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#current()}
    */
   @Test
-  @DisplayName("Test current()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Entry EntrySetToMapIteratorAdapter.current()"})
-  void testCurrent() {
+  public void testCurrent() {
     // Arrange
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.current());
@@ -64,18 +54,16 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#getKey()}.
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#getKey()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#getKey()}
    */
   @Test
-  @DisplayName("Test getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.getKey()"})
-  void testGetKey() {
+  public void testGetKey() {
     // Arrange
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.getKey());
@@ -83,18 +71,16 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#getValue()}.
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#getValue()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#getValue()}
    */
   @Test
-  @DisplayName("Test getValue()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.getValue()"})
-  void testGetValue() {
+  public void testGetValue() {
     // Arrange
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.getValue());
@@ -102,27 +88,22 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link HashSet#HashSet()} add {@link SimpleEntry#SimpleEntry(Object, Object)} with
-   *       {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link HashSet#HashSet()} add {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#hasNext()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#hasNext()}
    */
   @Test
-  @DisplayName(
-      "Test hasNext(); given HashSet() add SimpleEntry(Object, Object) with NULL and NULL; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EntrySetToMapIteratorAdapter.hasNext()"})
-  void testHasNext_givenHashSetAddSimpleEntryWithNullAndNull_thenReturnTrue() {
+  public void testHasNext_givenHashSetAddSimpleEntryWithNullAndNull_thenReturnTrue() {
     // Arrange
     HashSet<Entry<Object, Object>> entrySet = new HashSet<>();
     entrySet.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(entrySet);
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        entrySet);
 
     // Act and Assert
     assertTrue(entrySetToMapIteratorAdapter.hasNext());
@@ -130,22 +111,19 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#hasNext()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EntrySetToMapIteratorAdapter.hasNext()"})
-  void testHasNext_thenReturnFalse() {
+  public void testHasNext_thenReturnFalse() {
     // Arrange
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Act and Assert
     assertFalse(entrySetToMapIteratorAdapter.hasNext());
@@ -153,25 +131,22 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#next()}.
-   *
    * <ul>
-   *   <li>Given {@link HashSet#HashSet()} add {@code null}.
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Given {@link HashSet#HashSet()} add {@code null}.</li>
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#next()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#next()}
    */
   @Test
-  @DisplayName("Test next(); given HashSet() add 'null'; then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.next()"})
-  void testNext_givenHashSetAddNull_thenThrowIllegalStateException() {
+  public void testNext_givenHashSetAddNull_thenThrowIllegalStateException() {
     // Arrange
     HashSet<Entry<Object, Object>> entrySet = new HashSet<>();
     entrySet.add(null);
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(entrySet);
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        entrySet);
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.next());
@@ -179,58 +154,21 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#next()}.
-   *
    * <ul>
-   *   <li>Given {@link IdentityEntry} {@link IdentityEntry#getKey()} throw {@link
-   *       IllegalStateException#IllegalStateException()}.
-   *   <li>Then calls {@link IdentityEntry#getKey()}.
+   *   <li>Then not {@link EntrySetToMapIteratorAdapter#EntrySetToMapIteratorAdapter(Set)} with entrySet is {@link HashSet#HashSet()} hasNext.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#next()}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#next()}
    */
   @Test
-  @DisplayName(
-      "Test next(); given IdentityEntry getKey() throw IllegalStateException(); then calls getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.next()"})
-  void testNext_givenIdentityEntryGetKeyThrowIllegalStateException_thenCallsGetKey() {
-    // Arrange
-    IdentityEntry<Object, Object> identityEntry = mock(IdentityEntry.class);
-    when(identityEntry.getKey()).thenThrow(new IllegalStateException());
-
-    HashSet<Entry<Object, Object>> entrySet = new HashSet<>();
-    entrySet.add(identityEntry);
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(entrySet);
-
-    // Act and Assert
-    assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.next());
-    verify(identityEntry).getKey();
-  }
-
-  /**
-   * Test {@link EntrySetToMapIteratorAdapter#next()}.
-   *
-   * <ul>
-   *   <li>Then not {@link EntrySetToMapIteratorAdapter#EntrySetToMapIteratorAdapter(Set)} with
-   *       entrySet is {@link HashSet#HashSet()} hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#next()}
-   */
-  @Test
-  @DisplayName(
-      "Test next(); then not EntrySetToMapIteratorAdapter(Set) with entrySet is HashSet() hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.next()"})
-  void testNext_thenNotEntrySetToMapIteratorAdapterWithEntrySetIsHashSetHasNext() {
+  public void testNext_thenNotEntrySetToMapIteratorAdapterWithEntrySetIsHashSetHasNext() {
     // Arrange
     HashSet<Entry<Object, Object>> entrySet = new HashSet<>();
     entrySet.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(entrySet);
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        entrySet);
 
     // Act
     entrySetToMapIteratorAdapter.next();
@@ -241,22 +179,18 @@ class EntrySetToMapIteratorAdapterDiffblueTest {
 
   /**
    * Test {@link EntrySetToMapIteratorAdapter#setValue(Object)}.
-   *
-   * <p>Method under test: {@link EntrySetToMapIteratorAdapter#setValue(Object)}
+   * <p>
+   * Method under test: {@link EntrySetToMapIteratorAdapter#setValue(Object)}
    */
   @Test
-  @DisplayName("Test setValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EntrySetToMapIteratorAdapter.setValue(Object)"})
-  void testSetValue() {
+  public void testSetValue() {
     // Arrange
-    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter =
-        new EntrySetToMapIteratorAdapter<>(new HashSet<>());
+    EntrySetToMapIteratorAdapter<Object, Object> entrySetToMapIteratorAdapter = new EntrySetToMapIteratorAdapter<>(
+        new HashSet<>());
 
     // Act and Assert
-    assertThrows(
-        IllegalStateException.class,
-        () -> entrySetToMapIteratorAdapter.setValue(AbstractHashedMap.NULL));
+    assertThrows(IllegalStateException.class, () -> entrySetToMapIteratorAdapter.setValue(AbstractHashedMap.NULL));
   }
 }

@@ -1,26 +1,23 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.MapIterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class EmptyMapIteratorDiffblueTest {
+public class EmptyMapIteratorDiffblueTest {
   /**
    * Test {@link EmptyMapIterator#emptyMapIterator()}.
-   *
-   * <p>Method under test: {@link EmptyMapIterator#emptyMapIterator()}
+   * <p>
+   * Method under test: {@link EmptyMapIterator#emptyMapIterator()}
    */
   @Test
-  @DisplayName("Test emptyMapIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"MapIterator EmptyMapIterator.emptyMapIterator()"})
-  void testEmptyMapIterator() {
+  public void testEmptyMapIterator() {
     // Arrange and Act
     MapIterator<Object, Object> actualEmptyMapIteratorResult = EmptyMapIterator.emptyMapIterator();
 
@@ -31,15 +28,13 @@ class EmptyMapIteratorDiffblueTest {
 
   /**
    * Test {@link EmptyMapIterator#EmptyMapIterator()}.
-   *
-   * <p>Method under test: default or parameterless constructor of {@link EmptyMapIterator}
+   * <p>
+   * Method under test: default or parameterless constructor of {@link EmptyMapIterator}
    */
   @Test
-  @DisplayName("Test new EmptyMapIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EmptyMapIterator.<init>()"})
-  void testNewEmptyMapIterator() {
+  public void testNewEmptyMapIterator() {
     // Arrange and Act
     EmptyMapIterator<Object, Object> actualEmptyMapIterator = new EmptyMapIterator<>();
 

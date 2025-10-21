@@ -1,40 +1,32 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class SingletonIteratorDiffblueTest {
+public class SingletonIteratorDiffblueTest {
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@code Object}.
+   *   <li>When {@code Object}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link SingletonIterator#SingletonIterator(Object)}
    *   <li>{@link SingletonIterator#reset()}
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when 'Object'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void SingletonIterator.<init>(Object)",
-    "void SingletonIterator.<init>(Object, boolean)",
-    "void SingletonIterator.reset()"
-  })
-  void testGettersAndSetters_whenObject() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void SingletonIterator.<init>(Object)", "void SingletonIterator.<init>(Object, boolean)",
+      "void SingletonIterator.reset()"})
+  public void testGettersAndSetters_whenObject() {
     // Arrange and Act
     SingletonIterator<Object> actualSingletonIterator = new SingletonIterator<>("Object");
     actualSingletonIterator.reset();
@@ -46,28 +38,21 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@code true}.
+   *   <li>When {@code true}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link SingletonIterator#SingletonIterator(Object, boolean)}
    *   <li>{@link SingletonIterator#reset()}
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void SingletonIterator.<init>(Object)",
-    "void SingletonIterator.<init>(Object, boolean)",
-    "void SingletonIterator.reset()"
-  })
-  void testGettersAndSetters_whenTrue() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void SingletonIterator.<init>(Object)", "void SingletonIterator.<init>(Object, boolean)",
+      "void SingletonIterator.reset()"})
+  public void testGettersAndSetters_whenTrue() {
     // Arrange and Act
     SingletonIterator<Object> actualSingletonIterator = new SingletonIterator<>("Object", true);
     actualSingletonIterator.reset();
@@ -79,15 +64,13 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#hasNext()}.
-   *
-   * <p>Method under test: {@link SingletonIterator#hasNext()}
+   * <p>
+   * Method under test: {@link SingletonIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean SingletonIterator.hasNext()"})
-  void testHasNext() {
+  public void testHasNext() {
     // Arrange
     SingletonIterator<Object> singletonIterator = new SingletonIterator<>("Object", true);
 
@@ -97,15 +80,13 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#next()}.
-   *
-   * <p>Method under test: {@link SingletonIterator#next()}
+   * <p>
+   * Method under test: {@link SingletonIterator#next()}
    */
   @Test
-  @DisplayName("Test next()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object SingletonIterator.next()"})
-  void testNext() {
+  public void testNext() {
     // Arrange
     SingletonIterator<Object> singletonIterator = new SingletonIterator<>("Object", true);
 
@@ -116,19 +97,16 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#remove()}.
-   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SingletonIterator#remove()}
+   * <p>
+   * Method under test: {@link SingletonIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove(); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonIterator.remove()"})
-  void testRemove_thenThrowIllegalStateException() {
+  public void testRemove_thenThrowIllegalStateException() {
     // Arrange
     SingletonIterator<Object> singletonIterator = new SingletonIterator<>("Object", true);
 
@@ -138,19 +116,16 @@ class SingletonIteratorDiffblueTest {
 
   /**
    * Test {@link SingletonIterator#remove()}.
-   *
    * <ul>
-   *   <li>Then throw {@link UnsupportedOperationException}.
+   *   <li>Then throw {@link UnsupportedOperationException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SingletonIterator#remove()}
+   * <p>
+   * Method under test: {@link SingletonIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove(); then throw UnsupportedOperationException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void SingletonIterator.remove()"})
-  void testRemove_thenThrowUnsupportedOperationException() {
+  public void testRemove_thenThrowUnsupportedOperationException() {
     // Arrange
     SingletonIterator<Object> singletonIterator = new SingletonIterator<>("Object", false);
 

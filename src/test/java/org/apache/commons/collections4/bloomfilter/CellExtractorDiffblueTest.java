@@ -1,79 +1,75 @@
 package org.apache.commons.collections4.bloomfilter;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.IntPredicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.collections4.bloomfilter.CellExtractor.CellPredicate;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.mockito.Mockito;
 
-class CellExtractorDiffblueTest {
+public class CellExtractorDiffblueTest {
   /**
    * Test {@link CellExtractor#from(IndexExtractor)}.
-   *
-   * <ul>
-   *   <li>When {@link IndexExtractor}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CellExtractor#from(IndexExtractor)}
+   * <p>
+   * Method under test: {@link CellExtractor#from(IndexExtractor)}
    */
   @Test
-  @DisplayName("Test from(IndexExtractor); when IndexExtractor")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"CellExtractor CellExtractor.from(IndexExtractor)"})
-  void testFrom_whenIndexExtractor() {
-    // Arrange and Act
-    CellExtractor actualFromResult = CellExtractor.from(mock(IndexExtractor.class));
+  public void testFrom() {
+    // Arrange
+    IndexExtractor indexExtractor = mock(IndexExtractor.class);
+    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
+
+    // Act
+    CellExtractor actualFromResult = CellExtractor.from(indexExtractor);
+    boolean actualProcessCellsResult = actualFromResult.processCells(mock(CellPredicate.class));
 
     // Assert
-    IndexExtractor actualUniqueIndicesResult = actualFromResult.uniqueIndices();
-    assertSame(actualFromResult, actualUniqueIndicesResult);
-    assertArrayEquals(new int[] {}, actualFromResult.asIndexArray());
+    verify(indexExtractor).processIndices(isA(IntPredicate.class));
+    assertTrue(actualProcessCellsResult);
+    assertSame(actualFromResult, actualFromResult.uniqueIndices());
+    assertArrayEquals(new int[]{}, actualFromResult.asIndexArray());
   }
 
   /**
    * Test {@link CellExtractor#processIndices(IntPredicate)}.
-   *
-   * <p>Method under test: {@link CellExtractor#processIndices(IntPredicate)}
+   * <p>
+   * Method under test: {@link CellExtractor#processIndices(IntPredicate)}
    */
   @Test
-  @DisplayName("Test processIndices(IntPredicate)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean CellExtractor.processIndices(IntPredicate)"})
-  void testProcessIndices() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act and Assert
-    assertTrue(new ArrayCountingBloomFilter(shape).processIndices(mock(IntPredicate.class)));
+  public void testProcessIndices() {
+    // Arrange, Act and Assert
+    assertTrue((new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10))).processIndices(mock(IntPredicate.class)));
   }
 
   /**
    * Test {@link CellExtractor#uniqueIndices()}.
-   *
-   * <p>Method under test: {@link CellExtractor#uniqueIndices()}
+   * <p>
+   * Method under test: {@link CellExtractor#uniqueIndices()}
    */
   @Test
-  @DisplayName("Test uniqueIndices()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"IndexExtractor CellExtractor.uniqueIndices()"})
-  void testUniqueIndices() {
+  public void testUniqueIndices() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
 
     // Act
-    IndexExtractor actualUniqueIndicesResult = new ArrayCountingBloomFilter(shape).uniqueIndices();
-    boolean actualProcessIndicesResult =
-        actualUniqueIndicesResult.processIndices(mock(IntPredicate.class));
+    IndexExtractor actualUniqueIndicesResult = (new ArrayCountingBloomFilter(shape)).uniqueIndices();
+    boolean actualProcessIndicesResult = actualUniqueIndicesResult.processIndices(mock(IntPredicate.class));
 
     // Assert
     assertTrue(actualUniqueIndicesResult instanceof ArrayCountingBloomFilter);
@@ -81,8 +77,7 @@ class CellExtractorDiffblueTest {
     assertFalse(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isFull());
     assertTrue(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isValid());
     assertTrue(actualProcessIndicesResult);
-    assertEquals(
-        Integer.MAX_VALUE, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getMaxCell());
+    assertEquals(Integer.MAX_VALUE, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getMaxCell());
     assertSame(shape, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getShape());
   }
 }

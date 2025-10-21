@@ -1,17 +1,17 @@
 package org.apache.commons.collections4.multimap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,51 +21,29 @@ import java.util.Map;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.Transformer;
-import org.apache.commons.collections4.iterators.EmptyMapIterator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.collections4.iterators.UnmodifiableMapIterator;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class AbstractMultiValuedMapDecoratorDiffblueTest {
+public class AbstractMultiValuedMapDecoratorDiffblueTest {
   /**
    * Test {@link AbstractMultiValuedMapDecorator#asMap()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#asMap()}
+   * <ul>
+   *   <li>Then return Empty.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#asMap()}
    */
   @Test
-  @DisplayName("Test asMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Map AbstractMultiValuedMapDecorator.asMap()"})
-  void testAsMap() {
+  public void testAsMap_thenReturnEmpty() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act and Assert
-    assertTrue(transformedMapResult.asMap().isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#asMap()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#asMap()}
-   */
-  @Test
-  @DisplayName("Test asMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Map AbstractMultiValuedMapDecorator.asMap()"})
-  void testAsMap2() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.asMap().isEmpty());
@@ -73,19 +51,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#containsKey(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsKey(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsKey(Object)"})
-  void testContainsKey() {
+  public void testContainsKey() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.containsKey("Key"));
@@ -93,22 +68,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#containsKey(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsKey(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#containsKey(Object)}
    */
   @Test
-  @DisplayName("Test containsKey(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsKey(Object)"})
-  void testContainsKey2() {
+  public void testContainsKey2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.containsKey("Key"));
@@ -116,52 +87,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#containsMapping(Object, Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
-   *       Value}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsMapping(Object, Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#containsMapping(Object, Object)}
    */
   @Test
-  @DisplayName(
-      "Test containsMapping(Object, Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsMapping(Object, Object)"})
-  void testContainsMapping_givenArrayListValuedHashMapKeyIsValue_thenReturnTrue() {
+  public void testContainsMapping() {
     // Arrange
-    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
-    map.put("Key", "Value");
-    TransformedMultiValuedMap<Object, Object> transformingMapResult =
-        TransformedMultiValuedMap.transformingMap(
-            map, mock(Transformer.class), mock(Transformer.class));
-
-    // Act and Assert
-    assertTrue(transformingMapResult.containsMapping("Key", "Value"));
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#containsMapping(Object, Object)}.
-   *
-   * <ul>
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsMapping(Object, Object)}
-   */
-  @Test
-  @DisplayName("Test containsMapping(Object, Object); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsMapping(Object, Object)"})
-  void testContainsMapping_thenReturnFalse() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.containsMapping("Key", "Value"));
@@ -169,19 +104,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#containsValue(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsValue(Object)"})
-  void testContainsValue() {
+  public void testContainsValue() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.containsValue("Value"));
@@ -189,22 +121,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#containsValue(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#containsValue(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#containsValue(Object)}
    */
   @Test
-  @DisplayName("Test containsValue(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.containsValue(Object)"})
-  void testContainsValue2() {
+  public void testContainsValue2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.containsValue("Value"));
@@ -212,20 +140,17 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#decorated()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#decorated()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#decorated()}
    */
   @Test
-  @DisplayName("Test decorated()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"MultiValuedMap AbstractMultiValuedMapDecorator.decorated()"})
-  void testDecorated() {
+  public void testDecorated() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertSame(map, transformedMapResult.decorated());
@@ -233,19 +158,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#entries()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
    */
   @Test
-  @DisplayName("Test entries()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.entries()"})
-  void testEntries() {
+  public void testEntries() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.entries().isEmpty());
@@ -253,94 +175,93 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#entries()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
    */
   @Test
-  @DisplayName("Test entries()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.entries()"})
-  void testEntries2() {
+  public void testEntries2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.entries().isEmpty());
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}, and {@link
-   * AbstractMultiValuedMapDecorator#hashCode()}.
-   *
-   * <ul>
-   *   <li>When other is equal.
-   *   <li>Then return equal.
-   * </ul>
-   *
-   * <p>Methods under test:
-   *
-   * <ul>
-   *   <li>{@link AbstractMultiValuedMapDecorator#equals(Object)}
-   *   <li>{@link AbstractMultiValuedMapDecorator#hashCode()}
-   * </ul>
+   * Test {@link AbstractMultiValuedMapDecorator#entries()}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
    */
   @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean AbstractMultiValuedMapDecorator.equals(Object)",
-    "int AbstractMultiValuedMapDecorator.hashCode()"
-  })
-  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.entries()"})
+  public void testEntries3() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult2 =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
-    assertEquals(transformedMapResult, transformedMapResult2);
-    assertEquals(transformedMapResult.hashCode(), transformedMapResult2.hashCode());
+    assertTrue(transformedMapResult.entries().isEmpty());
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}, and {@link
-   * AbstractMultiValuedMapDecorator#hashCode()}.
-   *
+   * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}, and {@link AbstractMultiValuedMapDecorator#hashCode()}.
    * <ul>
-   *   <li>When other is same.
-   *   <li>Then return equal.
+   *   <li>When other is equal.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link AbstractMultiValuedMapDecorator#equals(Object)}
    *   <li>{@link AbstractMultiValuedMapDecorator#hashCode()}
    * </ul>
    */
   @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean AbstractMultiValuedMapDecorator.equals(Object)",
-    "int AbstractMultiValuedMapDecorator.hashCode()"
-  })
-  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.equals(Object)",
+      "int AbstractMultiValuedMapDecorator.hashCode()"})
+  public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult2 = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+
+    // Act and Assert
+    assertEquals(transformedMapResult, transformedMapResult2);
+    int expectedHashCodeResult = transformedMapResult.hashCode();
+    assertEquals(expectedHashCodeResult, transformedMapResult2.hashCode());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}, and {@link AbstractMultiValuedMapDecorator#hashCode()}.
+   * <ul>
+   *   <li>When other is same.</li>
+   *   <li>Then return equal.</li>
+   * </ul>
+   * <p>
+   * Methods under test:
+   * <ul>
+   *   <li>{@link AbstractMultiValuedMapDecorator#equals(Object)}
+   *   <li>{@link AbstractMultiValuedMapDecorator#hashCode()}
+   * </ul>
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.equals(Object)",
+      "int AbstractMultiValuedMapDecorator.hashCode()"})
+  public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+    // Arrange
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertEquals(transformedMapResult, transformedMapResult);
@@ -350,35 +271,28 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean AbstractMultiValuedMapDecorator.equals(Object)",
-    "int AbstractMultiValuedMapDecorator.hashCode()"
-  })
-  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.equals(Object)",
+      "int AbstractMultiValuedMapDecorator.hashCode()"})
+  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> map = mock(ArrayListValuedHashMap.class);
     when(map.isEmpty()).thenReturn(true);
     when(map.size()).thenReturn(3);
     when(map.entries()).thenReturn(new ArrayList<>());
     doNothing().when(map).clear();
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult2 =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult2 = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertNotEquals(transformedMapResult, transformedMapResult2);
@@ -386,27 +300,21 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is {@code null}.
-   *   <li>Then return not equal.
+   *   <li>When other is {@code null}.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean AbstractMultiValuedMapDecorator.equals(Object)",
-    "int AbstractMultiValuedMapDecorator.hashCode()"
-  })
-  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.equals(Object)",
+      "int AbstractMultiValuedMapDecorator.hashCode()"})
+  public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertNotEquals(transformedMapResult, null);
@@ -414,27 +322,21 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is wrong type.
-   *   <li>Then return not equal.
+   *   <li>When other is wrong type.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#equals(Object)}
    */
   @Test
-  @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "boolean AbstractMultiValuedMapDecorator.equals(Object)",
-    "int AbstractMultiValuedMapDecorator.hashCode()"
-  })
-  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.equals(Object)",
+      "int AbstractMultiValuedMapDecorator.hashCode()"})
+  public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertNotEquals(transformedMapResult, "Different type to AbstractMultiValuedMapDecorator");
@@ -442,19 +344,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#get(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#get(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#get(Object)}
    */
   @Test
-  @DisplayName("Test get(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.get(Object)"})
-  void testGet() {
+  public void testGet() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualGetResult = transformedMapResult.get("Key");
@@ -466,22 +367,38 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#get(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#get(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#get(Object)}
    */
   @Test
-  @DisplayName("Test get(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.get(Object)"})
-  void testGet2() {
+  public void testGet2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+
+    // Act and Assert
+    assertTrue(transformedMapResult.get("Key").isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#get(Object)}.
+   * <ul>
+   *   <li>Then return {@link List}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#get(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.get(Object)"})
+  public void testGet_thenReturnList() {
+    // Arrange
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualGetResult = transformedMapResult.get("Key");
@@ -493,34 +410,45 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#isEmpty()}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
-   *       Value}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#isEmpty()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#isEmpty()}
    */
   @Test
-  @DisplayName(
-      "Test isEmpty(); given ArrayListValuedHashMap() 'Key' is 'Value'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.isEmpty()"})
-  void testIsEmpty_givenArrayListValuedHashMapKeyIsValue_thenReturnFalse() {
+  public void testIsEmpty() {
+    // Arrange
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+
+    // Act and Assert
+    assertTrue(transformedMapResult.isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#isEmpty()}.
+   * <ul>
+   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code Value}.</li>
+   *   <li>Then return {@code false}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#isEmpty()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.isEmpty()"})
+  public void testIsEmpty_givenArrayListValuedHashMapKeyIsValue_thenReturnFalse() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
     map.put("Key", "Value");
-
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(map, keyTransformer, valueTransformer);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, valueTransformer);
 
     // Act
     boolean actualIsEmptyResult = transformedMapResult.isEmpty();
@@ -533,23 +461,19 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#isEmpty()}.
-   *
    * <ul>
-   *   <li>Then return {@code true}.
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#isEmpty()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#isEmpty()}
    */
   @Test
-  @DisplayName("Test isEmpty(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.isEmpty()"})
-  void testIsEmpty_thenReturnTrue() {
+  public void testIsEmpty_thenReturnTrue() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.isEmpty());
@@ -557,21 +481,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#keys()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#keys()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#keys()}
    */
   @Test
-  @DisplayName("Test keys()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "org.apache.commons.collections4.MultiSet AbstractMultiValuedMapDecorator.keys()"
-  })
-  void testKeys() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"org.apache.commons.collections4.MultiSet AbstractMultiValuedMapDecorator.keys()"})
+  public void testKeys() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.keys().isEmpty());
@@ -579,23 +498,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#keys()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#keys()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#keys()}
    */
   @Test
-  @DisplayName("Test keys()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "org.apache.commons.collections4.MultiSet AbstractMultiValuedMapDecorator.keys()"
-  })
-  void testKeys2() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"org.apache.commons.collections4.MultiSet AbstractMultiValuedMapDecorator.keys()"})
+  public void testKeys2() {
     // Arrange
-    UnmodifiableMultiValuedMap<Object, Object> map =
-        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.keys().isEmpty());
@@ -603,19 +517,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#keySet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#keySet()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#keySet()}
    */
   @Test
-  @DisplayName("Test keySet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiValuedMapDecorator.keySet()"})
-  void testKeySet() {
+  public void testKeySet() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.keySet().isEmpty());
@@ -623,22 +534,37 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#keySet()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#keySet()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#keySet()}
    */
   @Test
-  @DisplayName("Test keySet()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.util.Set AbstractMultiValuedMapDecorator.keySet()"})
-  void testKeySet2() {
+  public void testKeySet2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+
+    // Act and Assert
+    assertTrue(transformedMapResult.keySet().isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#keySet()}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#keySet()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"java.util.Set AbstractMultiValuedMapDecorator.keySet()"})
+  public void testKeySet3() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.keySet().isEmpty());
@@ -646,78 +572,46 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#mapIterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#mapIterator()}
+   * <ul>
+   *   <li>Then return {@link UnmodifiableMapIterator}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#mapIterator()}
    */
   @Test
-  @DisplayName("Test mapIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"MapIterator AbstractMultiValuedMapDecorator.mapIterator()"})
-  void testMapIterator() {
+  public void testMapIterator_thenReturnUnmodifiableMapIterator() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act
     MapIterator<Object, Object> actualMapIteratorResult = transformedMapResult.mapIterator();
 
     // Assert
-    assertTrue(actualMapIteratorResult instanceof EmptyMapIterator);
+    assertTrue(actualMapIteratorResult instanceof UnmodifiableMapIterator);
     assertFalse(actualMapIteratorResult.hasNext());
-    assertSame(((EmptyMapIterator) actualMapIteratorResult).INSTANCE, actualMapIteratorResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#mapIterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#mapIterator()}
-   */
-  @Test
-  @DisplayName("Test mapIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"MapIterator AbstractMultiValuedMapDecorator.mapIterator()"})
-  void testMapIterator2() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    MapIterator<Object, Object> actualMapIteratorResult = transformedMapResult.mapIterator();
-
-    // Assert
-    assertTrue(actualMapIteratorResult instanceof EmptyMapIterator);
-    assertFalse(actualMapIteratorResult.hasNext());
-    assertSame(((EmptyMapIterator) actualMapIteratorResult).INSTANCE, actualMapIteratorResult);
   }
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#put(Object, Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#put(Object, Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#put(Object, Object)}
    */
   @Test
-  @DisplayName("Test put(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.put(Object, Object)"})
-  void testPut() {
+  public void testPut() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
 
     // Act
     boolean actualPutResult = transformedMapResult.put("Key", "Value");
@@ -731,27 +625,22 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#put(Object, Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#put(Object, Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#put(Object, Object)}
    */
   @Test
-  @DisplayName("Test put(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.put(Object, Object)"})
-  void testPut2() {
+  public void testPut2() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
     map.put("Key", "Value");
-
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(map, keyTransformer, valueTransformer);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, valueTransformer);
 
     // Act
     boolean actualPutResult = transformedMapResult.put("Key", "Value");
@@ -765,19 +654,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#putAll(Map)} with {@code Map}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map) with 'Map'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Map)"})
-  void testPutAllWithMap() {
+  public void testPutAllWithMap() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll(new HashMap<>());
@@ -789,25 +675,20 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#putAll(Map)} with {@code Map}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map) with 'Map'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Map)"})
-  void testPutAllWithMap2() {
+  public void testPutAllWithMap2() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
 
     HashMap<Object, Object> map = new HashMap<>();
     map.put("42", "42");
@@ -823,24 +704,19 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
-   * MultiValuedMap}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
+   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(MultiValuedMap)"})
-  void testPutAllWithMultiValuedMap() {
+  public void testPutAllWithMultiValuedMap() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<?, ?> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<?, ?> map = TransformedMultiValuedMap.transformedMap(new ArrayListValuedHashMap<>(),
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll(map);
@@ -851,23 +727,19 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
-   * MultiValuedMap}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
+   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(MultiValuedMap)"})
-  void testPutAllWithMultiValuedMap2() {
+  public void testPutAllWithMultiValuedMap2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    UnmodifiableMultiValuedMap<?, ?> map =
-        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    UnmodifiableMultiValuedMap<?, ?> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll(map);
@@ -878,25 +750,20 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
-   * MultiValuedMap}.
-   *
+   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
    * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
+   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
    */
   @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'; when ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(MultiValuedMap)"})
-  void testPutAllWithMultiValuedMap_whenArrayListValuedHashMap() {
+  public void testPutAllWithMultiValuedMap_whenArrayListValuedHashMap() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll(new ArrayListValuedHashMap<>());
@@ -907,21 +774,17 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object},
-   * {@code Iterable}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
+   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Object, Iterable)"})
-  void testPutAllWithObjectIterable() {
+  public void testPutAllWithObjectIterable() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll("Key", new ArrayList<>());
@@ -932,27 +795,21 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object},
-   * {@code Iterable}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
+   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
    */
   @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Object, Iterable)"})
-  void testPutAllWithObjectIterable2() {
+  public void testPutAllWithObjectIterable2() {
     // Arrange
     Transformer<Object, Object> keyTransformer = mock(Transformer.class);
     when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
     Transformer<Object, Object> valueTransformer = mock(Transformer.class);
     when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
 
     ArrayList<Object> values = new ArrayList<>();
     values.add("42");
@@ -969,19 +826,42 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#remove(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#remove(Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#remove(Object)}
    */
   @Test
-  @DisplayName("Test remove(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.remove(Object)"})
-  void testRemove() {
+  public void testRemove() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+
+    // Act
+    Collection<Object> actualRemoveResult = transformedMapResult.remove("Key");
+
+    // Assert
+    assertTrue(actualRemoveResult instanceof List);
+    assertTrue(actualRemoveResult.isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#remove(Object)}.
+   * <ul>
+   *   <li>Then return {@link List}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#remove(Object)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.remove(Object)"})
+  public void testRemove_thenReturnList() {
+    // Arrange
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act
     Collection<Object> actualRemoveResult = transformedMapResult.remove("Key");
@@ -993,19 +873,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#removeMapping(Object, Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#removeMapping(Object, Object)}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#removeMapping(Object, Object)}
    */
   @Test
-  @DisplayName("Test removeMapping(Object, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.removeMapping(Object, Object)"})
-  void testRemoveMapping() {
+  public void testRemoveMapping() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertFalse(transformedMapResult.removeMapping("Key", "Item"));
@@ -1013,19 +890,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#size()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#size()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#size()}
    */
   @Test
-  @DisplayName("Test size()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiValuedMapDecorator.size()"})
-  void testSize() {
+  public void testSize() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertEquals(0, transformedMapResult.size());
@@ -1033,22 +907,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#size()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#size()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#size()}
    */
   @Test
-  @DisplayName("Test size()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int AbstractMultiValuedMapDecorator.size()"})
-  void testSize2() {
+  public void testSize2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertEquals(0, transformedMapResult.size());
@@ -1056,19 +926,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#toString()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#toString()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String AbstractMultiValuedMapDecorator.toString()"})
-  void testToString() {
+  public void testToString() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertEquals("{}", transformedMapResult.toString());
@@ -1076,22 +943,18 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#toString()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#toString()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#toString()}
    */
   @Test
-  @DisplayName("Test toString()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String AbstractMultiValuedMapDecorator.toString()"})
-  void testToString2() {
+  public void testToString2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertEquals("{}", transformedMapResult.toString());
@@ -1099,19 +962,16 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#values()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#values()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#values()}
    */
   @Test
-  @DisplayName("Test values()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.values()"})
-  void testValues() {
+  public void testValues() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.values().isEmpty());
@@ -1119,22 +979,37 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
 
   /**
    * Test {@link AbstractMultiValuedMapDecorator#values()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#values()}
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#values()}
    */
   @Test
-  @DisplayName("Test values()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.values()"})
-  void testValues2() {
+  public void testValues2() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
+        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
+
+    // Act and Assert
+    assertTrue(transformedMapResult.values().isEmpty());
+  }
+
+  /**
+   * Test {@link AbstractMultiValuedMapDecorator#values()}.
+   * <p>
+   * Method under test: {@link AbstractMultiValuedMapDecorator#values()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.values()"})
+  public void testValues3() {
+    // Arrange
+    UnmodifiableMultiValuedMap<Object, Object> map = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        mock(Transformer.class), mock(Transformer.class));
 
     // Act and Assert
     assertTrue(transformedMapResult.values().isEmpty());

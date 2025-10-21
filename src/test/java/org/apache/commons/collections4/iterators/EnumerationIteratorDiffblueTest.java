@@ -1,26 +1,24 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class EnumerationIteratorDiffblueTest {
+public class EnumerationIteratorDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link EnumerationIterator#EnumerationIterator()}
    *   <li>{@link EnumerationIterator#setEnumeration(Enumeration)}
@@ -28,17 +26,11 @@ class EnumerationIteratorDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void EnumerationIterator.<init>()",
-    "void EnumerationIterator.<init>(Enumeration)",
-    "void EnumerationIterator.<init>(Enumeration, Collection)",
-    "Enumeration EnumerationIterator.getEnumeration()",
-    "void EnumerationIterator.setEnumeration(Enumeration)"
-  })
-  void testGettersAndSetters() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void EnumerationIterator.<init>()", "void EnumerationIterator.<init>(Enumeration)",
+      "void EnumerationIterator.<init>(Enumeration, Collection)", "Enumeration EnumerationIterator.getEnumeration()",
+      "void EnumerationIterator.setEnumeration(Enumeration)"})
+  public void testGettersAndSetters() {
     // Arrange and Act
     EnumerationIterator<Object> actualEnumerationIterator = new EnumerationIterator<>();
     StringTokenizer enumeration = new StringTokenizer("foo");
@@ -50,13 +42,11 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link EnumerationIterator#EnumerationIterator(Enumeration, Collection)}
    *   <li>{@link EnumerationIterator#setEnumeration(Enumeration)}
@@ -64,23 +54,16 @@ class EnumerationIteratorDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void EnumerationIterator.<init>()",
-    "void EnumerationIterator.<init>(Enumeration)",
-    "void EnumerationIterator.<init>(Enumeration, Collection)",
-    "Enumeration EnumerationIterator.getEnumeration()",
-    "void EnumerationIterator.setEnumeration(Enumeration)"
-  })
-  void testGettersAndSetters_whenArrayList() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void EnumerationIterator.<init>()", "void EnumerationIterator.<init>(Enumeration)",
+      "void EnumerationIterator.<init>(Enumeration, Collection)", "Enumeration EnumerationIterator.getEnumeration()",
+      "void EnumerationIterator.setEnumeration(Enumeration)"})
+  public void testGettersAndSetters_whenArrayList() {
     // Arrange
     StringTokenizer enumeration = new StringTokenizer("foo");
 
     // Act
-    EnumerationIterator<Object> actualEnumerationIterator =
-        new EnumerationIterator<>(enumeration, new ArrayList<>());
+    EnumerationIterator<Object> actualEnumerationIterator = new EnumerationIterator<>(enumeration, new ArrayList<>());
     StringTokenizer enumeration2 = new StringTokenizer("foo");
     actualEnumerationIterator.setEnumeration(enumeration2);
 
@@ -90,13 +73,11 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.
+   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link EnumerationIterator#EnumerationIterator(Enumeration)}
    *   <li>{@link EnumerationIterator#setEnumeration(Enumeration)}
@@ -104,20 +85,13 @@ class EnumerationIteratorDiffblueTest {
    * </ul>
    */
   @Test
-  @DisplayName("Test getters and setters; when StringTokenizer(String) with 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void EnumerationIterator.<init>()",
-    "void EnumerationIterator.<init>(Enumeration)",
-    "void EnumerationIterator.<init>(Enumeration, Collection)",
-    "Enumeration EnumerationIterator.getEnumeration()",
-    "void EnumerationIterator.setEnumeration(Enumeration)"
-  })
-  void testGettersAndSetters_whenStringTokenizerWithFoo() {
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void EnumerationIterator.<init>()", "void EnumerationIterator.<init>(Enumeration)",
+      "void EnumerationIterator.<init>(Enumeration, Collection)", "Enumeration EnumerationIterator.getEnumeration()",
+      "void EnumerationIterator.setEnumeration(Enumeration)"})
+  public void testGettersAndSetters_whenStringTokenizerWithFoo() {
     // Arrange and Act
-    EnumerationIterator<Object> actualEnumerationIterator =
-        new EnumerationIterator<>(new StringTokenizer("foo"));
+    EnumerationIterator<Object> actualEnumerationIterator = new EnumerationIterator<>(new StringTokenizer("foo"));
     StringTokenizer enumeration = new StringTokenizer("foo");
     actualEnumerationIterator.setEnumeration(enumeration);
 
@@ -127,22 +101,19 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test {@link EnumerationIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EnumerationIterator#hasNext()}
+   * <p>
+   * Method under test: {@link EnumerationIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EnumerationIterator.hasNext()"})
-  void testHasNext_thenReturnFalse() {
+  public void testHasNext_thenReturnFalse() {
     // Arrange
     EnumerationIterator<Object> enumerationIterator = new EnumerationIterator<>();
-    enumerationIterator.setEnumeration(new StringTokenizer("foo", "foo"));
+    enumerationIterator.setEnumeration(new StringTokenizer(""));
 
     // Act and Assert
     assertFalse(enumerationIterator.hasNext());
@@ -150,19 +121,16 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test {@link EnumerationIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code true}.
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EnumerationIterator#hasNext()}
+   * <p>
+   * Method under test: {@link EnumerationIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean EnumerationIterator.hasNext()"})
-  void testHasNext_thenReturnTrue() {
+  public void testHasNext_thenReturnTrue() {
     // Arrange
     EnumerationIterator<Object> enumerationIterator = new EnumerationIterator<>();
     enumerationIterator.setEnumeration(new StringTokenizer("foo"));
@@ -173,19 +141,16 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test {@link EnumerationIterator#next()}.
-   *
    * <ul>
-   *   <li>Then return {@code foo}.
+   *   <li>Then return {@code foo}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EnumerationIterator#next()}
+   * <p>
+   * Method under test: {@link EnumerationIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); then return 'foo'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object EnumerationIterator.next()"})
-  void testNext_thenReturnFoo() {
+  public void testNext_thenReturnFoo() {
     // Arrange
     EnumerationIterator<Object> enumerationIterator = new EnumerationIterator<>();
     enumerationIterator.setEnumeration(new StringTokenizer("foo"));
@@ -197,21 +162,17 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test {@link EnumerationIterator#remove()}.
-   *
    * <ul>
-   *   <li>Given {@link EnumerationIterator#EnumerationIterator()}.
-   *   <li>Then throw {@link UnsupportedOperationException}.
+   *   <li>Given {@link EnumerationIterator#EnumerationIterator()}.</li>
+   *   <li>Then throw {@link UnsupportedOperationException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EnumerationIterator#remove()}
+   * <p>
+   * Method under test: {@link EnumerationIterator#remove()}
    */
   @Test
-  @DisplayName(
-      "Test remove(); given EnumerationIterator(); then throw UnsupportedOperationException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EnumerationIterator.remove()"})
-  void testRemove_givenEnumerationIterator_thenThrowUnsupportedOperationException() {
+  public void testRemove_givenEnumerationIterator_thenThrowUnsupportedOperationException() {
     // Arrange
     EnumerationIterator<Object> enumerationIterator = new EnumerationIterator<>();
 
@@ -221,24 +182,19 @@ class EnumerationIteratorDiffblueTest {
 
   /**
    * Test {@link EnumerationIterator#remove()}.
-   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link EnumerationIterator#remove()}
+   * <p>
+   * Method under test: {@link EnumerationIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove(); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void EnumerationIterator.remove()"})
-  void testRemove_thenThrowIllegalStateException() {
+  public void testRemove_thenThrowIllegalStateException() {
     // Arrange
-    StringTokenizer enumeration =
-        new StringTokenizer("No Collection associated with this Iterator");
-    EnumerationIterator<Object> enumerationIterator =
-        new EnumerationIterator<>(enumeration, new ArrayList<>());
+    StringTokenizer enumeration = new StringTokenizer("No Collection associated with this Iterator");
+    EnumerationIterator<Object> enumerationIterator = new EnumerationIterator<>(enumeration, new ArrayList<>());
 
     // Act and Assert
     assertThrows(IllegalStateException.class, () -> enumerationIterator.remove());

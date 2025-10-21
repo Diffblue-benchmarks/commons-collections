@@ -1,26 +1,23 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class AbstractQuantifierPredicateDiffblueTest {
+public class AbstractQuantifierPredicateDiffblueTest {
   /**
    * Test {@link AbstractQuantifierPredicate#getPredicates()}.
-   *
-   * <p>Method under test: {@link AbstractQuantifierPredicate#getPredicates()}
+   * <p>
+   * Method under test: {@link AbstractQuantifierPredicate#getPredicates()}
    */
   @Test
-  @DisplayName("Test getPredicates()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate[] AbstractQuantifierPredicate.getPredicates()"})
-  void testGetPredicates() {
+  public void testGetPredicates() {
     // Arrange
     AllPredicate<Object> allPredicate = new AllPredicate<>(mock(Predicate.class));
 

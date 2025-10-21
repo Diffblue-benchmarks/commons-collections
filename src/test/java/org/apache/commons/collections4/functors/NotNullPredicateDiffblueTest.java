@@ -1,63 +1,54 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class NotNullPredicateDiffblueTest {
+public class NotNullPredicateDiffblueTest {
   /**
    * Test {@link NotNullPredicate#notNullPredicate()}.
-   *
    * <ul>
-   *   <li>Then return evaluate {@code 42}.
+   *   <li>Then return evaluate {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NotNullPredicate#notNullPredicate()}
+   * <p>
+   * Method under test: {@link NotNullPredicate#notNullPredicate()}
    */
   @Test
-  @DisplayName("Test notNullPredicate(); then return evaluate '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate NotNullPredicate.notNullPredicate()"})
-  void testNotNullPredicate_thenReturnEvaluate42() {
+  public void testNotNullPredicate_thenReturnEvaluate42() {
     // Arrange and Act
     Predicate<Object> actualNotNullPredicateResult = NotNullPredicate.notNullPredicate();
-    boolean actualEvaluateResult = actualNotNullPredicateResult.evaluate("42");
 
     // Assert
     assertTrue(actualNotNullPredicateResult instanceof NotNullPredicate);
-    assertTrue(actualEvaluateResult);
+    assertTrue(actualNotNullPredicateResult.evaluate("42"));
     assertTrue(actualNotNullPredicateResult.evaluate("Object"));
     assertTrue(actualNotNullPredicateResult.test("Object"));
   }
 
   /**
    * Test {@link NotNullPredicate#notNullPredicate()}.
-   *
    * <ul>
-   *   <li>Then return not evaluate {@code null}.
+   *   <li>Then return not evaluate {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link NotNullPredicate#notNullPredicate()}
+   * <p>
+   * Method under test: {@link NotNullPredicate#notNullPredicate()}
    */
   @Test
-  @DisplayName("Test notNullPredicate(); then return not evaluate 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Predicate NotNullPredicate.notNullPredicate()"})
-  void testNotNullPredicate_thenReturnNotEvaluateNull() {
+  public void testNotNullPredicate_thenReturnNotEvaluateNull() {
     // Arrange and Act
     Predicate<Object> actualNotNullPredicateResult = NotNullPredicate.notNullPredicate();
-    boolean actualEvaluateResult = actualNotNullPredicateResult.evaluate(null);
 
     // Assert
     assertTrue(actualNotNullPredicateResult instanceof NotNullPredicate);
-    assertFalse(actualEvaluateResult);
+    assertFalse(actualNotNullPredicateResult.evaluate(null));
     assertTrue(actualNotNullPredicateResult.evaluate("Object"));
     assertTrue(actualNotNullPredicateResult.test("Object"));
   }

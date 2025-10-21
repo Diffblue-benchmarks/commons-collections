@@ -1,15 +1,13 @@
 package org.apache.commons.collections4;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,83 +17,44 @@ import org.apache.commons.collections4.comparators.ComparatorChain;
 import org.apache.commons.collections4.comparators.NullComparator;
 import org.apache.commons.collections4.comparators.ReverseComparator;
 import org.apache.commons.collections4.comparators.TransformingComparator;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 
-class ComparatorUtilsDiffblueTest {
+public class ComparatorUtilsDiffblueTest {
   /**
    * Test {@link ComparatorUtils#booleanComparator(boolean)}.
-   *
    * <ul>
-   *   <li>When {@code false}.
-   *   <li>Then return not sortsTrueFirst.
+   *   <li>Then return compare {@code false} and {@code true} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
    */
   @Test
-  @DisplayName("Test booleanComparator(boolean); when 'false'; then return not sortsTrueFirst")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.booleanComparator(boolean)"})
-  void testBooleanComparator_whenFalse_thenReturnNotSortsTrueFirst() {
-    // Arrange and Act
-    Comparator<Boolean> actualBooleanComparatorResult = ComparatorUtils.booleanComparator(false);
-    int actualCompareResult = actualBooleanComparatorResult.compare(true, true);
-
-    // Assert
-    assertTrue(actualBooleanComparatorResult instanceof BooleanComparator);
-    assertEquals(0, actualCompareResult);
-    assertFalse(((BooleanComparator) actualBooleanComparatorResult).sortsTrueFirst());
-  }
-
-  /**
-   * Test {@link ComparatorUtils#booleanComparator(boolean)}.
-   *
-   * <ul>
-   *   <li>When {@code true}.
-   *   <li>Then return compare {@code false} and {@code true} is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
-   */
-  @Test
-  @DisplayName(
-      "Test booleanComparator(boolean); when 'true'; then return compare 'false' and 'true' is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.booleanComparator(boolean)"})
-  void testBooleanComparator_whenTrue_thenReturnCompareFalseAndTrueIsOne() {
+  public void testBooleanComparator_thenReturnCompareFalseAndTrueIsOne() {
     // Arrange and Act
     Comparator<Boolean> actualBooleanComparatorResult = ComparatorUtils.booleanComparator(true);
-    int actualCompareResult = actualBooleanComparatorResult.compare(false, true);
 
     // Assert
     assertTrue(actualBooleanComparatorResult instanceof BooleanComparator);
-    assertEquals(1, actualCompareResult);
+    assertEquals(1, actualBooleanComparatorResult.compare(false, true));
     assertTrue(((BooleanComparator) actualBooleanComparatorResult).sortsTrueFirst());
   }
 
   /**
    * Test {@link ComparatorUtils#booleanComparator(boolean)}.
-   *
    * <ul>
-   *   <li>When {@code true}.
-   *   <li>Then return compare {@code true} and {@code false} is {@link
-   *       CollectionUtils#INDEX_NOT_FOUND}.
+   *   <li>Then return compare {@code true} and {@code false} is {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
    */
   @Test
-  @DisplayName(
-      "Test booleanComparator(boolean); when 'true'; then return compare 'true' and 'false' is INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.booleanComparator(boolean)"})
-  void testBooleanComparator_whenTrue_thenReturnCompareTrueAndFalseIsIndex_not_found() {
+  public void testBooleanComparator_thenReturnCompareTrueAndFalseIsIndex_not_found() {
     // Arrange and Act
     Comparator<Boolean> actualBooleanComparatorResult = ComparatorUtils.booleanComparator(true);
     int actualCompareResult = actualBooleanComparatorResult.compare(true, false);
@@ -108,166 +67,104 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#booleanComparator(boolean)}.
-   *
    * <ul>
-   *   <li>When {@code true}.
-   *   <li>Then return compare {@code true} and {@code true} is zero.
+   *   <li>Then return compare {@code true} and {@code true} is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#booleanComparator(boolean)}
    */
   @Test
-  @DisplayName(
-      "Test booleanComparator(boolean); when 'true'; then return compare 'true' and 'true' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.booleanComparator(boolean)"})
-  void testBooleanComparator_whenTrue_thenReturnCompareTrueAndTrueIsZero() {
+  public void testBooleanComparator_thenReturnCompareTrueAndTrueIsZero() {
     // Arrange and Act
     Comparator<Boolean> actualBooleanComparatorResult = ComparatorUtils.booleanComparator(true);
-    int actualCompareResult = actualBooleanComparatorResult.compare(true, true);
 
     // Assert
     assertTrue(actualBooleanComparatorResult instanceof BooleanComparator);
-    assertEquals(0, actualCompareResult);
+    assertEquals(0, actualBooleanComparatorResult.compare(true, true));
     assertTrue(((BooleanComparator) actualBooleanComparatorResult).sortsTrueFirst());
   }
 
   /**
    * Test {@link ComparatorUtils#chainedComparator(Collection)} with {@code Collection}.
-   *
    * <ul>
-   *   <li>Given {@link Comparator}.
-   *   <li>Then return size is one.
+   *   <li>Then return size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#chainedComparator(Collection)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#chainedComparator(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test chainedComparator(Collection) with 'Collection'; given Comparator; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.chainedComparator(Collection)"})
-  void testChainedComparatorWithCollection_givenComparator_thenReturnSizeIsOne() {
+  public void testChainedComparatorWithCollection_thenReturnSizeIsOne() {
     // Arrange
+    Comparator<Object> comparator = mock(Comparator.class);
+    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
+
     ArrayList<Comparator<Object>> comparators = new ArrayList<>();
-    comparators.add(mock(Comparator.class));
+    comparators.add(comparator);
 
     // Act
-    Comparator<Object> actualChainedComparatorResult =
-        ComparatorUtils.chainedComparator(comparators);
+    Comparator<Object> actualChainedComparatorResult = ComparatorUtils.chainedComparator(comparators);
+    int actualCompareResult = actualChainedComparatorResult.compare("42", "42");
 
     // Assert
+    verify(comparator).compare(isA(Object.class), isA(Object.class));
     assertTrue(actualChainedComparatorResult instanceof ComparatorChain);
+    assertEquals(1, actualCompareResult);
     assertEquals(1, ((ComparatorChain<Object>) actualChainedComparatorResult).size());
-    assertFalse(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
+    assertTrue(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
   }
 
   /**
    * Test {@link ComparatorUtils#chainedComparator(Collection)} with {@code Collection}.
-   *
    * <ul>
-   *   <li>Given {@link Comparator}.
-   *   <li>Then return size is two.
+   *   <li>Then return size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#chainedComparator(Collection)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#chainedComparator(Collection)}
    */
   @Test
-  @DisplayName(
-      "Test chainedComparator(Collection) with 'Collection'; given Comparator; then return size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.chainedComparator(Collection)"})
-  void testChainedComparatorWithCollection_givenComparator_thenReturnSizeIsTwo() {
+  public void testChainedComparatorWithCollection_thenReturnSizeIsTwo() {
     // Arrange
+    Comparator<Object> comparator = mock(Comparator.class);
+    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
+    Comparator<Object> comparator2 = mock(Comparator.class);
+    when(comparator2.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
+
     ArrayList<Comparator<Object>> comparators = new ArrayList<>();
-    comparators.add(mock(Comparator.class));
-    comparators.add(mock(Comparator.class));
+    comparators.add(comparator2);
+    comparators.add(comparator);
 
     // Act
-    Comparator<Object> actualChainedComparatorResult =
-        ComparatorUtils.chainedComparator(comparators);
+    Comparator<Object> actualChainedComparatorResult = ComparatorUtils.chainedComparator(comparators);
+    int actualCompareResult = actualChainedComparatorResult.compare("42", "42");
 
     // Assert
+    verify(comparator2).compare(isA(Object.class), isA(Object.class));
     assertTrue(actualChainedComparatorResult instanceof ComparatorChain);
+    assertEquals(1, actualCompareResult);
     assertEquals(2, ((ComparatorChain<Object>) actualChainedComparatorResult).size());
-    assertFalse(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
-  }
-
-  /**
-   * Test {@link ComparatorUtils#chainedComparator(Collection)} with {@code Collection}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
-   *   <li>Then return size is zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#chainedComparator(Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test chainedComparator(Collection) with 'Collection'; when ArrayList(); then return size is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.chainedComparator(Collection)"})
-  void testChainedComparatorWithCollection_whenArrayList_thenReturnSizeIsZero() {
-    // Arrange and Act
-    Comparator<Object> actualChainedComparatorResult =
-        ComparatorUtils.chainedComparator(new ArrayList<>());
-
-    // Assert
-    assertTrue(actualChainedComparatorResult instanceof ComparatorChain);
-    assertEquals(0, ((ComparatorChain<Object>) actualChainedComparatorResult).size());
-    assertFalse(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
-  }
-
-  /**
-   * Test {@link ComparatorUtils#chainedComparator(Comparator[])} with {@code Comparator[]}.
-   *
-   * <ul>
-   *   <li>When {@link Comparator}.
-   *   <li>Then return {@link ComparatorChain}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#chainedComparator(Comparator[])}
-   */
-  @Test
-  @DisplayName(
-      "Test chainedComparator(Comparator[]) with 'Comparator[]'; when Comparator; then return ComparatorChain")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.chainedComparator(Comparator[])"})
-  void testChainedComparatorWithComparator_whenComparator_thenReturnComparatorChain() {
-    // Arrange and Act
-    Comparator<Object> actualChainedComparatorResult =
-        ComparatorUtils.chainedComparator(mock(Comparator.class));
-
-    // Assert
-    assertTrue(actualChainedComparatorResult instanceof ComparatorChain);
-    assertEquals(1, ((ComparatorChain<Object>) actualChainedComparatorResult).size());
-    assertFalse(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
+    assertTrue(((ComparatorChain<Object>) actualChainedComparatorResult).isLocked());
   }
 
   /**
    * Test {@link ComparatorUtils#max(Object, Object, Comparator)}.
-   *
    * <ul>
-   *   <li>Given one.
-   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.
-   *   <li>Then return {@code O1}.
+   *   <li>Given one.</li>
+   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.</li>
+   *   <li>Then return {@code O1}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#max(Object, Object, Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#max(Object, Object, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test max(Object, Object, Comparator); given one; when Comparator compare(Object, Object) return one; then return 'O1'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ComparatorUtils.max(Object, Object, Comparator)"})
-  void testMax_givenOne_whenComparatorCompareReturnOne_thenReturnO1() {
+  public void testMax_givenOne_whenComparatorCompareReturnOne_thenReturnO1() {
     // Arrange
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
@@ -282,78 +179,38 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#max(Object, Object, Comparator)}.
-   *
    * <ul>
-   *   <li>Given zero.
-   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return zero.
-   *   <li>Then return {@code O2}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code O2}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#max(Object, Object, Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#max(Object, Object, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test max(Object, Object, Comparator); given zero; when Comparator compare(Object, Object) return zero; then return 'O2'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ComparatorUtils.max(Object, Object, Comparator)"})
-  void testMax_givenZero_whenComparatorCompareReturnZero_thenReturnO2() {
-    // Arrange
-    Comparator<Object> comparator = mock(Comparator.class);
-    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(0);
-
-    // Act
-    Object actualMaxResult = ComparatorUtils.max("O1", "O2", comparator);
-
-    // Assert
-    verify(comparator).compare(isA(Object.class), isA(Object.class));
-    assertEquals("O2", actualMaxResult);
-  }
-
-  /**
-   * Test {@link ComparatorUtils#max(Object, Object, Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return {@code O2}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#max(Object, Object, Comparator)}
-   */
-  @Test
-  @DisplayName("Test max(Object, Object, Comparator); when 'null'; then return 'O2'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ComparatorUtils.max(Object, Object, Comparator)"})
-  void testMax_whenNull_thenReturnO2() {
-    // Arrange and Act
-    Object actualMaxResult = ComparatorUtils.max("O1", "O2", null);
-
-    // Assert
-    assertEquals("O2", actualMaxResult);
+  public void testMax_whenNull_thenReturnO2() {
+    // Arrange, Act and Assert
+    assertEquals("O2", ComparatorUtils.max("O1", "O2", null));
   }
 
   /**
    * Test {@link ComparatorUtils#min(Object, Object, Comparator)}.
-   *
    * <ul>
-   *   <li>Given zero.
-   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return zero.
-   *   <li>Then return {@code O2}.
+   *   <li>Given one.</li>
+   *   <li>When {@link Comparator} {@link Comparator#compare(Object, Object)} return one.</li>
+   *   <li>Then return {@code O2}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test min(Object, Object, Comparator); given zero; when Comparator compare(Object, Object) return zero; then return 'O2'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ComparatorUtils.min(Object, Object, Comparator)"})
-  void testMin_givenZero_whenComparatorCompareReturnZero_thenReturnO2() {
+  public void testMin_givenOne_whenComparatorCompareReturnOne_thenReturnO2() {
     // Arrange
     Comparator<Object> comparator = mock(Comparator.class);
-    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(0);
+    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
     Object actualMinResult = ComparatorUtils.min("O1", "O2", comparator);
@@ -365,91 +222,40 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#min(Object, Object, Comparator)}.
-   *
    * <ul>
-   *   <li>When {@code false}.
-   *   <li>Then return {@code false}.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return {@code O1}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
    */
   @Test
-  @DisplayName("Test min(Object, Object, Comparator); when 'false'; then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ComparatorUtils.min(Object, Object, Comparator)"})
-  void testMin_whenFalse_thenReturnFalse() {
+  public void testMin_whenNull_thenReturnO1() {
     // Arrange, Act and Assert
-    assertFalse((Boolean) ComparatorUtils.min(true, false, null));
-  }
-
-  /**
-   * Test {@link ComparatorUtils#min(Object, Object, Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code O1}.
-   *   <li>Then return {@code O1}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
-   */
-  @Test
-  @DisplayName("Test min(Object, Object, Comparator); when 'O1'; then return 'O1'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ComparatorUtils.min(Object, Object, Comparator)"})
-  void testMin_whenO1_thenReturnO1() {
-    // Arrange and Act
-    Object actualMinResult = ComparatorUtils.min("O1", "O2", null);
-
-    // Assert
-    assertEquals("O1", actualMinResult);
-  }
-
-  /**
-   * Test {@link ComparatorUtils#min(Object, Object, Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code true}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#min(Object, Object, Comparator)}
-   */
-  @Test
-  @DisplayName("Test min(Object, Object, Comparator); when 'true'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ComparatorUtils.min(Object, Object, Comparator)"})
-  void testMin_whenTrue_thenReturnTrue() {
-    // Arrange, Act and Assert
-    assertTrue((Boolean) ComparatorUtils.min(true, true, null));
+    assertEquals("O1", ComparatorUtils.min("O1", "O2", null));
   }
 
   /**
    * Test {@link ComparatorUtils#nullHighComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>Given one.
-   *   <li>Then return compare {@code O1} and {@code O2} is one.
+   *   <li>Given one.</li>
+   *   <li>Then return compare {@code O1} and {@code O2} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullHighComparator(Comparator); given one; then return compare 'O1' and 'O2' is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullHighComparator(Comparator)"})
-  void testNullHighComparator_givenOne_thenReturnCompareO1AndO2IsOne() {
+  public void testNullHighComparator_givenOne_thenReturnCompareO1AndO2IsOne() {
     // Arrange
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    Comparator<Object> actualNullHighComparatorResult =
-        ComparatorUtils.nullHighComparator(comparator);
+    Comparator<Object> actualNullHighComparatorResult = ComparatorUtils.nullHighComparator(comparator);
     int actualCompareResult = actualNullHighComparatorResult.compare(42, "42");
 
     // Assert
@@ -461,140 +267,90 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#nullHighComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>Then return compare forty-two and {@code null} is {@link
-   *       CollectionUtils#INDEX_NOT_FOUND}.
+   *   <li>Then return compare forty-two and {@code null} is {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullHighComparator(Comparator); then return compare forty-two and 'null' is INDEX_NOT_FOUND")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullHighComparator(Comparator)"})
-  void testNullHighComparator_thenReturnCompareFortyTwoAndNullIsIndex_not_found() {
+  public void testNullHighComparator_thenReturnCompareFortyTwoAndNullIsIndex_not_found() {
     // Arrange and Act
     Comparator<Object> actualNullHighComparatorResult = ComparatorUtils.nullHighComparator(null);
     int actualCompareResult = actualNullHighComparatorResult.compare(42, null);
 
     // Assert
     assertTrue(actualNullHighComparatorResult instanceof NullComparator);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullHighComparatorResult.compare("O1", "O2"));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualNullHighComparatorResult.compare("O1", "O2"));
     assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualCompareResult);
   }
 
   /**
    * Test {@link ComparatorUtils#nullHighComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@link Comparator}.
-   *   <li>Then return compare {@code O1} and {@code O2} is zero.
+   *   <li>When {@link Comparator}.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullHighComparator(Comparator); when Comparator; then return compare 'O1' and 'O2' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullHighComparator(Comparator)"})
-  void testNullHighComparator_whenComparator_thenReturnCompareO1AndO2IsZero() {
+  public void testNullHighComparator_whenComparator_thenReturnCompare42And42IsZero() {
     // Arrange and Act
-    Comparator<Object> actualNullHighComparatorResult =
-        ComparatorUtils.nullHighComparator(mock(Comparator.class));
-    int actualCompareResult = actualNullHighComparatorResult.compare("42", "42");
+    Comparator<Object> actualNullHighComparatorResult = ComparatorUtils
+        .<Object>nullHighComparator(mock(Comparator.class));
 
     // Assert
     assertTrue(actualNullHighComparatorResult instanceof NullComparator);
-    assertEquals(0, actualCompareResult);
+    assertEquals(0, actualNullHighComparatorResult.compare("42", "42"));
     assertEquals(0, actualNullHighComparatorResult.compare("O1", "O2"));
   }
 
   /**
    * Test {@link ComparatorUtils#nullHighComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return compare {@code 42} and {@code 42} is zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return compare forty-two and one is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullHighComparator(Comparator); when 'null'; then return compare '42' and '42' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullHighComparator(Comparator)"})
-  void testNullHighComparator_whenNull_thenReturnCompare42And42IsZero() {
+  public void testNullHighComparator_whenNull_thenReturnCompareFortyTwoAndOneIsOne() {
     // Arrange and Act
     Comparator<Object> actualNullHighComparatorResult = ComparatorUtils.nullHighComparator(null);
-    int actualCompareResult = actualNullHighComparatorResult.compare("42", "42");
 
     // Assert
     assertTrue(actualNullHighComparatorResult instanceof NullComparator);
-    assertEquals(0, actualCompareResult);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullHighComparatorResult.compare("O1", "O2"));
-  }
-
-  /**
-   * Test {@link ComparatorUtils#nullHighComparator(Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return compare forty-two and one is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullHighComparator(Comparator)}
-   */
-  @Test
-  @DisplayName(
-      "Test nullHighComparator(Comparator); when 'null'; then return compare forty-two and one is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.nullHighComparator(Comparator)"})
-  void testNullHighComparator_whenNull_thenReturnCompareFortyTwoAndOneIsOne() {
-    // Arrange and Act
-    Comparator<Object> actualNullHighComparatorResult = ComparatorUtils.nullHighComparator(null);
-    int actualCompareResult = actualNullHighComparatorResult.compare(42, 1);
-
-    // Assert
-    assertTrue(actualNullHighComparatorResult instanceof NullComparator);
-    assertEquals(1, actualCompareResult);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullHighComparatorResult.compare("O1", "O2"));
+    assertEquals(1, actualNullHighComparatorResult.compare(42, 1));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualNullHighComparatorResult.compare("O1", "O2"));
   }
 
   /**
    * Test {@link ComparatorUtils#nullLowComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>Given one.
-   *   <li>Then return compare {@code O1} and {@code O2} is one.
+   *   <li>Given one.</li>
+   *   <li>Then return compare {@code O1} and {@code O2} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullLowComparator(Comparator); given one; then return compare 'O1' and 'O2' is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullLowComparator(Comparator)"})
-  void testNullLowComparator_givenOne_thenReturnCompareO1AndO2IsOne() {
+  public void testNullLowComparator_givenOne_thenReturnCompareO1AndO2IsOne() {
     // Arrange
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    Comparator<Object> actualNullLowComparatorResult =
-        ComparatorUtils.nullLowComparator(comparator);
+    Comparator<Object> actualNullLowComparatorResult = ComparatorUtils.nullLowComparator(comparator);
     int actualCompareResult = actualNullLowComparatorResult.compare(42, "42");
 
     // Assert
@@ -606,140 +362,90 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#nullLowComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@link Comparator}.
-   *   <li>Then return compare {@code O1} and {@code O2} is zero.
+   *   <li>When {@link Comparator}.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullLowComparator(Comparator); when Comparator; then return compare 'O1' and 'O2' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullLowComparator(Comparator)"})
-  void testNullLowComparator_whenComparator_thenReturnCompareO1AndO2IsZero() {
+  public void testNullLowComparator_whenComparator_thenReturnCompare42And42IsZero() {
     // Arrange and Act
-    Comparator<Object> actualNullLowComparatorResult =
-        ComparatorUtils.nullLowComparator(mock(Comparator.class));
-    int actualCompareResult = actualNullLowComparatorResult.compare("42", "42");
+    Comparator<Object> actualNullLowComparatorResult = ComparatorUtils
+        .<Object>nullLowComparator(mock(Comparator.class));
 
     // Assert
     assertTrue(actualNullLowComparatorResult instanceof NullComparator);
-    assertEquals(0, actualCompareResult);
+    assertEquals(0, actualNullLowComparatorResult.compare("42", "42"));
     assertEquals(0, actualNullLowComparatorResult.compare("O1", "O2"));
   }
 
   /**
    * Test {@link ComparatorUtils#nullLowComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return compare {@code 42} and {@code 42} is zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return compare forty-two and {@code null} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullLowComparator(Comparator); when 'null'; then return compare '42' and '42' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullLowComparator(Comparator)"})
-  void testNullLowComparator_whenNull_thenReturnCompare42And42IsZero() {
+  public void testNullLowComparator_whenNull_thenReturnCompareFortyTwoAndNullIsOne() {
     // Arrange and Act
     Comparator<Object> actualNullLowComparatorResult = ComparatorUtils.nullLowComparator(null);
-    int actualCompareResult = actualNullLowComparatorResult.compare("42", "42");
 
     // Assert
     assertTrue(actualNullLowComparatorResult instanceof NullComparator);
-    assertEquals(0, actualCompareResult);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullLowComparatorResult.compare("O1", "O2"));
+    assertEquals(1, actualNullLowComparatorResult.compare(42, null));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualNullLowComparatorResult.compare("O1", "O2"));
   }
 
   /**
    * Test {@link ComparatorUtils#nullLowComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return compare forty-two and {@code null} is one.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return compare forty-two and one is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test nullLowComparator(Comparator); when 'null'; then return compare forty-two and 'null' is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.nullLowComparator(Comparator)"})
-  void testNullLowComparator_whenNull_thenReturnCompareFortyTwoAndNullIsOne() {
+  public void testNullLowComparator_whenNull_thenReturnCompareFortyTwoAndOneIsOne() {
     // Arrange and Act
     Comparator<Object> actualNullLowComparatorResult = ComparatorUtils.nullLowComparator(null);
-    int actualCompareResult = actualNullLowComparatorResult.compare(42, null);
 
     // Assert
     assertTrue(actualNullLowComparatorResult instanceof NullComparator);
-    assertEquals(1, actualCompareResult);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullLowComparatorResult.compare("O1", "O2"));
-  }
-
-  /**
-   * Test {@link ComparatorUtils#nullLowComparator(Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return compare forty-two and one is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#nullLowComparator(Comparator)}
-   */
-  @Test
-  @DisplayName(
-      "Test nullLowComparator(Comparator); when 'null'; then return compare forty-two and one is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.nullLowComparator(Comparator)"})
-  void testNullLowComparator_whenNull_thenReturnCompareFortyTwoAndOneIsOne() {
-    // Arrange and Act
-    Comparator<Object> actualNullLowComparatorResult = ComparatorUtils.nullLowComparator(null);
-    int actualCompareResult = actualNullLowComparatorResult.compare(42, 1);
-
-    // Assert
-    assertTrue(actualNullLowComparatorResult instanceof NullComparator);
-    assertEquals(1, actualCompareResult);
-    assertEquals(
-        CollectionUtils.INDEX_NOT_FOUND, actualNullLowComparatorResult.compare("O1", "O2"));
+    assertEquals(1, actualNullLowComparatorResult.compare(42, 1));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualNullLowComparatorResult.compare("O1", "O2"));
   }
 
   /**
    * Test {@link ComparatorUtils#reversedComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>Given one.
-   *   <li>Then return compare {@code 42} and {@code 42} is one.
+   *   <li>Given one.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#reversedComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#reversedComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test reversedComparator(Comparator); given one; then return compare '42' and '42' is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.reversedComparator(Comparator)"})
-  void testReversedComparator_givenOne_thenReturnCompare42And42IsOne() {
+  public void testReversedComparator_givenOne_thenReturnCompare42And42IsOne() {
     // Arrange
     Comparator<Object> comparator = mock(Comparator.class);
     when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
 
     // Act
-    Comparator<Object> actualReversedComparatorResult =
-        ComparatorUtils.reversedComparator(comparator);
+    Comparator<Object> actualReversedComparatorResult = ComparatorUtils.reversedComparator(comparator);
     int actualCompareResult = actualReversedComparatorResult.compare("42", "42");
 
     // Assert
@@ -751,139 +457,144 @@ class ComparatorUtilsDiffblueTest {
 
   /**
    * Test {@link ComparatorUtils#reversedComparator(Comparator)}.
-   *
    * <ul>
-   *   <li>When {@link Comparator}.
-   *   <li>Then return compare {@code Obj1} and {@code Obj2} is zero.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#reversedComparator(Comparator)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#reversedComparator(Comparator)}
    */
   @Test
-  @DisplayName(
-      "Test reversedComparator(Comparator); when Comparator; then return compare 'Obj1' and 'Obj2' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.reversedComparator(Comparator)"})
-  void testReversedComparator_whenComparator_thenReturnCompareObj1AndObj2IsZero() {
-    // Arrange and Act
-    Comparator<Object> actualReversedComparatorResult =
-        ComparatorUtils.reversedComparator(mock(Comparator.class));
-
-    // Assert
-    assertTrue(actualReversedComparatorResult instanceof ReverseComparator);
-    assertEquals(0, actualReversedComparatorResult.compare("Obj1", "Obj2"));
-  }
-
-  /**
-   * Test {@link ComparatorUtils#reversedComparator(Comparator)}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#reversedComparator(Comparator)}
-   */
-  @Test
-  @DisplayName("Test reversedComparator(Comparator); when 'null'; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Comparator ComparatorUtils.reversedComparator(Comparator)"})
-  void testReversedComparator_whenNull_thenNull() {
+  public void testReversedComparator_whenNull_thenReturnCompare42And42IsZero() {
     // Arrange and Act
     Comparator<Object> actualReversedComparatorResult = ComparatorUtils.reversedComparator(null);
-    int actualCompareResult = actualReversedComparatorResult.compare("42", "42");
 
     // Assert
     assertTrue(actualReversedComparatorResult instanceof ReverseComparator);
-    assertNull(null);
-    assertEquals(0, actualCompareResult);
+    assertEquals(0, actualReversedComparatorResult.compare("42", "42"));
     assertEquals(1, actualReversedComparatorResult.compare("Obj1", "Obj2"));
   }
 
   /**
    * Test {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}.
-   *
    * <ul>
-   *   <li>Given {@code Apply}.
-   *   <li>Then return compare {@code 42} and {@code 42} is zero.
+   *   <li>Given {@code Apply}.</li>
+   *   <li>When {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transformedComparator(Comparator, Transformer); given 'Apply'; then return compare '42' and '42' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.transformedComparator(Comparator, Transformer)"})
-  void testTransformedComparator_givenApply_thenReturnCompare42And42IsZero() {
+  public void testTransformedComparator_givenApply_whenTransformerApplyReturnApply() {
     // Arrange
     Transformer<Object, Object> transformer = mock(Transformer.class);
     when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
 
     // Act
-    Comparator<Object> actualTransformedComparatorResult =
-        ComparatorUtils.transformedComparator(null, transformer);
+    Comparator<Object> actualTransformedComparatorResult = ComparatorUtils.transformedComparator(null, transformer);
     int actualCompareResult = actualTransformedComparatorResult.compare("42", "42");
 
     // Assert
     verify(transformer, atLeast(1)).apply(isA(Object.class));
     assertTrue(actualTransformedComparatorResult instanceof TransformingComparator);
-    assertNull(null);
     assertEquals(0, actualCompareResult);
     assertEquals(0, actualTransformedComparatorResult.compare("Obj1", "Obj2"));
   }
 
   /**
    * Test {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}.
-   *
    * <ul>
-   *   <li>When {@link Comparator}.
-   *   <li>Then return compare {@code Obj1} and {@code Obj2} is zero.
+   *   <li>Given one.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
    */
   @Test
-  @DisplayName(
-      "Test transformedComparator(Comparator, Transformer); when Comparator; then return compare 'Obj1' and 'Obj2' is zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.transformedComparator(Comparator, Transformer)"})
-  void testTransformedComparator_whenComparator_thenReturnCompareObj1AndObj2IsZero() {
-    // Arrange and Act
-    Comparator<Object> actualTransformedComparatorResult =
-        ComparatorUtils.transformedComparator(mock(Comparator.class), mock(Transformer.class));
+  public void testTransformedComparator_givenOne_thenReturnCompare42And42IsOne() {
+    // Arrange
+    Comparator<Object> comparator = mock(Comparator.class);
+    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(1);
+    ReverseComparator<Object> comparator2 = new ReverseComparator<>(comparator);
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Comparator<Object> actualTransformedComparatorResult = ComparatorUtils.transformedComparator(comparator2,
+        transformer);
+    int actualCompareResult = actualTransformedComparatorResult.compare("42", "42");
 
     // Assert
+    verify(comparator).compare(isA(Object.class), isA(Object.class));
+    verify(transformer, atLeast(1)).apply(isA(Object.class));
     assertTrue(actualTransformedComparatorResult instanceof TransformingComparator);
+    assertEquals(1, actualCompareResult);
+    assertEquals(1, actualTransformedComparatorResult.compare("Obj1", "Obj2"));
+  }
+
+  /**
+   * Test {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}.
+   * <ul>
+   *   <li>When {@link NullComparator#NullComparator()}.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is zero.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"Comparator ComparatorUtils.transformedComparator(Comparator, Transformer)"})
+  public void testTransformedComparator_whenNullComparator_thenReturnCompare42And42IsZero() {
+    // Arrange
+    NullComparator<Object> comparator = new NullComparator<>();
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Comparator<Object> actualTransformedComparatorResult = ComparatorUtils.transformedComparator(comparator,
+        transformer);
+    int actualCompareResult = actualTransformedComparatorResult.compare("42", "42");
+
+    // Assert
+    verify(transformer, atLeast(1)).apply(isA(Object.class));
+    assertTrue(actualTransformedComparatorResult instanceof TransformingComparator);
+    assertEquals(0, actualCompareResult);
     assertEquals(0, actualTransformedComparatorResult.compare("Obj1", "Obj2"));
   }
 
   /**
    * Test {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}.
-   *
    * <ul>
-   *   <li>When {@link Transformer}.
-   *   <li>Then {@code null}.
+   *   <li>When {@link ReverseComparator#ReverseComparator()}.</li>
+   *   <li>Then return compare {@code 42} and {@code 42} is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
+   * <p>
+   * Method under test: {@link ComparatorUtils#transformedComparator(Comparator, Transformer)}
    */
   @Test
-  @DisplayName("Test transformedComparator(Comparator, Transformer); when Transformer; then 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Comparator ComparatorUtils.transformedComparator(Comparator, Transformer)"})
-  void testTransformedComparator_whenTransformer_thenNull() {
-    // Arrange and Act
-    Comparator<Object> actualTransformedComparatorResult =
-        ComparatorUtils.transformedComparator(null, mock(Transformer.class));
+  public void testTransformedComparator_whenReverseComparator_thenReturnCompare42And42IsZero() {
+    // Arrange
+    ReverseComparator<Object> comparator = new ReverseComparator<>();
+    Transformer<Object, Object> transformer = mock(Transformer.class);
+    when(transformer.apply(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    Comparator<Object> actualTransformedComparatorResult = ComparatorUtils.transformedComparator(comparator,
+        transformer);
+    int actualCompareResult = actualTransformedComparatorResult.compare("42", "42");
 
     // Assert
+    verify(transformer, atLeast(1)).apply(isA(Object.class));
     assertTrue(actualTransformedComparatorResult instanceof TransformingComparator);
-    assertNull(null);
+    assertEquals(0, actualCompareResult);
+    assertEquals(0, actualTransformedComparatorResult.compare("Obj1", "Obj2"));
   }
 }

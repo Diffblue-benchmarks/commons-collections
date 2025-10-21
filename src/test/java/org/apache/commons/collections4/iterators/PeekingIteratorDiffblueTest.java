@@ -1,41 +1,36 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class PeekingIteratorDiffblueTest {
+public class PeekingIteratorDiffblueTest {
   /**
    * Test {@link PeekingIterator#peekingIterator(Iterator)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} iterator.
+   *   <li>When {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#peekingIterator(Iterator)}
+   * <p>
+   * Method under test: {@link PeekingIterator#peekingIterator(Iterator)}
    */
   @Test
-  @DisplayName("Test peekingIterator(Iterator); when ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"PeekingIterator PeekingIterator.peekingIterator(Iterator)"})
-  void testPeekingIterator_whenArrayListIterator() {
+  public void testPeekingIterator_whenArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
     // Act
-    PeekingIterator<Object> actualPeekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> actualPeekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Assert
     assertFalse(actualPeekingIteratorResult.hasNext());
@@ -43,24 +38,20 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#peekingIterator(Iterator)}.
-   *
    * <ul>
-   *   <li>When peekingIterator {@link ArrayList#ArrayList()} iterator.
+   *   <li>When peekingIterator {@link ArrayList#ArrayList()} iterator.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link PeekingIterator#peekingIterator(Iterator)}
    *   <li>{@link PeekingIterator#peekingIterator(Iterator)}
    * </ul>
    */
   @Test
-  @DisplayName("Test peekingIterator(Iterator); when peekingIterator ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"PeekingIterator PeekingIterator.peekingIterator(Iterator)"})
-  void testPeekingIterator_whenPeekingIteratorArrayListIterator() {
+  public void testPeekingIterator_whenPeekingIteratorArrayListIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     PeekingIterator<?> iterator = PeekingIterator.peekingIterator(objectList.iterator());
@@ -74,15 +65,13 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#PeekingIterator(Iterator)}.
-   *
-   * <p>Method under test: {@link PeekingIterator#PeekingIterator(Iterator)}
+   * <p>
+   * Method under test: {@link PeekingIterator#PeekingIterator(Iterator)}
    */
   @Test
-  @DisplayName("Test new PeekingIterator(Iterator)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void PeekingIterator.<init>(Iterator)"})
-  void testNewPeekingIterator() {
+  public void testNewPeekingIterator() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
@@ -95,25 +84,21 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#element()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#element()}
+   * <p>
+   * Method under test: {@link PeekingIterator#element()}
    */
   @Test
-  @DisplayName("Test element(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.element()"})
-  void testElement_givenArrayListAdd42_thenReturn42() {
+  public void testElement_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertEquals("42", peekingIteratorResult.element());
@@ -121,23 +106,19 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#element()}.
-   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#element()}
+   * <p>
+   * Method under test: {@link PeekingIterator#element()}
    */
   @Test
-  @DisplayName("Test element(); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.element()"})
-  void testElement_thenThrowNoSuchElementException() {
+  public void testElement_thenThrowNoSuchElementException() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> peekingIteratorResult.element());
@@ -145,25 +126,21 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#hasNext()}
+   * <p>
+   * Method under test: {@link PeekingIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean PeekingIterator.hasNext()"})
-  void testHasNext_givenArrayListAdd42_thenReturnTrue() {
+  public void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertTrue(peekingIteratorResult.hasNext());
@@ -171,23 +148,19 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#hasNext()}
+   * <p>
+   * Method under test: {@link PeekingIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean PeekingIterator.hasNext()"})
-  void testHasNext_thenReturnFalse() {
+  public void testHasNext_thenReturnFalse() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertFalse(peekingIteratorResult.hasNext());
@@ -195,25 +168,21 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#next()}
+   * <p>
+   * Method under test: {@link PeekingIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.next()"})
-  void testNext_givenArrayListAdd42_thenReturn42() {
+  public void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertEquals("42", peekingIteratorResult.next());
@@ -222,23 +191,19 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#next()}.
-   *
    * <ul>
-   *   <li>Then throw {@link NoSuchElementException}.
+   *   <li>Then throw {@link NoSuchElementException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#next()}
+   * <p>
+   * Method under test: {@link PeekingIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); then throw NoSuchElementException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.next()"})
-  void testNext_thenThrowNoSuchElementException() {
+  public void testNext_thenThrowNoSuchElementException() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertThrows(NoSuchElementException.class, () -> peekingIteratorResult.next());
@@ -246,25 +211,21 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#peek()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#peek()}
+   * <p>
+   * Method under test: {@link PeekingIterator#peek()}
    */
   @Test
-  @DisplayName("Test peek(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.peek()"})
-  void testPeek_givenArrayListAdd42_thenReturn42() {
+  public void testPeek_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertEquals("42", peekingIteratorResult.peek());
@@ -272,23 +233,19 @@ class PeekingIteratorDiffblueTest {
 
   /**
    * Test {@link PeekingIterator#peek()}.
-   *
    * <ul>
-   *   <li>Then return {@code null}.
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link PeekingIterator#peek()}
+   * <p>
+   * Method under test: {@link PeekingIterator#peek()}
    */
   @Test
-  @DisplayName("Test peek(); then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object PeekingIterator.peek()"})
-  void testPeek_thenReturnNull() {
+  public void testPeek_thenReturnNull() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
-    PeekingIterator<Object> peekingIteratorResult =
-        PeekingIterator.peekingIterator(objectList.iterator());
+    PeekingIterator<Object> peekingIteratorResult = PeekingIterator.peekingIterator(objectList.iterator());
 
     // Act and Assert
     assertNull(peekingIteratorResult.peek());

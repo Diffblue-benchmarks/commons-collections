@@ -1,36 +1,31 @@
 package org.apache.commons.collections4.iterators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-class ReverseListIteratorDiffblueTest {
+public class ReverseListIteratorDiffblueTest {
   /**
    * Test {@link ReverseListIterator#ReverseListIterator(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return next is {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return next is {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
+   * <p>
+   * Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
    */
   @Test
-  @DisplayName(
-      "Test new ReverseListIterator(List); given '42'; when ArrayList() add '42'; then return next is '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.<init>(List)"})
-  void testNewReverseListIterator_given42_whenArrayListAdd42_thenReturnNextIs42() {
+  public void testNewReverseListIterator_given42_whenArrayListAdd42_thenReturnNextIs42() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -45,22 +40,18 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#ReverseListIterator(List)}.
-   *
    * <ul>
-   *   <li>Given {@code 42}.
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return next is {@code 42}.
+   *   <li>Given {@code 42}.</li>
+   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return next is {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
+   * <p>
+   * Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
    */
   @Test
-  @DisplayName(
-      "Test new ReverseListIterator(List); given '42'; when ArrayList() add '42'; then return next is '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.<init>(List)"})
-  void testNewReverseListIterator_given42_whenArrayListAdd42_thenReturnNextIs422() {
+  public void testNewReverseListIterator_given42_whenArrayListAdd42_thenReturnNextIs422() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -77,22 +68,18 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#ReverseListIterator(List)}.
-   *
    * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
+   * <p>
+   * Method under test: {@link ReverseListIterator#ReverseListIterator(List)}
    */
   @Test
-  @DisplayName("Test new ReverseListIterator(List); when ArrayList()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.<init>(List)"})
-  void testNewReverseListIterator_whenArrayList() {
+  public void testNewReverseListIterator_whenArrayList() {
     // Arrange and Act
-    ReverseListIterator<Object> actualReverseListIterator =
-        new ReverseListIterator<>(new ArrayList<>());
+    ReverseListIterator<Object> actualReverseListIterator = new ReverseListIterator<>(new ArrayList<>());
 
     // Assert
     assertFalse(actualReverseListIterator.hasNext());
@@ -100,19 +87,16 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#add(Object)}.
-   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#add(Object)}
+   * <p>
+   * Method under test: {@link ReverseListIterator#add(Object)}
    */
   @Test
-  @DisplayName("Test add(Object); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.add(Object)"})
-  void testAdd_thenThrowIllegalStateException() {
+  public void testAdd_thenThrowIllegalStateException() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
     reverseListIterator.add("Obj");
@@ -123,20 +107,17 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); given ArrayList() add '42'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ReverseListIterator.hasNext()"})
-  void testHasNext_givenArrayListAdd42_thenReturnTrue() {
+  public void testHasNext_givenArrayListAdd42_thenReturnTrue() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -148,19 +129,16 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#hasNext()}.
-   *
    * <ul>
-   *   <li>Then return {@code false}.
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#hasNext()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#hasNext()}
    */
   @Test
-  @DisplayName("Test hasNext(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ReverseListIterator.hasNext()"})
-  void testHasNext_thenReturnFalse() {
+  public void testHasNext_thenReturnFalse() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
 
@@ -170,22 +148,17 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#hasPrevious()}.
-   *
    * <ul>
-   *   <li>Given {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link
-   *       ArrayList#ArrayList()} add {@code Obj}.
-   *   <li>Then return {@code true}.
+   *   <li>Given {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link ArrayList#ArrayList()} add {@code Obj}.</li>
+   *   <li>Then return {@code true}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#hasPrevious()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#hasPrevious()}
    */
   @Test
-  @DisplayName(
-      "Test hasPrevious(); given ReverseListIterator(List) with list is ArrayList() add 'Obj'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ReverseListIterator.hasPrevious()"})
-  void testHasPrevious_givenReverseListIteratorWithListIsArrayListAddObj_thenReturnTrue() {
+  public void testHasPrevious_givenReverseListIteratorWithListIsArrayListAddObj_thenReturnTrue() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
     reverseListIterator.add("Obj");
@@ -196,22 +169,17 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#hasPrevious()}.
-   *
    * <ul>
-   *   <li>Given {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link
-   *       ArrayList#ArrayList()}.
-   *   <li>Then return {@code false}.
+   *   <li>Given {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link ArrayList#ArrayList()}.</li>
+   *   <li>Then return {@code false}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#hasPrevious()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#hasPrevious()}
    */
   @Test
-  @DisplayName(
-      "Test hasPrevious(); given ReverseListIterator(List) with list is ArrayList(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean ReverseListIterator.hasPrevious()"})
-  void testHasPrevious_givenReverseListIteratorWithListIsArrayList_thenReturnFalse() {
+  public void testHasPrevious_givenReverseListIteratorWithListIsArrayList_thenReturnFalse() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
 
@@ -221,20 +189,17 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#next()}.
-   *
    * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.
-   *   <li>Then return {@code 42}.
+   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
+   *   <li>Then return {@code 42}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#next()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#next()}
    */
   @Test
-  @DisplayName("Test next(); given ArrayList() add '42'; then return '42'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ReverseListIterator.next()"})
-  void testNext_givenArrayListAdd42_thenReturn42() {
+  public void testNext_givenArrayListAdd42_thenReturn42() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -247,15 +212,13 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#nextIndex()}.
-   *
-   * <p>Method under test: {@link ReverseListIterator#nextIndex()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#nextIndex()}
    */
   @Test
-  @DisplayName("Test nextIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int ReverseListIterator.nextIndex()"})
-  void testNextIndex() {
+  public void testNextIndex() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
 
@@ -265,21 +228,16 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#previous()}.
-   *
    * <ul>
-   *   <li>Then {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link
-   *       ArrayList#ArrayList()} next is {@code Obj}.
+   *   <li>Then {@link ReverseListIterator#ReverseListIterator(List)} with list is {@link ArrayList#ArrayList()} next is {@code Obj}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#previous()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#previous()}
    */
   @Test
-  @DisplayName(
-      "Test previous(); then ReverseListIterator(List) with list is ArrayList() next is 'Obj'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Object ReverseListIterator.previous()"})
-  void testPrevious_thenReverseListIteratorWithListIsArrayListNextIsObj() {
+  public void testPrevious_thenReverseListIteratorWithListIsArrayListNextIsObj() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
     reverseListIterator.add("Obj");
@@ -295,15 +253,13 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#previousIndex()}.
-   *
-   * <p>Method under test: {@link ReverseListIterator#previousIndex()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#previousIndex()}
    */
   @Test
-  @DisplayName("Test previousIndex()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int ReverseListIterator.previousIndex()"})
-  void testPreviousIndex() {
+  public void testPreviousIndex() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
 
@@ -313,19 +269,16 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#remove()}.
-   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#remove()}
+   * <p>
+   * Method under test: {@link ReverseListIterator#remove()}
    */
   @Test
-  @DisplayName("Test remove(); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.remove()"})
-  void testRemove_thenThrowIllegalStateException() {
+  public void testRemove_thenThrowIllegalStateException() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
     reverseListIterator.add("Obj");
@@ -336,19 +289,16 @@ class ReverseListIteratorDiffblueTest {
 
   /**
    * Test {@link ReverseListIterator#set(Object)}.
-   *
    * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
+   *   <li>Then throw {@link IllegalStateException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link ReverseListIterator#set(Object)}
+   * <p>
+   * Method under test: {@link ReverseListIterator#set(Object)}
    */
   @Test
-  @DisplayName("Test set(Object); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void ReverseListIterator.set(Object)"})
-  void testSet_thenThrowIllegalStateException() {
+  public void testSet_thenThrowIllegalStateException() {
     // Arrange
     ReverseListIterator<Object> reverseListIterator = new ReverseListIterator<>(new ArrayList<>());
     reverseListIterator.add("Obj");
