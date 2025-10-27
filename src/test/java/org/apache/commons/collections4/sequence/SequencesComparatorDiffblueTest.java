@@ -1,307 +1,35 @@
 package org.apache.commons.collections4.sequence;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.collections4.Equator;
 import org.apache.commons.collections4.functors.DefaultEquator;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class SequencesComparatorDiffblueTest {
   /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsOne() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(1, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsOne2() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(1, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List, Equator)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List, Equator)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsOne3() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(1, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List, Equator)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List, Equator)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsOne4() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(1, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsTwo() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-    sequence1.add("42");
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(2, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsTwo2() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    sequence2.add("42");
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(2, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List, Equator)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List, Equator)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsTwo3() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-    sequence1.add("42");
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(2, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List, Equator)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return Script Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List, Equator)"})
-  public void testNewSequencesComparator_given42_thenReturnScriptModificationsIsTwo4() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    sequence2.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(2, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Script Modifications is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List)"})
-  public void testNewSequencesComparator_whenArrayList_thenReturnScriptModificationsIsZero() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(0, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#SequencesComparator(List, List, Equator)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Script Modifications is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#SequencesComparator(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SequencesComparator.<init>(List, List, Equator)"})
-  public void testNewSequencesComparator_whenArrayList_thenReturnScriptModificationsIsZero2() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
-
-    // Assert
-    EditScript<Object> script = actualSequencesComparator.getScript();
-    assertEquals(0, script.getLCSLength());
-    assertEquals(0, script.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsOne() {
+  public void testGetScript() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
+
+    // Act
+    EditScript<Object> actualScript = sequencesComparator.getScript();
+
+    // Assert
+    assertEquals(0, actualScript.getLCSLength());
+    assertEquals(0, actualScript.getModifications());
+  }
+
+  /**
+   * Method under test: {@link SequencesComparator#getScript()}
+   */
+  @Test
+  public void testGetScript2() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
@@ -316,18 +44,10 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsOne2() {
+  public void testGetScript3() {
     // Arrange
     ArrayList<Object> sequence2 = new ArrayList<>();
     sequence2.add("42");
@@ -342,18 +62,31 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsOne3() {
+  public void testGetScript4() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
+
+    // Act
+    EditScript<Object> actualScript = sequencesComparator.getScript();
+
+    // Assert
+    assertEquals(0, actualScript.getModifications());
+    assertEquals(1, actualScript.getLCSLength());
+  }
+
+  /**
+   * Method under test: {@link SequencesComparator#getScript()}
+   */
+  @Test
+  public void testGetScript5() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
@@ -372,18 +105,54 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsOne4() {
+  public void testGetScript6() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add(2);
+    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
+
+    // Act
+    EditScript<Object> actualScript = sequencesComparator.getScript();
+
+    // Assert
+    assertEquals(0, actualScript.getLCSLength());
+    assertEquals(2, actualScript.getModifications());
+  }
+
+  /**
+   * Method under test: {@link SequencesComparator#getScript()}
+   */
+  @Test
+  public void testGetScript7() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    sequence2.add("42");
+    sequence2.add("42");
+    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
+
+    // Act
+    EditScript<Object> actualScript = sequencesComparator.getScript();
+
+    // Assert
+    assertEquals(1, actualScript.getLCSLength());
+    assertEquals(2, actualScript.getModifications());
+  }
+
+  /**
+   * Method under test: {@link SequencesComparator#getScript()}
+   */
+  @Test
+  public void testGetScript8() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
@@ -402,18 +171,33 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is three.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsThree() {
+  public void testGetScript9() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+    sequence1.add("42");
+    sequence1.add("42");
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
+
+    // Act
+    EditScript<Object> actualScript = sequencesComparator.getScript();
+
+    // Assert
+    assertEquals(1, actualScript.getLCSLength());
+    assertEquals(2, actualScript.getModifications());
+  }
+
+  /**
+   * Method under test: {@link SequencesComparator#getScript()}
+   */
+  @Test
+  public void testGetScript10() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
@@ -434,24 +218,16 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsTwo() {
+  public void testGetScript11() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add(2);
     sequence1.add("42");
 
     ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
     sequence2.add("42");
     sequence2.add("42");
     SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
@@ -465,25 +241,16 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsTwo2() {
+  public void testGetScript12() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-    sequence1.add("42");
-    sequence1.add("42");
+    sequence1.add(2);
 
     ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
     sequence2.add("42");
     SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
 
@@ -491,52 +258,37 @@ public class SequencesComparatorDiffblueTest {
     EditScript<Object> actualScript = sequencesComparator.getScript();
 
     // Assert
-    assertEquals(1, actualScript.getLCSLength());
-    assertEquals(2, actualScript.getModifications());
+    assertEquals(0, actualScript.getLCSLength());
+    assertEquals(3, actualScript.getModifications());
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Modifications is zero.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAdd42_thenReturnModificationsIsZero() {
+  public void testGetScript13() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
 
     ArrayList<Object> sequence2 = new ArrayList<>();
     sequence2.add("42");
+    sequence2.add(2);
     SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
 
     // Act
     EditScript<Object> actualScript = sequencesComparator.getScript();
 
     // Assert
-    assertEquals(0, actualScript.getModifications());
     assertEquals(1, actualScript.getLCSLength());
+    assertEquals(1, actualScript.getModifications());
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is four.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsFour() {
+  public void testGetScript14() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add(2);
@@ -556,78 +308,10 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsOne() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add("42");
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    sequence2.add(2);
-    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
-    // Act
-    EditScript<Object> actualScript = sequencesComparator.getScript();
-
-    // Assert
-    assertEquals(1, actualScript.getLCSLength());
-    assertEquals(1, actualScript.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is three.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#getScript()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsThree() {
-    // Arrange
-    ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add(2);
-
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    sequence2.add("42");
-    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
-    // Act
-    EditScript<Object> actualScript = sequencesComparator.getScript();
-
-    // Assert
-    assertEquals(0, actualScript.getLCSLength());
-    assertEquals(3, actualScript.getModifications());
-  }
-
-  /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is three.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#getScript()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsThree2() {
+  public void testGetScript15() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
@@ -648,18 +332,10 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is three.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SequencesComparator#getScript()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsThree3() {
+  public void testGetScript16() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add(2);
@@ -680,86 +356,210 @@ public class SequencesComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#getScript()}
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsTwo() {
+  public void testNewSequencesComparator() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(0, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List)}
+   */
+  @Test
+  public void testNewSequencesComparator2() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
     sequence1.add("42");
 
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add(2);
-    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
     // Act
-    EditScript<Object> actualScript = sequencesComparator.getScript();
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
 
     // Assert
-    assertEquals(0, actualScript.getLCSLength());
-    assertEquals(2, actualScript.getModifications());
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(1, script.getModifications());
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Modifications is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#getScript()}
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_givenArrayListAddTwo_thenReturnModificationsIsTwo2() {
+  public void testNewSequencesComparator3() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
-    sequence1.add(2);
+    sequence1.add("42");
     sequence1.add("42");
 
-    ArrayList<Object> sequence2 = new ArrayList<>();
-    sequence2.add("42");
-    sequence2.add("42");
-    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, sequence2);
-
     // Act
-    EditScript<Object> actualScript = sequencesComparator.getScript();
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
 
     // Assert
-    assertEquals(1, actualScript.getLCSLength());
-    assertEquals(2, actualScript.getModifications());
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(2, script.getModifications());
   }
 
   /**
-   * Test {@link SequencesComparator#getScript()}.
-   * <ul>
-   *   <li>Then return Modifications is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SequencesComparator#getScript()}
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"EditScript SequencesComparator.getScript()"})
-  public void testGetScript_thenReturnModificationsIsZero() {
+  public void testNewSequencesComparator4() {
     // Arrange
     ArrayList<Object> sequence1 = new ArrayList<>();
-    SequencesComparator<Object> sequencesComparator = new SequencesComparator<>(sequence1, new ArrayList<>());
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
 
     // Act
-    EditScript<Object> actualScript = sequencesComparator.getScript();
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2);
 
     // Assert
-    assertEquals(0, actualScript.getLCSLength());
-    assertEquals(0, actualScript.getModifications());
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(1, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List)}
+   */
+  @Test
+  public void testNewSequencesComparator5() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    sequence2.add("42");
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(2, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List, Equator)}
+   */
+  @Test
+  public void testNewSequencesComparator6() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(0, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List, Equator)}
+   */
+  @Test
+  public void testNewSequencesComparator7() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(1, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List, Equator)}
+   */
+  @Test
+  public void testNewSequencesComparator8() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+    sequence1.add("42");
+    sequence1.add("42");
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(2, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List, Equator)}
+   */
+  @Test
+  public void testNewSequencesComparator9() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(1, script.getModifications());
+  }
+
+  /**
+   * Method under test:
+   * {@link SequencesComparator#SequencesComparator(List, List, Equator)}
+   */
+  @Test
+  public void testNewSequencesComparator10() {
+    // Arrange
+    ArrayList<Object> sequence1 = new ArrayList<>();
+
+    ArrayList<Object> sequence2 = new ArrayList<>();
+    sequence2.add("42");
+    sequence2.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    SequencesComparator<Object> actualSequencesComparator = new SequencesComparator<>(sequence1, sequence2, equator);
+
+    // Assert
+    EditScript<Object> script = actualSequencesComparator.getScript();
+    assertEquals(0, script.getLCSLength());
+    assertEquals(2, script.getModifications());
   }
 }

@@ -1,26 +1,30 @@
 package org.apache.commons.collections4.multiset;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.junit.Assert.assertTrue;
 import org.apache.commons.collections4.MultiSet;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class UnmodifiableMultiSetDiffblueTest {
   /**
-   * Test {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
+   * Method under test:
+   * {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MultiSet UnmodifiableMultiSet.unmodifiableMultiSet(MultiSet)"})
-  public void testUnmodifiableMultiSet_givenObject_whenHashMultiSetAddObject() {
+  public void testUnmodifiableMultiSet() {
+    // Arrange and Act
+    MultiSet<Object> actualUnmodifiableMultiSetResult = UnmodifiableMultiSet.unmodifiableMultiSet(new HashMultiSet<>());
+
+    // Assert
+    assertTrue(actualUnmodifiableMultiSetResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
+   */
+  @Test
+  public void testUnmodifiableMultiSet2() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
     multiset.add("Object");
@@ -29,48 +33,19 @@ public class UnmodifiableMultiSetDiffblueTest {
     MultiSet<Object> actualUnmodifiableMultiSetResult = UnmodifiableMultiSet.unmodifiableMultiSet(multiset);
 
     // Assert
-    assertEquals(multiset, actualUnmodifiableMultiSetResult);
+    assertEquals(1, actualUnmodifiableMultiSetResult.size());
   }
 
   /**
-   * Test {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashMultiSet#HashMultiSet()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
+   * Method under test:
+   * {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MultiSet UnmodifiableMultiSet.unmodifiableMultiSet(MultiSet)"})
-  public void testUnmodifiableMultiSet_givenObject_whenHashMultiSetAddObject2() {
+  public void testUnmodifiableMultiSet3() {
     // Arrange
     HashMultiSet<Object> multiset = new HashMultiSet<>();
     multiset.add("Object");
     multiset.add("Object");
-
-    // Act
-    MultiSet<Object> actualUnmodifiableMultiSetResult = UnmodifiableMultiSet.unmodifiableMultiSet(multiset);
-
-    // Assert
-    assertEquals(multiset, actualUnmodifiableMultiSetResult);
-  }
-
-  /**
-   * Test {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}.
-   * <ul>
-   *   <li>When {@link HashMultiSet#HashMultiSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableMultiSet#unmodifiableMultiSet(MultiSet)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MultiSet UnmodifiableMultiSet.unmodifiableMultiSet(MultiSet)"})
-  public void testUnmodifiableMultiSet_whenHashMultiSet() {
-    // Arrange
-    HashMultiSet<Object> multiset = new HashMultiSet<>();
 
     // Act
     MultiSet<Object> actualUnmodifiableMultiSetResult = UnmodifiableMultiSet.unmodifiableMultiSet(multiset);

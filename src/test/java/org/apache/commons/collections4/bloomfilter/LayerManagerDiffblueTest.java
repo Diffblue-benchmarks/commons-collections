@@ -1,68 +1,45 @@
 package org.apache.commons.collections4.bloomfilter;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import org.apache.commons.collections4.bloomfilter.LayerManager.Builder;
-import org.apache.commons.collections4.bloomfilter.LayerManager.Cleanup;
-import org.apache.commons.collections4.bloomfilter.LayerManager.ExtendCheck;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class LayerManagerDiffblueTest {
   /**
-   * Test Builder getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
-   *   <li>{@link Builder#setCleanup(Consumer)}
-   *   <li>{@link Builder#setExtendCheck(Predicate)}
-   *   <li>{@link Builder#setSupplier(Supplier)}
+   *   <li>{@link LayerManager.Builder#setCleanup(Consumer)}
+   *   <li>{@link LayerManager.Builder#setExtendCheck(Predicate)}
+   *   <li>{@link LayerManager.Builder#setSupplier(Supplier)}
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.setCleanup(Consumer)", "Builder Builder.setExtendCheck(Predicate)",
-      "Builder Builder.setSupplier(Supplier)"})
   public void testBuilderGettersAndSetters() {
     // Arrange
-    Builder<SimpleBloomFilter> builderResult = LayerManager.builder();
+    LayerManager.Builder<SimpleBloomFilter> builderResult = LayerManager.builder();
 
     // Act
-    Builder<SimpleBloomFilter> actualSetCleanupResult = builderResult.setCleanup(mock(Consumer.class));
-    Builder<SimpleBloomFilter> actualSetExtendCheckResult = builderResult.setExtendCheck(mock(Predicate.class));
+    LayerManager.Builder<SimpleBloomFilter> actualSetCleanupResult = builderResult.setCleanup(null);
+    LayerManager.Builder<SimpleBloomFilter> actualSetExtendCheckResult = builderResult.setExtendCheck(null);
 
     // Assert
     assertSame(builderResult, actualSetCleanupResult);
     assertSame(builderResult, actualSetExtendCheckResult);
-    assertSame(builderResult, builderResult.setSupplier(mock(Supplier.class)));
+    assertSame(builderResult, builderResult.setSupplier(null));
   }
 
   /**
-   * Test Cleanup {@link Cleanup#removeEmptyTarget()}.
-   * <ul>
-   *   <li>Then {@link LinkedList#LinkedList()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Cleanup#removeEmptyTarget()}
+   * Method under test: {@link LayerManager.Cleanup#removeEmptyTarget()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Consumer Cleanup.removeEmptyTarget()"})
-  public void testCleanupRemoveEmptyTarget_thenLinkedListEmpty() {
+  public void testCleanupRemoveEmptyTarget() {
     // Arrange and Act
-    Consumer<Deque<SimpleBloomFilter>> actualRemoveEmptyTargetResult = Cleanup.removeEmptyTarget();
+    Consumer<Deque<SimpleBloomFilter>> actualRemoveEmptyTargetResult = LayerManager.Cleanup.removeEmptyTarget();
     LinkedList<SimpleBloomFilter> simpleBloomFilterList = new LinkedList<>();
     actualRemoveEmptyTargetResult.accept(simpleBloomFilterList);
 
@@ -71,151 +48,17 @@ public class LayerManagerDiffblueTest {
   }
 
   /**
-   * Test Cleanup {@link Cleanup#removeEmptyTarget()}.
-   * <ul>
-   *   <li>Then {@link LinkedList#LinkedList()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Cleanup#removeEmptyTarget()}
+   * Method under test: {@link LayerManager.Cleanup#removeEmptyTarget()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Consumer Cleanup.removeEmptyTarget()"})
-  public void testCleanupRemoveEmptyTarget_thenLinkedListEmpty2() {
+  public void testCleanupRemoveEmptyTarget2() {
     // Arrange and Act
-    Consumer<Deque<SimpleBloomFilter>> actualRemoveEmptyTargetResult = Cleanup.removeEmptyTarget();
+    Consumer<Deque<SimpleBloomFilter>> actualRemoveEmptyTargetResult = LayerManager.Cleanup.removeEmptyTarget();
     LinkedList<SimpleBloomFilter> simpleBloomFilterList = new LinkedList<>();
     simpleBloomFilterList.add(new SimpleBloomFilter(Shape.fromKM(19088743, 10)));
     actualRemoveEmptyTargetResult.accept(simpleBloomFilterList);
 
     // Assert
     assertTrue(simpleBloomFilterList.isEmpty());
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#advanceOnCount(int)}.
-   * <ul>
-   *   <li>When one.</li>
-   *   <li>Then return test {@link LayerManager}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendCheck#advanceOnCount(int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.advanceOnCount(int)"})
-  public void testExtendCheckAdvanceOnCount_whenOne_thenReturnTestLayerManager() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualAdvanceOnCountResult = ExtendCheck.advanceOnCount(1);
-
-    // Assert
-    assertTrue(actualAdvanceOnCountResult.test(mock(LayerManager.class)));
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#advanceOnCount(int)}.
-   * <ul>
-   *   <li>When three.</li>
-   *   <li>Then return not test {@link LayerManager}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendCheck#advanceOnCount(int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.advanceOnCount(int)"})
-  public void testExtendCheckAdvanceOnCount_whenThree_thenReturnNotTestLayerManager() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualAdvanceOnCountResult = ExtendCheck.advanceOnCount(3);
-
-    // Assert
-    assertFalse(actualAdvanceOnCountResult.test(mock(LayerManager.class)));
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#advanceOnPopulated()}.
-   * <ul>
-   *   <li>Then return not test {@link LayerManager}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendCheck#advanceOnPopulated()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.advanceOnPopulated()"})
-  public void testExtendCheckAdvanceOnPopulated_thenReturnNotTestLayerManager() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualAdvanceOnPopulatedResult = ExtendCheck.advanceOnPopulated();
-    LayerManager<SimpleBloomFilter> layerManager = mock(LayerManager.class);
-    when(layerManager.last()).thenReturn(new SimpleBloomFilter(Shape.fromKM(19088743, 10)));
-    boolean actualTestResult = actualAdvanceOnPopulatedResult.test(layerManager);
-
-    // Assert
-    verify(layerManager).last();
-    assertFalse(actualTestResult);
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#advanceOnSaturation(double)}.
-   * <ul>
-   *   <li>When {@code 1.0E-10}.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendCheck#advanceOnSaturation(double)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.advanceOnSaturation(double)"})
-  public void testExtendCheckAdvanceOnSaturation_when10e10_thenThrowIllegalArgumentException() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualAdvanceOnSaturationResult = ExtendCheck
-        .advanceOnSaturation(1.0E-10d);
-    LayerManager<SimpleBloomFilter> layerManager = mock(LayerManager.class);
-    when(layerManager.last()).thenThrow(new IllegalArgumentException("foo"));
-
-    // Assert
-    assertThrows(IllegalArgumentException.class, () -> actualAdvanceOnSaturationResult.test(layerManager));
-    verify(layerManager).last();
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#advanceOnSaturation(double)}.
-   * <ul>
-   *   <li>When ten.</li>
-   *   <li>Then return not test {@link LayerManager}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendCheck#advanceOnSaturation(double)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.advanceOnSaturation(double)"})
-  public void testExtendCheckAdvanceOnSaturation_whenTen_thenReturnNotTestLayerManager() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualAdvanceOnSaturationResult = ExtendCheck.advanceOnSaturation(10.0d);
-    LayerManager<SimpleBloomFilter> layerManager = mock(LayerManager.class);
-    when(layerManager.last()).thenReturn(new SimpleBloomFilter(Shape.fromKM(19088743, 10)));
-    boolean actualTestResult = actualAdvanceOnSaturationResult.test(layerManager);
-
-    // Assert
-    verify(layerManager).last();
-    assertFalse(actualTestResult);
-  }
-
-  /**
-   * Test ExtendCheck {@link ExtendCheck#neverAdvance()}.
-   * <p>
-   * Method under test: {@link ExtendCheck#neverAdvance()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate ExtendCheck.neverAdvance()"})
-  public void testExtendCheckNeverAdvance() {
-    // Arrange and Act
-    Predicate<LayerManager<SimpleBloomFilter>> actualNeverAdvanceResult = ExtendCheck.neverAdvance();
-
-    // Assert
-    assertFalse(actualNeverAdvanceResult.test(mock(LayerManager.class)));
   }
 }

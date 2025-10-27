@@ -2,25 +2,15 @@ package org.apache.commons.collections4.functors;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Predicate;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class NotNullPredicateDiffblueTest {
   /**
-   * Test {@link NotNullPredicate#notNullPredicate()}.
-   * <ul>
-   *   <li>Then return evaluate {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NotNullPredicate#notNullPredicate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate NotNullPredicate.notNullPredicate()"})
-  public void testNotNullPredicate_thenReturnEvaluate42() {
+  public void testNotNullPredicate() {
     // Arrange and Act
     Predicate<Object> actualNotNullPredicateResult = NotNullPredicate.notNullPredicate();
 
@@ -32,17 +22,10 @@ public class NotNullPredicateDiffblueTest {
   }
 
   /**
-   * Test {@link NotNullPredicate#notNullPredicate()}.
-   * <ul>
-   *   <li>Then return not evaluate {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NotNullPredicate#notNullPredicate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Predicate NotNullPredicate.notNullPredicate()"})
-  public void testNotNullPredicate_thenReturnNotEvaluateNull() {
+  public void testNotNullPredicate2() {
     // Arrange and Act
     Predicate<Object> actualNotNullPredicateResult = NotNullPredicate.notNullPredicate();
 

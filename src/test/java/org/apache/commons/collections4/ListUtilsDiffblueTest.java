@@ -4,92 +4,51 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import org.apache.commons.collections4.functors.AllPredicate;
+import org.apache.commons.collections4.functors.AndPredicate;
+import org.apache.commons.collections4.functors.ConstantFactory;
 import org.apache.commons.collections4.functors.DefaultEquator;
+import org.apache.commons.collections4.functors.EqualPredicate;
+import org.apache.commons.collections4.functors.UniquePredicate;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class ListUtilsDiffblueTest {
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_given42_whenArrayListAdd42_thenReturnEmpty() {
+  public void testDefaultIfNull() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
 
-    ArrayList<Object> defaultList = new ArrayList<>();
-    defaultList.add("42");
-
     // Act
-    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, defaultList);
+    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, new ArrayList<>());
 
     // Assert
     assertTrue(actualDefaultIfNullResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_given42_whenArrayListAdd42_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-
-    ArrayList<Object> defaultList = new ArrayList<>();
-    defaultList.add("42");
-    defaultList.add("42");
-
-    // Act
-    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, defaultList);
+  public void testDefaultIfNull2() {
+    // Arrange and Act
+    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(null, new ArrayList<>());
 
     // Assert
     assertTrue(actualDefaultIfNullResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testDefaultIfNull3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -103,19 +62,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testDefaultIfNull4() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -131,62 +81,71 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_whenArrayList_thenReturnEmpty() {
+  public void testDefaultIfNull5() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
 
+    ArrayList<Object> defaultList = new ArrayList<>();
+    defaultList.add("42");
+
     // Act
-    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, new ArrayList<>());
+    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, defaultList);
 
     // Assert
     assertTrue(actualDefaultIfNullResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#defaultIfNull(List, List)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#defaultIfNull(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.defaultIfNull(List, List)"})
-  public void testDefaultIfNull_whenNull_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(null, new ArrayList<>());
+  public void testDefaultIfNull6() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+
+    ArrayList<Object> defaultList = new ArrayList<>();
+    defaultList.add("42");
+    defaultList.add("42");
+
+    // Act
+    List<Object> actualDefaultIfNullResult = ListUtils.defaultIfNull(list, defaultList);
 
     // Assert
     assertTrue(actualDefaultIfNullResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#emptyIfNull(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#emptyIfNull(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.emptyIfNull(List)"})
-  public void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testEmptyIfNull() {
+    // Arrange and Act
+    List<Object> actualEmptyIfNullResult = ListUtils.emptyIfNull(new ArrayList<>());
+
+    // Assert
+    assertTrue(actualEmptyIfNullResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#emptyIfNull(List)}
+   */
+  @Test
+  public void testEmptyIfNull2() {
+    // Arrange and Act
+    List<Object> actualEmptyIfNullResult = ListUtils.emptyIfNull(null);
+
+    // Assert
+    assertTrue(actualEmptyIfNullResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#emptyIfNull(List)}
+   */
+  @Test
+  public void testEmptyIfNull3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -200,19 +159,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#emptyIfNull(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#emptyIfNull(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.emptyIfNull(List)"})
-  public void testEmptyIfNull_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testEmptyIfNull4() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -228,109 +178,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#emptyIfNull(List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#emptyIfNull(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.emptyIfNull(List)"})
-  public void testEmptyIfNull_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualEmptyIfNullResult = ListUtils.emptyIfNull(new ArrayList<>());
-
-    // Assert
-    assertTrue(actualEmptyIfNullResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#emptyIfNull(List)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#emptyIfNull(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.emptyIfNull(List)"})
-  public void testEmptyIfNull_whenNull_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualEmptyIfNullResult = ListUtils.emptyIfNull(null);
-
-    // Assert
-    assertTrue(actualEmptyIfNullResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#fixedSizeList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#fixedSizeList(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.fixedSizeList(List)"})
-  public void testFixedSizeList_given42_whenArrayListAdd42_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act
-    List<Object> actualFixedSizeListResult = ListUtils.fixedSizeList(list);
-
-    // Assert
-    assertEquals(list, actualFixedSizeListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#fixedSizeList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#fixedSizeList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.fixedSizeList(List)"})
-  public void testFixedSizeList_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act
-    List<Object> actualFixedSizeListResult = ListUtils.fixedSizeList(list);
-
-    // Assert
-    assertEquals(list, actualFixedSizeListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#fixedSizeList(List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#fixedSizeList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.fixedSizeList(List)"})
-  public void testFixedSizeList_whenArrayList_thenReturnEmpty() {
+  public void testFixedSizeList() {
     // Arrange and Act
     List<Object> actualFixedSizeListResult = ListUtils.fixedSizeList(new ArrayList<>());
 
@@ -339,19 +190,44 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#getFirst(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link ListUtils#fixedSizeList(List)}
+   */
+  @Test
+  public void testFixedSizeList2() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+
+    // Act
+    List<Object> actualFixedSizeListResult = ListUtils.fixedSizeList(list);
+
+    // Assert
+    assertEquals(1, actualFixedSizeListResult.size());
+    assertEquals("42", actualFixedSizeListResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#fixedSizeList(List)}
+   */
+  @Test
+  public void testFixedSizeList3() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    list.add("42");
+
+    // Act
+    List<Object> actualFixedSizeListResult = ListUtils.fixedSizeList(list);
+
+    // Assert
+    assertEquals(list, actualFixedSizeListResult);
+  }
+
+  /**
    * Method under test: {@link ListUtils#getFirst(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListUtils.getFirst(List)"})
-  public void testGetFirst_given42_whenArrayListAdd42_thenReturn42() {
+  public void testGetFirst() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -361,19 +237,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#getFirst(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#getFirst(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListUtils.getFirst(List)"})
-  public void testGetFirst_given42_whenArrayListAdd42_thenReturn422() {
+  public void testGetFirst2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -384,19 +251,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#getLast(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#getLast(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListUtils.getLast(List)"})
-  public void testGetLast_given42_whenArrayListAdd42_thenReturn42() {
+  public void testGetLast() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -406,19 +264,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#getLast(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#getLast(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListUtils.getLast(List)"})
-  public void testGetLast_given42_whenArrayListAdd42_thenReturn422() {
+  public void testGetLast2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -429,19 +278,33 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#hashCodeForList(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 54145}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#hashCodeForList(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.hashCodeForList(Collection)"})
-  public void testHashCodeForList_given42_whenArrayListAdd42_thenReturn54145() {
+  public void testHashCodeForList() {
+    // Arrange, Act and Assert
+    assertEquals(1, ListUtils.hashCodeForList(new ArrayList<>()));
+    assertEquals(0, ListUtils.hashCodeForList(null));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#hashCodeForList(Collection)}
+   */
+  @Test
+  public void testHashCodeForList2() {
+    // Arrange
+    LinkedHashSet<?> list = new LinkedHashSet<>();
+    list.add(null);
+
+    // Act and Assert
+    assertEquals(31, ListUtils.hashCodeForList(list));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#hashCodeForList(Collection)}
+   */
+  @Test
+  public void testHashCodeForList3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -452,262 +315,120 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#hashCodeForList(Collection)}.
-   * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link LinkedHashSet#LinkedHashSet()} add {@code null}.</li>
-   *   <li>Then return thirty-one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#hashCodeForList(Collection)}
+   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.hashCodeForList(Collection)"})
-  public void testHashCodeForList_givenNull_whenLinkedHashSetAddNull_thenReturnThirtyOne() {
+  public void testIndexOf() {
     // Arrange
-    LinkedHashSet<?> list = new LinkedHashSet<>();
-    list.add(null);
+    ArrayList<Object> list = new ArrayList<>();
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
 
     // Act and Assert
-    assertEquals(31, ListUtils.hashCodeForList(list));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND,
+        ListUtils.indexOf(list, new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))));
   }
 
   /**
-   * Test {@link ListUtils#hashCodeForList(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#hashCodeForList(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.hashCodeForList(Collection)"})
-  public void testHashCodeForList_whenArrayList_thenReturnOne() {
-    // Arrange, Act and Assert
-    assertEquals(1, ListUtils.hashCodeForList(new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link ListUtils#hashCodeForList(Collection)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#hashCodeForList(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.hashCodeForList(Collection)"})
-  public void testHashCodeForList_whenNull_thenReturnZero() {
-    // Arrange, Act and Assert
-    assertEquals(0, ListUtils.hashCodeForList(null));
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#indexOf(List, Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_givenFalse_whenPredicateTestReturnFalse_thenReturnIndex_not_found() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    int actualIndexOfResult = ListUtils.indexOf(list, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(CollectionUtils.INDEX_NOT_FOUND, actualIndexOfResult);
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_givenTrue_whenPredicateTestReturnTrue_thenReturnZero() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    int actualIndexOfResult = ListUtils.indexOf(list, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(0, actualIndexOfResult);
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_givenTrue_whenPredicateTestReturnTrue_thenReturnZero2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    int actualIndexOfResult = ListUtils.indexOf(list, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(0, actualIndexOfResult);
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("foo"));
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListUtils.indexOf(list, predicate));
-    verify(predicate).test(isA(Object.class));
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_whenArrayList_thenReturnIndex_not_found() {
-    // Arrange, Act and Assert
-    assertEquals(CollectionUtils.INDEX_NOT_FOUND, ListUtils.indexOf(new ArrayList<>(), null));
-  }
-
-  /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_whenNull_thenReturnIndex_not_found() {
+  public void testIndexOf2() {
     // Arrange, Act and Assert
     assertEquals(CollectionUtils.INDEX_NOT_FOUND, ListUtils.indexOf(null, null));
   }
 
   /**
-   * Test {@link ListUtils#indexOf(List, Predicate)}.
-   * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return {@link CollectionUtils#INDEX_NOT_FOUND}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#indexOf(List, Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListUtils.indexOf(List, Predicate)"})
-  public void testIndexOf_whenPredicate_thenReturnIndex_not_found() {
+  public void testIndexOf3() {
     // Arrange, Act and Assert
-    assertEquals(CollectionUtils.INDEX_NOT_FOUND, ListUtils.indexOf(new ArrayList<>(), mock(Predicate.class)));
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND, ListUtils.indexOf(new ArrayList<>(), null));
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
+   */
+  @Test
+  public void testIndexOf4() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
+
+    // Act and Assert
+    assertEquals(0,
+        ListUtils.indexOf(list, new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
+   */
+  @Test
+  public void testIndexOf5() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    list.add("42");
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
+
+    // Act and Assert
+    assertEquals(0,
+        ListUtils.indexOf(list, new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
+   */
+  @Test
+  public void testIndexOf6() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+    EqualPredicate<? super Object> predicate1 = new EqualPredicate<>("Test", equator);
+
+    // Act and Assert
+    assertEquals(CollectionUtils.INDEX_NOT_FOUND,
+        ListUtils.indexOf(list, new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#indexOf(List, Predicate)}
+   */
+  @Test
+  public void testIndexOf7() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+    EqualPredicate<? super Object> predicate1 = new EqualPredicate<>("42", equator);
+
+    // Act and Assert
+    assertEquals(0,
+        ListUtils.indexOf(list, new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))));
+  }
+
+  /**
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testIntersection() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
-    list1.add("42");
-
-    ArrayList<Object> list2 = new ArrayList<>();
-    list2.add("42");
 
     // Act
-    List<Object> actualIntersectionResult = ListUtils.intersection(list1, list2);
+    List<Object> actualIntersectionResult = ListUtils.intersection(list1, new ArrayList<>());
 
     // Assert
-    assertEquals(list1, actualIntersectionResult);
+    assertTrue(actualIntersectionResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_given42_whenArrayListAdd42_thenReturnEmpty() {
+  public void testIntersection2() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -720,19 +441,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_given42_whenArrayListAdd42_thenReturnEmpty2() {
+  public void testIntersection3() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -746,19 +458,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_given42_whenArrayList_thenReturnEmpty() {
+  public void testIntersection4() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -773,19 +476,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_given42_whenArrayList_thenReturnEmpty2() {
+  public void testIntersection5() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -801,42 +495,69 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#intersection(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#intersection(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.intersection(List, List)"})
-  public void testIntersection_whenArrayList_thenReturnEmpty() {
+  public void testIntersection6() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
+    list1.add("42");
+
+    ArrayList<Object> list2 = new ArrayList<>();
+    list2.add("42");
 
     // Act
-    List<Object> actualIntersectionResult = ListUtils.intersection(list1, new ArrayList<>());
+    List<Object> actualIntersectionResult = ListUtils.intersection(list1, list2);
 
     // Assert
-    assertTrue(actualIntersectionResult.isEmpty());
+    assertEquals(1, actualIntersectionResult.size());
+    assertEquals("42", actualIntersectionResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testIsEqualList() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+
+    // Act and Assert
+    assertTrue(ListUtils.isEqualList(list1, new ArrayList<>()));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
+   */
+  @Test
+  public void testIsEqualList2() {
+    // Arrange, Act and Assert
+    assertTrue(ListUtils.isEqualList(null, null));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
+   */
+  @Test
+  public void testIsEqualList3() {
+    // Arrange, Act and Assert
+    assertFalse(ListUtils.isEqualList(null, new ArrayList<>()));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
+   */
+  @Test
+  public void testIsEqualList4() {
+    // Arrange, Act and Assert
+    assertFalse(ListUtils.isEqualList(new ArrayList<>(), null));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
+   */
+  @Test
+  public void testIsEqualList5() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -846,19 +567,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_given42_whenArrayListAdd42_thenReturnFalse2() {
+  public void testIsEqualList6() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -869,19 +581,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_given42_whenArrayListAdd42_thenReturnFalse3() {
+  public void testIsEqualList7() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -893,19 +596,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_given42_whenArrayListAdd42_thenReturnFalse4() {
+  public void testIsEqualList8() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -918,19 +612,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_given42_whenArrayListAdd42_thenReturnTrue() {
+  public void testIsEqualList9() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -943,19 +628,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_givenTwo_whenArrayListAddTwo_thenReturnFalse() {
+  public void testIsEqualList10() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -968,805 +644,515 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_whenArrayList_thenReturnTrue() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-
-    // Act and Assert
-    assertTrue(ListUtils.isEqualList(list1, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_whenNull_thenReturnFalse() {
-    // Arrange, Act and Assert
-    assertFalse(ListUtils.isEqualList(null, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_whenNull_thenReturnFalse2() {
-    // Arrange, Act and Assert
-    assertFalse(ListUtils.isEqualList(new ArrayList<>(), null));
-  }
-
-  /**
-   * Test {@link ListUtils#isEqualList(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#isEqualList(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListUtils.isEqualList(Collection, Collection)"})
-  public void testIsEqualList_whenNull_thenReturnTrue() {
-    // Arrange, Act and Assert
-    assertTrue(ListUtils.isEqualList(null, null));
-  }
-
-  /**
-   * Test {@link ListUtils#lazyList(List, Factory)} with {@code list}, {@code factory}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#lazyList(List, Factory)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Factory)"})
-  public void testLazyListWithListFactory_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testLazyList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
 
     // Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(list, mock(Factory.class));
-
-    // Assert
-    assertEquals(list, actualLazyListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#lazyList(List, Factory)} with {@code list}, {@code factory}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#lazyList(List, Factory)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Factory)"})
-  public void testLazyListWithListFactory_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(list, mock(Factory.class));
-
-    // Assert
-    assertEquals(list, actualLazyListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#lazyList(List, Factory)} with {@code list}, {@code factory}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#lazyList(List, Factory)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Factory)"})
-  public void testLazyListWithListFactory_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(new ArrayList<>(), mock(Factory.class));
+    List<Object> actualLazyListResult = ListUtils.lazyList(list, new ConstantFactory<>("Constant To Return"));
 
     // Assert
     assertTrue(actualLazyListResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#lazyList(List, Transformer)} with {@code list}, {@code transformer}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#lazyList(List, Transformer)}
+   * Method under test: {@link ListUtils#lazyList(List, Factory)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Transformer)"})
-  public void testLazyListWithListTransformer_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testLazyList2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
 
     // Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(list, mock(Transformer.class));
+    List<Object> actualLazyListResult = ListUtils.lazyList(list, new ConstantFactory<>("Constant To Return"));
 
     // Assert
-    assertEquals(list, actualLazyListResult);
+    assertEquals(1, actualLazyListResult.size());
+    assertEquals("42", actualLazyListResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#lazyList(List, Transformer)} with {@code list}, {@code transformer}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#lazyList(List, Transformer)}
+   * Method under test: {@link ListUtils#lazyList(List, Factory)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Transformer)"})
-  public void testLazyListWithListTransformer_given42_whenArrayListAdd42_thenReturnArrayList2() {
+  public void testLazyList3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
     list.add("42");
 
     // Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(list, mock(Transformer.class));
+    List<Object> actualLazyListResult = ListUtils.lazyList(list, new ConstantFactory<>("Constant To Return"));
 
     // Assert
     assertEquals(list, actualLazyListResult);
   }
 
   /**
-   * Test {@link ListUtils#lazyList(List, Transformer)} with {@code list}, {@code transformer}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#lazyList(List, Transformer)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.lazyList(List, Transformer)"})
-  public void testLazyListWithListTransformer_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualLazyListResult = ListUtils.lazyList(new ArrayList<>(), mock(Transformer.class));
-
-    // Assert
-    assertTrue(actualLazyListResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(a, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(a, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_thenReturnArrayList3() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(a, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_thenReturnSizeIsOne2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-    a.add("42");
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_whenArrayList_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_whenArrayList_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-    a.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_whenArrayList_thenReturnEmpty3() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_given42_whenArrayList_thenReturnEmpty4() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add(2);
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(a, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add(2);
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add(2);
-    b.add("42");
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(a, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add(2);
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_thenReturnSizeIsOne2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-    a.add("42");
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add(2);
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_whenArrayListAddTwo_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add(2);
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_whenArrayListAddTwo_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add("42");
-    a.add("42");
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add(2);
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_givenTwo_whenArrayListAddTwo_thenReturnEmpty3() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-    a.add(2);
-
-    ArrayList<Object> b = new ArrayList<>();
-    b.add("42");
-    b.add("42");
-    b.add("42");
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List)} with {@code a}, {@code b}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List)"})
-  public void testLongestCommonSubsequenceWithAB_whenArrayList_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> a = new ArrayList<>();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB() {
-    // Arrange, Act and Assert
-    assertEquals("",
-        ListUtils.longestCommonSubsequence(Integer.toString(CollectionUtils.INDEX_NOT_FOUND), CollectionUtils.COLON));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <ul>
-   *   <li>Then return {@link CollectionUtils#COLON}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB_thenReturnColon() {
+  public void testLongestCommonSubsequence() {
     // Arrange, Act and Assert
     assertEquals(CollectionUtils.COLON,
         ListUtils.longestCommonSubsequence(CollectionUtils.COLON, CollectionUtils.COLON));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <ul>
-   *   <li>When {@code Char Sequence B}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB_whenCharSequenceB() {
-    // Arrange, Act and Assert
-    assertEquals("", ListUtils.longestCommonSubsequence(CollectionUtils.DEFAULT_TOSTRING_PREFIX, "Char Sequence B"));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <ul>
-   *   <li>When {@code charSequenceB}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB_whenCharSequenceB2() {
-    // Arrange, Act and Assert
-    assertEquals("", ListUtils.longestCommonSubsequence(CollectionUtils.DEFAULT_TOSTRING_PREFIX, "charSequenceB"));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <ul>
-   *   <li>When {@link CollectionUtils#COMMA}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB_whenComma() {
-    // Arrange, Act and Assert
     assertEquals("", ListUtils.longestCommonSubsequence(CollectionUtils.COMMA, CollectionUtils.COLON));
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)} with {@code charSequenceA}, {@code charSequenceB}.
-   * <ul>
-   *   <li>When toString {@link Integer#MIN_VALUE}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(CharSequence, CharSequence)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListUtils.longestCommonSubsequence(CharSequence, CharSequence)"})
-  public void testLongestCommonSubsequenceWithCharSequenceACharSequenceB_whenToStringMin_value() {
-    // Arrange, Act and Assert
+    assertEquals("", ListUtils.longestCommonSubsequence(CollectionUtils.DEFAULT_TOSTRING_PREFIX, "Char Sequence B"));
+    assertEquals("", ListUtils.longestCommonSubsequence(CollectionUtils.DEFAULT_TOSTRING_PREFIX, "charSequenceB"));
+    assertEquals("",
+        ListUtils.longestCommonSubsequence(Integer.toString(CollectionUtils.INDEX_NOT_FOUND), CollectionUtils.COLON));
     assertEquals("", ListUtils.longestCommonSubsequence(Integer.toString(Integer.MIN_VALUE), CollectionUtils.COLON));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_given42_thenReturnArrayList() {
+  public void testLongestCommonSubsequence2() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence3() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence4() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+    a.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence5() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence6() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence7() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence8() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence9() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(2);
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence10() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence11() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence12() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(2);
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence13() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add(2);
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence14() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add(2);
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence15() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add(2);
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence16() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+    a.add("42");
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence17() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add(2);
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(2);
+    b.add("42");
+    b.add("42");
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List)}
+   */
+  @Test
+  public void testLongestCommonSubsequence18() {
+    // Arrange
+    ArrayList<Object> a = new ArrayList<>();
+    a.add("42");
+    a.add("42");
+    a.add("42");
+
+    ArrayList<Object> b = new ArrayList<>();
+    b.add(2);
+    b.add("42");
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(a, b);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence19() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    ArrayList<Object> listB = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence20() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add("42");
+    ArrayList<Object> listB = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence21() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add("42");
+    listA.add("42");
+    ArrayList<Object> listB = new ArrayList<>();
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence22() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence23() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add("42");
+    listB.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence24() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -1779,22 +1165,16 @@ public class ListUtilsDiffblueTest {
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(listA, actualLongestCommonSubsequenceResult);
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_given42_thenReturnArrayList2() {
+  public void testLongestCommonSubsequence25() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -1808,22 +1188,37 @@ public class ListUtilsDiffblueTest {
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(listA, actualLongestCommonSubsequenceResult);
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_given42_thenReturnArrayList3() {
+  public void testLongestCommonSubsequence26() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add("42");
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add(2);
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence27() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -1838,22 +1233,16 @@ public class ListUtilsDiffblueTest {
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(listA, actualLongestCommonSubsequenceResult);
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_given42_thenReturnSizeIsOne() {
+  public void testLongestCommonSubsequence28() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -1872,49 +1261,33 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_given42_thenReturnSizeIsOne2() {
+  public void testLongestCommonSubsequence29() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
     listA.add("42");
-    listA.add("42");
 
     ArrayList<Object> listB = new ArrayList<>();
-    listB.add("42");
+    listB.add(2);
     DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
 
     // Act
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_thenReturnArrayList() {
+  public void testLongestCommonSubsequence30() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -1928,22 +1301,88 @@ public class ListUtilsDiffblueTest {
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(listA, actualLongestCommonSubsequenceResult);
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_thenReturnArrayList2() {
+  public void testLongestCommonSubsequence31() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add(2);
+    listA.add("42");
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add("42");
+    listB.add("42");
+    listB.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence32() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add(2);
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add("42");
+    listB.add("42");
+    listB.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence33() {
+    // Arrange
+    ArrayList<Object> listA = new ArrayList<>();
+    listA.add("42");
+    listA.add("42");
+    listA.add("42");
+
+    ArrayList<Object> listB = new ArrayList<>();
+    listB.add("42");
+    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
+
+    // Act
+    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
+
+    // Assert
+    assertEquals(1, actualLongestCommonSubsequenceResult.size());
+    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
+  }
+
+  /**
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   */
+  @Test
+  public void testLongestCommonSubsequence34() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add(2);
@@ -1959,54 +1398,15 @@ public class ListUtilsDiffblueTest {
     List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
 
     // Assert
-    assertEquals(listA, actualLongestCommonSubsequenceResult);
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add(2);
-    listA.add("42");
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add("42");
-    listB.add("42");
-    listB.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
     assertEquals(1, actualLongestCommonSubsequenceResult.size());
-    assertEquals("42", actualLongestCommonSubsequenceResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
+   * Method under test:
+   * {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_thenReturnSizeIsOne2() {
+  public void testLongestCommonSubsequence35() {
     // Arrange
     ArrayList<Object> listA = new ArrayList<>();
     listA.add("42");
@@ -2027,291 +1427,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_whenArrayListAddTwo() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add("42");
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add(2);
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_whenArrayListAddTwo2() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add("42");
-    listA.add("42");
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add(2);
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_givenTwo_whenArrayListAddTwo3() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add(2);
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add("42");
-    listB.add("42");
-    listB.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_whenArrayList_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    ArrayList<Object> listB = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_whenArrayList_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add("42");
-    ArrayList<Object> listB = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_whenArrayList_thenReturnEmpty3() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-    listA.add("42");
-    listA.add("42");
-    ArrayList<Object> listB = new ArrayList<>();
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_whenArrayList_thenReturnEmpty4() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#longestCommonSubsequence(List, List, Equator)} with {@code listA}, {@code listB}, {@code equator}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#longestCommonSubsequence(List, List, Equator)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.longestCommonSubsequence(List, List, Equator)"})
-  public void testLongestCommonSubsequenceWithListAListBEquator_whenArrayList_thenReturnEmpty5() {
-    // Arrange
-    ArrayList<Object> listA = new ArrayList<>();
-
-    ArrayList<Object> listB = new ArrayList<>();
-    listB.add("42");
-    listB.add("42");
-    DefaultEquator<? super Object> equator = DefaultEquator.defaultEquator();
-
-    // Act
-    List<Object> actualLongestCommonSubsequenceResult = ListUtils.longestCommonSubsequence(listA, listB, equator);
-
-    // Assert
-    assertTrue(actualLongestCommonSubsequenceResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#partition(List, int)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#partition(List, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.partition(List, int)"})
-  public void testPartition_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act
-    List<List<Object>> actualPartitionResult = ListUtils.partition(list, 3);
-
-    // Assert
-    assertEquals(1, actualPartitionResult.size());
-    assertEquals(list, actualPartitionResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#partition(List, int)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#partition(List, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.partition(List, int)"})
-  public void testPartition_given42_whenArrayListAdd42_thenReturnSizeIsOne2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act
-    List<List<Object>> actualPartitionResult = ListUtils.partition(list, 3);
-
-    // Assert
-    assertEquals(1, actualPartitionResult.size());
-    assertEquals(list, actualPartitionResult.get(0));
-  }
-
-  /**
-   * Test {@link ListUtils#partition(List, int)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#partition(List, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.partition(List, int)"})
-  public void testPartition_whenArrayList_thenReturnEmpty() {
+  public void testPartition() {
     // Arrange and Act
     List<List<Object>> actualPartitionResult = ListUtils.partition(new ArrayList<>(), 3);
 
@@ -2320,138 +1439,127 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#partition(List, int)}.
-   * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#partition(List, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.partition(List, int)"})
-  public void testPartition_whenZero_thenThrowIllegalArgumentException() {
+  public void testPartition2() {
     // Arrange, Act and Assert
     assertThrows(IllegalArgumentException.class, () -> ListUtils.partition(new ArrayList<>(), 0));
   }
 
   /**
-   * Test {@link ListUtils#predicatedList(List, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#predicatedList(List, Predicate)}
+   * Method under test: {@link ListUtils#partition(List, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.predicatedList(List, Predicate)"})
-  public void testPredicatedList_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList() {
+  public void testPartition3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    List<Object> actualPredicatedListResult = ListUtils.predicatedList(list, predicate);
+    List<List<Object>> actualPartitionResult = ListUtils.partition(list, 3);
 
     // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(list, actualPredicatedListResult);
+    assertEquals(1, actualPartitionResult.size());
+    List<Object> getResult = actualPartitionResult.get(0);
+    assertEquals(1, getResult.size());
+    assertEquals("42", getResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#predicatedList(List, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#predicatedList(List, Predicate)}
+   * Method under test: {@link ListUtils#partition(List, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.predicatedList(List, Predicate)"})
-  public void testPredicatedList_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList2() {
+  public void testPartition4() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
     list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
 
     // Act
-    List<Object> actualPredicatedListResult = ListUtils.predicatedList(list, predicate);
+    List<List<Object>> actualPartitionResult = ListUtils.partition(list, 3);
 
     // Assert
-    verify(predicate, atLeast(1)).test(isA(Object.class));
-    assertEquals(list, actualPredicatedListResult);
+    assertEquals(1, actualPartitionResult.size());
+    assertEquals(list, actualPartitionResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#predicatedList(List, Predicate)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#predicatedList(List, Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.predicatedList(List, Predicate)"})
-  public void testPredicatedList_thenThrowIllegalArgumentException() {
+  public void testPredicatedList() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("collection"));
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
 
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListUtils.predicatedList(list, predicate));
-    verify(predicate).test(isA(Object.class));
-  }
-
-  /**
-   * Test {@link ListUtils#predicatedList(List, Predicate)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#predicatedList(List, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.predicatedList(List, Predicate)"})
-  public void testPredicatedList_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualPredicatedListResult = ListUtils.predicatedList(new ArrayList<>(), mock(Predicate.class));
+    // Act
+    List<Object> actualPredicatedListResult = ListUtils.predicatedList(list,
+        new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>())));
 
     // Assert
     assertTrue(actualPredicatedListResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link ListUtils#predicatedList(List, Predicate)}
+   */
+  @Test
+  public void testPredicatedList2() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
+
+    // Act
+    List<Object> actualPredicatedListResult = ListUtils.predicatedList(list,
+        new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>())));
+
+    // Assert
+    assertEquals(1, actualPredicatedListResult.size());
+    assertEquals("42", actualPredicatedListResult.get(0));
+  }
+
+  /**
    * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testRemoveAll() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
+
+    // Act
+    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualRemoveAllResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
+   */
+  @Test
+  public void testRemoveAll2() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    // Act
+    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, new ArrayList<>());
+
+    // Assert
+    assertEquals(1, actualRemoveAllResult.size());
+    assertEquals("42", actualRemoveAllResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
+   */
+  @Test
+  public void testRemoveAll3() {
+    // Arrange
+    ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
     collection.add("42");
 
     // Act
@@ -2462,73 +1570,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-    collection.add("42");
-
-    // Act
-    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, new ArrayList<>());
-
-    // Assert
-    assertEquals(collection, actualRemoveAllResult);
-  }
-
-  /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_given42_whenArrayListAdd42_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    ArrayList<Object> remove = new ArrayList<>();
-    remove.add("42");
-
-    // Act
-    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, remove);
-
-    // Assert
-    assertTrue(actualRemoveAllResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_given42_whenArrayList_thenReturnEmpty() {
+  public void testRemoveAll4() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -2543,19 +1588,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_given42_whenArrayList_thenReturnEmpty2() {
+  public void testRemoveAll5() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -2571,70 +1607,44 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#removeAll(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#removeAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.removeAll(Collection, Collection)"})
-  public void testRemoveAll_whenArrayList_thenReturnEmpty() {
+  public void testRemoveAll6() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    ArrayList<Object> remove = new ArrayList<>();
+    remove.add("42");
 
     // Act
-    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, new ArrayList<>());
+    List<Object> actualRemoveAllResult = ListUtils.removeAll(collection, remove);
 
     // Assert
     assertTrue(actualRemoveAllResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testRetainAll() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
-    collection.add("42");
-
-    ArrayList<Object> retain = new ArrayList<>();
-    retain.add("42");
 
     // Act
-    List<Object> actualRetainAllResult = ListUtils.retainAll(collection, retain);
+    List<Object> actualRetainAllResult = ListUtils.retainAll(collection, new ArrayList<>());
 
     // Assert
-    assertEquals(collection, actualRetainAllResult);
+    assertTrue(actualRetainAllResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenReturnEmpty() {
+  public void testRetainAll2() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -2647,19 +1657,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenReturnEmpty2() {
+  public void testRetainAll3() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -2673,19 +1674,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_given42_whenArrayList_thenReturnEmpty() {
+  public void testRetainAll4() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -2700,19 +1692,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_given42_whenArrayList_thenReturnEmpty2() {
+  public void testRetainAll5() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
 
@@ -2728,395 +1711,45 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#retainAll(Collection, Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#retainAll(Collection, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.retainAll(Collection, Collection)"})
-  public void testRetainAll_whenArrayList_thenReturnEmpty() {
+  public void testRetainAll6() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
+    collection.add("42");
+
+    ArrayList<Object> retain = new ArrayList<>();
+    retain.add("42");
 
     // Act
-    List<Object> actualRetainAllResult = ListUtils.retainAll(collection, new ArrayList<>());
+    List<Object> actualRetainAllResult = ListUtils.retainAll(collection, retain);
 
     // Assert
-    assertTrue(actualRetainAllResult.isEmpty());
+    assertEquals(1, actualRetainAllResult.size());
+    assertEquals("42", actualRetainAllResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_givenFalse_whenPredicateTestReturnFalse_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    List<Object> actualSelectResult = ListUtils.select(inputCollection, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    List<Object> actualSelectResult = ListUtils.select(inputCollection, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(inputCollection, actualSelectResult);
-  }
-
-  /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_givenTrue_whenPredicateTestReturnTrue_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    List<Object> actualSelectResult = ListUtils.select(inputCollection, predicate);
-
-    // Assert
-    verify(predicate, atLeast(1)).test(isA(Object.class));
-    assertEquals(inputCollection, actualSelectResult);
-  }
-
-  /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("foo"));
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListUtils.select(inputCollection, predicate));
-    verify(predicate).test(isA(Object.class));
-  }
-
-  /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualSelectResult = ListUtils.select(new ArrayList<>(), null);
-
-    // Assert
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#select(Collection, Predicate)}.
-   * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#select(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.select(Collection, Predicate)"})
-  public void testSelect_whenPredicate_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualSelectResult = ListUtils.select(new ArrayList<>(), mock(Predicate.class));
-
-    // Assert
-    assertTrue(actualSelectResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code false}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_givenFalse_whenPredicateTestReturnFalse_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(false);
-
-    // Act
-    List<Object> actualSelectRejectedResult = ListUtils.selectRejected(inputCollection, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertEquals(inputCollection, actualSelectRejectedResult);
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_givenTrue_whenPredicateTestReturnTrue_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    List<Object> actualSelectRejectedResult = ListUtils.selectRejected(inputCollection, predicate);
-
-    // Assert
-    verify(predicate).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_givenTrue_whenPredicateTestReturnTrue_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    List<Object> actualSelectRejectedResult = ListUtils.selectRejected(inputCollection, predicate);
-
-    // Assert
-    verify(predicate, atLeast(1)).test(isA(Object.class));
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayList<Object> inputCollection = new ArrayList<>();
-    inputCollection.add("42");
-    Predicate<Object> predicate = mock(Predicate.class);
-    when(predicate.test(Mockito.<Object>any())).thenThrow(new IllegalArgumentException("foo"));
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListUtils.selectRejected(inputCollection, predicate));
-    verify(predicate).test(isA(Object.class));
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualSelectRejectedResult = ListUtils.selectRejected(new ArrayList<>(), null);
-
-    // Assert
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#selectRejected(Collection, Predicate)}.
-   * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#selectRejected(Collection, Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.selectRejected(Collection, Predicate)"})
-  public void testSelectRejected_whenPredicate_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualSelectRejectedResult = ListUtils.selectRejected(new ArrayList<>(), mock(Predicate.class));
-
-    // Assert
-    assertTrue(actualSelectRejectedResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayListAdd42_thenReturnEmpty() {
+  public void testSubtract() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
-    list1.add("42");
-
-    ArrayList<Object> list2 = new ArrayList<>();
-    list2.add("42");
 
     // Act
-    List<Object> actualSubtractResult = ListUtils.subtract(list1, list2);
+    List<Object> actualSubtractResult = ListUtils.subtract(list1, new ArrayList<>());
 
     // Assert
     assertTrue(actualSubtractResult.isEmpty());
   }
 
   /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayListAdd42_thenReturnEmpty2() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-    list1.add("42");
-
-    ArrayList<Object> list2 = new ArrayList<>();
-    list2.add("42");
-    list2.add("42");
-
-    // Act
-    List<Object> actualSubtractResult = ListUtils.subtract(list1, list2);
-
-    // Assert
-    assertTrue(actualSubtractResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#subtract(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayList_thenReturnArrayList() {
+  public void testSubtract2() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -3125,23 +1758,15 @@ public class ListUtilsDiffblueTest {
     List<Object> actualSubtractResult = ListUtils.subtract(list1, new ArrayList<>());
 
     // Assert
-    assertEquals(list1, actualSubtractResult);
+    assertEquals(1, actualSubtractResult.size());
+    assertEquals("42", actualSubtractResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayList_thenReturnArrayList2() {
+  public void testSubtract3() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -3155,19 +1780,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayList_thenReturnEmpty() {
+  public void testSubtract4() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3182,19 +1798,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_given42_whenArrayList_thenReturnEmpty2() {
+  public void testSubtract5() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3210,93 +1817,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#subtract(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#subtract(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.subtract(List, List)"})
-  public void testSubtract_whenArrayList_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-
-    // Act
-    List<Object> actualSubtractResult = ListUtils.subtract(list1, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualSubtractResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#sum(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_given42_whenArrayListAdd42_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-    list1.add("42");
-
-    // Act
-    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
-
-    // Assert
-    assertEquals(list1, actualSumResult);
-  }
-
-  /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#sum(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-    list1.add("42");
-    list1.add("42");
-
-    // Act
-    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
-
-    // Assert
-    assertEquals(list1, actualSumResult);
-  }
-
-  /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#sum(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_given42_whenArrayListAdd42_thenReturnArrayList3() {
+  public void testSubtract6() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -3305,26 +1829,86 @@ public class ListUtilsDiffblueTest {
     list2.add("42");
 
     // Act
-    List<Object> actualSumResult = ListUtils.sum(list1, list2);
+    List<Object> actualSubtractResult = ListUtils.subtract(list1, list2);
+
+    // Assert
+    assertTrue(actualSubtractResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#subtract(List, List)}
+   */
+  @Test
+  public void testSubtract7() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+    list1.add("42");
+
+    ArrayList<Object> list2 = new ArrayList<>();
+    list2.add("42");
+    list2.add("42");
+
+    // Act
+    List<Object> actualSubtractResult = ListUtils.subtract(list1, list2);
+
+    // Assert
+    assertTrue(actualSubtractResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#sum(List, List)}
+   */
+  @Test
+  public void testSum() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+
+    // Act
+    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualSumResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#sum(List, List)}
+   */
+  @Test
+  public void testSum2() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+    list1.add("42");
+
+    // Act
+    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
+
+    // Assert
+    assertEquals(1, actualSumResult.size());
+    assertEquals("42", actualSumResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#sum(List, List)}
+   */
+  @Test
+  public void testSum3() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+    list1.add("42");
+    list1.add("42");
+
+    // Act
+    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
 
     // Assert
     assertEquals(list1, actualSumResult);
   }
 
   /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#sum(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_given42_whenArrayList_thenReturnSizeIsOne() {
+  public void testSum4() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3340,19 +1924,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#sum(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_given42_whenArrayList_thenReturnSizeIsTwo() {
+  public void testSum5() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3364,98 +1939,34 @@ public class ListUtilsDiffblueTest {
     List<Object> actualSumResult = ListUtils.sum(list1, list2);
 
     // Assert
-    assertEquals(2, actualSumResult.size());
-    assertEquals("42", actualSumResult.get(0));
-    assertEquals("42", actualSumResult.get(1));
+    assertEquals(list2, actualSumResult);
   }
 
   /**
-   * Test {@link ListUtils#sum(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#sum(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.sum(List, List)"})
-  public void testSum_whenArrayList_thenReturnEmpty() {
+  public void testSum6() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
+    list1.add("42");
+
+    ArrayList<Object> list2 = new ArrayList<>();
+    list2.add("42");
 
     // Act
-    List<Object> actualSumResult = ListUtils.sum(list1, new ArrayList<>());
+    List<Object> actualSumResult = ListUtils.sum(list1, list2);
 
     // Assert
-    assertTrue(actualSumResult.isEmpty());
+    assertEquals(1, actualSumResult.size());
+    assertEquals("42", actualSumResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#synchronizedList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#synchronizedList(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.synchronizedList(List)"})
-  public void testSynchronizedList_given42_whenArrayListAdd42_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act
-    List<Object> actualSynchronizedListResult = ListUtils.synchronizedList(list);
-
-    // Assert
-    assertEquals(list, actualSynchronizedListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#synchronizedList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#synchronizedList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.synchronizedList(List)"})
-  public void testSynchronizedList_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act
-    List<Object> actualSynchronizedListResult = ListUtils.synchronizedList(list);
-
-    // Assert
-    assertEquals(list, actualSynchronizedListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#synchronizedList(List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#synchronizedList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.synchronizedList(List)"})
-  public void testSynchronizedList_whenArrayList_thenReturnEmpty() {
+  public void testSynchronizedList() {
     // Arrange and Act
     List<Object> actualSynchronizedListResult = ListUtils.synchronizedList(new ArrayList<>());
 
@@ -3464,90 +1975,59 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#transformedList(List, Transformer)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#transformedList(List, Transformer)}
+   * Method under test: {@link ListUtils#synchronizedList(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.transformedList(List, Transformer)"})
-  public void testTransformedList_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testSynchronizedList2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
 
     // Act
-    List<Object> actualTransformedListResult = ListUtils.transformedList(list, mock(Transformer.class));
+    List<Object> actualSynchronizedListResult = ListUtils.synchronizedList(list);
 
     // Assert
-    assertEquals(list, actualTransformedListResult);
+    assertEquals(1, actualSynchronizedListResult.size());
+    assertEquals("42", actualSynchronizedListResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#transformedList(List, Transformer)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#transformedList(List, Transformer)}
+   * Method under test: {@link ListUtils#synchronizedList(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.transformedList(List, Transformer)"})
-  public void testTransformedList_given42_whenArrayListAdd42_thenReturnArrayList2() {
+  public void testSynchronizedList3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
     list.add("42");
 
     // Act
-    List<Object> actualTransformedListResult = ListUtils.transformedList(list, mock(Transformer.class));
+    List<Object> actualSynchronizedListResult = ListUtils.synchronizedList(list);
 
     // Assert
-    assertEquals(list, actualTransformedListResult);
+    assertEquals(list, actualSynchronizedListResult);
   }
 
   /**
-   * Test {@link ListUtils#transformedList(List, Transformer)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#transformedList(List, Transformer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.transformedList(List, Transformer)"})
-  public void testTransformedList_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    List<Object> actualTransformedListResult = ListUtils.transformedList(new ArrayList<>(), mock(Transformer.class));
-
-    // Assert
-    assertTrue(actualTransformedListResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#union(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#union(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.union(List, List)"})
-  public void testUnion_given42_whenArrayListAdd42_thenReturnArrayList() {
+  public void testUnion() {
+    // Arrange
+    ArrayList<Object> list1 = new ArrayList<>();
+
+    // Act
+    List<Object> actualUnionResult = ListUtils.union(list1, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualUnionResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#union(List, List)}
+   */
+  @Test
+  public void testUnion2() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -3556,23 +2036,15 @@ public class ListUtilsDiffblueTest {
     List<Object> actualUnionResult = ListUtils.union(list1, new ArrayList<>());
 
     // Assert
-    assertEquals(list1, actualUnionResult);
+    assertEquals(1, actualUnionResult.size());
+    assertEquals("42", actualUnionResult.get(0));
   }
 
   /**
-   * Test {@link ListUtils#union(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#union(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.union(List, List)"})
-  public void testUnion_given42_whenArrayListAdd42_thenReturnArrayList2() {
+  public void testUnion3() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
     list1.add("42");
@@ -3586,19 +2058,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#union(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#union(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.union(List, List)"})
-  public void testUnion_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testUnion4() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3614,19 +2077,10 @@ public class ListUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link ListUtils#union(List, List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#union(List, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.union(List, List)"})
-  public void testUnion_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testUnion5() {
     // Arrange
     ArrayList<Object> list1 = new ArrayList<>();
 
@@ -3638,102 +2092,52 @@ public class ListUtilsDiffblueTest {
     List<Object> actualUnionResult = ListUtils.union(list1, list2);
 
     // Assert
-    assertEquals(2, actualUnionResult.size());
-    assertEquals("42", actualUnionResult.get(0));
-    assertEquals("42", actualUnionResult.get(1));
+    assertEquals(list2, actualUnionResult);
   }
 
   /**
-   * Test {@link ListUtils#union(List, List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#union(List, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.union(List, List)"})
-  public void testUnion_whenArrayList_thenReturnEmpty() {
-    // Arrange
-    ArrayList<Object> list1 = new ArrayList<>();
-
-    // Act
-    List<Object> actualUnionResult = ListUtils.union(list1, new ArrayList<>());
-
-    // Assert
-    assertTrue(actualUnionResult.isEmpty());
-  }
-
-  /**
-   * Test {@link ListUtils#unmodifiableList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListUtils#unmodifiableList(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.unmodifiableList(List)"})
-  public void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act
-    List<Object> actualUnmodifiableListResult = ListUtils.unmodifiableList(list);
-
-    // Assert
-    assertEquals(list, actualUnmodifiableListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#unmodifiableList(List)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#unmodifiableList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.unmodifiableList(List)"})
-  public void testUnmodifiableList_given42_whenArrayListAdd42_thenReturnArrayList2() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act
-    List<Object> actualUnmodifiableListResult = ListUtils.unmodifiableList(list);
-
-    // Assert
-    assertEquals(list, actualUnmodifiableListResult);
-  }
-
-  /**
-   * Test {@link ListUtils#unmodifiableList(List)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListUtils#unmodifiableList(List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListUtils.unmodifiableList(List)"})
-  public void testUnmodifiableList_whenArrayList_thenReturnEmpty() {
+  public void testUnmodifiableList() {
     // Arrange and Act
     List<Object> actualUnmodifiableListResult = ListUtils.unmodifiableList(new ArrayList<>());
 
     // Assert
     assertTrue(actualUnmodifiableListResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListUtils#unmodifiableList(List)}
+   */
+  @Test
+  public void testUnmodifiableList2() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+
+    // Act
+    List<Object> actualUnmodifiableListResult = ListUtils.unmodifiableList(list);
+
+    // Assert
+    assertEquals(1, actualUnmodifiableListResult.size());
+    assertEquals("42", actualUnmodifiableListResult.get(0));
+  }
+
+  /**
+   * Method under test: {@link ListUtils#unmodifiableList(List)}
+   */
+  @Test
+  public void testUnmodifiableList3() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    list.add("42");
+
+    // Act
+    List<Object> actualUnmodifiableListResult = ListUtils.unmodifiableList(list);
+
+    // Assert
+    assertEquals(list, actualUnmodifiableListResult);
   }
 }

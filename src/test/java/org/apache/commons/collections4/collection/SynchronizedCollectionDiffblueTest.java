@@ -2,28 +2,31 @@ package org.apache.commons.collections4.collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class SynchronizedCollectionDiffblueTest {
   /**
-   * Test {@link SynchronizedCollection#synchronizedCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
+   * Method under test:
+   * {@link SynchronizedCollection#synchronizedCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"})
-  public void testSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testSynchronizedCollection() {
+    // Arrange and Act
+    SynchronizedCollection<Object> actualSynchronizedCollectionResult = SynchronizedCollection
+        .synchronizedCollection(new ArrayList<>());
+
+    // Assert
+    assertTrue(actualSynchronizedCollectionResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedCollection#synchronizedCollection(Collection)}
+   */
+  @Test
+  public void testSynchronizedCollection2() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -37,40 +40,24 @@ public class SynchronizedCollectionDiffblueTest {
   }
 
   /**
-   * Test {@link SynchronizedCollection#synchronizedCollection(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#synchronizedCollection(Collection)}
+   * Method under test:
+   * {@link SynchronizedCollection#SynchronizedCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"SynchronizedCollection SynchronizedCollection.synchronizedCollection(Collection)"})
-  public void testSynchronizedCollection_whenArrayList_thenReturnEmpty() {
+  public void testNewSynchronizedCollection() {
     // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollectionResult = SynchronizedCollection
-        .synchronizedCollection(new ArrayList<>());
+    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>());
 
     // Assert
-    assertTrue(actualSynchronizedCollectionResult.isEmpty());
+    assertTrue(actualSynchronizedCollection.isEmpty());
   }
 
   /**
-   * Test {@link SynchronizedCollection#SynchronizedCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
+   * Method under test:
+   * {@link SynchronizedCollection#SynchronizedCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection)"})
-  public void testNewSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testNewSynchronizedCollection2() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -83,19 +70,25 @@ public class SynchronizedCollectionDiffblueTest {
   }
 
   /**
-   * Test {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
+   * Method under test:
+   * {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection, Object)"})
-  public void testNewSynchronizedCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne2() {
+  public void testNewSynchronizedCollection3() {
+    // Arrange and Act
+    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>(),
+        "Lock");
+
+    // Assert
+    assertTrue(actualSynchronizedCollection.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
+   */
+  @Test
+  public void testNewSynchronizedCollection4() {
     // Arrange
     ArrayList<Object> collection = new ArrayList<>();
     collection.add("42");
@@ -108,54 +101,9 @@ public class SynchronizedCollectionDiffblueTest {
   }
 
   /**
-   * Test {@link SynchronizedCollection#SynchronizedCollection(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection)"})
-  public void testNewSynchronizedCollection_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>());
-
-    // Assert
-    assertTrue(actualSynchronizedCollection.isEmpty());
-  }
-
-  /**
-   * Test {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedCollection#SynchronizedCollection(Collection, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedCollection.<init>(Collection, Object)"})
-  public void testNewSynchronizedCollection_whenArrayList_thenReturnEmpty2() {
-    // Arrange and Act
-    SynchronizedCollection<Object> actualSynchronizedCollection = new SynchronizedCollection<>(new ArrayList<>(),
-        "Lock");
-
-    // Assert
-    assertTrue(actualSynchronizedCollection.isEmpty());
-  }
-
-  /**
-   * Test {@link SynchronizedCollection#toString()}.
-   * <p>
    * Method under test: {@link SynchronizedCollection#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String SynchronizedCollection.toString()"})
   public void testToString() {
     // Arrange
     SynchronizedCollection<Object> synchronizedCollectionResult = SynchronizedCollection

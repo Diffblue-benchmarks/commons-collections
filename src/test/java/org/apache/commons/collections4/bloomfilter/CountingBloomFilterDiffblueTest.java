@@ -2,86 +2,16 @@ package org.apache.commons.collections4.bloomfilter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.function.IntPredicate;
-import java.util.function.LongPredicate;
-import org.apache.commons.collections4.bloomfilter.DefaultBloomFilterTest.SparseDefaultBloomFilter;
-import org.apache.commons.collections4.bloomfilter.LayeredBloomFilterTest.NumberedBloomFilter;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class CountingBloomFilterDiffblueTest {
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#getMaxInsert(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BitMapExtractor)"})
-  public void testGetMaxInsertWithBitMapExtractor_givenFalse_thenReturnZero() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
-
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertEquals(0, actualMaxInsert);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Then return {@link Integer#MAX_VALUE}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#getMaxInsert(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BitMapExtractor)"})
-  public void testGetMaxInsertWithBitMapExtractor_thenReturnMax_value() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.asBitMapArray()).thenReturn(new long[]{1L, -1L, 1L, -1L});
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
-
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).asBitMapArray();
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertEquals(Integer.MAX_VALUE, actualMaxInsert);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BloomFilter)} with {@code bloomFilter}.
-   * <p>
    * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BloomFilter)"})
-  public void testGetMaxInsertWithBloomFilter() {
+  public void testGetMaxInsert() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
@@ -91,14 +21,10 @@ public class CountingBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BloomFilter)} with {@code bloomFilter}.
-   * <p>
    * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BloomFilter)"})
-  public void testGetMaxInsertWithBloomFilter2() {
+  public void testGetMaxInsert2() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
@@ -108,256 +34,61 @@ public class CountingBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BloomFilter)} with {@code bloomFilter}.
-   * <p>
    * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BloomFilter)"})
-  public void testGetMaxInsertWithBloomFilter3() {
+  public void testGetMaxInsert3() {
+    // Arrange
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
+
+    // Act and Assert
+    assertEquals(Integer.MAX_VALUE, arrayCountingBloomFilter
+        .getMaxInsert(new DefaultBloomFilterTest.SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
+  }
+
+  /**
+   * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
+   */
+  @Test
+  public void testGetMaxInsert4() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
     // Act and Assert
     assertEquals(Integer.MAX_VALUE,
-        arrayCountingBloomFilter.getMaxInsert(new SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
+        arrayCountingBloomFilter.getMaxInsert(new SimpleBloomFilter(Shape.fromKM(19088743, 10))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BloomFilter)} with {@code bloomFilter}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BloomFilter)"})
-  public void testGetMaxInsertWithBloomFilter_givenFalse_thenReturnZero() {
+  public void testGetMaxInsert5() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    NumberedBloomFilter bloomFilter = mock(NumberedBloomFilter.class);
-    when(bloomFilter.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
 
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(bloomFilter);
-
-    // Assert
-    verify(bloomFilter).processBitMaps(isA(LongPredicate.class));
-    assertEquals(0, actualMaxInsert);
+    // Act and Assert
+    assertEquals(Integer.MAX_VALUE,
+        arrayCountingBloomFilter.getMaxInsert(new SparseBloomFilter(Shape.fromKM(19088743, 10))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(BloomFilter)} with {@code bloomFilter}.
-   * <ul>
-   *   <li>Then calls {@link WrappedBloomFilter#asBitMapArray()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#getMaxInsert(BloomFilter)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(BloomFilter)"})
-  public void testGetMaxInsertWithBloomFilter_thenCallsAsBitMapArray() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    NumberedBloomFilter bloomFilter = mock(NumberedBloomFilter.class);
-    when(bloomFilter.asBitMapArray()).thenReturn(new long[]{1L, -1L, 1L, -1L});
-    when(bloomFilter.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
-
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(bloomFilter);
-
-    // Assert
-    verify(bloomFilter).asBitMapArray();
-    verify(bloomFilter).processBitMaps(isA(LongPredicate.class));
-    assertEquals(Integer.MAX_VALUE, actualMaxInsert);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#getMaxInsert(Hasher)} with {@code hasher}.
-   * <ul>
-   *   <li>Then return {@link Integer#MAX_VALUE}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#getMaxInsert(Hasher)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(Hasher)"})
-  public void testGetMaxInsertWithHasher_thenReturnMax_value() {
+  public void testGetMaxInsert6() {
     // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-    Hasher hasher = mock(Hasher.class);
-    when(hasher.indices(Mockito.<Shape>any())).thenReturn(indexExtractor2);
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(10, 10));
 
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(hasher);
-
-    // Assert
-    verify(hasher).indices(isA(Shape.class));
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertEquals(Integer.MAX_VALUE, actualMaxInsert);
+    // Act and Assert
+    assertEquals(0, arrayCountingBloomFilter.getMaxInsert(new EnhancedDoubleHasher(1L, 1L)));
   }
 
   /**
-   * Test {@link CountingBloomFilter#getMaxInsert(IndexExtractor)} with {@code indexExtractor}.
-   * <ul>
-   *   <li>Then return {@link Integer#MAX_VALUE}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#getMaxInsert(IndexExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int CountingBloomFilter.getMaxInsert(IndexExtractor)"})
-  public void testGetMaxInsertWithIndexExtractor_thenReturnMax_value() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-
-    // Act
-    int actualMaxInsert = arrayCountingBloomFilter.getMaxInsert(indexExtractor2);
-
-    // Assert
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertEquals(Integer.MAX_VALUE, actualMaxInsert);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#merge(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#merge(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(BitMapExtractor)"})
-  public void testMergeWithBitMapExtractor_givenFalse() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
-
-    // Act
-    boolean actualMergeResult = arrayCountingBloomFilter.merge(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertTrue(actualMergeResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#merge(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#merge(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(BitMapExtractor)"})
-  public void testMergeWithBitMapExtractor_givenTrue() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
-
-    // Act
-    boolean actualMergeResult = arrayCountingBloomFilter.merge(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertTrue(actualMergeResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#merge(Hasher)} with {@code hasher}.
-   * <ul>
-   *   <li>Given {@link IndexExtractor} {@link IndexExtractor#processIndices(IntPredicate)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#merge(Hasher)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(Hasher)"})
-  public void testMergeWithHasher_givenIndexExtractorProcessIndicesReturnTrue_thenReturnTrue() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-    Hasher hasher = mock(Hasher.class);
-    when(hasher.indices(Mockito.<Shape>any())).thenReturn(indexExtractor2);
-
-    // Act
-    boolean actualMergeResult = arrayCountingBloomFilter.merge(hasher);
-
-    // Assert
-    verify(hasher).indices(isA(Shape.class));
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertTrue(actualMergeResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#merge(IndexExtractor)} with {@code indexExtractor}.
-   * <ul>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#merge(IndexExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(IndexExtractor)"})
-  public void testMergeWithIndexExtractor_thenReturnTrue() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-
-    // Act
-    boolean actualMergeResult = arrayCountingBloomFilter.merge(indexExtractor2);
-
-    // Assert
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertTrue(actualMergeResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#merge(BloomFilter)} with {@code other}.
-   * <ul>
-   *   <li>When {@link ArrayCountingBloomFilter#ArrayCountingBloomFilter(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#merge(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(BloomFilter)"})
-  public void testMergeWithOther_whenArrayCountingBloomFilterWithShapeIsFromKM19088743AndTen() {
+  public void testMerge() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
@@ -367,248 +98,59 @@ public class CountingBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link CountingBloomFilter#merge(BloomFilter)} with {@code other}.
-   * <ul>
-   *   <li>When {@link SparseDefaultBloomFilter#SparseDefaultBloomFilter(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#merge(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.merge(BloomFilter)"})
-  public void testMergeWithOther_whenSparseDefaultBloomFilterWithShapeIsFromKM19088743AndTen() {
+  public void testMerge2() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
     // Act and Assert
-    assertTrue(arrayCountingBloomFilter.merge(new SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
+    assertTrue(arrayCountingBloomFilter
+        .merge(new DefaultBloomFilterTest.SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#remove(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(BitMapExtractor)}
+   * Method under test: {@link CountingBloomFilter#merge(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BitMapExtractor)"})
-  public void testRemoveWithBitMapExtractor_givenFalse() {
+  public void testMerge3() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(false);
-
-    // Act
-    boolean actualRemoveResult = arrayCountingBloomFilter.remove(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertTrue(actualRemoveResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#remove(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BitMapExtractor)"})
-  public void testRemoveWithBitMapExtractor_givenTrue() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any())).thenReturn(true);
-
-    // Act
-    boolean actualRemoveResult = arrayCountingBloomFilter.remove(bitMapExtractor);
-
-    // Assert
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
-    assertTrue(actualRemoveResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#remove(BitMapExtractor)} with {@code bitMapExtractor}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(BitMapExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BitMapExtractor)"})
-  public void testRemoveWithBitMapExtractor_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    BitMapExtractor bitMapExtractor = mock(BitMapExtractor.class);
-    when(bitMapExtractor.processBitMaps(Mockito.<LongPredicate>any()))
-        .thenThrow(new IndexOutOfBoundsException("bitMapExtractor"));
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> arrayCountingBloomFilter.remove(bitMapExtractor));
-    verify(bitMapExtractor).processBitMaps(isA(LongPredicate.class));
+    assertTrue(arrayCountingBloomFilter.merge(new SimpleBloomFilter(Shape.fromKM(19088743, 10))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#remove(Hasher)} with {@code hasher}.
-   * <ul>
-   *   <li>Given {@link IndexExtractor} {@link IndexExtractor#processIndices(IntPredicate)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(Hasher)}
+   * Method under test: {@link CountingBloomFilter#merge(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(Hasher)"})
-  public void testRemoveWithHasher_givenIndexExtractorProcessIndicesReturnTrue_thenReturnTrue() {
+  public void testMerge4() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-    Hasher hasher = mock(Hasher.class);
-    when(hasher.indices(Mockito.<Shape>any())).thenReturn(indexExtractor2);
-
-    // Act
-    boolean actualRemoveResult = arrayCountingBloomFilter.remove(hasher);
-
-    // Assert
-    verify(hasher).indices(isA(Shape.class));
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertTrue(actualRemoveResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#remove(Hasher)} with {@code hasher}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(Hasher)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(Hasher)"})
-  public void testRemoveWithHasher_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenThrow(new IndexOutOfBoundsException("hasher"));
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-    Hasher hasher = mock(Hasher.class);
-    when(hasher.indices(Mockito.<Shape>any())).thenReturn(indexExtractor2);
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> arrayCountingBloomFilter.remove(hasher));
-    verify(hasher).indices(isA(Shape.class));
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
+    assertTrue(arrayCountingBloomFilter.merge(new SimpleBloomFilter(Shape.fromNP(1000, 0.25d))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#remove(IndexExtractor)} with {@code indexExtractor}.
-   * <ul>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(IndexExtractor)}
+   * Method under test: {@link CountingBloomFilter#merge(Hasher)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(IndexExtractor)"})
-  public void testRemoveWithIndexExtractor_thenReturnTrue() {
+  public void testMerge5() {
     // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenReturn(true);
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
-
-    // Act
-    boolean actualRemoveResult = arrayCountingBloomFilter.remove(indexExtractor2);
-
-    // Assert
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
-    assertTrue(actualRemoveResult);
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#remove(IndexExtractor)} with {@code indexExtractor}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(IndexExtractor)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(IndexExtractor)"})
-  public void testRemoveWithIndexExtractor_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any()))
-        .thenThrow(new IndexOutOfBoundsException("indexExtractor"));
-    IndexExtractor indexExtractor2 = mock(IndexExtractor.class);
-    when(indexExtractor2.uniqueIndices()).thenReturn(indexExtractor);
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(10, 10));
 
     // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> arrayCountingBloomFilter.remove(indexExtractor2));
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-    verify(indexExtractor2).uniqueIndices();
+    assertTrue(arrayCountingBloomFilter.merge(new EnhancedDoubleHasher(1L, 1L)));
   }
 
   /**
-   * Test {@link CountingBloomFilter#remove(BloomFilter)} with {@code other}.
-   * <ul>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#remove(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BloomFilter)"})
-  public void testRemoveWithOther_thenThrowIllegalArgumentException() {
-    // Arrange
-    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
-    IndexExtractor indexExtractor = mock(IndexExtractor.class);
-    when(indexExtractor.processIndices(Mockito.<IntPredicate>any())).thenThrow(new IndexOutOfBoundsException("foo"));
-    NumberedBloomFilter other = mock(NumberedBloomFilter.class);
-    when(other.uniqueIndices()).thenReturn(indexExtractor);
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> arrayCountingBloomFilter.remove(other));
-    verify(other).uniqueIndices();
-    verify(indexExtractor).processIndices(isA(IntPredicate.class));
-  }
-
-  /**
-   * Test {@link CountingBloomFilter#remove(BloomFilter)} with {@code other}.
-   * <ul>
-   *   <li>When {@link ArrayCountingBloomFilter#ArrayCountingBloomFilter(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CountingBloomFilter#remove(BloomFilter)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BloomFilter)"})
-  public void testRemoveWithOther_whenArrayCountingBloomFilterWithShapeIsFromKM19088743AndTen() {
+  public void testRemove() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
@@ -618,47 +160,81 @@ public class CountingBloomFilterDiffblueTest {
   }
 
   /**
-   * Test {@link CountingBloomFilter#remove(BloomFilter)} with {@code other}.
-   * <ul>
-   *   <li>When {@link SparseDefaultBloomFilter#SparseDefaultBloomFilter(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CountingBloomFilter#remove(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean CountingBloomFilter.remove(BloomFilter)"})
-  public void testRemoveWithOther_whenSparseDefaultBloomFilterWithShapeIsFromKM19088743AndTen() {
+  public void testRemove2() {
     // Arrange
     ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
 
     // Act and Assert
-    assertTrue(arrayCountingBloomFilter.remove(new SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
+    assertTrue(arrayCountingBloomFilter
+        .remove(new DefaultBloomFilterTest.SparseDefaultBloomFilter(Shape.fromKM(19088743, 10))));
   }
 
   /**
-   * Test {@link CountingBloomFilter#uniqueIndices()}.
-   * <p>
-   * Method under test: {@link CountingBloomFilter#uniqueIndices()}
+   * Method under test: {@link CountingBloomFilter#remove(BloomFilter)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"IndexExtractor CountingBloomFilter.uniqueIndices()"})
-  public void testUniqueIndices() {
+  public void testRemove3() {
     // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
+
+    // Act and Assert
+    assertTrue(arrayCountingBloomFilter.remove(new SimpleBloomFilter(Shape.fromKM(19088743, 10))));
+  }
+
+  /**
+   * Method under test: {@link CountingBloomFilter#remove(BloomFilter)}
+   */
+  @Test
+  public void testRemove4() {
+    // Arrange
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
+
+    // Act and Assert
+    assertTrue(arrayCountingBloomFilter.remove(new SimpleBloomFilter(Shape.fromNP(1000, 0.25d))));
+  }
+
+  /**
+   * Method under test: {@link CountingBloomFilter#remove(Hasher)}
+   */
+  @Test
+  public void testRemove5() {
+    // Arrange
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(10, 10));
 
     // Act
-    IndexExtractor actualUniqueIndicesResult = (new ArrayCountingBloomFilter(shape)).uniqueIndices();
-    boolean actualProcessIndicesResult = actualUniqueIndicesResult.processIndices(mock(IntPredicate.class));
+    boolean actualRemoveResult = arrayCountingBloomFilter.remove(new EnhancedDoubleHasher(1L, 1L));
 
     // Assert
-    assertTrue(actualUniqueIndicesResult instanceof ArrayCountingBloomFilter);
-    assertEquals(1, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).characteristics());
-    assertFalse(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isFull());
-    assertTrue(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isValid());
-    assertTrue(actualProcessIndicesResult);
-    assertEquals(Integer.MAX_VALUE, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getMaxCell());
-    assertSame(shape, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getShape());
+    assertFalse(arrayCountingBloomFilter.isValid());
+    assertFalse(actualRemoveResult);
+  }
+
+  /**
+   * Method under test: {@link CountingBloomFilter#remove(Hasher)}
+   */
+  @Test
+  public void testRemove6() {
+    // Arrange
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 1));
+
+    // Act and Assert
+    assertThrows(IllegalArgumentException.class,
+        () -> arrayCountingBloomFilter.remove(new EnhancedDoubleHasher(1L, 1L)));
+  }
+
+  /**
+   * Method under test: {@link CountingBloomFilter#remove(Hasher)}
+   */
+  @Test
+  public void testRemove7() {
+    // Arrange
+    ArrayCountingBloomFilter arrayCountingBloomFilter = new ArrayCountingBloomFilter(Shape.fromKM(19088743, 10));
+
+    // Act and Assert
+    assertThrows(IllegalArgumentException.class,
+        () -> arrayCountingBloomFilter.remove(new AbstractBloomFilterTest.BadHasher(-1)));
   }
 }

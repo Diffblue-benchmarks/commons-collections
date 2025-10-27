@@ -5,83 +5,69 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import java.util.NoSuchElementException;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class StaticBucketMapDiffblueTest {
   /**
-   * Test {@link StaticBucketMap#StaticBucketMap()}.
-   * <p>
-   * Method under test: {@link StaticBucketMap#StaticBucketMap()}
+   * Method under test: {@link StaticBucketMap.BaseIterator#hasNext()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void StaticBucketMap.<init>()"})
-  public void testNewStaticBucketMap() {
-    // Arrange and Act
-    StaticBucketMap<Object, Object> actualObjectObjectMap = new StaticBucketMap<>();
-
-    // Assert
-    assertTrue(actualObjectObjectMap.isEmpty());
+  public void testBaseIteratorHasNext() {
+    // Arrange, Act and Assert
+    assertFalse(((new StaticBucketMap()).new BaseIterator()).hasNext());
   }
 
   /**
-   * Test {@link StaticBucketMap#StaticBucketMap(int)}.
-   * <p>
-   * Method under test: {@link StaticBucketMap#StaticBucketMap(int)}
+   * Method under test: {@link StaticBucketMap.BaseIterator#hasNext()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void StaticBucketMap.<init>(int)"})
-  public void testNewStaticBucketMap2() {
-    // Arrange and Act
-    StaticBucketMap<Object, Object> actualObjectObjectMap = new StaticBucketMap<>(10);
-
-    // Assert
-    assertTrue(actualObjectObjectMap.isEmpty());
-  }
-
-  /**
-   * Test {@link StaticBucketMap#atomic(Runnable)} with {@code runnable}.
-   * <p>
-   * Method under test: {@link StaticBucketMap#atomic(Runnable)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void StaticBucketMap.atomic(Runnable)"})
-  public void testAtomicWithRunnable() {
+  public void testBaseIteratorHasNext2() {
     // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    Runnable runnable = mock(Runnable.class);
-    doNothing().when(runnable).run();
+    StaticBucketMap staticBucketMap = new StaticBucketMap();
+    staticBucketMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
-    // Act
-    objectObjectMap.atomic(runnable);
-
-    // Assert
-    verify(runnable).run();
+    // Act and Assert
+    assertTrue((staticBucketMap.new BaseIterator()).hasNext());
   }
 
   /**
-   * Test {@link StaticBucketMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link StaticBucketMap.BaseIterator#nextEntry()}
+   */
+  @Test
+  public void testBaseIteratorNextEntry() {
+    // Arrange, Act and Assert
+    assertThrows(NoSuchElementException.class, () -> ((new StaticBucketMap()).new BaseIterator()).nextEntry());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap.BaseIterator#remove()}
+   */
+  @Test
+  public void testBaseIteratorRemove() {
+    // Arrange, Act and Assert
+    assertThrows(IllegalStateException.class, () -> ((new StaticBucketMap()).new BaseIterator()).remove());
+  }
+
+  /**
    * Method under test: {@link StaticBucketMap#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsKey(Object)"})
-  public void testContainsKey_givenStaticBucketMapNullIsNull_whenNull_thenReturnTrue() {
+  public void testContainsKey() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#containsKey(Object)}
+   */
+  @Test
+  public void testContainsKey2() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -91,82 +77,22 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} two hundred fifty-five is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsKey(Object)"})
-  public void testContainsKey_givenStaticBucketMapTwoHundredFiftyFiveIsNull_whenNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(255, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#containsKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsKey(Object)"})
-  public void testContainsKey_givenStaticBucketMap_whenKey_thenReturnFalse() {
+  public void testContainsKey3() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
 
     // Act and Assert
-    assertFalse(objectObjectMap.containsKey("Key"));
+    assertFalse(objectObjectMap.containsKey("object-key"));
   }
 
   /**
-   * Test {@link StaticBucketMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsKey(Object)"})
-  public void testContainsKey_givenStaticBucketMap_whenNull_thenReturnFalse() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#containsKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsKey(Object)"})
-  public void testContainsKey_givenStaticBucketMap_whenNull_thenReturnFalse2() {
+  public void testContainsKey4() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
 
@@ -175,39 +101,22 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is forty-two.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#containsValue(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsValue(Object)"})
-  public void testContainsValue_givenStaticBucketMapNullIsFortyTwo_thenReturnFalse() {
+  public void testContainsValue() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(AbstractHashedMap.NULL, 42);
 
     // Act and Assert
     assertFalse(objectObjectMap.containsValue(AbstractHashedMap.NULL));
   }
 
   /**
-   * Test {@link StaticBucketMap#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#containsValue(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsValue(Object)"})
-  public void testContainsValue_givenStaticBucketMapNullIsNull_thenReturnTrue() {
+  public void testContainsValue2() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -217,33 +126,22 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#containsValue(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#containsValue(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.containsValue(Object)"})
-  public void testContainsValue_givenStaticBucketMap_thenReturnFalse() {
+  public void testContainsValue3() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, 42);
 
     // Act and Assert
     assertFalse(objectObjectMap.containsValue(AbstractHashedMap.NULL));
   }
 
   /**
-   * Test {@link StaticBucketMap#entrySet()}.
-   * <p>
    * Method under test: {@link StaticBucketMap#entrySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set StaticBucketMap.entrySet()"})
   public void testEntrySet() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -253,12 +151,56 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#equals(Object)}, and {@link StaticBucketMap#hashCode()}.
-   * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link StaticBucketMap#get(Object)}
+   */
+  @Test
+  public void testGet() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNull(objectObjectMap.get(AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#get(Object)}
+   */
+  @Test
+  public void testGet2() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    Object object = AbstractHashedMap.NULL;
+
+    // Act and Assert
+    assertSame(object, objectObjectMap.get(object));
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#get(Object)}
+   */
+  @Test
+  public void testGet3() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNull(objectObjectMap.get("object-key"));
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#get(Object)}
+   */
+  @Test
+  public void testGet4() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNull(objectObjectMap.get(null));
+  }
+
+  /**
    * Methods under test:
    * <ul>
    *   <li>{@link StaticBucketMap#equals(Object)}
@@ -266,8 +208,6 @@ public class StaticBucketMapDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -280,12 +220,6 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#equals(Object)}, and {@link StaticBucketMap#hashCode()}.
-   * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
-   * </ul>
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link StaticBucketMap#equals(Object)}
@@ -293,8 +227,6 @@ public class StaticBucketMapDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual2() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -310,12 +242,6 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#equals(Object)}, and {@link StaticBucketMap#hashCode()}.
-   * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
-   * </ul>
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link StaticBucketMap#equals(Object)}
@@ -323,8 +249,6 @@ public class StaticBucketMapDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -336,235 +260,22 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#equals(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
-  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNotEquals(objectObjectMap, new StaticBucketMap<>());
-  }
-
-  /**
-   * Test {@link StaticBucketMap#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#equals(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
-  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    StaticBucketMap<Object, Object> objectObjectMap2 = new StaticBucketMap<>();
-    objectObjectMap2.put(null, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNotEquals(objectObjectMap, objectObjectMap2);
-  }
-
-  /**
-   * Test {@link StaticBucketMap#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#equals(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
-  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    StaticBucketMap<Object, Object> objectObjectMap2 = new StaticBucketMap<>();
-    objectObjectMap2.put(255, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNotEquals(objectObjectMap, objectObjectMap2);
-  }
-
-  /**
-   * Test {@link StaticBucketMap#equals(Object)}.
-   * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#equals(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
-  public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNotEquals(objectObjectMap, null);
-  }
-
-  /**
-   * Test {@link StaticBucketMap#equals(Object)}.
-   * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#equals(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.equals(Object)", "int StaticBucketMap.hashCode()"})
-  public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNotEquals(objectObjectMap, "Different type to StaticBucketMap");
-  }
-
-  /**
-   * Test {@link StaticBucketMap#get(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.get(Object)"})
-  public void testGet_givenStaticBucketMapNullIsNull_whenNull_thenReturnNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    Object object = AbstractHashedMap.NULL;
-
-    // Act and Assert
-    assertSame(object, objectObjectMap.get(object));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#get(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} two hundred fifty-five is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.get(Object)"})
-  public void testGet_givenStaticBucketMapTwoHundredFiftyFiveIsNull_whenNull_thenReturnNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(255, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(objectObjectMap.get(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#get(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.get(Object)"})
-  public void testGet_givenStaticBucketMap_whenKey_thenReturnNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNull(objectObjectMap.get("Key"));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#get(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.get(Object)"})
-  public void testGet_givenStaticBucketMap_whenNull_thenReturnNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNull(objectObjectMap.get(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#get(Object)}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.get(Object)"})
-  public void testGet_givenStaticBucketMap_whenNull_thenReturnNull2() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNull(objectObjectMap.get(null));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#isEmpty()}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#isEmpty()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.isEmpty()"})
-  public void testIsEmpty_givenStaticBucketMapNullIsNull_thenReturnFalse() {
+  public void testIsEmpty() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertTrue(objectObjectMap.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#isEmpty()}
+   */
+  @Test
+  public void testIsEmpty2() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -574,33 +285,9 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#isEmpty()}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#isEmpty()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean StaticBucketMap.isEmpty()"})
-  public void testIsEmpty_givenStaticBucketMap_thenReturnTrue() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertTrue(objectObjectMap.isEmpty());
-  }
-
-  /**
-   * Test {@link StaticBucketMap#keySet()}.
-   * <p>
    * Method under test: {@link StaticBucketMap#keySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set StaticBucketMap.keySet()"})
   public void testKeySet() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -610,19 +297,23 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#remove(Object)} with {@code Object}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()} {@link AbstractHashedMap#NULL} is {@link AbstractHashedMap#NULL}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.remove(Object)"})
-  public void testRemoveWithObject_givenStaticBucketMapNullIsNull_whenNull_thenReturnNull() {
+  public void testRemove() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNull(objectObjectMap.remove(AbstractHashedMap.NULL));
+    assertTrue(objectObjectMap.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#remove(Object)}
+   */
+  @Test
+  public void testRemove2() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -637,63 +328,23 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#remove(Object)} with {@code Object}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.remove(Object)"})
-  public void testRemoveWithObject_givenStaticBucketMap_whenKey_thenReturnNull() {
+  public void testRemove3() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
 
     // Act and Assert
-    assertNull(objectObjectMap.remove("Key"));
+    assertNull(objectObjectMap.remove("object-key"));
     assertTrue(objectObjectMap.isEmpty());
   }
 
   /**
-   * Test {@link StaticBucketMap#remove(Object)} with {@code Object}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link StaticBucketMap#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.remove(Object)"})
-  public void testRemoveWithObject_givenStaticBucketMap_whenNull_thenReturnNull() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-
-    // Act and Assert
-    assertNull(objectObjectMap.remove(AbstractHashedMap.NULL));
-    assertTrue(objectObjectMap.isEmpty());
-  }
-
-  /**
-   * Test {@link StaticBucketMap#remove(Object)} with {@code Object}.
-   * <ul>
-   *   <li>Given {@link StaticBucketMap#StaticBucketMap()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#remove(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.remove(Object)"})
-  public void testRemoveWithObject_givenStaticBucketMap_whenNull_thenReturnNull2() {
+  public void testRemove4() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
 
@@ -703,35 +354,9 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#remove(Object)} with {@code Object}.
-   * <ul>
-   *   <li>Then {@link StaticBucketMap#StaticBucketMap()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link StaticBucketMap#remove(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object StaticBucketMap.remove(Object)"})
-  public void testRemoveWithObject_thenStaticBucketMapSizeIsOne() {
-    // Arrange
-    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
-    objectObjectMap.put(255, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(objectObjectMap.remove(AbstractHashedMap.NULL));
-    assertEquals(1, objectObjectMap.size());
-    assertTrue(objectObjectMap.containsKey(255));
-  }
-
-  /**
-   * Test {@link StaticBucketMap#size()}.
-   * <p>
    * Method under test: {@link StaticBucketMap#size()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int StaticBucketMap.size()"})
   public void testSize() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
@@ -741,18 +366,107 @@ public class StaticBucketMapDiffblueTest {
   }
 
   /**
-   * Test {@link StaticBucketMap#values()}.
-   * <p>
    * Method under test: {@link StaticBucketMap#values()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Collection StaticBucketMap.values()"})
   public void testValues() {
     // Arrange
     StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
 
     // Act and Assert
     assertTrue(objectObjectMap.values().isEmpty());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#equals(Object)}
+   */
+  @Test
+  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNotEquals(objectObjectMap, new StaticBucketMap<>());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#equals(Object)}
+   */
+  @Test
+  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    StaticBucketMap<Object, Object> objectObjectMap2 = new StaticBucketMap<>();
+    objectObjectMap2.put(1, AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNotEquals(objectObjectMap, objectObjectMap2);
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#equals(Object)}
+   */
+  @Test
+  public void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    StaticBucketMap<Object, Object> objectObjectMap2 = new StaticBucketMap<>();
+    objectObjectMap2.put(null, AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNotEquals(objectObjectMap, objectObjectMap2);
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#equals(Object)}
+   */
+  @Test
+  public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNotEquals(objectObjectMap, null);
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#equals(Object)}
+   */
+  @Test
+  public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+    // Arrange
+    StaticBucketMap<Object, Object> objectObjectMap = new StaticBucketMap<>();
+
+    // Act and Assert
+    assertNotEquals(objectObjectMap, "Different type to StaticBucketMap");
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#StaticBucketMap()}
+   */
+  @Test
+  public void testNewStaticBucketMap() {
+    // Arrange and Act
+    StaticBucketMap<Object, Object> actualObjectObjectMap = new StaticBucketMap<>();
+
+    // Assert
+    assertTrue(actualObjectObjectMap.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link StaticBucketMap#StaticBucketMap(int)}
+   */
+  @Test
+  public void testNewStaticBucketMap2() {
+    // Arrange and Act
+    StaticBucketMap<Object, Object> actualObjectObjectMap = new StaticBucketMap<>(10);
+
+    // Assert
+    assertTrue(actualObjectObjectMap.isEmpty());
   }
 }

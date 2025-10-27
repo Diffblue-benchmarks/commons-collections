@@ -1,29 +1,65 @@
 package org.apache.commons.collections4.bag;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.junit.Assert.assertTrue;
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.SortedBag;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class SynchronizedSortedBagDiffblueTest {
   /**
-   * Test {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"SynchronizedSortedBag SynchronizedSortedBag.synchronizedSortedBag(SortedBag)"})
-  public void testSynchronizedSortedBag_givenObject_whenTreeBagAddObject() {
+  public void testNewSynchronizedSortedBag() {
+    // Arrange and Act
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBag = new SynchronizedSortedBag<>(new HashBag<>(), "Lock");
+
+    // Assert
+    assertTrue(actualSynchronizedSortedBag.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   */
+  @Test
+  public void testSynchronizedSortedBag() {
+    // Arrange and Act
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBagResult = SynchronizedSortedBag
+        .synchronizedSortedBag(new TreeBag<>());
+
+    // Assert
+    assertTrue(actualSynchronizedSortedBagResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   */
+  @Test
+  public void testSynchronizedSortedBag2() {
     // Arrange
     TreeBag<Object> bag = new TreeBag<>();
+    bag.add("Object");
+
+    // Act
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBagResult = SynchronizedSortedBag.synchronizedSortedBag(bag);
+
+    // Assert
+    assertEquals(1, actualSynchronizedSortedBagResult.size());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   */
+  @Test
+  public void testSynchronizedSortedBag3() {
+    // Arrange
+    TreeBag<Object> bag = new TreeBag<>();
+    bag.add("Object");
     bag.add("Object");
 
     // Act
@@ -34,174 +70,77 @@ public class SynchronizedSortedBagDiffblueTest {
   }
 
   /**
-   * Test {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"SynchronizedSortedBag SynchronizedSortedBag.synchronizedSortedBag(SortedBag)"})
-  public void testSynchronizedSortedBag_givenObject_whenTreeBagAddObject2() {
+  public void testNewSynchronizedSortedBag2() {
     // Arrange
-    TreeBag<Object> bag = new TreeBag<>();
-    bag.add("Object");
+    HashBag<Object> bag = new HashBag<>();
     bag.add("Object");
 
     // Act
-    SynchronizedSortedBag<Object> actualSynchronizedSortedBagResult = SynchronizedSortedBag.synchronizedSortedBag(bag);
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBag = new SynchronizedSortedBag<>(bag, "Lock");
 
     // Assert
-    assertEquals(bag, actualSynchronizedSortedBagResult);
+    assertEquals(1, actualSynchronizedSortedBag.size());
   }
 
   /**
-   * Test {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>When {@link TreeBag#TreeBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#synchronizedSortedBag(SortedBag)}
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"SynchronizedSortedBag SynchronizedSortedBag.synchronizedSortedBag(SortedBag)"})
-  public void testSynchronizedSortedBag_whenTreeBag() {
+  public void testNewSynchronizedSortedBag3() {
+    // Arrange
+    HashBag<Object> bag = new HashBag<>();
+    bag.add("Object");
+    bag.add("Object");
+
+    // Act and Assert
+    assertEquals(bag, new SynchronizedSortedBag<>(bag, "Lock"));
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
+   */
+  @Test
+  public void testNewSynchronizedSortedBag4() {
+    // Arrange and Act
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBag = new SynchronizedSortedBag<>(new TreeBag<>());
+
+    // Assert
+    assertTrue(actualSynchronizedSortedBag.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
+   */
+  @Test
+  public void testNewSynchronizedSortedBag5() {
     // Arrange
     TreeBag<Object> bag = new TreeBag<>();
+    bag.add("Object");
 
     // Act
-    SynchronizedSortedBag<Object> actualSynchronizedSortedBagResult = SynchronizedSortedBag.synchronizedSortedBag(bag);
+    SynchronizedSortedBag<Object> actualSynchronizedSortedBag = new SynchronizedSortedBag<>(bag);
 
     // Assert
-    assertEquals(bag, actualSynchronizedSortedBagResult);
+    assertEquals(1, actualSynchronizedSortedBag.size());
   }
 
   /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   *   <li>Then return {@link HashBag#HashBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
+   * Method under test:
+   * {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(Bag, Object)"})
-  public void testNewSynchronizedSortedBag_givenObject_whenHashBagAddObject_thenReturnHashBag() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
-    bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new SynchronizedSortedBag<>(bag, "Lock"));
-  }
-
-  /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   *   <li>Then return {@link HashBag#HashBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(Bag, Object)"})
-  public void testNewSynchronizedSortedBag_givenObject_whenHashBagAddObject_thenReturnHashBag2() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
-    bag.add("Object");
-    bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new SynchronizedSortedBag<>(bag, "Lock"));
-  }
-
-  /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(SortedBag)"})
-  public void testNewSynchronizedSortedBag_givenObject_whenTreeBagAddObject() {
-    // Arrange
-    TreeBag<Object> bag = new TreeBag<>();
-    bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new SynchronizedSortedBag<>(bag));
-  }
-
-  /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link TreeBag#TreeBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(SortedBag)"})
-  public void testNewSynchronizedSortedBag_givenObject_whenTreeBagAddObject2() {
+  public void testNewSynchronizedSortedBag6() {
     // Arrange
     TreeBag<Object> bag = new TreeBag<>();
     bag.add("Object");
     bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new SynchronizedSortedBag<>(bag));
-  }
-
-  /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}.
-   * <ul>
-   *   <li>When {@link HashBag#HashBag()}.</li>
-   *   <li>Then return {@link HashBag#HashBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(Bag, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(Bag, Object)"})
-  public void testNewSynchronizedSortedBag_whenHashBag_thenReturnHashBag() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
-
-    // Act and Assert
-    assertEquals(bag, new SynchronizedSortedBag<>(bag, "Lock"));
-  }
-
-  /**
-   * Test {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}.
-   * <ul>
-   *   <li>When {@link TreeBag#TreeBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SynchronizedSortedBag#SynchronizedSortedBag(SortedBag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SynchronizedSortedBag.<init>(SortedBag)"})
-  public void testNewSynchronizedSortedBag_whenTreeBag() {
-    // Arrange
-    TreeBag<Object> bag = new TreeBag<>();
 
     // Act and Assert
     assertEquals(bag, new SynchronizedSortedBag<>(bag));

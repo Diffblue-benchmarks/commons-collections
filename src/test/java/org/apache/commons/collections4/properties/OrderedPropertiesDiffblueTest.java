@@ -3,163 +3,36 @@ package org.apache.commons.collections4.properties;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.ArgumentMatchers.isNull;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class OrderedPropertiesDiffblueTest {
   /**
-   * Test new {@link OrderedProperties} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link OrderedProperties}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void OrderedProperties.<init>()"})
-  public void testNewOrderedProperties() {
-    // Arrange, Act and Assert
-    assertTrue((new OrderedProperties()).isEmpty());
-  }
-
-  /**
-   * Test {@link OrderedProperties#compute(Object, BiFunction)}.
-   * <ul>
-   *   <li>Given {@code Apply}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then {@link OrderedProperties} (default constructor) size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.compute(Object, BiFunction)"})
-  public void testCompute_givenApply_whenKey_thenOrderedPropertiesSizeIsOne() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    BiFunction<Object, Object, Object> remappingFunction = mock(BiFunction.class);
-    when(remappingFunction.apply(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn("Apply");
-
-    // Act
-    Object actualComputeResult = orderedProperties.compute("Key", remappingFunction);
-
-    // Assert
-    verify(remappingFunction).apply(isA(Object.class), isNull());
-    assertEquals(1, orderedProperties.size());
-    assertEquals("Apply", orderedProperties.get("Key"));
-    assertEquals("Apply", actualComputeResult);
-  }
-
-  /**
-   * Test {@link OrderedProperties#compute(Object, BiFunction)}.
-   * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link BiFunction} {@link BiFunction#apply(Object, Object)} return {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#compute(Object, BiFunction)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.compute(Object, BiFunction)"})
-  public void testCompute_givenNull_whenBiFunctionApplyReturnNull_thenReturnNull() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    BiFunction<Object, Object, Object> remappingFunction = mock(BiFunction.class);
-    when(remappingFunction.apply(Mockito.<Object>any(), Mockito.<Object>any())).thenReturn(null);
-
-    // Act
-    Object actualComputeResult = orderedProperties.compute("Key", remappingFunction);
-
-    // Assert
-    verify(remappingFunction).apply(isA(Object.class), isNull());
-    assertNull(actualComputeResult);
-    assertTrue(orderedProperties.isEmpty());
-  }
-
-  /**
-   * Test {@link OrderedProperties#computeIfAbsent(Object, Function)}.
-   * <ul>
-   *   <li>Given {@code Apply}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then {@link OrderedProperties} (default constructor) size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.computeIfAbsent(Object, Function)"})
-  public void testComputeIfAbsent_givenApply_whenKey_thenOrderedPropertiesSizeIsOne() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    Function<Object, Object> mappingFunction = mock(Function.class);
-    when(mappingFunction.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    // Act
-    Object actualComputeIfAbsentResult = orderedProperties.computeIfAbsent("Key", mappingFunction);
-
-    // Assert
-    verify(mappingFunction).apply(isA(Object.class));
-    assertEquals(1, orderedProperties.size());
-    assertEquals("Apply", orderedProperties.get("Key"));
-    assertEquals("Apply", actualComputeIfAbsentResult);
-  }
-
-  /**
-   * Test {@link OrderedProperties#computeIfAbsent(Object, Function)}.
-   * <ul>
-   *   <li>Given {@code null}.</li>
-   *   <li>When {@link Function} {@link Function#apply(Object)} return {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#computeIfAbsent(Object, Function)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.computeIfAbsent(Object, Function)"})
-  public void testComputeIfAbsent_givenNull_whenFunctionApplyReturnNull_thenReturnNull() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    Function<Object, Object> mappingFunction = mock(Function.class);
-    when(mappingFunction.apply(Mockito.<Object>any())).thenReturn(null);
-
-    // Act
-    Object actualComputeIfAbsentResult = orderedProperties.computeIfAbsent("Key", mappingFunction);
-
-    // Assert
-    verify(mappingFunction).apply(isA(Object.class));
-    assertNull(actualComputeIfAbsentResult);
-    assertTrue(orderedProperties.isEmpty());
-  }
-
-  /**
-   * Test {@link OrderedProperties#entrySet()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link OrderedProperties#entrySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
-  public void testEntrySet_givenOrderedPropertiesFortyTwoIsValue_thenReturnSizeIsTwo() {
+  public void testEntrySet() {
+    // Arrange, Act and Assert
+    assertTrue((new OrderedProperties()).entrySet().isEmpty());
+  }
+
+  /**
+   * Method under test: {@link OrderedProperties#entrySet()}
+   */
+  @Test
+  public void testEntrySet2() {
+    // Arrange
+    OrderedProperties orderedProperties = new OrderedProperties();
+    orderedProperties.put("Key", "Value");
+
+    // Act and Assert
+    assertEquals(1, orderedProperties.entrySet().size());
+  }
+
+  /**
+   * Method under test: {@link OrderedProperties#entrySet()}
+   */
+  @Test
+  public void testEntrySet3() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put(42, "Value");
@@ -170,144 +43,36 @@ public class OrderedPropertiesDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedProperties#entrySet()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#entrySet()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
-  public void testEntrySet_givenOrderedPropertiesKeyIsValue_thenReturnSizeIsOne() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    orderedProperties.put("Key", "Value");
-
-    // Act and Assert
-    assertEquals(1, orderedProperties.entrySet().size());
-  }
-
-  /**
-   * Test {@link OrderedProperties#entrySet()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#entrySet()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set OrderedProperties.entrySet()"})
-  public void testEntrySet_givenOrderedProperties_thenReturnEmpty() {
-    // Arrange, Act and Assert
-    assertTrue((new OrderedProperties()).entrySet().isEmpty());
-  }
-
-  /**
-   * Test {@link OrderedProperties#forEach(BiConsumer)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#forEach(BiConsumer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void OrderedProperties.forEach(BiConsumer)"})
-  public void testForEach_givenOrderedPropertiesFortyTwoIsValue_thenCallsAccept() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    orderedProperties.put("Key", "Value");
-    orderedProperties.put(42, "Value");
-    BiConsumer<Object, Object> action = mock(BiConsumer.class);
-    doNothing().when(action).accept(Mockito.<Object>any(), Mockito.<Object>any());
-
-    // Act
-    orderedProperties.forEach(action);
-
-    // Assert
-    verify(action, atLeast(1)).accept(Mockito.<Object>any(), isA(Object.class));
-  }
-
-  /**
-   * Test {@link OrderedProperties#forEach(BiConsumer)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then calls {@link BiConsumer#accept(Object, Object)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#forEach(BiConsumer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void OrderedProperties.forEach(BiConsumer)"})
-  public void testForEach_givenOrderedPropertiesKeyIsValue_thenCallsAccept() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    orderedProperties.put("Key", "Value");
-    BiConsumer<Object, Object> action = mock(BiConsumer.class);
-    doNothing().when(action).accept(Mockito.<Object>any(), Mockito.<Object>any());
-
-    // Act
-    orderedProperties.forEach(action);
-
-    // Assert
-    verify(action).accept(isA(Object.class), isA(Object.class));
-  }
-
-  /**
-   * Test {@link OrderedProperties#keySet()}.
-   * <p>
    * Method under test: {@link OrderedProperties#keySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set OrderedProperties.keySet()"})
   public void testKeySet() {
     // Arrange, Act and Assert
     assertTrue((new OrderedProperties()).keySet().isEmpty());
   }
 
   /**
-   * Test {@link OrderedProperties#merge(Object, Object, BiFunction)}.
-   * <p>
-   * Method under test: {@link OrderedProperties#merge(Object, Object, BiFunction)}
+   * Method under test: {@link OrderedProperties#put(Object, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.merge(Object, Object, BiFunction)"})
-  public void testMerge() {
+  public void testPut() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
 
     // Act
-    Object actualMergeResult = orderedProperties.merge("Key", "Value", mock(BiFunction.class));
+    Object actualPutResult = orderedProperties.put("Key", "Value");
 
     // Assert
     assertEquals(1, orderedProperties.size());
     assertEquals("Value", orderedProperties.get("Key"));
-    assertEquals("Value", actualMergeResult);
+    assertNull(actualPutResult);
   }
 
   /**
-   * Test {@link OrderedProperties#put(Object, Object)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link OrderedProperties#put(Object, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.put(Object, Object)"})
-  public void testPut_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
+  public void testPut2() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put("Key", "Value");
@@ -322,45 +87,27 @@ public class OrderedPropertiesDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedProperties#put(Object, Object)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#put(Object, Object)}
+   * Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.put(Object, Object)"})
-  public void testPut_givenOrderedProperties_whenKey_thenReturnNull() {
+  public void testPutIfAbsent() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
 
     // Act
-    Object actualPutResult = orderedProperties.put("Key", "Value");
+    Object actualPutIfAbsentResult = orderedProperties.putIfAbsent("Key", "Value");
 
     // Assert
     assertEquals(1, orderedProperties.size());
     assertEquals("Value", orderedProperties.get("Key"));
-    assertNull(actualPutResult);
+    assertNull(actualPutIfAbsentResult);
   }
 
   /**
-   * Test {@link OrderedProperties#putIfAbsent(Object, Object)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.putIfAbsent(Object, Object)"})
-  public void testPutIfAbsent_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
+  public void testPutIfAbsent2() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put("Key", "Value");
@@ -375,45 +122,23 @@ public class OrderedPropertiesDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedProperties#putIfAbsent(Object, Object)}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#putIfAbsent(Object, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.putIfAbsent(Object, Object)"})
-  public void testPutIfAbsent_givenOrderedProperties_whenKey_thenReturnNull() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-
-    // Act
-    Object actualPutIfAbsentResult = orderedProperties.putIfAbsent("Key", "Value");
-
-    // Assert
-    assertEquals(1, orderedProperties.size());
-    assertEquals("Value", orderedProperties.get("Key"));
-    assertNull(actualPutIfAbsentResult);
-  }
-
-  /**
-   * Test {@link OrderedProperties#remove(Object)} with {@code key}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code Value}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link OrderedProperties#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.remove(Object)"})
-  public void testRemoveWithKey_givenOrderedPropertiesKeyIsValue_whenKey_thenReturnValue() {
+  public void testRemove() {
+    // Arrange
+    OrderedProperties orderedProperties = new OrderedProperties();
+
+    // Act and Assert
+    assertNull(orderedProperties.remove("Key"));
+    assertTrue(orderedProperties.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link OrderedProperties#remove(Object)}
+   */
+  @Test
+  public void testRemove2() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put("Key", "Value");
@@ -424,40 +149,32 @@ public class OrderedPropertiesDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedProperties#remove(Object)} with {@code key}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#remove(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object OrderedProperties.remove(Object)"})
-  public void testRemoveWithKey_givenOrderedProperties_whenKey_thenReturnNull() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-
-    // Act and Assert
-    assertNull(orderedProperties.remove("Key"));
-    assertTrue(orderedProperties.isEmpty());
-  }
-
-  /**
-   * Test {@link OrderedProperties#toString()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) forty-two is {@code Value}.</li>
-   *   <li>Then return {@code {42=Value, Key=Value}}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link OrderedProperties#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
-  public void testToString_givenOrderedPropertiesFortyTwoIsValue_thenReturn42ValueKeyValue() {
+  public void testToString() {
+    // Arrange, Act and Assert
+    assertEquals("{}", (new OrderedProperties()).toString());
+  }
+
+  /**
+   * Method under test: {@link OrderedProperties#toString()}
+   */
+  @Test
+  public void testToString2() {
+    // Arrange
+    OrderedProperties orderedProperties = new OrderedProperties();
+    orderedProperties.put("Key", "Value");
+
+    // Act and Assert
+    assertEquals("{Key=Value}", orderedProperties.toString());
+  }
+
+  /**
+   * Method under test: {@link OrderedProperties#toString()}
+   */
+  @Test
+  public void testToString3() {
     // Arrange
     OrderedProperties orderedProperties = new OrderedProperties();
     orderedProperties.put(42, "Value");
@@ -468,40 +185,12 @@ public class OrderedPropertiesDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedProperties#toString()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor) {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code {Key=Value}}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#toString()}
+   * Method under test: default or parameterless constructor of
+   * {@link OrderedProperties}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
-  public void testToString_givenOrderedPropertiesKeyIsValue_thenReturnKeyValue() {
-    // Arrange
-    OrderedProperties orderedProperties = new OrderedProperties();
-    orderedProperties.put("Key", "Value");
-
-    // Act and Assert
-    assertEquals("{Key=Value}", orderedProperties.toString());
-  }
-
-  /**
-   * Test {@link OrderedProperties#toString()}.
-   * <ul>
-   *   <li>Given {@link OrderedProperties} (default constructor).</li>
-   *   <li>Then return {@code {}}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link OrderedProperties#toString()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String OrderedProperties.toString()"})
-  public void testToString_givenOrderedProperties_thenReturnLeftCurlyBracketRightCurlyBracket() {
+  public void testNewOrderedProperties() {
     // Arrange, Act and Assert
-    assertEquals("{}", (new OrderedProperties()).toString());
+    assertTrue((new OrderedProperties()).isEmpty());
   }
 }

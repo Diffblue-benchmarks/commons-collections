@@ -1,26 +1,16 @@
 package org.apache.commons.collections4.functors;
 
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.apache.commons.collections4.Factory;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class InstantiateFactoryDiffblueTest {
   /**
-   * Test {@link InstantiateFactory#instantiateFactory(Class, Class[], Object[])}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link InstantiateFactory}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link InstantiateFactory#instantiateFactory(Class, Class[], Object[])}
+   * Method under test:
+   * {@link InstantiateFactory#instantiateFactory(Class, Class[], Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Factory InstantiateFactory.instantiateFactory(Class, Class[], Object[])"})
-  public void testInstantiateFactory_whenNull_thenReturnInstantiateFactory() {
+  public void testInstantiateFactory() {
     // Arrange
     Class<Object> classToInstantiate = Object.class;
 

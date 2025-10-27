@@ -4,28 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-import org.apache.commons.collections4.iterators.ObjectGraphIteratorTest.LeafFinder;
+import org.apache.commons.collections4.functors.AllPredicate;
+import org.apache.commons.collections4.functors.AndPredicate;
+import org.apache.commons.collections4.functors.UniquePredicate;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class ExtendedIteratorDiffblueTest {
   /**
-   * Test {@link ExtendedIterator#create(Iterator)} with {@code it}.
-   * <p>
    * Method under test: {@link ExtendedIterator#create(Iterator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.create(Iterator)"})
-  public void testCreateWithIt() {
+  public void testCreate() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
 
@@ -37,14 +30,10 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#create(Stream)} with {@code stream}.
-   * <p>
    * Method under test: {@link ExtendedIterator#create(Stream)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.create(Stream)"})
-  public void testCreateWithStream() {
+  public void testCreate2() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Stream<Object> stream = objectList.stream();
@@ -57,13 +46,9 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#createNoRemove(Iterator)}.
-   * <p>
    * Method under test: {@link ExtendedIterator#createNoRemove(Iterator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.createNoRemove(Iterator)"})
   public void testCreateNoRemove() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
@@ -76,13 +61,9 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#emptyIterator()}.
-   * <p>
    * Method under test: {@link ExtendedIterator#emptyIterator()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.emptyIterator()"})
   public void testEmptyIterator() {
     // Arrange and Act
     ExtendedIterator<?> actualEmptyIteratorResult = ExtendedIterator.emptyIterator();
@@ -92,13 +73,9 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#flatten(Iterator)}.
-   * <p>
    * Method under test: {@link ExtendedIterator#flatten(Iterator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.flatten(Iterator)"})
   public void testFlatten() {
     // Arrange
     ArrayList<Iterator<Object>> iteratorList = new ArrayList<>();
@@ -111,13 +88,9 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#andThen(Iterator)}.
-   * <p>
    * Method under test: {@link ExtendedIterator#andThen(Iterator)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.andThen(Iterator)"})
   public void testAndThen() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
@@ -130,39 +103,38 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#filter(Predicate)}.
-   * <ul>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return not hasNext.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ExtendedIterator#filter(Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.filter(Predicate)"})
-  public void testFilter_whenPredicate_thenReturnNotHasNext() {
+  public void testFilter() {
+    // Arrange
+    ArrayList<Object> objectList = new ArrayList<>();
+    ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
+    UniquePredicate<Object> predicate1 = new UniquePredicate<>();
+
+    // Act and Assert
+    assertFalse(
+        createResult.filter(new AllPredicate<>(new AndPredicate<>(predicate1, new UniquePredicate<>()))).hasNext());
+  }
+
+  /**
+   * Method under test: {@link ExtendedIterator#hasNext()}
+   */
+  @Test
+  public void testHasNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
 
     // Act and Assert
-    assertFalse(createResult.filter(mock(Predicate.class)).hasNext());
+    assertFalse(createResult.hasNext());
   }
 
   /**
-   * Test {@link ExtendedIterator#hasNext()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ExtendedIterator#hasNext()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ExtendedIterator.hasNext()"})
-  public void testHasNext_givenArrayListAdd42_thenReturnTrue() {
+  public void testHasNext2() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -173,55 +145,10 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#hasNext()}.
-   * <ul>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ExtendedIterator#hasNext()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ExtendedIterator.hasNext()"})
-  public void testHasNext_thenReturnFalse() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
-
-    // Act and Assert
-    assertFalse(createResult.hasNext());
-  }
-
-  /**
-   * Test {@link ExtendedIterator#map(Function)}.
-   * <p>
-   * Method under test: {@link ExtendedIterator#map(Function)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ExtendedIterator ExtendedIterator.map(Function)"})
-  public void testMap() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    ExtendedIterator<Object> createResult = ExtendedIterator.create(objectList.iterator());
-
-    // Act and Assert
-    assertFalse(createResult.map(mock(LeafFinder.class)::transform).hasNext());
-  }
-
-  /**
-   * Test {@link ExtendedIterator#next()}.
-   * <ul>
-   *   <li>Given {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ExtendedIterator#next()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ExtendedIterator.next()"})
-  public void testNext_givenArrayListAdd42_thenReturn42() {
+  public void testNext() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     objectList.add("42");
@@ -232,18 +159,10 @@ public class ExtendedIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ExtendedIterator#remove()}.
-   * <ul>
-   *   <li>Given create {@link ArrayList#ArrayList()} stream.</li>
-   *   <li>Then throw {@link UnsupportedOperationException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ExtendedIterator#remove()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ExtendedIterator.remove()"})
-  public void testRemove_givenCreateArrayListStream_thenThrowUnsupportedOperationException() {
+  public void testRemove() {
     // Arrange
     ArrayList<Object> objectList = new ArrayList<>();
     Stream<Object> stream = objectList.stream();

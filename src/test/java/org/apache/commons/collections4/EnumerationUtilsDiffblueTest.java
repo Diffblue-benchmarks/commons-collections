@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
@@ -13,17 +11,12 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import org.apache.commons.collections4.iterators.IteratorIterable;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class EnumerationUtilsDiffblueTest {
   /**
-   * Test {@link EnumerationUtils#asIterable(Enumeration)}.
-   * <p>
    * Method under test: {@link EnumerationUtils#asIterable(Enumeration)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Iterable EnumerationUtils.asIterable(Enumeration)"})
   public void testAsIterable() {
     // Arrange and Act
     Iterable<Object> actualAsIterableResult = EnumerationUtils.asIterable(new StringTokenizer("foo"));
@@ -38,18 +31,10 @@ public class EnumerationUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link EnumerationUtils#get(Enumeration, int)}.
-   * <ul>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code foo}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link EnumerationUtils#get(Enumeration, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object EnumerationUtils.get(Enumeration, int)"})
-  public void testGet_whenZero_thenReturnFoo() {
+  public void testGet() {
     // Arrange
     StringTokenizer e = new StringTokenizer("foo");
 
@@ -59,18 +44,10 @@ public class EnumerationUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link EnumerationUtils#toList(StringTokenizer)} with {@code stringTokenizer}.
-   * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link EnumerationUtils#toList(StringTokenizer)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List EnumerationUtils.toList(StringTokenizer)"})
-  public void testToListWithStringTokenizer_whenStringTokenizerWithFoo_thenReturnSizeIsOne() {
+  public void testToList() {
     // Arrange
     StringTokenizer stringTokenizer = new StringTokenizer("foo");
 
@@ -84,18 +61,10 @@ public class EnumerationUtilsDiffblueTest {
   }
 
   /**
-   * Test {@link EnumerationUtils#toSet(Enumeration)}.
-   * <ul>
-   *   <li>When {@link StringTokenizer#StringTokenizer(String)} with {@code foo}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link EnumerationUtils#toSet(Enumeration)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Set EnumerationUtils.toSet(Enumeration)"})
-  public void testToSet_whenStringTokenizerWithFoo_thenReturnSizeIsOne() {
+  public void testToSet() {
     // Arrange
     StringTokenizer enumeration = new StringTokenizer("foo");
 

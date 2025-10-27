@@ -5,125 +5,20 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.apache.commons.collections4.list.AbstractLinkedList.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class NodeCachingLinkedListDiffblueTest {
   /**
-   * Test {@link NodeCachingLinkedList#NodeCachingLinkedList()}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList()}
+   * Method under test:
+   * {@link NodeCachingLinkedList#addNodeToCache(AbstractLinkedList.Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.<init>()"})
-  public void testNewNodeCachingLinkedList() {
-    // Arrange and Act
-    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>();
-
-    // Assert
-    assertTrue(actualObjectList.isEmpty());
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}.
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.<init>(int)"})
-  public void testNewNodeCachingLinkedList2() {
-    // Arrange and Act
-    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(3);
-
-    // Assert
-    assertTrue(actualObjectList.isEmpty());
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
-  public void testNewNodeCachingLinkedList_given42_whenArrayListAdd42() {
-    // Arrange
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
-  public void testNewNodeCachingLinkedList_given42_whenArrayListAdd422() {
-    // Arrange
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.<init>(Collection)"})
-  public void testNewNodeCachingLinkedList_whenArrayList() {
-    // Arrange
-    ArrayList<Object> coll = new ArrayList<>();
-
-    // Act and Assert
-    assertEquals(coll, new NodeCachingLinkedList<>(coll));
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#addNodeToCache(Node)}.
-   * <ul>
-   *   <li>When {@link Node#Node()}.</li>
-   *   <li>Then {@link Node#Node()} NextNode is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#addNodeToCache(Node)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.addNodeToCache(Node)"})
-  public void testAddNodeToCache_whenNode_thenNodeNextNodeIsNull() {
+  public void testAddNodeToCache() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
-    Node<Object> node = new Node<>();
+    AbstractLinkedList.Node<Object> node = new AbstractLinkedList.Node<>();
 
     // Act
     objectList.addNodeToCache(node);
@@ -134,45 +29,15 @@ public class NodeCachingLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#createNode(Object)}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link Node#Node()}.</li>
-   *   <li>Then return {@link Node#Node()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NodeCachingLinkedList#createNode(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node NodeCachingLinkedList.createNode(Object)"})
-  public void testCreateNode_givenNodeCachingLinkedListAddNodeToCacheNode_thenReturnNode() {
-    // Arrange
-    NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
-    Node<Object> node = new Node<>();
-    objectList.addNodeToCache(node);
-
-    // Act and Assert
-    assertSame(node, objectList.createNode("Value"));
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#createNode(Object)}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   *   <li>Then return {@code Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#createNode(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node NodeCachingLinkedList.createNode(Object)"})
-  public void testCreateNode_givenNodeCachingLinkedList_thenReturnValue() {
+  public void testCreateNode() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
 
     // Act
-    Node<Object> actualCreateNodeResult = objectList.createNode("Value");
+    AbstractLinkedList.Node<Object> actualCreateNodeResult = objectList.createNode("Value");
 
     // Assert
     assertEquals("Value", actualCreateNodeResult.getValue());
@@ -181,13 +46,23 @@ public class NodeCachingLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#getMaximumCacheSize()}.
-   * <p>
+   * Method under test: {@link NodeCachingLinkedList#createNode(Object)}
+   */
+  @Test
+  public void testCreateNode2() {
+    // Arrange
+    NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
+    AbstractLinkedList.Node<Object> node = new AbstractLinkedList.Node<>();
+    objectList.addNodeToCache(node);
+
+    // Act and Assert
+    assertSame(node, objectList.createNode("Value"));
+  }
+
+  /**
    * Method under test: {@link NodeCachingLinkedList#getMaximumCacheSize()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int NodeCachingLinkedList.getMaximumCacheSize()"})
   public void testGetMaximumCacheSize() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
@@ -197,40 +72,10 @@ public class NodeCachingLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#getNodeFromCache()}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} addNodeToCache {@link Node#Node()}.</li>
-   *   <li>Then return {@link Node#Node()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node NodeCachingLinkedList.getNodeFromCache()"})
-  public void testGetNodeFromCache_givenNodeCachingLinkedListAddNodeToCacheNode_thenReturnNode() {
-    // Arrange
-    NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
-    Node<Object> node = new Node<>();
-    objectList.addNodeToCache(node);
-
-    // Act and Assert
-    assertSame(node, objectList.getNodeFromCache());
-  }
-
-  /**
-   * Test {@link NodeCachingLinkedList#getNodeFromCache()}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node NodeCachingLinkedList.getNodeFromCache()"})
-  public void testGetNodeFromCache_givenNodeCachingLinkedList_thenReturnNull() {
+  public void testGetNodeFromCache() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
 
@@ -239,13 +84,23 @@ public class NodeCachingLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#isCacheFull()}.
-   * <p>
+   * Method under test: {@link NodeCachingLinkedList#getNodeFromCache()}
+   */
+  @Test
+  public void testGetNodeFromCache2() {
+    // Arrange
+    NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
+    AbstractLinkedList.Node<Object> node = new AbstractLinkedList.Node<>();
+    objectList.addNodeToCache(node);
+
+    // Act and Assert
+    assertSame(node, objectList.getNodeFromCache());
+  }
+
+  /**
    * Method under test: {@link NodeCachingLinkedList#isCacheFull()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean NodeCachingLinkedList.isCacheFull()"})
   public void testIsCacheFull() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
@@ -255,39 +110,25 @@ public class NodeCachingLinkedListDiffblueTest {
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#removeAllNodes()}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.removeAllNodes()"})
-  public void testRemoveAllNodes_givenNodeCachingLinkedList() {
+  public void testRemoveAllNodes() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
 
     // Act
     objectList.removeAllNodes();
 
-    // Assert that nothing has changed
+    // Assert
     assertTrue(objectList.isEmpty());
   }
 
   /**
-   * Test {@link NodeCachingLinkedList#removeAllNodes()}.
-   * <ul>
-   *   <li>Given {@link NodeCachingLinkedList#NodeCachingLinkedList()} add {@code Value}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link NodeCachingLinkedList#removeAllNodes()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void NodeCachingLinkedList.removeAllNodes()"})
-  public void testRemoveAllNodes_givenNodeCachingLinkedListAddValue() {
+  public void testRemoveAllNodes2() {
     // Arrange
     NodeCachingLinkedList<Object> objectList = new NodeCachingLinkedList<>();
     objectList.add("Value");
@@ -297,5 +138,75 @@ public class NodeCachingLinkedListDiffblueTest {
 
     // Assert
     assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList()}
+   */
+  @Test
+  public void testNewNodeCachingLinkedList() {
+    // Arrange and Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>();
+
+    // Assert
+    assertTrue(actualObjectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link NodeCachingLinkedList#NodeCachingLinkedList(int)}
+   */
+  @Test
+  public void testNewNodeCachingLinkedList2() {
+    // Arrange and Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(3);
+
+    // Assert
+    assertTrue(actualObjectList.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   */
+  @Test
+  public void testNewNodeCachingLinkedList3() {
+    // Arrange and Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(new ArrayList<>());
+
+    // Assert
+    assertTrue(actualObjectList.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   */
+  @Test
+  public void testNewNodeCachingLinkedList4() {
+    // Arrange
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act
+    NodeCachingLinkedList<Object> actualObjectList = new NodeCachingLinkedList<>(coll);
+
+    // Assert
+    assertEquals(1, actualObjectList.size());
+    assertEquals("42", actualObjectList.get(0));
+  }
+
+  /**
+   * Method under test:
+   * {@link NodeCachingLinkedList#NodeCachingLinkedList(Collection)}
+   */
+  @Test
+  public void testNewNodeCachingLinkedList5() {
+    // Arrange
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act and Assert
+    assertEquals(coll, new NodeCachingLinkedList<>(coll));
   }
 }

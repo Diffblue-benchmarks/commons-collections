@@ -2,28 +2,31 @@ package org.apache.commons.collections4.collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class UnmodifiableCollectionDiffblueTest {
   /**
-   * Test {@link UnmodifiableCollection#unmodifiableCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
+   * Method under test:
+   * {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Collection UnmodifiableCollection.unmodifiableCollection(Collection)"})
-  public void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsOne() {
+  public void testUnmodifiableCollection() {
+    // Arrange and Act
+    Collection<Object> actualUnmodifiableCollectionResult = UnmodifiableCollection
+        .unmodifiableCollection(new ArrayList<>());
+
+    // Assert
+    assertTrue(actualUnmodifiableCollectionResult.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
+   */
+  @Test
+  public void testUnmodifiableCollection2() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -36,19 +39,11 @@ public class UnmodifiableCollectionDiffblueTest {
   }
 
   /**
-   * Test {@link UnmodifiableCollection#unmodifiableCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
+   * Method under test:
+   * {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Collection UnmodifiableCollection.unmodifiableCollection(Collection)"})
-  public void testUnmodifiableCollection_given42_whenArrayListAdd42_thenReturnSizeIsTwo() {
+  public void testUnmodifiableCollection3() {
     // Arrange
     ArrayList<Object> coll = new ArrayList<>();
     coll.add("42");
@@ -59,26 +54,5 @@ public class UnmodifiableCollectionDiffblueTest {
 
     // Assert
     assertEquals(2, actualUnmodifiableCollectionResult.size());
-  }
-
-  /**
-   * Test {@link UnmodifiableCollection#unmodifiableCollection(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableCollection#unmodifiableCollection(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Collection UnmodifiableCollection.unmodifiableCollection(Collection)"})
-  public void testUnmodifiableCollection_whenArrayList_thenReturnEmpty() {
-    // Arrange and Act
-    Collection<Object> actualUnmodifiableCollectionResult = UnmodifiableCollection
-        .unmodifiableCollection(new ArrayList<>());
-
-    // Assert
-    assertTrue(actualUnmodifiableCollectionResult.isEmpty());
   }
 }

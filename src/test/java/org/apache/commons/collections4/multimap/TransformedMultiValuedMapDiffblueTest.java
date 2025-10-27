@@ -3,513 +3,131 @@ package org.apache.commons.collections4.multimap;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.Transformer;
+import org.apache.commons.collections4.functors.ChainedTransformer;
+import org.apache.commons.collections4.functors.ClosureTransformer;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class TransformedMultiValuedMapDiffblueTest {
   /**
-   * Test {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
+   * Method under test:
+   * {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformedMap(MultiValuedMap, Transformer, Transformer)"})
   public void testTransformedMap() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> map = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(new ClosureTransformer<>(null));
 
     // Act
     TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        mock(Transformer.class), mock(Transformer.class));
+        keyTransformer, new ChainedTransformer<>(new ClosureTransformer<>(null)));
 
     // Assert
     assertEquals(0, actualTransformedMapResult.size());
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>Then {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} Map size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
+   * Method under test:
+   * {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformedMap(MultiValuedMap, Transformer, Transformer)"})
-  public void testTransformedMap_thenArrayListValuedHashMapMapSizeIsOne() {
+  public void testTransformedMap2() {
+    // Arrange
+    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(new ClosureTransformer<>(null));
+
+    // Act
+    TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(new ClosureTransformer<>(null)));
+
+    // Assert
+    assertEquals(0, actualTransformedMapResult.size());
+  }
+
+  /**
+   * Method under test:
+   * {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
+   */
+  @Test
+  public void testTransformedMap3() {
     // Arrange
     ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
-    map.put("Key", "Value");
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(new ClosureTransformer<>(null));
+    TransformedMultiValuedMap<Object, Object> map2 = TransformedMultiValuedMap.transformedMap(map, keyTransformer,
+        new ChainedTransformer<>(new ClosureTransformer<>(null)));
+    ChainedTransformer<? super Object> keyTransformer2 = new ChainedTransformer<>(new ClosureTransformer<>(null));
 
     // Act
-    TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        keyTransformer, valueTransformer);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    Map<Object, List<Object>> map2 = map.getMap();
-    assertEquals(1, map2.size());
-    List<Object> getResult = map2.get("Apply");
-    assertEquals(1, getResult.size());
-    assertEquals("Apply", getResult.get(0));
-    assertEquals(1, actualTransformedMapResult.size());
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>Then {@link HashSetValuedHashMap#HashSetValuedHashMap()} Map size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformedMap(MultiValuedMap, Transformer, Transformer)"})
-  public void testTransformedMap_thenHashSetValuedHashMapMapSizeIsOne() {
-    // Arrange
-    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
-    map.put("Key", "Value");
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    // Act
-    TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        keyTransformer, valueTransformer);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    Map<Object, Set<Object>> map2 = map.getMap();
-    assertEquals(1, map2.size());
-    assertEquals(1, map2.get("Apply").size());
-    assertEquals(1, actualTransformedMapResult.size());
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return size is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformedMap(MultiValuedMap, Transformer, Transformer)"})
-  public void testTransformedMap_whenArrayListValuedHashMap_thenReturnSizeIsZero() {
-    // Arrange and Act
     TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+        .transformedMap(map2, keyTransformer2, new ChainedTransformer<>(new ClosureTransformer<>(null)));
 
     // Assert
+    assertEquals(0, map2.size());
     assertEquals(0, actualTransformedMapResult.size());
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   *   <li>Then return size is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
+   * Method under test:
+   * {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformedMap(MultiValuedMap, Transformer, Transformer)"})
-  public void testTransformedMap_whenHashSetValuedHashMap_thenReturnSizeIsZero() {
-    // Arrange and Act
+  public void testTransformedMap4() {
+    // Arrange
+    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(new ClosureTransformer<>(null));
+    TransformedMultiValuedMap<Object, Object> map2 = TransformedMultiValuedMap.transformedMap(map, keyTransformer,
+        new ChainedTransformer<>(new ClosureTransformer<>(null)));
+    ChainedTransformer<? super Object> keyTransformer2 = new ChainedTransformer<>(new ClosureTransformer<>(null));
+
+    // Act
     TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+        .transformedMap(map2, keyTransformer2, new ChainedTransformer<>(new ClosureTransformer<>(null)));
 
     // Assert
+    assertEquals(0, map2.size());
     assertEquals(0, actualTransformedMapResult.size());
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#transformingMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return size is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformingMap(MultiValuedMap, Transformer, Transformer)}
+   * Method under test:
+   * {@link TransformedMultiValuedMap#transformedMap(MultiValuedMap, Transformer, Transformer)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({
-      "TransformedMultiValuedMap TransformedMultiValuedMap.transformingMap(MultiValuedMap, Transformer, Transformer)"})
-  public void testTransformingMap_whenArrayListValuedHashMap_thenReturnSizeIsZero() {
-    // Arrange and Act
-    TransformedMultiValuedMap<Object, Object> actualTransformingMapResult = TransformedMultiValuedMap
-        .transformingMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Assert
-    assertEquals(0, actualTransformingMapResult.size());
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#TransformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)}.
-   * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   *   <li>Then return size is zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#TransformedMultiValuedMap(MultiValuedMap, Transformer, Transformer)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TransformedMultiValuedMap.<init>(MultiValuedMap, Transformer, Transformer)"})
-  public void testNewTransformedMultiValuedMap_whenArrayListValuedHashMap_thenReturnSizeIsZero() {
-    // Arrange and Act
-    TransformedMultiValuedMap<Object, Object> actualTransformedMultiValuedMap = new TransformedMultiValuedMap<>(
-        new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Assert
-    assertEquals(0, actualTransformedMultiValuedMap.size());
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#put(Object, Object)}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#put(Object, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.put(Object, Object)"})
-  public void testPut() {
+  public void testTransformedMap5() {
     // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(new ClosureTransformer<>(null));
+    TransformedMultiValuedMap<Object, Object> map2 = TransformedMultiValuedMap.transformedMap(map, keyTransformer,
+        new ChainedTransformer<>(new ClosureTransformer<>(null)));
+    ChainedTransformer<? super Object> keyTransformer2 = new ChainedTransformer<>(new ClosureTransformer<>(null));
+    TransformedMultiValuedMap<Object, Object> map3 = TransformedMultiValuedMap.transformedMap(map2, keyTransformer2,
+        new ChainedTransformer<>(new ClosureTransformer<>(null)));
+    ChainedTransformer<? super Object> keyTransformer3 = new ChainedTransformer<>(new ClosureTransformer<>(null));
 
     // Act
-    boolean actualPutResult = transformedMapResult.put("Key", "Value");
+    TransformedMultiValuedMap<Object, Object> actualTransformedMapResult = TransformedMultiValuedMap
+        .transformedMap(map3, keyTransformer3, new ChainedTransformer<>(new ClosureTransformer<>(null)));
 
     // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutResult);
+    assertEquals(0, map3.size());
+    assertEquals(0, actualTransformedMapResult.size());
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#put(Object, Object)}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#put(Object, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.put(Object, Object)"})
-  public void testPut2() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    // Act
-    boolean actualPutResult = transformedMapResult.put("Key", "Value");
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#put(Object, Object)}.
-   * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#put(Object, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.put(Object, Object)"})
-  public void testPut_givenHashSetValuedHashMapKeyIsValue_thenReturnFalse() {
-    // Arrange
-    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
-    map.put("Key", "Value");
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        keyTransformer, valueTransformer);
-
-    // Act
-    boolean actualPutResult = transformedMapResult.put("Key", "Value");
-
-    // Assert
-    verify(keyTransformer, atLeast(1)).apply(isA(Object.class));
-    verify(valueTransformer, atLeast(1)).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertFalse(actualPutResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Map)} with {@code Map}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Map)"})
-  public void testPutAllWithMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(new HashMap<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Map)} with {@code Map}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Map)"})
-  public void testPutAllWithMap2() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    HashMap<Object, Object> map = new HashMap<>();
-    map.put("42", "42");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Map)} with {@code Map}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Map)"})
-  public void testPutAllWithMap3() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    HashMap<Object, Object> map = new HashMap<>();
-    map.put("42", "42");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Map)} with {@code Map}.
-   * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Map)"})
-  public void testPutAllWithMap_givenHashSetValuedHashMapKeyIsValue() {
-    // Arrange
-    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
-    map.put("Key", "Value");
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        keyTransformer, valueTransformer);
-
-    HashMap<Object, Object> map2 = new HashMap<>();
-    map2.put("42", "42");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map2);
-
-    // Assert
-    verify(keyTransformer, atLeast(1)).apply(Mockito.<Object>any());
-    verify(valueTransformer, atLeast(1)).apply(Mockito.<Object>any());
-    assertEquals(1, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(MultiValuedMap)"})
-  public void testPutAllWithMultiValuedMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    TransformedMultiValuedMap<?, ?> map = TransformedMultiValuedMap.transformedMap(new ArrayListValuedHashMap<>(),
-        mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(MultiValuedMap)"})
-  public void testPutAllWithMultiValuedMap2() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    UnmodifiableMultiValuedMap<?, ?> map = UnmodifiableMultiValuedMap
-        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
-   * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(MultiValuedMap)"})
-  public void testPutAllWithMultiValuedMap_whenArrayListValuedHashMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(new ArrayListValuedHashMap<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(MultiValuedMap)} with {@code MultiValuedMap}.
-   * <ul>
-   *   <li>When {@link HashSetValuedHashMap#HashSetValuedHashMap()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(MultiValuedMap)"})
-  public void testPutAllWithMultiValuedMap_whenHashSetValuedHashMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(new HashSetValuedHashMap<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
-   * <p>
    * Method under test: {@link TransformedMultiValuedMap#putAll(Object, Iterable)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Object, Iterable)"})
-  public void testPutAllWithObjectIterable() {
+  public void testPutAll() {
     // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(null);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(null));
 
     // Act
     boolean actualPutAllResult = transformedMapResult.putAll("Key", new ArrayList<>());
@@ -520,21 +138,15 @@ public class TransformedMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
-   * <p>
    * Method under test: {@link TransformedMultiValuedMap#putAll(Object, Iterable)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Object, Iterable)"})
-  public void testPutAllWithObjectIterable2() {
+  public void testPutAll2() {
     // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>();
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>());
 
     ArrayList<Object> values = new ArrayList<>();
     values.add("42");
@@ -543,63 +155,20 @@ public class TransformedMultiValuedMapDiffblueTest {
     boolean actualPutAllResult = transformedMapResult.putAll("Key", values);
 
     // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
     assertEquals(1, transformedMapResult.size());
     assertTrue(actualPutAllResult);
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
-   * <p>
    * Method under test: {@link TransformedMultiValuedMap#putAll(Object, Iterable)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Object, Iterable)"})
-  public void testPutAllWithObjectIterable3() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new HashSetValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    ArrayList<Object> values = new ArrayList<>();
-    values.add("42");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll("Key", values);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link TransformedMultiValuedMap#putAll(Object, Iterable)} with {@code Object}, {@code Iterable}.
-   * <ul>
-   *   <li>Given {@link HashSetValuedHashMap#HashSetValuedHashMap()} {@code Key} is {@code Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#putAll(Object, Iterable)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TransformedMultiValuedMap.putAll(Object, Iterable)"})
-  public void testPutAllWithObjectIterable_givenHashSetValuedHashMapKeyIsValue() {
+  public void testPutAll3() {
     // Arrange
     HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
-    map.put("Key", "Value");
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>();
     TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
-        keyTransformer, valueTransformer);
+        keyTransformer, new ChainedTransformer<>());
 
     ArrayList<Object> values = new ArrayList<>();
     values.add("42");
@@ -608,55 +177,161 @@ public class TransformedMultiValuedMapDiffblueTest {
     boolean actualPutAllResult = transformedMapResult.putAll("Key", values);
 
     // Assert
-    verify(keyTransformer, atLeast(1)).apply(isA(Object.class));
-    verify(valueTransformer, atLeast(1)).apply(Mockito.<Object>any());
+    assertEquals(1, transformedMapResult.size());
+    assertTrue(actualPutAllResult);
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(Object, Iterable)}
+   */
+  @Test
+  public void testPutAll4() {
+    // Arrange
+    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
+    map.put("Key", "42");
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>();
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>());
+
+    ArrayList<Object> values = new ArrayList<>();
+    values.add("42");
+
+    // Act
+    boolean actualPutAllResult = transformedMapResult.putAll("Key", values);
+
+    // Assert
     assertEquals(1, transformedMapResult.size());
     assertFalse(actualPutAllResult);
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#transformKey(Object)}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformKey(Object)}
+   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object TransformedMultiValuedMap.transformKey(Object)"})
-  public void testTransformKey() {
+  public void testPutAll5() {
     // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), keyTransformer, mock(Transformer.class));
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(null);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(null));
 
     // Act
-    Object actualTransformKeyResult = transformedMapResult.transformKey("Object");
+    boolean actualPutAllResult = transformedMapResult.putAll(new HashMap<>());
 
     // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    assertEquals("Apply", actualTransformKeyResult);
+    assertEquals(0, transformedMapResult.size());
+    assertFalse(actualPutAllResult);
   }
 
   /**
-   * Test {@link TransformedMultiValuedMap#transformValue(Object)}.
-   * <p>
-   * Method under test: {@link TransformedMultiValuedMap#transformValue(Object)}
+   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object TransformedMultiValuedMap.transformValue(Object)"})
-  public void testTransformValue() {
+  public void testPutAll6() {
     // Arrange
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap
-        .transformedMap(new ArrayListValuedHashMap<>(), mock(Transformer.class), valueTransformer);
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>();
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>());
+
+    HashMap<Object, Object> map2 = new HashMap<>();
+    map2.put("42", "42");
 
     // Act
-    Object actualTransformValueResult = transformedMapResult.transformValue("Object");
+    boolean actualPutAllResult = transformedMapResult.putAll(map2);
 
     // Assert
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals("Apply", actualTransformValueResult);
+    assertEquals(1, transformedMapResult.size());
+    assertTrue(actualPutAllResult);
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
+   */
+  @Test
+  public void testPutAll7() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        new ChainedTransformer<>(), null);
+
+    HashMap<Object, Object> map2 = new HashMap<>();
+    map2.put("42", "42");
+
+    // Act
+    boolean actualPutAllResult = transformedMapResult.putAll(map2);
+
+    // Assert
+    assertEquals(1, transformedMapResult.size());
+    assertTrue(actualPutAllResult);
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(Map)}
+   */
+  @Test
+  public void testPutAll8() {
+    // Arrange
+    HashSetValuedHashMap<Object, Object> map = new HashSetValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>();
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>());
+
+    HashMap<Object, Object> map2 = new HashMap<>();
+    map2.put("42", "42");
+
+    // Act
+    boolean actualPutAllResult = transformedMapResult.putAll(map2);
+
+    // Assert
+    assertEquals(1, transformedMapResult.size());
+    assertTrue(actualPutAllResult);
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
+   */
+  @Test
+  public void testPutAll9() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(null);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(null));
+
+    // Act and Assert
+    assertFalse(transformedMapResult.putAll(new ArrayListValuedHashMap<>()));
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
+   */
+  @Test
+  public void testPutAll10() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(null);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(null));
+
+    // Act and Assert
+    assertFalse(transformedMapResult.putAll(new HashSetValuedHashMap<>()));
+  }
+
+  /**
+   * Method under test: {@link TransformedMultiValuedMap#putAll(MultiValuedMap)}
+   */
+  @Test
+  public void testPutAll11() {
+    // Arrange
+    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
+    ChainedTransformer<? super Object> keyTransformer = new ChainedTransformer<>(null);
+    TransformedMultiValuedMap<Object, Object> transformedMapResult = TransformedMultiValuedMap.transformedMap(map,
+        keyTransformer, new ChainedTransformer<>(null));
+    UnmodifiableMultiValuedMap<?, ?> map2 = UnmodifiableMultiValuedMap
+        .unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
+
+    // Act and Assert
+    assertFalse(transformedMapResult.putAll(map2));
   }
 }

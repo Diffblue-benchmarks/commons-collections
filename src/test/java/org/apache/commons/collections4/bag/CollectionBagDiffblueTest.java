@@ -1,28 +1,47 @@
 package org.apache.commons.collections4.bag;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.junit.Assert.assertTrue;
 import org.apache.commons.collections4.Bag;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class CollectionBagDiffblueTest {
   /**
-   * Test {@link CollectionBag#collectionBag(Bag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CollectionBag#collectionBag(Bag)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Bag CollectionBag.collectionBag(Bag)"})
-  public void testCollectionBag_givenObject_whenHashBagAddObject() {
+  public void testCollectionBag() {
+    // Arrange and Act
+    Bag<Object> actualCollectionBagResult = CollectionBag.collectionBag(new HashBag<>());
+
+    // Assert
+    assertTrue(actualCollectionBagResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link CollectionBag#collectionBag(Bag)}
+   */
+  @Test
+  public void testCollectionBag2() {
     // Arrange
     HashBag<Object> bag = new HashBag<>();
+    bag.add("Object");
+
+    // Act
+    Bag<Object> actualCollectionBagResult = CollectionBag.collectionBag(bag);
+
+    // Assert
+    assertEquals(1, actualCollectionBagResult.size());
+  }
+
+  /**
+   * Method under test: {@link CollectionBag#collectionBag(Bag)}
+   */
+  @Test
+  public void testCollectionBag3() {
+    // Arrange
+    HashBag<Object> bag = new HashBag<>();
+    bag.add("Object");
     bag.add("Object");
 
     // Act
@@ -33,109 +52,42 @@ public class CollectionBagDiffblueTest {
   }
 
   /**
-   * Test {@link CollectionBag#collectionBag(Bag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CollectionBag#collectionBag(Bag)}
+   * Method under test: {@link CollectionBag#CollectionBag(Bag)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Bag CollectionBag.collectionBag(Bag)"})
-  public void testCollectionBag_givenObject_whenHashBagAddObject2() {
+  public void testNewCollectionBag() {
+    // Arrange and Act
+    CollectionBag<Object> actualCollectionBag = new CollectionBag<>(new HashBag<>());
+
+    // Assert
+    assertTrue(actualCollectionBag.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link CollectionBag#CollectionBag(Bag)}
+   */
+  @Test
+  public void testNewCollectionBag2() {
     // Arrange
     HashBag<Object> bag = new HashBag<>();
-    bag.add("Object");
     bag.add("Object");
 
     // Act
-    Bag<Object> actualCollectionBagResult = CollectionBag.collectionBag(bag);
+    CollectionBag<Object> actualCollectionBag = new CollectionBag<>(bag);
 
     // Assert
-    assertEquals(bag, actualCollectionBagResult);
+    assertEquals(1, actualCollectionBag.size());
   }
 
   /**
-   * Test {@link CollectionBag#collectionBag(Bag)}.
-   * <ul>
-   *   <li>When {@link HashBag#HashBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CollectionBag#collectionBag(Bag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Bag CollectionBag.collectionBag(Bag)"})
-  public void testCollectionBag_whenHashBag() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
-
-    // Act
-    Bag<Object> actualCollectionBagResult = CollectionBag.collectionBag(bag);
-
-    // Assert
-    assertEquals(bag, actualCollectionBagResult);
-  }
-
-  /**
-   * Test {@link CollectionBag#CollectionBag(Bag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link CollectionBag#CollectionBag(Bag)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CollectionBag.<init>(Bag)"})
-  public void testNewCollectionBag_givenObject_whenHashBagAddObject() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
-    bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new CollectionBag<>(bag));
-  }
-
-  /**
-   * Test {@link CollectionBag#CollectionBag(Bag)}.
-   * <ul>
-   *   <li>Given {@code Object}.</li>
-   *   <li>When {@link HashBag#HashBag()} add {@code Object}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CollectionBag#CollectionBag(Bag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CollectionBag.<init>(Bag)"})
-  public void testNewCollectionBag_givenObject_whenHashBagAddObject2() {
+  public void testNewCollectionBag3() {
     // Arrange
     HashBag<Object> bag = new HashBag<>();
     bag.add("Object");
     bag.add("Object");
-
-    // Act and Assert
-    assertEquals(bag, new CollectionBag<>(bag));
-  }
-
-  /**
-   * Test {@link CollectionBag#CollectionBag(Bag)}.
-   * <ul>
-   *   <li>When {@link HashBag#HashBag()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CollectionBag#CollectionBag(Bag)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CollectionBag.<init>(Bag)"})
-  public void testNewCollectionBag_whenHashBag() {
-    // Arrange
-    HashBag<Object> bag = new HashBag<>();
 
     // Act and Assert
     assertEquals(bag, new CollectionBag<>(bag));

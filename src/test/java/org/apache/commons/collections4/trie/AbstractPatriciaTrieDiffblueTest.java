@@ -6,412 +6,230 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
+import java.util.SortedMap;
 import org.apache.commons.collections4.OrderedMapIterator;
-import org.apache.commons.collections4.trie.AbstractPatriciaTrie.TrieEntry;
 import org.apache.commons.collections4.trie.analyzer.StringKeyAnalyzer;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class AbstractPatriciaTrieDiffblueTest {
   /**
-   * Test {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#isValidUplink(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.isValidUplink(TrieEntry, TrieEntry)"})
-  public void testIsValidUplink_whenNull_thenReturnFalse() {
+  public void testIsValidUplink() {
+    // Arrange
+    AbstractPatriciaTrie.TrieEntry<Object, Object> next = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act and Assert
+    assertTrue(AbstractPatriciaTrie.isValidUplink(next, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#isValidUplink(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testIsValidUplink2() {
     // Arrange, Act and Assert
-    assertFalse(AbstractPatriciaTrie.isValidUplink(null, new TrieEntry<>("Key", "Value", 1)));
+    assertFalse(AbstractPatriciaTrie.isValidUplink(null, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#isValidUplink(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.isValidUplink(TrieEntry, TrieEntry)"})
-  public void testIsValidUplink_whenTrieEntryWithKeyAndValueAndBitIndexIsOne_thenReturnTrue() {
+  public void testIsValidUplink3() {
     // Arrange
-    TrieEntry<Object, Object> next = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> next = new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1);
 
     // Act and Assert
-    assertTrue(AbstractPatriciaTrie.isValidUplink(next, new TrieEntry<>("Key", "Value", 1)));
+    assertFalse(AbstractPatriciaTrie.isValidUplink(next, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is zero.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#isValidUplink(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.isValidUplink(TrieEntry, TrieEntry)"})
-  public void testIsValidUplink_whenTrieEntryWithKeyAndValueAndBitIndexIsZero_thenReturnFalse() {
+  public void testIsValidUplink4() {
     // Arrange
-    TrieEntry<Object, Object> next = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> next = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
-    assertFalse(AbstractPatriciaTrie.isValidUplink(next, new TrieEntry<>("Key", "Value", 0)));
+    assertFalse(AbstractPatriciaTrie.isValidUplink(next, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 0)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code null} and {@code Value} and bitIndex is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#isValidUplink(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#addEntry(AbstractPatriciaTrie.TrieEntry, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.isValidUplink(TrieEntry, TrieEntry)"})
-  public void testIsValidUplink_whenTrieEntryWithKeyIsNullAndValueAndBitIndexIsOne() {
-    // Arrange
-    TrieEntry<Object, Object> next = new TrieEntry<>(null, "Value", 1);
-
-    // Act and Assert
-    assertFalse(AbstractPatriciaTrie.isValidUplink(next, new TrieEntry<>("Key", "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#addEntry(TrieEntry, int)}.
-   * <ul>
-   *   <li>Then {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one is {@link TrieEntry#parent}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#addEntry(TrieEntry, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.addEntry(TrieEntry, int)"})
-  public void testAddEntry_thenTrieEntryWithKeyAndValueAndBitIndexIsOneIsParent() {
+  public void testAddEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 0);
-
-    objectMap.addEntry(entry, 3);
-    TrieEntry<String, Object> entry2 = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<String, Object> entry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act
-    TrieEntry<String, Object> actualAddEntryResult = objectMap.addEntry(entry2, 3);
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualAddEntryResult = objectMap.addEntry(entry, 3);
 
     // Assert
-    assertEquals(actualAddEntryResult.parent, entry2);
-    assertSame(entry.predecessor, actualAddEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#addEntry(TrieEntry, int)}.
-   * <ul>
-   *   <li>Then {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one {@link TrieEntry#parent} Value is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#addEntry(TrieEntry, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.addEntry(TrieEntry, int)"})
-  public void testAddEntry_thenTrieEntryWithKeyAndValueAndBitIndexIsOneParentValueIsNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    // Act
-    TrieEntry<String, Object> actualAddEntryResult = objectMap.addEntry(entry, 3);
-
-    // Assert
-    TrieEntry<String, Object> trieEntry = entry.parent;
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = entry.parent;
     assertNull(trieEntry.getValue());
-    TrieEntry<String, Object> trieEntry2 = entry.right;
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry2 = entry.right;
     assertNull(trieEntry2.getValue());
-    TrieEntry<String, Object> trieEntry3 = actualAddEntryResult.right;
-    assertNull(trieEntry3.getValue());
     assertNull(trieEntry.getKey());
     assertNull(trieEntry2.getKey());
-    assertNull(trieEntry3.getKey());
     assertNull(trieEntry.parent);
     assertNull(trieEntry2.parent);
-    assertNull(trieEntry3.parent);
     assertNull(trieEntry.right);
     assertNull(trieEntry2.right);
-    assertNull(trieEntry3.right);
+    assertFalse(trieEntry.isExternalNode());
+    assertFalse(trieEntry2.isExternalNode());
     assertTrue(trieEntry.isEmpty());
     assertTrue(trieEntry2.isEmpty());
-    assertTrue(trieEntry3.isEmpty());
+    assertTrue(trieEntry.isInternalNode());
+    assertTrue(trieEntry2.isInternalNode());
     assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry.bitIndex);
     assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry2.bitIndex);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry3.bitIndex);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry3 = actualAddEntryResult.predecessor;
+    assertSame(trieEntry3, actualAddEntryResult);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry4 = entry.left;
+    assertSame(trieEntry3, trieEntry4.left);
+    assertSame(trieEntry3, trieEntry.left);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry5 = entry.predecessor;
+    assertSame(trieEntry3, trieEntry5.left);
+    assertSame(trieEntry3, trieEntry2.left);
+    assertSame(trieEntry3, trieEntry4.predecessor);
+    assertSame(trieEntry3, trieEntry.predecessor);
+    assertSame(trieEntry3, trieEntry5.predecessor);
+    assertSame(trieEntry3, trieEntry2.predecessor);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry6 = actualAddEntryResult.right;
+    assertSame(trieEntry6, trieEntry4.parent);
+    assertSame(trieEntry6, trieEntry5.parent);
+    assertSame(trieEntry6, trieEntry4.right);
+    assertSame(trieEntry6, trieEntry5.right);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <p>
+   * Method under test:
+   * {@link AbstractPatriciaTrie#addEntry(AbstractPatriciaTrie.TrieEntry, int)}
+   */
+  @Test
+  public void testAddEntry2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+    AbstractPatriciaTrie.TrieEntry<String, Object> entry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualAddEntryResult = objectMap.addEntry(entry, 3);
+
+    // Assert
+    assertEquals(actualAddEntryResult.right, entry);
+    assertSame(actualAddEntryResult.predecessor, actualAddEntryResult);
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#addEntry(AbstractPatriciaTrie.TrieEntry, int)}
+   */
+  @Test
+  public void testAddEntry3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 0), 3);
+    AbstractPatriciaTrie.TrieEntry<String, Object> entry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualAddEntryResult = objectMap.addEntry(entry, 3);
+
+    // Assert
+    assertEquals(actualAddEntryResult.right, entry);
+    assertSame(actualAddEntryResult.predecessor, actualAddEntryResult);
+  }
+
+  /**
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
   public void testCeilingEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", KeyAnalyzer.NULL_BIT_KEY);
-
-    objectMap.addEntry(entry, 3);
-    objectMap.put("42", "Value");
-    objectMap.addEntry(new TrieEntry<>("42", "Value", 1), 3);
-
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.ceilingEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrie42IsValue_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("42", "Value");
 
     // Act and Assert
     assertNull(objectMap.ceilingEntry("Key"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@link TrieEntry#parent}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrie42IsValue_whenKey_thenReturnParent() {
+  public void testCeilingEntry2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("42", "Value");
-    objectMap.addEntry(new TrieEntry<>("42", "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
     // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
-
-    // Assert
-    assertEquals(actualCeilingEntryResult.parent, actualCeilingEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} empty string is {@code Value}.</li>
-   *   <li>Then return {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrieEmptyStringIsValue_thenReturnPredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry(null);
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
 
     // Assert
     assertSame(actualCeilingEntryResult.predecessor, actualCeilingEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} IfAbsent {@code foo} is {@code 42}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return Value is {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrieIfAbsentFooIs42_whenKey_thenReturnValueIs42() {
+  public void testCeilingEntry3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("Key", "Value");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
+
+    // Assert
+    assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
+   */
+  @Test
+  public void testCeilingEntry4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.putIfAbsent("foo", "42");
 
     // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
-
-    // Assert
-    assertEquals("42", actualCeilingEntryResult.getValue());
-    TrieEntry<String, Object> trieEntry = actualCeilingEntryResult.predecessor;
-    assertEquals("42", trieEntry.getValue());
-    TrieEntry<String, Object> trieEntry2 = actualCeilingEntryResult.right;
-    assertEquals("42", trieEntry2.getValue());
-    assertEquals("foo", actualCeilingEntryResult.getKey());
-    assertEquals("foo", trieEntry.getKey());
-    assertEquals("foo", trieEntry2.getKey());
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@link TrieEntry#predecessor} {@link TrieEntry#parent} is {@link TrieEntry#left}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrieKeyIsValue_thenReturnPredecessorParentIsLeft() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
-
-    // Assert
-    TrieEntry<String, Object> trieEntry = actualCeilingEntryResult.left;
-    TrieEntry<String, Object> trieEntry2 = actualCeilingEntryResult.predecessor;
-    assertSame(trieEntry, trieEntry2.parent);
-    TrieEntry<String, Object> trieEntry3 = actualCeilingEntryResult.right;
-    assertSame(trieEntry, trieEntry3.parent);
-    TrieEntry<String, Object> trieEntry4 = actualCeilingEntryResult.parent;
-    assertSame(trieEntry4, trieEntry2.left);
-    assertSame(trieEntry4, trieEntry3.left);
-    TrieEntry<String, Object> trieEntry5 = actualCeilingEntryResult.right;
-    assertSame(trieEntry5, actualCeilingEntryResult.left.left);
-    TrieEntry<String, Object> trieEntry6 = actualCeilingEntryResult.parent;
-    assertSame(trieEntry5, trieEntry6.left);
-    assertSame(trieEntry5, trieEntry6.predecessor);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrieKeyIsValue_when42_thenReturnRight() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("42");
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
 
     // Assert
     assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When empty string.</li>
-   *   <li>Then return {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrieKeyIsValue_whenEmptyString_thenReturnRight() {
+  public void testCeilingEntry5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("");
-
-    // Assert
-    assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrie_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("42", "Value");
 
     // Act and Assert
     assertNull(objectMap.ceilingEntry("Key"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_givenPatriciaTrie_whenNull_thenReturnNull() {
+  public void testCeilingEntry6() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -420,39 +238,92 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#ceilingEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#bitIndex} is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.ceilingEntry(Object)"})
-  public void testCeilingEntry_thenReturnBitIndexIsOne() {
+  public void testCeilingEntry7() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
+    objectMap.put("Key", "Value");
 
     // Act
-    TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("42");
 
     // Assert
-    assertEquals(1, actualCeilingEntryResult.bitIndex);
-    assertSame(entry.predecessor, actualCeilingEntryResult);
+    assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#comparator()}.
-   * <p>
+   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
+   */
+  @Test
+  public void testCeilingEntry8() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("Key", "Value");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("");
+
+    // Assert
+    assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
+   */
+  @Test
+  public void testCeilingEntry9() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("42", "Value");
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("42", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
+
+    // Assert
+    assertSame(actualCeilingEntryResult.right, actualCeilingEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
+   */
+  @Test
+  public void testCeilingEntry10() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", KeyAnalyzer.NULL_BIT_KEY), 3);
+    objectMap.put("42", "Value");
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("42", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry("Key");
+
+    // Assert
+    assertSame(actualCeilingEntryResult.predecessor, actualCeilingEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#ceilingEntry(Object)}
+   */
+  @Test
+  public void testCeilingEntry11() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("", "Value");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualCeilingEntryResult = objectMap.ceilingEntry(null);
+
+    // Assert
+    assertSame(actualCeilingEntryResult.predecessor, actualCeilingEntryResult);
+  }
+
+  /**
    * Method under test: {@link AbstractPatriciaTrie#comparator()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Comparator AbstractPatriciaTrie.comparator()"})
   public void testComparator() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
@@ -467,53 +338,48 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#containsKey(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.containsKey(Object)"})
   public void testContainsKey() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertFalse(objectMap.containsKey("42"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#containsKey(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.containsKey(Object)"})
   public void testContainsKey2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("42", "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act and Assert
+    assertFalse(objectMap.containsKey("42"));
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
+   */
+  @Test
+  public void testContainsKey3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("42", "Value", 1), 3);
 
     // Act and Assert
     assertTrue(objectMap.containsKey("42"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.containsKey(Object)"})
-  public void testContainsKey_givenPatriciaTrie42IsValue_when42_thenReturnTrue() {
+  public void testContainsKey4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
@@ -523,40 +389,10 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.containsKey(Object)"})
-  public void testContainsKey_givenPatriciaTrie_when42_thenReturnFalse() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertFalse(objectMap.containsKey("42"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#containsKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#containsKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractPatriciaTrie.containsKey(Object)"})
-  public void testContainsKey_givenPatriciaTrie_whenNull_thenReturnFalse() {
+  public void testContainsKey5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -565,13 +401,9 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#entrySet()}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#entrySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set AbstractPatriciaTrie.entrySet()"})
   public void testEntrySet() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
@@ -581,42 +413,10 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#firstEntry()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#firstEntry()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.firstEntry()"})
-  public void testFirstEntry_givenPatriciaTrieKeyIsValue_thenReturnRight() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualFirstEntryResult = objectMap.firstEntry();
-
-    // Assert
-    assertSame(actualFirstEntryResult.right, actualFirstEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#firstEntry()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#firstEntry()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.firstEntry()"})
-  public void testFirstEntry_givenPatriciaTrie_thenReturnNull() {
+  public void testFirstEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -625,18 +425,38 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#firstKey()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return {@code Key}.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link AbstractPatriciaTrie#firstEntry()}
+   */
+  @Test
+  public void testFirstEntry2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("Key", "Value");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualFirstEntryResult = objectMap.firstEntry();
+
+    // Assert
+    assertSame(actualFirstEntryResult.right, actualFirstEntryResult);
+  }
+
+  /**
    * Method under test: {@link AbstractPatriciaTrie#firstKey()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.firstKey()"})
-  public void testFirstKey_givenPatriciaTrieKeyIsValue_thenReturnKey() {
+  public void testFirstKey() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+
+    // Act and Assert
+    assertThrows(NoSuchElementException.class, () -> objectMap.firstKey());
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#firstKey()}
+   */
+  @Test
+  public void testFirstKey2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("Key", "Value");
@@ -646,115 +466,85 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#firstKey()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#firstKey()}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#followLeft(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.firstKey()"})
-  public void testFirstKey_givenPatriciaTrie_thenThrowNoSuchElementException() {
+  public void testFollowLeft() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertThrows(NoSuchElementException.class, () -> objectMap.firstKey());
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#followLeft(TrieEntry)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#followLeft(TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.followLeft(TrieEntry)"})
-  public void testFollowLeft_thenReturnPredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    AbstractPatriciaTrie.TrieEntry<String, Object> node = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act
-    TrieEntry<String, Object> actualFollowLeftResult = objectMap.followLeft(new TrieEntry<>("Key", "Value", 1));
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualFollowLeftResult = objectMap.followLeft(node);
 
     // Assert
-    assertSame(actualFollowLeftResult.predecessor, actualFollowLeftResult);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = actualFollowLeftResult.predecessor;
+    assertSame(trieEntry, actualFollowLeftResult);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry2 = node.left;
+    assertSame(trieEntry, trieEntry2.left);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry3 = node.predecessor;
+    assertSame(trieEntry, trieEntry3.left);
+    assertSame(trieEntry, trieEntry2.predecessor);
+    assertSame(trieEntry, trieEntry3.predecessor);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#followRight(TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#followRight(TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#followRight(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.followRight(TrieEntry)"})
-  public void testFollowRight_whenTrieEntryWithKeyAndValueAndBitIndexIsOne_thenReturnNull() {
+  public void testFollowRight() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
     // Act and Assert
-    assertNull(objectMap.followRight(new TrieEntry<>("Key", "Value", 1)));
+    assertNull(objectMap.followRight(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#get(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#get(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.get(Object)"})
   public void testGet() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertNull(objectMap.get("42"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#get(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#get(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.get(Object)"})
   public void testGet2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("42", "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act and Assert
+    assertNull(objectMap.get("42"));
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#get(Object)}
+   */
+  @Test
+  public void testGet3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("42", "Value", 1), 3);
 
     // Act and Assert
     assertEquals("Value", objectMap.get("42"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#get(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code Value}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#get(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.get(Object)"})
-  public void testGet_givenPatriciaTrie42IsValue_when42_thenReturnValue() {
+  public void testGet4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
@@ -764,40 +554,10 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#get(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#get(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.get(Object)"})
-  public void testGet_givenPatriciaTrie_when42_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.get("42"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#get(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#get(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.get(Object)"})
-  public void testGet_givenPatriciaTrie_whenNull_thenReturnNull() {
+  public void testGet5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -806,83 +566,67 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#getEntry(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getEntry(Object)"})
   public void testGetEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertNull(objectMap.getEntry("42"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#getEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@link TrieEntry#bitIndex} is ten.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getEntry(Object)"})
-  public void testGetEntry_givenPatriciaTrie42IsValue_when42_thenReturnBitIndexIsTen() {
+  public void testGetEntry2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act and Assert
+    assertNull(objectMap.getEntry("42"));
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
+   */
+  @Test
+  public void testGetEntry3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("42", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualEntry = objectMap.getEntry("42");
+
+    // Assert
+    assertSame(actualEntry.predecessor, actualEntry);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
+   */
+  @Test
+  public void testGetEntry4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
 
     // Act
-    TrieEntry<String, Object> actualEntry = objectMap.getEntry("42");
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualEntry = objectMap.getEntry("42");
 
     // Assert
-    assertEquals(10, actualEntry.bitIndex);
     assertSame(actualEntry.right, actualEntry);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#getEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code 42}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getEntry(Object)"})
-  public void testGetEntry_givenPatriciaTrie_when42_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.getEntry("42"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#getEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getEntry(Object)"})
-  public void testGetEntry_givenPatriciaTrie_whenNull_thenReturnNull() {
+  public void testGetEntry5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -891,339 +635,186 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#getEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#bitIndex} is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#getEntry(Object)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getEntry(Object)"})
-  public void testGetEntry_thenReturnBitIndexIsOne() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("42", "Value", 1), 3);
-
-    // Act
-    TrieEntry<String, Object> actualEntry = objectMap.getEntry("42");
-
-    // Assert
-    assertEquals(1, actualEntry.bitIndex);
-    assertSame(actualEntry.left, actualEntry);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}.
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getNearestEntryForKey(Object, int)"})
   public void testGetNearestEntryForKey() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
-
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.getNearestEntryForKey("Key", 3));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return Value is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.getNearestEntryForKey(Object, int)"})
-  public void testGetNearestEntryForKey_givenPatriciaTrie_whenKey_thenReturnValueIsNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
     // Act
-    TrieEntry<String, Object> actualNearestEntryForKey = objectMap.getNearestEntryForKey("Key", 3);
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNearestEntryForKey = objectMap.getNearestEntryForKey("Key", 3);
 
     // Assert
-    assertNull(actualNearestEntryForKey.getValue());
-    assertNull(actualNearestEntryForKey.getKey());
-    assertNull(actualNearestEntryForKey.parent);
-    assertNull(actualNearestEntryForKey.right);
-    assertTrue(actualNearestEntryForKey.isEmpty());
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, actualNearestEntryForKey.bitIndex);
+    assertSame(actualNearestEntryForKey.predecessor, actualNearestEntryForKey);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#headMap(Object)}.
-   * <ul>
-   *   <li>When {@code To Key}.</li>
-   *   <li>Then return {@link PatriciaTrie#PatriciaTrie()}.</li>
-   * </ul>
-   * <p>
+   * Method under test:
+   * {@link AbstractPatriciaTrie#getNearestEntryForKey(Object, int)}
+   */
+  @Test
+  public void testGetNearestEntryForKey2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNearestEntryForKey = objectMap.getNearestEntryForKey("Key", 3);
+
+    // Assert
+    assertSame(actualNearestEntryForKey.predecessor, actualNearestEntryForKey);
+  }
+
+  /**
    * Method under test: {@link AbstractPatriciaTrie#headMap(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.SortedMap AbstractPatriciaTrie.headMap(Object)"})
-  public void testHeadMap_whenToKey_thenReturnPatriciaTrie() {
+  public void testHeadMap() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
     // Act and Assert
-    assertEquals(objectMap, objectMap.headMap("To Key"));
+    assertTrue(objectMap.headMap("To Key").isEmpty());
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
   public void testHigherEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertNull(objectMap.higherEntry("Key"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
   public void testHigherEntry2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>(null, "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertNull(objectMap.higherEntry("Key"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return Key is {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrie42IsValue_whenKey_thenReturnKeyIs42() {
+  public void testHigherEntry3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 2);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
+
+    // Assert
+    assertSame(actualHigherEntryResult.predecessor, actualHigherEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
+   */
+  @Test
+  public void testHigherEntry4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
     // Act
-    TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
-
-    // Assert
-    assertEquals("42", actualHigherEntryResult.getKey());
-    TrieEntry<String, Object> trieEntry = actualHigherEntryResult.predecessor;
-    assertEquals("42", trieEntry.getKey());
-    assertEquals(10, actualHigherEntryResult.bitIndex);
-    assertEquals(10, trieEntry.bitIndex);
-    TrieEntry<String, Object> trieEntry2 = actualHigherEntryResult.parent;
-    assertSame(actualHigherEntryResult.left, trieEntry2.parent);
-    assertSame(entry.parent, trieEntry.left);
-    assertSame(actualHigherEntryResult.parent, actualHigherEntryResult.left.left);
-    assertSame(actualHigherEntryResult.right, trieEntry2.right);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrie42IsValue_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("42", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.higherEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link TrieEntry#left}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrie42IsValue_whenNull_thenReturnLeft() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("42", "Value");
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
-
-    // Act
-    TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry(null);
-
-    // Assert
-    assertSame(actualHigherEntryResult.left, actualHigherEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} IfAbsent {@code foo} is {@code 42}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return Value is {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrieIfAbsentFooIs42_whenKey_thenReturnValueIs42() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.putIfAbsent("foo", "42");
-
-    // Act
-    TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
-
-    // Assert
-    assertEquals("42", actualHigherEntryResult.getValue());
-    TrieEntry<String, Object> trieEntry = actualHigherEntryResult.predecessor;
-    assertEquals("42", trieEntry.getValue());
-    TrieEntry<String, Object> trieEntry2 = actualHigherEntryResult.right;
-    assertEquals("42", trieEntry2.getValue());
-    assertEquals("foo", actualHigherEntryResult.getKey());
-    assertEquals("foo", trieEntry.getKey());
-    assertEquals("foo", trieEntry2.getKey());
-    TrieEntry<String, Object> trieEntry3 = actualHigherEntryResult.left;
-    assertSame(trieEntry3, trieEntry.parent);
-    assertSame(trieEntry3, trieEntry2.parent);
-    assertSame(actualHigherEntryResult.parent, trieEntry.left);
-    TrieEntry<String, Object> trieEntry4 = actualHigherEntryResult.right;
-    assertSame(trieEntry4, actualHigherEntryResult.left.left);
-    TrieEntry<String, Object> trieEntry5 = actualHigherEntryResult.parent;
-    assertSame(trieEntry4, trieEntry5.left);
-    assertSame(trieEntry4, trieEntry5.predecessor);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrieKeyIsValue_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.higherEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrieKeyIsValue_whenNull_thenReturnRight() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry(null);
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
 
     // Assert
     assertSame(actualHigherEntryResult.right, actualHigherEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrie_whenKey_thenReturnNull() {
+  public void testHigherEntry5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("Key", "Value");
 
     // Act and Assert
     assertNull(objectMap.higherEntry("Key"));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_givenPatriciaTrie_whenNull_thenReturnNull() {
+  public void testHigherEntry6() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.putIfAbsent("foo", "42");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
+
+    // Assert
+    assertSame(actualHigherEntryResult.right, actualHigherEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
+   */
+  @Test
+  public void testHigherEntry7() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1), 3);
+
+    // Act and Assert
+    assertNull(objectMap.higherEntry("Key"));
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
+   */
+  @Test
+  public void testHigherEntry8() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", Short.SIZE), 2);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
+
+    // Assert
+    assertSame(actualHigherEntryResult.predecessor, actualHigherEntryResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
+   */
+  @Test
+  public void testHigherEntry9() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("42", "Value");
+
+    // Act and Assert
+    assertNull(objectMap.higherEntry("Key"));
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
+   */
+  @Test
+  public void testHigherEntry10() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -1232,100 +823,59 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#parent} is {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_thenReturnParentIsPredecessor() {
+  public void testHigherEntry11() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 2);
-    TrieEntry<String, Object> entry2 = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry2, 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 2);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1), 3);
 
     // Act
-    TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry("Key");
 
     // Assert
-    assertEquals(actualHigherEntryResult.predecessor, actualHigherEntryResult.parent);
-    TrieEntry<String, Object> trieEntry = entry2.parent;
-    TrieEntry<String, Object> trieEntry2 = actualHigherEntryResult.left;
-    assertSame(trieEntry, trieEntry2.right);
-    TrieEntry<String, Object> trieEntry3 = actualHigherEntryResult.predecessor;
-    assertSame(trieEntry, trieEntry3.right);
-    TrieEntry<String, Object> trieEntry4 = entry2.predecessor;
-    TrieEntry<String, Object> trieEntry5 = actualHigherEntryResult.right;
-    assertSame(trieEntry4, trieEntry5.left);
-    assertSame(trieEntry4, trieEntry2.parent);
-    assertSame(entry.predecessor, trieEntry5.predecessor);
-    TrieEntry<String, Object> trieEntry6 = entry2.right;
-    assertSame(trieEntry6, trieEntry2.left);
-    assertSame(trieEntry6, trieEntry3.left);
+    assertSame(actualHigherEntryResult.predecessor, actualHigherEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is {@link Short#SIZE} {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_thenReturnTrieEntryWithKeyAndValueAndBitIndexIsSizePredecessor() {
+  public void testHigherEntry12() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", Short.SIZE);
+    objectMap.put("42", "Value");
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
-    objectMap.addEntry(entry, 2);
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry(null);
 
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.higherEntry("Key"));
+    // Assert
+    assertSame(actualHigherEntryResult.predecessor, actualHigherEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#higherEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code null} and {@code Value} and bitIndex is one {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#higherEntry(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.higherEntry(Object)"})
-  public void testHigherEntry_thenReturnTrieEntryWithKeyIsNullAndValueAndBitIndexIsOneRight() {
+  public void testHigherEntry13() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 2);
-    TrieEntry<String, Object> entry = new TrieEntry<>(null, "Value", 1);
+    objectMap.put("Key", "Value");
 
-    objectMap.addEntry(entry, 3);
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualHigherEntryResult = objectMap.higherEntry(null);
 
-    // Act and Assert
-    assertSame(entry.right, objectMap.higherEntry("Key"));
+    // Assert
+    assertSame(actualHigherEntryResult.right, actualHigherEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#keySet()}.
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#keySet()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Set AbstractPatriciaTrie.keySet()"})
   public void testKeySet() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
@@ -1335,43 +885,10 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lastEntry()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>Then return {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#lastEntry()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lastEntry()"})
-  public void testLastEntry_givenPatriciaTrie42IsValue_thenReturnRight() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("42", "Value");
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
-
-    // Act
-    TrieEntry<String, Object> actualLastEntryResult = objectMap.lastEntry();
-
-    // Assert
-    assertSame(actualLastEntryResult.right, actualLastEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lastEntry()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lastEntry()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lastEntry()"})
-  public void testLastEntry_givenPatriciaTrie_thenReturnNull() {
+  public void testLastEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -1380,62 +897,42 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lastEntry()}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one {@link TrieEntry#parent}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#lastEntry()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lastEntry()"})
-  public void testLastEntry_thenReturnTrieEntryWithKeyAndValueAndBitIndexIsOneParent() {
+  public void testLastEntry2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<String, Object> entry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     objectMap.addEntry(entry, 3);
 
     // Act and Assert
-    assertSame(entry.parent, objectMap.lastEntry());
+    assertSame(entry.right, objectMap.lastEntry());
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lastKey()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>Then return {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lastKey()}
+   * Method under test: {@link AbstractPatriciaTrie#lastEntry()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.lastKey()"})
-  public void testLastKey_givenPatriciaTrie42IsValue_thenReturn42() {
+  public void testLastEntry3() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
-    // Act and Assert
-    assertEquals("42", objectMap.lastKey());
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualLastEntryResult = objectMap.lastEntry();
+
+    // Assert
+    assertSame(actualLastEntryResult.right, actualLastEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lastKey()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then throw {@link NoSuchElementException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#lastKey()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.lastKey()"})
-  public void testLastKey_givenPatriciaTrie_thenThrowNoSuchElementException() {
+  public void testLastKey() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -1444,354 +941,49 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lastKey()}.
-   * <ul>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#lastKey()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.lastKey()"})
-  public void testLastKey_thenReturnNull() {
+  public void testLastKey2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
     assertNull(objectMap.lastKey());
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
+   * Method under test: {@link AbstractPatriciaTrie#lastKey()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
-
-    // Act and Assert
-    assertNull(objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry2() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", KeyAnalyzer.NULL_BIT_KEY);
-
-    objectMap.addEntry(entry, 3);
-
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code 42} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@link TrieEntry#bitIndex} is ten.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrie42IsValue_whenKey_thenReturnBitIndexIsTen() {
+  public void testLastKey3() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("42", "Value");
-
-    // Act
-    TrieEntry<String, Object> actualLowerEntryResult = objectMap.lowerEntry("Key");
-
-    // Assert
-    assertEquals(10, actualLowerEntryResult.bitIndex);
-    assertSame(actualLowerEntryResult.right, actualLowerEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} empty string is {@code Value}.</li>
-   *   <li>Then return Key is empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrieEmptyStringIsValue_thenReturnKeyIsEmptyString() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("", "Value");
-    objectMap.putIfAbsent("foo", "42");
-
-    // Act
-    TrieEntry<String, Object> actualLowerEntryResult = objectMap.lowerEntry("Key");
-
-    // Assert
-    assertEquals("", actualLowerEntryResult.getKey());
-    TrieEntry<String, Object> trieEntry = actualLowerEntryResult.left;
-    assertEquals("42", trieEntry.getValue());
-    TrieEntry<String, Object> trieEntry2 = actualLowerEntryResult.predecessor;
-    assertEquals("42", trieEntry2.getValue());
-    assertEquals("foo", trieEntry.getKey());
-    assertEquals("foo", trieEntry2.getKey());
-    assertEquals(9, trieEntry.bitIndex);
-    assertEquals(9, trieEntry2.bitIndex);
-    assertSame(actualLowerEntryResult.left, trieEntry2.right);
-    assertSame(actualLowerEntryResult.predecessor, trieEntry.right);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} IfAbsent {@code foo} is {@code 42}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrieIfAbsentFooIs42_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.putIfAbsent("foo", "42");
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
 
     // Act and Assert
-    assertNull(objectMap.lowerEntry("Key"));
+    assertEquals("42", objectMap.lastKey());
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrieKeyIsValue_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrie_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenPatriciaTrie_whenNull_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.lowerEntry(null));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Given {@link TrieEntry} {@link TrieEntry#isEmpty()} return {@code true}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return Value is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_givenTrieEntryIsEmptyReturnTrue_whenKey_thenReturnValueIsNull() {
-    // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenReturn(true);
-
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(entry, 3);
-
-    // Act
-    TrieEntry<String, Object> actualLowerEntryResult = objectMap.lowerEntry("Key");
-
-    // Assert
-    verify(entry).isEmpty();
-    assertNull(actualLowerEntryResult.getValue());
-    assertNull(actualLowerEntryResult.getKey());
-    assertNull(actualLowerEntryResult.parent);
-    assertNull(actualLowerEntryResult.right);
-    assertFalse(actualLowerEntryResult.isExternalNode());
-    assertTrue(actualLowerEntryResult.isEmpty());
-    assertTrue(actualLowerEntryResult.isInternalNode());
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_thenReturnTrieEntryWithKeyAndValueAndBitIndexIsOneRight() {
-    // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenReturn(true);
-
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry2 = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry2, 2);
-    objectMap.addEntry(entry, 3);
-
-    // Act
-    TrieEntry<String, Object> actualLowerEntryResult = objectMap.lowerEntry("Key");
-
-    // Assert
-    verify(entry).isEmpty();
-    assertSame(entry2.right, actualLowerEntryResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code 42} and {@code Value} and bitIndex is one {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_thenReturnTrieEntryWithKeyIs42AndValueAndBitIndexIsOnePredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("42", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
-
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code null} and {@code Value} and bitIndex is one {@link TrieEntry#right}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_thenReturnTrieEntryWithKeyIsNullAndValueAndBitIndexIsOneRight() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>(null, "Value", 1);
-
-    objectMap.addEntry(entry, 3);
-
-    // Act and Assert
-    assertSame(entry.right, objectMap.lowerEntry("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#lowerEntry(Object)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#lowerEntry(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.lowerEntry(Object)"})
-  public void testLowerEntry_thenThrowIllegalStateException() {
-    // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenThrow(new IllegalStateException("foo"));
-
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(entry, 3);
-
-    // Act and Assert
-    assertThrows(IllegalStateException.class, () -> objectMap.lowerEntry("Key"));
-    verify(entry).isEmpty();
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#mapIterator()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>Then return next is {@code Key}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#mapIterator()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"OrderedMapIterator AbstractPatriciaTrie.mapIterator()"})
-  public void testMapIterator_givenPatriciaTrieKeyIsValue_thenReturnNextIsKey() {
+  public void testMapIterator() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+
+    // Act and Assert
+    assertFalse(objectMap.mapIterator().hasNext());
+  }
+
+  /**
+   * Method under test: {@link AbstractPatriciaTrie#mapIterator()}
+   */
+  @Test
+  public void testMapIterator2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("Key", "Value");
@@ -1805,76 +997,37 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#mapIterator()}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then return not hasNext.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#mapIterator()}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"OrderedMapIterator AbstractPatriciaTrie.mapIterator()"})
-  public void testMapIterator_givenPatriciaTrie_thenReturnNotHasNext() {
+  public void testNextEntry() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
     // Act and Assert
-    assertFalse(objectMap.mapIterator().hasNext());
+    assertNull(objectMap.nextEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} empty string is {@code Value}.</li>
-   *   <li>Then return Key is empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntry(TrieEntry)"})
-  public void testNextEntry_givenPatriciaTrieEmptyStringIsValue_thenReturnKeyIsEmptyString() {
+  public void testNextEntry2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("", "Value");
 
-    // Act
-    TrieEntry<String, Object> actualNextEntryResult = objectMap.nextEntry(null);
-
-    // Assert
-    assertEquals("", actualNextEntryResult.getKey());
-    TrieEntry<String, Object> trieEntry = actualNextEntryResult.left;
-    assertEquals("", trieEntry.getKey());
-    TrieEntry<String, Object> trieEntry2 = actualNextEntryResult.predecessor;
-    assertEquals("", trieEntry2.getKey());
-    assertNull(actualNextEntryResult.parent);
-    assertNull(trieEntry.parent);
-    assertNull(trieEntry2.parent);
-    assertNull(actualNextEntryResult.right);
-    assertNull(trieEntry.right);
-    assertNull(trieEntry2.right);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, actualNextEntryResult.bitIndex);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry.bitIndex);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry2.bitIndex);
+    // Act and Assert
+    assertNull(objectMap.nextEntry(new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1)));
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntry(TrieEntry)"})
-  public void testNextEntry_givenPatriciaTrie_whenNull_thenReturnNull() {
+  public void testNextEntry3() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
@@ -1883,655 +1036,337 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntry(TrieEntry)"})
-  public void testNextEntry_thenReturnTrieEntryWithKeyAndValueAndBitIndexIsOnePredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
-    objectMap.incrementSize();
-
-    // Act and Assert
-    assertSame(entry.predecessor, objectMap.nextEntry(null));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntry(TrieEntry)"})
-  public void testNextEntry_whenTrieEntryWithKeyAndValueAndBitIndexIsOne_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.nextEntry(new TrieEntry<>("Key", "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code null} and {@code Value} and bitIndex is one.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntry(TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntry(TrieEntry)"})
-  public void testNextEntry_whenTrieEntryWithKeyIsNullAndValueAndBitIndexIsOne_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.nextEntry(new TrieEntry<>(null, "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)"})
-  public void testNextEntryImpl_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> start = new TrieEntry<>(null, "Value", 1);
-
-    TrieEntry<String, Object> previous = new TrieEntry<>("Key", "Value", 1);
-
-    // Act and Assert
-    assertNull(objectMap.nextEntryImpl(start, previous, new TrieEntry<>("Key", "Value", 1)));
-    TrieEntry<String, Object> trieEntry = start.predecessor;
-    TrieEntry<String, Object> trieEntry2 = start.left;
-    assertSame(trieEntry, trieEntry2.left);
-    TrieEntry<String, Object> trieEntry3 = start.predecessor;
-    assertSame(trieEntry, trieEntry3.left);
-    assertSame(trieEntry, trieEntry2.predecessor);
-    assertSame(trieEntry, trieEntry3.predecessor);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Then return {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)"})
-  public void testNextEntryImpl_thenReturnPredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> start = new TrieEntry<>("Key", "Value", 1);
-
-    TrieEntry<String, Object> previous = new TrieEntry<>("Key", "Value", 1);
-
-    // Act
-    TrieEntry<String, Object> actualNextEntryImplResult = objectMap.nextEntryImpl(start, previous,
-        new TrieEntry<>("Key", "Value", 1));
-
-    // Assert
-    TrieEntry<String, Object> trieEntry = actualNextEntryImplResult.predecessor;
-    assertSame(trieEntry, actualNextEntryImplResult);
-    TrieEntry<String, Object> trieEntry2 = start.left;
-    assertSame(trieEntry, trieEntry2.left);
-    TrieEntry<String, Object> trieEntry3 = start.predecessor;
-    assertSame(trieEntry, trieEntry3.left);
-    assertSame(trieEntry, trieEntry2.predecessor);
-    assertSame(trieEntry, trieEntry3.predecessor);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryImpl(TrieEntry, TrieEntry, TrieEntry)"})
-  public void testNextEntryImpl_whenNull_thenReturnPredecessor() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> start = new TrieEntry<>("Key", "Value", 1);
-
-    // Act
-    TrieEntry<String, Object> actualNextEntryImplResult = objectMap.nextEntryImpl(start, null,
-        new TrieEntry<>("Key", "Value", 1));
-
-    // Assert
-    TrieEntry<String, Object> trieEntry = actualNextEntryImplResult.predecessor;
-    assertSame(trieEntry, actualNextEntryImplResult);
-    TrieEntry<String, Object> trieEntry2 = start.left;
-    assertSame(trieEntry, trieEntry2.left);
-    TrieEntry<String, Object> trieEntry3 = start.predecessor;
-    assertSame(trieEntry, trieEntry3.left);
-    assertSame(trieEntry, trieEntry2.predecessor);
-    assertSame(trieEntry, trieEntry3.predecessor);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryInSubtree(TrieEntry, TrieEntry)"})
-  public void testNextEntryInSubtree_givenPatriciaTrie_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> node = new TrieEntry<>("Key", "Value", 1);
-
-    // Act and Assert
-    assertNull(objectMap.nextEntryInSubtree(node, new TrieEntry<>("Key", "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryInSubtree(TrieEntry, TrieEntry)"})
-  public void testNextEntryInSubtree_givenPatriciaTrie_whenNull_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.nextEntryInSubtree(null, new TrieEntry<>("Key", "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Then return Key is empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryInSubtree(TrieEntry, TrieEntry)"})
-  public void testNextEntryInSubtree_thenReturnKeyIsEmptyString() {
+  public void testNextEntry4() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
     objectMap.put("", "Value");
 
     // Act
-    TrieEntry<String, Object> actualNextEntryInSubtreeResult = objectMap.nextEntryInSubtree(null,
-        new TrieEntry<>("Key", "Value", 1));
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryResult = objectMap.nextEntry(null);
 
     // Assert
-    assertEquals("", actualNextEntryInSubtreeResult.getKey());
-    TrieEntry<String, Object> trieEntry = actualNextEntryInSubtreeResult.left;
-    assertEquals("", trieEntry.getKey());
-    TrieEntry<String, Object> trieEntry2 = actualNextEntryInSubtreeResult.predecessor;
-    assertEquals("", trieEntry2.getKey());
-    assertNull(actualNextEntryInSubtreeResult.parent);
-    assertNull(trieEntry.parent);
-    assertNull(trieEntry2.parent);
-    assertNull(actualNextEntryInSubtreeResult.right);
-    assertNull(trieEntry.right);
-    assertNull(trieEntry2.right);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, actualNextEntryInSubtreeResult.bitIndex);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry.bitIndex);
-    assertEquals(KeyAnalyzer.NULL_BIT_KEY, trieEntry2.bitIndex);
+    assertSame(actualNextEntryResult.predecessor, actualNextEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>Then {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one is {@link TrieEntry#predecessor}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryInSubtree(TrieEntry, TrieEntry)"})
-  public void testNextEntryInSubtree_thenTrieEntryWithKeyAndValueAndBitIndexIsOneIsPredecessor() {
+  public void testNextEntry5() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> entry = new TrieEntry<>("Key", "Value", 1);
-
-    objectMap.addEntry(entry, 3);
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
     objectMap.incrementSize();
-    TrieEntry<String, Object> parentOfSubtree = new TrieEntry<>("Key", "Value", 1);
 
     // Act
-    TrieEntry<String, Object> actualNextEntryInSubtreeResult = objectMap.nextEntryInSubtree(null, parentOfSubtree);
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryResult = objectMap.nextEntry(null);
 
     // Assert
-    assertEquals(actualNextEntryInSubtreeResult.predecessor, parentOfSubtree);
-    assertSame(entry.predecessor, actualNextEntryInSubtreeResult);
+    assertSame(actualNextEntryResult.predecessor, actualNextEntryResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with key is {@code null} and {@code Value} and bitIndex is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#nextEntryInSubtree(TrieEntry, TrieEntry)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryImpl(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.nextEntryInSubtree(TrieEntry, TrieEntry)"})
-  public void testNextEntryInSubtree_whenTrieEntryWithKeyIsNullAndValueAndBitIndexIsOne() {
+  public void testNextEntryImpl() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    TrieEntry<String, Object> node = new TrieEntry<>(null, "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<String, Object> start = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
-    // Act and Assert
-    assertNull(objectMap.nextEntryInSubtree(node, new TrieEntry<>("Key", "Value", 1)));
+    AbstractPatriciaTrie.TrieEntry<String, Object> previous = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryImplResult = objectMap.nextEntryImpl(start, previous,
+        new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1));
+
+    // Assert
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = actualNextEntryImplResult.predecessor;
+    assertSame(trieEntry, actualNextEntryImplResult);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry2 = start.left;
+    assertSame(trieEntry, trieEntry2.left);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry3 = start.predecessor;
+    assertSame(trieEntry, trieEntry3.left);
+    assertSame(trieEntry, trieEntry2.predecessor);
+    assertSame(trieEntry, trieEntry3.predecessor);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#prefixMap(Object)}.
-   * <ul>
-   *   <li>When empty string.</li>
-   * </ul>
-   * <p>
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryImpl(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryImpl2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    AbstractPatriciaTrie.TrieEntry<String, Object> start = new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1);
+
+    AbstractPatriciaTrie.TrieEntry<String, Object> previous = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act and Assert
+    assertNull(objectMap.nextEntryImpl(start, previous, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = previous.predecessor;
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry2 = previous.left;
+    assertSame(trieEntry, trieEntry2.left);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry3 = previous.predecessor;
+    assertSame(trieEntry, trieEntry3.left);
+    assertSame(trieEntry, trieEntry2.predecessor);
+    assertSame(trieEntry, trieEntry3.predecessor);
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryImpl(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryImpl3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    AbstractPatriciaTrie.TrieEntry<String, Object> start = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryImplResult = objectMap.nextEntryImpl(start, null,
+        new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1));
+
+    // Assert
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = actualNextEntryImplResult.predecessor;
+    assertSame(trieEntry, actualNextEntryImplResult);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry2 = start.left;
+    assertSame(trieEntry, trieEntry2.left);
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry3 = start.predecessor;
+    assertSame(trieEntry, trieEntry3.left);
+    assertSame(trieEntry, trieEntry2.predecessor);
+    assertSame(trieEntry, trieEntry3.predecessor);
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryInSubtree(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryInSubtree() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    AbstractPatriciaTrie.TrieEntry<String, Object> node = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
+
+    // Act and Assert
+    assertNull(objectMap.nextEntryInSubtree(node, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryInSubtree(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryInSubtree2() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    AbstractPatriciaTrie.TrieEntry<String, Object> node = new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1);
+
+    // Act and Assert
+    assertNull(objectMap.nextEntryInSubtree(node, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryInSubtree(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryInSubtree3() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+
+    // Act and Assert
+    assertNull(objectMap.nextEntryInSubtree(null, new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryInSubtree(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryInSubtree4() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.put("", "Value");
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryInSubtreeResult = objectMap.nextEntryInSubtree(null,
+        new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1));
+
+    // Assert
+    assertSame(actualNextEntryInSubtreeResult.predecessor, actualNextEntryInSubtreeResult);
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractPatriciaTrie#nextEntryInSubtree(AbstractPatriciaTrie.TrieEntry, AbstractPatriciaTrie.TrieEntry)}
+   */
+  @Test
+  public void testNextEntryInSubtree5() {
+    // Arrange
+    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
+    objectMap.addEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1), 3);
+    objectMap.incrementSize();
+    AbstractPatriciaTrie.TrieEntry<String, Object> parentOfSubtree = new AbstractPatriciaTrie.TrieEntry<>("Key",
+        "Value", 1);
+
+    // Act
+    AbstractPatriciaTrie.TrieEntry<String, Object> actualNextEntryInSubtreeResult = objectMap.nextEntryInSubtree(null,
+        parentOfSubtree);
+
+    // Assert
+    AbstractPatriciaTrie.TrieEntry<String, Object> trieEntry = actualNextEntryInSubtreeResult.predecessor;
+    assertEquals(trieEntry, parentOfSubtree);
+    assertSame(trieEntry, actualNextEntryInSubtreeResult);
+  }
+
+  /**
    * Method under test: {@link AbstractPatriciaTrie#prefixMap(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.SortedMap AbstractPatriciaTrie.prefixMap(Object)"})
-  public void testPrefixMap_whenEmptyString() {
+  public void testPrefixMap() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
 
     // Act and Assert
-    assertSame(objectMap, objectMap.prefixMap(""));
+    assertTrue(objectMap.prefixMap("Key").isEmpty());
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#prefixMap(Object)}.
-   * <ul>
-   *   <li>When {@code Key}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractPatriciaTrie#prefixMap(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.SortedMap AbstractPatriciaTrie.prefixMap(Object)"})
-  public void testPrefixMap_whenKey() {
+  public void testPrefixMap2() {
     // Arrange
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertEquals(objectMap, objectMap.prefixMap("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousEntry(TrieEntry)}.
-   * <ul>
-   *   <li>When {@link TrieEntry#TrieEntry(Object, Object, int)} with {@code Key} and {@code Value} and bitIndex is one.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousEntry(TrieEntry)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"TrieEntry AbstractPatriciaTrie.previousEntry(TrieEntry)"})
-  public void testPreviousEntry_whenTrieEntryWithKeyAndValueAndBitIndexIsOne_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.previousEntry(new TrieEntry<>("Key", "Value", 1)));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("key", "Value", 1), 3);
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey2() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(new TrieEntry<>("Key", "Value", 1), 3);
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenPatriciaTrieKeyIsValue_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("key", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenPatriciaTrieKeyIsValue_whenKey_thenReturnNull2() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()} {@code Key} is {@code Value}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenPatriciaTrieKeyIsValue_whenKey_thenReturnNull3() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.put("Key", "Value");
-    objectMap.put("key", "Value");
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link PatriciaTrie#PatriciaTrie()}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenPatriciaTrie_whenKey_thenReturnNull() {
-    // Arrange
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-
-    // Act and Assert
-    assertNull(objectMap.previousKey("Key"));
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link TrieEntry} {@link TrieEntry#isEmpty()} return {@code false}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then calls {@link TrieEntry#isEmpty()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenTrieEntryIsEmptyReturnFalse_whenKey_thenCallsIsEmpty() {
-    // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenReturn(false);
-
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(entry, 3);
 
     // Act
-    String actualPreviousKeyResult = objectMap.previousKey("Key");
+    SortedMap<String, Object> actualPrefixMapResult = objectMap.prefixMap("");
 
     // Assert
-    verify(entry).isEmpty();
-    assertNull(actualPreviousKeyResult);
+    assertTrue(actualPrefixMapResult.isEmpty());
+    assertSame(objectMap, actualPrefixMapResult);
   }
 
   /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Given {@link TrieEntry} {@link TrieEntry#isEmpty()} return {@code true}.</li>
-   *   <li>When {@code Key}.</li>
-   *   <li>Then calls {@link TrieEntry#isEmpty()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie#previousEntry(AbstractPatriciaTrie.TrieEntry)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_givenTrieEntryIsEmptyReturnTrue_whenKey_thenCallsIsEmpty() {
+  public void testPreviousEntry() {
     // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenReturn(true);
-
     PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(entry, 3);
-
-    // Act
-    String actualPreviousKeyResult = objectMap.previousKey("Key");
-
-    // Assert
-    verify(entry).isEmpty();
-    assertNull(actualPreviousKeyResult);
-  }
-
-  /**
-   * Test {@link AbstractPatriciaTrie#previousKey(Object)}.
-   * <ul>
-   *   <li>Then throw {@link IllegalStateException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractPatriciaTrie#previousKey(Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object AbstractPatriciaTrie.previousKey(Object)"})
-  public void testPreviousKey_thenThrowIllegalStateException() {
-    // Arrange
-    TrieEntry<String, Object> entry = mock(TrieEntry.class);
-    when(entry.isEmpty()).thenThrow(new IllegalStateException("key"));
-
-    PatriciaTrie<Object> objectMap = new PatriciaTrie<>();
-    objectMap.addEntry(entry, 3);
 
     // Act and Assert
-    assertThrows(IllegalStateException.class, () -> objectMap.previousKey("Key"));
-    verify(entry).isEmpty();
+    assertNull(objectMap.previousEntry(new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1)));
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#isEmpty()}.
-   * <ul>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TrieEntry#isEmpty()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#isEmpty()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TrieEntry.isEmpty()"})
-  public void testTrieEntryIsEmpty_thenReturnFalse() {
+  public void testTrieEntryIsEmpty() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
     assertFalse(trieEntry.isEmpty());
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#isEmpty()}.
-   * <ul>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TrieEntry#isEmpty()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#isEmpty()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TrieEntry.isEmpty()"})
-  public void testTrieEntryIsEmpty_thenReturnTrue() {
+  public void testTrieEntryIsEmpty2() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>(null, "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>(null, "Value", 1);
 
     // Act and Assert
     assertTrue(trieEntry.isEmpty());
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#isExternalNode()}.
-   * <p>
-   * Method under test: {@link TrieEntry#isExternalNode()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#isExternalNode()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TrieEntry.isExternalNode()"})
   public void testTrieEntryIsExternalNode() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
     assertTrue(trieEntry.isExternalNode());
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#isInternalNode()}.
-   * <p>
-   * Method under test: {@link TrieEntry#isInternalNode()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#isInternalNode()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean TrieEntry.isInternalNode()"})
   public void testTrieEntryIsInternalNode() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
     assertFalse(trieEntry.isInternalNode());
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#TrieEntry(Object, Object, int)}.
-   * <p>
-   * Method under test: {@link TrieEntry#TrieEntry(Object, Object, int)}
+   * Method under test:
+   * {@link AbstractPatriciaTrie.TrieEntry#TrieEntry(Object, Object, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TrieEntry.<init>(Object, Object, int)"})
   public void testTrieEntryNewTrieEntry() {
     // Arrange and Act
-    TrieEntry<Object, Object> actualTrieEntry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> actualTrieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key",
+        "Value", 1);
 
     // Assert
     assertEquals("Key", actualTrieEntry.getKey());
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = actualTrieEntry.left;
+    assertEquals("Key", trieEntry.getKey());
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry2 = actualTrieEntry.predecessor;
+    assertEquals("Key", trieEntry2.getKey());
     assertEquals("Value", actualTrieEntry.getValue());
+    assertEquals("Value", trieEntry.getValue());
+    assertEquals("Value", trieEntry2.getValue());
     assertNull(actualTrieEntry.parent);
+    assertNull(trieEntry.parent);
+    assertNull(trieEntry2.parent);
     assertNull(actualTrieEntry.right);
+    assertNull(trieEntry.right);
+    assertNull(trieEntry2.right);
     assertEquals(1, actualTrieEntry.bitIndex);
+    assertEquals(1, trieEntry.bitIndex);
+    assertEquals(1, trieEntry2.bitIndex);
     assertFalse(actualTrieEntry.isEmpty());
+    assertFalse(trieEntry.isEmpty());
+    assertFalse(trieEntry2.isEmpty());
     assertFalse(actualTrieEntry.isInternalNode());
+    assertFalse(trieEntry.isInternalNode());
+    assertFalse(trieEntry2.isInternalNode());
     assertTrue(actualTrieEntry.isExternalNode());
+    assertTrue(trieEntry.isExternalNode());
+    assertTrue(trieEntry2.isExternalNode());
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry3 = actualTrieEntry.predecessor;
+    assertSame(trieEntry3, trieEntry.left);
+    assertSame(trieEntry3, trieEntry2.left);
+    assertSame(trieEntry3, trieEntry.predecessor);
+    assertSame(trieEntry3, trieEntry2.predecessor);
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#toString()}.
-   * <p>
-   * Method under test: {@link TrieEntry#toString()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TrieEntry.toString()"})
   public void testTrieEntryToString() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value", 1);
 
     // Act and Assert
     assertEquals("Entry(key=Key [1], value=Value, parent=null, left=Key [1], right=null, predecessor=Key [1])",
@@ -2539,16 +1374,13 @@ public class AbstractPatriciaTrieDiffblueTest {
   }
 
   /**
-   * Test TrieEntry {@link TrieEntry#toString()}.
-   * <p>
-   * Method under test: {@link TrieEntry#toString()}
+   * Method under test: {@link AbstractPatriciaTrie.TrieEntry#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TrieEntry.toString()"})
   public void testTrieEntryToString2() {
     // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", KeyAnalyzer.NULL_BIT_KEY);
+    AbstractPatriciaTrie.TrieEntry<Object, Object> trieEntry = new AbstractPatriciaTrie.TrieEntry<>("Key", "Value",
+        KeyAnalyzer.NULL_BIT_KEY);
 
     // Act and Assert
     assertEquals("RootEntry(key=Key [-1], value=Value, parent=null, left=ROOT, right=null, predecessor=ROOT)",

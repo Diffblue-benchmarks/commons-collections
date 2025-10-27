@@ -2,30 +2,22 @@ package org.apache.commons.collections4.collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.function.Predicate;
+import org.apache.commons.collections4.functors.UniquePredicate;
 import org.apache.commons.collections4.list.GrowthList;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class AbstractCollectionDecoratorDiffblueTest {
   /**
-   * Test {@link AbstractCollectionDecorator#add(Object)}.
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#add(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.add(Object)"})
   public void testAdd() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -40,19 +32,25 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
-  public void testAddAll_given42_whenArrayListAdd42_thenGrowthListSizeIsOne() {
+  public void testAddAll() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+    ArrayList<Object> coll = new ArrayList<>();
+
+    // Act and Assert
+    assertFalse(objectList.addAll(coll));
+    assertTrue(coll.isEmpty());
+    assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
+   */
+  @Test
+  public void testAddAll2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -65,24 +63,15 @@ public class AbstractCollectionDecoratorDiffblueTest {
     // Assert
     assertEquals(1, objectList.size());
     assertEquals("42", objectList.get(0));
+    assertEquals(1, coll.size());
     assertTrue(actualAddAllResult);
-    assertEquals(objectList, coll);
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
-  public void testAddAll_given42_whenArrayListAdd42_thenGrowthListSizeIsTwo() {
+  public void testAddAll3() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -102,41 +91,22 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#addAll(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#addAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.addAll(Collection)"})
-  public void testAddAll_whenArrayList_thenReturnFalse() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-    ArrayList<Object> coll = new ArrayList<>();
-
-    // Act and Assert
-    assertFalse(objectList.addAll(coll));
-    assertTrue(objectList.isEmpty());
-    assertEquals(objectList, coll);
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#contains(Object)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#contains(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.contains(Object)"})
-  public void testContains_givenGrowthListAddObject_thenReturnTrue() {
+  public void testContains() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    // Act and Assert
+    assertFalse(objectList.contains("Object"));
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#contains(Object)}
+   */
+  @Test
+  public void testContains2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("Object");
@@ -146,87 +116,11 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#contains(Object)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#contains(Object)}
+   * Method under test:
+   * {@link AbstractCollectionDecorator#containsAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.contains(Object)"})
-  public void testContains_givenGrowthList_thenReturnFalse() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    // Act and Assert
-    assertFalse(objectList.contains("Object"));
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
-  public void testContainsAll_given42_whenArrayListAdd42_thenReturnFalse() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.containsAll(coll));
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
-  public void testContainsAll_given42_whenArrayListAdd42_thenReturnFalse2() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.containsAll(coll));
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#containsAll(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#containsAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.containsAll(Collection)"})
-  public void testContainsAll_whenArrayList_thenReturnTrue() {
+  public void testContainsAll() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -235,34 +129,68 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#decorated()}.
-   * <p>
+   * Method under test:
+   * {@link AbstractCollectionDecorator#containsAll(Collection)}
+   */
+  @Test
+  public void testContainsAll2() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectList.containsAll(coll));
+  }
+
+  /**
+   * Method under test:
+   * {@link AbstractCollectionDecorator#containsAll(Collection)}
+   */
+  @Test
+  public void testContainsAll3() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectList.containsAll(coll));
+  }
+
+  /**
    * Method under test: {@link AbstractCollectionDecorator#decorated()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Collection AbstractCollectionDecorator.decorated()"})
   public void testDecorated() {
+    // Arrange and Act
+    Collection<Object> actualDecoratedResult = ((AbstractCollectionDecorator<Object>) new GrowthList<>()).decorated();
+
+    // Assert
+    assertTrue(actualDecoratedResult instanceof List);
+    assertTrue(actualDecoratedResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#isEmpty()}
+   */
+  @Test
+  public void testIsEmpty() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
     // Act and Assert
-    assertEquals(objectList, ((AbstractCollectionDecorator<Object>) objectList).decorated());
+    assertTrue(objectList.isEmpty());
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#isEmpty()}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#isEmpty()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.isEmpty()"})
-  public void testIsEmpty_givenGrowthListAddObject_thenReturnFalse() {
+  public void testIsEmpty2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("Object");
@@ -272,33 +200,9 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#isEmpty()}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#isEmpty()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.isEmpty()"})
-  public void testIsEmpty_givenGrowthList_thenReturnTrue() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    // Act and Assert
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#iterator()}.
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#iterator()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.util.Iterator AbstractCollectionDecorator.iterator()"})
   public void testIterator() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -308,18 +212,23 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#remove(Object)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.remove(Object)"})
-  public void testRemove_givenGrowthListAddObject_thenReturnTrue() {
+  public void testRemove() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    // Act and Assert
+    assertFalse(objectList.remove("Object"));
+    assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#remove(Object)}
+   */
+  @Test
+  public void testRemove2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("Object");
@@ -333,40 +242,56 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#remove(Object)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#remove(Object)}
+   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.remove(Object)"})
-  public void testRemove_givenGrowthList_thenReturnFalse() {
+  public void testRemoveAll() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
     // Act and Assert
-    assertFalse(objectList.remove("Object"));
+    assertFalse(objectList.removeAll(new ArrayList<>()));
     assertTrue(objectList.isEmpty());
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
-  public void testRemoveAll_givenGrowthListAdd42_whenArrayListAdd42_thenReturnTrue() {
+  public void testRemoveAll2() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectList.removeAll(coll));
+    assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   */
+  @Test
+  public void testRemoveAll3() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectList.removeAll(coll));
+    assertTrue(objectList.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
+   */
+  @Test
+  public void testRemoveAll4() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("42");
@@ -383,143 +308,78 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
-  public void testRemoveAll_givenGrowthList_whenArrayListAdd42_thenReturnFalse() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.removeAll(coll));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
-  public void testRemoveAll_givenGrowthList_whenArrayListAdd42_thenReturnFalse2() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectList.removeAll(coll));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeAll(Collection)"})
-  public void testRemoveAll_givenGrowthList_whenArrayList_thenReturnFalse() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    // Act and Assert
-    assertFalse(objectList.removeAll(new ArrayList<>()));
-    assertTrue(objectList.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#removeIf(Predicate)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeIf(Predicate)"})
-  public void testRemoveIf_givenGrowthListAddObject_whenPredicateTestReturnTrue_thenReturnTrue() {
+  public void testRemoveIf() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+    UniquePredicate<Object> filter = new UniquePredicate<>();
+
+    // Act and Assert
+    assertFalse(objectList.removeIf(filter));
+    assertTrue(objectList.isEmpty());
+    assertTrue(filter.evaluate("Object"));
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
+   */
+  @Test
+  public void testRemoveIf2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
     objectList.add("Object");
-    Predicate<Object> filter = mock(Predicate.class);
-    when(filter.test(Mockito.<Object>any())).thenReturn(true);
+    UniquePredicate<Object> filter = new UniquePredicate<>();
 
     // Act
     boolean actualRemoveIfResult = objectList.removeIf(filter);
 
     // Assert
-    verify(filter).test(isA(Object.class));
+    assertFalse(filter.evaluate("Object"));
     assertTrue(objectList.isEmpty());
     assertTrue(actualRemoveIfResult);
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#removeIf(Predicate)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#removeIf(Predicate)}
+   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.removeIf(Predicate)"})
-  public void testRemoveIf_givenGrowthList_whenPredicate_thenReturnFalse() {
+  public void testRetainAll() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
+    ArrayList<Object> coll = new ArrayList<>();
 
     // Act and Assert
-    assertFalse(objectList.removeIf(mock(Predicate.class)));
+    assertFalse(objectList.retainAll(coll));
+    assertTrue(coll.isEmpty());
     assertTrue(objectList.isEmpty());
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
+  public void testRetainAll2() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+    objectList.add("Object");
+    ArrayList<Object> coll = new ArrayList<>();
+
+    // Act
+    boolean actualRetainAllResult = objectList.retainAll(coll);
+
+    // Assert
+    assertTrue(coll.isEmpty());
+    assertTrue(objectList.isEmpty());
+    assertTrue(actualRetainAllResult);
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   */
+  @Test
+  public void testRetainAll3() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -536,19 +396,10 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenArrayListSizeIsTwo() {
+  public void testRetainAll4() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -566,71 +417,29 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()} add {@code Object}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   * Method under test:
+   * {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
-  public void testRetainAll_givenGrowthListAddObject_whenArrayList_thenReturnTrue() {
+  public void testSetCollection() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
-    objectList.add("Object");
-    ArrayList<Object> coll = new ArrayList<>();
+    ArrayList<Object> collection = new ArrayList<>();
 
     // Act
-    boolean actualRetainAllResult = objectList.retainAll(coll);
+    objectList.setCollection(collection);
 
     // Assert
+    assertTrue(collection.isEmpty());
     assertTrue(objectList.isEmpty());
-    assertTrue(actualRetainAllResult);
-    assertEquals(objectList, coll);
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link GrowthList#GrowthList()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} is {@link GrowthList#GrowthList()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#retainAll(Collection)}
+   * Method under test:
+   * {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean AbstractCollectionDecorator.retainAll(Collection)"})
-  public void testRetainAll_givenGrowthList_whenArrayList_thenArrayListIsGrowthList() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-    ArrayList<Object> coll = new ArrayList<>();
-
-    // Act and Assert
-    assertFalse(objectList.retainAll(coll));
-    assertTrue(objectList.isEmpty());
-    assertEquals(objectList, coll);
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
-  public void testSetCollection_given42_whenArrayListAdd42_thenGrowthListSizeIsOne() {
+  public void testSetCollection2() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -643,23 +452,15 @@ public class AbstractCollectionDecoratorDiffblueTest {
     // Assert
     assertEquals(1, objectList.size());
     assertEquals("42", objectList.get(0));
-    assertEquals(objectList, collection);
+    assertEquals(1, collection.size());
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
+   * Method under test:
+   * {@link AbstractCollectionDecorator#setCollection(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
-  public void testSetCollection_given42_whenArrayListAdd42_thenGrowthListSizeIsTwo() {
+  public void testSetCollection3() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
 
@@ -678,38 +479,9 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#setCollection(Collection)}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link GrowthList#GrowthList()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link AbstractCollectionDecorator#setCollection(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void AbstractCollectionDecorator.setCollection(Collection)"})
-  public void testSetCollection_whenArrayList_thenGrowthListEmpty() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-    ArrayList<Object> collection = new ArrayList<>();
-
-    // Act
-    objectList.setCollection(collection);
-
-    // Assert that nothing has changed
-    assertTrue(objectList.isEmpty());
-    assertEquals(objectList, collection);
-  }
-
-  /**
-   * Test {@link AbstractCollectionDecorator#size()}.
-   * <p>
    * Method under test: {@link AbstractCollectionDecorator#size()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int AbstractCollectionDecorator.size()"})
   public void testSize() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();
@@ -719,13 +491,41 @@ public class AbstractCollectionDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractCollectionDecorator#toString()}.
-   * <p>
+   * Method under test: {@link AbstractCollectionDecorator#toArray()}
+   */
+  @Test
+  public void testToArray() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+
+    // Act and Assert
+    assertEquals(0, objectList.toArray().length);
+  }
+
+  /**
+   * Method under test: {@link AbstractCollectionDecorator#toArray(Object[])}
+   */
+  @Test
+  public void testToArray2() {
+    // Arrange
+    GrowthList<Object> objectList = new GrowthList<>();
+    Object[] object = new Object[]{"Object"};
+
+    // Act
+    Object[] actualToArrayResult = objectList.toArray(object);
+
+    // Assert
+    assertNull(actualToArrayResult[0]);
+    assertNull(object[0]);
+    assertEquals(1, actualToArrayResult.length);
+    assertEquals(1, object.length);
+    assertSame(object, actualToArrayResult);
+  }
+
+  /**
    * Method under test: {@link AbstractCollectionDecorator#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String AbstractCollectionDecorator.toString()"})
   public void testToString() {
     // Arrange
     GrowthList<Object> objectList = new GrowthList<>();

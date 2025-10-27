@@ -2,87 +2,35 @@ package org.apache.commons.collections4.bloomfilter;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.anyInt;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.function.IntPredicate;
-import org.apache.commons.collections4.bloomfilter.IndexFilter.ArrayTracker;
-import org.apache.commons.collections4.bloomfilter.IndexFilter.BitMapTracker;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class IndexFilterDiffblueTest {
   /**
-   * Test ArrayTracker {@link ArrayTracker#ArrayTracker(Shape)}.
-   * <ul>
-   *   <li>Then return test ten.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ArrayTracker#ArrayTracker(Shape)}
+   * Method under test: {@link IndexFilter.ArrayTracker#ArrayTracker(Shape)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ArrayTracker.<init>(Shape)"})
-  public void testArrayTrackerNewArrayTracker_thenReturnTestTen() {
+  public void testArrayTrackerNewArrayTracker() {
     // Arrange, Act and Assert
-    assertTrue((new ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
+    assertTrue((new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
-   * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   * <ul>
-   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and ten test one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ArrayTracker#test(int)}
+   * Method under test: {@link IndexFilter.ArrayTracker#test(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  public void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTenTestOne() {
-    // Arrange
-    ArrayTracker arrayTracker = new ArrayTracker(Shape.fromKM(19088743, 10));
-    arrayTracker.test(1);
-
-    // Act and Assert
-    assertTrue(arrayTracker.test(0));
-  }
-
-  /**
-   * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   * <ul>
-   *   <li>Given {@link ArrayTracker#ArrayTracker(Shape)} with shape is fromKM {@code 19088743} and ten.</li>
-   *   <li>When ten.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ArrayTracker#test(int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  public void testArrayTrackerTest_givenArrayTrackerWithShapeIsFromKM19088743AndTen_whenTen() {
+  public void testArrayTrackerTest() {
     // Arrange, Act and Assert
-    assertTrue((new ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
+    assertTrue((new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
-   * Test ArrayTracker {@link ArrayTracker#test(int)}.
-   * <ul>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ArrayTracker#test(int)}
+   * Method under test: {@link IndexFilter.ArrayTracker#test(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ArrayTracker.test(int)"})
-  public void testArrayTrackerTest_thenReturnFalse() {
+  public void testArrayTrackerTest2() {
     // Arrange
-    ArrayTracker arrayTracker = new ArrayTracker(Shape.fromKM(19088743, 10));
+    IndexFilter.ArrayTracker arrayTracker = new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10));
     arrayTracker.test(0);
 
     // Act and Assert
@@ -90,116 +38,105 @@ public class IndexFilterDiffblueTest {
   }
 
   /**
-   * Test BitMapTracker {@link BitMapTracker#BitMapTracker(Shape)}.
-   * <ul>
-   *   <li>Then return test ten.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMapTracker#BitMapTracker(Shape)}
+   * Method under test: {@link IndexFilter.ArrayTracker#test(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void BitMapTracker.<init>(Shape)"})
-  public void testBitMapTrackerNewBitMapTracker_thenReturnTestTen() {
-    // Arrange, Act and Assert
-    assertTrue((new BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
+  public void testArrayTrackerTest3() {
+    // Arrange
+    IndexFilter.ArrayTracker arrayTracker = new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10));
+    arrayTracker.test(1);
+
+    // Act and Assert
+    assertTrue(arrayTracker.test(0));
   }
 
   /**
-   * Test BitMapTracker {@link BitMapTracker#test(int)}.
-   * <ul>
-   *   <li>When ten.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMapTracker#test(int)}
+   * Method under test: {@link IndexFilter.BitMapTracker#BitMapTracker(Shape)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean BitMapTracker.test(int)"})
-  public void testBitMapTrackerTest_whenTen_thenReturnTrue() {
+  public void testBitMapTrackerNewBitMapTracker() {
     // Arrange, Act and Assert
-    assertTrue((new BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
+    assertTrue((new IndexFilter.BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
   }
 
   /**
-   * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   * <ul>
-   *   <li>Given {@code false}.</li>
-   *   <li>When {@link IntPredicate} {@link IntPredicate#test(int)} return {@code false}.</li>
-   *   <li>Then return not test one.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link IndexFilter.BitMapTracker#test(int)}
+   */
+  @Test
+  public void testBitMapTrackerTest() {
+    // Arrange, Act and Assert
+    assertTrue((new IndexFilter.BitMapTracker(Shape.fromKM(19088743, 10))).test(10));
+  }
+
+  /**
    * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  public void testCreate_givenFalse_whenIntPredicateTestReturnFalse_thenReturnNotTestOne() {
+  public void testCreate() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
-    IntPredicate consumer = mock(IntPredicate.class);
-    when(consumer.test(anyInt())).thenReturn(false);
 
-    // Act
-    boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
-
-    // Assert
-    verify(consumer).test(eq(1));
-    assertFalse(actualTestResult);
+    // Act and Assert
+    assertTrue(IndexFilter.create(shape, new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10))).test(1));
   }
 
   /**
-   * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When fromKM {@code 19088743} and ten.</li>
-   *   <li>Then return test one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  public void testCreate_givenTrue_whenFromKM19088743AndTen_thenReturnTestOne() {
+  public void testCreate2() {
     // Arrange
     Shape shape = Shape.fromKM(19088743, 10);
-    IntPredicate consumer = mock(IntPredicate.class);
-    when(consumer.test(anyInt())).thenReturn(true);
 
-    // Act
-    boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
+    IndexFilter.ArrayTracker consumer = new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10));
+    consumer.test(10);
 
-    // Assert
-    verify(consumer).test(eq(1));
-    assertTrue(actualTestResult);
+    // Act and Assert
+    assertTrue(IndexFilter.create(shape, consumer).test(1));
   }
 
   /**
-   * Test {@link IndexFilter#create(Shape, IntPredicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When fromKM one and ten.</li>
-   *   <li>Then return test one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"IntPredicate IndexFilter.create(Shape, IntPredicate)"})
-  public void testCreate_givenTrue_whenFromKMOneAndTen_thenReturnTestOne() {
+  public void testCreate3() {
     // Arrange
-    Shape shape = Shape.fromKM(1, 10);
-    IntPredicate consumer = mock(IntPredicate.class);
-    when(consumer.test(anyInt())).thenReturn(true);
+    Shape shape = Shape.fromKM(19088743, 10);
 
-    // Act
-    boolean actualTestResult = IndexFilter.create(shape, consumer).test(1);
+    IndexFilter.ArrayTracker consumer = new IndexFilter.ArrayTracker(Shape.fromKM(19088743, 10));
+    consumer.test(1);
 
-    // Assert
-    verify(consumer).test(eq(1));
-    assertTrue(actualTestResult);
+    // Act and Assert
+    assertFalse(IndexFilter.create(shape, consumer).test(1));
+  }
+
+  /**
+   * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
+   */
+  @Test
+  public void testCreate4() {
+    // Arrange
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    IndexFilter.BitMapTracker consumer = new IndexFilter.BitMapTracker(Shape.fromKM(19088743, 10));
+    consumer.test(10);
+
+    // Act and Assert
+    assertTrue(IndexFilter.create(shape, consumer).test(1));
+  }
+
+  /**
+   * Method under test: {@link IndexFilter#create(Shape, IntPredicate)}
+   */
+  @Test
+  public void testCreate5() {
+    // Arrange
+    Shape shape = Shape.fromKM(19088743, 10);
+
+    IndexFilter.BitMapTracker consumer = new IndexFilter.BitMapTracker(Shape.fromKM(19088743, 10));
+    consumer.test(1);
+
+    // Act and Assert
+    assertFalse(IndexFilter.create(shape, consumer).test(1));
   }
 }

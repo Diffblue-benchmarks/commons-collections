@@ -4,212 +4,74 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class BitMapsDiffblueTest {
   /**
-   * Test {@link BitMaps#contains(long[], int)}.
-   * <ul>
-   *   <li>When array of {@code long} with one and zero.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link BitMaps#contains(long[], int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean BitMaps.contains(long[], int)"})
-  public void testContains_whenArrayOfLongWithOneAndZero_thenReturnFalse() {
+  public void testContains() {
     // Arrange, Act and Assert
     assertFalse(BitMaps.contains(new long[]{1L, 0L, 1L, 0L}, 1));
-  }
-
-  /**
-   * Test {@link BitMaps#contains(long[], int)}.
-   * <ul>
-   *   <li>When array of {@code long} with six and zero.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#contains(long[], int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean BitMaps.contains(long[], int)"})
-  public void testContains_whenArrayOfLongWithSixAndZero_thenReturnTrue() {
-    // Arrange, Act and Assert
     assertTrue(BitMaps.contains(new long[]{6L, 0L, 1L, 0L}, 1));
   }
 
   /**
-   * Test {@link BitMaps#getLongBit(int)}.
-   * <p>
    * Method under test: {@link BitMaps#getLongBit(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"long BitMaps.getLongBit(int)"})
   public void testGetLongBit() {
     // Arrange, Act and Assert
     assertEquals(2L, BitMaps.getLongBit(1));
   }
 
   /**
-   * Test {@link BitMaps#getLongIndex(int)}.
-   * <p>
    * Method under test: {@link BitMaps#getLongIndex(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.getLongIndex(int)"})
   public void testGetLongIndex() {
     // Arrange, Act and Assert
     assertEquals(0, BitMaps.getLongIndex(1));
   }
 
   /**
-   * Test {@link BitMaps#mod(long, int)}.
-   * <ul>
-   *   <li>When four.</li>
-   *   <li>Then return one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link BitMaps#mod(long, int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.mod(long, int)"})
-  public void testMod_whenFour_thenReturnOne() {
+  public void testMod() {
     // Arrange, Act and Assert
+    assertEquals(1, BitMaps.mod(1L, 3));
+    assertEquals(2, BitMaps.mod(2L, 3));
+    assertEquals(0, BitMaps.mod(3L, 3));
     assertEquals(1, BitMaps.mod(4L, 3));
   }
 
   /**
-   * Test {@link BitMaps#mod(long, int)}.
-   * <ul>
-   *   <li>When one.</li>
-   *   <li>Then return one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#mod(long, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.mod(long, int)"})
-  public void testMod_whenOne_thenReturnOne() {
-    // Arrange, Act and Assert
-    assertEquals(1, BitMaps.mod(1L, 3));
-  }
-
-  /**
-   * Test {@link BitMaps#mod(long, int)}.
-   * <ul>
-   *   <li>When three.</li>
-   *   <li>Then return zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#mod(long, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.mod(long, int)"})
-  public void testMod_whenThree_thenReturnZero() {
-    // Arrange, Act and Assert
-    assertEquals(0, BitMaps.mod(3L, 3));
-  }
-
-  /**
-   * Test {@link BitMaps#mod(long, int)}.
-   * <ul>
-   *   <li>When two.</li>
-   *   <li>Then return two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#mod(long, int)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.mod(long, int)"})
-  public void testMod_whenTwo_thenReturnTwo() {
-    // Arrange, Act and Assert
-    assertEquals(2, BitMaps.mod(2L, 3));
-  }
-
-  /**
-   * Test {@link BitMaps#newBitMap(int)} with {@code numberOfBits}.
-   * <p>
    * Method under test: {@link BitMaps#newBitMap(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"long[] BitMaps.newBitMap(int)"})
-  public void testNewBitMapWithNumberOfBits() {
+  public void testNewBitMap() {
     // Arrange, Act and Assert
     assertArrayEquals(new long[]{0L}, BitMaps.newBitMap(10));
-  }
-
-  /**
-   * Test {@link BitMaps#newBitMap(Shape)} with {@code shape}.
-   * <ul>
-   *   <li>When fromKM {@code 19088743} and ten.</li>
-   *   <li>Then return array of {@code long} with zero.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#newBitMap(Shape)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"long[] BitMaps.newBitMap(Shape)"})
-  public void testNewBitMapWithShape_whenFromKM19088743AndTen_thenReturnArrayOfLongWithZero() {
-    // Arrange, Act and Assert
     assertArrayEquals(new long[]{0L}, BitMaps.newBitMap(Shape.fromKM(19088743, 10)));
   }
 
   /**
-   * Test {@link BitMaps#numberOfBitMaps(int)} with {@code numberOfBits}.
-   * <p>
    * Method under test: {@link BitMaps#numberOfBitMaps(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.numberOfBitMaps(int)"})
-  public void testNumberOfBitMapsWithNumberOfBits() {
+  public void testNumberOfBitMaps() {
     // Arrange, Act and Assert
     assertEquals(1, BitMaps.numberOfBitMaps(10));
-  }
-
-  /**
-   * Test {@link BitMaps#numberOfBitMaps(Shape)} with {@code shape}.
-   * <ul>
-   *   <li>When fromKM {@code 19088743} and ten.</li>
-   *   <li>Then return one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link BitMaps#numberOfBitMaps(Shape)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int BitMaps.numberOfBitMaps(Shape)"})
-  public void testNumberOfBitMapsWithShape_whenFromKM19088743AndTen_thenReturnOne() {
-    // Arrange, Act and Assert
     assertEquals(1, BitMaps.numberOfBitMaps(Shape.fromKM(19088743, 10)));
   }
 
   /**
-   * Test {@link BitMaps#set(long[], int)}.
-   * <ul>
-   *   <li>Then array of {@code long} with one and zero is array of {@code long} with three and zero.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link BitMaps#set(long[], int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void BitMaps.set(long[], int)"})
-  public void testSet_thenArrayOfLongWithOneAndZeroIsArrayOfLongWithThreeAndZero() {
+  public void testSet() {
     // Arrange
     long[] bitMaps = new long[]{1L, 0L, 1L, 0L};
 
@@ -217,6 +79,7 @@ public class BitMapsDiffblueTest {
     BitMaps.set(bitMaps, 1);
 
     // Assert
-    assertArrayEquals(new long[]{3L, 0L, 1L, 0L}, bitMaps);
+    assertEquals(3L, bitMaps[0]);
+    assertEquals(4, bitMaps.length);
   }
 }

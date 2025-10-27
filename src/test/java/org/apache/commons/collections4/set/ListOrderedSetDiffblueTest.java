@@ -2,42 +2,40 @@ package org.apache.commons.collections4.set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 import org.apache.commons.collections4.OrderedIterator;
-import org.apache.commons.collections4.set.ListOrderedSet.OrderedSetIterator;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mockito.Mockito;
 
 public class ListOrderedSetDiffblueTest {
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(List)} with {@code list}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#listOrderedSet(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(List)"})
-  public void testListOrderedSetWithList_given42_whenArrayListAdd42_thenArrayListSizeIsOne() {
+  public void testListOrderedSet() {
+    // Arrange
+    ArrayList<Object> list = new ArrayList<>();
+
+    // Act
+    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(list);
+
+    // Assert
+    assertTrue(list.isEmpty());
+    assertTrue(actualListOrderedSetResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#listOrderedSet(List)}
+   */
+  @Test
+  public void testListOrderedSet2() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -51,19 +49,10 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(List)} with {@code list}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#listOrderedSet(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(List)"})
-  public void testListOrderedSetWithList_given42_whenArrayListAdd42_thenArrayListSizeIsOne2() {
+  public void testListOrderedSet3() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add("42");
@@ -78,19 +67,10 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(List)} with {@code list}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add two.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#listOrderedSet(List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(List)"})
-  public void testListOrderedSetWithList_givenTwo_whenArrayListAddTwo_thenArrayListSizeIsTwo() {
+  public void testListOrderedSet4() {
     // Arrange
     ArrayList<Object> list = new ArrayList<>();
     list.add(2);
@@ -105,130 +85,55 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(List)} with {@code list}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then {@link ArrayList#ArrayList()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(List)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(List)"})
-  public void testListOrderedSetWithList_whenArrayList_thenArrayListEmpty() {
-    // Arrange
-    ArrayList<Object> list = new ArrayList<>();
-
-    // Act
-    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(list);
+  public void testListOrderedSet5() {
+    // Arrange and Act
+    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(new HashSet<>());
 
     // Assert
-    assertTrue(list.isEmpty());
     assertTrue(actualListOrderedSetResult.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set, List)} with {@code set}, {@code list}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set, List)"})
-  public void testListOrderedSetWithSetList_givenTwo_whenHashSetAddTwo() {
+  public void testListOrderedSet6() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+    set.add("42");
+
+    // Act
+    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set);
+
+    // Assert
+    assertEquals(1, actualListOrderedSetResult.size());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
+   */
+  @Test
+  public void testListOrderedSet7() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
     set.add(2);
     set.add("42");
 
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, new ArrayList<>()));
+    // Act
+    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set);
+
+    // Assert
+    assertEquals(set, actualListOrderedSetResult);
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set, List)} with {@code set}, {@code list}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set, List)"})
-  public void testListOrderedSetWithSetList_whenArrayListAdd42() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, list));
-  }
-
-  /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set, List)} with {@code set}, {@code list}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set, List)"})
-  public void testListOrderedSetWithSetList_whenArrayListAdd422() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-
-    ArrayList<Object> list = new ArrayList<>();
-    list.add("42");
-    list.add("42");
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, list));
-  }
-
-  /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set, List)} with {@code set}, {@code list}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   *   <li>Then throw {@link IllegalArgumentException}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set, List)"})
-  public void testListOrderedSetWithSetList_whenHashSetAdd42_thenThrowIllegalArgumentException() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-    set.add("42");
-
-    // Act and Assert
-    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, new ArrayList<>()));
-  }
-
-  /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set, List)} with {@code set}, {@code list}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set, List)"})
-  public void testListOrderedSetWithSetList_whenHashSet_thenReturnHashSet() {
+  public void testListOrderedSet8() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
 
@@ -236,191 +141,72 @@ public class ListOrderedSetDiffblueTest {
     ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set, new ArrayList<>());
 
     // Assert
-    assertEquals(set, actualListOrderedSetResult);
+    assertTrue(actualListOrderedSetResult.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set)} with {@code set}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set)"})
-  public void testListOrderedSetWithSet_given42_whenHashSetAdd42() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-    set.add("42");
-
-    // Act
-    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set);
-
-    // Assert
-    assertEquals(set, actualListOrderedSetResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set)} with {@code set}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set)"})
-  public void testListOrderedSetWithSet_givenTwo_whenHashSetAddTwo() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-    set.add(2);
-    set.add("42");
-
-    // Act
-    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set);
-
-    // Assert
-    assertEquals(set, actualListOrderedSetResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#listOrderedSet(Set)} with {@code set}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#listOrderedSet(Set)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ListOrderedSet ListOrderedSet.listOrderedSet(Set)"})
-  public void testListOrderedSetWithSet_whenHashSet() {
-    // Arrange
-    HashSet<Object> set = new HashSet<>();
-
-    // Act
-    ListOrderedSet<Object> actualListOrderedSetResult = ListOrderedSet.listOrderedSet(set);
-
-    // Assert
-    assertEquals(set, actualListOrderedSetResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#ListOrderedSet()}.
-   * <p>
-   * Method under test: {@link ListOrderedSet#ListOrderedSet()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.<init>()"})
-  public void testNewListOrderedSet() {
-    // Arrange and Act
-    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>();
-
-    // Assert
-    assertTrue(actualObjectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#ListOrderedSet(Set)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link HashSet#HashSet()} add {@code 42}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.<init>(Set)"})
-  public void testNewListOrderedSet_given42_whenHashSetAdd42() {
+  public void testListOrderedSet9() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
     set.add("42");
 
     // Act and Assert
-    assertEquals(set, new ListOrderedSet<>(set));
+    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, new ArrayList<>()));
   }
 
   /**
-   * Test {@link ListOrderedSet#ListOrderedSet(Set)}.
-   * <ul>
-   *   <li>Given two.</li>
-   *   <li>When {@link HashSet#HashSet()} add two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.<init>(Set)"})
-  public void testNewListOrderedSet_givenTwo_whenHashSetAddTwo() {
+  public void testListOrderedSet10() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
     set.add(2);
     set.add("42");
 
     // Act and Assert
-    assertEquals(set, new ListOrderedSet<>(set));
+    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, new ArrayList<>()));
   }
 
   /**
-   * Test {@link ListOrderedSet#ListOrderedSet(Set)}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.<init>(Set)"})
-  public void testNewListOrderedSet_whenHashSet() {
+  public void testListOrderedSet11() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
 
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+
     // Act and Assert
-    assertEquals(set, new ListOrderedSet<>(set));
+    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, list));
   }
 
   /**
-   * Test {@link ListOrderedSet#ListOrderedSet(Set, List)}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set, List)}
+   * Method under test: {@link ListOrderedSet#listOrderedSet(Set, List)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.<init>(Set, List)"})
-  public void testNewListOrderedSet_whenHashSet_thenReturnHashSet() {
+  public void testListOrderedSet12() {
     // Arrange
     HashSet<Object> set = new HashSet<>();
 
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    list.add("42");
+
     // Act and Assert
-    assertEquals(set, new ListOrderedSet<>(set, new ArrayList<>()));
+    assertThrows(IllegalArgumentException.class, () -> ListOrderedSet.listOrderedSet(set, list));
   }
 
   /**
-   * Test {@link ListOrderedSet#add(int, Object)} with {@code index}, {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>Then {@link ListOrderedSet#ListOrderedSet()} size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#add(int, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.add(int, Object)"})
-  public void testAddWithIndexObject_givenListOrderedSetAddObject_thenListOrderedSetSizeIsOne() {
+  public void testAdd() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -433,18 +219,10 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#add(int, Object)} with {@code index}, {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add two.</li>
-   *   <li>Then {@link ListOrderedSet#ListOrderedSet()} size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#add(int, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void ListOrderedSet.add(int, Object)"})
-  public void testAddWithIndexObject_givenListOrderedSetAddTwo_thenListOrderedSetSizeIsTwo() {
+  public void testAdd2() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add(2);
@@ -457,18 +235,26 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#add(Object)} with {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#add(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.add(Object)"})
-  public void testAddWithObject_givenListOrderedSetAddObject_thenReturnFalse() {
+  public void testAdd3() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    // Act
+    boolean actualAddResult = objectSet.add("Object");
+
+    // Assert
+    assertEquals(1, objectSet.size());
+    assertTrue(actualAddResult);
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#add(Object)}
+   */
+  @Test
+  public void testAdd4() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -482,120 +268,23 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#add(Object)} with {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#add(Object)}
+   * Method under test: {@link ListOrderedSet#addAll(int, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.add(Object)"})
-  public void testAddWithObject_givenListOrderedSet_thenReturnTrue() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    // Act
-    boolean actualAddResult = objectSet.add("Object");
-
-    // Assert
-    assertEquals(1, objectSet.size());
-    assertTrue(actualAddResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#addAll(Collection)} with {@code coll}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ListOrderedSet#ListOrderedSet()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#addAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.addAll(Collection)"})
-  public void testAddAllWithColl_given42_whenArrayListAdd42_thenListOrderedSetSizeIsOne() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act
-    boolean actualAddAllResult = objectSet.addAll(coll);
-
-    // Assert
-    assertEquals(1, objectSet.size());
-    assertTrue(actualAddAllResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#addAll(Collection)} with {@code coll}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then {@link ListOrderedSet#ListOrderedSet()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#addAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.addAll(Collection)"})
-  public void testAddAllWithColl_given42_whenArrayListAdd42_thenListOrderedSetSizeIsOne2() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act
-    boolean actualAddAllResult = objectSet.addAll(coll);
-
-    // Assert
-    assertEquals(1, objectSet.size());
-    assertTrue(actualAddAllResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#addAll(Collection)} with {@code coll}.
-   * <ul>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#addAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.addAll(Collection)"})
-  public void testAddAllWithColl_whenArrayList_thenReturnFalse() {
+  public void testAddAll() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
 
     // Act and Assert
-    assertFalse(objectSet.addAll(new ArrayList<>()));
+    assertFalse(objectSet.addAll(1, new ArrayList<>()));
     assertTrue(objectSet.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#addAll(int, Collection)} with {@code index}, {@code coll}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>Then {@link ListOrderedSet#ListOrderedSet()} size is two.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#addAll(int, Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.addAll(int, Collection)"})
-  public void testAddAllWithIndexColl_givenListOrderedSetAddObject_thenListOrderedSetSizeIsTwo() {
+  public void testAddAll2() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -612,35 +301,61 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#addAll(int, Collection)} with {@code index}, {@code coll}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#addAll(int, Collection)}
+   * Method under test: {@link ListOrderedSet#addAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.addAll(int, Collection)"})
-  public void testAddAllWithIndexColl_givenListOrderedSet_whenArrayList_thenReturnFalse() {
+  public void testAddAll3() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
 
     // Act and Assert
-    assertFalse(objectSet.addAll(1, new ArrayList<>()));
+    assertFalse(objectSet.addAll(new ArrayList<>()));
     assertTrue(objectSet.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#asList()}.
-   * <p>
+   * Method under test: {@link ListOrderedSet#addAll(Collection)}
+   */
+  @Test
+  public void testAddAll4() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act
+    boolean actualAddAllResult = objectSet.addAll(coll);
+
+    // Assert
+    assertEquals(1, objectSet.size());
+    assertTrue(actualAddAllResult);
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#addAll(Collection)}
+   */
+  @Test
+  public void testAddAll5() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act
+    boolean actualAddAllResult = objectSet.addAll(coll);
+
+    // Assert
+    assertEquals(1, objectSet.size());
+    assertTrue(actualAddAllResult);
+  }
+
+  /**
    * Method under test: {@link ListOrderedSet#asList()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List ListOrderedSet.asList()"})
   public void testAsList() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
@@ -650,19 +365,10 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#get(int)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Object}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#get(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListOrderedSet.get(int)"})
-  public void testGet_givenListOrderedSetAddObject_whenZero_thenReturnObject() {
+  public void testGet() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -672,13 +378,9 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#indexOf(Object)}.
-   * <p>
    * Method under test: {@link ListOrderedSet#indexOf(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"int ListOrderedSet.indexOf(Object)"})
   public void testIndexOf() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
@@ -688,13 +390,9 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#iterator()}.
-   * <p>
    * Method under test: {@link ListOrderedSet#iterator()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"OrderedIterator ListOrderedSet.iterator()"})
   public void testIterator() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
@@ -703,24 +401,15 @@ public class ListOrderedSetDiffblueTest {
     OrderedIterator<Object> actualIteratorResult = objectSet.iterator();
 
     // Assert
-    assertTrue(actualIteratorResult instanceof OrderedSetIterator);
+    assertTrue(actualIteratorResult instanceof ListOrderedSet.OrderedSetIterator);
     assertFalse(actualIteratorResult.hasNext());
   }
 
   /**
-   * Test {@link ListOrderedSet#remove(int)} with {@code index}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>When zero.</li>
-   *   <li>Then return {@code Object}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#remove(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Object ListOrderedSet.remove(int)"})
-  public void testRemoveWithIndex_givenListOrderedSetAddObject_whenZero_thenReturnObject() {
+  public void testRemove() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -731,18 +420,23 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#remove(Object)} with {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#remove(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.remove(Object)"})
-  public void testRemoveWithObject_givenListOrderedSetAddObject_thenReturnTrue() {
+  public void testRemove2() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    // Act and Assert
+    assertFalse(objectSet.remove("Object"));
+    assertTrue(objectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#remove(Object)}
+   */
+  @Test
+  public void testRemove3() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -756,40 +450,56 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#remove(Object)} with {@code object}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#remove(Object)}
+   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.remove(Object)"})
-  public void testRemoveWithObject_givenListOrderedSet_thenReturnFalse() {
+  public void testRemoveAll() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
 
     // Act and Assert
-    assertFalse(objectSet.remove("Object"));
+    assertFalse(objectSet.removeAll(new ArrayList<>()));
     assertTrue(objectSet.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#removeAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeAll(Collection)"})
-  public void testRemoveAll_givenListOrderedSetAdd42_whenArrayListAdd42_thenReturnTrue() {
+  public void testRemoveAll2() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectSet.removeAll(coll));
+    assertTrue(objectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
+   */
+  @Test
+  public void testRemoveAll3() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectSet.removeAll(coll));
+    assertTrue(objectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
+   */
+  @Test
+  public void testRemoveAll4() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("42");
@@ -806,194 +516,23 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeAll(Collection)"})
-  public void testRemoveAll_givenListOrderedSet_whenArrayListAdd42_thenReturnFalse() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectSet.removeAll(coll));
-    assertTrue(objectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeAll(Collection)"})
-  public void testRemoveAll_givenListOrderedSet_whenArrayListAdd42_thenReturnFalse2() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectSet.removeAll(coll));
-    assertTrue(objectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#removeAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#removeAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeAll(Collection)"})
-  public void testRemoveAll_givenListOrderedSet_whenArrayList_thenReturnFalse() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    // Act and Assert
-    assertFalse(objectSet.removeAll(new ArrayList<>()));
-    assertTrue(objectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#removeIf(Predicate)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link Predicate}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#removeIf(Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeIf(Predicate)"})
-  public void testRemoveIf_givenListOrderedSet_whenPredicate_thenReturnFalse() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    // Act and Assert
-    assertFalse(objectSet.removeIf(mock(Predicate.class)));
-    assertTrue(objectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#removeIf(Predicate)}.
-   * <ul>
-   *   <li>Given {@code true}.</li>
-   *   <li>When {@link Predicate} {@link Predicate#test(Object)} return {@code true}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#removeIf(Predicate)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.removeIf(Predicate)"})
-  public void testRemoveIf_givenTrue_whenPredicateTestReturnTrue_thenReturnTrue() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-    objectSet.add("Object");
-    Predicate<Object> filter = mock(Predicate.class);
-    when(filter.test(Mockito.<Object>any())).thenReturn(true);
-
-    // Act
-    boolean actualRemoveIfResult = objectSet.removeIf(filter);
-
-    // Assert
-    verify(filter, atLeast(1)).test(isA(Object.class));
-    assertTrue(objectSet.isEmpty());
-    assertTrue(actualRemoveIfResult);
-  }
-
-  /**
-   * Test {@link ListOrderedSet#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.retainAll(Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenReturnFalse() {
+  public void testRetainAll() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
 
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-
     // Act and Assert
-    assertFalse(objectSet.retainAll(coll));
+    assertFalse(objectSet.retainAll(new ArrayList<>()));
     assertTrue(objectSet.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@code 42}.</li>
-   *   <li>When {@link ArrayList#ArrayList()} add {@code 42}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.retainAll(Collection)"})
-  public void testRetainAll_given42_whenArrayListAdd42_thenReturnFalse2() {
-    // Arrange
-    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
-
-    ArrayList<Object> coll = new ArrayList<>();
-    coll.add("42");
-    coll.add("42");
-
-    // Act and Assert
-    assertFalse(objectSet.retainAll(coll));
-    assertTrue(objectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link ListOrderedSet#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()} add {@code Object}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link ListOrderedSet#retainAll(Collection)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.retainAll(Collection)"})
-  public void testRetainAll_givenListOrderedSetAddObject_whenArrayList_thenReturnTrue() {
+  public void testRetainAll2() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
     objectSet.add("Object");
@@ -1007,35 +546,180 @@ public class ListOrderedSetDiffblueTest {
   }
 
   /**
-   * Test {@link ListOrderedSet#retainAll(Collection)}.
-   * <ul>
-   *   <li>Given {@link ListOrderedSet#ListOrderedSet()}.</li>
-   *   <li>When {@link ArrayList#ArrayList()}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link ListOrderedSet#retainAll(Collection)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean ListOrderedSet.retainAll(Collection)"})
-  public void testRetainAll_givenListOrderedSet_whenArrayList_thenReturnFalse() {
+  public void testRetainAll3() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
 
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+
     // Act and Assert
-    assertFalse(objectSet.retainAll(new ArrayList<>()));
+    assertFalse(objectSet.retainAll(coll));
     assertTrue(objectSet.isEmpty());
   }
 
   /**
-   * Test {@link ListOrderedSet#toString()}.
-   * <p>
+   * Method under test: {@link ListOrderedSet#retainAll(Collection)}
+   */
+  @Test
+  public void testRetainAll4() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    ArrayList<Object> coll = new ArrayList<>();
+    coll.add("42");
+    coll.add("42");
+
+    // Act and Assert
+    assertFalse(objectSet.retainAll(coll));
+    assertTrue(objectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#toArray()}
+   */
+  @Test
+  public void testToArray() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+
+    // Act and Assert
+    assertEquals(0, objectSet.toArray().length);
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#toArray(Object[])}
+   */
+  @Test
+  public void testToArray2() {
+    // Arrange
+    ListOrderedSet<Object> objectSet = new ListOrderedSet<>();
+    Object[] a = new Object[]{"42"};
+
+    // Act
+    Object[] actualToArrayResult = objectSet.toArray(a);
+
+    // Assert
+    assertNull(actualToArrayResult[0]);
+    assertNull(a[0]);
+    assertEquals(1, actualToArrayResult.length);
+    assertEquals(1, a.length);
+    assertSame(a, actualToArrayResult);
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet()}
+   */
+  @Test
+  public void testNewListOrderedSet() {
+    // Arrange and Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>();
+
+    // Assert
+    assertTrue(actualObjectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
+   */
+  @Test
+  public void testNewListOrderedSet2() {
+    // Arrange and Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>(new HashSet<>());
+
+    // Assert
+    assertTrue(actualObjectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
+   */
+  @Test
+  public void testNewListOrderedSet3() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+    set.add("42");
+
+    // Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>(set);
+
+    // Assert
+    assertEquals(1, actualObjectSet.size());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set)}
+   */
+  @Test
+  public void testNewListOrderedSet4() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+    set.add(2);
+    set.add("42");
+
+    // Act and Assert
+    assertEquals(set, new ListOrderedSet<>(set));
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set, List)}
+   */
+  @Test
+  public void testNewListOrderedSet5() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+
+    // Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>(set, new ArrayList<>());
+
+    // Assert
+    assertTrue(actualObjectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set, List)}
+   */
+  @Test
+  public void testNewListOrderedSet6() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+
+    // Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>(set, list);
+
+    // Assert
+    assertTrue(actualObjectSet.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link ListOrderedSet#ListOrderedSet(Set, List)}
+   */
+  @Test
+  public void testNewListOrderedSet7() {
+    // Arrange
+    HashSet<Object> set = new HashSet<>();
+
+    ArrayList<Object> list = new ArrayList<>();
+    list.add("42");
+    list.add("42");
+
+    // Act
+    ListOrderedSet<Object> actualObjectSet = new ListOrderedSet<>(set, list);
+
+    // Assert
+    assertTrue(actualObjectSet.isEmpty());
+  }
+
+  /**
    * Method under test: {@link ListOrderedSet#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String ListOrderedSet.toString()"})
   public void testToString() {
     // Arrange
     ListOrderedSet<Object> objectSet = new ListOrderedSet<>();

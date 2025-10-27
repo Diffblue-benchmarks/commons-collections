@@ -2,48 +2,39 @@ package org.apache.commons.collections4.map;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.collections4.map.ConcurrentReferenceHashMap.Builder;
-import org.apache.commons.collections4.map.ConcurrentReferenceHashMap.ReferenceType;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class ConcurrentReferenceHashMapDiffblueTest {
   /**
-   * Test Builder getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
-   *   <li>{@link Builder#setConcurrencyLevel(int)}
-   *   <li>{@link Builder#setInitialCapacity(int)}
-   *   <li>{@link Builder#setKeyReferenceType(ReferenceType)}
-   *   <li>{@link Builder#setLoadFactor(float)}
-   *   <li>{@link Builder#setOptions(EnumSet)}
-   *   <li>{@link Builder#setSourceMap(Map)}
-   *   <li>{@link Builder#setValueReferenceType(ReferenceType)}
+   *   <li>{@link ConcurrentReferenceHashMap.Builder#setConcurrencyLevel(int)}
+   *   <li>{@link ConcurrentReferenceHashMap.Builder#setInitialCapacity(int)}
+   *   <li>
+   * {@link ConcurrentReferenceHashMap.Builder#setKeyReferenceType(ConcurrentReferenceHashMap.ReferenceType)}
+   *   <li>{@link ConcurrentReferenceHashMap.Builder#setLoadFactor(float)}
+   *   <li>{@link ConcurrentReferenceHashMap.Builder#setOptions(EnumSet)}
+   *   <li>{@link ConcurrentReferenceHashMap.Builder#setSourceMap(Map)}
+   *   <li>
+   * {@link ConcurrentReferenceHashMap.Builder#setValueReferenceType(ConcurrentReferenceHashMap.ReferenceType)}
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.setConcurrencyLevel(int)", "Builder Builder.setInitialCapacity(int)",
-      "Builder Builder.setKeyReferenceType(ReferenceType)", "Builder Builder.setLoadFactor(float)",
-      "Builder Builder.setOptions(EnumSet)", "Builder Builder.setSourceMap(Map)",
-      "Builder Builder.setValueReferenceType(ReferenceType)"})
   public void testBuilderGettersAndSetters() {
     // Arrange
-    Builder<Object, Object> builder = new Builder<>();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builder = new ConcurrentReferenceHashMap.Builder<>();
 
     // Act
-    Builder<Object, Object> actualSetConcurrencyLevelResult = builder.setConcurrencyLevel(1);
-    Builder<Object, Object> actualSetInitialCapacityResult = builder.setInitialCapacity(1);
-    Builder<Object, Object> actualSetKeyReferenceTypeResult = builder.setKeyReferenceType(ReferenceType.STRONG);
-    Builder<Object, Object> actualSetLoadFactorResult = builder.setLoadFactor(10.0f);
-    Builder<Object, Object> actualSetOptionsResult = builder.setOptions(null);
-    Builder<Object, Object> actualSetSourceMapResult = builder.setSourceMap(new HashMap<>());
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetConcurrencyLevelResult = builder.setConcurrencyLevel(1);
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetInitialCapacityResult = builder.setInitialCapacity(1);
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetKeyReferenceTypeResult = builder
+        .setKeyReferenceType(ConcurrentReferenceHashMap.ReferenceType.STRONG);
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetLoadFactorResult = builder.setLoadFactor(10.0f);
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetOptionsResult = builder.setOptions(null);
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSetSourceMapResult = builder.setSourceMap(new HashMap<>());
 
     // Assert
     assertSame(builder, actualSetConcurrencyLevelResult);
@@ -52,118 +43,115 @@ public class ConcurrentReferenceHashMapDiffblueTest {
     assertSame(builder, actualSetLoadFactorResult);
     assertSame(builder, actualSetOptionsResult);
     assertSame(builder, actualSetSourceMapResult);
-    assertSame(builder, builder.setValueReferenceType(ReferenceType.STRONG));
+    assertSame(builder, builder.setValueReferenceType(ConcurrentReferenceHashMap.ReferenceType.STRONG));
   }
 
   /**
-   * Test Builder new {@link Builder} (default constructor).
-   * <p>
-   * Method under test: default or parameterless constructor of {@link Builder}
+   * Method under test: default or parameterless constructor of
+   * {@link ConcurrentReferenceHashMap.Builder}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Builder.<init>()"})
   public void testBuilderNewBuilder() {
     // Arrange and Act
-    Builder<Object, Object> actualBuilder = new Builder<>();
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualBuilder = new ConcurrentReferenceHashMap.Builder<>();
 
     // Assert
     assertTrue(actualBuilder.get().isEmpty());
   }
 
   /**
-   * Test Builder {@link Builder#softKeys()}.
-   * <p>
-   * Method under test: {@link Builder#softKeys()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#softKeys()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.softKeys()"})
   public void testBuilderSoftKeys() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.softKeys());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSoftKeysResult = builderResult.softKeys();
+
+    // Assert
+    assertTrue(actualSoftKeysResult.get().isEmpty());
+    assertSame(builderResult, actualSoftKeysResult);
   }
 
   /**
-   * Test Builder {@link Builder#softValues()}.
-   * <p>
-   * Method under test: {@link Builder#softValues()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#softValues()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.softValues()"})
   public void testBuilderSoftValues() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.softValues());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualSoftValuesResult = builderResult.softValues();
+
+    // Assert
+    assertTrue(actualSoftValuesResult.get().isEmpty());
+    assertSame(builderResult, actualSoftValuesResult);
   }
 
   /**
-   * Test Builder {@link Builder#strongKeys()}.
-   * <p>
-   * Method under test: {@link Builder#strongKeys()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#strongKeys()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.strongKeys()"})
   public void testBuilderStrongKeys() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.strongKeys());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualStrongKeysResult = builderResult.strongKeys();
+
+    // Assert
+    assertTrue(actualStrongKeysResult.get().isEmpty());
+    assertSame(builderResult, actualStrongKeysResult);
   }
 
   /**
-   * Test Builder {@link Builder#strongValues()}.
-   * <p>
-   * Method under test: {@link Builder#strongValues()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#strongValues()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.strongValues()"})
   public void testBuilderStrongValues() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.strongValues());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualStrongValuesResult = builderResult.strongValues();
+
+    // Assert
+    assertTrue(actualStrongValuesResult.get().isEmpty());
+    assertSame(builderResult, actualStrongValuesResult);
   }
 
   /**
-   * Test Builder {@link Builder#weakKeys()}.
-   * <p>
-   * Method under test: {@link Builder#weakKeys()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#weakKeys()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.weakKeys()"})
   public void testBuilderWeakKeys() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.weakKeys());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualWeakKeysResult = builderResult.weakKeys();
+
+    // Assert
+    assertTrue(actualWeakKeysResult.get().isEmpty());
+    assertSame(builderResult, actualWeakKeysResult);
   }
 
   /**
-   * Test Builder {@link Builder#weakValues()}.
-   * <p>
-   * Method under test: {@link Builder#weakValues()}
+   * Method under test: {@link ConcurrentReferenceHashMap.Builder#weakValues()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Builder Builder.weakValues()"})
   public void testBuilderWeakValues() {
     // Arrange
-    Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
+    ConcurrentReferenceHashMap.Builder<Object, Object> builderResult = ConcurrentReferenceHashMap.builder();
 
-    // Act and Assert
-    assertSame(builderResult, builderResult.weakValues());
+    // Act
+    ConcurrentReferenceHashMap.Builder<Object, Object> actualWeakValuesResult = builderResult.weakValues();
+
+    // Assert
+    assertTrue(actualWeakValuesResult.get().isEmpty());
+    assertSame(builderResult, actualWeakValuesResult);
   }
 }

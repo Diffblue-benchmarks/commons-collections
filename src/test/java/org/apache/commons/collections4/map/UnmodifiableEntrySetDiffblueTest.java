@@ -2,84 +2,56 @@ package org.apache.commons.collections4.map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.AbstractMap;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class UnmodifiableEntrySetDiffblueTest {
   /**
-   * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
-   * <ul>
-   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@code 42} and {@link AbstractHashedMap#NULL}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
-  public void testUnmodifiableEntrySet_givenSimpleEntryWith42AndNull() {
-    // Arrange
-    HashSet<Entry<Object, Object>> set = new HashSet<>();
-    set.add(new SimpleEntry<>("42", AbstractHashedMap.NULL));
-    set.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-
-    // Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
-
-    // Assert
-    assertEquals(set, actualUnmodifiableEntrySetResult);
-  }
-
-  /**
-   * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
-   * <ul>
-   *   <li>Given {@link SimpleEntry#SimpleEntry(Object, Object)} with {@link AbstractHashedMap#NULL} and {@link AbstractHashedMap#NULL}.</li>
-   *   <li>Then return {@link HashSet#HashSet()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
-  public void testUnmodifiableEntrySet_givenSimpleEntryWithNullAndNull_thenReturnHashSet() {
-    // Arrange
-    HashSet<Entry<Object, Object>> set = new HashSet<>();
-    set.add(new SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-
-    // Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
-
-    // Assert
-    assertEquals(set, actualUnmodifiableEntrySetResult);
-  }
-
-  /**
-   * Test {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}.
-   * <ul>
-   *   <li>When {@link HashSet#HashSet()}.</li>
-   *   <li>Then return Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Set UnmodifiableEntrySet.unmodifiableEntrySet(Set)"})
-  public void testUnmodifiableEntrySet_whenHashSet_thenReturnEmpty() {
+  public void testUnmodifiableEntrySet() {
     // Arrange and Act
-    Set<Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet
+    Set<Map.Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet
         .unmodifiableEntrySet(new HashSet<>());
 
     // Assert
     assertTrue(actualUnmodifiableEntrySetResult.isEmpty());
+  }
+
+  /**
+   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
+   */
+  @Test
+  public void testUnmodifiableEntrySet2() {
+    // Arrange
+    HashSet<Map.Entry<Object, Object>> set = new HashSet<>();
+    set.add(new AbstractMap.SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+
+    // Act
+    Set<Map.Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
+
+    // Assert
+    assertEquals(1, actualUnmodifiableEntrySetResult.size());
+  }
+
+  /**
+   * Method under test: {@link UnmodifiableEntrySet#unmodifiableEntrySet(Set)}
+   */
+  @Test
+  public void testUnmodifiableEntrySet3() {
+    // Arrange
+    HashSet<Map.Entry<Object, Object>> set = new HashSet<>();
+    set.add(new AbstractMap.SimpleEntry<>("42", AbstractHashedMap.NULL));
+    set.add(new AbstractMap.SimpleEntry<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+
+    // Act
+    Set<Map.Entry<Object, Object>> actualUnmodifiableEntrySetResult = UnmodifiableEntrySet.unmodifiableEntrySet(set);
+
+    // Assert
+    assertEquals(set, actualUnmodifiableEntrySetResult);
   }
 }

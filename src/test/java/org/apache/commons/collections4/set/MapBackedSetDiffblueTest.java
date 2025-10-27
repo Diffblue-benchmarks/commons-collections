@@ -1,23 +1,16 @@
 package org.apache.commons.collections4.set;
 
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class MapBackedSetDiffblueTest {
   /**
-   * Test {@link MapBackedSet#mapBackedSet(Map)} with {@code map}.
-   * <p>
    * Method under test: {@link MapBackedSet#mapBackedSet(Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MapBackedSet MapBackedSet.mapBackedSet(Map)"})
-  public void testMapBackedSetWithMap() {
+  public void testMapBackedSet() {
     // Arrange and Act
     MapBackedSet<Object, Object> actualMapBackedSetResult = MapBackedSet.mapBackedSet(new HashMap<>());
 
@@ -26,14 +19,10 @@ public class MapBackedSetDiffblueTest {
   }
 
   /**
-   * Test {@link MapBackedSet#mapBackedSet(Map, Object)} with {@code map}, {@code dummyValue}.
-   * <p>
    * Method under test: {@link MapBackedSet#mapBackedSet(Map, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MapBackedSet MapBackedSet.mapBackedSet(Map, Object)"})
-  public void testMapBackedSetWithMapDummyValue() {
+  public void testMapBackedSet2() {
     // Arrange and Act
     MapBackedSet<Object, Object> actualMapBackedSetResult = MapBackedSet.mapBackedSet(new HashMap<>(), "Dummy Value");
 
