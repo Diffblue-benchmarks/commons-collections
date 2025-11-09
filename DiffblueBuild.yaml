@@ -318,6 +318,7 @@ phase:
         goal: prepare-agent
         flags:
           - -Djacoco.skip=false
+          - -Pskip-bundle-plugin
 
       - name: ~
         goal: test
