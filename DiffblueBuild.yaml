@@ -288,12 +288,12 @@ phase:
       # Diffblue test file names. This does not execute tests tagged with "MaintainedByDiffblue" so it should only be
       # used when running by tag is not possible.
       neverDiffblue:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
       # To execute tests that Diffblue hasn't created (often referred to manual tests in Cover Reports), this is the
       # pattern to use to match file names. This is the default Maven Surefire pattern with the negation of the Diffblue
       # test file names and excludes tests tagged with "MaintainedByDiffblue" or "ContributionFromDiffblue".
       neverDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
         - -DexcludedGroups=MaintainedByDiffblue,ContributionFromDiffblue
       # To execute only the Diffblue-created tests, then pass this pattern to match the file names
       onlyDiffblue:
@@ -301,7 +301,7 @@ phase:
       # To execute Tests tagged with "MaintainedByDiffblue" or "ContributionFromDiffblue", in classes that do not
       # match the Diffblue test file names
       onlyDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/*Test.java,**/*Tests.java,**/*TestCase.java
         - -Dgroups=MaintainedByDiffblue,ContributionFromDiffblue
       # To run a single test, apply this option
       named:
@@ -340,12 +340,12 @@ phase:
       # Diffblue test file names. This does not execute tests tagged with "MaintainedByDiffblue" so it should only be
       # used when running by tag is not possible.
       neverDiffblue:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
       # To execute tests that Diffblue hasn't created (often referred to manual tests in Cover Reports), this is the
       # pattern to use to match file names. This is the default Maven Surefire pattern with the negation of the Diffblue
       # test file names and excluded Tests tagged with "MaintainedByDiffblue" or "ContributionFromDiffblue".
       neverDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},!**/*$*,!**/TestUtils.java,!**/Abstract*.java,!**/BulkTest.java,**/*Test.java
         - -DexcludedGroups=MaintainedByDiffblue,ContributionFromDiffblue
       # To execute only the Diffblue-created tests, then pass this pattern to match the file names
       onlyDiffblue:
@@ -353,7 +353,7 @@ phase:
       # To execute Tests tagged with "MaintainedByDiffblue" or "ContributionFromDiffblue", in classes that do not
       # match the Diffblue test file names
       onlyDiffblueTag:
-        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/Test*.java,**/*Test.java,**/*Tests.java,**/*TestCase.java
+        - -Dtest=!${DIFFBLUE_TEST_FILE_GLOB_PATTERN},**/*Test.java,**/*Tests.java,**/*TestCase.java
         - -Dgroups=MaintainedByDiffblue,ContributionFromDiffblue
       # To run a single test, apply this option
       named:
