@@ -1,0 +1,229 @@
+package org.apache.commons.collections4.keyvalue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+
+class AbstractMapEntryDiffblueTest {
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}, and {@link AbstractMapEntry#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link AbstractMapEntry#equals(Object)}
+   *   <li>{@link AbstractMapEntry#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
+    DefaultMapEntry<Object, Object> defaultMapEntry2 = new DefaultMapEntry<>("Key", "Value");
+
+    // Act and Assert
+    assertEquals(defaultMapEntry, defaultMapEntry2);
+    assertEquals(defaultMapEntry.hashCode(), defaultMapEntry2.hashCode());
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}, and {@link AbstractMapEntry#hashCode()}.
+   *
+   * <ul>
+   *   <li>When other is same.
+   *   <li>Then return equal.
+   * </ul>
+   *
+   * <p>Methods under test:
+   *
+   * <ul>
+   *   <li>{@link AbstractMapEntry#equals(Object)}
+   *   <li>{@link AbstractMapEntry#hashCode()}
+   * </ul>
+   */
+  @Test
+  @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
+
+    // Act and Assert
+    assertEquals(defaultMapEntry, defaultMapEntry);
+    int expectedHashCodeResult = defaultMapEntry.hashCode();
+    assertEquals(expectedHashCodeResult, defaultMapEntry.hashCode());
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>(1, "Value");
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, new DefaultMapEntry<>("Key", "Value"));
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry =
+        new DefaultMapEntry<>(new DefaultMapEntry<>("Key", "Value"), "Value");
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, new DefaultMapEntry<>("Key", "Value"));
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", 42);
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, new DefaultMapEntry<>("Key", "Value"));
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is different; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry =
+        new DefaultMapEntry<>("Key", new DefaultMapEntry<>("Key", "Value"));
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, new DefaultMapEntry<>("Key", "Value"));
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, null);
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#equals(Object)}.
+   *
+   * <ul>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
+   * </ul>
+   *
+   * <p>Method under test: {@link AbstractMapEntry#equals(Object)}
+   */
+  @Test
+  @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean AbstractMapEntry.equals(Object)", "int AbstractMapEntry.hashCode()"})
+  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
+
+    // Act and Assert
+    assertNotEquals(defaultMapEntry, "Different type to AbstractMapEntry");
+  }
+
+  /**
+   * Test {@link AbstractMapEntry#setValue(Object)}.
+   *
+   * <p>Method under test: {@link AbstractMapEntry#setValue(Object)}
+   */
+  @Test
+  @DisplayName("Test setValue(Object)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object AbstractMapEntry.setValue(Object)"})
+  void testSetValue() {
+    // Arrange
+    DefaultMapEntry<Object, Object> defaultMapEntry = new DefaultMapEntry<>("Key", "Value");
+
+    // Act and Assert
+    assertEquals("Value", defaultMapEntry.setValue("Value"));
+  }
+}
