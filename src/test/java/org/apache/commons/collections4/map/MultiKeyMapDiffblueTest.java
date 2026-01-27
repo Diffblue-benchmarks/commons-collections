@@ -1383,10 +1383,8 @@ class MultiKeyMapDiffblueTest {
   void testContainsKeyWithKey1Key2Key3Key42() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        multiKey,
+        9,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
@@ -1419,8 +1417,8 @@ class MultiKeyMapDiffblueTest {
     Object[] keys = new Object[] {AbstractHashedMap.NULL};
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        AbstractHashedMap.NULL,
         multiKey,
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL);
@@ -1453,6 +1451,39 @@ class MultiKeyMapDiffblueTest {
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
         AbstractHashedMap.NULL,
+        multiKey,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertFalse(
+        objectObjectMap.containsKey(
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Test {@link MultiKeyMap#containsKey(Object, Object, Object, Object)} with {@code key1}, {@code
+   * key2}, {@code key3}, {@code key4}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#containsKey(Object, Object, Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test containsKey(Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MultiKeyMap.containsKey(Object, Object, Object, Object)"})
+  void testContainsKeyWithKey1Key2Key3Key45() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         multiKey,
         AbstractHashedMap.NULL,
@@ -1479,7 +1510,7 @@ class MultiKeyMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiKeyMap.containsKey(Object, Object, Object, Object)"})
-  void testContainsKeyWithKey1Key2Key3Key45() {
+  void testContainsKeyWithKey1Key2Key3Key46() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     Object[] keys = new Object[] {AbstractHashedMap.NULL};
@@ -1830,41 +1861,6 @@ class MultiKeyMapDiffblueTest {
    * Test {@link MultiKeyMap#containsKey(Object, Object, Object)} with {@code key1}, {@code key2},
    * {@code key3}.
    *
-   * <ul>
-   *   <li>When two.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#containsKey(Object, Object, Object)}
-   */
-  @Test
-  @DisplayName("Test containsKey(Object, Object, Object) with 'key1', 'key2', 'key3'; when two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean MultiKeyMap.containsKey(Object, Object, Object)"})
-  void testContainsKeyWithKey1Key2Key3_whenTwo() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertFalse(objectObjectMap.containsKey(2, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link MultiKeyMap#containsKey(Object, Object, Object)} with {@code key1}, {@code key2},
-   * {@code key3}.
-   *
    * <p>Method under test: {@link MultiKeyMap#containsKey(Object, Object, Object)}
    */
   @Test
@@ -1961,41 +1957,6 @@ class MultiKeyMapDiffblueTest {
     // Act and Assert
     assertFalse(
         objectObjectMap.containsKey(AbstractHashedMap.NULL, AbstractHashedMap.NULL, multiKey));
-  }
-
-  /**
-   * Test {@link MultiKeyMap#containsKey(Object, Object)} with {@code key1}, {@code key2}.
-   *
-   * <ul>
-   *   <li>Given {@link MultiKey#MultiKey(Object[])} with keys is array of {@link Object} with
-   *       {@link AbstractHashedMap#NULL}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#containsKey(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test containsKey(Object, Object) with 'key1', 'key2'; given MultiKey(Object[]) with keys is array of Object with NULL")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean MultiKeyMap.containsKey(Object, Object)"})
-  void testContainsKeyWithKey1Key2_givenMultiKeyWithKeysIsArrayOfObjectWithNull() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
-    objectObjectMap.put(multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    Object[] keys2 = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey2 = new MultiKey<>(keys2);
-
-    // Act and Assert
-    assertTrue(objectObjectMap.containsKey(multiKey2, AbstractHashedMap.NULL));
   }
 
   /**
@@ -2274,6 +2235,30 @@ class MultiKeyMapDiffblueTest {
   }
 
   /**
+   * Test {@link MultiKeyMap#containsKey(Object, Object)} with {@code key1}, {@code key2}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#containsKey(Object, Object)}
+   */
+  @Test
+  @DisplayName("Test containsKey(Object, Object) with 'key1', 'key2'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MultiKeyMap.containsKey(Object, Object)"})
+  void testContainsKeyWithKey1Key22() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        9,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertFalse(objectObjectMap.containsKey(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+  }
+
+  /**
    * Test {@link MultiKeyMap#decorated()}.
    *
    * <p>Method under test: {@link MultiKeyMap#decorated()}
@@ -2406,10 +2391,8 @@ class MultiKeyMapDiffblueTest {
   void testGetWithKey1Key2Key3Key4() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        multiKey,
+        9,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
@@ -3695,8 +3678,8 @@ class MultiKeyMapDiffblueTest {
     Object[] keys = new Object[] {AbstractHashedMap.NULL};
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        AbstractHashedMap.NULL,
         multiKey,
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL);
@@ -3728,6 +3711,38 @@ class MultiKeyMapDiffblueTest {
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
         AbstractHashedMap.NULL,
+        multiKey,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(
+        objectObjectMap.get(
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL));
+  }
+
+  /**
+   * Test {@link MultiKeyMap#get(Object, Object, Object, Object)} with {@code key1}, {@code key2},
+   * {@code key3}, {@code key4}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#get(Object, Object, Object, Object)}
+   */
+  @Test
+  @DisplayName("Test get(Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.get(Object, Object, Object, Object)"})
+  void testGetWithKey1Key2Key3Key44() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         multiKey,
         AbstractHashedMap.NULL,
@@ -3753,7 +3768,7 @@ class MultiKeyMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object MultiKeyMap.get(Object, Object, Object, Object)"})
-  void testGetWithKey1Key2Key3Key44() {
+  void testGetWithKey1Key2Key3Key45() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     Object[] keys = new Object[] {AbstractHashedMap.NULL};
@@ -4103,41 +4118,6 @@ class MultiKeyMapDiffblueTest {
    * Test {@link MultiKeyMap#get(Object, Object, Object)} with {@code key1}, {@code key2}, {@code
    * key3}.
    *
-   * <ul>
-   *   <li>When two.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#get(Object, Object, Object)}
-   */
-  @Test
-  @DisplayName("Test get(Object, Object, Object) with 'key1', 'key2', 'key3'; when two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.get(Object, Object, Object)"})
-  void testGetWithKey1Key2Key3_whenTwo() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(objectObjectMap.get(2, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link MultiKeyMap#get(Object, Object, Object)} with {@code key1}, {@code key2}, {@code
-   * key3}.
-   *
    * <p>Method under test: {@link MultiKeyMap#get(Object, Object, Object)}
    */
   @Test
@@ -4231,46 +4211,6 @@ class MultiKeyMapDiffblueTest {
 
     // Act and Assert
     assertNull(objectObjectMap.get(AbstractHashedMap.NULL, AbstractHashedMap.NULL, multiKey));
-  }
-
-  /**
-   * Test {@link MultiKeyMap#get(Object, Object)} with {@code key1}, {@code key2}.
-   *
-   * <ul>
-   *   <li>Given {@link MultiKey#MultiKey(Object[])} with keys is array of {@link Object} with
-   *       {@link AbstractHashedMap#NULL}.
-   *   <li>Then return {@link AbstractHashedMap#NULL}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#get(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test get(Object, Object) with 'key1', 'key2'; given MultiKey(Object[]) with keys is array of Object with NULL; then return NULL")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.get(Object, Object)"})
-  void testGetWithKey1Key2_givenMultiKeyWithKeysIsArrayOfObjectWithNull_thenReturnNull() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
-    objectObjectMap.put(multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    Object[] keys2 = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey2 = new MultiKey<>(keys2);
-    Object object = AbstractHashedMap.NULL;
-
-    // Act
-    Object actualGetResult = objectObjectMap.get(multiKey2, object);
-
-    // Assert
-    assertSame(object, actualGetResult);
   }
 
   /**
@@ -4547,6 +4487,30 @@ class MultiKeyMapDiffblueTest {
 
     // Act and Assert
     assertNull(objectObjectMap.get(AbstractHashedMap.NULL, null));
+  }
+
+  /**
+   * Test {@link MultiKeyMap#get(Object, Object)} with {@code key1}, {@code key2}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#get(Object, Object)}
+   */
+  @Test
+  @DisplayName("Test get(Object, Object) with 'key1', 'key2'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.get(Object, Object)"})
+  void testGetWithKey1Key22() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        9,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(objectObjectMap.get(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
   }
 
   /**
@@ -5900,45 +5864,6 @@ class MultiKeyMapDiffblueTest {
   }
 
   /**
-   * Test {@link MultiKeyMap#put(Object, Object, Object, Object, Object, Object)} with {@code key1},
-   * {@code key2}, {@code key3}, {@code key4}, {@code key5}, {@code value}.
-   *
-   * <ul>
-   *   <li>When two.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#put(Object, Object, Object, Object, Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test put(Object, Object, Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4', 'key5', 'value'; when two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.put(Object, Object, Object, Object, Object, Object)"})
-  void testPutWithKey1Key2Key3Key4Key5Value_whenTwo() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(
-        objectObjectMap.put(
-            2,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL));
-    assertEquals(2, objectObjectMap.size());
-  }
-
-  /**
    * Test {@link MultiKeyMap#put(Object, Object, Object, Object, Object)} with {@code key1}, {@code
    * key2}, {@code key3}, {@code key4}, {@code value}.
    *
@@ -6431,6 +6356,43 @@ class MultiKeyMapDiffblueTest {
             AbstractHashedMap.NULL,
             AbstractHashedMap.NULL,
             multiKey,
+            AbstractHashedMap.NULL));
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#put(Object, Object, Object, Object, Object)} with {@code key1}, {@code
+   * key2}, {@code key3}, {@code key4}, {@code value}.
+   *
+   * <ul>
+   *   <li>When nine.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiKeyMap#put(Object, Object, Object, Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test put(Object, Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4', 'value'; when nine")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.put(Object, Object, Object, Object, Object)"})
+  void testPutWithKey1Key2Key3Key4Value_whenNine() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(
+        objectObjectMap.put(
+            9,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
             AbstractHashedMap.NULL));
     assertEquals(2, objectObjectMap.size());
   }
@@ -7175,46 +7137,6 @@ class MultiKeyMapDiffblueTest {
   }
 
   /**
-   * Test {@link MultiKeyMap#put(Object, Object, Object, Object)} with {@code key1}, {@code key2},
-   * {@code key3}, {@code value}.
-   *
-   * <ul>
-   *   <li>When two.
-   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is three.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#put(Object, Object, Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test put(Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'value'; when two; then MultiKeyMap() size is three")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.put(Object, Object, Object, Object)"})
-  void testPutWithKey1Key2Key3Value_whenTwo_thenMultiKeyMapSizeIsThree() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(
-        objectObjectMap.put(
-            2, AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-    assertEquals(3, objectObjectMap.size());
-  }
-
-  /**
    * Test {@link MultiKeyMap#put(Object, Object, Object)} with {@code key1}, {@code key2}, {@code
    * value}.
    *
@@ -7498,6 +7420,38 @@ class MultiKeyMapDiffblueTest {
    * value}.
    *
    * <ul>
+   *   <li>When nine.
+   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiKeyMap#put(Object, Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test put(Object, Object, Object) with 'key1', 'key2', 'value'; when nine; then MultiKeyMap() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.put(Object, Object, Object)"})
+  void testPutWithKey1Key2Value_whenNine_thenMultiKeyMapSizeIsTwo() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(objectObjectMap.put(9, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#put(Object, Object, Object)} with {@code key1}, {@code key2}, {@code
+   * value}.
+   *
+   * <ul>
    *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is one.
    * </ul>
@@ -7604,6 +7558,34 @@ class MultiKeyMapDiffblueTest {
   /**
    * Test {@link MultiKeyMap#put(MultiKey, Object)} with {@code key}, {@code value}.
    *
+   * <p>Method under test: {@link MultiKeyMap#put(MultiKey, Object)}
+   */
+  @Test
+  @DisplayName("Test put(MultiKey, Object) with 'key', 'value'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.put(MultiKey, Object)"})
+  void testPutWithKeyValue2() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        9,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(
+        objectObjectMap.put(
+            new MultiKey<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL),
+            AbstractHashedMap.NULL));
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#put(MultiKey, Object)} with {@code key}, {@code value}.
+   *
    * <ul>
    *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is one.
    * </ul>
@@ -7689,6 +7671,70 @@ class MultiKeyMapDiffblueTest {
   /**
    * Test {@link MultiKeyMap#putAll(Map)}.
    *
+   * <p>Method under test: {@link MultiKeyMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void MultiKeyMap.putAll(Map)"})
+  void testPutAll() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    HashMap<MultiKey<?>, Object> mapToCopy = new HashMap<>();
+    mapToCopy.put(
+        new MultiKey<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+
+    // Act
+    objectObjectMap.putAll(mapToCopy);
+
+    // Assert
+    assertEquals(1, mapToCopy.size());
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#putAll(Map)}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map)")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void MultiKeyMap.putAll(Map)"})
+  void testPutAll2() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        Short.SIZE,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    HashMap<MultiKey<?>, Object> mapToCopy = new HashMap<>();
+    mapToCopy.put(
+        new MultiKey<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+
+    // Act
+    objectObjectMap.putAll(mapToCopy);
+
+    // Assert
+    assertEquals(1, mapToCopy.size());
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#putAll(Map)}.
+   *
    * <ul>
    *   <li>Given {@link MultiKey#MultiKey(Object, Object)} with key1 is {@link
    *       AbstractHashedMap#NULL} and key2 is {@link AbstractHashedMap#NULL}.
@@ -7723,20 +7769,50 @@ class MultiKeyMapDiffblueTest {
    * Test {@link MultiKeyMap#putAll(Map)}.
    *
    * <ul>
-   *   <li>Given {@link MultiKeyMap#put(Object, Object, Object)} with key1 is {@link
-   *       AbstractHashedMap#NULL} and key2 is {@link AbstractHashedMap#NULL} and value is {@link
-   *       AbstractHashedMap#NULL}.
+   *   <li>Given {@link MultiKey#MultiKey(Object[])} with keys is array of {@link Object} with
+   *       {@link AbstractHashedMap#NULL}.
    * </ul>
    *
    * <p>Method under test: {@link MultiKeyMap#putAll(Map)}
    */
   @Test
-  @DisplayName(
-      "Test putAll(Map); given put(Object, Object, Object) with key1 is NULL and key2 is NULL and value is NULL")
+  @DisplayName("Test putAll(Map); given MultiKey(Object[]) with keys is array of Object with NULL")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void MultiKeyMap.putAll(Map)"})
-  void testPutAll_givenPutWithKey1IsNullAndKey2IsNullAndValueIsNull() {
+  void testPutAll_givenMultiKeyWithKeysIsArrayOfObjectWithNull() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    HashMap<MultiKey<?>, Object> mapToCopy = new HashMap<>();
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+    mapToCopy.put(new MultiKey<>(multiKey, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
+
+    // Act
+    objectObjectMap.putAll(mapToCopy);
+
+    // Assert
+    assertEquals(1, mapToCopy.size());
+    assertEquals(2, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#putAll(Map)}.
+   *
+   * <ul>
+   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is one.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiKeyMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map); then MultiKeyMap() size is one")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void MultiKeyMap.putAll(Map)"})
+  void testPutAll_thenMultiKeyMapSizeIsOne() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -7751,42 +7827,6 @@ class MultiKeyMapDiffblueTest {
     // Assert that nothing has changed
     assertEquals(1, objectObjectMap.size());
     assertEquals(objectObjectMap, mapToCopy);
-  }
-
-  /**
-   * Test {@link MultiKeyMap#putAll(Map)}.
-   *
-   * <ul>
-   *   <li>Then {@link HashMap#HashMap()} size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#putAll(Map)}
-   */
-  @Test
-  @DisplayName("Test putAll(Map); then HashMap() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MultiKeyMap.putAll(Map)"})
-  void testPutAll_thenHashMapSizeIsOne() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    HashMap<MultiKey<?>, Object> mapToCopy = new HashMap<>();
-    mapToCopy.put(
-        new MultiKey<>(AbstractHashedMap.NULL, AbstractHashedMap.NULL), AbstractHashedMap.NULL);
-
-    // Act
-    objectObjectMap.putAll(mapToCopy);
-
-    // Assert
-    assertEquals(1, mapToCopy.size());
-    assertEquals(2, objectObjectMap.size());
   }
 
   /**
@@ -8534,53 +8574,6 @@ class MultiKeyMapDiffblueTest {
   }
 
   /**
-   * Test {@link MultiKeyMap#removeAll(Object, Object, Object, Object)} with {@code key1}, {@code
-   * key2}, {@code key3}, {@code key4}.
-   *
-   * <p>Method under test: {@link MultiKeyMap#removeAll(Object, Object, Object, Object)}
-   */
-  @Test
-  @DisplayName("Test removeAll(Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean MultiKeyMap.removeAll(Object, Object, Object, Object)"})
-  void testRemoveAllWithKey1Key2Key3Key47() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        2,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act
-    boolean actualRemoveAllResult =
-        objectObjectMap.removeAll(
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL,
-            AbstractHashedMap.NULL);
-
-    // Assert
-    assertEquals(1, objectObjectMap.size());
-    assertTrue(actualRemoveAllResult);
-  }
-
-  /**
    * Test {@link MultiKeyMap#removeAll(Object, Object, Object)} with {@code key1}, {@code key2},
    * {@code key3}.
    *
@@ -8663,17 +8656,18 @@ class MultiKeyMapDiffblueTest {
    *
    * <ul>
    *   <li>When {@link AbstractHashedMap#AbstractHashedMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
    *
    * <p>Method under test: {@link MultiKeyMap#removeAll(Object, Object, Object)}
    */
   @Test
   @DisplayName(
-      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap()")
+      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap(); then return 'false'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiKeyMap.removeAll(Object, Object, Object)"})
-  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap() {
+  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap_thenReturnFalse() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     objectObjectMap.put(
@@ -8700,17 +8694,18 @@ class MultiKeyMapDiffblueTest {
    *
    * <ul>
    *   <li>When {@link AbstractHashedMap#AbstractHashedMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
    *
    * <p>Method under test: {@link MultiKeyMap#removeAll(Object, Object, Object)}
    */
   @Test
   @DisplayName(
-      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap()")
+      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap(); then return 'false'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiKeyMap.removeAll(Object, Object, Object)"})
-  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap2() {
+  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap_thenReturnFalse2() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     objectObjectMap.put(
@@ -8737,17 +8732,18 @@ class MultiKeyMapDiffblueTest {
    *
    * <ul>
    *   <li>When {@link AbstractHashedMap#AbstractHashedMap()}.
+   *   <li>Then return {@code false}.
    * </ul>
    *
    * <p>Method under test: {@link MultiKeyMap#removeAll(Object, Object, Object)}
    */
   @Test
   @DisplayName(
-      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap()")
+      "Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'; when AbstractHashedMap(); then return 'false'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"boolean MultiKeyMap.removeAll(Object, Object, Object)"})
-  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap3() {
+  void testRemoveAllWithKey1Key2Key3_whenAbstractHashedMap_thenReturnFalse3() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     objectObjectMap.put(
@@ -9007,6 +9003,45 @@ class MultiKeyMapDiffblueTest {
     // Assert
     assertEquals(1, objectObjectMap.size());
     assertFalse(actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link MultiKeyMap#removeAll(Object, Object, Object)} with {@code key1}, {@code key2},
+   * {@code key3}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#removeAll(Object, Object, Object)}
+   */
+  @Test
+  @DisplayName("Test removeAll(Object, Object, Object) with 'key1', 'key2', 'key3'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean MultiKeyMap.removeAll(Object, Object, Object)"})
+  void testRemoveAllWithKey1Key2Key35() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        Short.SIZE,
+        AbstractHashedMap.NULL);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act
+    boolean actualRemoveAllResult =
+        objectObjectMap.removeAll(
+            AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    // Assert
+    assertEquals(1, objectObjectMap.size());
+    assertTrue(actualRemoveAllResult);
   }
 
   /**
@@ -9606,6 +9641,31 @@ class MultiKeyMapDiffblueTest {
     assertTrue(objectObjectMap2.isEmpty());
     assertTrue(objectObjectMap.isEmpty());
     assertTrue(actualRemoveAllResult);
+  }
+
+  /**
+   * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object)}
+   */
+  @Test
+  @DisplayName("Test removeMultiKey(Object, Object) with 'key1', 'key2'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object)"})
+  void testRemoveMultiKeyWithKey1Key2() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        9,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+
+    // Act and Assert
+    assertNull(objectObjectMap.removeMultiKey(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+    assertEquals(1, objectObjectMap.size());
   }
 
   /**
@@ -10840,10 +10900,8 @@ class MultiKeyMapDiffblueTest {
   void testRemoveMultiKeyWithKey1Key2Key3Key42() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        multiKey,
+        9,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
@@ -10877,8 +10935,8 @@ class MultiKeyMapDiffblueTest {
     Object[] keys = new Object[] {AbstractHashedMap.NULL};
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
-        AbstractHashedMap.NULL,
         multiKey,
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL);
@@ -10912,8 +10970,8 @@ class MultiKeyMapDiffblueTest {
     MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
         AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
         multiKey,
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL);
 
@@ -10947,8 +11005,8 @@ class MultiKeyMapDiffblueTest {
     objectObjectMap.put(
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
         multiKey,
+        AbstractHashedMap.NULL,
         AbstractHashedMap.NULL);
 
     // Act and Assert
@@ -10976,19 +11034,22 @@ class MultiKeyMapDiffblueTest {
   void testRemoveMultiKeyWithKey1Key2Key3Key46() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
     objectObjectMap.put(
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
         AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
+        multiKey,
         AbstractHashedMap.NULL);
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
 
     // Act and Assert
     assertNull(
         objectObjectMap.removeMultiKey(
-            multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL,
+            AbstractHashedMap.NULL));
     assertEquals(1, objectObjectMap.size());
   }
 
@@ -11019,7 +11080,7 @@ class MultiKeyMapDiffblueTest {
     // Act and Assert
     assertNull(
         objectObjectMap.removeMultiKey(
-            AbstractHashedMap.NULL, multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
+            multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
     assertEquals(1, objectObjectMap.size());
   }
 
@@ -11050,7 +11111,7 @@ class MultiKeyMapDiffblueTest {
     // Act and Assert
     assertNull(
         objectObjectMap.removeMultiKey(
-            AbstractHashedMap.NULL, AbstractHashedMap.NULL, multiKey, AbstractHashedMap.NULL));
+            AbstractHashedMap.NULL, multiKey, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
     assertEquals(1, objectObjectMap.size());
   }
 
@@ -11067,6 +11128,37 @@ class MultiKeyMapDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object, Object, Object)"})
   void testRemoveMultiKeyWithKey1Key2Key3Key49() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+
+    // Act and Assert
+    assertNull(
+        objectObjectMap.removeMultiKey(
+            AbstractHashedMap.NULL, AbstractHashedMap.NULL, multiKey, AbstractHashedMap.NULL));
+    assertEquals(1, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#removeMultiKey(Object, Object, Object, Object)} with {@code key1},
+   * {@code key2}, {@code key3}, {@code key4}.
+   *
+   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object, Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test removeMultiKey(Object, Object, Object, Object) with 'key1', 'key2', 'key3', 'key4'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object, Object, Object)"})
+  void testRemoveMultiKeyWithKey1Key2Key3Key410() {
     // Arrange
     MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
     objectObjectMap.put(
@@ -11615,44 +11707,6 @@ class MultiKeyMapDiffblueTest {
   }
 
   /**
-   * Test {@link MultiKeyMap#removeMultiKey(Object, Object, Object)} with {@code key1}, {@code
-   * key2}, {@code key3}.
-   *
-   * <ul>
-   *   <li>When two.
-   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is two.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeMultiKey(Object, Object, Object) with 'key1', 'key2', 'key3'; when two; then MultiKeyMap() size is two")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object, Object)"})
-  void testRemoveMultiKeyWithKey1Key2Key3_whenTwo_thenMultiKeyMapSizeIsTwo() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(objectObjectMap.removeMultiKey(2, AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-    assertEquals(2, objectObjectMap.size());
-  }
-
-  /**
    * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
    *
    * <ul>
@@ -11679,70 +11733,6 @@ class MultiKeyMapDiffblueTest {
 
     // Act and Assert
     assertNull(objectObjectMap.removeMultiKey(AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-    assertEquals(1, objectObjectMap.size());
-  }
-
-  /**
-   * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
-   *
-   * <ul>
-   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeMultiKey(Object, Object) with 'key1', 'key2'; then MultiKeyMap() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object)"})
-  void testRemoveMultiKeyWithKey1Key2_thenMultiKeyMapSizeIsOne2() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
-
-    // Act and Assert
-    assertNull(objectObjectMap.removeMultiKey(multiKey, AbstractHashedMap.NULL));
-    assertEquals(1, objectObjectMap.size());
-  }
-
-  /**
-   * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
-   *
-   * <ul>
-   *   <li>Then {@link MultiKeyMap#MultiKeyMap()} size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test removeMultiKey(Object, Object) with 'key1', 'key2'; then MultiKeyMap() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object)"})
-  void testRemoveMultiKeyWithKey1Key2_thenMultiKeyMapSizeIsOne3() {
-    // Arrange
-    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
-    objectObjectMap.put(
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL,
-        AbstractHashedMap.NULL);
-    Object[] keys = new Object[] {AbstractHashedMap.NULL};
-    MultiKey<Object> multiKey = new MultiKey<>(keys);
-
-    // Act and Assert
-    assertNull(objectObjectMap.removeMultiKey(AbstractHashedMap.NULL, multiKey));
     assertEquals(1, objectObjectMap.size());
   }
 
@@ -11924,6 +11914,72 @@ class MultiKeyMapDiffblueTest {
     // Act and Assert
     assertNull(objectObjectMap.removeMultiKey(AbstractHashedMap.NULL, new AbstractHashedMap<>()));
     assertTrue(objectObjectMap.isEmpty());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
+   *
+   * <ul>
+   *   <li>When {@link MultiKey#MultiKey(Object[])} with keys is array of {@link Object} with {@link
+   *       AbstractHashedMap#NULL}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test removeMultiKey(Object, Object) with 'key1', 'key2'; when MultiKey(Object[]) with keys is array of Object with NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object)"})
+  void testRemoveMultiKeyWithKey1Key2_whenMultiKeyWithKeysIsArrayOfObjectWithNull() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+
+    // Act and Assert
+    assertNull(objectObjectMap.removeMultiKey(multiKey, AbstractHashedMap.NULL));
+    assertEquals(1, objectObjectMap.size());
+  }
+
+  /**
+   * Test {@link MultiKeyMap#removeMultiKey(Object, Object)} with {@code key1}, {@code key2}.
+   *
+   * <ul>
+   *   <li>When {@link MultiKey#MultiKey(Object[])} with keys is array of {@link Object} with {@link
+   *       AbstractHashedMap#NULL}.
+   * </ul>
+   *
+   * <p>Method under test: {@link MultiKeyMap#removeMultiKey(Object, Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test removeMultiKey(Object, Object) with 'key1', 'key2'; when MultiKey(Object[]) with keys is array of Object with NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Object MultiKeyMap.removeMultiKey(Object, Object)"})
+  void testRemoveMultiKeyWithKey1Key2_whenMultiKeyWithKeysIsArrayOfObjectWithNull2() {
+    // Arrange
+    MultiKeyMap<Object, Object> objectObjectMap = new MultiKeyMap<>();
+    objectObjectMap.put(
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL,
+        AbstractHashedMap.NULL);
+    Object[] keys = new Object[] {AbstractHashedMap.NULL};
+    MultiKey<Object> multiKey = new MultiKey<>(keys);
+
+    // Act and Assert
+    assertNull(objectObjectMap.removeMultiKey(AbstractHashedMap.NULL, multiKey));
+    assertEquals(1, objectObjectMap.size());
   }
 
   /**

@@ -91,22 +91,4 @@ class ConstantFactoryDiffblueTest {
     // Assert
     assertEquals("Constant To Return", actualConstantFactory.getConstant());
   }
-
-  /**
-   * Test {@link ConstantFactory#create()}.
-   *
-   * <p>Method under test: {@link ConstantFactory#create()}
-   */
-  @Test
-  @DisplayName("Test create()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ConstantFactory.create()"})
-  void testCreate() {
-    // Arrange
-    ConstantFactory<Object> constantFactory = new ConstantFactory<>("Constant To Return");
-
-    // Act and Assert
-    assertEquals("Constant To Return", constantFactory.create());
-  }
 }

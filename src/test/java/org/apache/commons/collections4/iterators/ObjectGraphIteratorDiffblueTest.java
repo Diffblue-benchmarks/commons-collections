@@ -23,11 +23,14 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class ObjectGraphIteratorDiffblueTest {
+  @Mock private Iterator<?> iterator;
+
   @InjectMocks private ObjectGraphIterator<Object> objectGraphIterator;
 
   /**
@@ -108,17 +111,50 @@ class ObjectGraphIteratorDiffblueTest {
    * Test {@link ObjectGraphIterator#findNext(Object)}.
    *
    * <ul>
-   *   <li>Then not {@link ArrayList#ArrayList()} iterator hasNext.
+   *   <li>Given {@link Iterator} {@link Iterator#hasNext()} return {@code true}.
+   *   <li>Then calls {@link Iterator#hasNext()}.
    * </ul>
    *
    * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
    */
   @Test
-  @DisplayName("Test findNext(Object); then not ArrayList() iterator hasNext")
+  @DisplayName(
+      "Test findNext(Object); given Iterator hasNext() return 'true'; then calls hasNext()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_thenNotArrayListIteratorHasNext() {
+  void testFindNext_givenIteratorHasNextReturnTrue_thenCallsHasNext() {
+    // Arrange
+    when(iterator.hasNext()).thenReturn(true);
+
+    ArrayList<Object> objectList = new ArrayList<>();
+    Iterator<Object> iteratorResult = objectList.iterator();
+
+    // Act
+    objectGraphIterator.findNext(iteratorResult);
+
+    // Assert that nothing has changed
+    verify(iterator, atLeast(1)).hasNext();
+    assertFalse(iteratorResult.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#findNext(Object)}.
+   *
+   * <ul>
+   *   <li>Then not {@link ObjectGraphIterator#ObjectGraphIterator(Object, Transformer)} with {@code
+   *       Root} and {@link Transformer} hasNext.
+   * </ul>
+   *
+   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
+   */
+  @Test
+  @DisplayName(
+      "Test findNext(Object); then not ObjectGraphIterator(Object, Transformer) with 'Root' and Transformer hasNext")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
+  void testFindNext_thenNotObjectGraphIteratorWithRootAndTransformerHasNext() {
     // Arrange
     ObjectGraphIterator<Object> objectGraphIterator =
         new ObjectGraphIterator<>("Root", mock(Transformer.class));
@@ -197,35 +233,6 @@ class ObjectGraphIteratorDiffblueTest {
     assertThrows(
         NoSuchElementException.class, () -> objectGraphIterator.findNext(objectList.iterator()));
     verify(transformer).apply(isA(Object.class));
-  }
-
-  /**
-   * Test {@link ObjectGraphIterator#findNext(Object)}.
-   *
-   * <ul>
-   *   <li>When {@link Scanner#Scanner(String)} with {@code Source}.
-   *   <li>Then {@link ObjectGraphIterator} next is {@code Source}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectGraphIterator#findNext(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test findNext(Object); when Scanner(String) with 'Source'; then ObjectGraphIterator next is 'Source'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ObjectGraphIterator.findNext(Object)"})
-  void testFindNext_whenScannerWithSource_thenObjectGraphIteratorNextIsSource() {
-    // Arrange
-    Scanner scanner = new Scanner("Source");
-
-    // Act
-    objectGraphIterator.findNext(scanner);
-
-    // Assert
-    assertEquals("Source", objectGraphIterator.next());
-    assertFalse(scanner.hasNext());
-    assertFalse(objectGraphIterator.hasNext());
   }
 
   /**
@@ -479,6 +486,33 @@ class ObjectGraphIteratorDiffblueTest {
 
     // Act and Assert
     assertFalse(objectGraphIterator.hasNext());
+  }
+
+  /**
+   * Test {@link ObjectGraphIterator#hasNext()}.
+   *
+   * <ul>
+   *   <li>Given {@link Iterator} {@link Iterator#hasNext()} return {@code true}.
+   *   <li>Then calls {@link Iterator#hasNext()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link ObjectGraphIterator#hasNext()}
+   */
+  @Test
+  @DisplayName("Test hasNext(); given Iterator hasNext() return 'true'; then calls hasNext()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"boolean ObjectGraphIterator.hasNext()"})
+  void testHasNext_givenIteratorHasNextReturnTrue_thenCallsHasNext() {
+    // Arrange
+    when(iterator.hasNext()).thenReturn(true);
+
+    // Act
+    boolean actualHasNextResult = objectGraphIterator.hasNext();
+
+    // Assert
+    verify(iterator, atLeast(1)).hasNext();
+    assertTrue(actualHasNextResult);
   }
 
   /**

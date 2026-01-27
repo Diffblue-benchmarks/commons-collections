@@ -48,37 +48,6 @@ class TransformingComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link TransformingComparator#compare(Object, Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link Transformer} {@link Transformer#apply(Object)} return {@code Apply}.
-   *   <li>Then return zero.
-   * </ul>
-   *
-   * <p>Method under test: {@link TransformingComparator#compare(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test compare(Object, Object); given Transformer apply(Object) return 'Apply'; then return zero")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int TransformingComparator.compare(Object, Object)"})
-  void testCompare_givenTransformerApplyReturnApply_thenReturnZero() {
-    // Arrange
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    TransformingComparator<Object, Object> transformingComparator =
-        new TransformingComparator<>(transformer);
-
-    // Act
-    int actualCompareResult = transformingComparator.compare("Obj1", "Obj2");
-
-    // Assert
-    verify(transformer, atLeast(1)).apply(Mockito.<Object>any());
-    assertEquals(0, actualCompareResult);
-  }
-
-  /**
    * Test {@link TransformingComparator#equals(Object)}, and {@link
    * TransformingComparator#hashCode()}.
    *

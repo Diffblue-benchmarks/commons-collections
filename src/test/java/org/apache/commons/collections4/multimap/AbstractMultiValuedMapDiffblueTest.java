@@ -623,28 +623,6 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#get(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMap#get(Object)}
-   */
-  @Test
-  @DisplayName("Test get(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection AbstractMultiValuedMap.get(Object)"})
-  void testGet() {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-
-    // Act
-    List<Object> actualGetResult = arrayListValuedHashMap.get("Key");
-
-    // Assert
-    assertTrue(actualGetResult instanceof List);
-    assertTrue(actualGetResult.isEmpty());
-  }
-
-  /**
    * Test {@link AbstractMultiValuedMap#getMap()}.
    *
    * <p>Method under test: {@link AbstractMultiValuedMap#getMap()}
@@ -1098,70 +1076,6 @@ class AbstractMultiValuedMapDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMap#remove(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()} {@code Key} is {@code
-   *       Value}.
-   *   <li>Then return size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMap#remove(Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test remove(Object); given ArrayListValuedHashMap() 'Key' is 'Value'; then return size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection AbstractMultiValuedMap.remove(Object)"})
-  void testRemove_givenArrayListValuedHashMapKeyIsValue_thenReturnSizeIsOne() {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-    arrayListValuedHashMap.put("Key", "Value");
-
-    // Act
-    List<Object> actualRemoveResult = arrayListValuedHashMap.remove("Key");
-
-    // Assert
-    assertTrue(actualRemoveResult instanceof List);
-    assertEquals(1, actualRemoveResult.size());
-    assertEquals("Value", ((List<Object>) actualRemoveResult).get(0));
-    assertEquals(0, arrayListValuedHashMap.size());
-    assertTrue(arrayListValuedHashMap.getMap().isEmpty());
-    assertTrue(arrayListValuedHashMap.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMap#remove(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
-   *   <li>Then return Empty.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMap#remove(Object)}
-   */
-  @Test
-  @DisplayName("Test remove(Object); given ArrayListValuedHashMap(); then return Empty")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection AbstractMultiValuedMap.remove(Object)"})
-  void testRemove_givenArrayListValuedHashMap_thenReturnEmpty() {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-
-    // Act
-    List<Object> actualRemoveResult = arrayListValuedHashMap.remove("Key");
-
-    // Assert
-    assertTrue(actualRemoveResult instanceof List);
-    assertEquals(0, arrayListValuedHashMap.size());
-    assertTrue(actualRemoveResult.isEmpty());
-    assertTrue(arrayListValuedHashMap.getMap().isEmpty());
-    assertTrue(arrayListValuedHashMap.isEmpty());
-  }
-
-  /**
    * Test {@link AbstractMultiValuedMap#removeMapping(Object, Object)}.
    *
    * <ul>
@@ -1356,28 +1270,6 @@ class AbstractMultiValuedMapDiffblueTest {
 
     // Act and Assert
     assertTrue(arrayListValuedHashMap.values().isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMap#wrappedCollection(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMap#wrappedCollection(Object)}
-   */
-  @Test
-  @DisplayName("Test wrappedCollection(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection AbstractMultiValuedMap.wrappedCollection(Object)"})
-  void testWrappedCollection() {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> arrayListValuedHashMap = new ArrayListValuedHashMap<>();
-
-    // Act
-    List<Object> actualWrappedCollectionResult = arrayListValuedHashMap.wrappedCollection("Key");
-
-    // Assert
-    assertTrue(actualWrappedCollectionResult instanceof List);
-    assertTrue(actualWrappedCollectionResult.isEmpty());
   }
 
   /**

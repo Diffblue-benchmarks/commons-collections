@@ -33,9 +33,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class SetUniqueListDiffblueTest {
+  @Mock private Iterator<Object> iterator;
+
   @Mock private ListIterator<Object> listIterator;
 
   @Mock private Set<Object> set;
+
+  @InjectMocks private SetListIterator<Object> setListIterator;
 
   @InjectMocks private SetListListIterator<Object> setListListIterator;
 
@@ -148,6 +152,29 @@ class SetUniqueListDiffblueTest {
     // Act and Assert
     assertEquals("42", setListIterator.next());
     assertFalse(setListIterator.hasNext());
+  }
+
+  /**
+   * Test SetListIterator {@link SetListIterator#remove()}.
+   *
+   * <p>Method under test: {@link SetListIterator#remove()}
+   */
+  @Test
+  @DisplayName("Test SetListIterator remove()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void SetListIterator.remove()"})
+  void testSetListIteratorRemove() {
+    // Arrange
+    doNothing().when(iterator).remove();
+    when(set.remove(Mockito.<Object>any())).thenReturn(true);
+
+    // Act
+    setListIterator.remove();
+
+    // Assert
+    verify(iterator).remove();
+    verify(set).remove(isNull());
   }
 
   /**

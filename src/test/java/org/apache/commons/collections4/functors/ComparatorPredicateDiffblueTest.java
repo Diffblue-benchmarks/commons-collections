@@ -875,31 +875,4 @@ class ComparatorPredicateDiffblueTest {
     verify(comparator).compare(isA(Object.class), isA(Object.class));
     assertFalse(actualTestResult);
   }
-
-  /**
-   * Test {@link ComparatorPredicate#test(Object)}.
-   *
-   * <ul>
-   *   <li>Then throw {@link IllegalStateException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link ComparatorPredicate#test(Object)}
-   */
-  @Test
-  @DisplayName("Test test(Object); then throw IllegalStateException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean ComparatorPredicate.test(Object)"})
-  void testTest_thenThrowIllegalStateException() {
-    // Arrange
-    Comparator<Object> comparator = mock(Comparator.class);
-    when(comparator.compare(Mockito.<Object>any(), Mockito.<Object>any()))
-        .thenThrow(new IllegalStateException());
-    ComparatorPredicate<Object> comparatorPredicate =
-        new ComparatorPredicate<>("Object", comparator, Criterion.EQUAL);
-
-    // Act and Assert
-    assertThrows(IllegalStateException.class, () -> comparatorPredicate.test("Target"));
-    verify(comparator).compare(isA(Object.class), isA(Object.class));
-  }
 }

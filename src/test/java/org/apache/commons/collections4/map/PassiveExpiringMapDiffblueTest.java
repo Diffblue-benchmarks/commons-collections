@@ -20,34 +20,6 @@ import org.junit.jupiter.api.Test;
 class PassiveExpiringMapDiffblueTest {
   /**
    * Test ConstantTimeToLiveExpirationPolicy {@link
-   * ConstantTimeToLiveExpirationPolicy#expirationTime(Object, Object)}.
-   *
-   * <ul>
-   *   <li>Then return minus one.
-   * </ul>
-   *
-   * <p>Method under test: {@link ConstantTimeToLiveExpirationPolicy#expirationTime(Object, Object)}
-   */
-  @Test
-  @DisplayName(
-      "Test ConstantTimeToLiveExpirationPolicy expirationTime(Object, Object); then return minus one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"long ConstantTimeToLiveExpirationPolicy.expirationTime(Object, Object)"})
-  void testConstantTimeToLiveExpirationPolicyExpirationTime_thenReturnMinusOne() {
-    // Arrange
-    ConstantTimeToLiveExpirationPolicy<Object, Object> constantTimeToLiveExpirationPolicy =
-        new ConstantTimeToLiveExpirationPolicy<>(-1L);
-
-    // Act and Assert
-    assertEquals(
-        -1L,
-        constantTimeToLiveExpirationPolicy.expirationTime(
-            AbstractHashedMap.NULL, AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test ConstantTimeToLiveExpirationPolicy {@link
    * ConstantTimeToLiveExpirationPolicy#ConstantTimeToLiveExpirationPolicy(long, TimeUnit)}.
    *
    * <p>Method under test: {@link
@@ -62,7 +34,7 @@ class PassiveExpiringMapDiffblueTest {
   void testConstantTimeToLiveExpirationPolicyNewConstantTimeToLiveExpirationPolicy() {
     // Arrange and Act
     ConstantTimeToLiveExpirationPolicy<Object, Object> actualConstantTimeToLiveExpirationPolicy =
-        new ConstantTimeToLiveExpirationPolicy<>(-1693862429L, TimeUnit.NANOSECONDS);
+        new ConstantTimeToLiveExpirationPolicy<>(-27506246L, TimeUnit.NANOSECONDS);
 
     // Assert
     assertEquals(

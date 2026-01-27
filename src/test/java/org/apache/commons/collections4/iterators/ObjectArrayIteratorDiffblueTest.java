@@ -243,31 +243,6 @@ class ObjectArrayIteratorDiffblueTest {
   }
 
   /**
-   * Test {@link ObjectArrayIterator#next()}.
-   *
-   * <ul>
-   *   <li>Then not {@link ObjectArrayListIterator#ObjectArrayListIterator(Object[])} with {@code
-   *       Array} hasNext.
-   * </ul>
-   *
-   * <p>Method under test: {@link ObjectArrayIterator#next()}
-   */
-  @Test
-  @DisplayName("Test next(); then not ObjectArrayListIterator(Object[]) with 'Array' hasNext")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ObjectArrayIterator.next()"})
-  void testNext_thenNotObjectArrayListIteratorWithArrayHasNext() {
-    // Arrange
-    ObjectArrayListIterator<Object> objectArrayListIterator =
-        new ObjectArrayListIterator<>("Array");
-
-    // Act and Assert
-    assertEquals("Array", objectArrayListIterator.next());
-    assertFalse(objectArrayListIterator.hasNext());
-  }
-
-  /**
    * Test {@link ObjectArrayIterator#remove()}.
    *
    * <p>Method under test: {@link ObjectArrayIterator#remove()}

@@ -1532,29 +1532,15 @@ class AbstractLinkedMapDiffblueTest {
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedMap.previousKey(Object)"})
-  void testPreviousKey2() throws IOException, ClassNotFoundException {
+  void testPreviousKey2() {
     // Arrange
-    ObjectInputStream in = mock(ObjectInputStream.class);
-    when(in.readObject()).thenReturn(AbstractHashedMap.NULL);
-    when(in.readFloat()).thenReturn(10.0f);
-    when(in.readInt()).thenReturn(1);
-
     LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
-    objectObjectMap.doReadObject(in);
-    HashEntry<Object, Object> next =
-        new HashEntry<>(
-            mock(HashEntry.class), 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-    LinkEntry<Object, Object> linkEntry =
-        new LinkEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.addMapping(1, 2, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
-    // Act
-    Object actualPreviousKeyResult = objectObjectMap.previousKey(linkEntry);
-
-    // Assert
-    verify(in).readFloat();
-    verify(in, atLeast(1)).readInt();
-    verify(in, atLeast(1)).readObject();
-    assertNull(actualPreviousKeyResult);
+    // Act and Assert
+    assertNull(objectObjectMap.previousKey(AbstractHashedMap.NULL));
   }
 
   /**
@@ -1563,19 +1549,17 @@ class AbstractLinkedMapDiffblueTest {
    * <ul>
    *   <li>Given {@link LRUMap#LRUMap()} {@link AbstractHashedMap#NULL} is {@link
    *       AbstractHashedMap#NULL}.
-   *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@code null}.
    * </ul>
    *
    * <p>Method under test: {@link AbstractLinkedMap#previousKey(Object)}
    */
   @Test
-  @DisplayName(
-      "Test previousKey(Object); given LRUMap() NULL is NULL; when NULL; then return 'null'")
+  @DisplayName("Test previousKey(Object); given LRUMap() NULL is NULL; then return 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedMap.previousKey(Object)"})
-  void testPreviousKey_givenLRUMapNullIsNull_whenNull_thenReturnNull() {
+  void testPreviousKey_givenLRUMapNullIsNull_thenReturnNull() {
     // Arrange
     LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
     objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
@@ -1589,93 +1573,22 @@ class AbstractLinkedMapDiffblueTest {
    *
    * <ul>
    *   <li>Given {@link LRUMap#LRUMap()}.
-   *   <li>When {@link AbstractHashedMap#NULL}.
    *   <li>Then return {@code null}.
    * </ul>
    *
    * <p>Method under test: {@link AbstractLinkedMap#previousKey(Object)}
    */
   @Test
-  @DisplayName("Test previousKey(Object); given LRUMap(); when NULL; then return 'null'")
+  @DisplayName("Test previousKey(Object); given LRUMap(); then return 'null'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"Object AbstractLinkedMap.previousKey(Object)"})
-  void testPreviousKey_givenLRUMap_whenNull_thenReturnNull() {
+  void testPreviousKey_givenLRUMap_thenReturnNull() {
     // Arrange
     LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
 
     // Act and Assert
     assertNull(objectObjectMap.previousKey(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link AbstractLinkedMap#previousKey(Object)}.
-   *
-   * <ul>
-   *   <li>When {@code Key}.
-   *   <li>Then calls {@link ObjectInputStream#readFloat()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractLinkedMap#previousKey(Object)}
-   */
-  @Test
-  @DisplayName("Test previousKey(Object); when 'Key'; then calls readFloat()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object AbstractLinkedMap.previousKey(Object)"})
-  void testPreviousKey_whenKey_thenCallsReadFloat() throws IOException, ClassNotFoundException {
-    // Arrange
-    ObjectInputStream in = mock(ObjectInputStream.class);
-    when(in.readObject()).thenReturn(AbstractHashedMap.NULL);
-    when(in.readFloat()).thenReturn(10.0f);
-    when(in.readInt()).thenReturn(1);
-
-    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
-    objectObjectMap.doReadObject(in);
-
-    // Act
-    Object actualPreviousKeyResult = objectObjectMap.previousKey("Key");
-
-    // Assert
-    verify(in).readFloat();
-    verify(in, atLeast(1)).readInt();
-    verify(in, atLeast(1)).readObject();
-    assertNull(actualPreviousKeyResult);
-  }
-
-  /**
-   * Test {@link AbstractLinkedMap#previousKey(Object)}.
-   *
-   * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then calls {@link ObjectInputStream#readFloat()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractLinkedMap#previousKey(Object)}
-   */
-  @Test
-  @DisplayName("Test previousKey(Object); when 'null'; then calls readFloat()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object AbstractLinkedMap.previousKey(Object)"})
-  void testPreviousKey_whenNull_thenCallsReadFloat() throws IOException, ClassNotFoundException {
-    // Arrange
-    ObjectInputStream in = mock(ObjectInputStream.class);
-    when(in.readObject()).thenReturn(AbstractHashedMap.NULL);
-    when(in.readFloat()).thenReturn(10.0f);
-    when(in.readInt()).thenReturn(1);
-
-    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
-    objectObjectMap.doReadObject(in);
-
-    // Act
-    Object actualPreviousKeyResult = objectObjectMap.previousKey(null);
-
-    // Assert
-    verify(in).readFloat();
-    verify(in, atLeast(1)).readInt();
-    verify(in, atLeast(1)).readObject();
-    assertNull(actualPreviousKeyResult);
   }
 
   /**

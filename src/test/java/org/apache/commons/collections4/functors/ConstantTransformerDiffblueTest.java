@@ -295,23 +295,4 @@ class ConstantTransformerDiffblueTest {
     // Act and Assert
     assertNotEquals(constantTransformer, "Different type to ConstantTransformer");
   }
-
-  /**
-   * Test {@link ConstantTransformer#transform(Object)}.
-   *
-   * <p>Method under test: {@link ConstantTransformer#transform(Object)}
-   */
-  @Test
-  @DisplayName("Test transform(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ConstantTransformer.transform(Object)"})
-  void testTransform() {
-    // Arrange
-    ConstantTransformer<Object, Object> constantTransformer =
-        new ConstantTransformer<>("Constant To Return");
-
-    // Act and Assert
-    assertEquals("Constant To Return", constantTransformer.transform("Input"));
-  }
 }

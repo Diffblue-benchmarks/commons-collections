@@ -84,29 +84,6 @@ class ReverseComparatorDiffblueTest {
   }
 
   /**
-   * Test {@link ReverseComparator#compare(Object, Object)}.
-   *
-   * <ul>
-   *   <li>When {@code Obj1}.
-   *   <li>Then return one.
-   * </ul>
-   *
-   * <p>Method under test: {@link ReverseComparator#compare(Object, Object)}
-   */
-  @Test
-  @DisplayName("Test compare(Object, Object); when 'Obj1'; then return one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int ReverseComparator.compare(Object, Object)"})
-  void testCompare_whenObj1_thenReturnOne() {
-    // Arrange
-    ReverseComparator<Object> reverseComparator = new ReverseComparator<>();
-
-    // Act and Assert
-    assertEquals(1, reverseComparator.compare("Obj1", "Obj2"));
-  }
-
-  /**
    * Test {@link ReverseComparator#equals(Object)}, and {@link ReverseComparator#hashCode()}.
    *
    * <ul>

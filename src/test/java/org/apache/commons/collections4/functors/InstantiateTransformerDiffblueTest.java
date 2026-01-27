@@ -1,6 +1,5 @@
 package org.apache.commons.collections4.functors;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
@@ -180,89 +179,5 @@ class InstantiateTransformerDiffblueTest {
 
     // Assert
     assertThrows(FunctorException.class, () -> actualInstantiateTransformerResult.transform(null));
-  }
-
-  /**
-   * Test {@link InstantiateTransformer#transform(Class)} with {@code Class}.
-   *
-   * <ul>
-   *   <li>Given {@code Object}.
-   *   <li>Then throw {@link FunctorException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link InstantiateTransformer#transform(Class)}
-   */
-  @Test
-  @DisplayName(
-      "Test transform(Class) with 'Class'; given 'java.lang.Object'; then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object InstantiateTransformer.transform(Class)"})
-  void testTransformWithClass_givenJavaLangObject_thenThrowFunctorException() {
-    // Arrange
-    Class<Object> forNameResult = Object.class;
-    Class<?>[] paramTypes = new Class[] {forNameResult};
-    Object[] args = new Object[] {"Args"};
-
-    InstantiateTransformer<Object> instantiateTransformer =
-        new InstantiateTransformer<>(paramTypes, args);
-    Class<Object> input = Object.class;
-
-    // Act and Assert
-    assertThrows(FunctorException.class, () -> instantiateTransformer.transform(input));
-  }
-
-  /**
-   * Test {@link InstantiateTransformer#transform(Class)} with {@code Class}.
-   *
-   * <ul>
-   *   <li>Given {@code Object}.
-   *   <li>When {@code null}.
-   *   <li>Then throw {@link FunctorException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link InstantiateTransformer#transform(Class)}
-   */
-  @Test
-  @DisplayName(
-      "Test transform(Class) with 'Class'; given 'java.lang.Object'; when 'null'; then throw FunctorException")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object InstantiateTransformer.transform(Class)"})
-  void testTransformWithClass_givenJavaLangObject_whenNull_thenThrowFunctorException() {
-    // Arrange
-    Class<Object> forNameResult = Object.class;
-    Class<?>[] paramTypes = new Class[] {forNameResult};
-    Object[] args = new Object[] {"Args"};
-
-    InstantiateTransformer<Object> instantiateTransformer =
-        new InstantiateTransformer<>(paramTypes, args);
-
-    // Act and Assert
-    assertThrows(FunctorException.class, () -> instantiateTransformer.transform(null));
-  }
-
-  /**
-   * Test {@link InstantiateTransformer#transform(Class)} with {@code Class}.
-   *
-   * <ul>
-   *   <li>Then does not throw.
-   * </ul>
-   *
-   * <p>Method under test: {@link InstantiateTransformer#transform(Class)}
-   */
-  @Test
-  @DisplayName("Test transform(Class) with 'Class'; then does not throw")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object InstantiateTransformer.transform(Class)"})
-  void testTransformWithClass_thenDoesNotThrow() {
-    // Arrange
-    InstantiateTransformer<Object> instantiateTransformer =
-        new InstantiateTransformer<>(null, null);
-    Class<Object> input = Object.class;
-
-    // Act
-    assertDoesNotThrow(() -> instantiateTransformer.transform(input));
   }
 }

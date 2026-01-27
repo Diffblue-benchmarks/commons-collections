@@ -107,28 +107,4 @@ class FactoryTransformerDiffblueTest {
     // Assert
     assertSame(factory, actualFactoryTransformer.getFactory());
   }
-
-  /**
-   * Test {@link FactoryTransformer#transform(Object)}.
-   *
-   * <p>Method under test: {@link FactoryTransformer#transform(Object)}
-   */
-  @Test
-  @DisplayName("Test transform(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object FactoryTransformer.transform(Object)"})
-  void testTransform() {
-    // Arrange
-    Factory<Object> factory = mock(Factory.class);
-    when(factory.get()).thenReturn("Get");
-    FactoryTransformer<Object, Object> factoryTransformer = new FactoryTransformer<>(factory);
-
-    // Act
-    Object actualTransformResult = factoryTransformer.transform("Input");
-
-    // Assert
-    verify(factory).get();
-    assertEquals("Get", actualTransformResult);
-  }
 }

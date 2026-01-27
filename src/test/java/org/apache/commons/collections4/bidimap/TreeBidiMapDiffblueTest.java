@@ -38,17 +38,8 @@ import org.apache.commons.collections4.keyvalue.UnmodifiableMapEntry;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
 class TreeBidiMapDiffblueTest {
-  @Mock private Inverse inverse;
-
-  @InjectMocks private TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior> treeBidiMap;
-
   /**
    * Test AbstractViewIterator {@link AbstractViewIterator#hasNext()}.
    *
@@ -587,6 +578,39 @@ class TreeBidiMapDiffblueTest {
    * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
    *
    * <ul>
+   *   <li>Given {@code OTHER}.
+   *   <li>When {@link HashMap#HashMap()} {@code OTHER} is {@code OTHER}.
+   *   <li>Then return {@link HashMap#HashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test new TreeBidiMap(Map); given 'OTHER'; when HashMap() 'OTHER' is 'OTHER'; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
+  void testNewTreeBidiMap_givenOther_whenHashMapOtherIsOther_thenReturnHashMap() {
+    // Arrange
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.OTHER);
+    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
+
+    // Assert
+    assertEquals(map, actualBaselineResizeBehaviorBaselineResizeBehaviorMap);
+  }
+
+  /**
+   * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
+   *
+   * <ul>
    *   <li>When {@link HashMap#HashMap()} {@code CENTER_OFFSET} is {@code CENTER_OFFSET}.
    *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
@@ -612,6 +636,122 @@ class TreeBidiMapDiffblueTest {
 
     // Assert
     assertEquals(map, actualBaselineResizeBehaviorBaselineResizeBehaviorMap);
+  }
+
+  /**
+   * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()} {@code CENTER_OFFSET} is {@code CONSTANT_ASCENT}.
+   *   <li>Then return {@link HashMap#HashMap()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test new TreeBidiMap(Map); when HashMap() 'CENTER_OFFSET' is 'CONSTANT_ASCENT'; then return HashMap()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
+  void testNewTreeBidiMap_whenHashMapCenterOffsetIsConstantAscent_thenReturnHashMap() {
+    // Arrange
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CONSTANT_ASCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CENTER_OFFSET);
+
+    // Act
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
+
+    // Assert
+    assertEquals(map, actualBaselineResizeBehaviorBaselineResizeBehaviorMap);
+  }
+
+  /**
+   * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()} {@code CENTER_OFFSET} is {@code CONSTANT_ASCENT}.
+   *   <li>Then return size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test new TreeBidiMap(Map); when HashMap() 'CENTER_OFFSET' is 'CONSTANT_ASCENT'; then return size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
+  void testNewTreeBidiMap_whenHashMapCenterOffsetIsConstantAscent_thenReturnSizeIsTwo() {
+    // Arrange
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CONSTANT_ASCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
+
+    // Assert
+    assertEquals(2, actualBaselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_DESCENT,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+  }
+
+  /**
+   * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
+   *
+   * <ul>
+   *   <li>When {@link HashMap#HashMap()} {@code CENTER_OFFSET} is {@code OTHER}.
+   *   <li>Then return size is four.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test new TreeBidiMap(Map); when HashMap() 'CENTER_OFFSET' is 'OTHER'; then return size is four")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
+  void testNewTreeBidiMap_whenHashMapCenterOffsetIsOther_thenReturnSizeIsFour() {
+    // Arrange
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
+    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.OTHER);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CENTER_OFFSET);
+
+    // Act
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
+
+    // Assert
+    assertEquals(4, actualBaselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CENTER_OFFSET,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.OTHER));
+    assertEquals(
+        BaselineResizeBehavior.OTHER,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CENTER_OFFSET));
+    assertTrue(
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
   }
 
   /**
@@ -647,7 +787,7 @@ class TreeBidiMapDiffblueTest {
    * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
    *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_ASCENT} is {@code CONSTANT_ASCENT}.
+   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_DESCENT} is {@code CONSTANT_DESCENT}.
    *   <li>Then return {@link HashMap#HashMap()}.
    * </ul>
    *
@@ -655,11 +795,11 @@ class TreeBidiMapDiffblueTest {
    */
   @Test
   @DisplayName(
-      "Test new TreeBidiMap(Map); when HashMap() 'CONSTANT_ASCENT' is 'CONSTANT_ASCENT'; then return HashMap()")
+      "Test new TreeBidiMap(Map); when HashMap() 'CONSTANT_DESCENT' is 'CONSTANT_DESCENT'; then return HashMap()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
-  void testNewTreeBidiMap_whenHashMapConstantAscentIsConstantAscent_thenReturnHashMap2() {
+  void testNewTreeBidiMap_whenHashMapConstantDescentIsConstantDescent_thenReturnHashMap() {
     // Arrange
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
     map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
@@ -677,79 +817,43 @@ class TreeBidiMapDiffblueTest {
    * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
    *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_DESCENT} is {@code CONSTANT_ASCENT}.
-   *   <li>Then return {@link HashMap#HashMap()}.
+   *   <li>When {@link HashMap#HashMap()} {@code OTHER} is {@code CONSTANT_ASCENT}.
+   *   <li>Then return size is three.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
    */
   @Test
   @DisplayName(
-      "Test new TreeBidiMap(Map); when HashMap() 'CONSTANT_DESCENT' is 'CONSTANT_ASCENT'; then return HashMap()")
+      "Test new TreeBidiMap(Map); when HashMap() 'OTHER' is 'CONSTANT_ASCENT'; then return size is three")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
-  void testNewTreeBidiMap_whenHashMapConstantDescentIsConstantAscent_thenReturnHashMap() {
+  void testNewTreeBidiMap_whenHashMapOtherIsConstantAscent_thenReturnSizeIsThree() {
     // Arrange
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    // Act
-    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
-        actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
-
-    // Assert
-    assertEquals(map, actualBaselineResizeBehaviorBaselineResizeBehaviorMap);
-  }
-
-  /**
-   * Test {@link TreeBidiMap#TreeBidiMap(Map)}.
-   *
-   * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_DESCENT} is {@code OTHER}.
-   *   <li>Then return size is four.
-   * </ul>
-   *
-   * <p>Method under test: {@link TreeBidiMap#TreeBidiMap(Map)}
-   */
-  @Test
-  @DisplayName(
-      "Test new TreeBidiMap(Map); when HashMap() 'CONSTANT_DESCENT' is 'OTHER'; then return size is four")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TreeBidiMap.<init>(Map)"})
-  void testNewTreeBidiMap_whenHashMapConstantDescentIsOther_thenReturnSizeIsFour() {
-    // Arrange
-    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
     map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
     map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.OTHER);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CENTER_OFFSET);
 
     // Act
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         actualBaselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>(map);
 
     // Assert
-    assertEquals(4, actualBaselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(3, actualBaselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CENTER_OFFSET,
+        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
     assertEquals(
         BaselineResizeBehavior.CONSTANT_ASCENT,
         actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.OTHER));
     assertEquals(
         BaselineResizeBehavior.CONSTANT_DESCENT,
         actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertEquals(
-        BaselineResizeBehavior.OTHER,
-        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.get(
             BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(
-        actualBaselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CENTER_OFFSET));
   }
 
   /**
@@ -2869,6 +2973,49 @@ class TreeBidiMapDiffblueTest {
     // Arrange
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
+
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
+
+    // Assert
+    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CENTER_OFFSET,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.CENTER_OFFSET));
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_DESCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
+  }
+
+  /**
+   * Test {@link TreeBidiMap#putAll(Map)}.
+   *
+   * <ul>
+   *   <li>Given {@code CENTER_OFFSET}.
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} {@code CENTER_OFFSET} is {@code CENTER_OFFSET}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName(
+      "Test putAll(Map); given 'CENTER_OFFSET'; then TreeBidiMap() 'CENTER_OFFSET' is 'CENTER_OFFSET'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
+  void testPutAll_givenCenterOffset_thenTreeBidiMapCenterOffsetIsCenterOffset2() {
+    // Arrange
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
     baselineResizeBehaviorBaselineResizeBehaviorMap.put(
         BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
 
@@ -2899,44 +3046,95 @@ class TreeBidiMapDiffblueTest {
    *
    * <ul>
    *   <li>Given {@code OTHER}.
-   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_DESCENT} is {@code OTHER}.
-   *   <li>Then {@link HashMap#HashMap()} size is four.
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} {@code OTHER} is {@code CONSTANT_ASCENT}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map); given 'OTHER'; then TreeBidiMap() 'OTHER' is 'CONSTANT_ASCENT'")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
+  void testPutAll_givenOther_thenTreeBidiMapOtherIsConstantAscent() {
+    // Arrange
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
+
+    // Assert
+    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.OTHER));
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_DESCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CENTER_OFFSET));
+  }
+
+  /**
+   * Test {@link TreeBidiMap#putAll(Map)}.
+   *
+   * <ul>
+   *   <li>Given {@link TreeBidiMap#TreeBidiMap()} {@code CENTER_OFFSET} is {@code CENTER_OFFSET}.
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is three.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
    */
   @Test
   @DisplayName(
-      "Test putAll(Map); given 'OTHER'; when HashMap() 'CONSTANT_DESCENT' is 'OTHER'; then HashMap() size is four")
+      "Test putAll(Map); given TreeBidiMap() 'CENTER_OFFSET' is 'CENTER_OFFSET'; then TreeBidiMap() size is three")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_givenOther_whenHashMapConstantDescentIsOther_thenHashMapSizeIsFour() {
+  void testPutAll_givenTreeBidiMapCenterOffsetIsCenterOffset_thenTreeBidiMapSizeIsThree() {
     // Arrange
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
     map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
-    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.OTHER);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
 
     // Act
-    treeBidiMap.putAll(map);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
 
-    // Assert
-    assertEquals(4, map.size());
-    assertEquals(4, treeBidiMap.size());
+    // Assert that nothing has changed
+    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
     assertEquals(
         BaselineResizeBehavior.CONSTANT_DESCENT,
-        treeBidiMap.get(BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertEquals(
-        BaselineResizeBehavior.OTHER, treeBidiMap.get(BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CENTER_OFFSET));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.OTHER));
-    assertTrue(treeBidiMap.containsKey(BaselineResizeBehavior.CENTER_OFFSET));
-    assertTrue(treeBidiMap.containsKey(BaselineResizeBehavior.OTHER));
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CENTER_OFFSET));
   }
 
   /**
@@ -2988,88 +3186,53 @@ class TreeBidiMapDiffblueTest {
    * Test {@link TreeBidiMap#putAll(Map)}.
    *
    * <ul>
-   *   <li>Given {@link TreeBidiMap#TreeBidiMap()} {@code CONSTANT_DESCENT} is {@code
-   *       CONSTANT_DESCENT}.
-   *   <li>Then {@link HashMap#HashMap()} size is one.
+   *   <li>Given {@link TreeBidiMap#TreeBidiMap()} {@code OTHER} is {@code CONSTANT_ASCENT}.
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} containsKey {@code OTHER}.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
    */
   @Test
   @DisplayName(
-      "Test putAll(Map); given TreeBidiMap() 'CONSTANT_DESCENT' is 'CONSTANT_DESCENT'; then HashMap() size is one")
+      "Test putAll(Map); given TreeBidiMap() 'OTHER' is 'CONSTANT_ASCENT'; then TreeBidiMap() containsKey 'OTHER'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_givenTreeBidiMapConstantDescentIsConstantDescent_thenHashMapSizeIsOne() {
+  void testPutAll_givenTreeBidiMapOtherIsConstantAscent_thenTreeBidiMapContainsKeyOther() {
     // Arrange
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
     baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
         BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
     baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.OTHER);
 
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
 
     // Act
     baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
 
     // Assert that nothing has changed
-    assertEquals(1, map.size());
-    assertEquals(2, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(4, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
     assertEquals(
         BaselineResizeBehavior.CONSTANT_DESCENT,
         baselineResizeBehaviorBaselineResizeBehaviorMap.get(
             BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertTrue(
-        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
-  }
-
-  /**
-   * Test {@link TreeBidiMap#putAll(Map)}.
-   *
-   * <ul>
-   *   <li>Given {@link TreeBidiMap#TreeBidiMap()}.
-   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} containsKey {@code CONSTANT_DESCENT}.
-   * </ul>
-   *
-   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
-   */
-  @Test
-  @DisplayName(
-      "Test putAll(Map); given TreeBidiMap(); then TreeBidiMap() containsKey 'CONSTANT_DESCENT'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_givenTreeBidiMap_thenTreeBidiMapContainsKeyConstantDescent() {
-    // Arrange
-    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
-        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
-
-    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    // Act
-    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
-
-    // Assert
-    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
     assertEquals(
-        BaselineResizeBehavior.CENTER_OFFSET,
-        baselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.CENTER_OFFSET));
-    assertEquals(
-        BaselineResizeBehavior.CONSTANT_ASCENT,
+        BaselineResizeBehavior.OTHER,
         baselineResizeBehaviorBaselineResizeBehaviorMap.get(
             BaselineResizeBehavior.CONSTANT_ASCENT));
     assertTrue(
         baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CONSTANT_DESCENT));
+            BaselineResizeBehavior.CENTER_OFFSET));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(BaselineResizeBehavior.OTHER));
   }
 
   /**
@@ -3077,17 +3240,17 @@ class TreeBidiMapDiffblueTest {
    *
    * <ul>
    *   <li>Given {@link TreeBidiMap#TreeBidiMap()}.
-   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is one.
+   *   <li>Then {@link HashMap#HashMap()} is {@link TreeBidiMap#TreeBidiMap()}.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given TreeBidiMap(); then TreeBidiMap() size is one")
+  @DisplayName("Test putAll(Map); given TreeBidiMap(); then HashMap() is TreeBidiMap()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_givenTreeBidiMap_thenTreeBidiMapSizeIsOne() {
+  void testPutAll_givenTreeBidiMap_thenHashMapIsTreeBidiMap() {
     // Arrange
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
@@ -3112,17 +3275,17 @@ class TreeBidiMapDiffblueTest {
    *
    * <ul>
    *   <li>Given {@link TreeBidiMap#TreeBidiMap()}.
-   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is two.
+   *   <li>Then {@link HashMap#HashMap()} size is two.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); given TreeBidiMap(); then TreeBidiMap() size is two")
+  @DisplayName("Test putAll(Map); given TreeBidiMap(); then HashMap() size is two")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_givenTreeBidiMap_thenTreeBidiMapSizeIsTwo() {
+  void testPutAll_givenTreeBidiMap_thenHashMapSizeIsTwo() {
     // Arrange
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
@@ -3135,15 +3298,17 @@ class TreeBidiMapDiffblueTest {
     baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
 
     // Assert
+    assertEquals(2, map.size());
     assertEquals(2, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
-    assertEquals(
-        BaselineResizeBehavior.CONSTANT_ASCENT,
-        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
     assertEquals(
         BaselineResizeBehavior.CONSTANT_DESCENT,
         baselineResizeBehaviorBaselineResizeBehaviorMap.get(
             BaselineResizeBehavior.CONSTANT_DESCENT));
+    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_ASCENT));
+    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_DESCENT));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
   }
 
   /**
@@ -3195,97 +3360,6 @@ class TreeBidiMapDiffblueTest {
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
     baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    // Act
-    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
-
-    // Assert that nothing has changed
-    assertEquals(2, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
-    assertEquals(
-        BaselineResizeBehavior.CONSTANT_DESCENT,
-        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
-            BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(
-        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertEquals(baselineResizeBehaviorBaselineResizeBehaviorMap, map);
-  }
-
-  /**
-   * Test {@link TreeBidiMap#putAll(Map)}.
-   *
-   * <ul>
-   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} containsKey {@code CENTER_OFFSET}.
-   * </ul>
-   *
-   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
-   */
-  @Test
-  @DisplayName("Test putAll(Map); then TreeBidiMap() containsKey 'CENTER_OFFSET'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_thenTreeBidiMapContainsKeyCenterOffset() {
-    // Arrange
-    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
-        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
-    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
-    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
-        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
-    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-
-    // Act
-    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
-
-    // Assert that nothing has changed
-    assertEquals(2, map.size());
-    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
-    assertEquals(
-        BaselineResizeBehavior.CONSTANT_DESCENT,
-        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
-            BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_ASCENT));
-    assertTrue(map.containsKey(BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(
-        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CENTER_OFFSET));
-    assertTrue(
-        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
-  }
-
-  /**
-   * Test {@link TreeBidiMap#putAll(Map)}.
-   *
-   * <ul>
-   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is one.
-   * </ul>
-   *
-   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
-   */
-  @Test
-  @DisplayName("Test putAll(Map); then TreeBidiMap() size is one")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_thenTreeBidiMapSizeIsOne() {
-    // Arrange
-    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
-        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
-    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
         BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
 
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
@@ -3307,44 +3381,132 @@ class TreeBidiMapDiffblueTest {
    * Test {@link TreeBidiMap#putAll(Map)}.
    *
    * <ul>
-   *   <li>When {@link HashMap#HashMap()} {@code CONSTANT_DESCENT} is {@code CONSTANT_ASCENT}.
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} containsKey {@code CONSTANT_DESCENT}.
    * </ul>
    *
    * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
    */
   @Test
-  @DisplayName("Test putAll(Map); when HashMap() 'CONSTANT_DESCENT' is 'CONSTANT_ASCENT'")
+  @DisplayName("Test putAll(Map); then TreeBidiMap() containsKey 'CONSTANT_DESCENT'")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
-  void testPutAll_whenHashMapConstantDescentIsConstantAscent() {
+  void testPutAll_thenTreeBidiMapContainsKeyConstantDescent() {
     // Arrange
     TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
         baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
     baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.OTHER);
+
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
+    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    map.put(BaselineResizeBehavior.OTHER, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
+
+    // Assert
+    assertEquals(4, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.OTHER));
+    assertEquals(
+        BaselineResizeBehavior.OTHER,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CENTER_OFFSET));
+    assertTrue(
+        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+  }
+
+  /**
+   * Test {@link TreeBidiMap#putAll(Map)}.
+   *
+   * <ul>
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map); then TreeBidiMap() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
+  void testPutAll_thenTreeBidiMapSizeIsTwo() {
+    // Arrange
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
         BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
 
     HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
-    map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
-    map.put(BaselineResizeBehavior.CENTER_OFFSET, BaselineResizeBehavior.CENTER_OFFSET);
+    map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    // Act
+    baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
+
+    // Assert that nothing has changed
+    assertEquals(2, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
+    assertEquals(
+        BaselineResizeBehavior.CONSTANT_DESCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_DESCENT));
+  }
+
+  /**
+   * Test {@link TreeBidiMap#putAll(Map)}.
+   *
+   * <ul>
+   *   <li>Then {@link TreeBidiMap#TreeBidiMap()} size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link TreeBidiMap#putAll(Map)}
+   */
+  @Test
+  @DisplayName("Test putAll(Map); then TreeBidiMap() size is two")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TreeBidiMap.putAll(Map)"})
+  void testPutAll_thenTreeBidiMapSizeIsTwo2() {
+    // Arrange
+    TreeBidiMap<BaselineResizeBehavior, BaselineResizeBehavior>
+        baselineResizeBehaviorBaselineResizeBehaviorMap = new TreeBidiMap<>();
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
+    baselineResizeBehaviorBaselineResizeBehaviorMap.put(
+        BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
+
+    HashMap<BaselineResizeBehavior, BaselineResizeBehavior> map = new HashMap<>();
     map.put(BaselineResizeBehavior.CONSTANT_DESCENT, BaselineResizeBehavior.CONSTANT_DESCENT);
     map.put(BaselineResizeBehavior.CONSTANT_ASCENT, BaselineResizeBehavior.CONSTANT_ASCENT);
 
     // Act
     baselineResizeBehaviorBaselineResizeBehaviorMap.putAll(map);
 
-    // Assert
-    assertEquals(3, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
+    // Assert that nothing has changed
+    assertEquals(2, baselineResizeBehaviorBaselineResizeBehaviorMap.size());
     assertEquals(
-        BaselineResizeBehavior.CENTER_OFFSET,
-        baselineResizeBehaviorBaselineResizeBehaviorMap.get(BaselineResizeBehavior.CENTER_OFFSET));
+        BaselineResizeBehavior.CONSTANT_ASCENT,
+        baselineResizeBehaviorBaselineResizeBehaviorMap.get(
+            BaselineResizeBehavior.CONSTANT_ASCENT));
     assertEquals(
         BaselineResizeBehavior.CONSTANT_DESCENT,
         baselineResizeBehaviorBaselineResizeBehaviorMap.get(
             BaselineResizeBehavior.CONSTANT_DESCENT));
-    assertTrue(
-        baselineResizeBehaviorBaselineResizeBehaviorMap.containsKey(
-            BaselineResizeBehavior.CONSTANT_ASCENT));
   }
 
   /**

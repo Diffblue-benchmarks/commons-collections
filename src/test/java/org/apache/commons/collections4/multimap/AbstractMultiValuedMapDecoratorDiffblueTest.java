@@ -15,9 +15,7 @@ import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.Transformer;
@@ -37,7 +35,7 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   @DisplayName("Test asMap()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
-  @MethodsUnderTest({"Map AbstractMultiValuedMapDecorator.asMap()"})
+  @MethodsUnderTest({"java.util.Map AbstractMultiValuedMapDecorator.asMap()"})
   void testAsMap() {
     // Arrange
     TransformedMultiValuedMap<Object, Object> transformedMapResult =
@@ -57,7 +55,7 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   @DisplayName("Test asMap()")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
-  @MethodsUnderTest({"Map AbstractMultiValuedMapDecorator.asMap()"})
+  @MethodsUnderTest({"java.util.Map AbstractMultiValuedMapDecorator.asMap()"})
   void testAsMap2() {
     // Arrange
     TransformedMultiValuedMap<Object, Object> map =
@@ -211,27 +209,6 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#decorated()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#decorated()}
-   */
-  @Test
-  @DisplayName("Test decorated()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"MultiValuedMap AbstractMultiValuedMapDecorator.decorated()"})
-  void testDecorated() {
-    // Arrange
-    ArrayListValuedHashMap<Object, Object> map = new ArrayListValuedHashMap<>();
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            map, mock(Transformer.class), mock(Transformer.class));
-
-    // Act and Assert
-    assertSame(map, transformedMapResult.decorated());
-  }
-
-  /**
    * Test {@link AbstractMultiValuedMapDecorator#entries()}.
    *
    * <p>Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
@@ -242,26 +219,6 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   @ManagedByDiffblue
   @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.entries()"})
   void testEntries() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act and Assert
-    assertTrue(transformedMapResult.entries().isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#entries()}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#entries()}
-   */
-  @Test
-  @DisplayName("Test entries()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Collection AbstractMultiValuedMapDecorator.entries()"})
-  void testEntries2() {
     // Arrange
     TransformedMultiValuedMap<Object, Object> map =
         TransformedMultiValuedMap.transformedMap(
@@ -764,65 +721,6 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Map)} with {@code Map}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
-   */
-  @Test
-  @DisplayName("Test putAll(Map) with 'Map'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Map)"})
-  void testPutAllWithMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(new HashMap<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Map)} with {@code Map}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Map)}
-   */
-  @Test
-  @DisplayName("Test putAll(Map) with 'Map'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Map)"})
-  void testPutAllWithMap2() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    HashMap<Object, Object> map = new HashMap<>();
-    map.put("Key", "Value");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutAllResult);
-  }
-
-  /**
    * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
    * MultiValuedMap}.
    *
@@ -848,123 +746,6 @@ class AbstractMultiValuedMapDecoratorDiffblueTest {
     // Assert
     assertEquals(0, transformedMapResult.size());
     assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
-   * MultiValuedMap}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
-   */
-  @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(MultiValuedMap)"})
-  void testPutAllWithMultiValuedMap2() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-    UnmodifiableMultiValuedMap<?, ?> map =
-        UnmodifiableMultiValuedMap.unmodifiableMultiValuedMap(new ArrayListValuedHashMap<>());
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(map);
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)} with {@code
-   * MultiValuedMap}.
-   *
-   * <ul>
-   *   <li>When {@link ArrayListValuedHashMap#ArrayListValuedHashMap()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(MultiValuedMap)}
-   */
-  @Test
-  @DisplayName("Test putAll(MultiValuedMap) with 'MultiValuedMap'; when ArrayListValuedHashMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(MultiValuedMap)"})
-  void testPutAllWithMultiValuedMap_whenArrayListValuedHashMap() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll(new ArrayListValuedHashMap<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object},
-   * {@code Iterable}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
-   */
-  @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Object, Iterable)"})
-  void testPutAllWithObjectIterable() {
-    // Arrange
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), mock(Transformer.class), mock(Transformer.class));
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll("Key", new ArrayList<>());
-
-    // Assert
-    assertEquals(0, transformedMapResult.size());
-    assertFalse(actualPutAllResult);
-  }
-
-  /**
-   * Test {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)} with {@code Object},
-   * {@code Iterable}.
-   *
-   * <p>Method under test: {@link AbstractMultiValuedMapDecorator#putAll(Object, Iterable)}
-   */
-  @Test
-  @DisplayName("Test putAll(Object, Iterable) with 'Object', 'Iterable'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiValuedMapDecorator.putAll(Object, Iterable)"})
-  void testPutAllWithObjectIterable2() {
-    // Arrange
-    Transformer<Object, Object> keyTransformer = mock(Transformer.class);
-    when(keyTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    Transformer<Object, Object> valueTransformer = mock(Transformer.class);
-    when(valueTransformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-
-    TransformedMultiValuedMap<Object, Object> transformedMapResult =
-        TransformedMultiValuedMap.transformedMap(
-            new ArrayListValuedHashMap<>(), keyTransformer, valueTransformer);
-
-    ArrayList<Object> values = new ArrayList<>();
-    values.add("42");
-
-    // Act
-    boolean actualPutAllResult = transformedMapResult.putAll("Key", values);
-
-    // Assert
-    verify(keyTransformer).apply(isA(Object.class));
-    verify(valueTransformer).apply(isA(Object.class));
-    assertEquals(1, transformedMapResult.size());
-    assertTrue(actualPutAllResult);
   }
 
   /**

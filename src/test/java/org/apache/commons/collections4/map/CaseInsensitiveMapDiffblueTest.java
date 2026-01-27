@@ -87,6 +87,82 @@ class CaseInsensitiveMapDiffblueTest {
    * Test {@link CaseInsensitiveMap#clone()}.
    *
    * <ul>
+   *   <li>Given {@link HashEntry} {@link HashEntry#getKey()} return {@link AbstractHashedMap#NULL}.
+   *   <li>Then return {@link AbstractHashedMap#NULL}.
+   * </ul>
+   *
+   * <p>Method under test: {@link CaseInsensitiveMap#clone()}
+   */
+  @Test
+  @DisplayName("Test clone(); given HashEntry getKey() return NULL; then return NULL")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"CaseInsensitiveMap CaseInsensitiveMap.clone()"})
+  void testClone_givenHashEntryGetKeyReturnNull_thenReturnNull() {
+    // Arrange
+    HashEntry<Object, Object> next = mock(HashEntry.class);
+    when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
+    when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
+    HashEntry<Object, Object> entry =
+        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    CaseInsensitiveMap<Object, Object> objectObjectMap = new CaseInsensitiveMap<>();
+    objectObjectMap.addEntry(entry, 1);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    // Act
+    CaseInsensitiveMap<Object, Object> actualCloneResult = objectObjectMap.clone();
+
+    // Assert
+    verify(next).getKey();
+    verify(next).getValue();
+    assertEquals(2, actualCloneResult.size());
+    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
+  }
+
+  /**
+   * Test {@link CaseInsensitiveMap#clone()}.
+   *
+   * <ul>
+   *   <li>Given {@link HashEntry} {@link HashEntry#getKey()} return thirteen.
+   *   <li>Then return size is three.
+   * </ul>
+   *
+   * <p>Method under test: {@link CaseInsensitiveMap#clone()}
+   */
+  @Test
+  @DisplayName("Test clone(); given HashEntry getKey() return thirteen; then return size is three")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"CaseInsensitiveMap CaseInsensitiveMap.clone()"})
+  void testClone_givenHashEntryGetKeyReturnThirteen_thenReturnSizeIsThree() {
+    // Arrange
+    HashEntry<Object, Object> next = mock(HashEntry.class);
+    when(next.getKey()).thenReturn(13);
+    when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
+    HashEntry<Object, Object> entry =
+        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    CaseInsensitiveMap<Object, Object> objectObjectMap = new CaseInsensitiveMap<>();
+    objectObjectMap.addEntry(entry, 1);
+    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
+    // Act
+    CaseInsensitiveMap<Object, Object> actualCloneResult = objectObjectMap.clone();
+
+    // Assert
+    verify(next).getKey();
+    verify(next).getValue();
+    assertEquals(3, actualCloneResult.size());
+    Object getResult = actualCloneResult.get("13");
+    assertSame(getResult, actualCloneResult.get(null));
+    assertSame(AbstractHashedMap.NULL, getResult);
+  }
+
+  /**
+   * Test {@link CaseInsensitiveMap#clone()}.
+   *
+   * <ul>
    *   <li>Then return {@code {}} is {@link AbstractHashedMap#NULL}.
    * </ul>
    *
@@ -117,42 +193,6 @@ class CaseInsensitiveMapDiffblueTest {
     verify(next).getValue();
     assertEquals(2, actualCloneResult.size());
     assertSame(AbstractHashedMap.NULL, actualCloneResult.get("{}"));
-  }
-
-  /**
-   * Test {@link CaseInsensitiveMap#clone()}.
-   *
-   * <ul>
-   *   <li>Then return {@link AbstractHashedMap#NULL}.
-   * </ul>
-   *
-   * <p>Method under test: {@link CaseInsensitiveMap#clone()}
-   */
-  @Test
-  @DisplayName("Test clone(); then return NULL")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"CaseInsensitiveMap CaseInsensitiveMap.clone()"})
-  void testClone_thenReturnNull() {
-    // Arrange
-    HashEntry<Object, Object> next = mock(HashEntry.class);
-    when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
-    when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
-    HashEntry<Object, Object> entry =
-        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    CaseInsensitiveMap<Object, Object> objectObjectMap = new CaseInsensitiveMap<>();
-    objectObjectMap.addEntry(entry, 1);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act
-    CaseInsensitiveMap<Object, Object> actualCloneResult = objectObjectMap.clone();
-
-    // Assert
-    verify(next).getKey();
-    verify(next).getValue();
-    assertEquals(2, actualCloneResult.size());
-    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
   }
 
   /**

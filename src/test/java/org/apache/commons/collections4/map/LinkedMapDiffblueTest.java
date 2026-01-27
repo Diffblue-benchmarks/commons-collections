@@ -193,6 +193,32 @@ class LinkedMapDiffblueTest {
   /**
    * Test {@link LinkedMap#clone()}.
    *
+   * <p>Method under test: {@link LinkedMap#clone()}
+   */
+  @Test
+  @DisplayName("Test clone()")
+  @Tag("ContributionFromDiffblue")
+  @ManagedByDiffblue
+  @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
+  void testClone4() {
+    // Arrange
+    LRUMap<Object, Object> objectObjectMap = new LRUMap<>();
+    AbstractHashedMap<Object, Object> objectObjectMap2 = new AbstractHashedMap<>();
+    objectObjectMap.addMapping(1, 2, objectObjectMap2, new AbstractHashedMap<>());
+
+    LinkedMap<Object, Object> objectObjectMap3 = new LinkedMap<>();
+    objectObjectMap3.put(objectObjectMap, AbstractHashedMap.NULL);
+
+    // Act
+    LinkedMap<Object, Object> actualCloneResult = objectObjectMap3.clone();
+
+    // Assert
+    assertEquals(objectObjectMap3, actualCloneResult);
+  }
+
+  /**
+   * Test {@link LinkedMap#clone()}.
+   *
    * <ul>
    *   <li>Given {@link LinkedMap#LinkedMap()} {@link AbstractHashedMap#AbstractHashedMap()} is
    *       {@link AbstractHashedMap#NULL}.
@@ -331,36 +357,6 @@ class LinkedMapDiffblueTest {
     // Assert
     assertEquals(2, actualCloneResult.size());
     assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
-  }
-
-  /**
-   * Test {@link LinkedMap#clone()}.
-   *
-   * <ul>
-   *   <li>Then return two is {@link AbstractHashedMap#NULL}.
-   * </ul>
-   *
-   * <p>Method under test: {@link LinkedMap#clone()}
-   */
-  @Test
-  @DisplayName("Test clone(); then return two is NULL")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"LinkedMap LinkedMap.clone()"})
-  void testClone_thenReturnTwoIsNull() {
-    // Arrange
-    LinkedMap<Object, Object> objectObjectMap = new LinkedMap<>();
-    objectObjectMap.addMapping(1, 2, 2, AbstractHashedMap.NULL);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act
-    LinkedMap<Object, Object> actualCloneResult = objectObjectMap.clone();
-
-    // Assert
-    assertEquals(2, actualCloneResult.size());
-    Object object = AbstractHashedMap.NULL;
-    assertSame(object, actualCloneResult.get(null));
-    assertSame(object, actualCloneResult.get((Object) 2));
   }
 
   /**

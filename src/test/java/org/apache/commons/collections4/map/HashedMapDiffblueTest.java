@@ -48,7 +48,7 @@ class HashedMapDiffblueTest {
     when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
     when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
     HashEntry<Object, Object> entry =
-        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+        new HashEntry<>(next, 19088743, new AbstractHashedMap<>(), AbstractHashedMap.NULL);
 
     HashedMap<Object, Object> objectObjectMap = new HashedMap<>();
     objectObjectMap.addEntry(entry, 1);
@@ -60,7 +60,7 @@ class HashedMapDiffblueTest {
     // Assert
     verify(next).getKey();
     verify(next).getValue();
-    assertEquals(1, actualCloneResult.size());
+    assertEquals(2, actualCloneResult.size());
     assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
   }
 
@@ -79,8 +79,12 @@ class HashedMapDiffblueTest {
     HashEntry<Object, Object> next = mock(HashEntry.class);
     when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
     when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
+    HashEntry<Object, Object> hashEntry =
+        new HashEntry<>(
+            mock(HashEntry.class), 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+
     HashEntry<Object, Object> entry =
-        new HashEntry<>(next, 19088743, new AbstractHashedMap<>(), AbstractHashedMap.NULL);
+        new HashEntry<>(next, 19088743, hashEntry, AbstractHashedMap.NULL);
 
     HashedMap<Object, Object> objectObjectMap = new HashedMap<>();
     objectObjectMap.addEntry(entry, 1);
@@ -111,16 +115,13 @@ class HashedMapDiffblueTest {
     HashEntry<Object, Object> next = mock(HashEntry.class);
     when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
     when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
-    HashEntry<Object, Object> hashEntry =
-        new HashEntry<>(
-            mock(HashEntry.class), 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
     HashEntry<Object, Object> entry =
-        new HashEntry<>(next, 19088743, hashEntry, AbstractHashedMap.NULL);
+        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
     HashedMap<Object, Object> objectObjectMap = new HashedMap<>();
     objectObjectMap.addEntry(entry, 1);
-    objectObjectMap.put(AbstractHashedMap.NULL, AbstractHashedMap.NULL);
+    objectObjectMap.put(
+        "org.apache.commons.collections4.map.AbstractHashedMap", AbstractHashedMap.NULL);
 
     // Act
     HashedMap<Object, Object> actualCloneResult = objectObjectMap.clone();
@@ -129,7 +130,10 @@ class HashedMapDiffblueTest {
     verify(next).getKey();
     verify(next).getValue();
     assertEquals(2, actualCloneResult.size());
-    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
+    assertSame(entry.key, actualCloneResult.get(null));
+    assertSame(
+        AbstractHashedMap.NULL,
+        actualCloneResult.get("org.apache.commons.collections4.map.AbstractHashedMap"));
   }
 
   /**
@@ -230,22 +234,23 @@ class HashedMapDiffblueTest {
    * Test {@link HashedMap#clone()}.
    *
    * <ul>
-   *   <li>Then return two is {@link AbstractHashedMap#NULL}.
+   *   <li>Then return size is one.
    * </ul>
    *
    * <p>Method under test: {@link HashedMap#clone()}
    */
   @Test
-  @DisplayName("Test clone(); then return two is NULL")
+  @DisplayName("Test clone(); then return size is one")
   @Tag("ContributionFromDiffblue")
   @ManagedByDiffblue
   @MethodsUnderTest({"HashedMap HashedMap.clone()"})
-  void testClone_thenReturnTwoIsNull() {
+  void testClone_thenReturnSizeIsOne() {
     // Arrange
     HashEntry<Object, Object> next = mock(HashEntry.class);
     when(next.getKey()).thenReturn(AbstractHashedMap.NULL);
     when(next.getValue()).thenReturn(AbstractHashedMap.NULL);
-    HashEntry<Object, Object> entry = new HashEntry<>(next, 19088743, 2, AbstractHashedMap.NULL);
+    HashEntry<Object, Object> entry =
+        new HashEntry<>(next, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
 
     HashedMap<Object, Object> objectObjectMap = new HashedMap<>();
     objectObjectMap.addEntry(entry, 1);
@@ -257,9 +262,7 @@ class HashedMapDiffblueTest {
     // Assert
     verify(next).getKey();
     verify(next).getValue();
-    assertEquals(2, actualCloneResult.size());
-    Object object = AbstractHashedMap.NULL;
-    assertSame(object, actualCloneResult.get(null));
-    assertSame(object, actualCloneResult.get(2));
+    assertEquals(1, actualCloneResult.size());
+    assertSame(AbstractHashedMap.NULL, actualCloneResult.get(null));
   }
 }

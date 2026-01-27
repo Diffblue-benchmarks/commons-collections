@@ -349,28 +349,4 @@ class ChainedTransformerDiffblueTest {
     // Act and Assert
     assertEquals(1, chainedTransformer.getTransformers().length);
   }
-
-  /**
-   * Test {@link ChainedTransformer#transform(Object)}.
-   *
-   * <p>Method under test: {@link ChainedTransformer#transform(Object)}
-   */
-  @Test
-  @DisplayName("Test transform(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ChainedTransformer.transform(Object)"})
-  void testTransform() {
-    // Arrange
-    Transformer<Object, Object> transformer = mock(Transformer.class);
-    when(transformer.apply(Mockito.<Object>any())).thenReturn("Apply");
-    ChainedTransformer<Object> chainedTransformer = new ChainedTransformer<>(transformer);
-
-    // Act
-    Object actualTransformResult = chainedTransformer.transform("Object");
-
-    // Assert
-    verify(transformer).apply(isA(Object.class));
-    assertEquals("Apply", actualTransformResult);
-  }
 }

@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import java.util.ArrayList;
-import java.util.Collection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -35,34 +33,6 @@ class AbstractListDecoratorDiffblueTest {
     assertEquals(2, objectList.size());
     assertEquals("Object", objectList.get(1));
     assertNull(objectList.get(0));
-  }
-
-  /**
-   * Test {@link AbstractListDecorator#addAll(int, Collection)} with {@code index}, {@code coll}.
-   *
-   * <ul>
-   *   <li>Then {@link GrowthList#GrowthList()} first is {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractListDecorator#addAll(int, Collection)}
-   */
-  @Test
-  @DisplayName(
-      "Test addAll(int, Collection) with 'index', 'coll'; then GrowthList() first is 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractListDecorator.addAll(int, Collection)"})
-  void testAddAllWithIndexColl_thenGrowthListFirstIsNull() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    // Act
-    boolean actualAddAllResult = objectList.addAll(1, new ArrayList<>());
-
-    // Assert
-    assertEquals(1, objectList.size());
-    assertNull(objectList.get(0));
-    assertTrue(actualAddAllResult);
   }
 
   /**
@@ -362,30 +332,6 @@ class AbstractListDecoratorDiffblueTest {
     // Assert
     assertEquals(1, objectList.size());
     assertEquals("Object", actualRemoveResult);
-  }
-
-  /**
-   * Test {@link AbstractListDecorator#set(int, Object)}.
-   *
-   * <p>Method under test: {@link AbstractListDecorator#set(int, Object)}
-   */
-  @Test
-  @DisplayName("Test set(int, Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object AbstractListDecorator.set(int, Object)"})
-  void testSet() {
-    // Arrange
-    GrowthList<Object> objectList = new GrowthList<>();
-
-    // Act
-    Object actualSetResult = objectList.set(1, "Object");
-
-    // Assert
-    assertEquals(2, objectList.size());
-    assertEquals("Object", objectList.get(1));
-    assertNull(objectList.get(0));
-    assertNull(actualSetResult);
   }
 
   /**

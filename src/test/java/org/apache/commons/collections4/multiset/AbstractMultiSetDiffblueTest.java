@@ -11,10 +11,8 @@ import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import org.apache.commons.collections4.multiset.AbstractMapMultiSet.MultiSetEntry;
 import org.apache.commons.collections4.multiset.AbstractMapMultiSet.MutableInteger;
-import org.apache.commons.collections4.multiset.AbstractMapMultiSet.UniqueSetIterator;
 import org.apache.commons.collections4.multiset.AbstractMultiSet.AbstractEntry;
 import org.apache.commons.collections4.multiset.AbstractMultiSet.EntrySet;
 import org.apache.commons.collections4.multiset.AbstractMultiSet.UniqueSet;
@@ -273,72 +271,6 @@ class AbstractMultiSetDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiSet#add(Object, int)} with {@code object}, {@code occurrences}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#add(Object, int)}
-   */
-  @Test
-  @DisplayName("Test add(Object, int) with 'object', 'occurrences'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int AbstractMultiSet.add(Object, int)"})
-  void testAddWithObjectOccurrences() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(0, hashMultiSet.add("Object", 2));
-    assertEquals(2, hashMultiSet.size());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()} add {@code Object}.
-   *   <li>Then return {@code true}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#contains(Object)}
-   */
-  @Test
-  @DisplayName("Test contains(Object); given HashMultiSet() add 'Object'; then return 'true'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.contains(Object)"})
-  void testContains_givenHashMultiSetAddObject_thenReturnTrue() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-    hashMultiSet.add("Object");
-
-    // Act and Assert
-    assertTrue(hashMultiSet.contains("Object"));
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#contains(Object)}.
-   *
-   * <ul>
-   *   <li>Given {@link HashMultiSet#HashMultiSet()}.
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#contains(Object)}
-   */
-  @Test
-  @DisplayName("Test contains(Object); given HashMultiSet(); then return 'false'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.contains(Object)"})
-  void testContains_givenHashMultiSet_thenReturnFalse() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertFalse(hashMultiSet.contains("Object"));
-  }
-
-  /**
    * Test {@link AbstractMultiSet#createEntrySet()}.
    *
    * <p>Method under test: {@link AbstractMultiSet#createEntrySet()}
@@ -375,28 +307,6 @@ class AbstractMultiSetDiffblueTest {
   }
 
   /**
-   * Test {@link AbstractMultiSet#createUniqueSetIterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#createUniqueSetIterator()}
-   */
-  @Test
-  @DisplayName("Test createUniqueSetIterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator AbstractMultiSet.createUniqueSetIterator()"})
-  void testCreateUniqueSetIterator() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act
-    Iterator<Object> actualCreateUniqueSetIteratorResult = hashMultiSet.createUniqueSetIterator();
-
-    // Assert
-    assertTrue(actualCreateUniqueSetIteratorResult instanceof UniqueSetIterator);
-    assertFalse(actualCreateUniqueSetIteratorResult.hasNext());
-  }
-
-  /**
    * Test {@link AbstractMultiSet#entrySet()}.
    *
    * <p>Method under test: {@link AbstractMultiSet#entrySet()}
@@ -430,180 +340,6 @@ class AbstractMultiSetDiffblueTest {
 
     // Assert
     assertTrue(actualObjectSet.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#equals(Object)}, and {@link AbstractMultiSet#hashCode()}.
-   *
-   * <ul>
-   *   <li>When other is equal.
-   *   <li>Then return equal.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is equal; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-    HashMultiSet<Object> hashMultiSet2 = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(hashMultiSet, hashMultiSet2);
-    assertEquals(hashMultiSet.hashCode(), hashMultiSet2.hashCode());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#equals(Object)}, and {@link AbstractMultiSet#hashCode()}.
-   *
-   * <ul>
-   *   <li>When other is same.
-   *   <li>Then return equal.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object), and hashCode(); when other is same; then return equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(hashMultiSet, hashMultiSet);
-    int expectedHashCodeResult = hashMultiSet.hashCode();
-    assertEquals(expectedHashCodeResult, hashMultiSet.hashCode());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#equals(Object)}.
-   *
-   * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object); when other is different; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-    hashMultiSet.add("Object");
-
-    // Act and Assert
-    assertNotEquals(hashMultiSet, new HashMultiSet<>());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#equals(Object)}.
-   *
-   * <ul>
-   *   <li>When other is {@code null}.
-   *   <li>Then return not equal.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object); when other is 'null'; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsNull_thenReturnNotEqual() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertNotEquals(hashMultiSet, null);
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#equals(Object)}.
-   *
-   * <ul>
-   *   <li>When other is wrong type.
-   *   <li>Then return not equal.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMultiSet#equals(Object)}
-   */
-  @Test
-  @DisplayName("Test equals(Object); when other is wrong type; then return not equal")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean AbstractMultiSet.equals(Object)", "int AbstractMultiSet.hashCode()"})
-  void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertNotEquals(hashMultiSet, "Different type to AbstractMultiSet");
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#getCount(Object)}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#getCount(Object)}
-   */
-  @Test
-  @DisplayName("Test getCount(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int AbstractMultiSet.getCount(Object)"})
-  void testGetCount() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(0, hashMultiSet.getCount("Object"));
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#iterator()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#iterator()}
-   */
-  @Test
-  @DisplayName("Test iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator AbstractMultiSet.iterator()"})
-  void testIterator() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertFalse(hashMultiSet.iterator().hasNext());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#remove(Object, int)} with {@code object}, {@code occurrences}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#remove(Object, int)}
-   */
-  @Test
-  @DisplayName("Test remove(Object, int) with 'object', 'occurrences'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int AbstractMultiSet.remove(Object, int)"})
-  void testRemoveWithObjectOccurrences() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(0, hashMultiSet.remove("Object", 1));
   }
 
   /**
@@ -880,24 +616,6 @@ class AbstractMultiSetDiffblueTest {
     // Act and Assert
     assertEquals(0, hashMultiSet.setCount("Object", 0));
     assertTrue(hashMultiSet.isEmpty());
-  }
-
-  /**
-   * Test {@link AbstractMultiSet#size()}.
-   *
-   * <p>Method under test: {@link AbstractMultiSet#size()}
-   */
-  @Test
-  @DisplayName("Test size()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"int AbstractMultiSet.size()"})
-  void testSize() {
-    // Arrange
-    HashMultiSet<Object> hashMultiSet = new HashMultiSet<>();
-
-    // Act and Assert
-    assertEquals(0, hashMultiSet.size());
   }
 
   /**

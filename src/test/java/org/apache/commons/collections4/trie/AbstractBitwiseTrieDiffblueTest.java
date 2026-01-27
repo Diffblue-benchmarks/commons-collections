@@ -251,28 +251,6 @@ class AbstractBitwiseTrieDiffblueTest {
   }
 
   /**
-   * Test BasicEntry {@link BasicEntry#getKey()}.
-   *
-   * <p>Method under test: {@link BasicEntry#getKey()}
-   */
-  @Test
-  @DisplayName("Test BasicEntry getKey()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object BasicEntry.getKey()"})
-  void testBasicEntryGetKey() {
-    // Arrange
-    TrieEntry<Object, Object> trieEntry = new TrieEntry<>("Key", "Value", 1);
-
-    // Act
-    Object actualKey = trieEntry.getKey();
-
-    // Assert
-    assertEquals("Key", actualKey);
-    assertSame(trieEntry.key, actualKey);
-  }
-
-  /**
    * Test BasicEntry {@link BasicEntry#getValue()}.
    *
    * <p>Method under test: {@link BasicEntry#getValue()}

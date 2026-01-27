@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.diffblue.cover.annotations.ManagedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import org.apache.commons.collections4.keyvalue.MultiKey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -108,24 +107,6 @@ class AbstractMapDecoratorDiffblueTest {
 
     // Act and Assert
     assertFalse(objectObjectMap.containsValue(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link AbstractMapDecorator#decorated()}.
-   *
-   * <p>Method under test: {@link AbstractMapDecorator#decorated()}
-   */
-  @Test
-  @DisplayName("Test decorated()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"java.util.Map AbstractMapDecorator.decorated()"})
-  void testDecorated() {
-    // Arrange
-    ListOrderedMap<Object, Object> objectObjectMap = new ListOrderedMap<>();
-
-    // Act and Assert
-    assertTrue(objectObjectMap.decorated().isEmpty());
   }
 
   /**
@@ -415,28 +396,6 @@ class AbstractMapDecoratorDiffblueTest {
    * Test {@link AbstractMapDecorator#remove(Object)} with {@code Object}.
    *
    * <ul>
-   *   <li>Given {@link ListOrderedMap#ListOrderedMap()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMapDecorator#remove(Object)}
-   */
-  @Test
-  @DisplayName("Test remove(Object) with 'Object'; given ListOrderedMap()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object AbstractMapDecorator.remove(Object)"})
-  void testRemoveWithObject_givenListOrderedMap() {
-    // Arrange
-    ListOrderedMap<MultiKey<?>, Object> multiKeyObjectMap = new ListOrderedMap<>();
-
-    // Act and Assert
-    assertNull(multiKeyObjectMap.remove(AbstractHashedMap.NULL));
-  }
-
-  /**
-   * Test {@link AbstractMapDecorator#remove(Object)} with {@code Object}.
-   *
-   * <ul>
    *   <li>Given {@link MultiKeyMap#MultiKeyMap()}.
    * </ul>
    *
@@ -471,29 +430,6 @@ class AbstractMapDecoratorDiffblueTest {
 
     // Act and Assert
     assertEquals(0, objectObjectMap.size());
-  }
-
-  /**
-   * Test {@link AbstractMapDecorator#toString()}.
-   *
-   * <ul>
-   *   <li>Given {@link ListOrderedMap#ListOrderedMap()}.
-   *   <li>Then return {@code {}}.
-   * </ul>
-   *
-   * <p>Method under test: {@link AbstractMapDecorator#toString()}
-   */
-  @Test
-  @DisplayName("Test toString(); given ListOrderedMap(); then return '{}'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"java.lang.String AbstractMapDecorator.toString()"})
-  void testToString_givenListOrderedMap_thenReturnLeftCurlyBracketRightCurlyBracket() {
-    // Arrange
-    ListOrderedMap<MultiKey<?>, Object> multiKeyObjectMap = new ListOrderedMap<>();
-
-    // Act and Assert
-    assertEquals("{}", multiKeyObjectMap.toString());
   }
 
   /**

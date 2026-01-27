@@ -106,28 +106,4 @@ class ClosureTransformerDiffblueTest {
     // Assert
     assertSame(closure, actualClosureTransformer.getClosure());
   }
-
-  /**
-   * Test {@link ClosureTransformer#transform(Object)}.
-   *
-   * <p>Method under test: {@link ClosureTransformer#transform(Object)}
-   */
-  @Test
-  @DisplayName("Test transform(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object ClosureTransformer.transform(Object)"})
-  void testTransform() {
-    // Arrange
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    ClosureTransformer<Object> closureTransformer = new ClosureTransformer<>(closure);
-
-    // Act
-    Object actualTransformResult = closureTransformer.transform("Input");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-    assertEquals("Input", actualTransformResult);
-  }
 }

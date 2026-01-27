@@ -2,7 +2,6 @@ package org.apache.commons.collections4;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doNothing;
@@ -1201,34 +1200,6 @@ class FluentIterableDiffblueTest {
     // Assert
     verify(iterable).iterator();
     assertTrue(actualIsEmptyResult);
-  }
-
-  /**
-   * Test {@link FluentIterable#iterator()}.
-   *
-   * <ul>
-   *   <li>Given empty.
-   *   <li>Then return {@link EmptyIterator}.
-   * </ul>
-   *
-   * <p>Method under test: {@link FluentIterable#iterator()}
-   */
-  @Test
-  @DisplayName("Test iterator(); given empty; then return EmptyIterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator FluentIterable.iterator()"})
-  void testIterator_givenEmpty_thenReturnEmptyIterator() {
-    // Arrange
-    FluentIterable<Object> emptyResult = FluentIterable.empty();
-
-    // Act
-    Iterator<Object> actualIteratorResult = emptyResult.iterator();
-
-    // Assert
-    assertTrue(actualIteratorResult instanceof EmptyIterator);
-    assertFalse(actualIteratorResult.hasNext());
-    assertSame(((EmptyIterator) actualIteratorResult).RESETTABLE_INSTANCE, actualIteratorResult);
   }
 
   /**

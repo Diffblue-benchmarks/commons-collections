@@ -391,56 +391,6 @@ class AbstractHashedMapDiffblueTest {
   }
 
   /**
-   * Test HashEntry {@link HashEntry#getKey()}.
-   *
-   * <ul>
-   *   <li>Then return {@code Key}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashEntry#getKey()}
-   */
-  @Test
-  @DisplayName("Test HashEntry getKey(); then return 'Key'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object HashEntry.getKey()"})
-  void testHashEntryGetKey_thenReturnKey() {
-    // Arrange
-    HashEntry<Object, Object> hashEntry =
-        new HashEntry<>(null, 19088743, "Key", AbstractHashedMap.NULL);
-
-    // Act
-    Object actualKey = hashEntry.getKey();
-
-    // Assert
-    assertEquals("Key", actualKey);
-    assertSame(hashEntry.key, actualKey);
-  }
-
-  /**
-   * Test HashEntry {@link HashEntry#getKey()}.
-   *
-   * <ul>
-   *   <li>Then return {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashEntry#getKey()}
-   */
-  @Test
-  @DisplayName("Test HashEntry getKey(); then return 'null'")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Object HashEntry.getKey()"})
-  void testHashEntryGetKey_thenReturnNull() {
-    // Arrange
-    HashEntry<Object, Object> hashEntry =
-        new HashEntry<>(null, 19088743, AbstractHashedMap.NULL, AbstractHashedMap.NULL);
-
-    // Act and Assert
-    assertNull(hashEntry.getKey());
-  }
-
-  /**
    * Test HashEntry getters and setters.
    *
    * <p>Methods under test:

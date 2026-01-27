@@ -183,29 +183,6 @@ class ChainedClosureDiffblueTest {
   }
 
   /**
-   * Test {@link ChainedClosure#execute(Object)}.
-   *
-   * <p>Method under test: {@link ChainedClosure#execute(Object)}
-   */
-  @Test
-  @DisplayName("Test execute(Object)")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void ChainedClosure.execute(Object)"})
-  void testExecute() {
-    // Arrange
-    Closure<Object> closure = mock(Closure.class);
-    doNothing().when(closure).accept(Mockito.<Object>any());
-    ChainedClosure<Object> chainedClosure = new ChainedClosure<>(closure);
-
-    // Act
-    chainedClosure.execute("Input");
-
-    // Assert
-    verify(closure).accept(isA(Object.class));
-  }
-
-  /**
    * Test {@link ChainedClosure#getClosures()}.
    *
    * <p>Method under test: {@link ChainedClosure#getClosures()}

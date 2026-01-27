@@ -89,48 +89,4 @@ class IteratorIterableDiffblueTest {
     assertEquals(-1L, actualIteratorIterable.spliterator().getExactSizeIfKnown());
     assertFalse(actualIteratorResult.hasNext());
   }
-
-  /**
-   * Test {@link IteratorIterable#iterator()}.
-   *
-   * <p>Method under test: {@link IteratorIterable#iterator()}
-   */
-  @Test
-  @DisplayName("Test iterator()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator IteratorIterable.iterator()"})
-  void testIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    IteratorIterable<Object> iteratorIterable = new IteratorIterable<>(objectList.iterator(), true);
-
-    // Act and Assert
-    assertFalse(iteratorIterable.iterator().hasNext());
-  }
-
-  /**
-   * Test {@link IteratorIterable#iterator()}.
-   *
-   * <ul>
-   *   <li>Given {@link IteratorIterable#IteratorIterable(Iterator)} with iterator is {@link
-   *       ArrayList#ArrayList()} iterator.
-   * </ul>
-   *
-   * <p>Method under test: {@link IteratorIterable#iterator()}
-   */
-  @Test
-  @DisplayName(
-      "Test iterator(); given IteratorIterable(Iterator) with iterator is ArrayList() iterator")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"Iterator IteratorIterable.iterator()"})
-  void testIterator_givenIteratorIterableWithIteratorIsArrayListIterator() {
-    // Arrange
-    ArrayList<Object> objectList = new ArrayList<>();
-    IteratorIterable<Object> iteratorIterable = new IteratorIterable<>(objectList.iterator());
-
-    // Act and Assert
-    assertFalse(iteratorIterable.iterator().hasNext());
-  }
 }

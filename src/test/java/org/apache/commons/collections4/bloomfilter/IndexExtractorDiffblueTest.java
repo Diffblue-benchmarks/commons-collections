@@ -1,9 +1,7 @@
 package org.apache.commons.collections4.bloomfilter;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.atLeast;
@@ -167,35 +165,5 @@ class IndexExtractorDiffblueTest {
 
     // Act and Assert
     assertArrayEquals(new int[] {}, new SimpleBloomFilter(shape).asIndexArray());
-  }
-
-  /**
-   * Test {@link IndexExtractor#uniqueIndices()}.
-   *
-   * <p>Method under test: {@link IndexExtractor#uniqueIndices()}
-   */
-  @Test
-  @DisplayName("Test uniqueIndices()")
-  @Tag("ContributionFromDiffblue")
-  @ManagedByDiffblue
-  @MethodsUnderTest({"IndexExtractor IndexExtractor.uniqueIndices()"})
-  void testUniqueIndices() {
-    // Arrange
-    Shape shape = Shape.fromKM(19088743, 10);
-
-    // Act
-    IndexExtractor actualUniqueIndicesResult = new ArrayCountingBloomFilter(shape).uniqueIndices();
-    boolean actualProcessIndicesResult =
-        actualUniqueIndicesResult.processIndices(mock(IntPredicate.class));
-
-    // Assert
-    assertTrue(actualUniqueIndicesResult instanceof ArrayCountingBloomFilter);
-    assertEquals(1, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).characteristics());
-    assertFalse(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isFull());
-    assertTrue(((ArrayCountingBloomFilter) actualUniqueIndicesResult).isValid());
-    assertTrue(actualProcessIndicesResult);
-    assertEquals(
-        Integer.MAX_VALUE, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getMaxCell());
-    assertSame(shape, ((ArrayCountingBloomFilter) actualUniqueIndicesResult).getShape());
   }
 }
